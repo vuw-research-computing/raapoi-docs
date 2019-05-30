@@ -248,7 +248,7 @@ _show_ subcommand.  Some modules have this available, for instance:
 ```
 harrelwe@raapoi-master:~$ module show trimmomatic/20190304 
 -------------------------------------------------------------------------------------------------------------
-   /home/software/vuwrc/modulefiles/trimmomatic/20190304:
+   /home/software/tools/modulefiles/trimmomatic/20190304:
 -------------------------------------------------------------------------------------------------------------
 load("java/jdk/1.8.0_121")
 setenv("TM_HOME","/home/software/apps/trimmomatic/20190304/bin")
@@ -275,7 +275,7 @@ module show, for example here is what R adds:
 ```
 module show R/3.5.1
 --------------------------------------------------
-   /home/software/vuwrc/modulefiles/R/3.5.1:
+   /home/software/tools/modulefiles/R/3.5.1:
 --------------------------------------------------
 
 whatis("Adds the R language path to your environment ")
@@ -328,7 +328,7 @@ This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
 
 NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
 
-  `cp /home/software/vuwrc/examples/batch/myjob.sh ~/myjob.sh`
+  `cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh`
 
 The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
 
@@ -760,11 +760,11 @@ Note that _singularity shell_ is primarily for interactive use and _singularity 
 
 __Step 1:__ The best way to start jupyter is with a batch submit script.  We have created an example script.  You can copy this script from one available on the cluster, just type the following:
 ```
-cp /home/software/vuwrc/examples/jupyter/notebook.sh notebook.sh
+cp /home/software/tools/examples/jupyter/notebook.sh notebook.sh
 ```
 If you are using Anaconda and have installed it in the default location you need to use the following submit file instead:
 ```
-cp /home/software/vuwrc/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh
+cp /home/software/tools/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh
 ```
 
 __NOTE__: We also have sbatch scripts for R (IRKernel)) notebooks.  These are called *R-notebook.sh* and *R-notebook-anaconda.sh*
@@ -897,7 +897,7 @@ print("Random colour name:", colour_name, " on host: ", gethostname())
 
 Alternatively download it with wget:
 ```
-wget https://raw.githubusercontent.com/eResearchSandpit/vuwrc/master/examples/python_venv/test.py
+wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/test.py
 ```
 
 Using nano create the submissions script called python_submit.sh with the following content - change `me@email.com` to your email address.
@@ -923,7 +923,7 @@ python test.py
 
 Alternatively download it with wget
 ```
-wget https://raw.githubusercontent.com/eResearchSandpit/vuwrc/master/examples/python_venv/python_submit.sh
+wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/python_submit.sh
 ```
 
 To submit your job to the Slurm scheduler
