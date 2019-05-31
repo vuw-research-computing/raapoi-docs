@@ -1,0 +1,63 @@
+h1 {
+  color: #115737;
+}
+
+h1, h2, h3, h4, h6, legend {
+    margin-top: 0px;
+    font-weight: 700;
+    font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    color: #115737;
+ }
+
+h5 { 
+	margin-top: 0px;
+    font-weight: 700;
+    font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    color: #343131;
+}
+
+a:visited {
+    color: #B2A67F;
+}
+
+.wy-nav-top {
+    background: #115737;
+    color: #fff;
+    padding: 0.4045em 0.809em;
+    position: relative;
+    line-height: 50px;
+    text-align: center;
+    font-size: 100%;
+    *zoom: 1;
+}
+
+.wy-side-nav-search {
+    z-index: 200;
+    background-color: #115737;
+    text-align: center;
+    padding: 0.809em;
+    display: block;
+    color: #115737;
+    margin-bottom: 0.809em;
+}
+
+body {
+    font-family: "Segoe WP","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    font-weight: normal;
+    color: #404040;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: #edf0f2;
+}
+
+code, .rst-content tt {
+    white-space: nowrap;
+    max-width: 100%;
+    background: #ededeb;
+    border: solid 1px #e1e4e5;
+    font-size: 75%;
+    padding: 0 5px;
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
+    color: #333;
+    overflow-x: auto;
+}
