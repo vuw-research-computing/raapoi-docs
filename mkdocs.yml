@@ -1,0 +1,14 @@
+site_name: Raapoi Cluster Documentation
+nav: 
+  - Documentation: index.md
+  - Support: support.md
+
+theme: readthedocs
+markdown_extensions:
+  - toc:
+      permalink: True
+      baselevel: 2
+      toc_depth: 2
+
+
+extra_css: [extra.css]
