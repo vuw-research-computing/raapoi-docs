@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Documentation - Raapoi Cluster Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Documentation";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Raapoi Cluster Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Documentation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#accessing-the-cluster">Accessing the cluster</a></li>
+    
+
+    <li class="toctree-l2"><a href="#basic-commands">Basic Commands</a></li>
+    
+
+    <li class="toctree-l2"><a href="#storage-and-quotas">Storage and quotas</a></li>
+    
+
+    <li class="toctree-l2"><a href="#using-partitions">Using Partitions</a></li>
+    
+
+    <li class="toctree-l2"><a href="#preparing-your-environment">Preparing your environment</a></li>
+    
+
+    <li class="toctree-l2"><a href="#running-jobs">Running jobs</a></li>
+    
+
+    <li class="toctree-l2"><a href="#parallel-processing">Parallel processing</a></li>
+    
+
+    <li class="toctree-l2"><a href="#managing-jobs">Managing Jobs</a></li>
+    
+
+    <li class="toctree-l2"><a href="#connecting-to-cloud-providers">Connecting to Cloud Providers</a></li>
+    
+
+    <li class="toctree-l2"><a href="#using-containers">Using Containers</a></li>
+    
+
+    <li class="toctree-l2"><a href="#using-jupyter-notebooks">Using Jupyter Notebooks</a></li>
+    
+
+    <li class="toctree-l2"><a href="#examples">Examples</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="support/">Support</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Raapoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><img alt="Rapoi_logo" src="img/Raapoi_logo.png" /></p>
+<p>The Rāpoi HPC Cluster (aka raapoi) is a Uni-wide computing
+resource that uses the Slurm resource manager to schedule jobs and reserve
+resources.  Similar to most modern compute clusters, raapoi requires you to
+request CPU, Memory and Time for your job.  If you do not request these
+resources, you will be given the minimal defaults (1 CPU, 1 GB Memory, 1 hour
+runtime), which may not be enough to
+run your job.  The good news about resource reservations is that the resources
+you request are guaranteed to be yours, the bad news is if you request too
+little memory or time, your job may terminate prematurely and if you request too
+few CPUs then your job may run slowly.</p>
+<p>Raapoi is made up of partitions.  A partition is a set of compute nodes
+(servers) and each partition has its own configuration and hardware profile.
+The partition on which you run your jobs will depend on the type of workflow or
+job you intend to submit.</p>
+<p>The cluster employs the module environment to allow researchers to customize
+their environment with their required applications and languages.  </p>
+<p>The documentation contained in this wiki cover most of what you will need to
+know to start running jobs, but if you need more help, we will be creating some
+tutorials with step-by-step instructions for our most popular apps and
+languages.</p>
+<h2 id="accessing-the-cluster">Accessing the cluster<a class="headerlink" href="#accessing-the-cluster" title="Permanent link">&para;</a></h2>
+<p><em>Access is via SSH</em></p>
+<ul>
+<li>Hostname: raapoi.vuw.ac.nz</li>
+<li>IP Address: 130.195.19.14</li>
+<li>Port: 22</li>
+<li>Username: Your VUW username</li>
+<li>Password: Your VUW password</li>
+</ul>
+<p><em>NOTE:</em> On-campus wired network connection or VPN.  VPN is required if
+connecting from campus wifi or from off-campus. Some users have had issues with
+using the hostname and instead need to use the IP address, eg
+<code>harrelwe@130.195.19.14</code></p>
+<h5>SSH Clients</h5>
+<p><em>Mac OSX SSH Clients</em>
+You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.</p>
+<ul>
+<li>Terminal.app is the default application for command-line interface</li>
+<li>To login using the built-in Terminal.app on Mac, go to<ul>
+<li>Applications --&gt; Utilities --&gt; Terminal.app</li>
+<li>Or use Spotlight search (aka Command-Space)</li>
+</ul>
+</li>
+<li><a href="https://www.iterm2.com/">iTerm2</a> is a good replacement for the default Terminal app</li>
+<li><a href="https://www.xquartz.org/">XQuartz</a> is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: <code>sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true</code>   We have found that this allows some older GUI applications to run with fewer errors.</li>
+</ul>
+<p>NOTE:  Once at the command prompt you can type the following to login (replace "username" with your VUW user):</p>
+<p><code>ssh username@raapoi.vuw.ac.nz</code></p>
+<p><em>Windows SSH Clients</em></p>
+<ul>
+<li>Recommended Clients:</li>
+<li><a href="https://gitforwindows.org/">Git Bash</a> is a great option and is part of the Git for Windows project</li>
+<li><a href="https://mobaxterm.mobatek.net/">MobaXterm</a> is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.</li>
+</ul>
+<h2 id="basic-commands">Basic Commands<a class="headerlink" href="#basic-commands" title="Permanent link">&para;</a></h2>
+<h5>The <em>vuw</em> Commands</h5>
+<p>In an effort to make using raapoi just a bit easier, CAD staff have created commands to help you view useful information.  We call these the <em>vuw</em> commands.  This is because all the commands begin with the string <em>vuw</em>.  This makes it easier to see the commands available to you.  If, at a command prompt you type <em>vuw</em> followed immediately by two <em>TAB</em> keys you will see a list of available commands beginning with <em>vuw</em>.  Go ahead and type vuw-TAB-TAB to see for yourself.</p>
+<p>The commands available as of this update are:</p>
+<ul>
+<li><em>vuw-help</em>:            Prints this help information</li>
+<li><em>vuw-job-report</em>:      Provides some summary information about a job</li>
+<li><em>vuw-quota</em>:           Prints current storage quota and usage</li>
+<li><em>vuw-partitions</em>:      Prints a list of available partitions and the availability of compute nodes</li>
+<li><em>vuw-alljobs</em>:         Prints a list of all user jobs</li>
+<li><em>vuw-myjobs</em>:          Prints a list of your running or pending jobs</li>
+<li><em>vuw-job-history</em>:     Show jobs finished in last 5 days</li>
+</ul>
+<h5>Linux Commands</h5>
+<p>Raapoi is built using the Linux operating system. Access is primarily via command line interface (CLI) as opposed to the graphical user interfaces (GUI) that you are more familiar with (such as those on Windows or Mac) Below are a list of common commands for viewing and managing files and directories (replace the file and directory names with ones you own):</p>
+<p><strong>ls</strong> - This command lists the contents of the current directory
+<em> <em>ls -l</em> This is the same command with a flag (-l) which lists the contents with more information, including access permissions
+</em> <em>ls -a</em> Same ls command but this time the -a flag which will also list hidden files. Hidden files start with a . (period)
+* <em>ls -la</em> Stringing flags together</p>
+<p><strong>cd</strong> - This will change your location to a different directory (folder)
+<em> <em>cd projects/calctest_proj</em>
+</em> Typing <em>cd</em> with no arguments will take you back to your home directory</p>
+<p><strong>mv</strong> - This will move or rename a file</p>
+<ul>
+<li><em>mv project1.txt project2.txt</em></li>
+<li><em>mv project2.txt projects/calctest_proj/</em></li>
+</ul>
+<p><strong>rm</strong> - This will delete a file</p>
+<ul>
+<li><em>rm projects/calctest_proj/projects2.txt</em></li>
+<li><em>rm -r projects/calctest_proj/code</em>
+The <em>-r</em> flag recursively removes files and directories</li>
+</ul>
+<p><strong>mkdir</strong> - This will create a new directory
+* <em>mkdir /nfs/home/myusername/financial</em></p>
+<p>Other Commands you may use: <em>alias, awk, cat, export, for, grep, gzip, if, less, sed, tar, while</em></p>
+<h5>Learning the Linux Shell</h5>
+<p>A good tutorial for using linux can be found here:
+<a href="http://linuxcommand.org/lc3_learning_the_shell.php">Learning the linux shell</a></p>
+<h2 id="storage-and-quotas">Storage and quotas<a class="headerlink" href="#storage-and-quotas" title="Permanent link">&para;</a></h2>
+<p>Currently users have 2 main storage areas:</p>
+<ul>
+<li>
+<p><strong>/nfs/home/USERNAME</strong> - This is your Home Directory, each user has a <em>50 GB</em> quota limit.</p>
+</li>
+<li>
+<p><strong>/nfs/scratch/USERNAME</strong> - This is you scratch space, each user has a <em>5 TB</em> quota limit </p>
+</li>
+</ul>
+<p>To view your current quota and usage use the <em>vuw-quota</em> command, for example:</p>
+<pre><code>harrelwe@raapoi-master:~$ vuw-quota 
+
+Quotas for home directory
+
+                       Storage  Usage (GB)  Quota (GB)     % Used 
+            /nfs/home/harrelwe        0.10       50.00      0.20%
+</code></pre>
+
+<h2 id="using-partitions">Using Partitions<a class="headerlink" href="#using-partitions" title="Permanent link">&para;</a></h2>
+<p>A partition is a collection of compute nodes, think of it as a sub-cluster or
+slice of the larger cluster.  Each partition has its own rules and
+configurations.  </p>
+<p>For example, the quicktest partition has a maximum job run-time of 1 hour, whereas the partition
+bigmem has a maximum runtime of 10 days.  Partitions can also
+limit who can run a job.  Currently any user can use any partition but there
+may come a time when certain research groups purchase their own nodes and they are
+given exclusive access.</p>
+<p>To view the partitions available to use you can type the vuw-partitions
+command, eg</p>
+<pre><code>harrelwe@raapoi-master:~$ vuw-partitions 
+
+VUW CLUSTER PARTITIONS
+PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+quicktest*    up    1:00:00      1   idle c03n01
+
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+bigmem       up 10-00:00:0      2   idle c10n01,c11n01
+
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+parallel     up 10-00:00:00      6  down* c04n01,c05n04,c06n[01-04]
+parallel     up 10-00:00:00     27   idle
+c03n[02-04],c04n[02-04],c05n[01-02],c07n[01,03-04],c08n[01-04],c09n[01-04],c12n[01-04],c13n[01-04]
+
+NOTE: This utility is a wrapper for the Slurm command:
+      sinfo -p PARTITION
+</code></pre>
+
+<p>Notice the STATE field, this describes the current condition of nodes within the
+partition, the most common states are defined as:</p>
+<ul>
+<li><strong>idle</strong> - nodes in an idle state have no jobs running, all resources are available
+for work</li>
+<li><strong>mix</strong> - nodes in a mixed state have some jobs running, but still have some
+resources available for work</li>
+<li><strong>alloc</strong> - nodes in an alloc state are completely full, all resources are in use.</li>
+<li><strong>drain</strong> - nodes in a drain state have some running jobs, but no new jobs can be
+run.  This is typically done before the node goes into maintenance</li>
+<li><strong>maint</strong> - node is in maintenance mode, no jobs can be submitted</li>
+<li><strong>resv</strong> - node is in a reservation.  A reservation is setup for future maintenance
+or for special purposes such as temporary dedicated access</li>
+<li><strong>down</strong> - node is down, either for maitnenance or due to failure</li>
+</ul>
+<p>Also notice the <em>TIMELIMIT</em> field, this describes the maximum runtime of a
+partition.  For example, the quicktest partition has a maximum runtime of 1 
+hour and the parallel partition has a max runtime of 10 days.</p>
+<h5>Partition Descriptions</h5>
+<p><em>Partition: quicktest</em></p>
+<p>This parttion is for quick tests of code, environment, software builds or
+similar short-run jobs.  Since the max time limit is 1 hour it should not take
+long for your job to run.  This can also be used for near-on-demand interactive
+jobs.</p>
+<ul>
+<li>Maximum CPU available per task: 24</li>
+<li>Maximum memory available per task: 62G</li>
+<li>Maximum Runtime: 1 hour</li>
+</ul>
+<p><em>Partition: bigmem</em></p>
+<p>This partition is primarily useful for jobs that require very large shared
+memory (generally greater than 125 GB).  These are known as memory-bound jobs.</p>
+<ul>
+<li>Maximum CPU available per task: 48</li>
+<li>Maximum memory available per task: 1 TB (Note: maximum CPU for 1 TB is 40)</li>
+<li>Maximum Runtime: 10 days</li>
+</ul>
+<p><em>Partition: parallel</em></p>
+<p>This partition is useful for parallel workflows, either loosely coupled or jobs
+requiring MPI or other message passing protocols for tightly bound jobs.</p>
+<ul>
+<li>Maximum CPU available per task: 64</li>
+<li>Maximum memory available per task: 125G</li>
+<li>Maximum Runtime: 10 days</li>
+</ul>
+<p><em>Cluster Defaults</em></p>
+<p>Please note that if you do not specify CPU, Memory or Time in your job request
+you will be given the cluster defaults which are:</p>
+<ul>
+<li>Default CPU: 2</li>
+<li>Default Memory: 2 GB</li>
+<li>Default Time: 1 hour</li>
+</ul>
+<p>You can change these with the -c, --mem and --time parameters to the srun and
+sbatch commands.  Please see this documentation for more information about srun
+and sbatch.</p>
+<h2 id="preparing-your-environment">Preparing your environment<a class="headerlink" href="#preparing-your-environment" title="Permanent link">&para;</a></h2>
+<p>Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Stata, etc).  We also keep older versions of software to ensure compatibility.</p>
+<p>Because of this, raapoi developers use a tool called module to allow a user to load a specific version of an application, language or library and start using it for their work. The <em>module</em> command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:</p>
+<p><code>module avail</code></p>
+<p>You will see a long list of available modules to load, including a path, eg <em>lua/5.3.5</em>
+However, instead of searching through a long list, if you know you want to use lua, you can find the path with the keyword subcommand:</p>
+<p><code>module keyword lua</code></p>
+<p>If you want to know more about a particular module you can use the <em>whatis</em> or
+<em>show</em> subcommand.  Some modules have this available, for instance:</p>
+<pre><code>harrelwe@raapoi-master:~$ module show trimmomatic/20190304 
+-------------------------------------------------------------------------------------------------------------
+   /home/software/tools/modulefiles/trimmomatic/20190304:
+-------------------------------------------------------------------------------------------------------------
+load(&quot;java/jdk/1.8.0_121&quot;)
+setenv(&quot;TM_HOME&quot;,&quot;/home/software/apps/trimmomatic/20190304/bin&quot;)
+</code></pre>
+
+<pre><code>  module whatis R/CRAN/3.5
+
+  R/CRAN/3.5          : Adds the R library path to the pre-built CRAN modules
+</code></pre>
+
+<h5>Adding or loading software</h5>
+<p>Once you have found the module path you can load the software:</p>
+<p><code>module load lua/5.3.5</code></p>
+<p>After the module loads you can type srun --pty lua at a prompt, or add it to the path of your lua script (the RC team recommends using /usr/bin/env instead of an absolute path).</p>
+<p>Showing/listing the module environment modifications
+You can discover what the module will load into your environment you can run
+module show, for example here is what R adds:</p>
+<pre><code>module show R/3.5.1
+--------------------------------------------------
+   /home/software/tools/modulefiles/R/3.5.1:
+--------------------------------------------------
+
+whatis(&quot;Adds the R language path to your environment &quot;)
+prepend_path(&quot;PATH&quot;,&quot;/home/software/apps/R/3.5.1/bin&quot;)
+</code></pre>
+
+<h5>Listing loaded modules</h5>
+<p>To see what modules you have loaded into your environment you can run the command:</p>
+<p><code>module list</code>  </p>
+<p>By default you will have the config module loaded (please do not unload that module).  For example, here are the modules I have loaded in my environment when I wrote this section:</p>
+<pre><code>module list
+
+Currently Loaded Modules:
+  1) config   2) tassel/3   3) python/3.7.0   4) python/modules/3.7
+
+</code></pre>
+
+<h2 id="running-jobs">Running jobs<a class="headerlink" href="#running-jobs" title="Permanent link">&para;</a></h2>
+<h5>Batch jobs</h5>
+<p>To run a batch job (aka a job that runs unattended) you use the <em>sbatch</em> command.  A simple example would look something like this:</p>
+<p><code>sbatch myjob.sh</code></p>
+<p>In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:</p>
+<pre><code> #!/bin/bash
+ #SBATCH --cpus-per-task=2
+ #SBATCH --mem-per-cpu=2G
+ #SBATCH --partition=parallel
+ #SBATCH --time=3-12:00
+ #SBATCH -o /home/username/project1.out
+ #SBATCH -e /home/username/project1.err
+ #SBATCH --mail-type=BEGIN,END,FAIL
+ #SBATCH --mail-user=me@email.com
+
+ module load python/3.6.3
+ python3 project1.py
+
+</code></pre>
+
+<p>This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days 12 hours.  We are requesting that this job be run on the parallel  partition, it will then load the environment module for python version 3.6.3 and run a python script called project1.py.  Any output from the script will be placed in your home directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran <em>sbatch</em>.</p>
+<p>NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:</p>
+<p><code>cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh</code></p>
+<p>The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.</p>
+<h5>Interactive jobs</h5>
+<p>One of the basic job submittal tools is the command srun</p>
+<p>For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:</p>
+<pre><code>  module load R/3.5.1
+  srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=bigmem R
+</code></pre>
+
+<p>So what does this all mean?</p>
+<p>The <em>module load</em> command will introduce the environment necessary to run a particular program, in this case R version 3.5.1
+The <em>srun</em> command will submit the job to the cluster.  The <em>srun</em> command has many parameter available, some of the most common are in this example and explained below</p>
+<ul>
+<li>--pty - Required to run interactively</li>
+<li>--cpus-per-task=2 - requests 2 CPUs, can also use the -c flag, eg. -c 2</li>
+<li>--mem=2G - requests 2 GigaBytes (GB) of RAM.</li>
+<li>--time=08:00:00 - requests a runtime of up to 8 hours (format is DAYS-HOURS:MINUTES:SECONDS), this is important in case the cluster or partition has a limited run-time, for example if an outage window is approaching.  Keep in mind time is a resource along with CPU and Memory.  </li>
+<li>--partition=bigmem - requests a certain partition, in this case it requests the bigmem partition, see the section on using cluster partitions for more information.</li>
+<li>R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)</li>
+</ul>
+<h2 id="parallel-processing">Parallel processing<a class="headerlink" href="#parallel-processing" title="Permanent link">&para;</a></h2>
+<p>Running a job in parallel is a great way to utilize the power of the cluster.  So what is a parallel job/workflow?</p>
+<ul>
+<li>Loosely-coupled jobs (sometimes referred to as embarrassingly or naively parallel jobs) are processes in which multiple instances of the same program execute on multiple data files simultaneously, with each instance running independently from others on its own allocated resources (i.e. CPUs and memory). Slurm job arrays offer a simple mechanism for achieving this.</li>
+<li>Multi-threaded programs that include explicit support for shared memory processing via multiple threads of execution (e.g. Posix Threads or OpenMP) running across multiple CPU cores.</li>
+<li>Distributed memory programs that include explicit support for message passing between processes (e.g. MPI). These processes execute across multiple CPU cores and/or nodes, these are often referred to as tightly-coupled jobs.</li>
+<li>GPU (graphics processing unit) programs including explicit support for offloading to the device via languages like CUDA or OpenCL.</li>
+</ul>
+<p>It is important to understand the capabilities and limitations of an application in order to fully leverage the parallel processing options available on the cluster. For instance, many popular scientific computing languages like Python, R, and Matlab now offer packages that allow for GPU, multi-core or multithreaded processing, especially for matrix and vector operations</p>
+<h5>Job Array Example</h5>
+<p>Here is an example of running a job array to run 50 simultaneous processes:</p>
+<p><code>sbatch array.sh</code></p>
+<p>The contents of the array.sh batch script looks like this:</p>
+<pre><code>  #!/bin/bash
+  #SBATCH -a 1-50
+  #SBATCH --cpus-per-task=1
+  #SBATCH --mem-per-cpu=2G
+  #SBATCH --time=00:10:00
+  #SBATCH --partition=parallel
+  #SBATCH --mail-type=BEGIN,END,FAIL
+  #SBATCH --mail-user=me@email.com
+
+  module load fastqc/0.11.7
+
+  fastqc --nano -o $TMPDIR/output_dir seqfile_${SLURM_ARRAY_TASK_ID}
+
+</code></pre>
+
+<p>So what do these parameter mean?:</p>
+<ul>
+<li><em>-a</em> sets this up as a parallel array job (this sets up the "loop" that will be run</li>
+<li><em>--cpus-per-task</em> requests the number of CPUs per array task, in this case I just want one CPU per task, we will use 50 in total</li>
+<li><em>--mem-per-cpu</em> request 2GB of RAM per CPU, for this parallel job I will request a total of 100GB RAM (50 CPUs * 2GB RAM)</li>
+<li><em>--time</em> is the max run time for this job, 10 minutes in this case</li>
+<li><em>--partition</em> assigns this job to a partition</li>
+<li><em>module load fastqc/0.11.7</em>: Load software into my environment, in this case fastqc</li>
+<li><em>fastqc --nano -o $TMPDIR/output_dir seqfile</em>${SLURM_ARRAY_TASK_ID}_ Run fastqc on each input data file with the filenames seqfile_1, seqfile_2...seqfile_50</li>
+</ul>
+<p>Running the array.sh script will cause the SLURM manager to spawn 50 parallel jobs.</p>
+<h5>Multi-threaded or Multi-processing Job Example</h5>
+<p>Multi-threaded or multi-processing programs are applications that are able to
+execute in parallel across multiple CPU cores within a single node using a
+shared memory execution model. In general, a multi-threaded application uses a
+single process (aka “task” in Slurm) which then spawns multiple threads of
+execution. By default, Slurm allocates 1 CPU core per task. In order to make use
+of multiple CPU cores in a multi-threaded program, one must include the
+--cpus-per-task option.  Below is an example of a multi-threaded program
+requesting 12 CPU cores per task and a total of 256GB of memory. The program itself is responsible for spawning the appropriate number of threads.</p>
+<pre><code>  #!/bin/bash
+  #SBATCH --nodes=1
+  #SBATCH --ntasks=1
+  #SBATCH --cpus-per-task=12 # 12 threads per task
+  #SBATCH --time=02:00:00 # two hours
+  #SBATCH --mem=256G
+  #SBATCH -p bigmem
+  #SBATCH --output=threaded.out
+  #SBATCH --job-name=threaded
+  #SBATCH --mail-type=BEGIN,END,FAIL
+  #SBATCH --mail-user=me@email.com
+  # Run multi-threaded application
+  module load java/1.8.0-91
+  java -jar threaded-app.jar
+</code></pre>
+
+<h5>MPI Jobs</h5>
+<p>Most users do not require MPI to run their jobs but many do.  Please read on if you want to learn more about using MPI for tightly-coupled jobs.</p>
+<p>MPI (Message Passing Interface) code require special attention within Slurm. Slurm allocates and launches MPI jobs differently depending on the version of MPI used (e.g. OpenMPI, MPICH2). We recommend using OpenMPI version 2.1.1 or later to compile your C code (using mpicc) and then using the mpirun command in a batch submit script to launch parallel MPI jobs. The example below runs MPI code compiled by OpenMPI 2.1.1:</p>
+<pre><code>  #!/bin/bash
+  #SBATCH --nodes=3
+  #SBATCH --tasks-per-node=8 # 8 MPI processes per node
+  #SBATCH --time=3-00:00:00
+  #SBATCH --mem=4G # 4 GB RAM per node
+  #SBATCH --output=mpi_job.log
+  #SBATCH -p parallel
+  #SBATCH --mail-type=BEGIN,END,FAIL
+  #SBATCH --mail-user=me@email.com
+
+  module load openmpi
+  echo $SLURM_JOB_NODELIST
+  mpirun -np 24 mpiscript.o
+
+</code></pre>
+
+<p>This example requests 3 nodes and 8 tasks (i.e. processes) per node, for a total of 24 tasks.  I use this number to tell mpirun how many processes to start, -np 24</p>
+<p>NOTE:  If using python or another language you will also need to add the --oversubscribe parameter to mpirun, eg.</p>
+<p><code>mpirun --oversubscribe -np 24 mpiscript.py</code></p>
+<p>More information about running MPI jobs within Slurm can be found here here: http://slurm.schedmd.com/mpi_guide.html.</p>
+<h2 id="managing-jobs">Managing Jobs<a class="headerlink" href="#managing-jobs" title="Permanent link">&para;</a></h2>
+<h5>Cancelling a Job</h5>
+<p>To cancel a job, first find the jobID, you can use the <em>vuw-myjobs</em> (or <em>squeue</em>) command to see a list of your jobs, including jobIDs.  Once you have that you can use the <em>scancel</em> command, eg</p>
+<p><code>scancel 236789</code></p>
+<p>To cancel all of your jobs you can use the -u flag followed by your username:</p>
+<p><code>scancel -u harrelwe</code></p>
+<h5>Viewing Job statistics</h5>
+<p>If you want to get a quick view of all the jobs completed within the last 5 days you can use the <em>vuw-history</em> command, for example:</p>
+<pre><code>  vuw-job-history
+
+MY JOBS WITHIN LAST 5 days
+       JobID      State    JobName  MaxVMSize    CPUTime 
+------------ ---------- ---------- ---------- ---------- 
+2645          COMPLETED       bash              00:00:22 
+2645.extern   COMPLETED     extern      0.15G   00:00:22 
+2645.0        COMPLETED       bash      0.22G   00:00:20 
+2734          COMPLETED       bash              00:07:40 
+2734.extern   COMPLETED     extern      0.15G   00:07:40 
+2734.0        COMPLETED       bash      0.22G   00:07:40 
+</code></pre>
+
+<p>You can also get a report of your completed jobs using the <em>sacct</em> command.  For example if I wanted to get a report on how much memory my job used I could do the following:</p>
+<p><code>sacct --units=G --format="MaxVMSize" -j 2156</code></p>
+<ul>
+<li>MaxVMSize will report the maximum virtual memory (RAM plus swap space) used by my job in GigBytes ( --units=G ) </li>
+<li>-j 2156 shows the information for job ID 2156</li>
+<li>type <em>man sacct</em> at a prompt in engaging to see the documentation on the <em>sacct</em> command</li>
+</ul>
+<h5>Viewing jobs in the Queue</h5>
+<p>To view your running jobs you can type <em>vuw-myjobs</em>  eg:</p>
+<pre><code>           [harrelwe@node142 ~]$ vuw-myjobs
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
+</code></pre>
+
+<p>As you can see I have a single job running on the node c03n01 on the quicktest partition</p>
+<p>You can see all the jobs in the queues by running the <em>vuw-alljobs</em> command.  This will produce a very long list of jobs if the cluster is busy.</p>
+<h5>Job Queuing (aka Why is my job running?)</h5>
+<p>When a partition is busy, jobs will be placed in a queue.  You can observe this
+in the <em>vuw-myjobs</em> and <em>vuw-alljobs</em> commands.  The STATE of your job will be PENDING, this means it is waiting for resources or your job has been re-prioritized to allow other users access to run their jobs (this is called fair-share queueing).</p>
+<p>The resource manager will list a reason the job is pending, these reasons can include:</p>
+<ul>
+<li><strong>Priority</strong> - Your job priority has been reduced to allow other users access to the cluster.  If no other user with normal priority is also pending then your job will start once resources are available.  Possible reasons why your priority has been lowered can include:  the number of jobs you have run in the past 24-48 hours; the duration of the job and the amount of resources requested.  The Slurm manager uses fair-share queuing to ensure the best use of the cluster.  You can google fair-share queuing  if you want to know more</li>
+<li><strong>Resources</strong>- There are insufficient resources to start your job.  Some combination of CPU, Memory, Time or other specialized resource are unavailable.  Once resources are freed up your job will begin to run.<br />
+Time:   If you request more time than the max run-time of a partition, your job will be queued indefinitely (in other words:  it will never run).  Your time request must be less than or equal to the Partition Max Run-Time.  Also if a special reservation is placed on the cluster, for instance prior to a scheduled maintenance, this too will reduce the available time to run your job.  You can see Max Run-Time for our partitions described in this document.  CAD or ITS Staff will alert all users prior to any scheduled maintenance and advise them of the time restrictions.</li>
+<li><strong>QOSGrpCPULimit</strong> - This is a Quality of Service configuration to limit the number of CPUs per user.   The QOSMax is the maximum that can be requested for any single job.  If a user requests more CPUs than the QOSMax for a single job then the job will not run.  If the user requests more than QOSMax in 2 or more jobs then the subsequent jobs will queue until the users running jobs complete.</li>
+<li><strong>PartitionTimeLimit</strong> - This means you have requested more time than the maximum runtime of the partition.  This document contains information about the different partitions, including max run-time.  Typing <em>vuw-partition</em> will also show the max run-time for the partitions available to you.</li>
+<li><strong>ReqNodeNotAvail</strong> - 99% of the time you will receive this code if you have asked for too much time. This frequently occurs when the cluster is about to go into maintenance and a reservation has been placed on the cluster, which reduces the maximum run-time of all jobs.  For example, if maintenance on the cluster is 1 week away, the maximum run-time on all jobs needs to be less than 1 week, regardless if the configured maximum run-time on a partition is greater than 1 week.  To request time you can use the --time parameter.  Another issue is if you request too much memory or a CPU configuration that does not exist on any node in a partition.  </li>
+<li><strong>Required node not available (down, drained or reserved)</strong> - This is related to ReqNodeNotAvail, see above.</li>
+</ul>
+<h2 id="connecting-to-cloud-providers">Connecting to Cloud Providers<a class="headerlink" href="#connecting-to-cloud-providers" title="Permanent link">&para;</a></h2>
+<h5>Amazon AWS</h5>
+<p>A feature-rich CLI is available in raapoi.  To use it you need to load the appropriate module and its module dependencies:</p>
+<p><code>module load amazon/aws/cli</code></p>
+<p>Before you proceed you will need to configure your environment with your Access Key ID and Secret Access Key, both of which will be sent to you once your account is created or linked.  The command to configure your environment is <code>aws configure</code>  You only need to do this once, unless of course you use more than one user/Access Key.  Most users can simply click through the region and profile questions (using the default of "none").  If you do have a specific region this should be relayed along with your access and secret keys.</p>
+<p>Once you have the appropriate environment in place and your configuration setup you can use the aws command, plus an appropriate sub-command (s3, emr, rds, dynamodb, etc) and supporting arguments. </p>
+<p>More information on the CLI can be found here:
+<a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html</a></p>
+<h6>Transferring Data to/from Amazon (AWS) S3</h6>
+<p>To transfer data from S3 you first need to setup your AWS connect, instructions for that can be found above.
+Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  </p>
+<p>For example if I wanted to copy data from my S3 storage to my project directory I could do the following:</p>
+<pre><code>  tmux
+  module load amazon/aws/cli
+  cd /nfs/scratch/harrelwe/project
+  aws s3 cp s3://mybucket/mydata.dat mydata.dat
+</code></pre>
+
+<p>To copy something to storage simply reverse the file paths, eg.</p>
+<pre><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat 
+</code></pre>
+
+<p>The above starts a tmux session to allow the transfer to continue even if I
+disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
+modules necessary to use the AWS commands.  I change directory to my project
+space and use the aws s3 cp command to copy from S3.  More information on using
+aws can be found here:
+<a href="http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3">http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3</a></p>
+<h6>Working with AWS Data Analysis Tools</h6>
+<p>Amazon has a number of data analytics and database services available.  Using the command line utilities available in raapoi, researchers can perform work on the eo cluster and transfer data to AWS to perform further analysis with tools such as MapReduce (aka Hadoop), RedShift or Quicksight.</p>
+<p>A listing of available services and documentation can be found at the following:
+<a href="https://aws.amazon.com/products/analytics/">https://aws.amazon.com/products/analytics/</a></p>
+<h5>Google Cloud (gcloud) Connections</h5>
+<p>The Google Cloud SDK is available in raapoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the <code>module spider</code> command.  As of this writing the current version can be loaded thusly:</p>
+<p>module load google/cloud/sdk/212.0.0</p>
+<p>This will give you access to the <code>gcloud</code> command.  To setup a connection to your gcloud account use the init sub-command, eg.</p>
+<p><code>gcloud init --console-only</code></p>
+<p>Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the raapoi terminal window.</p>
+<h6>Transferring Data to/from Google Cloud (gcloud)</h6>
+<p>To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the <code>gsutil</code> command to copy data to and from your gcloud storage.  </p>
+<p>For example, if I wanted to copy data from gcloud to my project directory I could do the following:</p>
+<pre><code>  tmux
+  module load google/cloud/sdk/212.0.0
+  cd /nfs/scratch/harrelwe/project
+  gsutil cp gs://mybucket/mydata.dat mydata.dat
+</code></pre>
+
+<p>To copy something to storage simply reverse the file paths, eg.</p>
+<pre><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat 
+</code></pre>
+
+<p>The above starts a tmux session to allow the transfer to continue even if I
+disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
+modules necessary to use the gsutil commands.  I change directory to my project
+space and use the gsutil cp command to copy from gcloud.  More information on
+using gcloud can be found here:
+<a href="https://cloud.google.com/sdk/gcloud/">https://cloud.google.com/sdk/gcloud/</a></p>
+<h6>Working with GCloud Data Analysis Tools</h6>
+<p>Google Cloud has a number of data analytics and database services available.  Using the gcloud command line utilities available on raapoi, researchers can perform work on the cluster and transfer data to gcloud to perform further analysis with tools such as Dataproc (Hadoop/Spark), BigQuery or Datalab (Visualization)</p>
+<p>A listing of available services and documentation can be found at the following:
+<a href="https://cloud.google.com/products/">https://cloud.google.com/products/</a></p>
+<h5>DropBox Cloud Storage</h5>
+<p><strong>NOTE:</strong> Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.</p>
+<p>Configuring your Dropbox account on raapoi</p>
+<p><strong>Step A:</strong>  On your local laptop or desktop start your browser and login to your Dropbox account</p>
+<p><strong>Step B:</strong> On Raapoi type the following:</p>
+<p><code>module load dropbox</code></p>
+<p><strong>Step C:</strong> Setup account credentials (You should only need to do this once):</p>
+<p>Run the following command from Raapoi</p>
+<p><code>dbxcli account</code></p>
+<p>You will now see something like the following:</p>
+<ol>
+<li>Go to https://www.dropbox.com/1/oauth2/authorize?client_id=X12345678&amp;response_type=code&amp;state=state</li>
+<li>Click "Allow" (you might have to log in first).</li>
+<li>Copy the authorization code.
+  Enter the authorization code here:</li>
+</ol>
+<p><strong>Step D:</strong></p>
+<p>Copy the URL link listed in Step C1 and paste it into the web browser that you started in Step A</p>
+<p>This will provide you with a long access code (aka hash).  Now copy that access code and paste it into your Raapoi terminal after Step C3 where it is asking for Enter the authorization code here </p>
+<p>Now hit enter or return.  You should see that you are now logged in with your Dropbox credentials</p>
+<h6>Basic Dropbox commands</h6>
+<p>Remember to load the dropbox environment module if you have not already (see <code>module spider</code> for the path)</p>
+<p>Now type <code>dbx</code> or <code>dbxcli</code> at a prompt.  You will see a number of sub-commands, for instance ls, which will list the contents of your Dropbox, eg</p>
+<p><code>dbxcli ls</code></p>
+<h6>Downloading from Dropbox</h6>
+<p>Downloading uses the subcommand called: get.   The basic format for get is:</p>
+<p><code>dbxcli get fileOnDropbox fileOnRaapoi</code></p>
+<p>For instance, if I have a datafile called 2018-financials.csv on Dropbox that I want to copy to my project folder I would type:</p>
+<p><code>dbxcli get 2018-financials.csv /nfs/scratch/harrelwe/projects/finance_proj/2018-financials.csv</code></p>
+<h6>Uploading to Dropbox</h6>
+<p>Uploading is similar to downloading except now we use the subcommand: put.  The basic format for put is:</p>
+<p><code>dbxcli put fileOnRaapoi fileOnDropbox</code></p>
+<p>For example I want to upload a PDF I generated from one of my jobs called final-report.pdf I would type:</p>
+<p><code>dbxcli put final-report.pdf final-report.pdf</code></p>
+<p>This will upload the PDF and name it the same thing, if I wanted to change the name on Dropbox I could:</p>
+<p><code>dbxcli put final-report.pdf analytics-class-final-report.pdf</code></p>
+<h5>AARNET Cloudstor</h5>
+<p>All VUW researchers have access to the AARNET (Australia’s Academic and Research
+Network) Cloudstor service which provides <strong>1 TB</strong> of space to each researcher.  To
+use this service first login and download an appropriate client to your laptop
+or desktop (or smarthone if you wish):</p>
+<p><a href="https://apac01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcloudstor.aarnet.edu.au%2Fsimplesaml%2Fmodule.php%2Fdiscopower%2Fdisco.php%3FentityID%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fmetadata.php%252Fdefault-sp%26return%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fdiscoresp.php%253FAuthID%253D_d8e2f7cbdf882a033df5b33385b5936c08e0e133a1%25253Ahttps%25253A%25252F%25252Fcloudstor.aarnet.edu.au%25252Fsimplesaml%25252Fmodule.php%25252Fcore%25252Fas_login.php%25253FAuthId%25253Ddefault-sp%252526ReturnTo%25253Dhttp%2525253A%2525252F%2525252Fcloudstor.aarnet.edu.au%2525252Fplus%2525252F%26returnIDParam%3Didpentityid&amp;data=02%7C01%7Cwes.harrell%40vuw.ac.nz%7Cefa10aeb0f1d42a6cd2408d6953c9496%7Ccfe63e236951427e8683bb84dcf1d20c%7C0%7C0%7C636860484751891881&amp;sdata=nkN7OI6g%2BKs%2FLoMG6tOtoWqk1%2FU1gbxZK%2FjCd8NNZ6c%3D&amp;reserved=0">Cloudstor Login</a></p>
+<p>NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on raapoi, it does not use your VUW credentials for the command line login.</p>
+<p>Once you have setup your cloudstor (aka ownCloud) credentials you can use them
+to sync data to and from Raapoi.  For example, if I wanted to sync my project
+space to Cloudstor I would do the following from raapoi login node:</p>
+<pre><code>  tmux
+  cd /nfs/scratch/harrelwe
+  owncloudcmd -u wes.harrell@vuw.ac.nz project1 https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
+</code></pre>
+
+<p>The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
+(type <code>tmux attach</code> to reconnect), I then change directory (<em>cd</em>) to my scratch space and then use the command <code>owncloudcmd</code> to sync my project directory called project1 to the Cloudstor service.  You will be prompted for your Cloudstor password, you can also embed this within the command line using the -p paramter.  </p>
+<h2 id="using-containers">Using Containers<a class="headerlink" href="#using-containers" title="Permanent link">&para;</a></h2>
+<p>Researchers can use Docker or Singularity containers within the cluster.  This is a great way to run difficult-to-compile applications or to share workflows among colleagues.</p>
+<h5>Running an interactive container</h5>
+<p>User can run within a container interactively, this is great for testing code before running a job.  Here is an example of running within a docker container that has the blockchain software called BlockSci:</p>
+<pre><code>module load singularity
+srun --pty -c 4 --mem=16G bash
+singularity pull docker://tislaamo/blocksci
+singularity shell blocksci.simg
+</code></pre>
+
+<p>Once you have typed the <em>singularity shell</em> command you will be within the
+container and can type the commands available from within the container such as
+the BlockSci utility <strong>blocksci_parser</strong></p>
+<h5>Running a container in batch</h5>
+<p>Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the BlockSci software that was created in an Ubuntu docker image, lets name the submit file runContainer.sh:</p>
+<pre><code>#SBATCH -J blockchain_parser
+#SBATCH -c 4
+#SBATCH --mem=16G
+#SBATCH --mailtype=BEGIN,END,FAIL
+#SBATCH --mail-user=myemail@email.net
+#SBATCH --time=12:00:00
+
+module load singularity
+singularity exec blocksci.simg blocksci_parser --output-directory bitcoin-data update disk --coin-directory bitcoin
+</code></pre>
+
+<p>Now to run the file you can:</p>
+<pre><code>module load singularity
+singularity pull docker://tislaamo/blocksci
+sbatch runContainer.sh
+</code></pre>
+
+<p>Note that <em>singularity shell</em> is primarily for interactive use and <em>singularity exec</em> (or possibly <em>singularity run</em>) are for executing the applications that were built within the container directly.  It is important to know how the container was created to make effective use of the software.</p>
+<h2 id="using-jupyter-notebooks">Using Jupyter Notebooks<a class="headerlink" href="#using-jupyter-notebooks" title="Permanent link">&para;</a></h2>
+<h5>Starting and Working with a Jupyter Notebook</h5>
+<p><strong>Step 1:</strong> The best way to start jupyter is with a batch submit script.  We have created an example script.  You can copy this script from one available on the cluster, just type the following:</p>
+<pre><code>cp /home/software/tools/examples/jupyter/notebook.sh notebook.sh
+</code></pre>
+
+<p>If you are using Anaconda and have installed it in the default location you need to use the following submit file instead:</p>
+<pre><code>cp /home/software/tools/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh
+</code></pre>
+
+<p><strong>NOTE</strong>: We also have sbatch scripts for R (IRKernel)) notebooks.  These are called <em>R-notebook.sh</em> and <em>R-notebook-anaconda.sh</em></p>
+<p>This script is ready to run as is, but we recommend editing it to satisfy your own CPU, memory and time requirements.  Once you have edited the file you can run it thusly:</p>
+<pre><code>sbatch notebook.sh
+</code></pre>
+
+<p>or if using Anaconda:</p>
+<pre><code>sbatch notebook-anaconda.sh
+</code></pre>
+
+<p><strong>NOTE:</strong> If you copied the R notebook script, replace notebook.sh with R-notebook.sh</p>
+<p>This will submit the file to run a job.  It may take some time for the job to
+run, depending on how busy the cluster is at the time.  Once the job begins to
+run you will see some information in the file called notebook-JOBID.out (JOBID
+will be the actual jobid of this job, eg notebook-478903.out.  If you view this
+file (users can type <code>cat notebook-JOBID.out</code> to view the file onscreen).  You will see a line such as:</p>
+<p><em>The Jupyter Notebook is running at: http://130.195.19.20:47033/?token=SOME-RANDOM-HASH</em></p>
+<p>The 2 important pieces of information here are the IP address, in this case <em>130.195.19.20</em> and the port number, <em>47033</em>.   These numbers should be different for you since the port number is random, although the IP Address may be the same since we have a limited number of compute nodes. Also notice after the ?token= you will see a random hash.  This hash is a security feature and allows you to connect to the notebook.  You will need to use these to view the notebook from your local machine.  </p>
+<p><strong>Step 2:</strong> To start working with the notebook you will need to tunnel a ssh
+session.  In your SSH tunnel you will use the cluster login node (raapoi.vuw.ac.nz)
+to connect to the compute node (in the example above the compute node is at
+address 130.195.19.20) and transfer all the traffic back and forth between your computer and the compute node).  </p>
+<p><strong>Step 2a from a Mac:</strong></p>
+<p>Open a new session window from Terminal.app or other terminal utility such as Xquartz and type the following:</p>
+<pre><code>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+</code></pre>
+
+<p>For example:</p>
+<pre><code>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+</code></pre>
+
+<p>Once you are at a prompt you can go to Step 3</p>
+<p><strong>Step 2b: from Windows</strong></p>
+<p>We recommend tunnelling using Git Bash, which is part of the <a href="https://gitforwindows.org/">Git for Windows project</a> or <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a>.  There are 2 methods for tunneling in Moba, one is command line, the other is GUI-based.</p>
+<p><em>Method 1 (Git Bash or MobaXterm):</em>
+Command-line, start a local Git Bash or MobaXterm terminal (or try the GUI method, below)</p>
+<p>From the command prompt type:</p>
+<pre><code>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+</code></pre>
+
+<p>For example:</p>
+<pre><code>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+</code></pre>
+
+<p>Once you are at a prompt you can go to Step 3</p>
+<p><em>Method 2 (MobaXterm):</em>
+GUI-based, go to the Tunneling menu:</p>
+<p>Now click on <em>New SSH Tunnel</em></p>
+<p>When you complete the creation of your tunnel click <strong>Start all tunnels</strong>.  Enter your password and reply "yes" to any questions asked about accepting hostkeys or opening firewalls.  You can safely exit the tunnel building menu.</p>
+<p><strong>Step 3</strong></p>
+<p>Now open your favorite web browser and then use the URL from your job output file and paste it in your browsers location bar, for example my full URL was:</p>
+<p><strong>http://130.195.19.20:47033/?token=badef11b1371945b314e2e89b9a182f68e39dc40783ed68e</strong></p>
+<p><strong>Step 4</strong></p>
+<p>One last thing you need to do is to replace the IP address with the word <em>localhost</em>.  This will allow your browser to follow the tunnel you just opened and connect to the notebook running on an engaging compute node, in my case my address line will now look like this:</p>
+<p><strong>http://localhost:47033/?token=badef11b1371945b314e2e89b9a182f68e39dc40783ed68e</strong></p>
+<p>Now you can hit return and you should see your notebook running on an Engaging compute node.</p>
+<p><strong>NOTE</strong>: when you are done with your notebook, please remember to cancel your
+job to free up the resources for others, hint: <em>scancel</em></p>
+<p>If you want more information on working with Jupyter, there is good
+documentation, here: <a href="http://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebooks</a></p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h5>Simple Python program using virtualenv and pip</h5>
+<p>First we need to create a working directory and move there</p>
+<pre><code>mkdir python_test
+cd python_test
+</code></pre>
+
+<p>Next we load the python 3 module and use python 3 to create a python virtualenv.  This way we can install pip packages which are not installed on the cluster</p>
+<pre><code>module load python/3.6.6
+python3 -m venv mytest
+</code></pre>
+
+<p>Activate the <code>mytest</code> virtualenv and use pip to install the <code>webcolors</code> package</p>
+<pre><code>source mytest/bin/activate
+pip install webcolors
+</code></pre>
+
+<p>Create the file test.py with the following contents using nano</p>
+<pre><code>import webcolors
+from random import randint
+from socket import gethostname
+
+colour_list = list(webcolors.css3_hex_to_names.items())
+requested_colour = randint(0,len(colour_list))
+colour_name = colour_list[requested_colour][1]
+
+print(&quot;Random colour name:&quot;, colour_name, &quot; on host: &quot;, gethostname())
+</code></pre>
+
+<p>Alternatively download it with wget:</p>
+<pre><code>wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/test.py
+</code></pre>
+
+<p>Using nano create the submissions script called python_submit.sh with the following content - change <code>me@email.com</code> to your email address.</p>
+<pre><code>#!/bin/bash
+#
+#SBATCH --job-name=python_test
+#SBATCH -o python_test.out
+#SBATCH -e python_test.err
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --time=10:00
+#
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=me@email.com
+
+module load python/3.6.6
+
+source mytest/bin/activate
+python test.py
+</code></pre>
+
+<p>Alternatively download it with wget</p>
+<pre><code>wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/python_submit.sh
+</code></pre>
+
+<p>To submit your job to the Slurm scheduler</p>
+<pre><code>sbatch python_submit.sh
+</code></pre>
+
+<p>Check for your job on the queue with <code>squeue</code> though it might finish very fast.  The output files will appear in your working directory.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="support/" class="btn btn-neutral float-right" title="Support">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="support/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-05-31 02:57:43
+-->

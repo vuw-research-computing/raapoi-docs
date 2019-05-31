@@ -2,6 +2,7 @@ site_name: Raapoi Cluster Documentation
 nav: 
   - Documentation: index.md
   - Support: support.md
+  - Utilisation: ganglia.md
 
 theme: readthedocs
 markdown_extensions:
@@ -10,5 +11,6 @@ markdown_extensions:
       baselevel: 2
       toc_depth: 2
 
-
 extra_css: [extra.css]
+
+site_url: https://matty-plumski.github.io/raapoi-docs/
