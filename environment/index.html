@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Preparing your Environment - Rāpoi Cluster Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Preparing your Environment";
+    var mkdocs_page_input_path = "environment.md";
+    var mkdocs_page_url = "/raapoi-docs/environment/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Documentation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../accessing_the_cluster/">Accessing the Cluster</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../basic_commands/">Basic Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../storage/">Storage and Quotas</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../partitions/">Using Partitions</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Preparing your Environment</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#preparing-your-environment">Preparing your environment</a></li>
+    
+
+    <li class="toctree-l3"><a href="#adding-or-loading-software">Adding or loading software</a></li>
+    
+
+    <li class="toctree-l3"><a href="#listing-loaded-modules">Listing loaded modules</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running_jobs/">Running Jobs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../parallel_processing/">Parallel Processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../managing_jobs/">Managing Jobs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cloud_providers/">Connecting to Cloud Providers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../containers/">Using Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../notebooks/">Using Jupyter Notebooks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../support/">Support</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ganglia/">Utilisation</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rāpoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Preparing your Environment</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="preparing-your-environment">Preparing your environment<a class="headerlink" href="#preparing-your-environment" title="Permanent link">&para;</a></h1>
+<p>Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Stata, etc).  We also keep older versions of software to ensure compatibility.</p>
+<p>Because of this, raapoi developers use a tool called module to allow a user to load a specific version of an application, language or library and start using it for their work. The <em>module</em> command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:</p>
+<p><code>module avail</code></p>
+<p>You will see a long list of available modules to load, including a path, eg <em>lua/5.3.5</em>
+However, instead of searching through a long list, if you know you want to use lua, you can find the path with the keyword subcommand:</p>
+<p><code>module keyword lua</code></p>
+<p>If you want to know more about a particular module you can use the <em>whatis</em> or
+<em>show</em> subcommand.  Some modules have this available, for instance:</p>
+<pre><code>harrelwe@raapoi-master:~$ module show trimmomatic/20190304 
+-------------------------------------------------------------------------------------------------------------
+   /home/software/tools/modulefiles/trimmomatic/20190304:
+-------------------------------------------------------------------------------------------------------------
+load(&quot;java/jdk/1.8.0_121&quot;)
+setenv(&quot;TM_HOME&quot;,&quot;/home/software/apps/trimmomatic/20190304/bin&quot;)
+</code></pre>
+
+<pre><code>  module whatis R/CRAN/3.5
+
+  R/CRAN/3.5          : Adds the R library path to the pre-built CRAN modules
+</code></pre>
+
+<h1 id="adding-or-loading-software">Adding or loading software<a class="headerlink" href="#adding-or-loading-software" title="Permanent link">&para;</a></h1>
+<p>Once you have found the module path you can load the software:</p>
+<p><code>module load lua/5.3.5</code></p>
+<p>After the module loads you can type srun --pty lua at a prompt, or add it to the path of your lua script (the RC team recommends using /usr/bin/env instead of an absolute path).</p>
+<p>Showing/listing the module environment modifications
+You can discover what the module will load into your environment you can run
+module show, for example here is what R adds:</p>
+<pre><code>module show R/3.5.1
+--------------------------------------------------
+   /home/software/tools/modulefiles/R/3.5.1:
+--------------------------------------------------
+
+whatis(&quot;Adds the R language path to your environment &quot;)
+prepend_path(&quot;PATH&quot;,&quot;/home/software/apps/R/3.5.1/bin&quot;)
+</code></pre>
+
+<h1 id="listing-loaded-modules">Listing loaded modules<a class="headerlink" href="#listing-loaded-modules" title="Permanent link">&para;</a></h1>
+<p>To see what modules you have loaded into your environment you can run the command:</p>
+<p><code>module list</code>  </p>
+<p>By default you will have the config module loaded (please do not unload that module).  For example, here are the modules I have loaded in my environment when I wrote this section:</p>
+<pre><code>module list
+
+Currently Loaded Modules:
+  1) config   2) tassel/3   3) python/3.7.0   4) python/modules/3.7
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../running_jobs/" class="btn btn-neutral float-right" title="Running Jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../partitions/" class="btn btn-neutral" title="Using Partitions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../partitions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../running_jobs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

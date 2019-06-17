@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Managing Jobs - Rāpoi Cluster Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Managing Jobs";
+    var mkdocs_page_input_path = "managing_jobs.md";
+    var mkdocs_page_url = "/raapoi-docs/managing_jobs/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Documentation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../accessing_the_cluster/">Accessing the Cluster</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../basic_commands/">Basic Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../storage/">Storage and Quotas</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../partitions/">Using Partitions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../environment/">Preparing your Environment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running_jobs/">Running Jobs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../parallel_processing/">Parallel Processing</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Managing Jobs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#cancelling-a-job">Cancelling a Job</a></li>
+    
+
+    <li class="toctree-l3"><a href="#viewing-job-statistics">Viewing Job statistics</a></li>
+    
+
+    <li class="toctree-l3"><a href="#viewing-jobs-in-the-queue">Viewing jobs in the Queue</a></li>
+    
+
+    <li class="toctree-l3"><a href="#job-queuing-aka-why-is-my-job-running">Job Queuing (aka Why is my job running?)</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cloud_providers/">Connecting to Cloud Providers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../containers/">Using Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../notebooks/">Using Jupyter Notebooks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../support/">Support</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ganglia/">Utilisation</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rāpoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Managing Jobs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="cancelling-a-job">Cancelling a Job<a class="headerlink" href="#cancelling-a-job" title="Permanent link">&para;</a></h2>
+<p>To cancel a job, first find the jobID, you can use the <em>vuw-myjobs</em> (or <em>squeue</em>) command to see a list of your jobs, including jobIDs.  Once you have that you can use the <em>scancel</em> command, eg</p>
+<p><code>scancel 236789</code></p>
+<p>To cancel all of your jobs you can use the -u flag followed by your username:</p>
+<p><code>scancel -u harrelwe</code></p>
+<h2 id="viewing-job-statistics">Viewing Job statistics<a class="headerlink" href="#viewing-job-statistics" title="Permanent link">&para;</a></h2>
+<p>If you want to get a quick view of all the jobs completed within the last 5 days you can use the <em>vuw-history</em> command, for example:</p>
+<pre><code>  vuw-job-history
+
+MY JOBS WITHIN LAST 5 days
+       JobID      State    JobName  MaxVMSize    CPUTime 
+------------ ---------- ---------- ---------- ---------- 
+2645          COMPLETED       bash              00:00:22 
+2645.extern   COMPLETED     extern      0.15G   00:00:22 
+2645.0        COMPLETED       bash      0.22G   00:00:20 
+2734          COMPLETED       bash              00:07:40 
+2734.extern   COMPLETED     extern      0.15G   00:07:40 
+2734.0        COMPLETED       bash      0.22G   00:07:40 
+</code></pre>
+
+<p>You can also get a report of your completed jobs using the <em>sacct</em> command.  For example if I wanted to get a report on how much memory my job used I could do the following:</p>
+<p><code>sacct --units=G --format="MaxVMSize" -j 2156</code></p>
+<ul>
+<li>MaxVMSize will report the maximum virtual memory (RAM plus swap space) used by my job in GigBytes ( --units=G ) </li>
+<li>-j 2156 shows the information for job ID 2156</li>
+<li>type <em>man sacct</em> at a prompt in engaging to see the documentation on the <em>sacct</em> command</li>
+</ul>
+<h2 id="viewing-jobs-in-the-queue">Viewing jobs in the Queue<a class="headerlink" href="#viewing-jobs-in-the-queue" title="Permanent link">&para;</a></h2>
+<p>To view your running jobs you can type <em>vuw-myjobs</em>  eg:</p>
+<pre><code>           [harrelwe@node142 ~]$ vuw-myjobs
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
+</code></pre>
+
+<p>As you can see I have a single job running on the node c03n01 on the quicktest partition</p>
+<p>You can see all the jobs in the queues by running the <em>vuw-alljobs</em> command.  This will produce a very long list of jobs if the cluster is busy.</p>
+<h2 id="job-queuing-aka-why-is-my-job-running">Job Queuing (aka Why is my job running?)<a class="headerlink" href="#job-queuing-aka-why-is-my-job-running" title="Permanent link">&para;</a></h2>
+<p>When a partition is busy, jobs will be placed in a queue.  You can observe this
+in the <em>vuw-myjobs</em> and <em>vuw-alljobs</em> commands.  The STATE of your job will be PENDING, this means it is waiting for resources or your job has been re-prioritized to allow other users access to run their jobs (this is called fair-share queueing).</p>
+<p>The resource manager will list a reason the job is pending, these reasons can include:</p>
+<ul>
+<li><strong>Priority</strong> - Your job priority has been reduced to allow other users access to the cluster.  If no other user with normal priority is also pending then your job will start once resources are available.  Possible reasons why your priority has been lowered can include:  the number of jobs you have run in the past 24-48 hours; the duration of the job and the amount of resources requested.  The Slurm manager uses fair-share queuing to ensure the best use of the cluster.  You can google fair-share queuing  if you want to know more</li>
+<li><strong>Resources</strong>- There are insufficient resources to start your job.  Some combination of CPU, Memory, Time or other specialized resource are unavailable.  Once resources are freed up your job will begin to run.<br />
+Time:   If you request more time than the max run-time of a partition, your job will be queued indefinitely (in other words:  it will never run).  Your time request must be less than or equal to the Partition Max Run-Time.  Also if a special reservation is placed on the cluster, for instance prior to a scheduled maintenance, this too will reduce the available time to run your job.  You can see Max Run-Time for our partitions described in this document.  CAD or ITS Staff will alert all users prior to any scheduled maintenance and advise them of the time restrictions.</li>
+<li><strong>QOSGrpCPULimit</strong> - This is a Quality of Service configuration to limit the number of CPUs per user.   The QOSMax is the maximum that can be requested for any single job.  If a user requests more CPUs than the QOSMax for a single job then the job will not run.  If the user requests more than QOSMax in 2 or more jobs then the subsequent jobs will queue until the users running jobs complete.</li>
+<li><strong>PartitionTimeLimit</strong> - This means you have requested more time than the maximum runtime of the partition.  This document contains information about the different partitions, including max run-time.  Typing <em>vuw-partition</em> will also show the max run-time for the partitions available to you.</li>
+<li><strong>ReqNodeNotAvail</strong> - 99% of the time you will receive this code if you have asked for too much time. This frequently occurs when the cluster is about to go into maintenance and a reservation has been placed on the cluster, which reduces the maximum run-time of all jobs.  For example, if maintenance on the cluster is 1 week away, the maximum run-time on all jobs needs to be less than 1 week, regardless if the configured maximum run-time on a partition is greater than 1 week.  To request time you can use the --time parameter.  Another issue is if you request too much memory or a CPU configuration that does not exist on any node in a partition.  </li>
+<li><strong>Required node not available (down, drained or reserved)</strong> - This is related to ReqNodeNotAvail, see above.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cloud_providers/" class="btn btn-neutral float-right" title="Connecting to Cloud Providers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../parallel_processing/" class="btn btn-neutral" title="Parallel Processing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../parallel_processing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../cloud_providers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Connecting to Cloud Providers - Rāpoi Cluster Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Connecting to Cloud Providers";
+    var mkdocs_page_input_path = "cloud_providers.md";
+    var mkdocs_page_url = "/raapoi-docs/cloud_providers/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Documentation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../accessing_the_cluster/">Accessing the Cluster</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../basic_commands/">Basic Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../storage/">Storage and Quotas</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../partitions/">Using Partitions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../environment/">Preparing your Environment</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running_jobs/">Running Jobs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../parallel_processing/">Parallel Processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../managing_jobs/">Managing Jobs</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Connecting to Cloud Providers</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#aarnet-cloudstor">AARNET Cloudstor</a></li>
+    
+
+    <li class="toctree-l3"><a href="#amazon-aws">Amazon AWS</a></li>
+    
+
+    <li class="toctree-l3"><a href="#google-cloud-gcloud-connections">Google Cloud (gcloud) Connections</a></li>
+    
+
+    <li class="toctree-l3"><a href="#dropbox-cloud-storage">DropBox Cloud Storage</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../containers/">Using Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../notebooks/">Using Jupyter Notebooks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../support/">Support</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ganglia/">Utilisation</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rāpoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Connecting to Cloud Providers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="aarnet-cloudstor">AARNET Cloudstor<a class="headerlink" href="#aarnet-cloudstor" title="Permanent link">&para;</a></h2>
+<p>All VUW researchers have access to the AARNET (Australia’s Academic and Research
+Network) Cloudstor service which provides <strong>1 TB</strong> of space to each researcher.  To
+use this service first login and download an appropriate client to your laptop
+or desktop (or smarthone if you wish):</p>
+<p><a href="https://apac01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcloudstor.aarnet.edu.au%2Fsimplesaml%2Fmodule.php%2Fdiscopower%2Fdisco.php%3FentityID%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fmetadata.php%252Fdefault-sp%26return%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fdiscoresp.php%253FAuthID%253D_d8e2f7cbdf882a033df5b33385b5936c08e0e133a1%25253Ahttps%25253A%25252F%25252Fcloudstor.aarnet.edu.au%25252Fsimplesaml%25252Fmodule.php%25252Fcore%25252Fas_login.php%25253FAuthId%25253Ddefault-sp%252526ReturnTo%25253Dhttp%2525253A%2525252F%2525252Fcloudstor.aarnet.edu.au%2525252Fplus%2525252F%26returnIDParam%3Didpentityid&amp;data=02%7C01%7Cwes.harrell%40vuw.ac.nz%7Cefa10aeb0f1d42a6cd2408d6953c9496%7Ccfe63e236951427e8683bb84dcf1d20c%7C0%7C0%7C636860484751891881&amp;sdata=nkN7OI6g%2BKs%2FLoMG6tOtoWqk1%2FU1gbxZK%2FjCd8NNZ6c%3D&amp;reserved=0">Cloudstor Login</a></p>
+<p>NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on raapoi, it does not use your VUW credentials for the command line login.</p>
+<p>Once you have setup your cloudstor (aka ownCloud) credentials you can use them
+to sync data to and from Raapoi.  For example, if I wanted to sync my project
+space to Cloudstor I would do the following from raapoi login node:</p>
+<pre><code>  tmux
+  cd /nfs/scratch/harrelwe
+  owncloudcmd -u wes.harrell@vuw.ac.nz project1 https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
+</code></pre>
+
+<p>The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
+(type <code>tmux attach</code> to reconnect), I then change directory (<em>cd</em>) to my scratch space and then use the command <code>owncloudcmd</code> to sync my project directory called project1 to the Cloudstor service.  You will be prompted for your Cloudstor password, you can also embed this within the command line using the -p paramter.  </p>
+<h2 id="amazon-aws">Amazon AWS<a class="headerlink" href="#amazon-aws" title="Permanent link">&para;</a></h2>
+<p>A feature-rich CLI is available in raapoi.  To use it you need to load the appropriate module and its module dependencies:</p>
+<p><code>module load amazon/aws/cli</code></p>
+<p>Before you proceed you will need to configure your environment with your Access Key ID and Secret Access Key, both of which will be sent to you once your account is created or linked.  The command to configure your environment is <code>aws configure</code>  You only need to do this once, unless of course you use more than one user/Access Key.  Most users can simply click through the region and profile questions (using the default of "none").  If you do have a specific region this should be relayed along with your access and secret keys.</p>
+<p>Once you have the appropriate environment in place and your configuration setup you can use the aws command, plus an appropriate sub-command (s3, emr, rds, dynamodb, etc) and supporting arguments. </p>
+<p>More information on the CLI can be found here:
+<a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html</a></p>
+<h4>Transferring Data to/from Amazon (AWS) S3</h4>
+<p>To transfer data from S3 you first need to setup your AWS connect, instructions for that can be found above.
+Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  </p>
+<p>For example if I wanted to copy data from my S3 storage to my project directory I could do the following:</p>
+<pre><code>  tmux
+  module load amazon/aws/cli
+  cd /nfs/scratch/harrelwe/project
+  aws s3 cp s3://mybucket/mydata.dat mydata.dat
+</code></pre>
+
+<p>To copy something to storage simply reverse the file paths, eg.</p>
+<pre><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat 
+</code></pre>
+
+<p>The above starts a tmux session to allow the transfer to continue even if I
+disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
+modules necessary to use the AWS commands.  I change directory to my project
+space and use the aws s3 cp command to copy from S3.  More information on using
+aws can be found here:
+<a href="http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3">http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3</a></p>
+<h4>Working with AWS Data Analysis Tools</h4>
+<p>Amazon has a number of data analytics and database services available.  Using the command line utilities available in raapoi, researchers can perform work on the eo cluster and transfer data to AWS to perform further analysis with tools such as MapReduce (aka Hadoop), RedShift or Quicksight.</p>
+<p>A listing of available services and documentation can be found at the following:
+<a href="https://aws.amazon.com/products/analytics/">https://aws.amazon.com/products/analytics/</a></p>
+<h2 id="google-cloud-gcloud-connections">Google Cloud (gcloud) Connections<a class="headerlink" href="#google-cloud-gcloud-connections" title="Permanent link">&para;</a></h2>
+<p>The Google Cloud SDK is available in raapoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the <code>module spider</code> command.  As of this writing the current version can be loaded thusly:</p>
+<p>module load google/cloud/sdk/212.0.0</p>
+<p>This will give you access to the <code>gcloud</code> command.  To setup a connection to your gcloud account use the init sub-command, eg.</p>
+<p><code>gcloud init --console-only</code></p>
+<p>Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the raapoi terminal window.</p>
+<h4>Transferring Data to/from Google Cloud (gcloud)</h4>
+<p>To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the <code>gsutil</code> command to copy data to and from your gcloud storage.  </p>
+<p>For example, if I wanted to copy data from gcloud to my project directory I could do the following:</p>
+<pre><code>  tmux
+  module load google/cloud/sdk/212.0.0
+  cd /nfs/scratch/harrelwe/project
+  gsutil cp gs://mybucket/mydata.dat mydata.dat
+</code></pre>
+
+<p>To copy something to storage simply reverse the file paths, eg.</p>
+<pre><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat 
+</code></pre>
+
+<p>The above starts a tmux session to allow the transfer to continue even if I
+disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
+modules necessary to use the gsutil commands.  I change directory to my project
+space and use the gsutil cp command to copy from gcloud.  More information on
+using gcloud can be found here:
+<a href="https://cloud.google.com/sdk/gcloud/">https://cloud.google.com/sdk/gcloud/</a></p>
+<h4>Working with GCloud Data Analysis Tools</h4>
+<p>Google Cloud has a number of data analytics and database services available.  Using the gcloud command line utilities available on raapoi, researchers can perform work on the cluster and transfer data to gcloud to perform further analysis with tools such as Dataproc (Hadoop/Spark), BigQuery or Datalab (Visualization)</p>
+<p>A listing of available services and documentation can be found at the following:
+<a href="https://cloud.google.com/products/">https://cloud.google.com/products/</a></p>
+<h2 id="dropbox-cloud-storage">DropBox Cloud Storage<a class="headerlink" href="#dropbox-cloud-storage" title="Permanent link">&para;</a></h2>
+<p><strong>NOTE:</strong> Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.</p>
+<p>Configuring your Dropbox account on raapoi</p>
+<p><strong>Step A:</strong>  On your local laptop or desktop start your browser and login to your Dropbox account</p>
+<p><strong>Step B:</strong> On Raapoi type the following:</p>
+<p><code>module load dropbox</code></p>
+<p><strong>Step C:</strong> Setup account credentials (You should only need to do this once):</p>
+<p>Run the following command from Raapoi</p>
+<p><code>dbxcli account</code></p>
+<p>You will now see something like the following:</p>
+<ol>
+<li>Go to https://www.dropbox.com/1/oauth2/authorize?client_id=X12345678&amp;response_type=code&amp;state=state</li>
+<li>Click "Allow" (you might have to log in first).</li>
+<li>Copy the authorization code.
+  Enter the authorization code here:</li>
+</ol>
+<p><strong>Step D:</strong></p>
+<p>Copy the URL link listed in Step C1 and paste it into the web browser that you started in Step A</p>
+<p>This will provide you with a long access code (aka hash).  Now copy that access code and paste it into your Raapoi terminal after Step C3 where it is asking for Enter the authorization code here </p>
+<p>Now hit enter or return.  You should see that you are now logged in with your Dropbox credentials</p>
+<h4>Basic Dropbox commands</h4>
+<p>Remember to load the dropbox environment module if you have not already (see <code>module spider</code> for the path)</p>
+<p>Now type <code>dbx</code> or <code>dbxcli</code> at a prompt.  You will see a number of sub-commands, for instance ls, which will list the contents of your Dropbox, eg</p>
+<p><code>dbxcli ls</code></p>
+<h4>Downloading from Dropbox</h4>
+<p>Downloading uses the subcommand called: get.   The basic format for get is:</p>
+<p><code>dbxcli get fileOnDropbox fileOnRaapoi</code></p>
+<p>For instance, if I have a datafile called 2018-financials.csv on Dropbox that I want to copy to my project folder I would type:</p>
+<p><code>dbxcli get 2018-financials.csv /nfs/scratch/harrelwe/projects/finance_proj/2018-financials.csv</code></p>
+<h4>Uploading to Dropbox</h4>
+<p>Uploading is similar to downloading except now we use the subcommand: put.  The basic format for put is:</p>
+<p><code>dbxcli put fileOnRaapoi fileOnDropbox</code></p>
+<p>For example I want to upload a PDF I generated from one of my jobs called final-report.pdf I would type:</p>
+<p><code>dbxcli put final-report.pdf final-report.pdf</code></p>
+<p>This will upload the PDF and name it the same thing, if I wanted to change the name on Dropbox I could:</p>
+<p><code>dbxcli put final-report.pdf analytics-class-final-report.pdf</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../containers/" class="btn btn-neutral float-right" title="Using Containers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../managing_jobs/" class="btn btn-neutral" title="Managing Jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../managing_jobs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../containers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

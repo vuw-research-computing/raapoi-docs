@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Running Jobs - Rāpoi Cluster Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Running Jobs";
+    var mkdocs_page_input_path = "running_jobs.md";
+    var mkdocs_page_url = "/raapoi-docs/running_jobs/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Overview</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Documentation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../accessing_the_cluster/">Accessing the Cluster</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../basic_commands/">Basic Commands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../storage/">Storage and Quotas</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../partitions/">Using Partitions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../environment/">Preparing your Environment</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Running Jobs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#batch-jobs">Batch jobs</a></li>
+    
+
+    <li class="toctree-l3"><a href="#interactive-jobs">Interactive jobs</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../parallel_processing/">Parallel Processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../managing_jobs/">Managing Jobs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cloud_providers/">Connecting to Cloud Providers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../containers/">Using Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../notebooks/">Using Jupyter Notebooks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../support/">Support</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ganglia/">Utilisation</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rāpoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Running Jobs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="batch-jobs">Batch jobs<a class="headerlink" href="#batch-jobs" title="Permanent link">&para;</a></h2>
+<p>To run a batch job (aka a job that runs unattended) you use the <em>sbatch</em> command.  A simple example would look something like this:</p>
+<p><code>sbatch myjob.sh</code></p>
+<p>In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:</p>
+<pre><code> #!/bin/bash
+ #SBATCH --cpus-per-task=2
+ #SBATCH --mem-per-cpu=2G
+ #SBATCH --partition=parallel
+ #SBATCH --time=3-12:00
+ #SBATCH -o /home/username/project1.out
+ #SBATCH -e /home/username/project1.err
+ #SBATCH --mail-type=BEGIN,END,FAIL
+ #SBATCH --mail-user=me@email.com
+
+ module load python/3.6.3
+ python3 project1.py
+
+</code></pre>
+
+<p>This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days 12 hours.  We are requesting that this job be run on the parallel  partition, it will then load the environment module for python version 3.6.3 and run a python script called project1.py.  Any output from the script will be placed in your home directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran <em>sbatch</em>.</p>
+<p>NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:</p>
+<p><code>cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh</code></p>
+<p>The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.</p>
+<h2 id="interactive-jobs">Interactive jobs<a class="headerlink" href="#interactive-jobs" title="Permanent link">&para;</a></h2>
+<p>One of the basic job submittal tools is the command srun</p>
+<p>For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:</p>
+<pre><code>  module load R/3.5.1
+  srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=bigmem R
+</code></pre>
+
+<p>So what does this all mean?</p>
+<p>The <em>module load</em> command will introduce the environment necessary to run a particular program, in this case R version 3.5.1
+The <em>srun</em> command will submit the job to the cluster.  The <em>srun</em> command has many parameter available, some of the most common are in this example and explained below</p>
+<ul>
+<li>--pty - Required to run interactively</li>
+<li>--cpus-per-task=2 - requests 2 CPUs, can also use the -c flag, eg. -c 2</li>
+<li>--mem=2G - requests 2 GigaBytes (GB) of RAM.</li>
+<li>--time=08:00:00 - requests a runtime of up to 8 hours (format is DAYS-HOURS:MINUTES:SECONDS), this is important in case the cluster or partition has a limited run-time, for example if an outage window is approaching.  Keep in mind time is a resource along with CPU and Memory.  </li>
+<li>--partition=bigmem - requests a certain partition, in this case it requests the bigmem partition, see the section on using cluster partitions for more information.</li>
+<li>R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../parallel_processing/" class="btn btn-neutral float-right" title="Parallel Processing">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../environment/" class="btn btn-neutral" title="Preparing your Environment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../environment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../parallel_processing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
