@@ -1,15 +1,29 @@
-site_name: Raapoi Cluster Documentation
+site_name: Rāpoi Cluster Documentation
 nav: 
-  - Documentation: index.md
+  - Overview: 'index.md'
+  - Documentation:
+    - 'Accessing the Cluster': 'accessing_the_cluster.md'
+    - 'Basic Commands': 'basic_commands.md'
+    - 'Storage and Quotas': 'storage.md'
+    - 'Using Partitions': 'partitions.md'
+    - 'Preparing your Environment': 'environment.md'
+    - 'Running Jobs': 'running_jobs.md'
+    - 'Parallel Processing': 'parallel_processing.md'
+    - 'Managing Jobs': 'managing_jobs.md'
+    - 'Connecting to Cloud Providers': 'cloud_providers.md'
+    - 'Using Containers': 'containers.md'
+    - 'Using Jupyter Notebooks': 'notebooks.md'
+    - 'Examples': 'examples.md' 
   - Support: support.md
   - Utilisation: ganglia.md
+
 
 theme: readthedocs
 markdown_extensions:
   - toc:
       permalink: True
-      baselevel: 2
-      toc_depth: 2
+      baselevel: 1
+      toc_depth: 3
 
 extra_css: [extra.css]
 
