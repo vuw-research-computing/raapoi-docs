@@ -19,7 +19,7 @@ markdown_extensions:
       toc_depth: 3
 ```
 
-This structure is designed to make the docs easier to navigate, providing a more granular menu which allows for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible mobile menu and the ```Previous``` and ```Next``` breadcrumb buttons at the bottom of each page. The theme also has a useful ```Search``` built in by default. 
+This structure is designed to make the docs easier to navigate, providing a more granular menu which allows for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible mobile menu (in the top lef) and the ```Previous``` and ```Next``` breadcrumb buttons (at the bottom) of each page. The theme also has a useful ```Search``` built in by default. 
 
 
 ## Workflow for updating docs (locally via CLI):
@@ -28,7 +28,7 @@ This structure is designed to make the docs easier to navigate, providing a more
 
 1. Navigate to the ```docs``` folder and open and edit (or create) the appropriate ```.md``` file, (e.g. ```examples.md```).
 
-1. Save once changes are made, then ```add```, ```commit```, and ```push``` to ```origin master```.
+1. Save once changes are made, then use <a href="https://git-scm.com/docs">```git```</a> to ```add```, ```commit```, and ```push``` to ```origin master```.
 
 1. Now deploy this with MkDocs commands:
 
