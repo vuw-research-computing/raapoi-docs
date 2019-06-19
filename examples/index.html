@@ -107,15 +107,10 @@
     <a class="current" href="./">Examples</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#examples">Examples</a></li>
+    <li class="toctree-l3"><a href="#simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l4" href="#simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip</a></li>
-        
-            <li><a class="toctree-l4" href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a></li>
-        
-        </ul>
+
+    <li class="toctree-l3"><a href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a></li>
     
 
     </ul>
@@ -169,8 +164,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
-<h2 id="simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip<a class="headerlink" href="#simple-python-program-using-virtualenv-and-pip" title="Permanent link">&para;</a></h2>
+                <h2 id="simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip<a class="headerlink" href="#simple-python-program-using-virtualenv-and-pip" title="Permanent link">&para;</a></h2>
 <p>First we need to create a working directory and move there</p>
 <pre><code>mkdir python_test
 cd python_test
@@ -246,7 +240,7 @@ python test.py
 </code></pre>
 
 <p>This should load the package.
-Metapackages like <code>tidyverse</code> currently don't load on Rāpoi, but components of it can be loaded individually: </p>
+Metapackages like <code>tidyverse</code> currently don't load on Rāpoi, but components can be loaded individually: </p>
 <pre><code>&gt; library(tidyr)
 &gt; library(dplyr)
 </code></pre>
@@ -285,7 +279,7 @@ library(ggplot2)
 <pre><code>sbatch r_submit.sh 
 </code></pre>
 
-<p>This submits a task that should execute quickly, create files in the directory from which it was run.
+<p>This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <code>"Hello World"</code></p>
               
