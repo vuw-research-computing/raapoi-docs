@@ -19,9 +19,12 @@ markdown_extensions:
       toc_depth: 3
 ```
 
+This structure is designed to make the docs easier to navigate, providing a more granular menu structure and allowing for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible menu and the ```Previous``` and ```Next``` breadcrumb buttons at the bottom of each page. The theme also has a useful ```Search``` built in by default. 
+
+
 ## Workflow for updating docs (locally via CLI):
 
-1. Make sure you're on the ```master``` branch of the ```raapoi-docs``` repository.
+1. Clone the <a href="https://github.com/vuw-research-computing/raapoi-docs">```raapoi-docs```</a> repo, open in the command line and make sure you're on the ```master``` branch.
 
 1. Navigate to the ```docs``` folder and open and edit (or create) the appropriate ```.md``` file, (e.g. ```examples.md```).
 
