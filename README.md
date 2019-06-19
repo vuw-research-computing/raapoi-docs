@@ -45,7 +45,11 @@ This structure is designed to make the docs easier to navigate, providing a gran
 
 	_Note: ```clean``` overwrites and cleans existing ```/site``` directory._ 
 
-1. (Optional) To see changes locally, use ```mkdocs serve``` which should run and print something similar to: 
+1. (Optional) To see changes locally, use 
+
+	```mkdocs serve``` 
+
+	which should run and print something similar to: 
 	```
 	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
 	$ mkdocs serve
@@ -53,7 +57,7 @@ This structure is designed to make the docs easier to navigate, providing a gran
 	INFO    -  Cleaning site directory
 	[I 190619 12:41:14 server:298] Serving on http://127.0.0.1:8000
 	```
-	The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. ```mkdocs serve``` supports real time previews, so any changes made and saved will update the local server automatically.
+	_The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. ```mkdocs serve``` supports real time previews, so any changes made and saved will update the local server automatically._
 
 1. When ready to publish, use:
 
