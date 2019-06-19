@@ -32,8 +32,9 @@ This structure is designed to make the docs easier to navigate, providing a gran
 
 1. Now deploy this with MkDocs commands:
 
-	```mkdocs build --clean``` <br>
-	(This builds the markdown files into a ```/site``` folder, where each ```.md``` file creates a folder of the same name with its own ```index.html```) 
+	```mkdocs build --clean```
+
+	_(This builds the markdown files into a ```/site``` folder, where each ```.md``` file creates a folder of the same name with its own ```index.html```)_ 
 	<br>
 	```
 	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
@@ -42,7 +43,7 @@ This structure is designed to make the docs easier to navigate, providing a gran
 	INFO    -  Building documentation to directory: H:\GIT_HUB\raapoi-docs\site
 	```
 
-	Note: ```clean``` overwrites and cleans existing ```/site``` directory. 
+	_Note: ```clean``` overwrites and cleans existing ```/site``` directory._ 
 
 1. (Optional) To see changes locally, use ```mkdocs serve``` which should run and print something similar to: 
 	```
@@ -55,7 +56,10 @@ This structure is designed to make the docs easier to navigate, providing a gran
 	The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. ```mkdocs serve``` supports real time previews, so any changes made and saved will update the local server automatically.
 
 1. When ready to publish, use:
-```mkdocs gh-deploy``` (optional ```--clean``` can be appended to deploy a clean version)
+
+```mkdocs gh-deploy``` 
+
+(optional ```--clean``` can be appended to deploy a clean version)
 
 	This pushes changes from ```.md``` files to the relevant ```html``` pages in the ```/site``` folder of the repo's ```gh-pages``` branch. 
 	Running the command should return something like: 
