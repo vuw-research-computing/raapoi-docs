@@ -1,5 +1,5 @@
 # Rāpoi-docs
-Documentation for the Rāpoi cluster.
+Documentation for the Rāpoi cluster. (Jump straight to step-by-step update workflow <a href="https://github.com/vuw-research-computing/raapoi-docs#workflow-for-updating-docs-locally-via-cli">here</a>).
 
 ## Site configuration
 
