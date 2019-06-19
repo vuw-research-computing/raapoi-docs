@@ -22,7 +22,7 @@ Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in th
 1. When ready to publish, use:
 ```mkdocs gh-deploy``` (optional ```--clean``` can be appended to overwrite past )
 
-This should return something like: 
+This pushes changes should return something like: 
 ```
 plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
 $ mkdocs gh-deploy
@@ -32,4 +32,6 @@ INFO    -  Copying 'H:\GIT_HUB\raapoi-docs\site' to 'gh-pages' branch and pushin
 INFO    -  Your documentation should shortly be available at: https://vuw-research-computing.github.io/raapoi-docs/
 ```
 That's it. If editing multiple files at once, make local changes on all the required files first then these steps only need be worked through once.
+
+Note, the repo publishes docs from the ```gh-pages``` branch. If using ```mkdocs gh-deploy``` refrain from editing in that branch, use the above workflow instead.
 
