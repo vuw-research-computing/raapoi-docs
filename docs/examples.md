@@ -69,3 +69,77 @@ sbatch python_submit.sh
 ```
 
 Check for your job on the queue with `squeue` though it might finish very fast.  The output files will appear in your working directory.
+
+
+## Loading R, testing availability of packages and running a simple job
+
+First login to Rāpoi and load the R/CRAN module:
+```
+module load R/CRAN      
+```
+(Note this will also load ```R/3.6```)
+
+
+Then run R on the command line:
+
+
+```
+R
+```
+
+Test library existence:
+```
+library(ggplot2)
+```
+This should load the package.
+Metapackages like ```tidyverse``` currently don't load on Rāpoi, but components of it can be loaded individually: 
+
+```
+> library(tidyr)
+> library(dplyr)
+```
+
+An example submission script may look something lik:
+```
+a file called r_submit.sh with:
+#!/bin/bash
+#
+#SBATCH --job-name=r_test
+#SBATCH -o r_test.out
+#SBATCH -e r_test.err
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --time=10:00
+#
+```
+
+Then: 
+
+```
+module load R/CRAN
+```
+
+```
+Rscript mytest.R
+```
+
+
+and then create another file with a test R script called ```mytest.R``` with:
+
+```
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+```
+sprintf("Hello World!")
+```
+then run it with the previously written bash script:  
+```
+sbatch r_submit.sh 
+```
+This submits a task that should execute quickly, create files in the directory from which it was run.
+Examining ```r_test.out``` (with nano, cat or less) should print:
+``` "Hello World"```
