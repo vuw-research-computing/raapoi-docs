@@ -34,7 +34,7 @@ markdown_extensions:
 	<br>
 	Note: ```clean``` overwrites and cleans existing ```/site``` directory. 
 
-1. (Optional) To see changes locally, use ```mkdocs serve``` which will print a variant of: 
+1. (Optional) To see changes locally, use ```mkdocs serve``` which should run and print something similar to: 
 	```
 	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
 	$ mkdocs serve
@@ -42,7 +42,7 @@ markdown_extensions:
 	INFO    -  Cleaning site directory
 	[I 190619 12:41:14 server:298] Serving on http://127.0.0.1:8000
 	```
-	The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. This supports real time previews, so any changes made and saved will update the local server automatically.
+	The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. ```mkdocs serve``` supports real time previews, so any changes made and saved will update the local server automatically.
 
 1. When ready to publish, use:
 ```mkdocs gh-deploy``` (optional ```--clean``` can be appended to deploy a clean version)
@@ -59,7 +59,7 @@ markdown_extensions:
 	```
 1. Check the <a href="https://vuw-research-computing.github.io/raapoi-docs/">live site</a> to check changes have propagated as expected, and make any 	     further adjustments by repeating above steps as required.
 
-	That's it! If editing multiple files, a good option may be to make local changes on all the required files first, then these steps only need be worked through once. (The downside is you'll have less granular commit history and ability to easily reverse some changes made).
+	That's it! If editing multiple files, a good option may be to make local changes on all the required files first, then these steps only need be worked through once. (The downside is you'll have less granular commit history and lose the ability to easily reverse some changes made).
 
 	Note: the repo publishes docs from the ```gh-pages``` branch. Because we're using ```mkdocs gh-deploy```, it's important to refrain from editing in that branch, use the above workflow (i.e. editing ```.md``` files in ```master```) instead.
 
