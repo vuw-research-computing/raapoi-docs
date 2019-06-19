@@ -71,7 +71,7 @@ sbatch python_submit.sh
 Check for your job on the queue with `squeue` though it might finish very fast.  The output files will appear in your working directory.
 
 
-## Loading R, testing availability of packages and running a simple job
+## Loading R packages & running a simple job
 
 First login to Rāpoi and load the R/CRAN module:
 ```
@@ -99,7 +99,7 @@ Metapackages like ```tidyverse``` currently don't load on Rāpoi, but components
 > library(dplyr)
 ```
 
-An example submission script may look something lik:
+Next create a bash submission script using your preferred text editor. An example submission script may look something like:
 ```
 a file called r_submit.sh with:
 #!/bin/bash
@@ -114,7 +114,7 @@ a file called r_submit.sh with:
 #
 ```
 
-Then: 
+Save this to the current working directory, then run: 
 
 ```
 module load R/CRAN
