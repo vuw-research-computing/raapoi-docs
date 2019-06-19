@@ -19,7 +19,7 @@ markdown_extensions:
       toc_depth: 3
 ```
 
-This structure is designed to make the docs easier to navigate, providing a more granular menu which allows for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible mobile menu (in the top left) and the ```Previous``` and ```Next``` breadcrumb buttons (at the bottom) of each page. The theme also has a useful <a href="https://vuw-research-computing.github.io/raapoi-docs/search.html?q=python">```Search```</a> built in by default. 
+This structure is designed to make the docs easier to navigate, providing a granular menu which allows for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible mobile menu (in the top left) and the ```Previous``` and ```Next``` breadcrumb buttons (at the bottom) of each page. The theme also has a useful <a href="https://vuw-research-computing.github.io/raapoi-docs/search.html?q=python">```Search```</a> built in by default. 
 
 
 ## Workflow for updating docs (locally via CLI):
@@ -67,7 +67,7 @@ This structure is designed to make the docs easier to navigate, providing a more
 	INFO    -  Copying 'H:\GIT_HUB\raapoi-docs\site' to 'gh-pages' branch and pushing to GitHub.
 	INFO    -  Your documentation should shortly be available at: https://vuw-research-computing.github.io/raapoi-docs/
 	```
-1. Visit the <a href="https://vuw-research-computing.github.io/raapoi-docs/">live site</a> to check changes have propagated as expected, and make any 	     further adjustments by repeating above steps as required.
+1. Visit the <a href="https://vuw-research-computing.github.io/raapoi-docs/">live site</a> to check changes have propagated as expected, and make any 	     further adjustments as required by repeating above steps.
 
 	That's it! If editing multiple files, a good option may be to make local changes on all the required files first, then these steps only need be worked through once. (The downside is you'll have less granular commit history and lose the ability to easily reverse some changes made).
 
