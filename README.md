@@ -57,7 +57,7 @@ markdown_extensions:
 	INFO    -  Copying 'H:\GIT_HUB\raapoi-docs\site' to 'gh-pages' branch and pushing to GitHub.
 	INFO    -  Your documentation should shortly be available at: https://vuw-research-computing.github.io/raapoi-docs/
 	```
-1. Check the <a href="https://vuw-research-computing.github.io/raapoi-docs/">live site</a> to check changes have propogated as expected, and make any 	     further adjustments by repeating above steps as required.
+1. Check the <a href="https://vuw-research-computing.github.io/raapoi-docs/">live site</a> to check changes have propagated as expected, and make any 	     further adjustments by repeating above steps as required.
 
 	That's it! If editing multiple files, a good option may be to make local changes on all the required files first, then these steps only need be worked through once. (The downside is you'll have less granular commit history and ability to easily reverse some changes made).
 
