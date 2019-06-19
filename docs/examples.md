@@ -1,4 +1,3 @@
-# Examples
 
 ## Simple Python program using virtualenv and pip
 
@@ -92,7 +91,7 @@ Test library existence:
 library(ggplot2)
 ```
 This should load the package.
-Metapackages like ```tidyverse``` currently don't load on Rāpoi, but components of it can be loaded individually: 
+Metapackages like ```tidyverse``` currently don't load on Rāpoi, but components can be loaded individually: 
 
 ```
 > library(tidyr)
@@ -140,6 +139,6 @@ then run it with the previously written bash script:
 ```
 sbatch r_submit.sh 
 ```
-This submits a task that should execute quickly, create files in the directory from which it was run.
+This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining ```r_test.out``` (with nano, cat or less) should print:
 ``` "Hello World"```
