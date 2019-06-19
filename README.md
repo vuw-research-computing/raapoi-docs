@@ -27,6 +27,7 @@ This structure is designed to make the docs easier to navigate, providing a gran
 1. Clone the <a href="https://github.com/vuw-research-computing/raapoi-docs">```raapoi-docs```</a> repo, open in the command line and make sure you're on the ```master``` branch.
 
 1. Navigate to the ```docs``` folder and open and edit (or create) the appropriate ```.md``` file, (e.g. ```examples.md```).
+	_Note: If you're creating a new page, you'll want to add the name of this to the ```nav``` section in <a href="https://github.com/vuw-research-computing/raapoi-docs/blob/master/mkdocs.yml">```mkdocs.yml```</a>_.
 
 1. Save once changes are made, then use <a href="https://git-scm.com/docs">```git```</a> to ```add```, ```commit```, and ```push``` to ```origin master```.
 
