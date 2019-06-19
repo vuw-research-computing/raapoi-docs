@@ -3,7 +3,7 @@ Documentation for the Rāpoi cluster.
 
 ## Site configuration
 
-Rāpoi docs pages are built using the <a href="http://127.0.0.1:8000">sphinx</a>-based <a href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">Read the Docs theme</a> and deployed via <a href="https://www.mkdocs.org/">MkDocs</a>. <br>```mkdocs.yml``` configures basic site information, page structure and table of contents depth, and can also customise <a href="https://www.mkdocs.org/user-guide/configuration/">other variables</a>. ```extra.css``` defines custom styling.
+Rāpoi docs pages are built using the <a href="http://127.0.0.1:8000">sphinx</a>-based <a href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">Read the Docs theme</a> and deployed via <a href="https://www.mkdocs.org/">MkDocs</a>. <br><a href="https://github.com/vuw-research-computing/raapoi-docs/blob/master/mkdocs.yml">```mkdocs.yml```</a> configures basic site information, page structure and table of contents depth, and can also customise <a href="https://www.mkdocs.org/user-guide/configuration/">other variables</a>. <a href="https://github.com/vuw-research-computing/raapoi-docs/blob/master/extra.css">```extra.css```</a> defines custom styling.
 
 Rather than one scrolling page with clickable sections in the nav, the site is now configured so each ```.md``` file is its own page,  with heading levels in these markdown files creating sub-menu items. <br>
 Currently, heading levels 1 and 2 (# and ##) create clickable menu items in the side nav bar:
