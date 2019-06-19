@@ -19,7 +19,7 @@ markdown_extensions:
       toc_depth: 3
 ```
 
-This structure is designed to make the docs easier to navigate, providing a more granular menu which allows for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible mobile menu (in the top lef) and the ```Previous``` and ```Next``` breadcrumb buttons (at the bottom) of each page. The theme also has a useful ```Search``` built in by default. 
+This structure is designed to make the docs easier to navigate, providing a more granular menu which allows for more information to be added without effecting navigability too adversely. It makes browsing on mobile devices less cumbersome too, as the pages can be arrived at both by the collapsible mobile menu (in the top left) and the ```Previous``` and ```Next``` breadcrumb buttons (at the bottom) of each page. The theme also has a useful <a href="https://vuw-research-computing.github.io/raapoi-docs/search.html?q=python">```Search```</a> built in by default. 
 
 
 ## Workflow for updating docs (locally via CLI):
