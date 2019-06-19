@@ -33,8 +33,15 @@ This structure is designed to make the docs easier to navigate, providing a more
 1. Now deploy this with MkDocs commands:
 
 	```mkdocs build --clean``` <br>
-	(This builds the markdown files into a ```/site``` folder, where each ```.md``` file creates a folder of the same name with its own ```index.html```). 
+	(This builds the markdown files into a ```/site``` folder, where each ```.md``` file creates a folder of the same name with its own ```index.html```) 
 	<br>
+	```
+	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
+	$ mkdocs build --clean
+	INFO    -  Cleaning site directory
+	INFO    -  Building documentation to directory: H:\GIT_HUB\raapoi-docs\site
+	```
+
 	Note: ```clean``` overwrites and cleans existing ```/site``` directory. 
 
 1. (Optional) To see changes locally, use ```mkdocs serve``` which should run and print something similar to: 
