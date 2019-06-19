@@ -8,7 +8,7 @@ Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in th
 
 ## Workflow for updating docs (locally via CLI):
 
-1. Make sure you're on the ```master``` branch on raapoi-docs repository.
+1. Make sure you're on the ```master``` branch on the ```raapoi-docs``` repository.
 
 1. Navigate to the ```docs``` folder and open and edit (or create) the appropriate ```.md``` file, (e.g. ```examples.md```).
 
@@ -34,17 +34,17 @@ Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in th
 1. When ready to publish, use:
 ```mkdocs gh-deploy``` (optional ```--clean``` can be appended to deploy a clean version)
 
-This pushes changes from ```.md``` files to the relevant ```html``` pages in the ```/site``` folder of the ```gh-pages``` branch. 
-It should return something like: 
-```
-plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
-$ mkdocs gh-deploy
-INFO    -  Cleaning site directory
-INFO    -  Building documentation to directory: H:\GIT_HUB\raapoi-docs\site
-INFO    -  Copying 'H:\GIT_HUB\raapoi-docs\site' to 'gh-pages' branch and pushing to GitHub.
-INFO    -  Your documentation should shortly be available at: https://vuw-research-computing.github.io/raapoi-docs/
-```
-That's it. If editing multiple files, make local changes on all the required files first, then these steps only need be worked through once.
+	This pushes changes from ```.md``` files to the relevant ```html``` pages in the ```/site``` folder of the ```gh-pages``` branch. 
+	It should return something like: 
+	```
+	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
+	$ mkdocs gh-deploy
+	INFO    -  Cleaning site directory
+	INFO    -  Building documentation to directory: H:\GIT_HUB\raapoi-docs\site
+	INFO    -  Copying 'H:\GIT_HUB\raapoi-docs\site' to 'gh-pages' branch and pushing to GitHub.
+	INFO    -  Your documentation should shortly be available at: https://vuw-research-computing.github.io/raapoi-docs/
+	```
+	That's it! If editing multiple files, make local changes on all the required files first, then these steps only need be worked through once.
 
 Note, the repo publishes docs from the ```gh-pages``` branch, but if using ```mkdocs gh-deploy``` refrain from editing in that branch, use the above workflow (i.e. editing ```master``` instead).
 
