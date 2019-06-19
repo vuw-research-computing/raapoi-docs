@@ -57,12 +57,13 @@ This structure is designed to make the docs easier to navigate, providing a gran
 
 1. When ready to publish, use:
 
-```mkdocs gh-deploy``` 
+	```mkdocs gh-deploy``` 
 
-(optional ```--clean``` can be appended to deploy a clean version)
+	_(optional ```--clean``` can be appended to deploy a clean version)_
 
-	This pushes changes from ```.md``` files to the relevant ```html``` pages in the ```/site``` folder of the repo's ```gh-pages``` branch. 
-	Running the command should return something like: 
+	_This pushes changes from ```.md``` files to the relevant ```html``` pages in the ```/site``` folder of the repo's ```gh-pages``` branch. 
+	Running the command should return something like:_ 
+	
 	```
 	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
 	$ mkdocs gh-deploy
