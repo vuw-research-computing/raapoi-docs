@@ -51,7 +51,7 @@ This structure is designed to make the docs easier to navigate, providing a more
 ```mkdocs gh-deploy``` (optional ```--clean``` can be appended to deploy a clean version)
 
 	This pushes changes from ```.md``` files to the relevant ```html``` pages in the ```/site``` folder of the ```gh-pages``` branch. 
-	It should return something like: 
+	Running the command should return something like: 
 	```
 	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
 	$ mkdocs gh-deploy
@@ -64,5 +64,5 @@ This structure is designed to make the docs easier to navigate, providing a more
 
 	That's it! If editing multiple files, a good option may be to make local changes on all the required files first, then these steps only need be worked through once. (The downside is you'll have less granular commit history and lose the ability to easily reverse some changes made).
 
-	Note: the repo publishes docs from the ```gh-pages``` branch. Because we're using ```mkdocs gh-deploy```, it's important to refrain from editing in that branch, use the above workflow (i.e. editing ```.md``` files in ```master```) instead.
+	Important note: the repo publishes docs from the ```gh-pages``` branch. Because we're using ```mkdocs gh-deploy```, it's important to refrain from editing in that branch, use the above workflow (i.e. editing ```.md``` files in ```master```) instead.
 
