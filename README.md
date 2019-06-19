@@ -1,9 +1,10 @@
 # raapoi-docs
 Documentation for the Rāpoi cluster.
 
-Built using the <a href="http://127.0.0.1:8000">sphinx</a>-based <a href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">Read the Docs theme</a> and deployed via <a href="https://www.mkdocs.org/">Mkdocs</a>. mkdocs.yml configures basic site structure, menu structure and Table of Contents depth, and can also customise other variables. Extra.css defines non-standard styling. 
+Built using the <a href="http://127.0.0.1:8000">sphinx</a>-based <a href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">Read the Docs theme</a> and deployed via <a href="https://www.mkdocs.org/">Mkdocs</a>. ```mkdocs.yml``` configures basic site structure, menu structure and Table of Contents depth, and can also customise other variables. ```Extra.css``` defines non-standard styling. 
 
-Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in the side nav bar
+Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in the side nav bar:
+![Menu levels example](docs/img/Menu_structure.png)
 
 ##Workflow for updating docs (locally via CLI):
 
