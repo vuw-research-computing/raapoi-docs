@@ -17,11 +17,11 @@ Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in th
 1. Now deploy this with MKdocs commands:
 
 	```mkdocs build --clean``` <br>
-	(This builds the markdown files into a ```/site``` folder, where each ```.md``` files is a folder with it's own ```index.html```). 
+	(This builds the markdown files into a ```/site``` folder, where each ```.md``` file creates a folder of the same name with it's own ```index.html```). 
 	<br>
-	```clean``` overwrites and cleans existing ```/site``` directory. 
+	Note: ```clean``` overwrites and cleans existing ```/site``` directory. 
 
-1. to see changes locally, use ```mkdocs serve``` which will print a variant of 
+1. (Optional) To see changes locally, use ```mkdocs serve``` which will print a variant of: 
 	```
 	plummema@ITS-7MTSF2S MINGW64 /h/GIT_HUB/raapoi-docs (master)
 	$ mkdocs serve
@@ -46,5 +46,5 @@ Currently, heading levels 1 and 2 (# and ##) creating clickable menu items in th
 	```
 	That's it! If editing multiple files, make local changes on all the required files first, then these steps only need be worked through once.
 
-Note, the repo publishes docs from the ```gh-pages``` branch, but if using ```mkdocs gh-deploy``` refrain from editing in that branch, use the above workflow (i.e. editing ```master``` instead).
+	Note: the repo publishes docs from the ```gh-pages``` branch, but if using ```mkdocs gh-deploy``` refrain from editing in that branch, use the above workflow (i.e. editing ```master``` instead).
 
