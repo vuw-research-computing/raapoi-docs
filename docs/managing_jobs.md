@@ -52,7 +52,7 @@ As you can see I have a single job running on the node c03n01 on the quicktest p
 
 You can see all the jobs in the queues by running the _vuw-alljobs_ command.  This will produce a very long list of jobs if the cluster is busy.
 
-## Job Queuing (aka Why is my job running?)
+## Job Queuing (aka Why isn't my job running?)
 
 When a partition is busy, jobs will be placed in a queue.  You can observe this
 in the _vuw-myjobs_ and _vuw-alljobs_ commands.  The STATE of your job will be PENDING, this means it is waiting for resources or your job has been re-prioritized to allow other users access to run their jobs (this is called fair-share queueing).
