@@ -31,6 +31,9 @@ This structure is designed to make the docs easier to navigate, providing a gran
 
 1. Save once changes are made, then use <a href="https://git-scm.com/docs">```git```</a> to ```add```, ```commit```, and ```push``` to ```origin master```.
 
+1. Navigate back to the raapoi-docs root folder.  From the docs subfolder
+you can:  ```cd ..``` 
+
 1. Now deploy this with MkDocs commands:
 
 	```mkdocs build --clean```
@@ -59,6 +62,8 @@ This structure is designed to make the docs easier to navigate, providing a gran
 	[I 190619 12:41:14 server:298] Serving on http://127.0.0.1:8000
 	```
 	_The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. ```mkdocs serve``` supports real time previews, so any changes made and saved will update the local server automatically._
+
+        Type ```Ctrl-c``` to end the local server.
 
 1. When ready to publish, use:
 
