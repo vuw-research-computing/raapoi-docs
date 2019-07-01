@@ -100,7 +100,7 @@
     <li class="toctree-l3"><a href="#viewing-jobs-in-the-queue">Viewing jobs in the Queue</a></li>
     
 
-    <li class="toctree-l3"><a href="#job-queuing-aka-why-is-my-job-running">Job Queuing (aka Why is my job running?)</a></li>
+    <li class="toctree-l3"><a href="#job-queuing-aka-why-isnt-my-job-running">Job Queuing (aka Why isn't my job running?)</a></li>
     
 
     </ul>
@@ -206,7 +206,7 @@ MY JOBS WITHIN LAST 5 days
 
 <p>As you can see I have a single job running on the node c03n01 on the quicktest partition</p>
 <p>You can see all the jobs in the queues by running the <em>vuw-alljobs</em> command.  This will produce a very long list of jobs if the cluster is busy.</p>
-<h2 id="job-queuing-aka-why-is-my-job-running">Job Queuing (aka Why is my job running?)<a class="headerlink" href="#job-queuing-aka-why-is-my-job-running" title="Permanent link">&para;</a></h2>
+<h2 id="job-queuing-aka-why-isnt-my-job-running">Job Queuing (aka Why isn't my job running?)<a class="headerlink" href="#job-queuing-aka-why-isnt-my-job-running" title="Permanent link">&para;</a></h2>
 <p>When a partition is busy, jobs will be placed in a queue.  You can observe this
 in the <em>vuw-myjobs</em> and <em>vuw-alljobs</em> commands.  The STATE of your job will be PENDING, this means it is waiting for resources or your job has been re-prioritized to allow other users access to run their jobs (this is called fair-share queueing).</p>
 <p>The resource manager will list a reason the job is pending, these reasons can include:</p>
