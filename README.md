@@ -23,6 +23,7 @@ This structure is designed to make the docs easier to navigate, providing a gran
 
 
 ## Workflow for updating docs (locally via CLI):
+1. Make sure you have mkdocs installed. This can be done with ```pip install mkdocs``` or similar, see full instructions at [the mkdocs installation page](https://www.mkdocs.org/#installation)
 
 1. Clone the <a href="https://github.com/vuw-research-computing/raapoi-docs">```raapoi-docs```</a> repo, open in the command line and make sure you're on the ```master``` branch.
 
