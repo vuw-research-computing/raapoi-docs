@@ -64,7 +64,7 @@ you can:  ```cd ..```
 	```
 	_The local site is now viewable at <a href="http://127.0.0.1:8000">```http://127.0.0.1:8000```</a>. ```mkdocs serve``` supports real time previews, so any changes made and saved will update the local server automatically._
 
-        Type ```Ctrl-c``` to end the local server.
+    Type ```Ctrl-c``` to stop the local server.
 
 1. When ready to publish, use:
 
