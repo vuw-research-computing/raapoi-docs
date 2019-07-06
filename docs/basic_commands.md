@@ -36,7 +36,7 @@ The general form of the command is **cp _source destination_**, for example:
 
 ```cp myfile.txt myfilecopy.txt```
 
-[Further examples and options can be seen here](https://www.howtoforge.com/linux-cp-command/)
+Further examples and options can be seen [here](https://www.howtoforge.com/linux-cp-command/).
 
 **rm** - This will delete a file
 
@@ -54,4 +54,4 @@ Other Commands you may use: _alias, awk, cat, export, for, grep, gzip, if, less,
 A good tutorial for using linux can be found here:
 [Learning the linux shell](http://linuxcommand.org/lc3_learning_the_shell.php).
 
-Software Carpentry also provides a good introduction to the shell, including [how to work with files and directories](http://swcarpentry.github.io/shell-novice/03-create/index.html)
+[Software Carpentry](http://swcarpentry.github.io/shell-novice/) also provides a good introduction to the shell, including [how to work with files and directories](http://swcarpentry.github.io/shell-novice/03-create/index.html).
