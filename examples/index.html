@@ -113,6 +113,17 @@
     <li class="toctree-l3"><a href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a></li>
     
 
+    <li class="toctree-l3"><a href="#job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#simple-bash-job-array-example">Simple Bash Job Array example</a></li>
+        
+            <li><a class="toctree-l4" href="#a-simple-r-job-array-example">A simple R job Array Example</a></li>
+        
+        </ul>
+    
+
     </ul>
                 </li>
     </ul>
@@ -302,6 +313,86 @@ a file called r_submit.sh with:</p>
 <p>This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <code>"Hello World"</code></p>
+<h2 id="job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs<a class="headerlink" href="#job-arrays-running-many-similar-jobs" title="Permanent link">&para;</a></h2>
+<p>Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.</p>
+<h3 id="simple-bash-job-array-example">Simple Bash Job Array example<a class="headerlink" href="#simple-bash-job-array-example" title="Permanent link">&para;</a></h3>
+<p>The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the slurm array task ID and exit.</p>
+<p>submit.sh:</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=test_array</span>
+<span class="c1">#SBATCH --output=out_array_%A_%a.out</span>
+<span class="c1">#SBATCH --error=out_array_%A_%a.err</span>
+<span class="c1">#SBATCH --array=1-16</span>
+<span class="c1">#SBATCH --time=00:00:20</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --mem=1G</span>
+
+<span class="c1"># Print the task id.</span>
+<span class="nb">echo</span> <span class="s2">&quot;My SLURM_ARRAY_TASK_ID: &quot;</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+
+<span class="c1"># Add lines here to run your computations.</span>
+</pre></div>
+
+
+<p>Run the example with the standard</p>
+<div class="codehilite"><pre><span></span>sbatch submit.sh
+</pre></div>
+
+
+<h3 id="a-simple-r-job-array-example">A simple R job Array Example<a class="headerlink" href="#a-simple-r-job-array-example" title="Permanent link">&para;</a></h3>
+<p>As a slightly more practical example the following will run an R script 5 times as resources become available.  The R script takes as an input the <code>$SLURM_ARRAY_TASK_ID</code> which then selects a parameter <code>alpha</code> out of a lookup table.</p>
+<p>This is one way you could run simulations or similar with a set parameters defined in a lookuop table in your code.</p>
+<p>To make outputs more tidy and to help organisation, instead of dumping all the outputs in to the directory with our code and submission script, we will seperate the outputs into directories.  Dataframes saved from R will be saved to output/ and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to stdout/  Both of these directories will need to be created before running the script.</p>
+<p>r_random_alpha.R:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># get the arguments supplied to R.  </span>
+<span class="c1"># trailingOnly = TRUE gets the user supplied</span>
+<span class="c1"># arguments, and for now we will only get the</span>
+<span class="c1"># first user supplied argument</span>
+<span class="n">args</span> <span class="o">&lt;-</span> <span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">inputparam</span> <span class="o">&lt;-</span> <span class="n">args[1]</span>
+
+<span class="c1"># a vector with all our parameters.</span>
+<span class="n">alpha_vec</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">3.3</span><span class="p">,</span> <span class="m">5.1</span><span class="p">,</span> <span class="m">8.2</span><span class="p">,</span> <span class="m">10.9</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="n">alpha_vec</span><span class="nf">[as.integer</span><span class="p">(</span><span class="n">inputparam</span><span class="p">)</span><span class="n">]</span>
+
+<span class="c1"># Generate a random number between 0 and alpha </span>
+<span class="c1"># store it in dataframe with the coresponding </span>
+<span class="c1"># alpha value</span>
+<span class="n">randomnum</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">min</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">max</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;random_num&quot;</span> <span class="o">=</span> <span class="n">randomnum</span><span class="p">)</span>
+
+<span class="c1"># Save the data frame to a file with the alpha value</span>
+<span class="c1"># Note that the output/ folder will need to be </span>
+<span class="c1"># manually created first!</span>
+<span class="n">outputname</span> <span class="o">&lt;-</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;output/&quot;</span><span class="p">,</span> <span class="s">&quot;alpha_&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;.Rda&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="nf">save</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">outputname</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Next create the submision script. Which we will run on the parallel partition rather than quicktest.</p>
+<p>r_submit.sh:</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=test_R_array</span>
+<span class="c1">#SBATCH --output=stdout/array_%A_%a.out</span>
+<span class="c1">#SBATCH --error=stdout/array_%A_%a.err</span>
+<span class="c1">#SBATCH --array=1-5</span>
+<span class="c1">#SBATCH --time=00:00:20</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --mem=1G</span>
+
+module load R/CRAN
+
+<span class="c1"># Print the task id.</span>
+Rscript r_random_alpha.R <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</pre></div>
+
+
+<p>Run the jobs with</p>
+<div class="codehilite"><pre><span></span>sbatch r_submit.sh
+</pre></div>
               
             </div>
           </div>
