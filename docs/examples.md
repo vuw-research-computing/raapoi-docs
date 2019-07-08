@@ -82,25 +82,25 @@ module load R/CRAN
 Then run R on the command line:
 
 
-```
+```bash
 R
 ```
 
 Test library existence:
-```
+```R
 library(ggplot2)
 ```
 This should load the package.
 Metapackages like ```tidyverse``` currently don't load on Rāpoi, but components can be loaded individually: 
 
-```
+```R
 > library(tidyr)
 > library(dplyr)
 ```
 
 Next create a bash submission script using your preferred text editor. An example submission script may look something like:
-```
 a file called r_submit.sh with:
+```bash
 #!/bin/bash
 #
 #SBATCH --job-name=r_test
@@ -115,28 +115,26 @@ a file called r_submit.sh with:
 
 Save this to the current working directory, then run: 
 
-```
+```bash
 module load R/CRAN
 ```
 
-```
+```bash
 Rscript mytest.R
 ```
 
 
 and then create another file with a test R script called ```mytest.R``` with:
 
-```
+```R
 library(tidyr)
 library(dplyr)
 library(ggplot2)
-```
 
-```
 sprintf("Hello World!")
 ```
 then run it with the previously written bash script:  
-```
+```bash
 sbatch r_submit.sh 
 ```
 This submits a task that should execute quickly and create files in the directory from which it was run.
