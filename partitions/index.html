@@ -175,22 +175,22 @@ may come a time when certain research groups purchase their own nodes and they a
 given exclusive access.</p>
 <p>To view the partitions available to use you can type the vuw-partitions
 command, eg</p>
-<div class="codehilite"><pre><span></span><span class="nv">harrelwe</span>@<span class="nv">raapoi</span><span class="o">-</span><span class="nv">master</span>:<span class="o">~</span>$ <span class="nv">vuw</span><span class="o">-</span><span class="nv">partitions</span> 
+<div class="codehilite"><pre><span></span>harrelwe@raapoi-master:~$ vuw-partitions 
 
-<span class="nv">VUW</span> <span class="nv">CLUSTER</span> <span class="nv">PARTITIONS</span>
-<span class="nv">PARTITION</span>  <span class="nv">AVAIL</span>  <span class="nv">TIMELIMIT</span>  <span class="nv">NODES</span>  <span class="nv">STATE</span> <span class="nv">NODELIST</span>
-<span class="nv">quicktest</span><span class="o">*</span>    <span class="nv">up</span>    <span class="mi">1</span>:<span class="mi">00</span>:<span class="mi">00</span>      <span class="mi">1</span>   <span class="nv">idle</span> <span class="nv">c03n01</span>
+VUW CLUSTER PARTITIONS
+PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+quicktest*    up    1:00:00      1   idle c03n01
 
-<span class="nv">PARTITION</span> <span class="nv">AVAIL</span>  <span class="nv">TIMELIMIT</span>  <span class="nv">NODES</span>  <span class="nv">STATE</span> <span class="nv">NODELIST</span>
-<span class="nv">bigmem</span>       <span class="nv">up</span> <span class="mi">10</span><span class="o">-</span><span class="mi">00</span>:<span class="mi">00</span>:<span class="mi">0</span>      <span class="mi">2</span>   <span class="nv">idle</span> <span class="nv">c10n01</span>,<span class="nv">c11n01</span>
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+bigmem       up 10-00:00:0      2   idle c10n01,c11n01
 
-<span class="nv">PARTITION</span> <span class="nv">AVAIL</span>  <span class="nv">TIMELIMIT</span>  <span class="nv">NODES</span>  <span class="nv">STATE</span> <span class="nv">NODELIST</span>
-<span class="nv">parallel</span>     <span class="nv">up</span> <span class="mi">10</span><span class="o">-</span><span class="mi">00</span>:<span class="mi">00</span>:<span class="mi">00</span>      <span class="mi">6</span>  <span class="nv">down</span><span class="o">*</span> <span class="nv">c04n01</span>,<span class="nv">c05n04</span>,<span class="nv">c06n</span>[<span class="mi">01</span><span class="o">-</span><span class="mi">04</span>]
-<span class="nv">parallel</span>     <span class="nv">up</span> <span class="mi">10</span><span class="o">-</span><span class="mi">00</span>:<span class="mi">00</span>:<span class="mi">00</span>     <span class="mi">27</span>   <span class="nv">idle</span>
-<span class="nv">c03n</span>[<span class="mi">02</span><span class="o">-</span><span class="mi">04</span>],<span class="nv">c04n</span>[<span class="mi">02</span><span class="o">-</span><span class="mi">04</span>],<span class="nv">c05n</span>[<span class="mi">01</span><span class="o">-</span><span class="mi">02</span>],<span class="nv">c07n</span>[<span class="mi">01</span>,<span class="mi">03</span><span class="o">-</span><span class="mi">04</span>],<span class="nv">c08n</span>[<span class="mi">01</span><span class="o">-</span><span class="mi">04</span>],<span class="nv">c09n</span>[<span class="mi">01</span><span class="o">-</span><span class="mi">04</span>],<span class="nv">c12n</span>[<span class="mi">01</span><span class="o">-</span><span class="mi">04</span>],<span class="nv">c13n</span>[<span class="mi">01</span><span class="o">-</span><span class="mi">04</span>]
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+parallel     up 10-00:00:00      6  down* c04n01,c05n04,c06n[01-04]
+parallel     up 10-00:00:00     27   idle
+c03n[02-04],c04n[02-04],c05n[01-02],c07n[01,03-04],c08n[01-04],c09n[01-04]
 
-<span class="nv">NOTE</span>: <span class="nv">This</span> <span class="nv">utility</span> <span class="nv">is</span> <span class="nv">a</span> <span class="nv">wrapper</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">Slurm</span> <span class="nv">command</span>:
-      <span class="nv">sinfo</span> <span class="o">-</span><span class="nv">p</span> <span class="nv">PARTITION</span>
+NOTE: This utility is a wrapper for the Slurm command:
+      sinfo -p PARTITION
 </pre></div>
 
 

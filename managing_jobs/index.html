@@ -177,17 +177,17 @@
 <p><code>scancel -u harrelwe</code></p>
 <h2 id="viewing-job-statistics">Viewing Job statistics<a class="headerlink" href="#viewing-job-statistics" title="Permanent link">&para;</a></h2>
 <p>If you want to get a quick view of all the jobs completed within the last 5 days you can use the <em>vuw-history</em> command, for example:</p>
-<div class="codehilite"><pre><span></span>  <span class="n">vuw</span><span class="o">-</span><span class="n">job</span><span class="o">-</span><span class="n">history</span>
+<div class="codehilite"><pre><span></span>  vuw-job-history
 
-<span class="n">MY</span> <span class="n">JOBS</span> <span class="n">WITHIN</span> <span class="k">LAST</span> <span class="mi">5</span> <span class="n">days</span>
-       <span class="n">JobID</span>      <span class="k">State</span>    <span class="n">JobName</span>  <span class="n">MaxVMSize</span>    <span class="n">CPUTime</span> 
-<span class="c1">------------ ---------- ---------- ---------- ---------- </span>
-<span class="mi">2645</span>          <span class="n">COMPLETED</span>       <span class="n">bash</span>              <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">22</span> 
-<span class="mi">2645</span><span class="p">.</span><span class="n">extern</span>   <span class="n">COMPLETED</span>     <span class="n">extern</span>      <span class="mi">0</span><span class="p">.</span><span class="mi">15</span><span class="k">G</span>   <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">22</span> 
-<span class="mi">2645</span><span class="p">.</span><span class="mi">0</span>        <span class="n">COMPLETED</span>       <span class="n">bash</span>      <span class="mi">0</span><span class="p">.</span><span class="mi">22</span><span class="k">G</span>   <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">20</span> 
-<span class="mi">2734</span>          <span class="n">COMPLETED</span>       <span class="n">bash</span>              <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">40</span> 
-<span class="mi">2734</span><span class="p">.</span><span class="n">extern</span>   <span class="n">COMPLETED</span>     <span class="n">extern</span>      <span class="mi">0</span><span class="p">.</span><span class="mi">15</span><span class="k">G</span>   <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">40</span> 
-<span class="mi">2734</span><span class="p">.</span><span class="mi">0</span>        <span class="n">COMPLETED</span>       <span class="n">bash</span>      <span class="mi">0</span><span class="p">.</span><span class="mi">22</span><span class="k">G</span>   <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">40</span> 
+MY JOBS WITHIN LAST 5 days
+       JobID      State    JobName  MaxVMSize    CPUTime 
+------------ ---------- ---------- ---------- ---------- 
+2645          COMPLETED       bash              00:00:22 
+2645.extern   COMPLETED     extern      0.15G   00:00:22 
+2645.0        COMPLETED       bash      0.22G   00:00:20 
+2734          COMPLETED       bash              00:07:40 
+2734.extern   COMPLETED     extern      0.15G   00:07:40 
+2734.0        COMPLETED       bash      0.22G   00:07:40 
 </pre></div>
 
 
@@ -200,9 +200,9 @@
 </ul>
 <h2 id="viewing-jobs-in-the-queue">Viewing jobs in the Queue<a class="headerlink" href="#viewing-jobs-in-the-queue" title="Permanent link">&para;</a></h2>
 <p>To view your running jobs you can type <em>vuw-myjobs</em>  eg:</p>
-<div class="codehilite"><pre><span></span><span class="w">           </span><span class="o">[</span><span class="n">harrelwe@node142 ~</span><span class="o">]</span><span class="err">$</span><span class="w"> </span><span class="n">vuw</span><span class="o">-</span><span class="n">myjobs</span><span class="w"></span>
-<span class="w">             </span><span class="n">JOBID</span><span class="w"> </span><span class="k">PARTITION</span><span class="w">     </span><span class="n">NAME</span><span class="w">     </span><span class="k">USER</span><span class="w"> </span><span class="n">ST</span><span class="w">       </span><span class="nc">TIME</span><span class="w">  </span><span class="n">NODES</span><span class="w"> </span><span class="n">NODELIST</span><span class="p">(</span><span class="n">REASON</span><span class="p">)</span><span class="w"></span>
-<span class="w">           </span><span class="mi">7921967</span><span class="w"> </span><span class="n">quicktest</span><span class="w">     </span><span class="n">bash</span><span class="w"> </span><span class="n">harrelwe</span><span class="w">  </span><span class="n">R</span><span class="w">       </span><span class="mi">0</span><span class="err">:</span><span class="mi">12</span><span class="w">      </span><span class="mi">1</span><span class="w"> </span><span class="n">c03n01</span><span class="w"></span>
+<div class="codehilite"><pre><span></span>           [harrelwe@node142 ~]$ vuw-myjobs
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
 </pre></div>
 
 

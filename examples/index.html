@@ -264,14 +264,14 @@ python test.py
 
 
 <p>Test library existence:</p>
-<div class="codehilite"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 </pre></div>
 
 
 <p>This should load the package.
 Metapackages like <code>tidyverse</code> currently don't load on Rāpoi, but components can be loaded individually: </p>
-<div class="codehilite"><pre><span></span><span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
 </pre></div>
 
 
@@ -300,11 +300,11 @@ a file called r_submit.sh with:</p>
 
 
 <p>and then create another file with a test R script called <code>mytest.R</code> with:</p>
-<div class="codehilite"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 
-<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="kp">sprintf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -353,24 +353,24 @@ Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <span class="c1"># trailingOnly = TRUE gets the user supplied</span>
 <span class="c1"># arguments, and for now we will only get the</span>
 <span class="c1"># first user supplied argument</span>
-<span class="n">args</span> <span class="o">&lt;-</span> <span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
-<span class="n">inputparam</span> <span class="o">&lt;-</span> <span class="n">args[1]</span>
+args <span class="o">&lt;-</span> <span class="kp">commandArgs</span><span class="p">(</span>trailingOnly <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+inputparam <span class="o">&lt;-</span> <span class="kp">args</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 
 <span class="c1"># a vector with all our parameters.</span>
-<span class="n">alpha_vec</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">3.3</span><span class="p">,</span> <span class="m">5.1</span><span class="p">,</span> <span class="m">8.2</span><span class="p">,</span> <span class="m">10.9</span><span class="p">)</span>
-<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="n">alpha_vec</span><span class="nf">[as.integer</span><span class="p">(</span><span class="n">inputparam</span><span class="p">)</span><span class="n">]</span>
+alpha_vec <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">3.3</span><span class="p">,</span> <span class="m">5.1</span><span class="p">,</span> <span class="m">8.2</span><span class="p">,</span> <span class="m">10.9</span><span class="p">)</span>
+alpha <span class="o">&lt;-</span> alpha_vec<span class="p">[</span><span class="kp">as.integer</span><span class="p">(</span>inputparam<span class="p">)]</span>
 
 <span class="c1"># Generate a random number between 0 and alpha </span>
 <span class="c1"># store it in dataframe with the coresponding </span>
 <span class="c1"># alpha value</span>
-<span class="n">randomnum</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">min</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">max</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
-<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;random_num&quot;</span> <span class="o">=</span> <span class="n">randomnum</span><span class="p">)</span>
+randomnum <span class="o">&lt;-</span> runif<span class="p">(</span><span class="m">1</span><span class="p">,</span> min<span class="o">=</span><span class="m">0</span><span class="p">,</span> max<span class="o">=</span><span class="kp">as.double</span><span class="p">(</span>alpha<span class="p">))</span>
+df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span> <span class="o">=</span> alpha<span class="p">,</span> <span class="s">&quot;random_num&quot;</span> <span class="o">=</span> randomnum<span class="p">)</span>
 
 <span class="c1"># Save the data frame to a file with the alpha value</span>
 <span class="c1"># Note that the output/ folder will need to be </span>
 <span class="c1"># manually created first!</span>
-<span class="n">outputname</span> <span class="o">&lt;-</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;output/&quot;</span><span class="p">,</span> <span class="s">&quot;alpha_&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;.Rda&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-<span class="nf">save</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">outputname</span><span class="p">)</span>
+outputname <span class="o">&lt;-</span> <span class="kp">paste</span><span class="p">(</span><span class="s">&quot;output/&quot;</span><span class="p">,</span> <span class="s">&quot;alpha_&quot;</span><span class="p">,</span> alpha<span class="p">,</span> <span class="s">&quot;.Rda&quot;</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="kp">save</span><span class="p">(</span>df<span class="p">,</span>file<span class="o">=</span>outputname<span class="p">)</span>
 </pre></div>
 
 
