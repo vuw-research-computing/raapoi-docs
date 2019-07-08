@@ -33,7 +33,9 @@ print("Random colour name:", colour_name, " on host: ", gethostname())
 
 Alternatively download it with wget:
 ```bash
-wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/test.py
+wget https://raw.githubusercontent.com/\
+vuw-research-computing/raapoi-tools/\
+master/examples/python_venv/test.py
 ```
 
 Using nano create the submissions script called python_submit.sh with the following content - change `me@email.com` to your email address.
@@ -59,7 +61,9 @@ python test.py
 
 Alternatively download it with wget
 ```bash
-wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/python_submit.sh
+wget https://raw.githubusercontent.com/\
+vuw-research-computing/raapoi-tools/\
+master/examples/python_venv/python_submit.sh
 ```
 
 To submit your job to the Slurm scheduler
