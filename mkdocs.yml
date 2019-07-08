@@ -24,6 +24,7 @@ markdown_extensions:
       permalink: True
       baselevel: 1
       toc_depth: 3
+  - codehilite
 
 extra_css: [extra.css]
 
