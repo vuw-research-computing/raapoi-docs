@@ -144,3 +144,94 @@ sbatch r_submit.sh
 This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining ```r_test.out``` (with nano, cat or less) should print:
 ``` "Hello World"```
+
+## Job Arrays - running many similar jobs
+
+Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.
+
+### Simple Bash Job Array example
+
+The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the slurm array task ID and exit.
+
+submit.sh:
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=test_array
+#SBATCH --output=out_array_%A_%a.out
+#SBATCH --error=out_array_%A_%a.err
+#SBATCH --array=1-16
+#SBATCH --time=00:00:20
+#SBATCH --partition=parallel
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+
+# Print the task id.
+echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
+
+# Add lines here to run your computations.
+```
+
+Run the example with the standard
+```bash
+sbatch submit.sh
+```
+
+### A simple R job Array Example
+
+As a slightly more practical example the following will run an R script 5 times as resources become available.  The R script takes as an input the ```$SLURM_ARRAY_TASK_ID``` which then selects a parameter ```alpha``` out of a lookup table.
+
+This is one way you could run simulations or similar with a set parameters defined in a lookuop table in your code.
+
+To make outputs more tidy and to help organisation, instead of dumping all the outputs in to the directory with our code and submission script, we will seperate the outputs into directories.  Dataframes saved from R will be saved to output/ and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to stdout/  Both of these directories will need to be created before running the script.
+
+r_random_alpha.R:
+```R
+# get the arguments supplied to R.  
+# trailingOnly = TRUE gets the user supplied
+# arguments, and for now we will only get the
+# first user supplied argument
+args <- commandArgs(trailingOnly = TRUE)
+inputparam <- args[1]
+
+# a vector with all our parameters.
+alpha_vec <- c(2.5, 3.3, 5.1, 8.2, 10.9)
+alpha <- alpha_vec[as.integer(inputparam)]
+
+# Generate a random number between 0 and alpha 
+# store it in dataframe with the coresponding 
+# alpha value
+randomnum <- runif(1, min=0, max=as.double(alpha))
+df <- data.frame("alpha" = alpha, "random_num" = randomnum)
+
+# Save the data frame to a file with the alpha value
+# Note that the output/ folder will need to be 
+# manually created first!
+outputname <- paste("output/", "alpha_", alpha, ".Rda", sep="")
+save(df,file=outputname)
+```
+
+Next create the submision script. Which we will run on the parallel partition rather than quicktest.
+
+r_submit.sh:
+```bash
+#!/bin/bash
+#SBATCH --job-name=test_R_array
+#SBATCH --output=stdout/array_%A_%a.out
+#SBATCH --error=stdout/array_%A_%a.err
+#SBATCH --array=1-5
+#SBATCH --time=00:00:20
+#SBATCH --partition=parallel
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+
+module load R/CRAN
+
+# Print the task id.
+Rscript r_random_alpha.R $SLURM_ARRAY_TASK_ID
+```
+
+Run the jobs with
+```bash
+sbatch r_submit.sh
+```
