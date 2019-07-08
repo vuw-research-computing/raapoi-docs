@@ -166,20 +166,20 @@
               
                 <h2 id="simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip<a class="headerlink" href="#simple-python-program-using-virtualenv-and-pip" title="Permanent link">&para;</a></h2>
 <p>First we need to create a working directory and move there</p>
-<div class="codehilite"><pre><span></span><span class="n">mkdir</span> <span class="n">python_test</span>
-<span class="n">cd</span> <span class="n">python_test</span>
+<div class="codehilite"><pre><span></span>mkdir python_test
+<span class="nb">cd</span> python_test
 </pre></div>
 
 
 <p>Next we load the python 3 module and use python 3 to create a python virtualenv.  This way we can install pip packages which are not installed on the cluster</p>
-<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6.6</span>
-<span class="n">python3</span> -<span class="o">m</span> <span class="n">venv</span> <span class="n">mytest</span>
+<div class="codehilite"><pre><span></span>module load python/3.6.6
+python3 -m venv mytest
 </pre></div>
 
 
 <p>Activate the <code>mytest</code> virtualenv and use pip to install the <code>webcolors</code> package</p>
-<div class="codehilite"><pre><span></span><span class="k">source</span> <span class="n">mytest</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">activate</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">webcolors</span>
+<div class="codehilite"><pre><span></span><span class="nb">source</span> mytest/bin/activate
+pip install webcolors
 </pre></div>
 
 
@@ -197,28 +197,12 @@
 
 
 <p>Alternatively download it with wget:</p>
-<div class="codehilite"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="p">.</span><span class="n">githubusercontent</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">vuw</span><span class="o">-</span><span class="n">research</span><span class="o">-</span><span class="n">computing</span><span class="o">/</span><span class="n">raapoi</span><span class="o">-</span><span class="n">tools</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">python_venv</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">py</span>
+<div class="codehilite"><pre><span></span>wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/test.py
 </pre></div>
 
 
 <p>Using nano create the submissions script called python_submit.sh with the following content - change <code>me@email.com</code> to your email address.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#</span>
 <span class="c1">#SBATCH --job-name=python_test</span>
 <span class="c1">#SBATCH -o python_test.out</span>
@@ -236,22 +220,22 @@ module load python/3.6.6
 <span class="nb">source</span> mytest/bin/activate
 python test.py
 </pre></div>
-</td></tr></table>
+
 
 <p>Alternatively download it with wget</p>
-<div class="codehilite"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="p">.</span><span class="n">githubusercontent</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">vuw</span><span class="o">-</span><span class="n">research</span><span class="o">-</span><span class="n">computing</span><span class="o">/</span><span class="n">raapoi</span><span class="o">-</span><span class="n">tools</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">python_venv</span><span class="o">/</span><span class="n">python_submit</span><span class="p">.</span><span class="n">sh</span>
+<div class="codehilite"><pre><span></span>wget https://raw.githubusercontent.com/vuw-research-computing/raapoi-tools/master/examples/python_venv/python_submit.sh
 </pre></div>
 
 
 <p>To submit your job to the Slurm scheduler</p>
-<div class="codehilite"><pre><span></span><span class="n">sbatch</span> <span class="n">python_submit</span><span class="p">.</span><span class="n">sh</span>
+<div class="codehilite"><pre><span></span>sbatch python_submit.sh
 </pre></div>
 
 
 <p>Check for your job on the queue with <code>squeue</code> though it might finish very fast.  The output files will appear in your working directory.</p>
 <h2 id="loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job<a class="headerlink" href="#loading-r-packages-running-a-simple-job" title="Permanent link">&para;</a></h2>
 <p>First login to Rāpoi and load the R/CRAN module:</p>
-<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">R</span><span class="o">/</span><span class="n">CRAN</span>      
+<div class="codehilite"><pre><span></span>module load R/CRAN      
 </pre></div>
 
 
