@@ -235,3 +235,57 @@ Run the jobs with
 ```bash
 sbatch r_submit.sh
 ```
+
+## Singularity/Docker container example
+
+While there are many modules on Räpooi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Räpooi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
+
+On your local machine create the singularity definition file
+
+input_args_example.def
+```singularity
+BootStrap: library
+From: ubuntu:16.04
+
+%runscript
+    exec echo "$@"
+
+%labels
+    Author Andre
+```
+
+This will build an ubuntu 16.04 container that will eventually run on Räpooi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.
+
+Build the container *locally* with sudo and singularity
+```bash
+sudo singularity build inputexample.sif input_args_example.def 
+```
+
+This will build an image that you can't modify any further and is immediately suitable to run on Räpooi
+Copy this file to raapoi via sftp
+```bash
+sftp <username>@raapoi.vuw.ac.nz
+```
+
+Create a submit script using singularity on the cluster
+
+singularity_submit.sh
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=singularity_test
+#SBATCH -o sing_test.out
+#SBATCH -e sing_test.err
+#SBATCH --time=00:00:20
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+
+module load singularity/3.2.1
+
+singularity run inputtest.sif "hello from a container"
+```
+
+Run the script with the usual
+```bash
+singularity_submit.sh
+```
