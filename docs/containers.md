@@ -30,7 +30,8 @@ Running a batch job with containers is similar to running a regular job, but wil
 #SBATCH --time=12:00:00
 
 module load singularity
-singularity exec blocksci.simg blocksci_parser --output-directory bitcoin-data update disk --coin-directory bitcoin
+singularity exec blocksci.simg blocksci_parser --output-directory
+ <br> bitcoin-data update disk --coin-directory bitcoin
 ```
 
 Now to run the file you can:

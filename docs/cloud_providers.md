@@ -17,7 +17,8 @@ space to Cloudstor I would do the following from raapoi login node:
 ```
   tmux
   cd /nfs/scratch/harrelwe
-  owncloudcmd -u wes.harrell@vuw.ac.nz project1 https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
+  owncloudcmd -u wes.harrell@vuw.ac.nz project1 
+  https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
 ```
 
 The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
