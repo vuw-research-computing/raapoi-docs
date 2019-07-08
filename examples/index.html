@@ -124,6 +124,9 @@
         </ul>
     
 
+    <li class="toctree-l3"><a href="#singularitydocker-container-example">Singularity/Docker container example</a></li>
+    
+
     </ul>
                 </li>
     </ul>
@@ -392,6 +395,55 @@ Rscript r_random_alpha.R <span class="nv">$SLURM_ARRAY_TASK_ID</span>
 
 <p>Run the jobs with</p>
 <div class="codehilite"><pre><span></span>sbatch r_submit.sh
+</pre></div>
+
+
+<h2 id="singularitydocker-container-example">Singularity/Docker container example<a class="headerlink" href="#singularitydocker-container-example" title="Permanent link">&para;</a></h2>
+<p>While there are many modules on Räpooi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Räpooi.  However, you <em>can</em> have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.</p>
+<p>On your local machine create the singularity definition file</p>
+<p>input_args_example.def</p>
+<div class="codehilite"><pre><span></span><span class="nl">BootStrap</span><span class="p">:</span> <span class="n">library</span>
+<span class="nl">From</span><span class="p">:</span> <span class="nl">ubuntu</span><span class="p">:</span><span class="mf">16.04</span>
+
+<span class="nf">%runscript</span>
+    <span class="n">exec</span> <span class="n">echo</span> <span class="s">&quot;$@&quot;</span>
+
+<span class="nf">%labels</span>
+    <span class="n">Author</span> <span class="n">Andre</span>
+</pre></div>
+
+
+<p>This will build an ubuntu 16.04 container that will eventually run on Räpooi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.</p>
+<p>Build the container <em>locally</em> with sudo and singularity</p>
+<div class="codehilite"><pre><span></span>sudo singularity build inputexample.sif input_args_example.def 
+</pre></div>
+
+
+<p>This will build an image that you can't modify any further and is immediately suitable to run on Räpooi
+Copy this file to raapoi via sftp</p>
+<div class="codehilite"><pre><span></span>sftp &lt;username&gt;@raapoi.vuw.ac.nz
+</pre></div>
+
+
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=singularity_test</span>
+<span class="c1">#SBATCH -o sing_test.out</span>
+<span class="c1">#SBATCH -e sing_test.err</span>
+<span class="c1">#SBATCH --time=00:00:20</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --mem=1G</span>
+
+module load singularity/3.2.1
+
+singularity run inputtest.sif <span class="s2">&quot;hello from a container&quot;</span>
+</pre></div>
+
+
+<p>Run the script with the usual</p>
+<div class="codehilite"><pre><span></span>singularity_submit.sh
 </pre></div>
               
             </div>
