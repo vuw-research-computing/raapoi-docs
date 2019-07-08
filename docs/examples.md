@@ -238,7 +238,7 @@ sbatch r_submit.sh
 
 ## Singularity/Docker container example
 
-While there are many modules on Räpooi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Räpooi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
+While there are many modules on Rāpooi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpooi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
 
 On your local machine create the singularity definition file
 
@@ -254,14 +254,14 @@ From: ubuntu:16.04
     Author Andre
 ```
 
-This will build an ubuntu 16.04 container that will eventually run on Räpooi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.
+This will build an ubuntu 16.04 container that will eventually run on Rāpooi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.
 
 Build the container *locally* with sudo and singularity
 ```bash
 sudo singularity build inputexample.sif input_args_example.def 
 ```
 
-This will build an image that you can't modify any further and is immediately suitable to run on Räpooi
+This will build an image that you can't modify any further and is immediately suitable to run on Rāpooi
 Copy this file to raapoi via sftp
 ```bash
 sftp <username>@raapoi.vuw.ac.nz
