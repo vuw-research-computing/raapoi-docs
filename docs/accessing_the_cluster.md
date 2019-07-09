@@ -1,6 +1,9 @@
 # Accessing the Cluster
 
-To access Rāpoi, you'll first need to get an account provisioned for you by contacting the [CAD research support team](../support) with your VUW staff username and school or institute affiliation.
+To access Rāpoi, you'll first need to get an account provisioned for you by contacting the [CAD research support team](../support) with your:
+ *VUW staff username; and 
+ *Faculty, School or Institute affiliation.
+ 
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](../support) to determine options.
 
 _Access is via SSH_
@@ -17,6 +20,8 @@ using the hostname and instead need to use the IP address, eg
 `harrelwe@130.195.19.14`
 
 More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
+
+More information on the history and processes of SSH can be found in [this Software Carpentry lesson](https://swcarpentry.github.io/shell-extras/02-ssh/) and a more general how-to overview can be seen [here](https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/).
 
 
 ### SSH Clients
