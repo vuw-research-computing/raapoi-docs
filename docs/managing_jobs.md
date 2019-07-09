@@ -43,9 +43,9 @@ To view your running jobs you can type _vuw-myjobs_  eg:
 
 
 ```
-           [harrelwe@node142 ~]$ vuw-myjobs
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
+[harrelwe@node142 ~]$ vuw-myjobs
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
 ```
 
 As you can see I have a single job running on the node c03n01 on the quicktest partition
