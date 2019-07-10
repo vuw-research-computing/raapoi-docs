@@ -14,5 +14,12 @@ harrelwe@raapoi-master:~$ vuw-quota
 Quotas for home directory
 
                        Storage  Usage (GB)  Quota (GB)     % Used 
-            /nfs/home/harrelwe        0.10       50.00      0.20%
+              /nfs/home/wesley       17.21       50.00     34.43%
+
+
+Quota for scratch directory
+
+                       Storage  Usage (GB)  Quota (GB)     % Used 
+
+           /nfs/scratch/wesley      133.39     5000.00      2.67%
 ```
