@@ -1,8 +1,9 @@
 # Accessing the Cluster
 
 To access Rāpoi, you'll first need to get an account provisioned for you by contacting the [CAD research support team](../support) with your:
- *VUW staff username; and 
- *Faculty, School or Institute affiliation.
+* Full Name
+* VUW staff username
+* Faculty, School or Institute affiliation.
  
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](../support) to determine options.
 
