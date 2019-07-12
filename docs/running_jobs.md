@@ -13,8 +13,8 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
  #SBATCH --mem-per-cpu=2G
  #SBATCH --partition=parallel
  #SBATCH --time=3-12:00
- #SBATCH -o /home/username/project1.out
- #SBATCH -e /home/username/project1.err
+ #SBATCH -o /nfs/home/username/project1.out
+ #SBATCH -e /nfs/home/username/project1.err
  #SBATCH --mail-type=BEGIN,END,FAIL
  #SBATCH --mail-user=me@email.com
 
@@ -23,7 +23,11 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
 
 ```
 
-This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days 12 hours.  We are requesting that this job be run on the parallel  partition, it will then load the environment module for python version 3.6.3 and run a python script called project1.py.  Any output from the script will be placed in your home directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran _sbatch_.
+This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
+12 hours.  We are requesting that this job be run on the parallel  partition, it
+will then load the environment module for python version 3.6.3 and run a python
+script called project1.py.  Any output from the script will be placed in your
+home directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran _sbatch_.
 
 NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
 
