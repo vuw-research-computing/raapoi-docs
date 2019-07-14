@@ -35,6 +35,8 @@ NOTE:  We have this example script available to copy on the cluster, you can typ
 
 The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
 
+For more information on the sbatch command, please use the manpages, eg: _man sbatch_
+
 ## Interactive jobs
 
 One of the basic job submittal tools is the command srun
@@ -57,3 +59,6 @@ The _srun_ command will submit the job to the cluster.  The _srun_ command has m
 * --time=08:00:00 - requests a runtime of up to 8 hours (format is DAYS-HOURS:MINUTES:SECONDS), this is important in case the cluster or partition has a limited run-time, for example if an outage window is approaching.  Keep in mind time is a resource along with CPU and Memory.  
 * --partition=bigmem - requests a certain partition, in this case it requests the bigmem partition, see the section on using cluster partitions for more information.
 * R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)
+
+
+For more information on the srun command, please use the manpages, eg: _man srun_

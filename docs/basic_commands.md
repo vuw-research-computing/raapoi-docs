@@ -47,7 +47,9 @@ The _-r_ flag recursively removes files and directories
 **mkdir** - This will create a new directory
 * _mkdir /nfs/home/myusername/financial_
 
-Other Commands you may use: _alias, awk, cat, export, for, grep, gzip, if, less, sed, tar, while_
+To find more detailed information about any command you can use the manpages,
+eg:  _man ls_
+
 
 ### Learning the Linux Shell
 
