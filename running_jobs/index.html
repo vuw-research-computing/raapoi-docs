@@ -191,6 +191,7 @@ home directory in a file named project1.out and any error information in a file 
 <p>NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:</p>
 <p><code>cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh</code></p>
 <p>The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.</p>
+<p>For more information on the sbatch command, please use the manpages, eg: <em>man sbatch</em></p>
 <h2 id="interactive-jobs">Interactive jobs<a class="headerlink" href="#interactive-jobs" title="Permanent link">&para;</a></h2>
 <p>One of the basic job submittal tools is the command srun</p>
 <p>For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:</p>
@@ -210,6 +211,7 @@ The <em>srun</em> command will submit the job to the cluster.  The <em>srun</em>
 <li>--partition=bigmem - requests a certain partition, in this case it requests the bigmem partition, see the section on using cluster partitions for more information.</li>
 <li>R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)</li>
 </ul>
+<p>For more information on the srun command, please use the manpages, eg: <em>man srun</em></p>
               
             </div>
           </div>
