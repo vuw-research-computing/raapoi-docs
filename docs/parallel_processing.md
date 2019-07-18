@@ -87,7 +87,8 @@ MPI (Message Passing Interface) code require special attention within Slurm. Slu
   #SBATCH --time=3-00:00:00
   #SBATCH --mem=4G # 4 GB RAM per node
   #SBATCH --output=mpi_job.log
-  #SBATCH -p parallel
+  #SBATCH --partition=parallel
+  #SBATCH --constraint="IB"
   #SBATCH --mail-type=BEGIN,END,FAIL
   #SBATCH --mail-user=me@email.com
 
@@ -99,7 +100,10 @@ MPI (Message Passing Interface) code require special attention within Slurm. Slu
 
 This example requests 3 nodes and 8 tasks (i.e. processes) per node, for a total of 24 tasks.  I use this number to tell mpirun how many processes to start, -np 24
 
-NOTE:  If using python or another language you will also need to add the --oversubscribe parameter to mpirun, eg.
+_NOTE:_ We highly recomend adding the `--constraint="IB"` parameter to your MPI job as
+this will ensure the job is run on nodes with an Infiniband interconnect.
+
+_ALSO NOTE:_  If using python or another language you will also need to add the --oversubscribe parameter to mpirun, eg.
 
   `mpirun --oversubscribe -np 24 mpiscript.py`
 
