@@ -69,6 +69,10 @@
         
             <li><a class="toctree-l4" href="#ssh-clients">SSH Clients</a></li>
         
+            <li><a class="toctree-l4" href="#file-transfer-with-sftp-scp-or-rsync">File Transfer with SFTP, SCP or rsync</a></li>
+        
+            <li><a class="toctree-l4" href="#file-transfer-with-cloud-tools">File transfer with cloud tools</a></li>
+        
         </ul>
     
 
@@ -210,6 +214,13 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
 <li><a href="https://gitforwindows.org/">Git Bash</a> is a great option and is part of the Git for Windows project</li>
 <li><a href="https://mobaxterm.mobatek.net/">MobaXterm</a> is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.</li>
 </ul>
+<h3 id="file-transfer-with-sftp-scp-or-rsync">File Transfer with SFTP, SCP or rsync<a class="headerlink" href="#file-transfer-with-sftp-scp-or-rsync" title="Permanent link">&para;</a></h3>
+<p>There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc</p>
+<p>One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are <em>scp, sftp</em> and <em>rsync</em></p>
+<p>In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
+<em>/nfs/home/username</em> or <em>/nfs/scratch/username</em></p>
+<h3 id="file-transfer-with-cloud-tools">File transfer with cloud tools<a class="headerlink" href="#file-transfer-with-cloud-tools" title="Permanent link">&para;</a></h3>
+<p>If you are using cloud storage such as AWS, DropBox, Cloudstor please look at the examples we have in <a href="https://vuw-research-computing.github.io/raapoi-docs/cloud_providers/">Connecting to Cloud Providers</a></p>
               
             </div>
           </div>
