@@ -175,7 +175,7 @@ may come a time when certain research groups purchase their own nodes and they a
 given exclusive access.</p>
 <p>To view the partitions available to use you can type the vuw-partitions
 command, eg</p>
-<div class="codehilite"><pre><span></span>harrelwe@raapoi-master:~$ vuw-partitions 
+<div class="codehilite"><pre><span></span>harrelwe@raapoi-master:~$ vuw-partitions
 
 VUW CLUSTER PARTITIONS
 PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
@@ -210,10 +210,10 @@ or for special purposes such as temporary dedicated access</li>
 <li><strong>down</strong> - node is down, either for maitnenance or due to failure</li>
 </ul>
 <p>Also notice the <em>TIMELIMIT</em> field, this describes the maximum runtime of a
-partition.  For example, the quicktest partition has a maximum runtime of 1 
+partition.  For example, the quicktest partition has a maximum runtime of 1
 hour and the parallel partition has a max runtime of 10 days.</p>
 <h1 id="partition-descriptions">Partition Descriptions<a class="headerlink" href="#partition-descriptions" title="Permanent link">&para;</a></h1>
-<p><em>Partition: quicktest</em></p>
+<h4>Partition: quicktest</h4>
 <p>This partition is for quick tests of code, environment, software builds or
 similar short-run jobs.  Since the max time limit is 1 hour it should not take
 long for your job to run.  This can also be used for near-on-demand interactive
@@ -223,7 +223,7 @@ jobs.</p>
 <li>Maximum memory available per task: 62G</li>
 <li>Maximum Runtime: 1 hour</li>
 </ul>
-<p><em>Partition: bigmem</em></p>
+<h4>Partition: bigmem</h4>
 <p>This partition is primarily useful for jobs that require very large shared
 memory (generally greater than 125 GB).  These are known as memory-bound jobs.</p>
 <ul>
@@ -231,7 +231,7 @@ memory (generally greater than 125 GB).  These are known as memory-bound jobs.</
 <li>Maximum memory available per task: 1 TB (Note: maximum CPU for 1 TB is 40)</li>
 <li>Maximum Runtime: 10 days</li>
 </ul>
-<p><em>Partition: parallel</em></p>
+<h4>Partition: parallel</h4>
 <p>This partition is useful for parallel workflows, either loosely coupled or jobs
 requiring MPI or other message passing protocols for tightly bound jobs.</p>
 <ul>
@@ -239,7 +239,7 @@ requiring MPI or other message passing protocols for tightly bound jobs.</p>
 <li>Maximum memory available per task: 125G</li>
 <li>Maximum Runtime: 10 days</li>
 </ul>
-<p><em>Cluster Defaults</em></p>
+<h4>Cluster Default Resources</h4>
 <p>Please note that if you do not specify CPU, Memory or Time in your job request
 you will be given the cluster defaults which are:</p>
 <ul>
@@ -247,9 +247,7 @@ you will be given the cluster defaults which are:</p>
 <li>Default Memory: 2 GB</li>
 <li>Default Time: 1 hour</li>
 </ul>
-<p>You can change these with the -c, --mem and --time parameters to the srun and
-sbatch commands.  Please see this documentation for more information about srun
-and sbatch.</p>
+<p>You can change these with the -c, --mem and --time parameters to the srun and sbatch commands.  Please see this documentation for more information about srun and sbatch.</p>
               
             </div>
           </div>
