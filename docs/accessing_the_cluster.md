@@ -5,7 +5,7 @@ To access Rāpoi, you'll first need to get an account provisioned for you by con
 *  Full Name
 *  VUW staff username
 *  Faculty, School or Institute affiliation.
- 
+
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](../support) to determine options.
 
 _Access is via SSH_
@@ -36,7 +36,7 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
     * Or use Spotlight search (aka Command-Space)
 * [iTerm2](https://www.iterm2.com/) is a good replacement for the default Terminal app
 * [XQuartz](https://www.xquartz.org/) is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: `sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true`   We have found that this allows some older GUI applications to run with fewer errors.
- 
+
 
 NOTE:  Once at the command prompt you can type the following to login (replace "username" with your VUW user):
 
@@ -47,3 +47,16 @@ _Windows SSH Clients_
 * Recommended Clients:
   * [Git Bash](https://gitforwindows.org/) is a great option and is part of the Git for Windows project
   * [MobaXterm](https://mobaxterm.mobatek.net/) is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.
+
+### File Transfer with SFTP, SCP or rsync
+
+There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
+
+One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_
+
+In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
+_/nfs/home/username_ or _/nfs/scratch/username_
+
+### File transfer with cloud tools
+
+If you are using cloud storage such as AWS, DropBox, Cloudstor please look at the examples we have in [Connecting to Cloud Providers](https://vuw-research-computing.github.io/raapoi-docs/cloud_providers/)
