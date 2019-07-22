@@ -14,7 +14,7 @@ To view the partitions available to use you can type the vuw-partitions
 command, eg
 
 ```
-harrelwe@raapoi-master:~$ vuw-partitions 
+harrelwe@raapoi-master:~$ vuw-partitions
 
 VUW CLUSTER PARTITIONS
 PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
@@ -48,12 +48,12 @@ or for special purposes such as temporary dedicated access
 * __down__ - node is down, either for maitnenance or due to failure
 
 Also notice the _TIMELIMIT_ field, this describes the maximum runtime of a
-partition.  For example, the quicktest partition has a maximum runtime of 1 
+partition.  For example, the quicktest partition has a maximum runtime of 1
 hour and the parallel partition has a max runtime of 10 days.
 
 # Partition Descriptions
 
-_Partition: quicktest_
+#### Partition: quicktest
 
 This partition is for quick tests of code, environment, software builds or
 similar short-run jobs.  Since the max time limit is 1 hour it should not take
@@ -64,7 +64,7 @@ jobs.
 * Maximum memory available per task: 62G
 * Maximum Runtime: 1 hour
 
-_Partition: bigmem_
+#### Partition: bigmem
 
 This partition is primarily useful for jobs that require very large shared
 memory (generally greater than 125 GB).  These are known as memory-bound jobs.
@@ -73,7 +73,7 @@ memory (generally greater than 125 GB).  These are known as memory-bound jobs.
 * Maximum memory available per task: 1 TB (Note: maximum CPU for 1 TB is 40)
 * Maximum Runtime: 10 days
 
-_Partition: parallel_
+#### Partition: parallel
 
 This partition is useful for parallel workflows, either loosely coupled or jobs
 requiring MPI or other message passing protocols for tightly bound jobs.
@@ -82,7 +82,7 @@ requiring MPI or other message passing protocols for tightly bound jobs.
 * Maximum memory available per task: 125G
 * Maximum Runtime: 10 days
 
-_Cluster Defaults_
+#### Cluster Default Resources
 
 Please note that if you do not specify CPU, Memory or Time in your job request
 you will be given the cluster defaults which are:
@@ -91,6 +91,4 @@ you will be given the cluster defaults which are:
 * Default Memory: 2 GB
 * Default Time: 1 hour
 
-You can change these with the -c, --mem and --time parameters to the srun and
-sbatch commands.  Please see this documentation for more information about srun
-and sbatch.
+You can change these with the -c, --mem and --time parameters to the srun and sbatch commands.  Please see this documentation for more information about srun and sbatch.
