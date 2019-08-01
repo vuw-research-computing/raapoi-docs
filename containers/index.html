@@ -178,8 +178,8 @@
 container and can type the commands available from within the container such as
 the BlockSci utility <strong>blocksci_parser</strong></p>
 <h2 id="running-a-container-in-batch">Running a container in batch<a class="headerlink" href="#running-a-container-in-batch" title="Permanent link">&para;</a></h2>
-<p>Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the BlockSci software that was created in an Ubuntu docker image, lets name the submit file runContainer.sh:</p>
-<div class="codehilite"><pre><span></span><span class="c c-Singleline">#SBATCH -J blockchain_parser</span>
+<p>Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the <em>autometa</em> software that was created in a docker image, lets name the submit file runContainer.sh:</p>
+<div class="codehilite"><pre><span></span><span class="c c-Singleline">#SBATCH -J autometa-job</span>
 <span class="c c-Singleline">#SBATCH -c 4</span>
 <span class="c c-Singleline">#SBATCH --mem=16G</span>
 <span class="c c-Singleline">#SBATCH --mailtype=BEGIN,END,FAIL</span>
@@ -187,15 +187,13 @@ the BlockSci utility <strong>blocksci_parser</strong></p>
 <span class="c c-Singleline">#SBATCH --time=12:00:00</span>
 
 <span class="k">module</span> <span class="n">load</span> <span class="n">singularity</span>
-<span class="n">singularity</span> <span class="n">exec</span> <span class="n">blocksci</span>.<span class="n">simg</span> <span class="n">blocksci_parser</span> --<span class="n">output-directory</span>
-<span class="n">bitcoin-data</span> <span class="n">update</span> <span class="n">disk</span> --<span class="n">coin-directory</span> <span class="n">bitcoin</span>
+<span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker:</span>//<span class="n">jasonkwan</span><span class="o">/</span><span class="n">autometa:latest</span>
+<span class="n">singularity</span> <span class="n">exec</span> <span class="n">autometa_latest</span>.<span class="n">sif</span> <span class="n">calculate_read_coverage</span>.<span class="n">py</span> <span class="n">somedata</span>.<span class="n">dat</span>
 </pre></div>
 
 
 <p>Now to run the file you can:</p>
-<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">singularity</span>
-<span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker:</span>//<span class="n">tislaamo</span><span class="o">/</span><span class="n">blocksci</span>
-<span class="n">sbatch</span> <span class="n">runContainer</span>.<span class="n">sh</span>
+<div class="codehilite"><pre><span></span>sbatch runContainer.sh
 </pre></div>
 
 
