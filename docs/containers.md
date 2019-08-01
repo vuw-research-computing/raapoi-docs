@@ -19,10 +19,10 @@ the BlockSci utility **blocksci_parser**
 
 ## Running a container in batch
 
-Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the BlockSci software that was created in an Ubuntu docker image, lets name the submit file runContainer.sh:
+Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the _autometa_ software that was created in a docker image, lets name the submit file runContainer.sh:
 
 ```
-#SBATCH -J blockchain_parser
+#SBATCH -J autometa-job
 #SBATCH -c 4
 #SBATCH --mem=16G
 #SBATCH --mailtype=BEGIN,END,FAIL
@@ -30,15 +30,13 @@ Running a batch job with containers is similar to running a regular job, but wil
 #SBATCH --time=12:00:00
 
 module load singularity
-singularity exec blocksci.simg blocksci_parser --output-directory
-bitcoin-data update disk --coin-directory bitcoin
+singularity pull docker://jasonkwan/autometa:latest
+singularity exec autometa_latest.sif calculate_read_coverage.py somedata.dat
 ```
 
 Now to run the file you can:
 
 ```
-module load singularity
-singularity pull docker://tislaamo/blocksci
 sbatch runContainer.sh
 ```
 
