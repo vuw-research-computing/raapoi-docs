@@ -1,6 +1,6 @@
 # Preparing your environment
 
-Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Stata, etc).  We also keep older versions of software to ensure compatibility.
+Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.
 
 Because of this, raapoi developers use a tool called module to allow a user to load a specific version of an application, language or library and start using it for their work. The _module_ command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:
 
@@ -15,7 +15,7 @@ If you want to know more about a particular module you can use the _whatis_ or
 _show_ subcommand.  Some modules have this available, for instance:
 
 ```
-harrelwe@raapoi-master:~$ module show trimmomatic/20190304 
+harrelwe@raapoi-master:~$ module show trimmomatic/20190304
 ----------------------------------------------------------------------
    /home/software/tools/modulefiles/trimmomatic/20190304:
 ----------------------------------------------------------------------
