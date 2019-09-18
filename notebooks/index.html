@@ -163,23 +163,23 @@
               
                 <h2 id="starting-and-working-with-a-jupyter-notebook">Starting and Working with a Jupyter Notebook<a class="headerlink" href="#starting-and-working-with-a-jupyter-notebook" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1:</strong> The best way to start jupyter is with a batch submit script.  We have created an example script.  You can copy this script from one available on the cluster, just type the following:</p>
-<div class="codehilite"><pre><span></span>cp /home/software/vuwrc/examples/jupyter/notebook.sh notebook.sh
+<div class="codehilite"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">vuwrc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">notebook</span><span class="p">.</span><span class="n">sh</span> <span class="n">notebook</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
 <p>If you are using Anaconda and have installed it in the default location you need to use the following submit file instead:</p>
-<div class="codehilite"><pre><span></span>cp /home/software/vuwrc/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh
+<div class="codehilite"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">vuwrc</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">notebook</span><span class="o">-</span><span class="n">anaconda</span><span class="p">.</span><span class="n">sh</span> <span class="n">notebook</span><span class="o">-</span><span class="n">anaconda</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
 <p><strong>NOTE</strong>: We also have sbatch scripts for R (IRKernel)) notebooks.  These are called <em>R-notebook.sh</em> and <em>R-notebook-anaconda.sh</em></p>
 <p>This script is ready to run as is, but we recommend editing it to satisfy your own CPU, memory and time requirements.  Once you have edited the file you can run it thusly:</p>
-<div class="codehilite"><pre><span></span>sbatch notebook.sh
+<div class="codehilite"><pre><span></span><span class="n">sbatch</span> <span class="n">notebook</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
 <p>or if using Anaconda:</p>
-<div class="codehilite"><pre><span></span>sbatch notebook-anaconda.sh
+<div class="codehilite"><pre><span></span><span class="n">sbatch</span> <span class="n">notebook</span><span class="o">-</span><span class="n">anaconda</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
@@ -197,12 +197,12 @@ to connect to the compute node (in the example above the compute node is at
 address 130.195.19.20) and transfer all the traffic back and forth between your computer and the compute node).  </p>
 <p><strong>Step 2a from a Mac:</strong></p>
 <p>Open a new session window from Terminal.app or other terminal utility such as Xquartz and type the following:</p>
-<div class="codehilite"><pre><span></span>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+<div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="o">&lt;</span><span class="n">PORT_NUMBER</span><span class="o">&gt;</span><span class="err">:</span><span class="o">&lt;</span><span class="n">IP_ADDRESS</span><span class="o">&gt;</span><span class="err">:</span><span class="o">&lt;</span><span class="n">PORT_NUMBER</span><span class="o">&gt;</span><span class="w"> </span><span class="n">username</span><span class="nv">@raapoi</span><span class="p">.</span><span class="n">vuw</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">nz</span><span class="w"></span>
 </pre></div>
 
 
 <p>For example:</p>
-<div class="codehilite"><pre><span></span>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+<div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">47033</span><span class="err">:</span><span class="mf">130.195.19.20</span><span class="err">:</span><span class="mi">47033</span><span class="w"> </span><span class="n">harrelwe</span><span class="nv">@raapoi</span><span class="p">.</span><span class="n">vuw</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">nz</span><span class="w"></span>
 </pre></div>
 
 
@@ -212,12 +212,12 @@ address 130.195.19.20) and transfer all the traffic back and forth between your 
 <p><em>Method 1 (Git Bash or MobaXterm):</em>
 Command-line, start a local Git Bash or MobaXterm terminal (or try the GUI method, below)</p>
 <p>From the command prompt type:</p>
-<div class="codehilite"><pre><span></span>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+<div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="o">&lt;</span><span class="n">PORT_NUMBER</span><span class="o">&gt;</span><span class="err">:</span><span class="o">&lt;</span><span class="n">IP_ADDRESS</span><span class="o">&gt;</span><span class="err">:</span><span class="o">&lt;</span><span class="n">PORT_NUMBER</span><span class="o">&gt;</span><span class="w"> </span><span class="n">username</span><span class="nv">@raapoi</span><span class="p">.</span><span class="n">vuw</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">nz</span><span class="w"></span>
 </pre></div>
 
 
 <p>For example:</p>
-<div class="codehilite"><pre><span></span>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+<div class="codehilite"><pre><span></span><span class="n">ssh</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="mi">47033</span><span class="err">:</span><span class="mf">130.195.19.20</span><span class="err">:</span><span class="mi">47033</span><span class="w"> </span><span class="n">harrelwe</span><span class="nv">@raapoi</span><span class="p">.</span><span class="n">vuw</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">nz</span><span class="w"></span>
 </pre></div>
 
 

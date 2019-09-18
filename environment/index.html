@@ -176,12 +176,12 @@ However, instead of searching through a long list, if you know you want to use l
 <p><code>module keyword lua</code></p>
 <p>If you want to know more about a particular module you can use the <em>whatis</em> or
 <em>show</em> subcommand.  Some modules have this available, for instance:</p>
-<div class="codehilite"><pre><span></span>harrelwe@raapoi-master:~$ module show trimmomatic/20190304
-----------------------------------------------------------------------
-   /home/software/tools/modulefiles/trimmomatic/20190304:
-----------------------------------------------------------------------
-load(&quot;java/jdk/1.8.0_121&quot;)
-setenv(&quot;TM_HOME&quot;,&quot;/home/software/apps/trimmomatic/20190304/bin&quot;)
+<div class="codehilite"><pre><span></span><span class="nv">harrelwe</span>@<span class="nv">raapoi</span><span class="o">-</span><span class="nv">master</span>:<span class="o">~</span>$ <span class="nv">module</span> <span class="k">show</span> <span class="nv">trimmomatic</span><span class="o">/</span><span class="mi">20190304</span>
+<span class="o">----------------------------------------------------------------------</span>
+   <span class="o">/</span><span class="nv">home</span><span class="o">/</span><span class="nv">software</span><span class="o">/</span><span class="nv">tools</span><span class="o">/</span><span class="nv">modulefiles</span><span class="o">/</span><span class="nv">trimmomatic</span><span class="o">/</span><span class="mi">20190304</span>:
+<span class="o">----------------------------------------------------------------------</span>
+<span class="nv">load</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">java/jdk/1.8.0_121</span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="k">setenv</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">TM_HOME</span><span class="s2">&quot;</span>,<span class="s2">&quot;</span><span class="s">/home/software/apps/trimmomatic/20190304/bin</span><span class="s2">&quot;</span><span class="ss">)</span>
 </pre></div>
 
 
@@ -198,13 +198,13 @@ setenv(&quot;TM_HOME&quot;,&quot;/home/software/apps/trimmomatic/20190304/bin&qu
 <p>Showing/listing the module environment modifications
 You can discover what the module will load into your environment you can run
 module show, for example here is what R adds:</p>
-<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">show</span> <span class="n">R</span><span class="o">/</span><span class="mf">3.5.1</span>
---------------------------------------------------
-   /<span class="n">home</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.5.1</span>:
---------------------------------------------------
+<div class="codehilite"><pre><span></span><span class="nv">module</span> <span class="k">show</span> <span class="nv">R</span><span class="o">/</span><span class="mi">3</span>.<span class="mi">5</span>.<span class="mi">1</span>
+<span class="o">--------------------------------------------------</span>
+   <span class="o">/</span><span class="nv">home</span><span class="o">/</span><span class="nv">software</span><span class="o">/</span><span class="nv">tools</span><span class="o">/</span><span class="nv">modulefiles</span><span class="o">/</span><span class="nv">R</span><span class="o">/</span><span class="mi">3</span>.<span class="mi">5</span>.<span class="mi">1</span>:
+<span class="o">--------------------------------------------------</span>
 
-<span class="n">whatis</span>(<span class="s">&quot;Adds the R language path to your environment &quot;</span>)
-<span class="n">prepend_path</span>(<span class="s">&quot;PATH&quot;</span>,<span class="s">&quot;/home/software/apps/R/3.5.1/bin&quot;</span>)
+<span class="nv">whatis</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Adds the R language path to your environment </span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="nv">prepend_path</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">PATH</span><span class="s2">&quot;</span>,<span class="s2">&quot;</span><span class="s">/home/software/apps/R/3.5.1/bin</span><span class="s2">&quot;</span><span class="ss">)</span>
 </pre></div>
 
 

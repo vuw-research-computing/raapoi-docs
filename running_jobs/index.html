@@ -168,18 +168,18 @@
 <p>To run a batch job (aka a job that runs unattended) you use the <em>sbatch</em> command.  A simple example would look something like this:</p>
 <p><code>sbatch myjob.sh</code></p>
 <p>In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:</p>
-<div class="codehilite"><pre><span></span> <span class="c c-Singleline">#!/bin/bash</span>
- <span class="c c-Singleline">#SBATCH --cpus-per-task=2</span>
- <span class="c c-Singleline">#SBATCH --mem-per-cpu=2G</span>
- <span class="c c-Singleline">#SBATCH --partition=parallel</span>
- <span class="c c-Singleline">#SBATCH --time=3-12:00</span>
- <span class="c c-Singleline">#SBATCH -o /nfs/home/username/project1.out</span>
- <span class="c c-Singleline">#SBATCH -e /nfs/home/username/project1.err</span>
- <span class="c c-Singleline">#SBATCH --mail-type=BEGIN,END,FAIL</span>
- <span class="c c-Singleline">#SBATCH --mail-user=me@email.com</span>
+<div class="codehilite"><pre><span></span> #<span class="o">!/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">bash</span>
+ #<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">cpus</span><span class="o">-</span><span class="nv">per</span><span class="o">-</span><span class="nv">task</span><span class="o">=</span><span class="mi">2</span>
+ #<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">mem</span><span class="o">-</span><span class="nv">per</span><span class="o">-</span><span class="nv">cpu</span><span class="o">=</span><span class="mi">2</span><span class="nv">G</span>
+ #<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">partition</span><span class="o">=</span><span class="nv">parallel</span>
+ #<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">time</span><span class="o">=</span><span class="mi">3</span><span class="o">-</span><span class="mi">12</span>:<span class="mi">00</span>
+ #<span class="nv">SBATCH</span> <span class="o">-</span><span class="nv">o</span> <span class="o">/</span><span class="nv">nfs</span><span class="o">/</span><span class="nv">home</span><span class="o">/</span><span class="nv">username</span><span class="o">/</span><span class="nv">project1</span>.<span class="nv">out</span>
+ #<span class="nv">SBATCH</span> <span class="o">-</span><span class="nv">e</span> <span class="o">/</span><span class="nv">nfs</span><span class="o">/</span><span class="nv">home</span><span class="o">/</span><span class="nv">username</span><span class="o">/</span><span class="nv">project1</span>.<span class="nv">err</span>
+ #<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">mail</span><span class="o">-</span><span class="nv">type</span><span class="o">=</span><span class="nv">BEGIN</span>,<span class="k">END</span>,<span class="nv">FAIL</span>
+ #<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">mail</span><span class="o">-</span><span class="nv">user</span><span class="o">=</span><span class="nv">me</span>@<span class="nv">email</span>.<span class="nv">com</span>
 
- <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6.3</span>
- <span class="n">python3</span> <span class="n">project1</span>.<span class="n">py</span>
+ <span class="nv">module</span> <span class="nv">load</span> <span class="nv">python</span><span class="o">/</span><span class="mi">3</span>.<span class="mi">6</span>.<span class="mi">3</span>
+ <span class="nv">python3</span> <span class="nv">project1</span>.<span class="nv">py</span>
 </pre></div>
 
 

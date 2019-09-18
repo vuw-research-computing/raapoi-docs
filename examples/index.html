@@ -127,6 +127,9 @@
     <li class="toctree-l3"><a href="#singularitydocker-container-example">Singularity/Docker container example</a></li>
     
 
+    <li class="toctree-l3"><a href="#singularitytensorflow-example">Singularity/TensorFlow Example</a></li>
+    
+
     </ul>
                 </li>
     </ul>
@@ -264,14 +267,14 @@ python test.py
 
 
 <p>Test library existence:</p>
-<div class="codehilite"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 </pre></div>
 
 
 <p>This should load the package.
 Metapackages like <code>tidyverse</code> currently don't load on Rāpoi, but components can be loaded individually: </p>
-<div class="codehilite"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
-<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
 </pre></div>
 
 
@@ -300,11 +303,11 @@ a file called r_submit.sh with:</p>
 
 
 <p>and then create another file with a test R script called <code>mytest.R</code> with:</p>
-<div class="codehilite"><pre><span></span><span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 
-<span class="kp">sprintf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -353,24 +356,24 @@ Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <span class="c1"># trailingOnly = TRUE gets the user supplied</span>
 <span class="c1"># arguments, and for now we will only get the</span>
 <span class="c1"># first user supplied argument</span>
-args <span class="o">&lt;-</span> <span class="kp">commandArgs</span><span class="p">(</span>trailingOnly <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
-inputparam <span class="o">&lt;-</span> <span class="kp">args</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+<span class="n">args</span> <span class="o">&lt;-</span> <span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">inputparam</span> <span class="o">&lt;-</span> <span class="n">args[1]</span>
 
 <span class="c1"># a vector with all our parameters.</span>
-alpha_vec <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">3.3</span><span class="p">,</span> <span class="m">5.1</span><span class="p">,</span> <span class="m">8.2</span><span class="p">,</span> <span class="m">10.9</span><span class="p">)</span>
-alpha <span class="o">&lt;-</span> alpha_vec<span class="p">[</span><span class="kp">as.integer</span><span class="p">(</span>inputparam<span class="p">)]</span>
+<span class="n">alpha_vec</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">3.3</span><span class="p">,</span> <span class="m">5.1</span><span class="p">,</span> <span class="m">8.2</span><span class="p">,</span> <span class="m">10.9</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="n">alpha_vec</span><span class="nf">[as.integer</span><span class="p">(</span><span class="n">inputparam</span><span class="p">)</span><span class="n">]</span>
 
 <span class="c1"># Generate a random number between 0 and alpha </span>
 <span class="c1"># store it in dataframe with the coresponding </span>
 <span class="c1"># alpha value</span>
-randomnum <span class="o">&lt;-</span> runif<span class="p">(</span><span class="m">1</span><span class="p">,</span> min<span class="o">=</span><span class="m">0</span><span class="p">,</span> max<span class="o">=</span><span class="kp">as.double</span><span class="p">(</span>alpha<span class="p">))</span>
-df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span> <span class="o">=</span> alpha<span class="p">,</span> <span class="s">&quot;random_num&quot;</span> <span class="o">=</span> randomnum<span class="p">)</span>
+<span class="n">randomnum</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">min</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">max</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;random_num&quot;</span> <span class="o">=</span> <span class="n">randomnum</span><span class="p">)</span>
 
 <span class="c1"># Save the data frame to a file with the alpha value</span>
 <span class="c1"># Note that the output/ folder will need to be </span>
 <span class="c1"># manually created first!</span>
-outputname <span class="o">&lt;-</span> <span class="kp">paste</span><span class="p">(</span><span class="s">&quot;output/&quot;</span><span class="p">,</span> <span class="s">&quot;alpha_&quot;</span><span class="p">,</span> alpha<span class="p">,</span> <span class="s">&quot;.Rda&quot;</span><span class="p">,</span> sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-<span class="kp">save</span><span class="p">(</span>df<span class="p">,</span>file<span class="o">=</span>outputname<span class="p">)</span>
+<span class="n">outputname</span> <span class="o">&lt;-</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;output/&quot;</span><span class="p">,</span> <span class="s">&quot;alpha_&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;.Rda&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="nf">save</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">outputname</span><span class="p">)</span>
 </pre></div>
 
 
@@ -444,6 +447,90 @@ singularity run inputtest.sif <span class="s2">&quot;hello from a container&quot
 
 <p>Run the script with the usual</p>
 <div class="codehilite"><pre><span></span>singularity_submit.sh
+</pre></div>
+
+
+<h2 id="singularitytensorflow-example">Singularity/TensorFlow Example<a class="headerlink" href="#singularitytensorflow-example" title="Permanent link">&para;</a></h2>
+<p>tensor.def</p>
+<div class="codehilite"><pre><span></span>Bootstrap: docker
+From: tensorflow/tensorflow:latest-py3
+
+%post
+apt-get update <span class="o">&amp;&amp;</span> apt-get -y install wget build-essential 
+
+%runscript
+    <span class="nb">exec</span> python <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>compile this <em>locally</em> with sudo and singularity.</p>
+<div class="codehilite"><pre><span></span>sudo singularity build tensorflow.sif tensor.def 
+</pre></div>
+
+
+<p>Create a quick tensorflow test code
+tensortest.py</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Copy your files to raapoi via sftp (or whatever you prefer)</p>
+<div class="codehilite"><pre><span></span>sftp &lt;username&gt;@raapoi.vuw.ac.nz
+<span class="nb">cd</span> &lt;where you want to work&gt;
+put *   <span class="c1">#put all files in your local directory onto raapoi</span>
+</pre></div>
+
+
+<p>Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.</p>
+<div class="codehilite"><pre><span></span>srun --partition<span class="o">=</span><span class="s2">&quot;parallel&quot;</span> --constraint<span class="o">=</span><span class="s2">&quot;Intel&quot;</span> --pty bash
+
+<span class="c1">#now on the remote node - note you might need to wait if nodes are busy</span>
+module load singularity <span class="c1">#load singularity</span>
+singularity shell tensorflow.sif 
+
+<span class="c1">#now inside the tensorflow container on the remote node</span>
+python tensortest.py 
+
+<span class="c1">#once that runs, exit the container</span>
+<span class="nb">exit</span> <span class="c1">#exit the container</span>
+<span class="nb">exit</span> <span class="c1">#exit the interactive session on the node</span>
+</pre></div>
+
+
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=singularity_test</span>
+<span class="c1">#SBATCH -o sing_test.out</span>
+<span class="c1">#SBATCH -e sing_test.err</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">##SBATCH --constraint=Intel</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --mem=4G</span>
+
+module load singularity/3.2.1
+
+<span class="c1">#run the container with the runscript defined when we created it</span>
+singularity run tensorflow.sif tensortest.py 
 </pre></div>
               
             </div>
