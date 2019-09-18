@@ -289,3 +289,92 @@ Run the script with the usual
 ```bash
 singularity_submit.sh
 ```
+
+## Singularity/TensorFlow Example
+
+tensor.def
+```bash
+Bootstrap: docker
+From: tensorflow/tensorflow:latest-py3
+
+%post
+apt-get update && apt-get -y install wget build-essential 
+
+%runscript
+    exec python "$@"
+
+```
+
+compile this *locally* with sudo and singularity.
+```bash
+sudo singularity build tensorflow.sif tensor.def 
+```
+
+Create a quick tensorflow test code
+tensortest.py
+```python
+import tensorflow as tf
+mnist = tf.keras.datasets.mnist
+
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(input_shape=(28, 28)),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=5)
+model.evaluate(x_test, y_test)
+```
+
+Copy your files to raapoi via sftp (or whatever you prefer)
+```bash
+sftp <username>@raapoi.vuw.ac.nz
+cd <where you want to work>
+put *   #put all files in your local directory onto raapoi
+```
+
+Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.
+```bash
+srun --partition="parallel" --constraint="Intel" --pty bash
+
+#now on the remote node - note you might need to wait if nodes are busy
+module load singularity #load singularity
+singularity shell tensorflow.sif 
+
+#now inside the tensorflow container on the remote node
+python tensortest.py 
+
+#once that runs, exit the container
+exit #exit the container
+exit #exit the interactive session on the node
+```
+
+
+
+Create a submit script using singularity on the cluster
+
+singularity_submit.sh
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=singularity_test
+#SBATCH -o sing_test.out
+#SBATCH -e sing_test.err
+#SBATCH --time=00:10:00
+#SBATCH --partition=parallel
+##SBATCH --constraint=Intel
+#SBATCH --ntasks=1
+#SBATCH --mem=4G
+
+module load singularity/3.2.1
+
+#run the container with the runscript defined when we created it
+singularity run tensorflow.sif tensortest.py 
+```
