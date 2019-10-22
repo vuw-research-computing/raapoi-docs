@@ -378,3 +378,49 @@ module load singularity/3.2.1
 #run the container with the runscript defined when we created it
 singularity run tensorflow.sif tensortest.py 
 ```
+
+## Singularity/MaxBin2 Example
+In a sensible location, either in your home directory or on the scratch:
+
+Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced in the official maxbin site.
+
+```bash
+module load module load singularity/3.2.1
+singularity pull docker://quay.io/biocontainers/maxbin2:2.2.6--h14c3975_0
+mv maxbin2_2.2.6--h14c3975_0.sif maxbin2_2.2.6.sif #rename for convenience
+```
+
+Download some test data
+
+```bash
+mkdir rawdata
+curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.scaffold > rawdata/20x.scaffold
+curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.abund > rawdata/20x.abund
+```
+
+Create and output data location
+```bash
+mkdir output
+```
+
+
+
+Create a submit script using singularity on the cluster
+
+singularity_submit.sh
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=maxbin2_test
+#SBATCH -o sing_test.out
+#SBATCH -e sing_test.err
+#SBATCH --time=00:10:00
+#SBATCH --partition=parallel
+##SBATCH --constraint=Intel
+#SBATCH --ntasks=4
+#SBATCH --mem=4G
+
+module load singularity/3.2.1
+
+singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 
+```
