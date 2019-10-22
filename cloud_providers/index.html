@@ -180,11 +180,10 @@ or desktop (or smarthone if you wish):</p>
 <p>Once you have setup your cloudstor (aka ownCloud) credentials you can use them
 to sync data to and from Raapoi.  For example, if I wanted to sync my project
 space to Cloudstor I would do the following from raapoi login node:</p>
-<div class="codehilite"><pre><span></span><span class="w">  </span><span class="n">tmux</span><span class="w"></span>
-<span class="w">  </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">harrelwe</span><span class="w"></span>
-<span class="w">  </span><span class="n">owncloudcmd</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">wes</span><span class="p">.</span><span class="n">harrell</span><span class="nv">@vuw</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">nz</span><span class="w"> </span><span class="n">project1</span><span class="w"> </span>
-<span class="w">  </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloudstor</span><span class="p">.</span><span class="n">aarnet</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">au</span><span class="o">/</span><span class="n">plus</span><span class="o">/</span><span class="n">remote</span><span class="p">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="w"></span>
-</pre></div>
+<pre class="codehilite"><code>  tmux
+  cd /nfs/scratch/harrelwe
+  owncloudcmd -u wes.harrell@vuw.ac.nz project1 
+  https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/</code></pre>
 
 
 <p>The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
@@ -200,16 +199,14 @@ space to Cloudstor I would do the following from raapoi login node:</p>
 <p>To transfer data from S3 you first need to setup your AWS connect, instructions for that can be found above.
 Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  </p>
 <p>For example if I wanted to copy data from my S3 storage to my project directory I could do the following:</p>
-<div class="codehilite"><pre><span></span>  <span class="n">tmux</span>
-  <span class="n">module</span> <span class="k">load</span> <span class="n">amazon</span><span class="o">/</span><span class="n">aws</span><span class="o">/</span><span class="n">cli</span>
-  <span class="n">cd</span> <span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">harrelwe</span><span class="o">/</span><span class="n">project</span>
-  <span class="n">aws</span> <span class="n">s3</span> <span class="n">cp</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">mydata</span><span class="p">.</span><span class="n">dat</span> <span class="n">mydata</span><span class="p">.</span><span class="n">dat</span>
-</pre></div>
+<pre class="codehilite"><code>  tmux
+  module load amazon/aws/cli
+  cd /nfs/scratch/harrelwe/project
+  aws s3 cp s3://mybucket/mydata.dat mydata.dat</code></pre>
 
 
 <p>To copy something to storage simply reverse the file paths, eg.</p>
-<div class="codehilite"><pre><span></span>  <span class="n">aws</span> <span class="n">s3</span> <span class="n">cp</span> <span class="n">mydata</span><span class="p">.</span><span class="n">dat</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">mydata</span><span class="p">.</span><span class="n">dat</span> 
-</pre></div>
+<pre class="codehilite"><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat </code></pre>
 
 
 <p>The above starts a tmux session to allow the transfer to continue even if I
@@ -231,16 +228,14 @@ aws can be found here:
 <h4>Transferring Data to/from Google Cloud (gcloud)</h4>
 <p>To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the <code>gsutil</code> command to copy data to and from your gcloud storage.  </p>
 <p>For example, if I wanted to copy data from gcloud to my project directory I could do the following:</p>
-<div class="codehilite"><pre><span></span>  <span class="n">tmux</span>
-  <span class="n">module</span> <span class="k">load</span> <span class="n">google</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">212</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-  <span class="n">cd</span> <span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">harrelwe</span><span class="o">/</span><span class="n">project</span>
-  <span class="n">gsutil</span> <span class="n">cp</span> <span class="n">gs</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">mydata</span><span class="p">.</span><span class="n">dat</span> <span class="n">mydata</span><span class="p">.</span><span class="n">dat</span>
-</pre></div>
+<pre class="codehilite"><code>  tmux
+  module load google/cloud/sdk/212.0.0
+  cd /nfs/scratch/harrelwe/project
+  gsutil cp gs://mybucket/mydata.dat mydata.dat</code></pre>
 
 
 <p>To copy something to storage simply reverse the file paths, eg.</p>
-<div class="codehilite"><pre><span></span>  <span class="n">gsutil</span> <span class="n">cp</span> <span class="n">mydata</span><span class="p">.</span><span class="n">dat</span> <span class="n">gs</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">mydata</span><span class="p">.</span><span class="n">dat</span> 
-</pre></div>
+<pre class="codehilite"><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat </code></pre>
 
 
 <p>The above starts a tmux session to allow the transfer to continue even if I

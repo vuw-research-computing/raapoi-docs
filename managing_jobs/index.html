@@ -178,30 +178,28 @@
 <h2 id="viewing-job-information">Viewing Job information<a class="headerlink" href="#viewing-job-information" title="Permanent link">&para;</a></h2>
 <h4>Job History</h4>
 <p>If you want to get a quick view of all the jobs completed within the last 5 days you can use the <em>vuw-job-history</em> command, for example:</p>
-<div class="codehilite"><pre><span></span>$ vuw-job-history
+<pre class="codehilite"><code>$ vuw-job-history
 
-MY JOBS WITHIN LAST <span class="m">5</span> days
+MY JOBS WITHIN LAST 5 days
        JobID      State    JobName  MaxVMSize    CPUTime
 ------------ ---------- ---------- ---------- ----------
-<span class="m">2645</span>          COMPLETED       bash              <span class="m">00</span>:00:22
-<span class="m">2645</span>.extern   COMPLETED     extern      <span class="m">0</span>.15G   <span class="m">00</span>:00:22
-<span class="m">2645</span>.0        COMPLETED       bash      <span class="m">0</span>.22G   <span class="m">00</span>:00:20
-<span class="m">2734</span>          COMPLETED       bash              <span class="m">00</span>:07:40
-<span class="m">2734</span>.extern   COMPLETED     extern      <span class="m">0</span>.15G   <span class="m">00</span>:07:40
-<span class="m">2734</span>.0        COMPLETED       bash      <span class="m">0</span>.22G   <span class="m">00</span>:07:40
-</pre></div>
+2645          COMPLETED       bash              00:00:22
+2645.extern   COMPLETED     extern      0.15G   00:00:22
+2645.0        COMPLETED       bash      0.22G   00:00:20
+2734          COMPLETED       bash              00:07:40
+2734.extern   COMPLETED     extern      0.15G   00:07:40
+2734.0        COMPLETED       bash      0.22G   00:07:40</code></pre>
 
 
 <h4>Job Reports</h4>
 <p>To view a report of your past jobs you can run <em>vuw-job-report</em>:</p>
-<div class="codehilite"><pre><span></span>$ <span class="nv">vuw</span><span class="o">-</span><span class="nv">job</span><span class="o">-</span><span class="nv">report</span> <span class="mi">162711</span>
+<pre class="codehilite"><code>$ vuw-job-report 162711
 
-<span class="nv">JOB</span> <span class="nv">REPORT</span> <span class="k">FOR</span> <span class="nv">JOB</span> <span class="mi">162711</span>
-     <span class="nv">JobName</span>  <span class="nv">Nodes</span>    <span class="nv">ReqMem</span>   <span class="nv">UsedMem</span><span class="ss">(</span><span class="nv">GB</span><span class="ss">)</span>  <span class="nv">ReqCPUs</span> <span class="nv">CPUTime</span>    <span class="nv">State</span>    <span class="nv">Completed</span>
-<span class="nv">test</span><span class="o">-</span><span class="nv">schro</span>        <span class="mi">1</span>       <span class="mi">64</span><span class="nv">Gn</span>                   <span class="mi">24</span>  <span class="mi">00</span>:<span class="mi">02</span>.<span class="mi">513</span>  <span class="nv">COMPLETED</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">28</span><span class="nv">T16</span>:<span class="mi">17</span>:<span class="mi">10</span>
-     <span class="nv">batch</span>        <span class="mi">1</span>       <span class="mi">64</span><span class="nv">Gn</span>      <span class="mi">0</span>.<span class="mi">15</span><span class="nv">G</span>        <span class="mi">24</span>  <span class="mi">00</span>:<span class="mi">00</span>.<span class="mi">210</span>  <span class="nv">COMPLETED</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">28</span><span class="nv">T16</span>:<span class="mi">17</span>:<span class="mi">10</span>
-    <span class="nv">extern</span>        <span class="mi">1</span>       <span class="mi">64</span><span class="nv">Gn</span>      <span class="mi">0</span>.<span class="mi">15</span><span class="nv">G</span>        <span class="mi">24</span>  <span class="mi">00</span>:<span class="mi">00</span>.<span class="mi">002</span>  <span class="nv">COMPLETED</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">28</span><span class="nv">T16</span>:<span class="mi">17</span>:<span class="mi">10</span>
-</pre></div>
+JOB REPORT FOR JOB 162711
+     JobName  Nodes    ReqMem   UsedMem(GB)  ReqCPUs CPUTime    State    Completed
+test-schro        1       64Gn                   24  00:02.513  COMPLETED 2019-05-28T16:17:10
+     batch        1       64Gn      0.15G        24  00:00.210  COMPLETED 2019-05-28T16:17:10
+    extern        1       64Gn      0.15G        24  00:00.002  COMPLETED 2019-05-28T16:17:10</code></pre>
 
 
 <p><strong>NOTE:</strong> In this example you see that I requested 64 GigaBytes of memory but only used 0.15 GB.  This means that 63 GB of memory went unused, which was a waste of resources.</p>
@@ -214,10 +212,9 @@ MY JOBS WITHIN LAST <span class="m">5</span> days
 </ul>
 <h2 id="viewing-jobs-in-the-queue">Viewing jobs in the Queue<a class="headerlink" href="#viewing-jobs-in-the-queue" title="Permanent link">&para;</a></h2>
 <p>To view your running jobs you can type <em>vuw-myjobs</em>  eg:</p>
-<div class="codehilite"><pre><span></span>$ vuw-myjobs
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="m">7921967</span> quicktest     bash harrelwe  R       <span class="m">0</span>:12      <span class="m">1</span> c03n01
-</pre></div>
+<pre class="codehilite"><code>$ vuw-myjobs
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+7921967 quicktest     bash harrelwe  R       0:12      1 c03n01</code></pre>
 
 
 <p>As you can see I have a single job running on the node c03n01 on the quicktest partition</p>

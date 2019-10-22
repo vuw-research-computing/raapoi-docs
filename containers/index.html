@@ -167,11 +167,10 @@
                 <p>Researchers can use Docker or Singularity containers within the cluster.  This is a great way to run difficult-to-compile applications or to share workflows among colleagues.</p>
 <h2 id="running-an-interactive-container">Running an interactive container<a class="headerlink" href="#running-an-interactive-container" title="Permanent link">&para;</a></h2>
 <p>User can run within a container interactively, this is great for testing code before running a job.  Here is an example of running within a docker container that has the blockchain software called BlockSci:</p>
-<div class="codehilite"><pre><span></span><span class="k">module</span> <span class="n">load</span> <span class="n">singularity</span>
-<span class="n">srun</span> --<span class="n">pty</span> -<span class="n">c</span> <span class="mi">4</span> --<span class="n">mem</span>=<span class="mi">16</span><span class="n">G</span> <span class="n">bash</span>
-<span class="n">singularity</span> <span class="n">pull</span> <span class="n">docker:</span>//<span class="n">tislaamo</span><span class="o">/</span><span class="n">blocksci</span>
-<span class="n">singularity</span> <span class="n">shell</span> <span class="n">blocksci</span>.<span class="n">simg</span>
-</pre></div>
+<pre class="codehilite"><code>module load singularity
+srun --pty -c 4 --mem=16G bash
+singularity pull docker://tislaamo/blocksci
+singularity shell blocksci.simg</code></pre>
 
 
 <p>Once you have typed the <em>singularity shell</em> command you will be within the
@@ -179,22 +178,20 @@ container and can type the commands available from within the container such as
 the BlockSci utility <strong>blocksci_parser</strong></p>
 <h2 id="running-a-container-in-batch">Running a container in batch<a class="headerlink" href="#running-a-container-in-batch" title="Permanent link">&para;</a></h2>
 <p>Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the <em>autometa</em> software that was created in a docker image, lets name the submit file runContainer.sh:</p>
-<div class="codehilite"><pre><span></span>#<span class="nv">SBATCH</span> <span class="o">-</span><span class="nv">J</span> <span class="nv">autometa</span><span class="o">-</span><span class="nv">job</span>
-#<span class="nv">SBATCH</span> <span class="o">-</span><span class="nv">c</span> <span class="mi">4</span>
-#<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">mem</span><span class="o">=</span><span class="mi">16</span><span class="nv">G</span>
-#<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">mailtype</span><span class="o">=</span><span class="nv">BEGIN</span>,<span class="k">END</span>,<span class="nv">FAIL</span>
-#<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">mail</span><span class="o">-</span><span class="nv">user</span><span class="o">=</span><span class="nv">myemail</span>@<span class="nv">email</span>.<span class="nv">net</span>
-#<span class="nv">SBATCH</span> <span class="o">--</span><span class="nv">time</span><span class="o">=</span><span class="mi">12</span>:<span class="mi">00</span>:<span class="mi">00</span>
+<pre class="codehilite"><code>#SBATCH -J autometa-job
+#SBATCH -c 4
+#SBATCH --mem=16G
+#SBATCH --mailtype=BEGIN,END,FAIL
+#SBATCH --mail-user=myemail@email.net
+#SBATCH --time=12:00:00
 
-<span class="nv">module</span> <span class="nv">load</span> <span class="nv">singularity</span>
-<span class="nv">singularity</span> <span class="nv">pull</span> <span class="nv">docker</span>:<span class="o">//</span><span class="nv">jasonkwan</span><span class="o">/</span><span class="nv">autometa</span>:<span class="nv">latest</span>
-<span class="nv">singularity</span> <span class="k">exec</span> <span class="nv">autometa_latest</span>.<span class="nv">sif</span> <span class="nv">calculate_read_coverage</span>.<span class="nv">py</span> <span class="nv">somedata</span>.<span class="nv">dat</span>
-</pre></div>
+module load singularity
+singularity pull docker://jasonkwan/autometa:latest
+singularity exec autometa_latest.sif calculate_read_coverage.py somedata.dat</code></pre>
 
 
 <p>Now to run the file you can:</p>
-<div class="codehilite"><pre><span></span><span class="n">sbatch</span> <span class="n">runContainer</span><span class="p">.</span><span class="n">sh</span>
-</pre></div>
+<pre class="codehilite"><code>sbatch runContainer.sh</code></pre>
 
 
 <p>Note that <em>singularity shell</em> is primarily for interactive use and <em>singularity exec</em> (or possibly <em>singularity run</em>) are for executing the applications that were built within the container directly.  It is important to know how the container was created to make effective use of the software.</p>
