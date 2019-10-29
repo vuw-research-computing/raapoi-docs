@@ -369,7 +369,7 @@ singularity_submit.sh
 #SBATCH -e sing_test.err
 #SBATCH --time=00:10:00
 #SBATCH --partition=parallel
-##SBATCH --constraint=Intel
+#SBATCH --constraint=Intel
 #SBATCH --ntasks=1
 #SBATCH --mem=4G
 
@@ -416,7 +416,6 @@ singularity_submit.sh
 #SBATCH -e sing_test.err
 #SBATCH --time=00:10:00
 #SBATCH --partition=parallel
-##SBATCH --constraint=Intel
 #SBATCH --ntasks=4
 #SBATCH --mem=4G
 
