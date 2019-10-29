@@ -494,7 +494,7 @@ exit #exit the interactive session on the node</code></pre>
 #SBATCH -e sing_test.err
 #SBATCH --time=00:10:00
 #SBATCH --partition=parallel
-##SBATCH --constraint=Intel
+#SBATCH --constraint=Intel
 #SBATCH --ntasks=1
 #SBATCH --mem=4G
 
@@ -531,7 +531,6 @@ curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20
 #SBATCH -e sing_test.err
 #SBATCH --time=00:10:00
 #SBATCH --partition=parallel
-##SBATCH --constraint=Intel
 #SBATCH --ntasks=4
 #SBATCH --mem=4G
 
