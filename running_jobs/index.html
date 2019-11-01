@@ -83,10 +83,24 @@
     <a class="current" href="./">Running Jobs</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#batch-jobs">Batch jobs</a></li>
+    <li class="toctree-l3"><a href="#job-basics">Job Basics</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#job-resources">Job resources</a></li>
+        
+            <li><a class="toctree-l4" href="#currently-defined-constraints">Currently defined constraints</a></li>
+        
+        </ul>
     
 
-    <li class="toctree-l3"><a href="#interactive-jobs">Interactive jobs</a></li>
+    <li class="toctree-l3"><a href="#batch-jobs">Batch jobs</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#interactive-jobs">Interactive jobs</a></li>
+        
+        </ul>
     
 
     </ul>
@@ -164,7 +178,22 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="batch-jobs">Batch jobs<a class="headerlink" href="#batch-jobs" title="Permanent link">&para;</a></h2>
+                <h2 id="job-basics">Job Basics<a class="headerlink" href="#job-basics" title="Permanent link">&para;</a></h2>
+<p>Raapoi uses a scheduler and resource manager called Slurm that requires researchers to submit jobs for processing.  There are 2 main types of jobs: batch and interactive.  More details about submitting these types of jobs are below, but in general interactive jobs allow a user to interact with the application, for example a researcher can start a MATLAB session and can type MATLAB commands at a prompt or within a GUI.  Batch jobs can work in the background and require no user interaction, they will start when resources are available and can be configured to email once a job completes.</p>
+<h3 id="job-resources">Job resources<a class="headerlink" href="#job-resources" title="Permanent link">&para;</a></h3>
+<p>Jobs require resources.  Basic resources are CPU, memory (aka RAM) and time.  If the researcher does not specify the number of CPUs, RAM and time, the defaults will be given (currently 2CPU, 2 GB RAM and 1 hour of runtime.)  Details on requesting the basic resources are included in the Batch and Interactive sections below.</p>
+<p>Along with basic resources there can be other resources defined, such as GPU, license tokens, or even specific types of CPUs and CPU instruction sets.  Special resources can be requested using the parameters <code>--gres</code> or <code>--constraint</code>  For example, to request an Intel processor one can use the parameter: <code>--constraint="Intel"</code></p>
+<h3 id="currently-defined-constraints">Currently defined constraints<a class="headerlink" href="#currently-defined-constraints" title="Permanent link">&para;</a></h3>
+<p>Below is a list of constraints that have need defined and a brief description:</p>
+<ul>
+<li>AMD - AMD processor</li>
+<li>IB - Infiniband network for tightly coupled and MPI processing</li>
+<li>Intel - Intel processor</li>
+<li>10GE - 10 Gigabit Ethernet</li>
+<li>SSE41 - Streaming SIMD Extensions version 4.1</li>
+</ul>
+<p>For example, if you want to request a compute node with AMD processors you can add <code>--constraint="AMD"</code> in your submit script or srun request.</p>
+<h1 id="batch-jobs">Batch jobs<a class="headerlink" href="#batch-jobs" title="Permanent link">&para;</a></h1>
 <p>To run a batch job (aka a job that runs unattended) you use the <em>sbatch</em> command.  A simple example would look something like this:</p>
 <p><code>sbatch myjob.sh</code></p>
 <p>In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:</p>
