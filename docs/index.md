@@ -4,8 +4,7 @@ The Rāpoi HPC Cluster (aka raapoi) is a Uni-wide computing
 resource that uses the Slurm resource manager to schedule jobs and reserve
 resources.  Similar to most modern compute clusters, raapoi requires you to
 request CPU, Memory and Time for your job.  If you do not request these
-resources, you will be given the minimal defaults (1 CPU, 1 GB Memory, 1 hour
-runtime), which may not be enough to
+resources, you will be given the minimal defaults, which may not be enough to
 run your job.  The good news about resource reservations is that the resources
 you request are guaranteed to be yours, the bad news is if you request too
 little memory or time, your job may terminate prematurely and if you request too
