@@ -133,6 +133,9 @@
     <li class="toctree-l3"><a href="#singularitymaxbin2-example">Singularity/MaxBin2 Example</a></li>
     
 
+    <li class="toctree-l3"><a href="#singularitysandbox-example">Singularity/Sandbox Example</a></li>
+    
+
     </ul>
                 </li>
     </ul>
@@ -537,6 +540,45 @@ curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20
 module load singularity/3.2.1
 
 singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 </code></pre>
+
+
+<h2 id="singularitysandbox-example">Singularity/Sandbox Example<a class="headerlink" href="#singularitysandbox-example" title="Permanent link">&para;</a></h2>
+<p>This lets you have root inside a container <em>locally</em> and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on raapoi, I suggest you <em>don't do this</em>. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a <code>.def</code> file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.</p>
+<p>example.def</p>
+<pre class="codehilite"><code class="language-bash">BootStrap: library
+From: ubuntu:16.04
+
+%post
+apt-get update &amp;&amp; apt-get -y install wget build-essential 
+
+%runscript
+    exec echo &quot;$@&quot;
+
+%labels
+    Author Andre</code></pre>
+
+
+<p>Compile this <em>locally</em> with sudo and singularity.  We are using the sandbox flag to create a writable <em>container directory</em> (<code>example/</code>) on our local machine where we have sudo rights.</p>
+<pre class="codehilite"><code class="language-bash">sudo singularity build --sandbox example/ example.def</code></pre>
+
+
+<p>Now we can run the container we just built, but with sudo rights inside the container.  Your rights outside the container match the rights inside the container, so we need to do this with sudo.</p>
+<pre class="codehilite"><code class="language-bash">sudo singularity shell --writable example/</code></pre>
+
+
+<p>Inside the container we now have root and can install packages and modify files in the root directories</p>
+<pre class="codehilite"><code class="language-bash">Singularity example:~&gt;  apt update
+Singularity example:~&gt;  apt install sqlite
+Singularity example:~&gt;  touch /test.txt  #create an empty file in root
+Singularity example:~&gt;  ls /
+Singularity example:~&gt;  exit   #exit container</code></pre>
+
+
+<p>To run the container on Raapoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.</p>
+<pre class="codehilite"><code class="language-bash">sudo singularity build new-example-sif example/</code></pre>
+
+
+<p>You could now copy the <code>new-example-sif</code> file to Raapoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting <em>everything in the.def file</em>.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.</p>
               
             </div>
           </div>
