@@ -423,3 +423,51 @@ module load singularity/3.2.1
 
 singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 
 ```
+
+## Singularity/Sandbox Example
+
+This lets you have root inside a container *locally* and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on raapoi, I suggest you *don't do this*. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a ```.def``` file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.
+
+
+example.def
+```bash
+BootStrap: library
+From: ubuntu:16.04
+
+%post
+apt-get update && apt-get -y install wget build-essential 
+
+%runscript
+    exec echo "$@"
+
+%labels
+    Author Andre
+    
+```
+
+Compile this *locally* with sudo and singularity.  We are using the sandbox flag to create a writable *container directory* (```example/```) on our local machine where we have sudo rights.
+```bash
+sudo singularity build --sandbox example/ example.def
+```
+
+Now we can run the container we just built, but with sudo rights inside the container.  Your rights outside the container match the rights inside the container, so we need to do this with sudo.
+
+```bash
+sudo singularity shell --writable example/
+```
+
+Inside the container we now have root and can install packages and modify files in the root directories
+```bash
+Singularity example:~>  apt update
+Singularity example:~>  apt install sqlite
+Singularity example:~>  touch /test.txt  #create an empty file in root
+Singularity example:~>  ls /
+Singularity example:~>  exit   #exit container
+```
+
+To run the container on Raapoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.
+
+```bash
+sudo singularity build new-example-sif example/
+```
+You could now copy the ```new-example-sif``` file to Raapoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting *everything in the.def file*.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.
