@@ -280,7 +280,7 @@ singularity_submit.sh
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
 
-module load singularity/3.2.1
+module load singularity
 
 singularity run inputtest.sif "hello from a container"
 ```
@@ -373,7 +373,7 @@ singularity_submit.sh
 #SBATCH --ntasks=1
 #SBATCH --mem=4G
 
-module load singularity/3.2.1
+module load singularity
 
 #run the container with the runscript defined when we created it
 singularity run tensorflow.sif tensortest.py 
@@ -385,7 +385,7 @@ In a sensible location, either in your home directory or on the scratch:
 Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced in the official maxbin site.
 
 ```bash
-module load module load singularity/3.2.1
+module load module load singularity
 singularity pull docker://quay.io/biocontainers/maxbin2:2.2.6--h14c3975_0
 mv maxbin2_2.2.6--h14c3975_0.sif maxbin2_2.2.6.sif #rename for convenience
 ```
@@ -419,7 +419,7 @@ singularity_submit.sh
 #SBATCH --ntasks=4
 #SBATCH --mem=4G
 
-module load singularity/3.2.1
+module load singularity
 
 singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 
 ```
