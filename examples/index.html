@@ -420,7 +420,7 @@ Copy this file to raapoi via sftp</p>
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
 
-module load singularity/3.2.1
+module load singularity
 
 singularity run inputtest.sif &quot;hello from a container&quot;</code></pre>
 
@@ -501,7 +501,7 @@ exit #exit the interactive session on the node</code></pre>
 #SBATCH --ntasks=1
 #SBATCH --mem=4G
 
-module load singularity/3.2.1
+module load singularity
 
 #run the container with the runscript defined when we created it
 singularity run tensorflow.sif tensortest.py </code></pre>
@@ -510,7 +510,7 @@ singularity run tensorflow.sif tensortest.py </code></pre>
 <h2 id="singularitymaxbin2-example">Singularity/MaxBin2 Example<a class="headerlink" href="#singularitymaxbin2-example" title="Permanent link">&para;</a></h2>
 <p>In a sensible location, either in your home directory or on the scratch:</p>
 <p>Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced in the official maxbin site.</p>
-<pre class="codehilite"><code class="language-bash">module load module load singularity/3.2.1
+<pre class="codehilite"><code class="language-bash">module load module load singularity
 singularity pull docker://quay.io/biocontainers/maxbin2:2.2.6--h14c3975_0
 mv maxbin2_2.2.6--h14c3975_0.sif maxbin2_2.2.6.sif #rename for convenience</code></pre>
 
@@ -537,7 +537,7 @@ curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20
 #SBATCH --ntasks=4
 #SBATCH --mem=4G
 
-module load singularity/3.2.1
+module load singularity
 
 singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 </code></pre>
 
