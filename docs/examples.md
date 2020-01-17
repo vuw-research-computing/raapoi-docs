@@ -471,3 +471,93 @@ To run the container on Raapoi we convert it to the default immutable image with
 sudo singularity build new-example-sif example/
 ```
 You could now copy the ```new-example-sif``` file to Raapoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting *everything in the.def file*.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.
+
+## Singularity/Custom Conda Container - idba example
+
+In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a bicontainer.  We'll build this container locally to match a local conda enviroment, then run it on the HPC and do an example assembly.
+
+#### Locally
+
+Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda enviroment and install idba
+
+```bash
+conda create --name idba
+conda install -c bioconda idba
+```
+
+Export your conda enviroment, we will use this to build the containter.
+```bash
+conda env export > environment.yml
+```
+
+We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda enviroment is in the path. *[From stackoverflow](https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container)*
+
+*idba.def*
+```
+Bootstrap: docker
+
+From: continuumio/miniconda3
+
+%files
+    environment.yml
+
+%environment
+    PATH=/opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
+
+%post
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
+    echo "source activate $(head -1 environment.yml | cut -d' ' -f2)" > ~/.bashrc
+    /opt/conda/bin/conda env create -f environment.yml
+
+%runscript
+    exec "$@"
+```
+
+Build the image
+```bash
+sudo singularity build idba.img idba.def
+```
+
+Now copy the idba.img and enviroment.yml (technically the enviroment file is not needed, but not having it creates a warning) to somewhere sensible on raapoi.
+
+#### On Raapoi
+
+Create a data directory, so we can seperate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the [Illumina public data library](https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html)
+```
+mkdir data
+cd data 
+wget --content-disposition goo.gl/JDJTaz #sequence data
+wget --content-disposition goo.gl/tt9fsn #sequence data
+cd ..  #back to our project directory
+```
+
+The reads we have are paired end fastq files but idba requires a fasta file.  We can use a tool built into our container to convert them.  We'll do this on the raapoi login node as it is a fast task that doesn't need many resources.
+
+```bash
+module load singularity
+singularity exec fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
+```
+
+Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. Too see your usage after the job has run use ```vuw-job-report <job-id>```
+
+*idba_submit.sh*
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=idba_test
+#SBATCH -o output.out
+#SBATCH -e output.err
+#SBATCH --time=00:10:00
+#SBATCH --partition=quicktest
+#SBATCH --ntasks=12
+#SBATCH --mem=1G
+
+module load singularity
+
+singularity exec idba.img idba idba_ud -r data/read.fa -o output
+```
+
+Now we can submit our script to the queue with
+```bash
+sbatch idba_submit.sh 
+```
