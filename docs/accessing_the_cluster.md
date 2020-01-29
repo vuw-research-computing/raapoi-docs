@@ -16,7 +16,7 @@ _Access is via SSH_
 *  Username: Your VUW username
 *  Password: Your VUW password
 
-*NOTE:* On-campus wired network connection or [VPN](https://vpn.vuw.ac.nz/+CSCOE+/logon.html#form_title_text).  VPN is required if
+*NOTE:* A wired network connection or [VPN](https://vpn.vuw.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
 connecting from campus wifi or from off-campus. Some users have had issues with
 using the hostname and instead need to use the IP address, eg
 `harrelwe@130.195.19.14`
@@ -45,7 +45,7 @@ NOTE:  Once at the command prompt you can type the following to login (replace "
 _Windows SSH Clients_
 
 * Recommended Clients:
-  * [Git Bash](https://gitforwindows.org/) is a great option and is part of the Git for Windows project
+  * [Git Bash](https://gitforwindows.org/) is a great option and is part of the Git for Windows project.  
   * [MobaXterm](https://mobaxterm.mobatek.net/) is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.
 
 ### File Transfer with SFTP, SCP or rsync
