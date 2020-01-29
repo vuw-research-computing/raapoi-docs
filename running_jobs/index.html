@@ -197,18 +197,19 @@
 <p>To run a batch job (aka a job that runs unattended) you use the <em>sbatch</em> command.  A simple example would look something like this:</p>
 <p><code>sbatch myjob.sh</code></p>
 <p>In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:</p>
-<pre class="codehilite"><code> #!/bin/bash
- #SBATCH --cpus-per-task=2
- #SBATCH --mem-per-cpu=2G
- #SBATCH --partition=parallel
- #SBATCH --time=3-12:00
- #SBATCH -o /nfs/home/username/project1.out
- #SBATCH -e /nfs/home/username/project1.err
- #SBATCH --mail-type=BEGIN,END,FAIL
- #SBATCH --mail-user=me@email.com
+<div class="codehilite"><pre><span></span> <span class="c c-Singleline">#!/bin/bash</span>
+ <span class="c c-Singleline">#SBATCH --cpus-per-task=2</span>
+ <span class="c c-Singleline">#SBATCH --mem-per-cpu=2G</span>
+ <span class="c c-Singleline">#SBATCH --partition=parallel</span>
+ <span class="c c-Singleline">#SBATCH --time=3-12:00</span>
+ <span class="c c-Singleline">#SBATCH -o /nfs/home/username/project1.out</span>
+ <span class="c c-Singleline">#SBATCH -e /nfs/home/username/project1.err</span>
+ <span class="c c-Singleline">#SBATCH --mail-type=BEGIN,END,FAIL</span>
+ <span class="c c-Singleline">#SBATCH --mail-user=me@email.com</span>
 
- module load python/3.6.3
- python3 project1.py</code></pre>
+ <span class="k">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6.3</span>
+ <span class="n">python3</span> <span class="n">project1</span>.<span class="n">py</span>
+</pre></div>
 
 
 <p>This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
@@ -223,8 +224,9 @@ home directory in a file named project1.out and any error information in a file 
 <h2 id="interactive-jobs">Interactive jobs<a class="headerlink" href="#interactive-jobs" title="Permanent link">&para;</a></h2>
 <p>One of the basic job submittal tools is the command srun</p>
 <p>For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:</p>
-<pre class="codehilite"><code>  module load R/3.5.1
-  srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=bigmem R</code></pre>
+<div class="codehilite"><pre><span></span>  <span class="k">module</span> <span class="n">load</span> <span class="n">R</span><span class="o">/</span><span class="mf">3.5.1</span>
+  <span class="n">srun</span> --<span class="n">pty</span> --<span class="n">cpus-per-task</span>=<span class="mi">2</span> --<span class="n">mem</span>=<span class="mi">2</span><span class="n">G</span>  --<span class="n">time</span>=<span class="mi">08</span>:<span class="mo">00</span>:<span class="mo">00</span> --<span class="n">partition</span>=<span class="n">bigmem</span> <span class="n">R</span>
+</pre></div>
 
 
 <p>So what does this all mean?</p>
