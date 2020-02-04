@@ -2,7 +2,7 @@
 
 Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.
 
-Because of this, raapoi developers use a tool called module to allow a user to load a specific version of an application, language or library and start using it for their work. The _module_ command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:
+Because of this, raapoi developers use a tool called *lmod* to allow a user to load a specific version of an application, language or library and start using it for their work. The _module_ command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:
 
   `module avail`
 
@@ -35,7 +35,7 @@ Once you have found the module path you can load the software:
 
   `module load lua/5.3.5`
 
-After the module loads you can type srun --pty lua at a prompt, or add it to the path of your lua script (the RC team recommends using /usr/bin/env instead of an absolute path).
+After the module loads you can type `srun --pty lua` at a prompt, or add it to the path of your lua script (the RC team recommends using /usr/bin/env instead of an absolute path).
 
 Showing/listing the module environment modifications
 You can discover what the module will load into your environment you can run
