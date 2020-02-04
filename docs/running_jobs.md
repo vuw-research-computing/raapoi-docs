@@ -68,7 +68,7 @@ For example, say I want to start a job to run an interactive R session. Once log
 
 ```
   module load R/3.5.1
-  srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=bigmem R
+  srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=quicktest R
 ```
 
 So what does this all mean?
@@ -80,7 +80,7 @@ The _srun_ command will submit the job to the cluster.  The _srun_ command has m
 * --cpus-per-task=2 - requests 2 CPUs, can also use the -c flag, eg. -c 2
 * --mem=2G - requests 2 GigaBytes (GB) of RAM.
 * --time=08:00:00 - requests a runtime of up to 8 hours (format is DAYS-HOURS:MINUTES:SECONDS), this is important in case the cluster or partition has a limited run-time, for example if an outage window is approaching.  Keep in mind time is a resource along with CPU and Memory.  
-* --partition=bigmem - requests a certain partition, in this case it requests the bigmem partition, see the section on using cluster partitions for more information.
+* --partition=quicktest - requests a certain partition, in this case it requests the quicktest partition, see the section on using cluster partitions for more information.
 * R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)
 
 
