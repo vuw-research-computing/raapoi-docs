@@ -7,7 +7,7 @@ Running a job in parallel is a great way to utilize the power of the cluster.  S
 * Distributed memory programs that include explicit support for message passing between processes (e.g. MPI). These processes execute across multiple CPU cores and/or nodes, these are often referred to as tightly-coupled jobs.
 * GPU (graphics processing unit) programs including explicit support for offloading to the device via languages like CUDA or OpenCL.
 
-It is important to understand the capabilities and limitations of an application in order to fully leverage the parallel processing options available on the cluster. For instance, many popular scientific computing languages like Python, R, and Matlab now offer packages that allow for GPU, multi-core or multithreaded processing, especially for matrix and vector operations
+It is important to understand the capabilities and limitations of an application in order to fully leverage the parallel processing options available on the cluster. For instance, many popular scientific computing languages like Python, R, and Matlab now offer packages that allow for GPU, multi-core or multithreaded processing, especially for matrix and vector operations.  If you need help with the design of your parallel workflow, send us a message in the raapoi-help Slack channel.
 
 ## Job Array Example
 Here is an example of running a job array to run 50 simultaneous processes:
