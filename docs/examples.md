@@ -382,7 +382,7 @@ singularity run tensorflow.sif tensortest.py
 ## Singularity/MaxBin2 Example
 In a sensible location, either in your home directory or on the scratch:
 
-Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced in the official maxbin site.
+Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced on the official maxbin site.
 
 ```bash
 module load module load singularity
@@ -398,7 +398,7 @@ curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20
 curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.abund > rawdata/20x.abund
 ```
 
-Create and output data location
+Create an output data location
 ```bash
 mkdir output
 ```
