@@ -76,10 +76,6 @@ This temporary partition (thanks to Mark Davies in ECS for the loan) is for thos
 
 _Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1`
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 441e0d6bbac4cd7fb9e62a32f284952c7ddc8368
 #### Partition: bigmem
 
 This partition is primarily useful for jobs that require very large shared
