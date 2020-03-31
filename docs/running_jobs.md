@@ -18,6 +18,7 @@ Below is a list of constraints that have need defined and a brief description:
 * Intel - Intel processor
 * 10GE - 10 Gigabit Ethernet
 * SSE41 - Streaming SIMD Extensions version 4.1
+* AVX - Advanced Vector Extensions
 
 For example, if you want to request a compute node with AMD processors you can add `--constraint="AMD"` in your submit script or srun request.
 
