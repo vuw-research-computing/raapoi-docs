@@ -16,7 +16,7 @@ _Access is via SSH_
 *  Username: Your VUW username
 *  Password: Your VUW password
 
-*NOTE:* A wired network connection or [VPN](https://vpn.vuw.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
+*NOTE:* A wired network connection or [VPN](https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
 connecting from campus wifi or from off-campus. Some users have had issues with
 using the hostname and instead need to use the IP address, eg
 `harrelwe@130.195.19.14`
