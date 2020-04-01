@@ -7,14 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
+  <link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/accessing_the_cluster/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Accessing the Cluster - Rāpoi Cluster Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../extra.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -25,7 +26,7 @@
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
   <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -36,6 +37,7 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
         <div role="search">
@@ -46,98 +48,55 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Overview</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Documentation</span>
-    <ul class="subnav">
-                <li class=" current">
-                    
-    <a class="current" href="./">Accessing the Cluster</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#accessing-the-cluster">Accessing the Cluster</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#ssh-clients">SSH Clients</a></li>
-        
-            <li><a class="toctree-l4" href="#file-transfer-with-sftp-scp-or-rsync">File Transfer with SFTP, SCP or rsync</a></li>
-        
-            <li><a class="toctree-l4" href="#file-transfer-with-cloud-tools">File transfer with cloud tools</a></li>
-        
-        </ul>
-    
-
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Accessing the Cluster</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ssh-clients">SSH Clients</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-transfer-with-sftp-scp-or-rsync">File Transfer with SFTP, SCP or rsync</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-transfer-with-cloud-tools">File transfer with cloud tools</a>
+    </li>
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../basic_commands/">Basic Commands</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../storage/">Storage and Quotas</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../partitions/">Using Partitions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../environment/">Preparing your Environment</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../running_jobs/">Running Jobs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../parallel_processing/">Parallel Processing</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../managing_jobs/">Managing Jobs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../cloud_providers/">Connecting to Cloud Providers</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../containers/">Using Containers</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../notebooks/">Using Jupyter Notebooks</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../examples/">Examples</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../support/">Support</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../ganglia/">Utilisation</a>
-	    </li>
-          
-        </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud_providers/">Connecting to Cloud Providers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../containers/">Using Containers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../notebooks/">Using Jupyter Notebooks</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../ganglia/">Utilisation</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -166,6 +125,7 @@
       
     </li>
   </ul>
+  
   <hr/>
 </div>
           <div role="main">
@@ -187,7 +147,7 @@
 <li>Username: Your VUW username</li>
 <li>Password: Your VUW password</li>
 </ul>
-<p><em>NOTE:</em> A wired network connection or <a href="https://vpn.vuw.ac.nz/+CSCOE+/logon.html#form_title_text">VPN</a> is required if
+<p><em>NOTE:</em> A wired network connection or <a href="https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text">VPN</a> is required if
 connecting from campus wifi or from off-campus. Some users have had issues with
 using the hostname and instead need to use the IP address, eg
 <code>harrelwe@130.195.19.14</code></p>
@@ -243,7 +203,7 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
@@ -253,7 +213,7 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -267,6 +227,11 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
