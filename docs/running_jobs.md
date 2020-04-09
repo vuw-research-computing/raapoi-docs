@@ -1,4 +1,4 @@
-
+# Running Jobs
 ## Job Basics
 
 Raapoi uses a scheduler and resource manager called Slurm that requires researchers to submit jobs for processing.  There are 2 main types of jobs: batch and interactive.  More details about submitting these types of jobs are below, but in general interactive jobs allow a user to interact with the application, for example a researcher can start a MATLAB session and can type MATLAB commands at a prompt or within a GUI.  Batch jobs can work in the background and require no user interaction, they will start when resources are available and can be configured to email once a job completes.
@@ -23,7 +23,7 @@ Below is a list of constraints that have need defined and a brief description:
 For example, if you want to request a compute node with AMD processors you can add `--constraint="AMD"` in your submit script or srun request.
 
 
-# Batch jobs
+## Batch jobs
 
 To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
 

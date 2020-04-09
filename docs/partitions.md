@@ -1,4 +1,5 @@
-# Using Partitions
+# Partitions 
+## Using Partitions
 
 A partition is a collection of compute nodes, think of it as a sub-cluster or
 slice of the larger cluster.  Each partition has its own rules and
@@ -51,9 +52,9 @@ Also notice the _TIMELIMIT_ field, this describes the maximum runtime of a
 partition.  For example, the quicktest partition has a maximum runtime of 1
 hour and the parallel partition has a max runtime of 10 days.
 
-# Partition Descriptions
+## Partition Descriptions
 
-#### Partition: quicktest
+### Partition: quicktest
 
 This partition is for quick tests of code, environment, software builds or
 similar short-run jobs.  Since the max time limit is 1 hour it should not take
@@ -64,7 +65,7 @@ jobs.
 * Maximum memory available per task: 62G
 * Maximum Runtime: 1 hour
 
-#### Partition: gpu (Note: This is a temporary partition)
+### Partition: gpu (Note: This is a temporary partition)
 
 This temporary partition (thanks to Mark Davies in ECS for the loan) is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)
 
@@ -76,7 +77,7 @@ This temporary partition (thanks to Mark Davies in ECS for the loan) is for thos
 
 _Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1`
 
-#### Partition: bigmem
+### Partition: bigmem
 
 This partition is primarily useful for jobs that require very large shared
 memory (greater than 125 GB).  These are known as memory-bound jobs.
@@ -87,7 +88,7 @@ __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem
 * Maximum memory available per task: 1 TB (Note: maximum CPU for 1 TB is 40)
 * Maximum Runtime: 10 days
 
-#### Partition: parallel
+### Partition: parallel
 
 This partition is useful for parallel workflows, either loosely coupled or jobs
 requiring MPI or other message passing protocols for tightly bound jobs.
@@ -96,7 +97,7 @@ requiring MPI or other message passing protocols for tightly bound jobs.
 * Maximum memory available per task: 125G
 * Maximum Runtime: 10 days
 
-#### Cluster Default Resources
+### Cluster Default Resources
 
 Please note that if you do not specify CPU, Memory or Time in your job request
 you will be given the cluster defaults which are:

@@ -1,4 +1,6 @@
-# Preparing your environment
+# Enviroment Setup
+
+## Preparing your environment
 
 Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.
 
@@ -29,7 +31,7 @@ setenv("TM_HOME","/home/software/apps/trimmomatic/20190304/bin")
   R/CRAN/3.5          : Adds the R library path to the pre-built CRAN modules
 ```
 
-# Adding or loading software
+## Adding or loading software
 
 Once you have found the module path you can load the software:
 
@@ -51,7 +53,7 @@ whatis("Adds the R language path to your environment ")
 prepend_path("PATH","/home/software/apps/R/3.5.1/bin")
 ```
 
-# Listing loaded modules
+## Listing loaded modules
 
 To see what modules you have loaded into your environment you can run the command:
 

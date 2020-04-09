@@ -1,4 +1,5 @@
 
+# Connecting to Cloud Providers
 ## AARNET Cloudstor
 
 All VUW researchers have access to the AARNET (Australia’s Academic and Research

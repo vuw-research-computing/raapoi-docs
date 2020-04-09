@@ -1,3 +1,4 @@
+# Managing Jobs
 ## Cancelling a Job
 
 To cancel a job, first find the jobID, you can use the _vuw-myjobs_ (or _squeue_) command to see a list of your jobs, including jobIDs.  Once you have that you can use the _scancel_ command, eg
@@ -11,7 +12,7 @@ To cancel all of your jobs you can use the -u flag followed by your username:
 
 ## Viewing Job information
 
-####Job History
+#### Job History
 
 If you want to get a quick view of all the jobs completed within the last 5 days you can use the _vuw-job-history_ command, for example:
 
