@@ -47,11 +47,11 @@ bash test.sh  #actually run our bash script, using bash
 
 If you're familiar with bash scripts, the above is a bit weird.  The ```#SBATCH``` lines would normally be comments and hence not do anything, but Slurm will read those lines to determine how many resources to provide your job.  In this case we ask for the following:
 
- * quicktest partition (the default - so you don't technically need to ask for it).\  
+ * quicktest partition (the default - so you don't technically need to ask for it). 
  * 1 cpu per task - we have one task, so we're asking for 1 cpu
  * 1 gig of memory.
  * a max runtime of 10 min
- 
+
 If your job uses more memory or time than requested, slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.
 
 Our ```submit.sh``` script also names our job ```bash_test``` this is what the job will show up as in squeue. We ask for things printed out on the terminal to go to two seperate files.  Normal, non error, things that would be printed out on the terminal will be put into the text file ```bash_test.out```.  Errors will be printed into the text file ```bash_test.err```
