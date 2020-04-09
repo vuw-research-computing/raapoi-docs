@@ -70,6 +70,14 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Managing Jobs</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cancelling-a-job">Cancelling a Job</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#viewing-job-information">Viewing Job information</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#viewing-jobs-in-the-queue">Viewing jobs in the Queue</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#job-queuing-aka-why-isnt-my-job-running">Job Queuing (aka Why isn't my job running?)</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../cloud_providers/">Connecting to Cloud Providers</a>
@@ -125,7 +133,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="cancelling-a-job">Cancelling a Job<a class="headerlink" href="#cancelling-a-job" title="Permanent link">&para;</a></h2>
+                <h1 id="managing-jobs">Managing Jobs<a class="headerlink" href="#managing-jobs" title="Permanent link">&para;</a></h1>
+<h2 id="cancelling-a-job">Cancelling a Job<a class="headerlink" href="#cancelling-a-job" title="Permanent link">&para;</a></h2>
 <p>To cancel a job, first find the jobID, you can use the <em>vuw-myjobs</em> (or <em>squeue</em>) command to see a list of your jobs, including jobIDs.  Once you have that you can use the <em>scancel</em> command, eg</p>
 <p><code>scancel 236789</code></p>
 <p>To cancel all of your jobs you can use the -u flag followed by your username:</p>

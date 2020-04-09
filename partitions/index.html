@@ -62,6 +62,22 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Using Partitions</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#using-partitions">Using Partitions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#partition-descriptions">Partition Descriptions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#partition-quicktest">Partition: quicktest</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#partition-gpu-note-this-is-a-temporary-partition">Partition: gpu (Note: This is a temporary partition)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#partition-bigmem">Partition: bigmem</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#partition-parallel">Partition: parallel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cluster-default-resources">Cluster Default Resources</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment</a>
@@ -125,7 +141,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="using-partitions">Using Partitions<a class="headerlink" href="#using-partitions" title="Permanent link">&para;</a></h1>
+                <h1 id="partitions">Partitions<a class="headerlink" href="#partitions" title="Permanent link">&para;</a></h1>
+<h2 id="using-partitions">Using Partitions<a class="headerlink" href="#using-partitions" title="Permanent link">&para;</a></h2>
 <p>A partition is a collection of compute nodes, think of it as a sub-cluster or
 slice of the larger cluster.  Each partition has its own rules and
 configurations.  </p>
@@ -172,8 +189,8 @@ or for special purposes such as temporary dedicated access</li>
 <p>Also notice the <em>TIMELIMIT</em> field, this describes the maximum runtime of a
 partition.  For example, the quicktest partition has a maximum runtime of 1
 hour and the parallel partition has a max runtime of 10 days.</p>
-<h1 id="partition-descriptions">Partition Descriptions<a class="headerlink" href="#partition-descriptions" title="Permanent link">&para;</a></h1>
-<h4>Partition: quicktest</h4>
+<h2 id="partition-descriptions">Partition Descriptions<a class="headerlink" href="#partition-descriptions" title="Permanent link">&para;</a></h2>
+<h3 id="partition-quicktest">Partition: quicktest<a class="headerlink" href="#partition-quicktest" title="Permanent link">&para;</a></h3>
 <p>This partition is for quick tests of code, environment, software builds or
 similar short-run jobs.  Since the max time limit is 1 hour it should not take
 long for your job to run.  This can also be used for near-on-demand interactive
@@ -183,7 +200,7 @@ jobs.</p>
 <li>Maximum memory available per task: 62G</li>
 <li>Maximum Runtime: 1 hour</li>
 </ul>
-<h4>Partition: gpu (Note: This is a temporary partition)</h4>
+<h3 id="partition-gpu-note-this-is-a-temporary-partition">Partition: gpu (Note: This is a temporary partition)<a class="headerlink" href="#partition-gpu-note-this-is-a-temporary-partition" title="Permanent link">&para;</a></h3>
 <p>This temporary partition (thanks to Mark Davies in ECS for the loan) is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)</p>
 <ul>
 <li>GPU nodes available: 2</li>
@@ -193,7 +210,7 @@ jobs.</p>
 <li>Maximum Runtime: 24 hours</li>
 </ul>
 <p><em>Note</em>:  To request GPU add the parameter, <code>--gres=gpu:X</code>  Where X is the number of GPUs required, typically 1:  <code>--gres=gpu:1</code></p>
-<h4>Partition: bigmem</h4>
+<h3 id="partition-bigmem">Partition: bigmem<a class="headerlink" href="#partition-bigmem" title="Permanent link">&para;</a></h3>
 <p>This partition is primarily useful for jobs that require very large shared
 memory (greater than 125 GB).  These are known as memory-bound jobs.</p>
 <p><strong>NOTE:</strong> Please do not schedule jobs of less than 125GB of memory on the bigmem partition.</p>
@@ -202,7 +219,7 @@ memory (greater than 125 GB).  These are known as memory-bound jobs.</p>
 <li>Maximum memory available per task: 1 TB (Note: maximum CPU for 1 TB is 40)</li>
 <li>Maximum Runtime: 10 days</li>
 </ul>
-<h4>Partition: parallel</h4>
+<h3 id="partition-parallel">Partition: parallel<a class="headerlink" href="#partition-parallel" title="Permanent link">&para;</a></h3>
 <p>This partition is useful for parallel workflows, either loosely coupled or jobs
 requiring MPI or other message passing protocols for tightly bound jobs.</p>
 <ul>
@@ -210,7 +227,7 @@ requiring MPI or other message passing protocols for tightly bound jobs.</p>
 <li>Maximum memory available per task: 125G</li>
 <li>Maximum Runtime: 10 days</li>
 </ul>
-<h4>Cluster Default Resources</h4>
+<h3 id="cluster-default-resources">Cluster Default Resources<a class="headerlink" href="#cluster-default-resources" title="Permanent link">&para;</a></h3>
 <p>Please note that if you do not specify CPU, Memory or Time in your job request
 you will be given the cluster defaults which are:</p>
 <ul>

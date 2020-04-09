@@ -64,6 +64,12 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Preparing your Environment</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#preparing-your-environment">Preparing your environment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding-or-loading-software">Adding or loading software</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#listing-loaded-modules">Listing loaded modules</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
@@ -125,7 +131,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="preparing-your-environment">Preparing your environment<a class="headerlink" href="#preparing-your-environment" title="Permanent link">&para;</a></h1>
+                <h1 id="enviroment-setup">Enviroment Setup<a class="headerlink" href="#enviroment-setup" title="Permanent link">&para;</a></h1>
+<h2 id="preparing-your-environment">Preparing your environment<a class="headerlink" href="#preparing-your-environment" title="Permanent link">&para;</a></h2>
 <p>Raapoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.</p>
 <p>Because of this, raapoi developers use a tool called <em>lmod</em> to allow a user to load a specific version of an application, language or library and start using it for their work. The <em>module</em> command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:</p>
 <p><code>module avail</code></p>
@@ -147,7 +154,7 @@ setenv(&quot;TM_HOME&quot;,&quot;/home/software/apps/trimmomatic/20190304/bin&qu
   R/CRAN/3.5          : Adds the R library path to the pre-built CRAN modules</code></pre>
 
 
-<h1 id="adding-or-loading-software">Adding or loading software<a class="headerlink" href="#adding-or-loading-software" title="Permanent link">&para;</a></h1>
+<h2 id="adding-or-loading-software">Adding or loading software<a class="headerlink" href="#adding-or-loading-software" title="Permanent link">&para;</a></h2>
 <p>Once you have found the module path you can load the software:</p>
 <p><code>module load lua/5.3.5</code></p>
 <p>After the module loads you can type <code>srun --pty lua</code> at a prompt, or add it to the path of your lua script (the RC team recommends using /usr/bin/env instead of an absolute path).</p>
@@ -163,7 +170,7 @@ whatis(&quot;Adds the R language path to your environment &quot;)
 prepend_path(&quot;PATH&quot;,&quot;/home/software/apps/R/3.5.1/bin&quot;)</code></pre>
 
 
-<h1 id="listing-loaded-modules">Listing loaded modules<a class="headerlink" href="#listing-loaded-modules" title="Permanent link">&para;</a></h1>
+<h2 id="listing-loaded-modules">Listing loaded modules<a class="headerlink" href="#listing-loaded-modules" title="Permanent link">&para;</a></h2>
 <p>To see what modules you have loaded into your environment you can run the command:</p>
 <p><code>module list</code>  </p>
 <p>By default you will have the config module loaded (please do not unload that module).  For example, here are the modules I have loaded in my environment when I wrote this section:</p>
