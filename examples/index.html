@@ -78,6 +78,8 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Examples</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#simple-bash-example-start-here-if-new-to-hpc">Simple Bash Example - start here if new to HPC</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a>
@@ -148,6 +150,68 @@
             <div class="section">
               
                 <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
+<h2 id="simple-bash-example-start-here-if-new-to-hpc">Simple Bash Example - start here if new to HPC<a class="headerlink" href="#simple-bash-example-start-here-if-new-to-hpc" title="Permanent link">&para;</a></h2>
+<p>In this example we will run a very simple bash script on the quicktest partition.  The bash script is very simple, it just prints the hostname - the node you're running on - and prints the date into a file.  It also sleeps for 1 minute - it just does this to give you a chance to see your job in the queue with <code>squeue</code></p>
+<p>First lets create a sensible working directory</p>
+<pre class="codehilite"><code class="language-bash">mkdir bash_example
+cd bash_example</code></pre>
+
+
+<p>We'll use the text editor nano to create our bash script as well as our submission script.  In real life, you might find it easier to create your code and submission script on your local machine, then copy them over as nano is not a great editor for large projects.</p>
+<p>Create and edit our simple bash script - this is our code we will run on the HPC</p>
+<pre class="codehilite"><code class="language-bash">nano test.sh</code></pre>
+
+
+<p>Paste or type the following into the file</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+hostname  #prints the host name to the terminal
+date &gt; date_when_job_ran.txt  #puts the content of the date command into a txt file
+sleep 1m # do nothing for 1 minute.  Job will still be &quot;running&quot; </code></pre>
+
+
+<p>press ctrl-O to save the text in nano, then ctrl-X to exit nano.</p>
+<p>Using nano again create a file called submit.sh with the following content</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#
+#SBATCH --job-name=bash_test
+#SBATCH -o bash_test.out
+#SBATCH -e bash_test.err
+#
+#SBATCH --partition=quicktest
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --time=10:00
+
+bash test.sh  #actually run our bash script, using bash</code></pre>
+
+
+<p>If you're familiar with bash scripts, the above is a bit weird.  The <code>#SBATCH</code> lines would normally be comments and hence not do anything, but Slurm will read those lines to determine how many resources to provide your job.  In this case we ask for the following:</p>
+<ul>
+<li>quicktest partition (the default - so you don't technically need to ask for it).\  </li>
+<li>1 cpu per task - we have one task, so we're asking for 1 cpu</li>
+<li>1 gig of memory.</li>
+<li>a max runtime of 10 min</li>
+</ul>
+<p>If your job uses more memory or time than requested, slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.</p>
+<p>Our <code>submit.sh</code> script also names our job <code>bash_test</code> this is what the job will show up as in squeue. We ask for things printed out on the terminal to go to two seperate files.  Normal, non error, things that would be printed out on the terminal will be put into the text file <code>bash_test.out</code>.  Errors will be printed into the text file <code>bash_test.err</code></p>
+<p>Now submit your job to the Slurm queue.</p>
+<pre class="codehilite"><code class="language-bash">sbatch submit.sh  
+
+#See your job in the queue
+squeue -u &lt;your_username&gt;
+
+#When job is done see the new files
+ls
+
+#look at the content that would have been printed to the terminal if running locally
+cat bash_test.out
+
+# See the content of the file that your bash script created
+cat date_when_job_ran.txt</code></pre>
+
+
 <h2 id="simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip<a class="headerlink" href="#simple-python-program-using-virtualenv-and-pip" title="Permanent link">&para;</a></h2>
 <p>First we need to create a working directory and move there</p>
 <pre class="codehilite"><code class="language-bash">mkdir python_test
