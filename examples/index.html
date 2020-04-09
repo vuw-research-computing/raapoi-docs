@@ -189,7 +189,7 @@ bash test.sh  #actually run our bash script, using bash</code></pre>
 
 <p>If you're familiar with bash scripts, the above is a bit weird.  The <code>#SBATCH</code> lines would normally be comments and hence not do anything, but Slurm will read those lines to determine how many resources to provide your job.  In this case we ask for the following:</p>
 <ul>
-<li>quicktest partition (the default - so you don't technically need to ask for it).\  </li>
+<li>quicktest partition (the default - so you don't technically need to ask for it). </li>
 <li>1 cpu per task - we have one task, so we're asking for 1 cpu</li>
 <li>1 gig of memory.</li>
 <li>a max runtime of 10 min</li>
