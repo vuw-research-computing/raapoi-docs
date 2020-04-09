@@ -1,5 +1,79 @@
 
 # Examples
+
+## Simple Bash Example - start here if new to HPC
+
+In this example we will run a very simple bash script on the quicktest partition.  The bash script is very simple, it just prints the hostname - the node you're running on - and prints the date into a file.  It also sleeps for 1 minute - it just does this to give you a chance to see your job in the queue with ```squeue```
+
+First lets create a sensible working directory
+
+```bash
+mkdir bash_example
+cd bash_example
+```
+We'll use the text editor nano to create our bash script as well as our submission script.  In real life, you might find it easier to create your code and submission script on your local machine, then copy them over as nano is not a great editor for large projects.
+
+Create and edit our simple bash script - this is our code we will run on the HPC
+```bash
+nano test.sh
+```
+
+Paste or type the following into the file
+```bash
+#!/bin/bash
+
+hostname  #prints the host name to the terminal
+date > date_when_job_ran.txt  #puts the content of the date command into a txt file
+sleep 1m # do nothing for 1 minute.  Job will still be "running" 
+```
+press ctrl-O to save the text in nano, then ctrl-X to exit nano.
+
+Using nano again create a file called submit.sh with the following content
+```bash
+#!/bin/bash
+#
+#SBATCH --job-name=bash_test
+#SBATCH -o bash_test.out
+#SBATCH -e bash_test.err
+#
+#SBATCH --partition=quicktest
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --time=10:00
+
+bash test.sh  #actually run our bash script, using bash
+```
+
+If you're familiar with bash scripts, the above is a bit weird.  The ```#SBATCH``` lines would normally be comments and hence not do anything, but Slurm will read those lines to determine how many resources to provide your job.  In this case we ask for the following:
+
+ * quicktest partition (the default - so you don't technically need to ask for it).\  
+ * 1 cpu per task - we have one task, so we're asking for 1 cpu
+ * 1 gig of memory.
+ * a max runtime of 10 min
+ 
+If your job uses more memory or time than requested, slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.
+
+Our ```submit.sh``` script also names our job ```bash_test``` this is what the job will show up as in squeue. We ask for things printed out on the terminal to go to two seperate files.  Normal, non error, things that would be printed out on the terminal will be put into the text file ```bash_test.out```.  Errors will be printed into the text file ```bash_test.err```
+
+Now submit your job to the Slurm queue.
+```bash
+sbatch submit.sh  
+
+#See your job in the queue
+squeue -u <your_username>
+
+#When job is done see the new files
+ls
+
+#look at the content that would have been printed to the terminal if running locally
+cat bash_test.out
+
+# See the content of the file that your bash script created
+cat date_when_job_ran.txt
+```
+
+
 ## Simple Python program using virtualenv and pip
 
 First we need to create a working directory and move there
