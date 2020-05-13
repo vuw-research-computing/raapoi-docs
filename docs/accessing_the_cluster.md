@@ -23,7 +23,7 @@ using the hostname and instead need to use the IP address, eg
 
 More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
 
-More information on the history and processes of SSH can be found in [this Software Carpentry lesson](https://swcarpentry.github.io/shell-extras/02-ssh/) and a more general how-to overview can be seen [here](https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/).
+Here is a general overview of SSH [https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/](https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/).
 
 
 ### SSH Clients
