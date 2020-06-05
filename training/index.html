@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/training/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Training - Rāpoi Cluster Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Training";
+    var mkdocs_page_input_path = "training.md";
+    var mkdocs_page_url = "/raapoi-docs/training/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud_providers/">Connecting to Cloud Providers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../containers/">Using Containers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../notebooks/">Using Jupyter Notebooks</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Training</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#gpu-example-with-neural-style-in-pytorch">GPU example with neural style in pytorch</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#clone-the-pytorch-example-repo">Clone the pytorch example repo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-the-virtualenv">Setup the virtualenv</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#download-some-images-to-use-as-content-as-well-as-for-training">Download some images to use as content as well as for training.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#style-some-images-inference">Style some images - inference</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#train-a-new-style-computationally-expensive">Train a new style - computationally expensive.</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../ganglia/">Utilisation</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rāpoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Training</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h1>
+<p>These are longer worked examples.  If you have domain specific training you'd like to provide for your students or peers, contact Andre or Wes, or make a pull request against this repo.</p>
+<h2 id="gpu-example-with-neural-style-in-pytorch">GPU example with neural style in pytorch<a class="headerlink" href="#gpu-example-with-neural-style-in-pytorch" title="Permanent link">&para;</a></h2>
+<p>We'll do a quick python example using neural style implimented in pytorch. We'll be using python virtual enviroments to install our own python packages.  Note we could also use conda for this, but python virtualenvs are a bit lighter weight.</p>
+<p>The code we use will come from the pytorch example git repo.</p>
+<h3 id="clone-the-pytorch-example-repo">Clone the pytorch example repo<a class="headerlink" href="#clone-the-pytorch-example-repo" title="Permanent link">&para;</a></h3>
+<p>In a sensible location, clone the rep.</p>
+<pre class="codehilite"><code class="language-bash">git clone https://github.com/pytorch/examples.git
+cd examples/fast_neural_style  # change to the example we will be running.</code></pre>
+
+
+<h3 id="setup-the-virtualenv">Setup the virtualenv<a class="headerlink" href="#setup-the-virtualenv" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash">module load python/3.8.1  # load python 3
+python3 -m venv env  # create a virtualenv folder called env 
+source env/bin/activate # activate the virtualenv</code></pre>
+
+
+<p>Now that we've activated the virtual enviroment, we can install the packages we need - torch and torchvision.</p>
+<pre class="codehilite"><code class="language-bash">pip3 install torch torchvision</code></pre>
+
+
+<h3 id="download-some-images-to-use-as-content-as-well-as-for-training">Download some images to use as content as well as for training.<a class="headerlink" href="#download-some-images-to-use-as-content-as-well-as-for-training" title="Permanent link">&para;</a></h3>
+<p>In your <code>examples/fast_neural_style/</code> directory.</p>
+<pre class="codehilite"><code class="language-bash"># Download an image of an octopus to images/content-images.  ## CC BY-SA 3.0 H. Zell
+wget https://upload.wikimedia.org/wikipedia/commons/0/0c/Octopus_vulgaris_02.JPG -P images/content-images/ 
+
+# Download an image of The Great Wave off Kanagawa - public domain
+wget https://upload.wikimedia.org/wikipedia/commons/a/a5/Tsunami_by_hokusai_19th_century.jpg -O images/style-images/wave.jpg</code></pre>
+
+
+<p>We need to resize the wave image to 70% so that during style training, it will fit into the GPU memory</p>
+<h3 id="style-some-images-inference">Style some images - inference<a class="headerlink" href="#style-some-images-inference" title="Permanent link">&para;</a></h3>
+<p>We'll initially just use pretrained models to generate styled images - this is known as model inference and is much less intensive than training the model, we'll do this on both CPU and GPU. </p>
+<p>submit_cpu.sh</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=pytorch_test
+#SBATCH -o _test.out
+#SBATCH -e _test.err
+#SBATCH --time=00:15:00
+#SBATCH --partition=parallel
+#SBATCH --constraint=&quot;Intel&quot;
+#SBATCH --ntasks=12
+#SBATCH --mem=6G
+
+module load python/3.8.1
+source env/bin/activate  #activate the virtualenv
+
+# Run our job --cuda 0 means run on the CPU and we'll save the output image as test1.jpg
+#
+python neural_style/neural_style.py eval --content-image images/content-images/Octopus_vulgaris_02.JPG  --model saved_models/mosaic.pth --output-image ./test1.jpg --cuda 0</code></pre>
+
+
+<p>Submit the job onto the parallel partition, targeting intel nodes (which are currently our newest processesors) and the job would complete in less than 3 minutes with the same resources required.</p>
+<p>You can check how long the job took to run with <code>vuw-job-history</code>.  The last lines are your last run job, in my case:</p>
+<pre class="codehilite"><code class="language-bash">332281        COMPLETED pytorch_t+              00:02:36 
+332281.batch  COMPLETED      batch      0.15G   00:02:36 
+332281.exte+  COMPLETED     extern      0.15G   00:02:36</code></pre>
+
+
+<p>the job took 2:36.</p>
+<p>Let's run the inference job again on GPU to see the speedup.</p>
+<p>submit_gpu.sh</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=pytorch_test
+#SBATCH -o _test.out
+#SBATCH -e _test.err
+#SBATCH --time=00:15:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=2
+#SBATCH --mem=20G
+
+module load python/3.8.1
+source env/bin/activate  #activate the virtualenv
+
+# Run our job --cuda 1 means run on the GPU and we'll save the output image as test2.jpg
+#
+python neural_style/neural_style.py eval --content-image images/content-images/Octopus_vulgaris_02.JPG  --model saved_models/mosaic.pth --output-image ./test2.jpg --cuda 1</code></pre>
+
+
+<p>In this case <code>vuw-job-history</code> the job took:</p>
+<pre class="codehilite"><code class="language-bash">332320        COMPLETED pytorch_t+              00:00:50 
+332320.batch  COMPLETED      batch      0.15G   00:00:50 
+332320.exte+  COMPLETED     extern      0.15G   00:00:50 </code></pre>
+
+
+<p>but the time varies a lot with short GPU runs, some are nearly 2 min long and some runs are 26s with the same data. The memory usage with pytorch is also hard to estimate, running <code>vuw-job-report 332320</code> shows:</p>
+<pre class="codehilite"><code class="language-bash">Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:00:08
+CPU Efficiency: 16.00% of 00:00:50 core-walltime
+Job Wall-clock time: 00:00:25
+Memory Utilized: 1.38 MB
+Memory Efficiency: 0.01% of 20.00 GB</code></pre>
+
+
+<p>The memory usage is very low, but there is a very brief spike in memory at the end of the run as the image is generated that <code>vuw-job-report</code> doesn't quite capture. 20G of memory is needed to ensure this completes.</p>
+<h3 id="train-a-new-style-computationally-expensive">Train a new style - computationally expensive.<a class="headerlink" href="#train-a-new-style-computationally-expensive" title="Permanent link">&para;</a></h3>
+<p>Training a new image style is where we will get the greatest speedup using a GPU.</p>
+<p>We will use 13G of training images - <a href="http://cocodataset.org/#download">COCO 2014 Training images dataset </a>. These images have already been downloaded and are accessable at <code>/nfs/home/training/neural_style_data/train2014/</code>.  Note that training a new style will take about two and a half hours.</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=pytorch_test
+#SBATCH -o _test.out
+#SBATCH -e _test.err
+#SBATCH --time=03:00:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=2
+#SBATCH --mem=20G
+
+module load python/3.8.1
+source env/bin/activate  #activate the virtualenv
+
+# Run our job --cuda 1 means run on the GPU                                   
+#
+python neural_style/neural_style.py train --dataset /nfs/home/training/neural_style_data/train2014/ --style-image images/style-images/wave.jpg --save-model-dir saved_models/ --epochs 2 --cuda 1</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../support/" class="btn btn-neutral float-right" title="Support">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../examples/" class="btn btn-neutral" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../examples/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../support/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
