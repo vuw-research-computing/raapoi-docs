@@ -14,6 +14,7 @@ nav:
     - 'Using Containers': 'containers.md'
     - 'Using Jupyter Notebooks': 'notebooks.md'
     - 'Examples': 'examples.md' 
+    - 'Training': 'training.md'
   - Support: support.md
   - Utilisation: ganglia.md
 
