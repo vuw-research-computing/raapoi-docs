@@ -75,8 +75,6 @@ source env/bin/activate  #activate the virtualenv
 python neural_style/neural_style.py eval --content-image images/content-images/Octopus_vulgaris_02.JPG  --model saved_models/mosaic.pth --output-image ./test1.jpg --cuda 0
 ```
 
-Submit the job onto the parallel partition, targeting intel nodes (which are currently our newest processesors) and the job would complete in less than 3 minutes with the same resources required.
-
 You can check how long the job took to run with ```vuw-job-history```.  The last lines are your last run job, in my case:
 
 ```bash
