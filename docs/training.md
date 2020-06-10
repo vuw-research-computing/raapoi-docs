@@ -153,3 +153,41 @@ source env/bin/activate  #activate the virtualenv
 #
 python neural_style/neural_style.py train --dataset /nfs/home/training/neural_style_data/train2014/ --style-image images/style-images/wave.jpg --save-model-dir saved_models/ --epochs 2 --cuda 1
 ```
+
+This will take a while, but eventually the GPU will run out of memory to store the image - this is a big limitation when using GPU - there is often not quite enough memory for what you want to do!
+The solution in this case is to crop the image of "unneeded" bits and then reduce it's size to 90%.  I've prepared this image for you.  Copy it to your image directory
+
+```bash
+cp /nfs/home/training/neural_style_data/wave_trim_90.jpg images/style-images/
+```
+
+Let's train with the cropped image, we will also give neural style some weighting parameters to improve the result.
+
+train_gpu.sh
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=pytorch_test
+#SBATCH -o _test.out
+#SBATCH -e _test.err
+#SBATCH --time=10:00:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=10
+#SBATCH --mem=25G
+
+module load python/3.8.1
+source env/bin/activate  #activate the virtualenv
+
+# Run our job --cuda 1 means run on the GPU                                   
+#
+python neural_style/neural_style.py train \
+	--dataset /nfs/home/training/neural_style_data/ \
+	--style-image images/style-images/wave_trim_90.jpg \
+	--save-model-dir saved_models/style5e10_content_5e4 \
+	--style-weight 5e10 \
+	--content-weight 5e4 \
+	--epochs 2 \
+	--cuda 1
+```
+
