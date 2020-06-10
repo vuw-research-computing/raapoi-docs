@@ -43,7 +43,12 @@ wget https://upload.wikimedia.org/wikipedia/commons/0/0c/Octopus_vulgaris_02.JPG
 wget https://upload.wikimedia.org/wikipedia/commons/a/a5/Tsunami_by_hokusai_19th_century.jpg -O images/style-images/wave.jpg
 ```
 
-We need to resize the wave image to 70% so that during style training, it will fit into the GPU memory
+We need to resize the wave image to 70% so that during style training, it will fit into the GPU memory. We will try with the full size image to see the error.
+
+We will also need to download the pre-trained models for our initial inference runs.
+```bash
+python download_saved_models.py
+```
 
 ### Style some images - inference
 
