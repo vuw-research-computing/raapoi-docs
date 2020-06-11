@@ -36,7 +36,8 @@ pip3 install torch torchvision
 In your ```examples/fast_neural_style/``` directory.
 
 ```bash
-# Download an image of an octopus to images/content-images.  ## CC BY-SA 3.0 H. Zell
+# Download an image of an octopus to images/content-images. 
+## CC BY-SA 3.0 H. Zell
 wget https://upload.wikimedia.org/wikipedia/commons/0/0c/Octopus_vulgaris_02.JPG -P images/content-images/ 
 
 # Download an image of The Great Wave off Kanagawa - public domain
@@ -191,3 +192,91 @@ python neural_style/neural_style.py train \
 	--cuda 1
 ```
 
+### Use our newly trained network
+
+
+submit_gpu.sh
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=pytorch_test
+#SBATCH -o _test.out
+#SBATCH -e _test.err
+#SBATCH --time=00:15:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=2
+#SBATCH --mem=20G
+
+module load python/3.8.1
+source env/bin/activate  #activate the virtualenv
+
+# Run our job --cuda 1 means run on the GPU and we'll save the output image as test2.jpg
+#
+python neural_style/neural_style.py eval \
+    --content-image images/content-images/Octopus_vulgaris_02.JPG  \
+    --model saved_models/style5e10_content_5e4 \
+    --output-image ./test3.jpg --cuda 1
+```
+
+
+
+### Bonus content use a slurm task-array to find the optimum parameters.
+
+In the above example we use parameters for style-weight and content-weight.  There are lots of possibilities for these parameters, we can use a task array and a parameter list to determine good values.   Note that actually running this example will consume a lot of resources and it is presented mostly to provide some information about task arrays.  Running this example will consume the whole GPU partition for about 12 hours.
+
+First let's create a list of parameters to test, we could include these in the batch submision script, but I think it's clearer to sperate them out. If you're version controlling your submission script, it'll make it easier to see what a rea changes to parameters and what are changes to the script itself.
+
+In the parameter list, the first column is style-weight parameters and the second is content-weight parameters
+paramlist.txt
+```bash
+5e10 1e3
+5e10 1e4
+5e10 5e4
+1e11 1e3
+1e11 1e4
+1e11 5e4
+5e11 1e3
+5e11 1e4
+5e11 5e4
+1e12 1e3
+1e12 1e4
+1e12 5e4
+```
+
+In our submision script we will parse these values with ```awk```.  Awk is a bit beyond the scope of this lesson, but it is handy shell tool for manipulating text. [Digital ocean has a nice primer on Akw](https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux)
+
+submit_gpu_train_array
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=pytorch_test
+#SBATCH -o _test.out
+#SBATCH -e _test.err
+#SBATCH --time=10:00:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=10
+#SBATCH --mem=25G
+#SBATCH --array=1-13
+
+module load python/3.8.1
+source env/bin/activate  #activate the virtualenv
+
+# Run our job --cuda 1 means run on the GPU                                   
+#
+#awk -v var="$SLURM_ARRAY_TASK_ID" 'NR == var {print $1}' paramlist.txt 
+style_weight=$(awk -v var="$SLURM_ARRAY_TASK_ID" 'NR == var {print $1}' paramlist.txt)
+content_weight=$(awk -v var="$SLURM_ARRAY_TASK_ID" 'NR == var {print $2}' paramlist.txt)
+
+echo $style_weight
+echo $content_weight
+python neural_style/neural_style.py train \
+	--dataset nfs/home/training/neural_style_data/ \
+	--style-image images/style-images/wave_trim_90.jpg \
+	--save-model-dir saved_models/test_params2_epoch2/style${style_weight}_content${content_weight} \
+	--style-weight $style_weight \
+	--content-weight $content_weight \
+	--epochs 2 \
+	--cuda 1
+```
