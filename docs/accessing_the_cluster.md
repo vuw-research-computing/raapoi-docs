@@ -40,7 +40,9 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
 
 NOTE:  Once at the command prompt you can type the following to login (replace "username" with your VUW user):
 
-`ssh username@raapoi.vuw.ac.nz`
+`ssh -X username@raapoi.vuw.ac.nz`
+
+The _-X_ parameter tells SSH to forward any GUI windows to your local machine, this is called X forwarding.
 
 _Windows SSH Clients_
 
