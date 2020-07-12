@@ -169,7 +169,8 @@ You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQu
 <li><a href="https://www.xquartz.org/">XQuartz</a> is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: <code>sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true</code>   We have found that this allows some older GUI applications to run with fewer errors.</li>
 </ul>
 <p>NOTE:  Once at the command prompt you can type the following to login (replace "username" with your VUW user):</p>
-<p><code>ssh username@raapoi.vuw.ac.nz</code></p>
+<p><code>ssh -X username@raapoi.vuw.ac.nz</code></p>
+<p>The <em>-X</em> parameter tells SSH to forward any GUI windows to your local machine, this is called X forwarding.</p>
 <p><em>Windows SSH Clients</em></p>
 <ul>
 <li>Recommended Clients:</li>
