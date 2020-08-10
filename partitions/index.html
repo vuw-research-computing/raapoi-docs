@@ -68,8 +68,6 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#partition-quicktest">Partition: quicktest</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#partition-gpu-note-this-is-a-temporary-partition">Partition: gpu (Note: This is a temporary partition)</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#partition-bigmem">Partition: bigmem</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#partition-parallel">Partition: parallel</a>
@@ -202,16 +200,18 @@ jobs.</p>
 <li>Maximum memory available per task: 62G</li>
 <li>Maximum Runtime: 1 hour</li>
 </ul>
-<h3 id="partition-gpu-note-this-is-a-temporary-partition">Partition: gpu (Note: This is a temporary partition)<a class="headerlink" href="#partition-gpu-note-this-is-a-temporary-partition" title="Permanent link">&para;</a></h3>
-<p>This temporary partition (thanks to Mark Davies in ECS for the loan) is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)</p>
-<ul>
-<li>GPU nodes available: 2</li>
-<li>GPUs available per node: 3</li>
-<li>Maximum CPU available per task: 32</li>
-<li>Maximum memory available per task: 92G</li>
-<li>Maximum Runtime: 24 hours</li>
-</ul>
-<p><em>Note</em>:  To request GPU add the parameter, <code>--gres=gpu:X</code>  Where X is the number of GPUs required, typically 1:  <code>--gres=gpu:1</code></p>
+<!--- ### Partition: gpu
+
+This partition is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)
+
+* GPU nodes available: 2
+* GPUs available per node: 3
+* Maximum CPU available per task: 32
+* Maximum memory available per task: 92G
+* Maximum Runtime: 24 hours
+
+_Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1` --->
+
 <h3 id="partition-bigmem">Partition: bigmem<a class="headerlink" href="#partition-bigmem" title="Permanent link">&para;</a></h3>
 <p>This partition is primarily useful for jobs that require very large shared
 memory (greater than 125 GB).  These are known as memory-bound jobs.</p>
