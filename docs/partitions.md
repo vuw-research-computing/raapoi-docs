@@ -65,8 +65,7 @@ jobs.
 * Maximum memory available per task: 62G
 * Maximum Runtime: 1 hour
 
-### Partition: gpu
-__(Note: This partition is not currently available)__
+<!--- ### Partition: gpu
 
 This partition is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)
 
@@ -76,7 +75,7 @@ This partition is for those jobs that require GPUs or those software that work w
 * Maximum memory available per task: 92G
 * Maximum Runtime: 24 hours
 
-_Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1`
+_Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1` --->
 
 ### Partition: bigmem
 
