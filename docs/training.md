@@ -280,3 +280,8 @@ python neural_style/neural_style.py train \
 	--epochs 2 \
 	--cuda 1
 ```
+
+## Simple OpenMPI with Singularity using the hybrid approach.
+
+The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)
+
