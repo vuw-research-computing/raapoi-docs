@@ -129,21 +129,21 @@
               
                 <h2 id="starting-and-working-with-a-jupyter-notebook">Starting and Working with a Jupyter Notebook<a class="headerlink" href="#starting-and-working-with-a-jupyter-notebook" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1:</strong> The best way to start jupyter is with a batch submit script.  We have created an example script.  You can copy this script from one available on the cluster, just type the following:</p>
-<pre class="codehilite"><code>cp /home/software/vuwrc/examples/jupyter/notebook.sh notebook.sh</code></pre>
-
+<pre class="codehilite"><code>cp /home/software/vuwrc/examples/jupyter/notebook.sh notebook.sh
+</code></pre>
 
 <p>If you are using Anaconda and have installed it in the default location you need to use the following submit file instead:</p>
-<pre class="codehilite"><code>cp /home/software/vuwrc/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh</code></pre>
-
+<pre class="codehilite"><code>cp /home/software/vuwrc/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh
+</code></pre>
 
 <p><strong>NOTE</strong>: We also have sbatch scripts for R (IRKernel)) notebooks.  These are called <em>R-notebook.sh</em> and <em>R-notebook-anaconda.sh</em></p>
 <p>This script is ready to run as is, but we recommend editing it to satisfy your own CPU, memory and time requirements.  Once you have edited the file you can run it thusly:</p>
-<pre class="codehilite"><code>sbatch notebook.sh</code></pre>
-
+<pre class="codehilite"><code>sbatch notebook.sh
+</code></pre>
 
 <p>or if using Anaconda:</p>
-<pre class="codehilite"><code>sbatch notebook-anaconda.sh</code></pre>
-
+<pre class="codehilite"><code>sbatch notebook-anaconda.sh
+</code></pre>
 
 <p><strong>NOTE:</strong> If you copied the R notebook script, replace notebook.sh with R-notebook.sh</p>
 <p>This will submit the file to run a job.  It may take some time for the job to
@@ -159,12 +159,12 @@ to connect to the compute node (in the example above the compute node is at
 address 130.195.19.20) and transfer all the traffic back and forth between your computer and the compute node).  </p>
 <p><strong>Step 2a from a Mac:</strong></p>
 <p>Open a new session window from Terminal.app or other terminal utility such as Xquartz and type the following:</p>
-<pre class="codehilite"><code>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz</code></pre>
-
+<pre class="codehilite"><code>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+</code></pre>
 
 <p>For example:</p>
-<pre class="codehilite"><code>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz</code></pre>
-
+<pre class="codehilite"><code>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+</code></pre>
 
 <p>Once you are at a prompt you can go to Step 3</p>
 <p><strong>Step 2b: from Windows</strong></p>
@@ -172,12 +172,12 @@ address 130.195.19.20) and transfer all the traffic back and forth between your 
 <p><em>Method 1 (Git Bash or MobaXterm):</em>
 Command-line, start a local Git Bash or MobaXterm terminal (or try the GUI method, below)</p>
 <p>From the command prompt type:</p>
-<pre class="codehilite"><code>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz</code></pre>
-
+<pre class="codehilite"><code>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+</code></pre>
 
 <p>For example:</p>
-<pre class="codehilite"><code>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz</code></pre>
-
+<pre class="codehilite"><code>ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+</code></pre>
 
 <p>Once you are at a prompt you can go to Step 3</p>
 <p><em>Method 2 (MobaXterm):</em>

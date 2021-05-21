@@ -157,8 +157,8 @@
 
   module load fastqc/0.11.7
 
-  fastqc --nano -o $TMPDIR/output_dir seqfile_${SLURM_ARRAY_TASK_ID}</code></pre>
-
+  fastqc --nano -o $TMPDIR/output_dir seqfile_${SLURM_ARRAY_TASK_ID}
+</code></pre>
 
 <p>So what do these parameter mean?:</p>
 <ul>
@@ -193,8 +193,8 @@ requesting 12 CPU cores per task and a total of 256GB of memory. The program its
   #SBATCH --mail-user=me@email.com
   # Run multi-threaded application
   module load java/1.8.0-91
-  java -jar threaded-app.jar</code></pre>
-
+  java -jar threaded-app.jar
+</code></pre>
 
 <h2 id="mpi-jobs">MPI Jobs<a class="headerlink" href="#mpi-jobs" title="Permanent link">&para;</a></h2>
 <p>Most users do not require MPI to run their jobs but many do.  Please read on if you want to learn more about using MPI for tightly-coupled jobs.</p>
@@ -212,8 +212,8 @@ requesting 12 CPU cores per task and a total of 256GB of memory. The program its
 
   module load openmpi
   echo $SLURM_JOB_NODELIST
-  mpirun -np 24 mpiscript.o</code></pre>
-
+  mpirun -np 24 mpiscript.o
+</code></pre>
 
 <p>This example requests 3 nodes and 8 tasks (i.e. processes) per node, for a total of 24 tasks.  I use this number to tell mpirun how many processes to start, -np 24</p>
 <p><em>NOTE:</em> We highly recomend adding the <code>--constraint="IB"</code> parameter to your MPI job as

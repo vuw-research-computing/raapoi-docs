@@ -138,8 +138,8 @@
 <pre class="codehilite"><code>module load singularity
 srun --pty -c 4 --mem=16G bash
 singularity pull docker://tislaamo/blocksci
-singularity shell blocksci.simg</code></pre>
-
+singularity shell blocksci.simg
+</code></pre>
 
 <p>Once you have typed the <em>singularity shell</em> command you will be within the
 container and can type the commands available from within the container such as
@@ -155,12 +155,12 @@ the BlockSci utility <strong>blocksci_parser</strong></p>
 
 module load singularity
 singularity pull docker://jasonkwan/autometa:latest
-singularity exec autometa_latest.sif calculate_read_coverage.py somedata.dat</code></pre>
-
+singularity exec autometa_latest.sif calculate_read_coverage.py somedata.dat
+</code></pre>
 
 <p>Now to run the file you can:</p>
-<pre class="codehilite"><code>sbatch runContainer.sh</code></pre>
-
+<pre class="codehilite"><code>sbatch runContainer.sh
+</code></pre>
 
 <p>Note that <em>singularity shell</em> is primarily for interactive use and <em>singularity exec</em> (or possibly <em>singularity run</em>) are for executing the applications that were built within the container directly.  It is important to know how the container was created to make effective use of the software.</p>
               

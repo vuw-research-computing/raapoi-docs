@@ -149,8 +149,8 @@ space to Cloudstor I would do the following from raapoi login node:</p>
 <pre class="codehilite"><code>  tmux
   cd /nfs/scratch/harrelwe
   owncloudcmd -u wes.harrell@vuw.ac.nz project1 
-  https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/</code></pre>
-
+  https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
+</code></pre>
 
 <p>The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
 (type <code>tmux attach</code> to reconnect), I then change directory (<em>cd</em>) to my scratch space and then use the command <code>owncloudcmd</code> to sync my project directory called project1 to the Cloudstor service.  You will be prompted for your Cloudstor password, you can also embed this within the command line using the -p paramter.  </p>
@@ -161,19 +161,19 @@ space to Cloudstor I would do the following from raapoi login node:</p>
 <p>Once you have the appropriate environment in place and your configuration setup you can use the aws command, plus an appropriate sub-command (s3, emr, rds, dynamodb, etc) and supporting arguments. </p>
 <p>More information on the CLI can be found here:
 <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html</a></p>
-<h4>Transferring Data to/from Amazon (AWS) S3</h4>
+<h4 id="transferring-data-tofrom-amazon-aws-s3">Transferring Data to/from Amazon (AWS) S3<a class="headerlink" href="#transferring-data-tofrom-amazon-aws-s3" title="Permanent link">&para;</a></h4>
 <p>To transfer data from S3 you first need to setup your AWS connect, instructions for that can be found above.
 Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  </p>
 <p>For example if I wanted to copy data from my S3 storage to my project directory I could do the following:</p>
 <pre class="codehilite"><code>  tmux
   module load amazon/aws/cli
   cd /nfs/scratch/harrelwe/project
-  aws s3 cp s3://mybucket/mydata.dat mydata.dat</code></pre>
-
+  aws s3 cp s3://mybucket/mydata.dat mydata.dat
+</code></pre>
 
 <p>To copy something to storage simply reverse the file paths, eg.</p>
-<pre class="codehilite"><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat </code></pre>
-
+<pre class="codehilite"><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat 
+</code></pre>
 
 <p>The above starts a tmux session to allow the transfer to continue even if I
 disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
@@ -181,7 +181,7 @@ modules necessary to use the AWS commands.  I change directory to my project
 space and use the aws s3 cp command to copy from S3.  More information on using
 aws can be found here:
 <a href="http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3">http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3</a></p>
-<h4>Working with AWS Data Analysis Tools</h4>
+<h4 id="working-with-aws-data-analysis-tools">Working with AWS Data Analysis Tools<a class="headerlink" href="#working-with-aws-data-analysis-tools" title="Permanent link">&para;</a></h4>
 <p>Amazon has a number of data analytics and database services available.  Using the command line utilities available in raapoi, researchers can perform work on the eo cluster and transfer data to AWS to perform further analysis with tools such as MapReduce (aka Hadoop), RedShift or Quicksight.</p>
 <p>A listing of available services and documentation can be found at the following:
 <a href="https://aws.amazon.com/products/analytics/">https://aws.amazon.com/products/analytics/</a></p>
@@ -191,18 +191,18 @@ aws can be found here:
 <p>This will give you access to the <code>gcloud</code> command.  To setup a connection to your gcloud account use the init sub-command, eg.</p>
 <p><code>gcloud init --console-only</code></p>
 <p>Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the raapoi terminal window.</p>
-<h4>Transferring Data to/from Google Cloud (gcloud)</h4>
+<h4 id="transferring-data-tofrom-google-cloud-gcloud">Transferring Data to/from Google Cloud (gcloud)<a class="headerlink" href="#transferring-data-tofrom-google-cloud-gcloud" title="Permanent link">&para;</a></h4>
 <p>To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the <code>gsutil</code> command to copy data to and from your gcloud storage.  </p>
 <p>For example, if I wanted to copy data from gcloud to my project directory I could do the following:</p>
 <pre class="codehilite"><code>  tmux
   module load google/cloud/sdk/212.0.0
   cd /nfs/scratch/harrelwe/project
-  gsutil cp gs://mybucket/mydata.dat mydata.dat</code></pre>
-
+  gsutil cp gs://mybucket/mydata.dat mydata.dat
+</code></pre>
 
 <p>To copy something to storage simply reverse the file paths, eg.</p>
-<pre class="codehilite"><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat </code></pre>
-
+<pre class="codehilite"><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat 
+</code></pre>
 
 <p>The above starts a tmux session to allow the transfer to continue even if I
 disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
@@ -210,7 +210,7 @@ modules necessary to use the gsutil commands.  I change directory to my project
 space and use the gsutil cp command to copy from gcloud.  More information on
 using gcloud can be found here:
 <a href="https://cloud.google.com/sdk/gcloud/">https://cloud.google.com/sdk/gcloud/</a></p>
-<h4>Working with GCloud Data Analysis Tools</h4>
+<h4 id="working-with-gcloud-data-analysis-tools">Working with GCloud Data Analysis Tools<a class="headerlink" href="#working-with-gcloud-data-analysis-tools" title="Permanent link">&para;</a></h4>
 <p>Google Cloud has a number of data analytics and database services available.  Using the gcloud command line utilities available on raapoi, researchers can perform work on the cluster and transfer data to gcloud to perform further analysis with tools such as Dataproc (Hadoop/Spark), BigQuery or Datalab (Visualization)</p>
 <p>A listing of available services and documentation can be found at the following:
 <a href="https://cloud.google.com/products/">https://cloud.google.com/products/</a></p>
@@ -234,16 +234,16 @@ using gcloud can be found here:
 <p>Copy the URL link listed in Step C1 and paste it into the web browser that you started in Step A</p>
 <p>This will provide you with a long access code (aka hash).  Now copy that access code and paste it into your Raapoi terminal after Step C3 where it is asking for Enter the authorization code here </p>
 <p>Now hit enter or return.  You should see that you are now logged in with your Dropbox credentials</p>
-<h4>Basic Dropbox commands</h4>
+<h4 id="basic-dropbox-commands">Basic Dropbox commands<a class="headerlink" href="#basic-dropbox-commands" title="Permanent link">&para;</a></h4>
 <p>Remember to load the dropbox environment module if you have not already (see <code>module spider</code> for the path)</p>
 <p>Now type <code>dbx</code> or <code>dbxcli</code> at a prompt.  You will see a number of sub-commands, for instance ls, which will list the contents of your Dropbox, eg</p>
 <p><code>dbxcli ls</code></p>
-<h4>Downloading from Dropbox</h4>
+<h4 id="downloading-from-dropbox">Downloading from Dropbox<a class="headerlink" href="#downloading-from-dropbox" title="Permanent link">&para;</a></h4>
 <p>Downloading uses the subcommand called: get.   The basic format for get is:</p>
 <p><code>dbxcli get fileOnDropbox fileOnRaapoi</code></p>
 <p>For instance, if I have a datafile called 2018-financials.csv on Dropbox that I want to copy to my project folder I would type:</p>
 <p><code>dbxcli get 2018-financials.csv /nfs/scratch/harrelwe/projects/finance_proj/2018-financials.csv</code></p>
-<h4>Uploading to Dropbox</h4>
+<h4 id="uploading-to-dropbox">Uploading to Dropbox<a class="headerlink" href="#uploading-to-dropbox" title="Permanent link">&para;</a></h4>
 <p>Uploading is similar to downloading except now we use the subcommand: put.  The basic format for put is:</p>
 <p><code>dbxcli put fileOnRaapoi fileOnDropbox</code></p>
 <p>For example I want to upload a PDF I generated from one of my jobs called final-report.pdf I would type:</p>
