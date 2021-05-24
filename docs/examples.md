@@ -311,9 +311,13 @@ Run the jobs with
 sbatch r_submit.sh
 ```
 
-## Singularity/Docker container example
+## Singularity
 
 While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
+
+### Singularity/Docker container example
+
+Singularity allows you to use most (but not all!) docker images on Rāpoi.
 
 On your local machine create the singularity definition file
 
@@ -365,7 +369,7 @@ Run the script with the usual
 singularity_submit.sh
 ```
 
-## Singularity/TensorFlow Example
+### Singularity/TensorFlow Example
 
 tensor.def
 ```bash
@@ -454,7 +458,7 @@ module load singularity
 singularity run tensorflow.sif tensortest.py 
 ```
 
-## Singularity/MaxBin2 Example
+### Singularity/MaxBin2 Example
 In a sensible location, either in your home directory or on the scratch:
 
 Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced on the official maxbin site.
@@ -499,7 +503,7 @@ module load singularity
 singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 
 ```
 
-## Singularity/Sandbox Example
+### Singularity/Sandbox Example
 
 This lets you have root inside a container *locally* and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on Rāpoi, I suggest you *don't do this*. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a ```.def``` file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.
 
@@ -547,7 +551,7 @@ sudo singularity build new-example-sif example/
 ```
 You could now copy the ```new-example-sif``` file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting *everything in the.def file*.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.
 
-## Singularity/Custom Conda Container - idba example
+### Singularity/Custom Conda Container - idba example
 
 In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a bicontainer.  We'll build this container locally to match a local conda enviroment, then run it on the HPC and do an example assembly.
 
