@@ -413,7 +413,7 @@ Rscript r_random_alpha.R $SLURM_ARRAY_TASK_ID
 </code></pre>
 
 <h2 id="singularitydocker-container-example">Singularity/Docker container example<a class="headerlink" href="#singularitydocker-container-example" title="Permanent link">&para;</a></h2>
-<p>While there are many modules on Rāpooi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpooi.  However, you <em>can</em> have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.</p>
+<p>While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you <em>can</em> have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.</p>
 <p>On your local machine create the singularity definition file</p>
 <p>input_args_example.def</p>
 <pre class="codehilite"><code class="language-singularity">BootStrap: library
@@ -426,12 +426,12 @@ From: ubuntu:16.04
     Author Andre
 </code></pre>
 
-<p>This will build an ubuntu 16.04 container that will eventually run on Rāpooi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.</p>
+<p>This will build an ubuntu 16.04 container that will eventually run on Rāpoi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.</p>
 <p>Build the container <em>locally</em> with sudo and singularity</p>
 <pre class="codehilite"><code class="language-bash">sudo singularity build inputexample.sif input_args_example.def 
 </code></pre>
 
-<p>This will build an image that you can't modify any further and is immediately suitable to run on Rāpooi
+<p>This will build an image that you can't modify any further and is immediately suitable to run on Rāpoi
 Copy this file to Rāpoi via sftp</p>
 <pre class="codehilite"><code class="language-bash">sftp &lt;username&gt;@raapoi.vuw.ac.nz
 </code></pre>
@@ -497,7 +497,7 @@ model.evaluate(x_test, y_test)
 <p>Copy your files to Rāpoi via sftp (or whatever you prefer)</p>
 <pre class="codehilite"><code class="language-bash">sftp &lt;username&gt;@raapoi.vuw.ac.nz
 cd &lt;where you want to work&gt;
-put *   #put all files in your local directory onto raapoi
+put *   #put all files in your local directory onto Rāpoi
 </code></pre>
 
 <p>Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.</p>
