@@ -143,18 +143,18 @@ However, instead of searching through a long list, if you know you want to use l
 <p><code>module keyword lua</code></p>
 <p>If you want to know more about a particular module you can use the <em>whatis</em> or
 <em>show</em> subcommand.  Some modules have this available, for instance:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">harrelwe@raapoi</span><span class="nb">-</span><span class="c">master:~$ module show trimmomatic/20190304</span>
-<span class="nb">----------------------------------------------------------------------</span><span class="c"></span>
-<span class="c">   /home/software/tools/modulefiles/trimmomatic/20190304:</span>
-<span class="nb">----------------------------------------------------------------------</span><span class="c"></span>
-<span class="c">load(&quot;java/jdk/1</span><span class="nt">.</span><span class="c">8</span><span class="nt">.</span><span class="c">0_121&quot;)</span>
-<span class="c">setenv(&quot;TM_HOME&quot;</span><span class="nt">,</span><span class="c">&quot;/home/software/apps/trimmomatic/20190304/bin&quot;)</span>
-</code></pre></div>
+<pre class="codehilite"><code>harrelwe@raapoi-master:~$ module show trimmomatic/20190304
+----------------------------------------------------------------------
+   /home/software/tools/modulefiles/trimmomatic/20190304:
+----------------------------------------------------------------------
+load(&quot;java/jdk/1.8.0_121&quot;)
+setenv(&quot;TM_HOME&quot;,&quot;/home/software/apps/trimmomatic/20190304/bin&quot;)
+</code></pre>
 
-<div class="codehilite"><pre><span></span><code>  <span class="k">module</span> <span class="n">whatis</span> <span class="n">R</span><span class="o">/</span><span class="n">CRAN</span><span class="o">/</span><span class="mf">3.5</span>
+<pre class="codehilite"><code>  module whatis R/CRAN/3.5
 
-  <span class="n">R</span><span class="o">/</span><span class="n">CRAN</span><span class="o">/</span><span class="mf">3.5</span>          : <span class="n">Adds</span> <span class="n">the</span> <span class="n">R</span> <span class="n">library</span> <span class="nb">path</span> <span class="nb">to</span> <span class="n">the</span> <span class="n">pre-built</span> <span class="n">CRAN</span> <span class="n">modules</span>
-</code></pre></div>
+  R/CRAN/3.5          : Adds the R library path to the pre-built CRAN modules
+</code></pre>
 
 <h2 id="adding-or-loading-software">Adding or loading software<a class="headerlink" href="#adding-or-loading-software" title="Permanent link">&para;</a></h2>
 <p>Once you have found the module path you can load the software:</p>
@@ -163,24 +163,24 @@ However, instead of searching through a long list, if you know you want to use l
 <p>Showing/listing the module environment modifications
 You can discover what the module will load into your environment you can run
 module show, for example here is what R adds:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">module show R/3</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1</span>
-<span class="nb">--------------------------------------------------</span><span class="c"></span>
-<span class="c">   /home/software/tools/modulefiles/R/3</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1:</span>
-<span class="nb">--------------------------------------------------</span><span class="c"></span>
+<pre class="codehilite"><code>module show R/3.5.1
+--------------------------------------------------
+   /home/software/tools/modulefiles/R/3.5.1:
+--------------------------------------------------
 
-<span class="c">whatis(&quot;Adds the R language path to your environment &quot;)</span>
-<span class="c">prepend_path(&quot;PATH&quot;</span><span class="nt">,</span><span class="c">&quot;/home/software/apps/R/3</span><span class="nt">.</span><span class="c">5</span><span class="nt">.</span><span class="c">1/bin&quot;)</span>
-</code></pre></div>
+whatis(&quot;Adds the R language path to your environment &quot;)
+prepend_path(&quot;PATH&quot;,&quot;/home/software/apps/R/3.5.1/bin&quot;)
+</code></pre>
 
 <h2 id="listing-loaded-modules">Listing loaded modules<a class="headerlink" href="#listing-loaded-modules" title="Permanent link">&para;</a></h2>
 <p>To see what modules you have loaded into your environment you can run the command:</p>
 <p><code>module list</code>  </p>
 <p>By default you will have the config module loaded (please do not unload that module).  For example, here are the modules I have loaded in my environment when I wrote this section:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">module</span> <span class="n">list</span>
+<pre class="codehilite"><code>module list
 
-<span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modules:</span>
-  <span class="mi">1</span>) <span class="nb">config</span>   <span class="mi">2</span>) <span class="n">tassel</span><span class="o">/</span><span class="mi">3</span>   <span class="mi">3</span>) <span class="n">python</span><span class="o">/</span><span class="mf">3.7.0</span>   <span class="mi">4</span>) <span class="n">python</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="mf">3.7</span>
-</code></pre></div>
+Currently Loaded Modules:
+  1) config   2) tassel/3   3) python/3.7.0   4) python/modules/3.7
+</code></pre>
               
             </div>
           </div>
