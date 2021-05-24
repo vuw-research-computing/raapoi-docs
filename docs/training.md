@@ -115,7 +115,7 @@ submit_gpu.sh
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=20G
+#SBATCH --mem=50G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
