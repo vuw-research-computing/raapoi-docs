@@ -238,7 +238,7 @@ python neural_style/neural_style.py eval --content-image images/content-images/O
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
@@ -255,25 +255,25 @@ python neural_style/neural_style.py eval --content-image images/content-images/O
 </code></pre>
 
 <p>In this case <code>vuw-job-history</code> the job took:</p>
-<pre class="codehilite"><code class="language-bash">332320        COMPLETED pytorch_t+              00:00:50 
-332320.batch  COMPLETED      batch      0.15G   00:00:50 
-332320.exte+  COMPLETED     extern      0.15G   00:00:50 
+<pre class="codehilite"><code class="language-bash">692973        COMPLETED pytorch_t+              00:00:16 
+692973.batch  COMPLETED      batch      0.15G   00:00:16 
+692973.exte+  COMPLETED     extern      0.15G   00:00:16 
 </code></pre>
 
-<p>but the time varies a lot with short GPU runs, some are nearly 2 min long and some runs are 26s with the same data. The memory usage with pytorch is also hard to estimate, running <code>vuw-job-report 332320</code> shows:</p>
+<p>but the time varies a lot with short GPU runs, some are nearly 2 min long and some runs are 16s with the same data. The memory usage with pytorch is also hard to estimate, running <code>vuw-job-report 332320</code> shows:</p>
 <pre class="codehilite"><code class="language-bash">Nodes: 1
 Cores per node: 2
-CPU Utilized: 00:00:08
-CPU Efficiency: 16.00% of 00:00:50 core-walltime
-Job Wall-clock time: 00:00:25
+CPU Utilized: 00:00:07
+CPU Efficiency: 43.75% of 00:00:16 core-walltime
+Job Wall-clock time: 00:00:08
 Memory Utilized: 1.38 MB
-Memory Efficiency: 0.01% of 20.00 GB
+Memory Efficiency: 0.00% of 60.00 GB
 </code></pre>
 
-<p>The memory usage is very low, but there is a very brief spike in memory at the end of the run as the image is generated that <code>vuw-job-report</code> doesn't quite capture. 20G of memory is needed to ensure this completes.</p>
+<p>The memory usage is very low, but there is a very brief spike in memory at the end of the run as the image is generated that <code>vuw-job-report</code> doesn't quite capture. 60G of memory is needed to ensure this completes - a good rule of thumb is to allocate at least as much system memory as GPU memory.  The A100's have 40G of ram.</p>
 <h3 id="train-a-new-style-computationally-expensive">Train a new style - computationally expensive.<a class="headerlink" href="#train-a-new-style-computationally-expensive" title="Permanent link">&para;</a></h3>
 <p>Training a new image style is where we will get the greatest speedup using a GPU.</p>
-<p>We will use 13G of training images - <a href="http://cocodataset.org/#download">COCO 2014 Training images dataset </a>. These images have already been downloaded and are accessable at <code>/nfs/home/training/neural_style_data/train2014/</code>.  Note that training a new style will take about an hpour and a half on an A100 and two and a half hours on an RTX6000</p>
+<p>We will use 13G of training images - <a href="http://cocodataset.org/#download">COCO 2014 Training images dataset </a>. These images have already been downloaded and are accessable at <code>/nfs/home/training/neural_style_data/train2014/</code>.  Note that training a new style will take about 1:15h on an A100 and two and a half hours on an RTX6000</p>
 <pre class="codehilite"><code class="language-bash">#!/bin/bash
 
 #SBATCH --job-name=pytorch_test
@@ -283,7 +283,7 @@ Memory Efficiency: 0.01% of 20.00 GB
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
@@ -306,7 +306,7 @@ python neural_style/neural_style.py train \
         --cuda 1
 </code></pre>
 
-<p>This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU ha plenty of memory, it often measn you ran out of system memory, try asking for more memory in slurm.</p>
+<p>This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU ha plenty of memory, it often means you ran out of system memory, try asking for more memory in slurm.</p>
 <h3 id="use-our-newly-trained-network">Use our newly trained network<a class="headerlink" href="#use-our-newly-trained-network" title="Permanent link">&para;</a></h3>
 <p>submit_gpu.sh</p>
 <pre class="codehilite"><code class="language-bash">#!/bin/bash
@@ -318,7 +318,7 @@ python neural_style/neural_style.py train \
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
@@ -367,7 +367,7 @@ paramlist.txt</p>
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=10
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 #SBATCH --array=1-13
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
@@ -389,7 +389,7 @@ echo $style_weight
 echo $content_weight
 python neural_style/neural_style.py train \
     --dataset nfs/home/training/neural_style_data/ \
-    --style-image images/style-images/wave_trim_90.jpg \
+    --style-image images/style-images/wave.jpg \
     --save-model-dir saved_models/test_params2_epoch2/style${style_weight}_content${content_weight} \
     --style-weight $style_weight \
     --content-weight $content_weight \
