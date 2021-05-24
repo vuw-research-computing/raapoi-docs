@@ -4,7 +4,7 @@ These are longer worked examples.  If you have domain specific training you'd li
 
 ## GPU example with neural style in pytorch
 
-We'll do a quick python example using neural style implimented in pytorch. We'll be using python virtual enviroments to install our own python packages.  Note we could also use conda for this, but python virtualenvs are a bit lighter weight.
+We'll do a quick python example using neural style implimented in pytorch. We will be using modules rather than conda/virtualenvs but there is nothing stopping you from loading the modules and creating a virtualenv/conda enviroment to install additioanl python packages
 
 The code we use will come from the pytorch example git repo.
 
@@ -17,19 +17,30 @@ git clone https://github.com/pytorch/examples.git
 cd examples/fast_neural_style  # change to the example we will be running.
 ```
 
-### Setup the virtualenv
+### Load the modules
+
+We are using the new Easybuild based modules, to ensure we don't have conflicst with the old modules, it will be best to unuse them first and then use the new system.  At somepoint we may automatically add the new modules to your bashrc file - but currently you'll have to do this yourself or manually unuse and use the new module system
 
 ```bash
-module load python/3.8.1  # load python 3
-python3 -m venv env  # create a virtualenv folder called env 
+module unuse /home/software/tools/modulefiles/  #unuse the old module system
+module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
+```
+
+```bash
+module load fosscuda/2020b
+module load PyTorch/1.7.1
+module load torchvision/0.8.2-PyTorch-1.7.1
+module list #see all the dependancies we have loaded, in particular which version of python we're using now. Currently Python 3.8.6
+```
+
+### Optional: Setup a virtualenv
+
+```bash
+python3 -m venv env  # create a virtualenv folder called env. Note! This will likely only work with the python version listed above!
 source env/bin/activate # activate the virtualenv
 ```
 
-Now that we've activated the virtual enviroment, we can install the packages we need - torch and torchvision.
-
-```bash
-pip3 install torch torchvision
-```
+Now that we've activated the virtual enviroment, we can install any additional pacakges we need.  In thise case we don't need any additional packages
 
 ### Download some images to use as content as well as for training.
 
@@ -44,7 +55,7 @@ wget https://upload.wikimedia.org/wikipedia/commons/0/0c/Octopus_vulgaris_02.JPG
 wget https://upload.wikimedia.org/wikipedia/commons/a/a5/Tsunami_by_hokusai_19th_century.jpg -O images/style-images/wave.jpg
 ```
 
-We need to resize the wave image to 70% so that during style training, it will fit into the GPU memory. We will try with the full size image to see the error.
+Depending on the GPU we are using, we may need to resize the image to ensure it first in memory.  On an RTX6000 we would need to resize the image to 70% of it's full size to fit in memroy.  Thankfully the GPUs on Rāpoi are A100's with 40GB of ram, so we can skip this step.
 
 We will also need to download the pre-trained models for our initial inference runs.
 ```bash
@@ -64,11 +75,16 @@ submit_cpu.sh
 #SBATCH -e _test.err
 #SBATCH --time=00:15:00
 #SBATCH --partition=parallel
-#SBATCH --constraint="Intel"
 #SBATCH --ntasks=12
 #SBATCH --mem=6G
 
-module load python/3.8.1
+module unuse /home/software/tools/modulefiles/  #unuse the old module system
+module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
+module load fosscuda/2020b
+module load PyTorch/1.7.1
+module load torchvision/0.8.2-PyTorch-1.7.1
+
+#Optional
 source env/bin/activate  #activate the virtualenv
 
 # Run our job --cuda 0 means run on the CPU and we'll save the output image as test1.jpg
@@ -101,7 +117,13 @@ submit_gpu.sh
 #SBATCH --ntasks=2
 #SBATCH --mem=20G
 
-module load python/3.8.1
+module unuse /home/software/tools/modulefiles/  #unuse the old module system
+module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
+module load fosscuda/2020b
+module load PyTorch/1.7.1
+module load torchvision/0.8.2-PyTorch-1.7.1
+
+#optional
 source env/bin/activate  #activate the virtualenv
 
 # Run our job --cuda 1 means run on the GPU and we'll save the output image as test2.jpg
@@ -133,7 +155,7 @@ The memory usage is very low, but there is a very brief spike in memory at the e
 
 Training a new image style is where we will get the greatest speedup using a GPU.
 
-We will use 13G of training images - [COCO 2014 Training images dataset ](http://cocodataset.org/#download). These images have already been downloaded and are accessable at ```/nfs/home/training/neural_style_data/train2014/```.  Note that training a new style will take about two and a half hours.
+We will use 13G of training images - [COCO 2014 Training images dataset ](http://cocodataset.org/#download). These images have already been downloaded and are accessable at ```/nfs/home/training/neural_style_data/train2014/```.  Note that training a new style will take about an hpour and a half on an A100 and two and a half hours on an RTX6000
 
 ```bash
 #!/bin/bash
@@ -145,52 +167,30 @@ We will use 13G of training images - [COCO 2014 Training images dataset ](http:/
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=20G
+#SBATCH --mem=50G
 
-module load python/3.8.1
+module unuse /home/software/tools/modulefiles/  #unuse the old module system
+module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
+module load fosscuda/2020b
+module load PyTorch/1.7.1
+module load torchvision/0.8.2-PyTorch-1.7.1
+
+#Optional
 source env/bin/activate  #activate the virtualenv
 
 # Run our job --cuda 1 means run on the GPU                                   
-#
-python neural_style/neural_style.py train --dataset /nfs/home/training/neural_style_data/train2014/ --style-image images/style-images/wave.jpg --save-model-dir saved_models/ --epochs 2 --cuda 1
-```
-
-This will take a while, but eventually the GPU will run out of memory to store the image - this is a big limitation when using GPU - there is often not quite enough memory for what you want to do!
-The solution in this case is to crop the image of "unneeded" bits and then reduce it's size to 90%.  I've prepared this image for you.  Copy it to your image directory
-
-```bash
-cp /nfs/home/training/neural_style_data/wave_trim_90.jpg images/style-images/
-```
-
-Let's train with the cropped image, we will also give neural style some weighting parameters to improve the result.
-
-train_gpu.sh
-```bash
-#!/bin/bash
-
-#SBATCH --job-name=pytorch_test
-#SBATCH -o _test.out
-#SBATCH -e _test.err
-#SBATCH --time=10:00:00
-#SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
-#SBATCH --ntasks=10
-#SBATCH --mem=25G
-
-module load python/3.8.1
-source env/bin/activate  #activate the virtualenv
-
-# Run our job --cuda 1 means run on the GPU                                   
-#
+# style-weight and content-weight are just parameters adjusted to give better results
 python neural_style/neural_style.py train \
-	--dataset /nfs/home/training/neural_style_data/ \
-	--style-image images/style-images/wave_trim_90.jpg \
-	--save-model-dir saved_models/style5e10_content_5e4 \
-	--style-weight 5e10 \
-	--content-weight 5e4 \
-	--epochs 2 \
-	--cuda 1
+        --dataset /nfs/home/training/neural_style_data/ \
+        --style-image images/style-images/wave.jpg \
+        --save-model-dir saved_models/style5e10_content_5e4 \
+        --style-weight 5e10 \
+        --content-weight 5e4 \
+        --epochs 2 \
+        --cuda 1
 ```
+
+This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU ha plenty of memory, it often measn you ran out of system memory, try asking for more memory in slurm.
 
 ### Use our newly trained network
 
@@ -206,9 +206,15 @@ submit_gpu.sh
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=20G
+#SBATCH --mem=50G
 
-module load python/3.8.1
+module unuse /home/software/tools/modulefiles/  #unuse the old module system
+module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
+module load fosscuda/2020b
+module load PyTorch/1.7.1
+module load torchvision/0.8.2-PyTorch-1.7.1
+
+#Optional
 source env/bin/activate  #activate the virtualenv
 
 # Run our job --cuda 1 means run on the GPU and we'll save the output image as test2.jpg
@@ -219,13 +225,11 @@ python neural_style/neural_style.py eval \
     --output-image ./test3.jpg --cuda 1
 ```
 
-
-
 ### Bonus content use a slurm task-array to find the optimum parameters.
 
 In the above example we use parameters for style-weight and content-weight.  There are lots of possibilities for these parameters, we can use a task array and a parameter list to determine good values.   Note that actually running this example will consume a lot of resources and it is presented mostly to provide some information about task arrays.  Running this example will consume the whole GPU partition for about 12 hours.
 
-First let's create a list of parameters to test, we could include these in the batch submision script, but I think it's clearer to sperate them out. If you're version controlling your submission script, it'll make it easier to see what a rea changes to parameters and what are changes to the script itself.
+First let's create a list of parameters to test, we could include these in the batch submision script, but I think it's clearer to seperate them out. If you're version controlling your submission script, it'll make it easier to see what are changes to parameters and what are changes to the script itself.
 
 In the parameter list, the first column is style-weight parameters and the second is content-weight parameters
 paramlist.txt
@@ -257,10 +261,16 @@ submit_gpu_train_array
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=10
-#SBATCH --mem=25G
+#SBATCH --mem=50G
 #SBATCH --array=1-13
 
-module load python/3.8.1
+module unuse /home/software/tools/modulefiles/  #unuse the old module system
+module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
+module load fosscuda/2020b
+module load PyTorch/1.7.1
+module load torchvision/0.8.2-PyTorch-1.7.1
+
+#Optional
 source env/bin/activate  #activate the virtualenv
 
 # Run our job --cuda 1 means run on the GPU                                   
@@ -285,3 +295,144 @@ python neural_style/neural_style.py train \
 
 The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)
 
+First check what openMPI version we have on Raapoi
+cat 
+On **Raapoi** switch to our new modules
+```bash
+module unuse /home/software/tools/modulefiles # stop using the older modules
+module use /home/software/tools/eb_modulefiles/all/Core #the new module files organised by compiler
+module spider OpenMPI # search for openMPI - thre are several options, lets try
+module spider OpenMPI/4.0.5  # we will use this one, which requires GCC/10.2.0
+```
+
+On your **local machine** we will create a very simple C openMPI program. Create this in a  sensible place.  I used ```~/projects/examples/singularity/openMPI```
+
+```c
+#include <mpi.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int argc, char **argv) {
+        int rc;
+        int size;
+        int myrank;
+
+        rc = MPI_Init (&argc, &argv);
+        if (rc != MPI_SUCCESS) {
+                fprintf (stderr, "MPI_Init() failed");
+                return EXIT_FAILURE;
+        }
+
+        rc = MPI_Comm_size (MPI_COMM_WORLD, &size);
+        if (rc != MPI_SUCCESS) {
+                fprintf (stderr, "MPI_Comm_size() failed");
+                goto exit_with_error;
+        }
+
+        rc = MPI_Comm_rank (MPI_COMM_WORLD, &myrank);
+        if (rc != MPI_SUCCESS) {
+                fprintf (stderr, "MPI_Comm_rank() failed");
+                goto exit_with_error;
+        }
+
+        fprintf (stdout, "Hello, I am rank %d/%d", myrank, size);
+
+        MPI_Finalize();
+
+        return EXIT_SUCCESS;
+
+ exit_with_error:
+        MPI_Finalize();
+        return EXIT_FAILURE;
+}
+```
+
+In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi
+
+
+```bash
+Bootstrap: docker
+From: ubuntu:latest
+
+%files
+    mpitest.c /opt
+
+%environment
+    export OMPI_DIR=/opt/ompi
+    export SINGULARITY_OMPI_DIR=$OMPI_DIR
+    export SINGULARITYENV_APPEND_PATH=$OMPI_DIR/bin
+    export SINGULAIRTYENV_APPEND_LD_LIBRARY_PATH=$OMPI_DIR/lib
+
+%post
+    echo "Installing required packages..."
+    apt-get update && apt-get install -y wget git bash gcc gfortran g++ make file
+
+    echo "Installing Open MPI"
+    export OMPI_DIR=/opt/ompi
+    export OMPI_VERSION=4.0.5  #NOTE matching version to that on Raapoi
+    export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2"
+    mkdir -p /tmp/ompi
+    mkdir -p /opt
+    # Download
+    cd /tmp/ompi && wget -O openmpi-$OMPI_VERSION.tar.bz2 $OMPI_URL && tar -xjf openmpi-$OMPI_VERSION.tar.bz2
+    # Compile and install
+    cd /tmp/ompi/openmpi-$OMPI_VERSION && ./configure --prefix=$OMPI_DIR && make install
+    # Set env variables so we can compile our application
+    export PATH=$OMPI_DIR/bin:$PATH
+    export LD_LIBRARY_PATH=$OMPI_DIR/lib:$LD_LIBRARY_PATH
+    export MANPATH=$OMPI_DIR/share/man:$MANPATH
+
+    echo "Compiling the MPI application..."
+    cd /opt && mpicc -o mpitest mpitest.c
+```
+
+Now we build our container locally, giving it a sensible name.  We need ```OpenMPI-4.0.5``` to use this, so let's include that in the name
+```bash
+sudo singularity build test-openmpi-4.0.5.sif test-openmpi-4.0.5.def
+```
+
+Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity
+```bash
+sftp <username>@raapoi.vuw.ac.nz
+put test-openmpi-4.0.5.sif
+```
+Now on **Rāpoi** copy that file to a sensible location, I used ```~/projects/examples/singularity/openMPI``` again
+
+```bash
+mv test-openmpi-4.0.5.sif ~/projects/examples/singularity/openMPI/
+cd ~/projects/examples/singularity/openMPI/
+```
+
+In that location create a sbatch file
+
+openmpi-test.sh
+```bash
+#!/bin/bash
+#SBATCH --job-name=mpi_test
+#SBATCH --time=00-00:02:00
+#SBATCH --output=out_test.out
+#SBATCH --error=out_test.err
+#SBATCH --partition=parallel
+#SBATCH --ntasks=2
+#SBATCH --cpus-per-task=1
+#SBATCH --tasks-per-node=1
+#SBATCH --mem-per-cpu=1GB
+#SBATCH --constraint="IB,AMD"
+#SBATCH --nodes=2
+
+module use /home/software/tools/eb_modulefiles/all/Core
+module unuse /home/software/tools/modulefiles # to prevent conflicts with the old modules
+module load GCC/10.2.0
+module load OpenMPI/4.0.5
+module load Singularity/3.7.3 # Note this is a new singularity build
+
+CONPATH=$HOME/projects/examples/singularity/openMPI
+mpirun -np 2 singularity exec $CONPATH/test-openmpi-4.0.5.sif /opt/mpitest
+```
+
+Submit that to slurm and see the output
+```bash
+sbatch openmpi-test.sh
+squeue -u $USER  # see the job
+cat out_test.out # examine the output after the job is done
+```
