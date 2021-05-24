@@ -84,6 +84,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#matlab-gpu-example">Matlab GPU example</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#simple-bash-job-array-example">Simple Bash Job Array example</a>
@@ -339,6 +341,107 @@ sprintf(&quot;Hello World!&quot;)
 <p>This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <code>"Hello World"</code></p>
+<h2 id="matlab-gpu-example">Matlab GPU example<a class="headerlink" href="#matlab-gpu-example" title="Permanent link">&para;</a></h2>
+<p>Matlab has various build in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called <code>matlab_gpu.m</code>  I used <code>~/examples/matlab/cuda/matlab_gpu.m</code>.</p>
+<pre class="codehilite"><code class="language-matlab">% Set an array to which will will calculate the eignevalues of
+A=rand(1000);
+
+% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
+Agpu=gpuArray(A);
+tic
+B=eig(Agpu);
+t1=toc
+
+% Let's compare the time with CPU
+tic
+B=eig(A);
+t2=toc
+</code></pre>
+
+<p>We will also need a slurm submission script. Note that we will need to use the new Easybuild module files for our cuda libraries, so make sure to include the module use line <code>module use /home/software/tools/eb_modulefiles/all/Core</code></p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=matlab-gpu-example
+#SBATCH --output=out-gpu-example.out
+#SBATCH --error=out-gpu-example.err
+#SBATCH --time=00:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=2
+#SBATCH --mem=60G
+
+module use /home/software/tools/eb_modulefiles/all/Core
+module load matlab/2021a
+module load fosscuda/2020b
+
+matlab -nodisplay -nosplash -nodesktop -r &quot;run('matlab_gpu.m');exit;&quot;
+</code></pre>
+
+<p>To submit this job to the slurm queue <code>sbatch matlab_gpu.sh</code>.  This job will take a few minutes to run - this is mostly the matlab startup time.
+Examine the queue for your job<code>squeue -u $USER</code>.  When your job is done, inspect the outputfile.  you can use an editor like nano, vi or emacs, or you can just <code>cat</code> the file to see it's contents on the terminal</p>
+<pre class="codehilite"><code class="language-bash">cat out-gpu-example.out
+</code></pre>
+
+<p>What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performace!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!</p>
+<p>To get a better idea of the advantage of the GPU let's increase the size of the array from <code>1000</code> to <code>10000</code></p>
+<p>matlab_gpu.m</p>
+<pre class="codehilite"><code class="language-Matlab">% Set an array to which will will calculate the eignevalues of
+A=rand(10000);
+
+% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
+Agpu=gpuArray(A);
+tic
+B=eig(Agpu);
+t1=toc
+
+% Let's compare the time with CPU
+tic
+B=eig(A);
+t2=toc
+</code></pre>
+
+<p>To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.</p>
+<p>matlab_gpu.sh</p>
+<pre class="codehilite"><code class="language-bash linenums">#!/bin/bash
+
+#SBATCH --job-name=matlab-gpu-example
+#SBATCH --output=out-gpu-example.out
+#SBATCH --error=out-gpu-example.err
+#SBATCH --time=00:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=128
+#SBATCH --mem=256G
+
+module use /home/software/tools/eb_modulefiles/all/Core
+module load matlab/2021a
+module load fosscuda/2020b
+
+matlab -nodisplay -nosplash -nodesktop -r &quot;run('matlab_gpu.m');exit;&quot;
+</code></pre>
+
+<p>The output in my case was:</p>
+<pre class="codehilite"><code class="language-bash">                            &lt; M A T L A B (R) &gt;
+                  Copyright 1984-2021 The MathWorks, Inc.
+             R2021a Update 1 (9.10.0.1649659) 64-bit (glnxa64)
+                               April 13, 2021
+
+
+To get started, type doc.
+For product information, visit www.mathworks.com.
+
+
+t1 =
+
+   62.0212
+
+
+t2 =
+
+  223.0818
+</code></pre>
+
+<p>So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it <strong>less</strong> CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.</p>
 <h2 id="job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs<a class="headerlink" href="#job-arrays-running-many-similar-jobs" title="Permanent link">&para;</a></h2>
 <p>Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.</p>
 <h3 id="simple-bash-job-array-example">Simple Bash Job Array example<a class="headerlink" href="#simple-bash-job-array-example" title="Permanent link">&para;</a></h3>
