@@ -337,7 +337,7 @@ sudo singularity build inputexample.sif input_args_example.def
 ```
 
 This will build an image that you can't modify any further and is immediately suitable to run on Rāpooi
-Copy this file to raapoi via sftp
+Copy this file to Rāpoi via sftp
 ```bash
 sftp <username>@raapoi.vuw.ac.nz
 ```
@@ -408,7 +408,7 @@ model.fit(x_train, y_train, epochs=5)
 model.evaluate(x_test, y_test)
 ```
 
-Copy your files to raapoi via sftp (or whatever you prefer)
+Copy your files to Rāpoi via sftp (or whatever you prefer)
 ```bash
 sftp <username>@raapoi.vuw.ac.nz
 cd <where you want to work>
@@ -501,7 +501,7 @@ singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -a
 
 ## Singularity/Sandbox Example
 
-This lets you have root inside a container *locally* and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on raapoi, I suggest you *don't do this*. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a ```.def``` file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.
+This lets you have root inside a container *locally* and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on Rāpoi, I suggest you *don't do this*. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a ```.def``` file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.
 
 
 example.def
@@ -540,12 +540,12 @@ Singularity example:~>  ls /
 Singularity example:~>  exit   #exit container
 ```
 
-To run the container on Raapoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.
+To run the container on Rāpoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.
 
 ```bash
 sudo singularity build new-example-sif example/
 ```
-You could now copy the ```new-example-sif``` file to Raapoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting *everything in the.def file*.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.
+You could now copy the ```new-example-sif``` file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting *everything in the.def file*.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.
 
 ## Singularity/Custom Conda Container - idba example
 
@@ -593,9 +593,9 @@ Build the image
 sudo singularity build idba.img idba.def
 ```
 
-Now copy the idba.img and enviroment.yml (technically the enviroment file is not needed, but not having it creates a warning) to somewhere sensible on raapoi.
+Now copy the idba.img and enviroment.yml (technically the enviroment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.
 
-#### On Raapoi
+#### On Rāpoi
 
 Create a data directory, so we can seperate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the [Illumina public data library](https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html)
 ```
@@ -606,7 +606,7 @@ wget --content-disposition goo.gl/tt9fsn #sequence data
 cd ..  #back to our project directory
 ```
 
-The reads we have are paired end fastq files but idba requires a fasta file.  We can use a tool built into our container to convert them.  We'll do this on the raapoi login node as it is a fast task that doesn't need many resources.
+The reads we have are paired end fastq files but idba requires a fasta file.  We can use a tool built into our container to convert them.  We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.
 
 ```bash
 module load singularity

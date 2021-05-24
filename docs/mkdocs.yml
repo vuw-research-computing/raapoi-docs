@@ -1,4 +1,4 @@
-site_name: Raapoi Cluster Documentation
+site_name: Rāpoi Cluster Documentation
 nav: 
   - Documentation: index.md
   - Accessing the Cluster: accessing_the_cluster.md
