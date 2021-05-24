@@ -115,7 +115,7 @@ submit_gpu.sh
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
@@ -133,29 +133,29 @@ python neural_style/neural_style.py eval --content-image images/content-images/O
 
 In this case ```vuw-job-history``` the job took:
 ```bash
-332320        COMPLETED pytorch_t+              00:00:50 
-332320.batch  COMPLETED      batch      0.15G   00:00:50 
-332320.exte+  COMPLETED     extern      0.15G   00:00:50 
+692973        COMPLETED pytorch_t+              00:00:16 
+692973.batch  COMPLETED      batch      0.15G   00:00:16 
+692973.exte+  COMPLETED     extern      0.15G   00:00:16 
 ```
 
-but the time varies a lot with short GPU runs, some are nearly 2 min long and some runs are 26s with the same data. The memory usage with pytorch is also hard to estimate, running ```vuw-job-report 332320``` shows:
+but the time varies a lot with short GPU runs, some are nearly 2 min long and some runs are 16s with the same data. The memory usage with pytorch is also hard to estimate, running ```vuw-job-report 332320``` shows:
 ```bash
 Nodes: 1
 Cores per node: 2
-CPU Utilized: 00:00:08
-CPU Efficiency: 16.00% of 00:00:50 core-walltime
-Job Wall-clock time: 00:00:25
+CPU Utilized: 00:00:07
+CPU Efficiency: 43.75% of 00:00:16 core-walltime
+Job Wall-clock time: 00:00:08
 Memory Utilized: 1.38 MB
-Memory Efficiency: 0.01% of 20.00 GB
+Memory Efficiency: 0.00% of 60.00 GB
 ```
 
-The memory usage is very low, but there is a very brief spike in memory at the end of the run as the image is generated that ```vuw-job-report``` doesn't quite capture. 20G of memory is needed to ensure this completes.
+The memory usage is very low, but there is a very brief spike in memory at the end of the run as the image is generated that ```vuw-job-report``` doesn't quite capture. 60G of memory is needed to ensure this completes - a good rule of thumb is to allocate at least as much system memory as GPU memory.  The A100's have 40G of ram.
 
 ### Train a new style - computationally expensive.
 
 Training a new image style is where we will get the greatest speedup using a GPU.
 
-We will use 13G of training images - [COCO 2014 Training images dataset ](http://cocodataset.org/#download). These images have already been downloaded and are accessable at ```/nfs/home/training/neural_style_data/train2014/```.  Note that training a new style will take about an hpour and a half on an A100 and two and a half hours on an RTX6000
+We will use 13G of training images - [COCO 2014 Training images dataset ](http://cocodataset.org/#download). These images have already been downloaded and are accessable at ```/nfs/home/training/neural_style_data/train2014/```.  Note that training a new style will take about 1:15h on an A100 and two and a half hours on an RTX6000
 
 ```bash
 #!/bin/bash
@@ -167,7 +167,7 @@ We will use 13G of training images - [COCO 2014 Training images dataset ](http:/
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
@@ -190,7 +190,7 @@ python neural_style/neural_style.py train \
         --cuda 1
 ```
 
-This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU ha plenty of memory, it often measn you ran out of system memory, try asking for more memory in slurm.
+This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU ha plenty of memory, it often means you ran out of system memory, try asking for more memory in slurm.
 
 ### Use our newly trained network
 
@@ -206,7 +206,7 @@ submit_gpu.sh
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=2
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
 module use /home/software/tools/eb_modulefiles/all/Core #use the new module system
@@ -261,7 +261,7 @@ submit_gpu_train_array
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --ntasks=10
-#SBATCH --mem=50G
+#SBATCH --mem=60G
 #SBATCH --array=1-13
 
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
@@ -283,7 +283,7 @@ echo $style_weight
 echo $content_weight
 python neural_style/neural_style.py train \
 	--dataset nfs/home/training/neural_style_data/ \
-	--style-image images/style-images/wave_trim_90.jpg \
+	--style-image images/style-images/wave.jpg \
 	--save-model-dir saved_models/test_params2_epoch2/style${style_weight}_content${content_weight} \
 	--style-weight $style_weight \
 	--content-weight $content_weight \

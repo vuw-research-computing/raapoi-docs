@@ -220,6 +220,121 @@ This submits a task that should execute quickly and create files in the director
 Examining ```r_test.out``` (with nano, cat or less) should print:
 ``` "Hello World"```
 
+## Matlab GPU example
+
+Matlab has various build in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called ```matlab_gpu.m```  I used ```~/examples/matlab/cuda/matlab_gpu.m```.
+
+```matlab
+% Set an array to which will will calculate the eignevalues of
+A=rand(1000);
+
+% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
+Agpu=gpuArray(A);
+tic
+B=eig(Agpu);
+t1=toc
+
+% Let's compare the time with CPU
+tic
+B=eig(A);
+t2=toc
+```
+
+We will also need a slurm submission script. Note that we will need to use the new Easybuild module files for our cuda libraries, so make sure to include the module use line ```module use /home/software/tools/eb_modulefiles/all/Core```
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=matlab-gpu-example
+#SBATCH --output=out-gpu-example.out
+#SBATCH --error=out-gpu-example.err
+#SBATCH --time=00:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=2
+#SBATCH --mem=60G
+
+module use /home/software/tools/eb_modulefiles/all/Core
+module load matlab/2021a
+module load fosscuda/2020b
+
+matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
+```
+
+To submit this job to the slurm queue ```sbatch matlab_gpu.sh```.  This job will take a few minutes to run - this is mostly the matlab startup time.
+Examine the queue for your job```squeue -u $USER```.  When your job is done, inspect the outputfile.  you can use an editor like nano, vi or emacs, or you can just ```cat``` the file to see it's contents on the terminal
+
+```bash
+cat out-gpu-example.out
+```
+What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performace!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!
+
+To get a better idea of the advantage of the GPU let's increase the size of the array from ```1000``` to ```10000```
+
+matlab_gpu.m
+```Matlab
+% Set an array to which will will calculate the eignevalues of
+A=rand(10000);
+
+% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
+Agpu=gpuArray(A);
+tic
+B=eig(Agpu);
+t1=toc
+
+% Let's compare the time with CPU
+tic
+B=eig(A);
+t2=toc
+```
+
+To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.
+
+matlab_gpu.sh
+```
+#!/bin/bash
+
+#SBATCH --job-name=matlab-gpu-example
+#SBATCH --output=out-gpu-example.out
+#SBATCH --error=out-gpu-example.err
+#SBATCH --time=00:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=128
+#SBATCH --mem=256G
+
+module use /home/software/tools/eb_modulefiles/all/Core
+module load matlab/2021a
+module load fosscuda/2020b
+
+matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
+```
+
+The output in my case was:
+```bash
+                            < M A T L A B (R) >
+                  Copyright 1984-2021 The MathWorks, Inc.
+             R2021a Update 1 (9.10.0.1649659) 64-bit (glnxa64)
+                               April 13, 2021
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+
+t1 =
+
+   62.0212
+
+
+t2 =
+
+  223.0818
+```
+
+So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it **less** CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.
+
+
 ## Job Arrays - running many similar jobs
 
 Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.
