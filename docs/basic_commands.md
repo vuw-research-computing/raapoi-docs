@@ -12,7 +12,7 @@ The commands available as of this update are:
 * _vuw-alljobs_:         Prints a list of all user jobs
 * _vuw-myjobs_:          Prints a list of your running or pending jobs
 * _vuw-job-history_:     Show jobs finished in last 5 days
-
+* _vuw-job-eff_:         Show efficiency of your jobs. Use vuw-job-eff --help for more information
 
 ### Linux Commands
 
@@ -28,7 +28,6 @@ Rāpoi is built using the Linux operating system. Access is primarily via comman
 * Typing _cd_ with no arguments will take you back to your home directory
 
 **mv** - This will move or rename a file
-
 * _mv project1.txt project2.txt_
 * _mv project2.txt projects/calctest_proj/_
 
@@ -40,7 +39,6 @@ The general form of the command is **cp _source destination_**, for example:
 Further examples and options can be seen [here](https://www.howtoforge.com/linux-cp-command/).
 
 **rm** - This will delete a file
-
 * _rm projects/calctest_proj/projects2.txt_
 * _rm -r projects/calctest_proj/code_
 The _-r_ flag recursively removes files and directories
@@ -50,7 +48,6 @@ The _-r_ flag recursively removes files and directories
 
 To find more detailed information about any command you can use the manpages,
 eg:  _man ls_
-
 
 ### Learning the Linux Shell
 
