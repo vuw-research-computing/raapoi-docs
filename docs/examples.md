@@ -412,7 +412,7 @@ Copy your files to Rāpoi via sftp (or whatever you prefer)
 ```bash
 sftp <username>@raapoi.vuw.ac.nz
 cd <where you want to work>
-put *   #put all files in your local directory onto raapoi
+put *   #put all files in your local directory onto Rāpoi
 ```
 
 Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.
