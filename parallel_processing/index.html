@@ -146,19 +146,19 @@
 <p>Here is an example of running a job array to run 50 simultaneous processes:</p>
 <p><code>sbatch array.sh</code></p>
 <p>The contents of the array.sh batch script looks like this:</p>
-<pre class="codehilite"><code>  #!/bin/bash
-  #SBATCH -a 1-50
-  #SBATCH --cpus-per-task=1
-  #SBATCH --mem-per-cpu=2G
-  #SBATCH --time=00:10:00
-  #SBATCH --partition=parallel
-  #SBATCH --mail-type=BEGIN,END,FAIL
-  #SBATCH --mail-user=me@email.com
+<div class="codehilite"><pre><span></span><code>  <span class="c1">#!/bin/bash</span>
+  <span class="c1">#SBATCH -a 1-50</span>
+  <span class="c1">#SBATCH --cpus-per-task=1</span>
+  <span class="c1">#SBATCH --mem-per-cpu=2G</span>
+  <span class="c1">#SBATCH --time=00:10:00</span>
+  <span class="c1">#SBATCH --partition=parallel</span>
+  <span class="c1">#SBATCH --mail-type=BEGIN,END,FAIL</span>
+  <span class="c1">#SBATCH --mail-user=me@email.com</span>
 
-  module load fastqc/0.11.7
+  <span class="n">module</span> <span class="nb">load</span> <span class="n">fastqc</span><span class="o">/</span><span class="mf">0.11</span><span class="o">.</span><span class="mi">7</span>
 
-  fastqc --nano -o $TMPDIR/output_dir seqfile_${SLURM_ARRAY_TASK_ID}
-</code></pre>
+  <span class="n">fastqc</span> <span class="o">--</span><span class="n">nano</span> <span class="o">-</span><span class="n">o</span> <span class="o">$</span><span class="n">TMPDIR</span><span class="o">/</span><span class="n">output_dir</span> <span class="n">seqfile_</span><span class="o">$</span><span class="p">{</span><span class="n">SLURM_ARRAY_TASK_ID</span><span class="p">}</span>
+</code></pre></div>
 
 <p>So what do these parameter mean?:</p>
 <ul>
@@ -180,40 +180,40 @@ execution. By default, Slurm allocates 1 CPU core per task. In order to make use
 of multiple CPU cores in a multi-threaded program, one must include the
 --cpus-per-task option.  Below is an example of a multi-threaded program
 requesting 12 CPU cores per task and a total of 256GB of memory. The program itself is responsible for spawning the appropriate number of threads.</p>
-<pre class="codehilite"><code>  #!/bin/bash
-  #SBATCH --nodes=1
-  #SBATCH --ntasks=1
-  #SBATCH --cpus-per-task=12 # 12 threads per task
-  #SBATCH --time=02:00:00 # two hours
-  #SBATCH --mem=256G
-  #SBATCH -p bigmem
-  #SBATCH --output=threaded.out
-  #SBATCH --job-name=threaded
-  #SBATCH --mail-type=BEGIN,END,FAIL
-  #SBATCH --mail-user=me@email.com
-  # Run multi-threaded application
-  module load java/1.8.0-91
-  java -jar threaded-app.jar
-</code></pre>
+<div class="codehilite"><pre><span></span><code>  <span class="c1">#!/bin/bash</span>
+  <span class="c1">#SBATCH --nodes=1</span>
+  <span class="c1">#SBATCH --ntasks=1</span>
+  <span class="c1">#SBATCH --cpus-per-task=12 # 12 threads per task</span>
+  <span class="c1">#SBATCH --time=02:00:00 # two hours</span>
+  <span class="c1">#SBATCH --mem=256G</span>
+  <span class="c1">#SBATCH -p bigmem</span>
+  <span class="c1">#SBATCH --output=threaded.out</span>
+  <span class="c1">#SBATCH --job-name=threaded</span>
+  <span class="c1">#SBATCH --mail-type=BEGIN,END,FAIL</span>
+  <span class="c1">#SBATCH --mail-user=me@email.com</span>
+  <span class="c1"># Run multi-threaded application</span>
+  <span class="n">module</span> <span class="nb">load</span> <span class="n">java</span><span class="o">/</span><span class="mf">1.8</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">91</span>
+  <span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">threaded</span><span class="o">-</span><span class="n">app</span><span class="o">.</span><span class="n">jar</span>
+</code></pre></div>
 
 <h2 id="mpi-jobs">MPI Jobs<a class="headerlink" href="#mpi-jobs" title="Permanent link">&para;</a></h2>
 <p>Most users do not require MPI to run their jobs but many do.  Please read on if you want to learn more about using MPI for tightly-coupled jobs.</p>
 <p>MPI (Message Passing Interface) code require special attention within Slurm. Slurm allocates and launches MPI jobs differently depending on the version of MPI used (e.g. OpenMPI, MPICH2). We recommend using OpenMPI version 2.1.1 or later to compile your C code (using mpicc) and then using the mpirun command in a batch submit script to launch parallel MPI jobs. The example below runs MPI code compiled by OpenMPI 2.1.1:</p>
-<pre class="codehilite"><code>  #!/bin/bash
-  #SBATCH --nodes=3
-  #SBATCH --tasks-per-node=8 # 8 MPI processes per node
-  #SBATCH --time=3-00:00:00
-  #SBATCH --mem=4G # 4 GB RAM per node
-  #SBATCH --output=mpi_job.log
-  #SBATCH --partition=parallel
-  #SBATCH --constraint=&quot;IB&quot;
-  #SBATCH --mail-type=BEGIN,END,FAIL
-  #SBATCH --mail-user=me@email.com
+<div class="codehilite"><pre><span></span><code>  <span class="c1">#!/bin/bash</span>
+  <span class="c1">#SBATCH --nodes=3</span>
+  <span class="c1">#SBATCH --tasks-per-node=8 # 8 MPI processes per node</span>
+  <span class="c1">#SBATCH --time=3-00:00:00</span>
+  <span class="c1">#SBATCH --mem=4G # 4 GB RAM per node</span>
+  <span class="c1">#SBATCH --output=mpi_job.log</span>
+  <span class="c1">#SBATCH --partition=parallel</span>
+  <span class="c1">#SBATCH --constraint=&quot;IB&quot;</span>
+  <span class="c1">#SBATCH --mail-type=BEGIN,END,FAIL</span>
+  <span class="c1">#SBATCH --mail-user=me@email.com</span>
 
-  module load openmpi
-  echo $SLURM_JOB_NODELIST
-  mpirun -np 24 mpiscript.o
-</code></pre>
+  <span class="n">module</span> <span class="nb">load</span> <span class="n">openmpi</span>
+  <span class="n">echo</span> <span class="o">$</span><span class="n">SLURM_JOB_NODELIST</span>
+  <span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">24</span> <span class="n">mpiscript</span><span class="o">.</span><span class="n">o</span>
+</code></pre></div>
 
 <p>This example requests 3 nodes and 8 tasks (i.e. processes) per node, for a total of 24 tasks.  I use this number to tell mpirun how many processes to start, -np 24</p>
 <p><em>NOTE:</em> We highly recomend adding the <code>--constraint="IB"</code> parameter to your MPI job as

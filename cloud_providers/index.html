@@ -142,20 +142,20 @@ Network) Cloudstor service which provides <strong>1 TB</strong> of space to each
 use this service first login and download an appropriate client to your laptop
 or desktop (or smarthone if you wish):</p>
 <p><a href="https://apac01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcloudstor.aarnet.edu.au%2Fsimplesaml%2Fmodule.php%2Fdiscopower%2Fdisco.php%3FentityID%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fmetadata.php%252Fdefault-sp%26return%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fdiscoresp.php%253FAuthID%253D_d8e2f7cbdf882a033df5b33385b5936c08e0e133a1%25253Ahttps%25253A%25252F%25252Fcloudstor.aarnet.edu.au%25252Fsimplesaml%25252Fmodule.php%25252Fcore%25252Fas_login.php%25253FAuthId%25253Ddefault-sp%252526ReturnTo%25253Dhttp%2525253A%2525252F%2525252Fcloudstor.aarnet.edu.au%2525252Fplus%2525252F%26returnIDParam%3Didpentityid&amp;data=02%7C01%7Cwes.harrell%40vuw.ac.nz%7Cefa10aeb0f1d42a6cd2408d6953c9496%7Ccfe63e236951427e8683bb84dcf1d20c%7C0%7C0%7C636860484751891881&amp;sdata=nkN7OI6g%2BKs%2FLoMG6tOtoWqk1%2FU1gbxZK%2FjCd8NNZ6c%3D&amp;reserved=0">Cloudstor Login</a></p>
-<p>NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on raapoi, it does not use your VUW credentials for the command line login.</p>
+<p>NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on Rāpoi, it does not use your VUW credentials for the command line login.</p>
 <p>Once you have setup your cloudstor (aka ownCloud) credentials you can use them
-to sync data to and from Raapoi.  For example, if I wanted to sync my project
-space to Cloudstor I would do the following from raapoi login node:</p>
-<pre class="codehilite"><code>  tmux
-  cd /nfs/scratch/harrelwe
-  owncloudcmd -u wes.harrell@vuw.ac.nz project1 
-  https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
-</code></pre>
+to sync data to and from Rāpoi.  For example, if I wanted to sync my project
+space to Cloudstor I would do the following from Rāpoi login node:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">tmux</span><span class="w"></span>
+<span class="w">  </span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">harrelwe</span><span class="w"></span>
+<span class="w">  </span><span class="n">owncloudcmd</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">wes</span><span class="p">.</span><span class="n">harrell</span><span class="nv">@vuw</span><span class="p">.</span><span class="n">ac</span><span class="p">.</span><span class="n">nz</span><span class="w"> </span><span class="n">project1</span><span class="w"> </span>
+<span class="w">  </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloudstor</span><span class="p">.</span><span class="n">aarnet</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">au</span><span class="o">/</span><span class="n">plus</span><span class="o">/</span><span class="n">remote</span><span class="p">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span><span class="o">/</span><span class="w"></span>
+</code></pre></div>
 
 <p>The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
 (type <code>tmux attach</code> to reconnect), I then change directory (<em>cd</em>) to my scratch space and then use the command <code>owncloudcmd</code> to sync my project directory called project1 to the Cloudstor service.  You will be prompted for your Cloudstor password, you can also embed this within the command line using the -p paramter.  </p>
 <h2 id="amazon-aws">Amazon AWS<a class="headerlink" href="#amazon-aws" title="Permanent link">&para;</a></h2>
-<p>A feature-rich CLI is available in raapoi.  To use it you need to load the appropriate module and its module dependencies:</p>
+<p>A feature-rich CLI is available in Rāpoi.  To use it you need to load the appropriate module and its module dependencies:</p>
 <p><code>module load amazon/aws/cli</code></p>
 <p>Before you proceed you will need to configure your environment with your Access Key ID and Secret Access Key, both of which will be sent to you once your account is created or linked.  The command to configure your environment is <code>aws configure</code>  You only need to do this once, unless of course you use more than one user/Access Key.  Most users can simply click through the region and profile questions (using the default of "none").  If you do have a specific region this should be relayed along with your access and secret keys.</p>
 <p>Once you have the appropriate environment in place and your configuration setup you can use the aws command, plus an appropriate sub-command (s3, emr, rds, dynamodb, etc) and supporting arguments. </p>
@@ -165,15 +165,15 @@ space to Cloudstor I would do the following from raapoi login node:</p>
 <p>To transfer data from S3 you first need to setup your AWS connect, instructions for that can be found above.
 Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  </p>
 <p>For example if I wanted to copy data from my S3 storage to my project directory I could do the following:</p>
-<pre class="codehilite"><code>  tmux
-  module load amazon/aws/cli
-  cd /nfs/scratch/harrelwe/project
-  aws s3 cp s3://mybucket/mydata.dat mydata.dat
-</code></pre>
+<div class="codehilite"><pre><span></span><code>  <span class="n">tmux</span>
+  <span class="n">module</span> <span class="nb">load</span> <span class="n">amazon</span><span class="o">/</span><span class="n">aws</span><span class="o">/</span><span class="n">cli</span>
+  <span class="n">cd</span> <span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">harrelwe</span><span class="o">/</span><span class="n">project</span>
+  <span class="n">aws</span> <span class="n">s3</span> <span class="n">cp</span> <span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">mydata</span><span class="o">.</span><span class="n">dat</span> <span class="n">mydata</span><span class="o">.</span><span class="n">dat</span>
+</code></pre></div>
 
 <p>To copy something to storage simply reverse the file paths, eg.</p>
-<pre class="codehilite"><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat 
-</code></pre>
+<div class="codehilite"><pre><span></span><code>  aws s3 cp mydata.dat s3://mybucket/mydata.dat 
+</code></pre></div>
 
 <p>The above starts a tmux session to allow the transfer to continue even if I
 disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
@@ -182,27 +182,27 @@ space and use the aws s3 cp command to copy from S3.  More information on using
 aws can be found here:
 <a href="http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3">http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3</a></p>
 <h4 id="working-with-aws-data-analysis-tools">Working with AWS Data Analysis Tools<a class="headerlink" href="#working-with-aws-data-analysis-tools" title="Permanent link">&para;</a></h4>
-<p>Amazon has a number of data analytics and database services available.  Using the command line utilities available in raapoi, researchers can perform work on the eo cluster and transfer data to AWS to perform further analysis with tools such as MapReduce (aka Hadoop), RedShift or Quicksight.</p>
+<p>Amazon has a number of data analytics and database services available.  Using the command line utilities available in Rāpoi, researchers can perform work on the eo cluster and transfer data to AWS to perform further analysis with tools such as MapReduce (aka Hadoop), RedShift or Quicksight.</p>
 <p>A listing of available services and documentation can be found at the following:
 <a href="https://aws.amazon.com/products/analytics/">https://aws.amazon.com/products/analytics/</a></p>
 <h2 id="google-cloud-gcloud-connections">Google Cloud (gcloud) Connections<a class="headerlink" href="#google-cloud-gcloud-connections" title="Permanent link">&para;</a></h2>
-<p>The Google Cloud SDK is available in raapoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the <code>module spider</code> command.  As of this writing the current version can be loaded thusly:</p>
+<p>The Google Cloud SDK is available in Rāpoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the <code>module spider</code> command.  As of this writing the current version can be loaded thusly:</p>
 <p>module load google/cloud/sdk/212.0.0</p>
 <p>This will give you access to the <code>gcloud</code> command.  To setup a connection to your gcloud account use the init sub-command, eg.</p>
 <p><code>gcloud init --console-only</code></p>
-<p>Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the raapoi terminal window.</p>
+<p>Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the Rāpoi terminal window.</p>
 <h4 id="transferring-data-tofrom-google-cloud-gcloud">Transferring Data to/from Google Cloud (gcloud)<a class="headerlink" href="#transferring-data-tofrom-google-cloud-gcloud" title="Permanent link">&para;</a></h4>
 <p>To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the <code>gsutil</code> command to copy data to and from your gcloud storage.  </p>
 <p>For example, if I wanted to copy data from gcloud to my project directory I could do the following:</p>
-<pre class="codehilite"><code>  tmux
-  module load google/cloud/sdk/212.0.0
-  cd /nfs/scratch/harrelwe/project
-  gsutil cp gs://mybucket/mydata.dat mydata.dat
-</code></pre>
+<div class="codehilite"><pre><span></span><code>  <span class="n">tmux</span>
+  <span class="n">module</span> <span class="nb">load</span> <span class="n">google</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mf">212.0</span><span class="o">.</span><span class="mi">0</span>
+  <span class="n">cd</span> <span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">harrelwe</span><span class="o">/</span><span class="n">project</span>
+  <span class="n">gsutil</span> <span class="n">cp</span> <span class="n">gs</span><span class="p">:</span><span class="o">//</span><span class="n">mybucket</span><span class="o">/</span><span class="n">mydata</span><span class="o">.</span><span class="n">dat</span> <span class="n">mydata</span><span class="o">.</span><span class="n">dat</span>
+</code></pre></div>
 
 <p>To copy something to storage simply reverse the file paths, eg.</p>
-<pre class="codehilite"><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat 
-</code></pre>
+<div class="codehilite"><pre><span></span><code>  gsutil cp mydata.dat gs://mybucket/mydata.dat 
+</code></pre></div>
 
 <p>The above starts a tmux session to allow the transfer to continue even if I
 disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
@@ -211,17 +211,17 @@ space and use the gsutil cp command to copy from gcloud.  More information on
 using gcloud can be found here:
 <a href="https://cloud.google.com/sdk/gcloud/">https://cloud.google.com/sdk/gcloud/</a></p>
 <h4 id="working-with-gcloud-data-analysis-tools">Working with GCloud Data Analysis Tools<a class="headerlink" href="#working-with-gcloud-data-analysis-tools" title="Permanent link">&para;</a></h4>
-<p>Google Cloud has a number of data analytics and database services available.  Using the gcloud command line utilities available on raapoi, researchers can perform work on the cluster and transfer data to gcloud to perform further analysis with tools such as Dataproc (Hadoop/Spark), BigQuery or Datalab (Visualization)</p>
+<p>Google Cloud has a number of data analytics and database services available.  Using the gcloud command line utilities available on Rāpoi, researchers can perform work on the cluster and transfer data to gcloud to perform further analysis with tools such as Dataproc (Hadoop/Spark), BigQuery or Datalab (Visualization)</p>
 <p>A listing of available services and documentation can be found at the following:
 <a href="https://cloud.google.com/products/">https://cloud.google.com/products/</a></p>
 <h2 id="dropbox-cloud-storage">DropBox Cloud Storage<a class="headerlink" href="#dropbox-cloud-storage" title="Permanent link">&para;</a></h2>
 <p><strong>NOTE:</strong> Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.</p>
-<p>Configuring your Dropbox account on raapoi</p>
+<p>Configuring your Dropbox account on Rāpoi</p>
 <p><strong>Step A:</strong>  On your local laptop or desktop start your browser and login to your Dropbox account</p>
-<p><strong>Step B:</strong> On Raapoi type the following:</p>
+<p><strong>Step B:</strong> On Rāpoi type the following:</p>
 <p><code>module load dropbox</code></p>
 <p><strong>Step C:</strong> Setup account credentials (You should only need to do this once):</p>
-<p>Run the following command from Raapoi</p>
+<p>Run the following command from Rāpoi</p>
 <p><code>dbxcli account</code></p>
 <p>You will now see something like the following:</p>
 <ol>
@@ -232,7 +232,7 @@ using gcloud can be found here:
 </ol>
 <p><strong>Step D:</strong></p>
 <p>Copy the URL link listed in Step C1 and paste it into the web browser that you started in Step A</p>
-<p>This will provide you with a long access code (aka hash).  Now copy that access code and paste it into your Raapoi terminal after Step C3 where it is asking for Enter the authorization code here </p>
+<p>This will provide you with a long access code (aka hash).  Now copy that access code and paste it into your Rāpoi terminal after Step C3 where it is asking for Enter the authorization code here </p>
 <p>Now hit enter or return.  You should see that you are now logged in with your Dropbox credentials</p>
 <h4 id="basic-dropbox-commands">Basic Dropbox commands<a class="headerlink" href="#basic-dropbox-commands" title="Permanent link">&para;</a></h4>
 <p>Remember to load the dropbox environment module if you have not already (see <code>module spider</code> for the path)</p>
