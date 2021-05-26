@@ -248,7 +248,7 @@ paramlist.txt
 1e12 5e4
 ```
 
-In our submision script we will parse these values with ```awk```.  Awk is a bit beyond the scope of this lesson, but it is handy shell tool for manipulating text. [Digital ocean has a nice primer on Akw](https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux)
+In our submision script we will parse these values with ```awk```.  Awk is a bit beyond the scope of this lesson, but it is handy shell tool for manipulating text. [Digital ocean has a nice primer on Awk](https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux)
 
 submit_gpu_train_array
 ```bash
@@ -296,7 +296,7 @@ python neural_style/neural_style.py train \
 The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)
 
 First check what openMPI version we have on Rāpoi
-cat 
+
 On **Rāpoi** switch to our new modules
 ```bash
 module unuse /home/software/tools/modulefiles # stop using the older modules
