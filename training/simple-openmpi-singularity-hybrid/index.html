@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://vuw-research-computing.github.io/raapoi-docs/training/simple-openmpi-singularity-hybrid/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Simple openmpi singularity hybrid - Rāpoi Cluster Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Simple openmpi singularity hybrid";
+    var mkdocs_page_input_path = "training/simple-openmpi-singularity-hybrid.md";
+    var mkdocs_page_url = "/raapoi-docs/training/simple-openmpi-singularity-hybrid/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Rāpoi Cluster Documentation</a>
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Documentation</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cloud_providers/">Connecting to Cloud Providers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../containers/">Using Containers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../notebooks/">Using Jupyter Notebooks</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Training</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Rāpoi Cluster Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Simple openmpi singularity hybrid</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="simple-openmpi-with-singularity-using-the-hybrid-approach">Simple OpenMPI with Singularity using the hybrid approach.<a class="headerlink" href="#simple-openmpi-with-singularity-using-the-hybrid-approach" title="Permanent link">&para;</a></h2>
+<p>The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)</p>
+<p>First check what openMPI version we have on Rāpoi</p>
+<p>On <strong>Rāpoi</strong> switch to our new modules</p>
+<pre class="codehilite"><code class="language-bash">module unuse /home/software/tools/modulefiles # stop using the older modules
+module use /home/software/tools/eb_modulefiles/all/Core #the new module files organised by compiler
+module spider OpenMPI # search for openMPI - thre are several options, lets try
+module spider OpenMPI/4.0.5  # we will use this one, which requires GCC/10.2.0
+</code></pre>
+
+<p>On your <strong>local machine</strong> we will create a very simple C openMPI program. Create this in a  sensible place.  I used <code>~/projects/examples/singularity/openMPI</code></p>
+<pre class="codehilite"><code class="language-c">#include &lt;mpi.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char **argv) {
+        int rc;
+        int size;
+        int myrank;
+
+        rc = MPI_Init (&amp;argc, &amp;argv);
+        if (rc != MPI_SUCCESS) {
+                fprintf (stderr, &quot;MPI_Init() failed&quot;);
+                return EXIT_FAILURE;
+        }
+
+        rc = MPI_Comm_size (MPI_COMM_WORLD, &amp;size);
+        if (rc != MPI_SUCCESS) {
+                fprintf (stderr, &quot;MPI_Comm_size() failed&quot;);
+                goto exit_with_error;
+        }
+
+        rc = MPI_Comm_rank (MPI_COMM_WORLD, &amp;myrank);
+        if (rc != MPI_SUCCESS) {
+                fprintf (stderr, &quot;MPI_Comm_rank() failed&quot;);
+                goto exit_with_error;
+        }
+
+        fprintf (stdout, &quot;Hello, I am rank %d/%d&quot;, myrank, size);
+
+        MPI_Finalize();
+
+        return EXIT_SUCCESS;
+
+ exit_with_error:
+        MPI_Finalize();
+        return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi</p>
+<pre class="codehilite"><code class="language-bash">Bootstrap: docker
+From: ubuntu:latest
+
+%files
+    mpitest.c /opt
+
+%environment
+    export OMPI_DIR=/opt/ompi
+    export SINGULARITY_OMPI_DIR=$OMPI_DIR
+    export SINGULARITYENV_APPEND_PATH=$OMPI_DIR/bin
+    export SINGULAIRTYENV_APPEND_LD_LIBRARY_PATH=$OMPI_DIR/lib
+
+%post
+    echo &quot;Installing required packages...&quot;
+    apt-get update &amp;&amp; apt-get install -y wget git bash gcc gfortran g++ make file
+
+    echo &quot;Installing Open MPI&quot;
+    export OMPI_DIR=/opt/ompi
+    export OMPI_VERSION=4.0.5  #NOTE matching version to that on Raapoi
+    export OMPI_URL=&quot;https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.bz2&quot;
+    mkdir -p /tmp/ompi
+    mkdir -p /opt
+    # Download
+    cd /tmp/ompi &amp;&amp; wget -O openmpi-$OMPI_VERSION.tar.bz2 $OMPI_URL &amp;&amp; tar -xjf openmpi-$OMPI_VERSION.tar.bz2
+    # Compile and install
+    cd /tmp/ompi/openmpi-$OMPI_VERSION &amp;&amp; ./configure --prefix=$OMPI_DIR &amp;&amp; make install
+    # Set env variables so we can compile our application
+    export PATH=$OMPI_DIR/bin:$PATH
+    export LD_LIBRARY_PATH=$OMPI_DIR/lib:$LD_LIBRARY_PATH
+    export MANPATH=$OMPI_DIR/share/man:$MANPATH
+
+    echo &quot;Compiling the MPI application...&quot;
+    cd /opt &amp;&amp; mpicc -o mpitest mpitest.c
+</code></pre>
+
+<p>Now we build our container locally, giving it a sensible name.  We need <code>OpenMPI-4.0.5</code> to use this, so let's include that in the name</p>
+<pre class="codehilite"><code class="language-bash">sudo singularity build test-openmpi-4.0.5.sif test-openmpi-4.0.5.def
+</code></pre>
+
+<p>Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity</p>
+<pre class="codehilite"><code class="language-bash">sftp &lt;username&gt;@raapoi.vuw.ac.nz
+put test-openmpi-4.0.5.sif
+</code></pre>
+
+<p>Now on <strong>Rāpoi</strong> copy that file to a sensible location, I used <code>~/projects/examples/singularity/openMPI</code> again</p>
+<pre class="codehilite"><code class="language-bash">mv test-openmpi-4.0.5.sif ~/projects/examples/singularity/openMPI/
+cd ~/projects/examples/singularity/openMPI/
+</code></pre>
+
+<p>In that location create a sbatch file</p>
+<p>openmpi-test.sh</p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#SBATCH --job-name=mpi_test
+#SBATCH --time=00-00:02:00
+#SBATCH --output=out_test.out
+#SBATCH --error=out_test.err
+#SBATCH --partition=parallel
+#SBATCH --ntasks=2
+#SBATCH --cpus-per-task=1
+#SBATCH --tasks-per-node=1
+#SBATCH --mem-per-cpu=1GB
+#SBATCH --constraint=&quot;IB,AMD&quot;
+#SBATCH --nodes=2
+
+module use /home/software/tools/eb_modulefiles/all/Core
+module unuse /home/software/tools/modulefiles # to prevent conflicts with the old modules
+module load GCC/10.2.0
+module load OpenMPI/4.0.5
+module load Singularity/3.7.3 # Note this is a new singularity build
+
+CONPATH=$HOME/projects/examples/singularity/openMPI
+mpirun -np 2 singularity exec $CONPATH/test-openmpi-4.0.5.sif /opt/mpitest
+</code></pre>
+
+<p>Submit that to slurm and see the output</p>
+<pre class="codehilite"><code class="language-bash">sbatch openmpi-test.sh
+squeue -u $USER  # see the job
+cat out_test.out # examine the output after the job is done
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
