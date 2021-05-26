@@ -27,6 +27,9 @@ markdown_extensions:
       toc_depth: 3
   - codehilite
 
+plugins:
+  - include-markdown
+
 extra_css: [extra.css]
 
 site_url: https://vuw-research-computing.github.io/raapoi-docs/

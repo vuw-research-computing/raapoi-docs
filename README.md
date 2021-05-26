@@ -25,6 +25,8 @@ This structure is designed to make the docs easier to navigate, providing a gran
 ## Workflow for updating docs (locally via CLI):
 1. Make sure you have mkdocs installed. This can be done with ```pip install mkdocs``` or similar, see full instructions at [the mkdocs installation page](https://www.mkdocs.org/#installation)
 
+1. Install mkdocs-include-markdown-plugin via ```pip install mkdocs-include-markdown-plugin```
+
 1. Clone the <a href="https://github.com/vuw-research-computing/raapoi-docs">```raapoi-docs```</a> repo, open in the command line and make sure you're on the ```master``` branch.
 
 1. Navigate to the ```docs``` folder and open and edit (or create) the appropriate ```.md``` file, (e.g. ```examples.md```).
