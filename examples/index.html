@@ -82,7 +82,11 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#matlab-gpu-example">Matlab GPU example</a>
+    <li class="toctree-l2"><a class="reference internal" href="#gpu-examples">GPU Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#matlab-gpu-example">Matlab GPU example</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs</a>
         <ul>
@@ -407,7 +411,8 @@ sprintf(&quot;Hello World!&quot;)
 <p>This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <code>"Hello World"</code></p>
-<h2 id="matlab-gpu-example">Matlab GPU example<a class="headerlink" href="#matlab-gpu-example" title="Permanent link">&para;</a></h2>
+<h2 id="gpu-examples">GPU Examples<a class="headerlink" href="#gpu-examples" title="Permanent link">&para;</a></h2>
+<h3 id="matlab-gpu-example">Matlab GPU example<a class="headerlink" href="#matlab-gpu-example" title="Permanent link">&para;</a></h3>
 <p>Matlab has various build in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called <code>matlab_gpu.m</code>  I used <code>~/examples/matlab/cuda/matlab_gpu.m</code>.</p>
 <pre class="codehilite"><code class="language-matlab">% Set an array to which will will calculate the eignevalues of
 A=rand(1000);
