@@ -15,8 +15,7 @@ nav:
     - 'Using Jupyter Notebooks': 'notebooks.md'
     - 'Examples': 'examples.md' 
     - 'Training': 'training.md'
-  - Support: support.md
-  - Utilisation: ganglia.md
+    - Support: support.md
 
 
 theme: readthedocs

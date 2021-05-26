@@ -295,9 +295,9 @@ python neural_style/neural_style.py train \
 
 The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)
 
-First check what openMPI version we have on Raapoi
+First check what openMPI version we have on Rāpoi
 cat 
-On **Raapoi** switch to our new modules
+On **Rāpoi** switch to our new modules
 ```bash
 module unuse /home/software/tools/modulefiles # stop using the older modules
 module use /home/software/tools/eb_modulefiles/all/Core #the new module files organised by compiler
