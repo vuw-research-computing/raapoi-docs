@@ -40,11 +40,7 @@
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href=".." class="icon icon-home"> Rāpoi Cluster Documentation</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
+        
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
@@ -81,6 +77,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#simple-bash-example-start-here-if-new-to-hpc">Simple Bash Example - start here if new to HPC</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-anacondaminicondaconda-idba">Using Anaconda/Miniconda/conda - idba</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a>
     </li>
@@ -155,39 +153,39 @@
 <h2 id="simple-bash-example-start-here-if-new-to-hpc">Simple Bash Example - start here if new to HPC<a class="headerlink" href="#simple-bash-example-start-here-if-new-to-hpc" title="Permanent link">&para;</a></h2>
 <p>In this example we will run a very simple bash script on the quicktest partition.  The bash script is very simple, it just prints the hostname - the node you're running on - and prints the date into a file.  It also sleeps for 1 minute - it just does this to give you a chance to see your job in the queue with <code>squeue</code></p>
 <p>First lets create a sensible working directory</p>
-<div class="codehilite"><pre><span></span><code>mkdir bash_example
-<span class="nb">cd</span> bash_example
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">mkdir bash_example
+cd bash_example
+</code></pre>
 
 <p>We'll use the text editor nano to create our bash script as well as our submission script.  In real life, you might find it easier to create your code and submission script on your local machine, then copy them over as nano is not a great editor for large projects.</p>
 <p>Create and edit our simple bash script - this is our code we will run on the HPC</p>
-<div class="codehilite"><pre><span></span><code>nano test.sh
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">nano test.sh
+</code></pre>
 
 <p>Paste or type the following into the file</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-hostname  <span class="c1">#prints the host name to the terminal</span>
-date &gt; date_when_job_ran.txt  <span class="c1">#puts the content of the date command into a txt file</span>
-sleep 1m <span class="c1"># do nothing for 1 minute.  Job will still be &quot;running&quot; </span>
-</code></pre></div>
+hostname  #prints the host name to the terminal
+date &gt; date_when_job_ran.txt  #puts the content of the date command into a txt file
+sleep 1m # do nothing for 1 minute.  Job will still be &quot;running&quot; 
+</code></pre>
 
 <p>press ctrl-O to save the text in nano, then ctrl-X to exit nano.</p>
 <p>Using nano again create a file called submit.sh with the following content</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --job-name=bash_test</span>
-<span class="c1">#SBATCH -o bash_test.out</span>
-<span class="c1">#SBATCH -e bash_test.err</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --partition=quicktest</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --cpus-per-task=1</span>
-<span class="c1">#SBATCH --mem=1G</span>
-<span class="c1">#SBATCH --time=10:00</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#
+#SBATCH --job-name=bash_test
+#SBATCH -o bash_test.out
+#SBATCH -e bash_test.err
+#
+#SBATCH --partition=quicktest
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --time=10:00
 
-bash test.sh  <span class="c1">#actually run our bash script, using bash</span>
-</code></pre></div>
+bash test.sh  #actually run our bash script, using bash
+</code></pre>
 
 <p>If you're familiar with bash scripts, the above is a bit weird.  The <code>#SBATCH</code> lines would normally be comments and hence not do anything, but Slurm will read those lines to determine how many resources to provide your job.  In this case we ask for the following:</p>
 <ul>
@@ -199,256 +197,315 @@ bash test.sh  <span class="c1">#actually run our bash script, using bash</span>
 <p>If your job uses more memory or time than requested, slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.</p>
 <p>Our <code>submit.sh</code> script also names our job <code>bash_test</code> this is what the job will show up as in squeue. We ask for things printed out on the terminal to go to two seperate files.  Normal, non error, things that would be printed out on the terminal will be put into the text file <code>bash_test.out</code>.  Errors will be printed into the text file <code>bash_test.err</code></p>
 <p>Now submit your job to the Slurm queue.</p>
-<div class="codehilite"><pre><span></span><code>sbatch submit.sh  
+<pre class="codehilite"><code class="language-bash">sbatch submit.sh  
 
-<span class="c1">#See your job in the queue</span>
+#See your job in the queue
 squeue -u &lt;your_username&gt;
 
-<span class="c1">#When job is done see the new files</span>
+#When job is done see the new files
 ls
 
-<span class="c1">#look at the content that would have been printed to the terminal if running locally</span>
+#look at the content that would have been printed to the terminal if running locally
 cat bash_test.out
 
-<span class="c1"># See the content of the file that your bash script created</span>
+# See the content of the file that your bash script created
 cat date_when_job_ran.txt
-</code></pre></div>
+</code></pre>
 
 <h2 id="simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip<a class="headerlink" href="#simple-python-program-using-virtualenv-and-pip" title="Permanent link">&para;</a></h2>
 <p>First we need to create a working directory and move there</p>
-<div class="codehilite"><pre><span></span><code>mkdir python_test
-<span class="nb">cd</span> python_test
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">mkdir python_test
+cd python_test
+</code></pre>
 
 <p>Next we load the python 3 module and use python 3 to create a python virtualenv.  This way we can install pip packages which are not installed on the cluster</p>
-<div class="codehilite"><pre><span></span><code>module load python/3.6.6
+<pre class="codehilite"><code class="language-bash">module load python/3.6.6
 python3 -m venv mytest
-</code></pre></div>
+</code></pre>
 
 <p>Activate the <code>mytest</code> virtualenv and use pip to install the <code>webcolors</code> package</p>
-<div class="codehilite"><pre><span></span><code><span class="nb">source</span> mytest/bin/activate
+<pre class="codehilite"><code class="language-bash">source mytest/bin/activate
 pip install webcolors
-</code></pre></div>
+</code></pre>
 
 <p>Create the file test.py with the following contents using nano</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">webcolors</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="n">gethostname</span>
+<pre class="codehilite"><code class="language-python">import webcolors
+from random import randint
+from socket import gethostname
 
-<span class="n">colour_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">webcolors</span><span class="o">.</span><span class="n">css3_hex_to_names</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-<span class="n">requested_colour</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">colour_list</span><span class="p">))</span>
-<span class="n">colour_name</span> <span class="o">=</span> <span class="n">colour_list</span><span class="p">[</span><span class="n">requested_colour</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+colour_list = list(webcolors.css3_hex_to_names.items())
+requested_colour = randint(0,len(colour_list))
+colour_name = colour_list[requested_colour][1]
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random colour name:&quot;</span><span class="p">,</span> <span class="n">colour_name</span><span class="p">,</span> <span class="s2">&quot; on host: &quot;</span><span class="p">,</span> <span class="n">gethostname</span><span class="p">())</span>
-</code></pre></div>
+print(&quot;Random colour name:&quot;, colour_name, &quot; on host: &quot;, gethostname())
+</code></pre>
 
 <p>Alternatively download it with wget:</p>
-<div class="codehilite"><pre><span></span><code>wget https://raw.githubusercontent.com/<span class="se">\</span>
-    vuw-research-computing/raapoi-tools/<span class="se">\</span>
+<pre class="codehilite"><code class="language-bash">wget https://raw.githubusercontent.com/\
+    vuw-research-computing/raapoi-tools/\
     master/examples/python_venv/test.py
-</code></pre></div>
+</code></pre>
 
 <p>Using nano create the submissions script called python_submit.sh with the following content - change <code>me@email.com</code> to your email address.</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --job-name=python_test</span>
-<span class="c1">#SBATCH -o python_test.out</span>
-<span class="c1">#SBATCH -e python_test.err</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --cpus-per-task=1</span>
-<span class="c1">#SBATCH --mem-per-cpu=1G</span>
-<span class="c1">#SBATCH --time=10:00</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --mail-type=BEGIN,END,FAIL</span>
-<span class="c1">#SBATCH --mail-user=me@email.com</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#
+#SBATCH --job-name=python_test
+#SBATCH -o python_test.out
+#SBATCH -e python_test.err
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --time=10:00
+#
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=me@email.com
 
 module load python/3.6.6
 
-<span class="nb">source</span> mytest/bin/activate
+source mytest/bin/activate
 python test.py
-</code></pre></div>
+</code></pre>
 
 <p>Alternatively download it with wget</p>
-<div class="codehilite"><pre><span></span><code>wget https://raw.githubusercontent.com/<span class="se">\</span>
-    vuw-research-computing/raapoi-tools/<span class="se">\</span>
+<pre class="codehilite"><code class="language-bash">wget https://raw.githubusercontent.com/\
+    vuw-research-computing/raapoi-tools/\
     master/examples/python_venv/python_submit.sh
-</code></pre></div>
+</code></pre>
 
 <p>To submit your job to the Slurm scheduler</p>
-<div class="codehilite"><pre><span></span><code>sbatch python_submit.sh
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sbatch python_submit.sh
+</code></pre>
 
 <p>Check for your job on the queue with <code>squeue</code> though it might finish very fast.  The output files will appear in your working directory.</p>
+<!-- BEGIN INCLUDE examples/anaconda.md   -->
+<h2 id="using-anacondaminicondaconda-idba">Using Anaconda/Miniconda/conda - idba<a class="headerlink" href="#using-anacondaminicondaconda-idba" title="Permanent link">&para;</a></h2>
+<p>Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda enviroment inside - this allows the conda enviroment to load quickly as the many small conda files are inside a container whcih the file system sees aas one file.</p>
+<p>However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can just install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with out module loading system.</p>
+<p>Anaconda has many built in packages so we will use that in our examples, but Miniconda is available if you want a more minimal initial setup.</p>
+<pre class="codehilite"><code class="language-bash">module load old-mod-system/Anaconda3/2020.11 
+</code></pre>
+
+<p>Let's create a new conda enviroment for this example, in a sensible location, I used <code>~/examples/conda/idba</code></p>
+<pre class="codehilite"><code class="language-bash">conda create --name idba-example  # press y for the Proceed prompt if it looks correct
+conda activate idba-example  #activate our example enviroment.
+</code></pre>
+
+<p>Conda enviroments are beyond the scope of this example, but they are a good way to contain all the dependancies and programs for a particular workflow, in this case, idba.</p>
+<p>Install idba in our conda enviroment.</p>
+<pre class="codehilite"><code class="language-bash">conda install -c bioconda idba
+</code></pre>
+
+<p>Idba is a genome assembler, we will use paired end illumina reads of Ecoli.  The data is availiable on an Amazon S3 bucket, we can download it with wget.</p>
+<pre class="codehilite"><code class="language-bash">mkdir data  # put our data in a sensible location
+cd data
+wget --content-disposition goo.gl/JDJTaz #sequence data
+wget --content-disposition goo.gl/tt9fsn #sequence data
+cd ..  #back to our project directory
+</code></pre>
+
+<p>The reads we have are paired end fastq files but idba requires a fasta file. We can use a tool installed with idba to convert them. We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
+<pre class="codehilite"><code class="language-bash">fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
+</code></pre>
+
+<p>To create our submission script we need to know the path to our conda enviroment, to get this:</p>
+<pre class="codehilite"><code class="language-bash">conda env list
+</code></pre>
+
+<p>You'll need to find your <code>idba-example</code> enviroment, next to it is the path you'll need for your submission script.  In my case:</p>
+<pre class="codehilite"><code class="language-bash"># conda environments:
+#
+base                  *  /home/andre/anaconda3
+idba-example          /home/andre/anaconda3/envs/idba-example  # We need this line, it'll be different for you!
+</code></pre>
+
+<p>Create our sbatch submission script. Note that this sequence doesn't need a lot of memory, so we'll use 3G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
+<p><em>idba_submit.sh</em></p>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=idba_test
+#SBATCH -o _output.out
+#SBATCH -e _output.err
+#SBATCH --time=00:5:00
+#SBATCH --partition=quicktest
+#SBATCH --ntasks=12
+#SBATCH --mem=3G
+
+module load old-mod-system/Anaconda3/2020.11
+eval &quot;$(conda shell.bash hook)&quot; # basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...
+conda activate /home/andre/anaconda3/envs/idba-example  # We will need to activate our conda enviroment on the remote node
+idba idba_ud -r data/read.fa -o output
+</code></pre>
+
+<p>To submit our job</p>
+<pre class="codehilite"><code class="language-bash">sbatch idba_submit.sh
+</code></pre>
+
+<p>To see our job running or queuing</p>
+<pre class="codehilite"><code class="language-bash">squeue -u $USER
+</code></pre>
+
+<p>This job will take a few minutes to run, generally less than 5.
+When the job is done we can see the output in the output folder.  We can also see the std output and std err in the files <code>_output.out and _output.err</code>.  The quickest way to examine them is to <code>cat</code> the files when the run is done.</p>
+<pre class="codehilite"><code class="language-bash">cat _output.out
+</code></pre>
+
+<!-- END INCLUDE -->
+
 <h2 id="loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job<a class="headerlink" href="#loading-r-packages-running-a-simple-job" title="Permanent link">&para;</a></h2>
 <p>First login to Rāpoi and load the R/CRAN module:</p>
-<div class="codehilite"><pre><span></span><code>module load R/CRAN      
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">module load R/CRAN      
+</code></pre>
 
 <p>(Note this will also load <code>R/3.6</code>)</p>
 <p>Then run R on the command line:</p>
-<div class="codehilite"><pre><span></span><code>R
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">R
+</code></pre>
 
 <p>Test library existence:</p>
-<div class="codehilite"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-R">library(ggplot2)
+</code></pre>
 
 <p>This should load the package.
 Metapackages like <code>tidyverse</code> currently don't load on Rāpoi, but components can be loaded individually: </p>
-<div class="codehilite"><pre><span></span><code><span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-R">&gt; library(tidyr)
+&gt; library(dplyr)
+</code></pre>
 
 <p>Next create a bash submission script using your preferred text editor. An example submission script may look something like:
 a file called r_submit.sh with:</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --job-name=r_test</span>
-<span class="c1">#SBATCH -o r_test.out</span>
-<span class="c1">#SBATCH -e r_test.err</span>
-<span class="c1">#</span>
-<span class="c1">#SBATCH --cpus-per-task=1</span>
-<span class="c1">#SBATCH --mem-per-cpu=1G</span>
-<span class="c1">#SBATCH --time=10:00</span>
-<span class="c1">#</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#
+#SBATCH --job-name=r_test
+#SBATCH -o r_test.out
+#SBATCH -e r_test.err
+#
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --time=10:00
+#
+</code></pre>
 
 <p>Save this to the current working directory, then run: </p>
-<div class="codehilite"><pre><span></span><code>module load R/CRAN
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">module load R/CRAN
+</code></pre>
 
-<div class="codehilite"><pre><span></span><code>Rscript mytest.R
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">Rscript mytest.R
+</code></pre>
 
 <p>and then create another file with a test R script called <code>mytest.R</code> with:</p>
-<div class="codehilite"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<pre class="codehilite"><code class="language-R">library(tidyr)
+library(dplyr)
+library(ggplot2)
 
-<span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
-</code></pre></div>
+sprintf(&quot;Hello World!&quot;)
+</code></pre>
 
 <p>then run it with the previously written bash script:  </p>
-<div class="codehilite"><pre><span></span><code>sbatch r_submit.sh 
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sbatch r_submit.sh 
+</code></pre>
 
 <p>This submits a task that should execute quickly and create files in the directory from which it was run.
 Examining <code>r_test.out</code> (with nano, cat or less) should print:
 <code>"Hello World"</code></p>
 <h2 id="matlab-gpu-example">Matlab GPU example<a class="headerlink" href="#matlab-gpu-example" title="Permanent link">&para;</a></h2>
 <p>Matlab has various build in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called <code>matlab_gpu.m</code>  I used <code>~/examples/matlab/cuda/matlab_gpu.m</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="c">% Set an array to which will will calculate the eignevalues of</span><span class="w"></span>
-<span class="n">A</span><span class="p">=</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<pre class="codehilite"><code class="language-matlab">% Set an array to which will will calculate the eignevalues of
+A=rand(1000);
 
-<span class="c">% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.</span><span class="w"></span>
-<span class="n">Agpu</span><span class="p">=</span><span class="n">gpuArray</span><span class="p">(</span><span class="n">A</span><span class="p">);</span><span class="w"></span>
-<span class="n">tic</span><span class="w"></span>
-<span class="s">B=eig(Agpu)</span><span class="p">;</span><span class="w"></span>
-<span class="n">t1</span><span class="p">=</span><span class="nb">toc</span><span class="w"></span>
+% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
+Agpu=gpuArray(A);
+tic
+B=eig(Agpu);
+t1=toc
 
-<span class="c">% Let&#39;s compare the time with CPU</span><span class="w"></span>
-<span class="nb">tic</span><span class="w"></span>
-<span class="n">B</span><span class="p">=</span><span class="nb">eig</span><span class="p">(</span><span class="n">A</span><span class="p">);</span><span class="w"></span>
-<span class="n">t2</span><span class="p">=</span><span class="nb">toc</span><span class="w"></span>
-</code></pre></div>
+% Let's compare the time with CPU
+tic
+B=eig(A);
+t2=toc
+</code></pre>
 
 <p>We will also need a slurm submission script. Note that we will need to use the new Easybuild module files for our cuda libraries, so make sure to include the module use line <code>module use /home/software/tools/eb_modulefiles/all/Core</code></p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=matlab-gpu-example</span>
-<span class="c1">#SBATCH --output=out-gpu-example.out</span>
-<span class="c1">#SBATCH --error=out-gpu-example.err</span>
-<span class="c1">#SBATCH --time=00:05:00</span>
-<span class="c1">#SBATCH --partition=gpu</span>
-<span class="c1">#SBATCH --gres=gpu:1</span>
-<span class="c1">#SBATCH --ntasks=2</span>
-<span class="c1">#SBATCH --mem=60G</span>
+#SBATCH --job-name=matlab-gpu-example
+#SBATCH --output=out-gpu-example.out
+#SBATCH --error=out-gpu-example.err
+#SBATCH --time=00:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=2
+#SBATCH --mem=60G
 
 module use /home/software/tools/eb_modulefiles/all/Core
 module load matlab/2021a
 module load fosscuda/2020b
 
-matlab -nodisplay -nosplash -nodesktop -r <span class="s2">&quot;run(&#39;matlab_gpu.m&#39;);exit;&quot;</span>
-</code></pre></div>
+matlab -nodisplay -nosplash -nodesktop -r &quot;run('matlab_gpu.m');exit;&quot;
+</code></pre>
 
 <p>To submit this job to the slurm queue <code>sbatch matlab_gpu.sh</code>.  This job will take a few minutes to run - this is mostly the matlab startup time.
 Examine the queue for your job<code>squeue -u $USER</code>.  When your job is done, inspect the outputfile.  you can use an editor like nano, vi or emacs, or you can just <code>cat</code> the file to see it's contents on the terminal</p>
-<div class="codehilite"><pre><span></span><code>cat out-gpu-example.out
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">cat out-gpu-example.out
+</code></pre>
 
 <p>What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performace!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!</p>
 <p>To get a better idea of the advantage of the GPU let's increase the size of the array from <code>1000</code> to <code>10000</code></p>
 <p>matlab_gpu.m</p>
-<div class="codehilite"><pre><span></span><code><span class="c">% Set an array to which will will calculate the eignevalues of</span><span class="w"></span>
-<span class="n">A</span><span class="p">=</span><span class="nb">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span><span class="w"></span>
+<pre class="codehilite"><code class="language-Matlab">% Set an array to which will will calculate the eignevalues of
+A=rand(10000);
 
-<span class="c">% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.</span><span class="w"></span>
-<span class="n">Agpu</span><span class="p">=</span><span class="n">gpuArray</span><span class="p">(</span><span class="n">A</span><span class="p">);</span><span class="w"></span>
-<span class="n">tic</span><span class="w"></span>
-<span class="s">B=eig(Agpu)</span><span class="p">;</span><span class="w"></span>
-<span class="n">t1</span><span class="p">=</span><span class="nb">toc</span><span class="w"></span>
+% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
+Agpu=gpuArray(A);
+tic
+B=eig(Agpu);
+t1=toc
 
-<span class="c">% Let&#39;s compare the time with CPU</span><span class="w"></span>
-<span class="nb">tic</span><span class="w"></span>
-<span class="n">B</span><span class="p">=</span><span class="nb">eig</span><span class="p">(</span><span class="n">A</span><span class="p">);</span><span class="w"></span>
-<span class="n">t2</span><span class="p">=</span><span class="nb">toc</span><span class="w"></span>
-</code></pre></div>
+% Let's compare the time with CPU
+tic
+B=eig(A);
+t2=toc
+</code></pre>
 
 <p>To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.</p>
 <p>matlab_gpu.sh</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash linenums">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=matlab-gpu-example</span>
-<span class="c1">#SBATCH --output=out-gpu-example.out</span>
-<span class="c1">#SBATCH --error=out-gpu-example.err</span>
-<span class="c1">#SBATCH --time=00:05:00</span>
-<span class="c1">#SBATCH --partition=gpu</span>
-<span class="c1">#SBATCH --gres=gpu:1</span>
-<span class="c1">#SBATCH --ntasks=128</span>
-<span class="c1">#SBATCH --mem=256G</span>
+#SBATCH --job-name=matlab-gpu-example
+#SBATCH --output=out-gpu-example.out
+#SBATCH --error=out-gpu-example.err
+#SBATCH --time=00:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=128
+#SBATCH --mem=256G
 
 module use /home/software/tools/eb_modulefiles/all/Core
 module load matlab/2021a
 module load fosscuda/2020b
 
-matlab -nodisplay -nosplash -nodesktop -r <span class="s2">&quot;run(&#39;matlab_gpu.m&#39;);exit;&quot;</span>
-</code></pre></div>
-</td></tr></table>
+matlab -nodisplay -nosplash -nodesktop -r &quot;run('matlab_gpu.m');exit;&quot;
+</code></pre>
+
 <p>The output in my case was:</p>
-<div class="codehilite"><pre><span></span><code>                            &lt; M A T L A B <span class="o">(</span>R<span class="o">)</span> &gt;
-                  Copyright <span class="m">1984</span>-2021 The MathWorks, Inc.
-             R2021a Update <span class="m">1</span> <span class="o">(</span><span class="m">9</span>.10.0.1649659<span class="o">)</span> <span class="m">64</span>-bit <span class="o">(</span>glnxa64<span class="o">)</span>
-                               April <span class="m">13</span>, <span class="m">2021</span>
+<pre class="codehilite"><code class="language-bash">                            &lt; M A T L A B (R) &gt;
+                  Copyright 1984-2021 The MathWorks, Inc.
+             R2021a Update 1 (9.10.0.1649659) 64-bit (glnxa64)
+                               April 13, 2021
 
 
-To get started, <span class="nb">type</span> doc.
+To get started, type doc.
 For product information, visit www.mathworks.com.
 
 
-<span class="nv">t1</span> <span class="o">=</span>
+t1 =
 
-   <span class="m">62</span>.0212
+   62.0212
 
 
-<span class="nv">t2</span> <span class="o">=</span>
+t2 =
 
-  <span class="m">223</span>.0818
-</code></pre></div>
+  223.0818
+</code></pre>
 
 <p>So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it <strong>less</strong> CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.</p>
 <h2 id="job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs<a class="headerlink" href="#job-arrays-running-many-similar-jobs" title="Permanent link">&para;</a></h2>
@@ -456,77 +513,77 @@ For product information, visit www.mathworks.com.
 <h3 id="simple-bash-job-array-example">Simple Bash Job Array example<a class="headerlink" href="#simple-bash-job-array-example" title="Permanent link">&para;</a></h3>
 <p>The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the slurm array task ID and exit.</p>
 <p>submit.sh:</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=test_array</span>
-<span class="c1">#SBATCH --output=out_array_%A_%a.out</span>
-<span class="c1">#SBATCH --error=out_array_%A_%a.err</span>
-<span class="c1">#SBATCH --array=1-16</span>
-<span class="c1">#SBATCH --time=00:00:20</span>
-<span class="c1">#SBATCH --partition=parallel</span>
-<span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --mem=1G</span>
+#SBATCH --job-name=test_array
+#SBATCH --output=out_array_%A_%a.out
+#SBATCH --error=out_array_%A_%a.err
+#SBATCH --array=1-16
+#SBATCH --time=00:00:20
+#SBATCH --partition=parallel
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
 
-<span class="c1"># Print the task id.</span>
-<span class="nb">echo</span> <span class="s2">&quot;My SLURM_ARRAY_TASK_ID: &quot;</span> <span class="nv">$SLURM_ARRAY_TASK_ID</span>
+# Print the task id.
+echo &quot;My SLURM_ARRAY_TASK_ID: &quot; $SLURM_ARRAY_TASK_ID
 
-<span class="c1"># Add lines here to run your computations.</span>
-</code></pre></div>
+# Add lines here to run your computations.
+</code></pre>
 
 <p>Run the example with the standard</p>
-<div class="codehilite"><pre><span></span><code>sbatch submit.sh
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sbatch submit.sh
+</code></pre>
 
 <h3 id="a-simple-r-job-array-example">A simple R job Array Example<a class="headerlink" href="#a-simple-r-job-array-example" title="Permanent link">&para;</a></h3>
 <p>As a slightly more practical example the following will run an R script 5 times as resources become available.  The R script takes as an input the <code>$SLURM_ARRAY_TASK_ID</code> which then selects a parameter <code>alpha</code> out of a lookup table.</p>
 <p>This is one way you could run simulations or similar with a set parameters defined in a lookuop table in your code.</p>
 <p>To make outputs more tidy and to help organisation, instead of dumping all the outputs in to the directory with our code and submission script, we will seperate the outputs into directories.  Dataframes saved from R will be saved to output/ and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to stdout/  Both of these directories will need to be created before running the script.</p>
 <p>r_random_alpha.R:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># get the arguments supplied to R.  </span>
-<span class="c1"># trailingOnly = TRUE gets the user supplied</span>
-<span class="c1"># arguments, and for now we will only get the</span>
-<span class="c1"># first user supplied argument</span>
-<span class="n">args</span> <span class="o">&lt;-</span> <span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
-<span class="n">inputparam</span> <span class="o">&lt;-</span> <span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+<pre class="codehilite"><code class="language-R"># get the arguments supplied to R.  
+# trailingOnly = TRUE gets the user supplied
+# arguments, and for now we will only get the
+# first user supplied argument
+args &lt;- commandArgs(trailingOnly = TRUE)
+inputparam &lt;- args[1]
 
-<span class="c1"># a vector with all our parameters.</span>
-<span class="n">alpha_vec</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span> <span class="m">3.3</span><span class="p">,</span> <span class="m">5.1</span><span class="p">,</span> <span class="m">8.2</span><span class="p">,</span> <span class="m">10.9</span><span class="p">)</span>
-<span class="n">alpha</span> <span class="o">&lt;-</span> <span class="n">alpha_vec</span><span class="p">[</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">inputparam</span><span class="p">)]</span>
+# a vector with all our parameters.
+alpha_vec &lt;- c(2.5, 3.3, 5.1, 8.2, 10.9)
+alpha &lt;- alpha_vec[as.integer(inputparam)]
 
-<span class="c1"># Generate a random number between 0 and alpha </span>
-<span class="c1"># store it in dataframe with the coresponding </span>
-<span class="c1"># alpha value</span>
-<span class="n">randomnum</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">min</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">max</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
-<span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;random_num&quot;</span> <span class="o">=</span> <span class="n">randomnum</span><span class="p">)</span>
+# Generate a random number between 0 and alpha 
+# store it in dataframe with the coresponding 
+# alpha value
+randomnum &lt;- runif(1, min=0, max=as.double(alpha))
+df &lt;- data.frame(&quot;alpha&quot; = alpha, &quot;random_num&quot; = randomnum)
 
-<span class="c1"># Save the data frame to a file with the alpha value</span>
-<span class="c1"># Note that the output/ folder will need to be </span>
-<span class="c1"># manually created first!</span>
-<span class="n">outputname</span> <span class="o">&lt;-</span> <span class="nf">paste</span><span class="p">(</span><span class="s">&quot;output/&quot;</span><span class="p">,</span> <span class="s">&quot;alpha_&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s">&quot;.Rda&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-<span class="nf">save</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">outputname</span><span class="p">)</span>
-</code></pre></div>
+# Save the data frame to a file with the alpha value
+# Note that the output/ folder will need to be 
+# manually created first!
+outputname &lt;- paste(&quot;output/&quot;, &quot;alpha_&quot;, alpha, &quot;.Rda&quot;, sep=&quot;&quot;)
+save(df,file=outputname)
+</code></pre>
 
 <p>Next create the submision script. Which we will run on the parallel partition rather than quicktest.</p>
 <p>r_submit.sh:</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --job-name=test_R_array</span>
-<span class="c1">#SBATCH --output=stdout/array_%A_%a.out</span>
-<span class="c1">#SBATCH --error=stdout/array_%A_%a.err</span>
-<span class="c1">#SBATCH --array=1-5</span>
-<span class="c1">#SBATCH --time=00:00:20</span>
-<span class="c1">#SBATCH --partition=parallel</span>
-<span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --mem=1G</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+#SBATCH --job-name=test_R_array
+#SBATCH --output=stdout/array_%A_%a.out
+#SBATCH --error=stdout/array_%A_%a.err
+#SBATCH --array=1-5
+#SBATCH --time=00:00:20
+#SBATCH --partition=parallel
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
 
 module load R/CRAN
 
-<span class="c1"># Print the task id.</span>
-Rscript r_random_alpha.R <span class="nv">$SLURM_ARRAY_TASK_ID</span>
-</code></pre></div>
+# Print the task id.
+Rscript r_random_alpha.R $SLURM_ARRAY_TASK_ID
+</code></pre>
 
 <p>Run the jobs with</p>
-<div class="codehilite"><pre><span></span><code>sbatch r_submit.sh
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sbatch r_submit.sh
+</code></pre>
 
 <h2 id="singularity">Singularity<a class="headerlink" href="#singularity" title="Permanent link">&para;</a></h2>
 <p>While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you <em>can</em> have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.</p>
@@ -534,268 +591,268 @@ Rscript r_random_alpha.R <span class="nv">$SLURM_ARRAY_TASK_ID</span>
 <p>Singularity allows you to use most (but not all!) docker images on Rāpoi.</p>
 <p>On your local machine create the singularity definition file</p>
 <p>input_args_example.def</p>
-<div class="codehilite"><pre><span></span><code><span class="k">BootStrap</span>: library
-<span class="k">From</span>: ubuntu:<span class="m">16.04</span>
+<pre class="codehilite"><code class="language-singularity">BootStrap: library
+From: ubuntu:16.04
 
-<span class="gh">%runscript</span>
-    <span class="nb">exec</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+%runscript
+    exec echo &quot;$@&quot;
 
-<span class="gh">%labels</span>
+%labels
     Author Andre
-</code></pre></div>
+</code></pre>
 
 <p>This will build an ubuntu 16.04 container that will eventually run on Rāpoi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.</p>
 <p>Build the container <em>locally</em> with sudo and singularity</p>
-<div class="codehilite"><pre><span></span><code>sudo singularity build inputexample.sif input_args_example.def 
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sudo singularity build inputexample.sif input_args_example.def 
+</code></pre>
 
 <p>This will build an image that you can't modify any further and is immediately suitable to run on Rāpoi
 Copy this file to Rāpoi via sftp</p>
-<div class="codehilite"><pre><span></span><code>sftp &lt;username&gt;@raapoi.vuw.ac.nz
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sftp &lt;username&gt;@raapoi.vuw.ac.nz
+</code></pre>
 
 <p>Create a submit script using singularity on the cluster</p>
 <p>singularity_submit.sh</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=singularity_test</span>
-<span class="c1">#SBATCH -o sing_test.out</span>
-<span class="c1">#SBATCH -e sing_test.err</span>
-<span class="c1">#SBATCH --time=00:00:20</span>
-<span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --mem=1G</span>
+#SBATCH --job-name=singularity_test
+#SBATCH -o sing_test.out
+#SBATCH -e sing_test.err
+#SBATCH --time=00:00:20
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
 
 module load singularity
 
-singularity run inputtest.sif <span class="s2">&quot;hello from a container&quot;</span>
-</code></pre></div>
+singularity run inputtest.sif &quot;hello from a container&quot;
+</code></pre>
 
 <p>Run the script with the usual</p>
-<div class="codehilite"><pre><span></span><code>singularity_submit.sh
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">singularity_submit.sh
+</code></pre>
 
 <h3 id="singularitytensorflow-example">Singularity/TensorFlow Example<a class="headerlink" href="#singularitytensorflow-example" title="Permanent link">&para;</a></h3>
 <p>tensor.def</p>
-<div class="codehilite"><pre><span></span><code>Bootstrap: docker
+<pre class="codehilite"><code class="language-bash">Bootstrap: docker
 From: tensorflow/tensorflow:latest-py3
 
 %post
-apt-get update <span class="o">&amp;&amp;</span> apt-get -y install wget build-essential 
+apt-get update &amp;&amp; apt-get -y install wget build-essential 
 
 %runscript
-    <span class="nb">exec</span> python <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-</code></pre></div>
+    exec python &quot;$@&quot;
+</code></pre>
 
 <p>compile this <em>locally</em> with sudo and singularity.</p>
-<div class="codehilite"><pre><span></span><code>sudo singularity build tensorflow.sif tensor.def 
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sudo singularity build tensorflow.sif tensor.def 
+</code></pre>
 
 <p>Create a quick tensorflow test code
 tensortest.py</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+<pre class="codehilite"><code class="language-python">import tensorflow as tf
+mnist = tf.keras.datasets.mnist
 
-<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
-<span class="p">])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
-              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
-              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(input_shape=(28, 28)),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
 
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</code></pre></div>
+model.fit(x_train, y_train, epochs=5)
+model.evaluate(x_test, y_test)
+</code></pre>
 
 <p>Copy your files to Rāpoi via sftp (or whatever you prefer)</p>
-<div class="codehilite"><pre><span></span><code>sftp &lt;username&gt;@raapoi.vuw.ac.nz
-<span class="nb">cd</span> &lt;where you want to work&gt;
-put *   <span class="c1">#put all files in your local directory onto Rāpoi</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sftp &lt;username&gt;@raapoi.vuw.ac.nz
+cd &lt;where you want to work&gt;
+put *   #put all files in your local directory onto Rāpoi
+</code></pre>
 
 <p>Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.</p>
-<div class="codehilite"><pre><span></span><code>srun --partition<span class="o">=</span><span class="s2">&quot;parallel&quot;</span> --constraint<span class="o">=</span><span class="s2">&quot;Intel&quot;</span> --pty bash
+<pre class="codehilite"><code class="language-bash">srun --partition=&quot;parallel&quot; --constraint=&quot;Intel&quot; --pty bash
 
-<span class="c1">#now on the remote node - note you might need to wait if nodes are busy</span>
-module load singularity <span class="c1">#load singularity</span>
+#now on the remote node - note you might need to wait if nodes are busy
+module load singularity #load singularity
 singularity shell tensorflow.sif 
 
-<span class="c1">#now inside the tensorflow container on the remote node</span>
+#now inside the tensorflow container on the remote node
 python tensortest.py 
 
-<span class="c1">#once that runs, exit the container</span>
-<span class="nb">exit</span> <span class="c1">#exit the container</span>
-<span class="nb">exit</span> <span class="c1">#exit the interactive session on the node</span>
-</code></pre></div>
+#once that runs, exit the container
+exit #exit the container
+exit #exit the interactive session on the node
+</code></pre>
 
 <p>Create a submit script using singularity on the cluster</p>
 <p>singularity_submit.sh</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=singularity_test</span>
-<span class="c1">#SBATCH -o sing_test.out</span>
-<span class="c1">#SBATCH -e sing_test.err</span>
-<span class="c1">#SBATCH --time=00:10:00</span>
-<span class="c1">#SBATCH --partition=parallel</span>
-<span class="c1">#SBATCH --constraint=Intel</span>
-<span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --mem=4G</span>
+#SBATCH --job-name=singularity_test
+#SBATCH -o sing_test.out
+#SBATCH -e sing_test.err
+#SBATCH --time=00:10:00
+#SBATCH --partition=parallel
+#SBATCH --constraint=Intel
+#SBATCH --ntasks=1
+#SBATCH --mem=4G
 
 module load singularity
 
-<span class="c1">#run the container with the runscript defined when we created it</span>
+#run the container with the runscript defined when we created it
 singularity run tensorflow.sif tensortest.py 
-</code></pre></div>
+</code></pre>
 
 <h3 id="singularitymaxbin2-example">Singularity/MaxBin2 Example<a class="headerlink" href="#singularitymaxbin2-example" title="Permanent link">&para;</a></h3>
 <p>In a sensible location, either in your home directory or on the scratch:</p>
 <p>Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced on the official maxbin site.</p>
-<div class="codehilite"><pre><span></span><code>module load module load singularity
+<pre class="codehilite"><code class="language-bash">module load module load singularity
 singularity pull docker://quay.io/biocontainers/maxbin2:2.2.6--h14c3975_0
-mv maxbin2_2.2.6--h14c3975_0.sif maxbin2_2.2.6.sif <span class="c1">#rename for convenience</span>
-</code></pre></div>
+mv maxbin2_2.2.6--h14c3975_0.sif maxbin2_2.2.6.sif #rename for convenience
+</code></pre>
 
 <p>Download some test data</p>
-<div class="codehilite"><pre><span></span><code>mkdir rawdata
+<pre class="codehilite"><code class="language-bash">mkdir rawdata
 curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.scaffold &gt; rawdata/20x.scaffold
 curl https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.abund &gt; rawdata/20x.abund
-</code></pre></div>
+</code></pre>
 
 <p>Create an output data location</p>
-<div class="codehilite"><pre><span></span><code>mkdir output
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">mkdir output
+</code></pre>
 
 <p>Create a submit script using singularity on the cluster</p>
 <p>singularity_submit.sh</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=maxbin2_test</span>
-<span class="c1">#SBATCH -o sing_test.out</span>
-<span class="c1">#SBATCH -e sing_test.err</span>
-<span class="c1">#SBATCH --time=00:10:00</span>
-<span class="c1">#SBATCH --partition=parallel</span>
-<span class="c1">#SBATCH --ntasks=4</span>
-<span class="c1">#SBATCH --mem=4G</span>
+#SBATCH --job-name=maxbin2_test
+#SBATCH -o sing_test.out
+#SBATCH -e sing_test.err
+#SBATCH --time=00:10:00
+#SBATCH --partition=parallel
+#SBATCH --ntasks=4
+#SBATCH --mem=4G
 
 module load singularity
 
-singularity <span class="nb">exec</span> maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread <span class="m">4</span> 
-</code></pre></div>
+singularity exec maxbin2_2.2.6.sif run_MaxBin.pl -contig rawdata/20x.scaffold -abund rawdata/20x.abund -out output/20x.out -thread 4 
+</code></pre>
 
 <h3 id="singularitysandbox-example">Singularity/Sandbox Example<a class="headerlink" href="#singularitysandbox-example" title="Permanent link">&para;</a></h3>
 <p>This lets you have root inside a container <em>locally</em> and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on Rāpoi, I suggest you <em>don't do this</em>. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a <code>.def</code> file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.</p>
 <p>example.def</p>
-<div class="codehilite"><pre><span></span><code>BootStrap: library
+<pre class="codehilite"><code class="language-bash">BootStrap: library
 From: ubuntu:16.04
 
 %post
-apt-get update <span class="o">&amp;&amp;</span> apt-get -y install wget build-essential 
+apt-get update &amp;&amp; apt-get -y install wget build-essential 
 
 %runscript
-    <span class="nb">exec</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+    exec echo &quot;$@&quot;
 
 %labels
     Author Andre
-</code></pre></div>
+</code></pre>
 
 <p>Compile this <em>locally</em> with sudo and singularity.  We are using the sandbox flag to create a writable <em>container directory</em> (<code>example/</code>) on our local machine where we have sudo rights.</p>
-<div class="codehilite"><pre><span></span><code>sudo singularity build --sandbox example/ example.def
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sudo singularity build --sandbox example/ example.def
+</code></pre>
 
 <p>Now we can run the container we just built, but with sudo rights inside the container.  Your rights outside the container match the rights inside the container, so we need to do this with sudo.</p>
-<div class="codehilite"><pre><span></span><code>sudo singularity shell --writable example/
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sudo singularity shell --writable example/
+</code></pre>
 
 <p>Inside the container we now have root and can install packages and modify files in the root directories</p>
-<div class="codehilite"><pre><span></span><code>Singularity example:~&gt;  apt update
+<pre class="codehilite"><code class="language-bash">Singularity example:~&gt;  apt update
 Singularity example:~&gt;  apt install sqlite
-Singularity example:~&gt;  touch /test.txt  <span class="c1">#create an empty file in root</span>
+Singularity example:~&gt;  touch /test.txt  #create an empty file in root
 Singularity example:~&gt;  ls /
-Singularity example:~&gt;  <span class="nb">exit</span>   <span class="c1">#exit container</span>
-</code></pre></div>
+Singularity example:~&gt;  exit   #exit container
+</code></pre>
 
 <p>To run the container on Rāpoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.</p>
-<div class="codehilite"><pre><span></span><code>sudo singularity build new-example-sif example/
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sudo singularity build new-example-sif example/
+</code></pre>
 
 <p>You could now copy the <code>new-example-sif</code> file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting <em>everything in the.def file</em>.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.</p>
 <h3 id="singularitycustom-conda-container-idba-example">Singularity/Custom Conda Container - idba example<a class="headerlink" href="#singularitycustom-conda-container-idba-example" title="Permanent link">&para;</a></h3>
 <p>In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a bicontainer.  We'll build this container locally to match a local conda enviroment, then run it on the HPC and do an example assembly.</p>
 <h4 id="locally">Locally<a class="headerlink" href="#locally" title="Permanent link">&para;</a></h4>
 <p>Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda enviroment and install idba</p>
-<div class="codehilite"><pre><span></span><code>conda create --name idba
+<pre class="codehilite"><code class="language-bash">conda create --name idba
 conda install -c bioconda idba
-</code></pre></div>
+</code></pre>
 
 <p>Export your conda enviroment, we will use this to build the containter.</p>
-<div class="codehilite"><pre><span></span><code>conda env <span class="nb">export</span> &gt; environment.yml
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">conda env export &gt; environment.yml
+</code></pre>
 
 <p>We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda enviroment is in the path. <em><a href="https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container">From stackoverflow</a></em></p>
 <p><em>idba.def</em></p>
-<div class="codehilite"><pre><span></span><code><span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
+<pre class="codehilite"><code>Bootstrap: docker
 
-<span class="nl">From</span><span class="p">:</span> <span class="n">continuumio</span><span class="o">/</span><span class="n">miniconda3</span>
+From: continuumio/miniconda3
 
-<span class="nf">%files</span>
-    <span class="n">environment</span><span class="p">.</span><span class="n">yml</span>
+%files
+    environment.yml
 
-<span class="nf">%environment</span>
-    <span class="n">PATH</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">$</span><span class="p">(</span><span class="n">head</span> <span class="mi">-1</span> <span class="n">environment</span><span class="p">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="sc">&#39; &#39;</span> <span class="o">-</span><span class="n">f2</span><span class="p">)</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="n">$PATH</span>
+%environment
+    PATH=/opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
 
-<span class="nf">%post</span>
-    <span class="n">echo</span> <span class="s">&quot;. /opt/conda/etc/profile.d/conda.sh&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bashrc</span>
-    <span class="n">echo</span> <span class="s">&quot;source activate $(head -1 environment.yml | cut -d&#39; &#39; -f2)&quot;</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">bashrc</span>
-    <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">environment</span><span class="p">.</span><span class="n">yml</span>
+%post
+    echo &quot;. /opt/conda/etc/profile.d/conda.sh&quot; &gt;&gt; ~/.bashrc
+    echo &quot;source activate $(head -1 environment.yml | cut -d' ' -f2)&quot; &gt; ~/.bashrc
+    /opt/conda/bin/conda env create -f environment.yml
 
-<span class="nf">%runscript</span>
-    <span class="n">exec</span> <span class="s">&quot;$@&quot;</span>
-</code></pre></div>
+%runscript
+    exec &quot;$@&quot;
+</code></pre>
 
 <p>Build the image</p>
-<div class="codehilite"><pre><span></span><code>sudo singularity build idba.img idba.def
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sudo singularity build idba.img idba.def
+</code></pre>
 
 <p>Now copy the idba.img and enviroment.yml (technically the enviroment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.</p>
 <h4 id="on-rapoi">On Rāpoi<a class="headerlink" href="#on-rapoi" title="Permanent link">&para;</a></h4>
 <p>Create a data directory, so we can seperate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the <a href="https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html">Illumina public data library</a></p>
-<div class="codehilite"><pre><span></span><code>mkdir data
+<pre class="codehilite"><code>mkdir data
 cd data 
 wget --content-disposition goo.gl/JDJTaz #sequence data
 wget --content-disposition goo.gl/tt9fsn #sequence data
 cd ..  #back to our project directory
-</code></pre></div>
+</code></pre>
 
 <p>The reads we have are paired end fastq files but idba requires a fasta file.  We can use a tool built into our container to convert them.  We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
-<div class="codehilite"><pre><span></span><code>module load singularity
-singularity <span class="nb">exec</span> fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">module load singularity
+singularity exec fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
+</code></pre>
 
 <p>Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. Too see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
 <p><em>idba_submit.sh</em></p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
 
-<span class="c1">#SBATCH --job-name=idba_test</span>
-<span class="c1">#SBATCH -o output.out</span>
-<span class="c1">#SBATCH -e output.err</span>
-<span class="c1">#SBATCH --time=00:10:00</span>
-<span class="c1">#SBATCH --partition=quicktest</span>
-<span class="c1">#SBATCH --ntasks=12</span>
-<span class="c1">#SBATCH --mem=1G</span>
+#SBATCH --job-name=idba_test
+#SBATCH -o output.out
+#SBATCH -e output.err
+#SBATCH --time=00:10:00
+#SBATCH --partition=quicktest
+#SBATCH --ntasks=12
+#SBATCH --mem=1G
 
 module load singularity
 
-singularity <span class="nb">exec</span> idba.img idba idba_ud -r data/read.fa -o output
-</code></pre></div>
+singularity exec idba.img idba idba_ud -r data/read.fa -o output
+</code></pre>
 
 <p>Now we can submit our script to the queue with</p>
-<div class="codehilite"><pre><span></span><code>sbatch idba_submit.sh 
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">sbatch idba_submit.sh 
+</code></pre>
               
             </div>
           </div>
@@ -841,7 +898,6 @@ singularity <span class="nb">exec</span> idba.img idba idba_ud -r data/read.fa -
 </div>
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
