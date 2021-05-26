@@ -148,6 +148,10 @@ sbatch python_submit.sh
 
 Check for your job on the queue with `squeue` though it might finish very fast.  The output files will appear in your working directory.
 
+{%
+   include-markdown "examples/anaconda.md"
+%}
+
 
 ## Loading R packages & running a simple job
 
