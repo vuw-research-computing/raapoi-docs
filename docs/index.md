@@ -19,6 +19,6 @@ The cluster employs the module environment to allow researchers to customise
 their environment with their required applications and languages.  
 
 The documentation contained in this wiki cover most of what you will need to
-know to start running jobs, but if you need more help, we will be creating some
+know to start running jobs, and if you need more help, please see the [training](training.md)
 tutorials with step-by-step instructions for our most popular apps and
-languages.
+languages. You'll also find some simpler [examples](examples.md) on this site.

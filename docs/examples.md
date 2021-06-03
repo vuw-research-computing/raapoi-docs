@@ -99,7 +99,7 @@ import webcolors
 from random import randint
 from socket import gethostname
 
-colour_list = list(webcolors.css3_hex_to_names.items())
+colour_list = list(webcolors.CSS3_HEX_TO_NAMES.items())
 requested_colour = randint(0,len(colour_list))
 colour_name = colour_list[requested_colour][1]
 
