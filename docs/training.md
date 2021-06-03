@@ -1,6 +1,6 @@
 # Training
 
-These are longer worked examples.  If you have domain specific training you'd like to provide for your students or peers, contact Andre or Wes, or make a pull request against this repo.
+These are longer worked examples.  If you have domain specific training you'd like to provide for your students or peers, contact Andre, or make a pull request against this repo.
 
 {%
    include-markdown "training/gpu-neural-style.md"

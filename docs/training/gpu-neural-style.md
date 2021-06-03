@@ -1,6 +1,6 @@
 ## GPU example with neural style in pytorch
 
-We'll do a quick python example using neural style implimented in pytorch. We will be using modules rather than conda/virtualenvs but there is nothing stopping you from loading the modules and creating a virtualenv/conda enviroment to install additioanl python packages
+We'll do a quick python example using neural style implemented in pytorch. We will be using modules rather than conda/virtualenvs but there is nothing stopping you from loading the modules and creating a virtualenv/conda enviroment to install additional python packages.
 
 The code we use will come from the pytorch example git repo.
 
@@ -15,7 +15,7 @@ cd examples/fast_neural_style  # change to the example we will be running.
 
 ### Load the modules
 
-We are using the new Easybuild based modules, to ensure we don't have conflicst with the old modules, it will be best to unuse them first and then use the new system.  At somepoint we may automatically add the new modules to your bashrc file - but currently you'll have to do this yourself or manually unuse and use the new module system
+We are using the new Easybuild based modules, to ensure we don't have conflicts with the old modules, it will be best to unuse them first and then use the new system.  At somepoint we may automatically add the new modules to your bashrc file - but currently you'll have to do this yourself or manually unuse and use the new module system.
 
 ```bash
 module unuse /home/software/tools/modulefiles/  #unuse the old module system
@@ -26,7 +26,7 @@ module use /home/software/tools/eb_modulefiles/all/Core #use the new module syst
 module load fosscuda/2020b
 module load PyTorch/1.7.1
 module load torchvision/0.8.2-PyTorch-1.7.1
-module list #see all the dependancies we have loaded, in particular which version of python we're using now. Currently Python 3.8.6
+module list #see all the dependencies we have loaded, in particular which version of python we're using now. Currently Python 3.8.6
 ```
 
 ### Optional: Setup a virtualenv
@@ -36,7 +36,7 @@ python3 -m venv env  # create a virtualenv folder called env. Note! This will li
 source env/bin/activate # activate the virtualenv
 ```
 
-Now that we've activated the virtual enviroment, we can install any additional pacakges we need.  In thise case we don't need any additional packages
+Now that we've activated the virtual environment, we can install any additional packages we need.  In this case we don't need any additional packages.
 
 ### Download some images to use as content as well as for training.
 
@@ -51,7 +51,7 @@ wget https://upload.wikimedia.org/wikipedia/commons/0/0c/Octopus_vulgaris_02.JPG
 wget https://upload.wikimedia.org/wikipedia/commons/a/a5/Tsunami_by_hokusai_19th_century.jpg -O images/style-images/wave.jpg
 ```
 
-Depending on the GPU we are using, we may need to resize the image to ensure it first in memory.  On an RTX6000 we would need to resize the image to 70% of it's full size to fit in memroy.  Thankfully the GPUs on Rāpoi are A100's with 40GB of ram, so we can skip this step.
+Depending on the GPU we are using, we may need to resize the image to ensure it fits in memory.  On an RTX6000 we would need to resize the image to 70% of its full size to fit in memroy.  Thankfully the GPUs on Rāpoi are A100's with 40GB of ram, so we can skip this step.
 
 We will also need to download the pre-trained models for our initial inference runs.
 ```bash
@@ -186,7 +186,7 @@ python neural_style/neural_style.py train \
         --cuda 1
 ```
 
-This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU ha plenty of memory, it often means you ran out of system memory, try asking for more memory in slurm.
+This will take a while, but should eventually complete. The A100 has enough memory to train on this image, with other GPUs you may need to scale down the style image to fit in the GPU memory.  Note: If you get an out of GPU memory error but it seems the GPU has plenty of memory, it often means you ran out of system memory, try asking for more memory in slurm.
 
 ### Use our newly trained network
 
@@ -225,9 +225,9 @@ python neural_style/neural_style.py eval \
 
 In the above example we use parameters for style-weight and content-weight.  There are lots of possibilities for these parameters, we can use a task array and a parameter list to determine good values.   Note that actually running this example will consume a lot of resources and it is presented mostly to provide some information about task arrays.  Running this example will consume the whole GPU partition for about 12 hours.
 
-First let's create a list of parameters to test, we could include these in the batch submision script, but I think it's clearer to seperate them out. If you're version controlling your submission script, it'll make it easier to see what are changes to parameters and what are changes to the script itself.
+First let's create a list of parameters to test, we could include these in the batch submission script, but I think it's clearer to separate them out. If you're version controlling your submission script, it'll make it easier to see what are changes to parameters and what are changes to the script itself.
 
-In the parameter list, the first column is style-weight parameters and the second is content-weight parameters
+In the parameter list, the first column is style-weight parameters and the second is content-weight parameters.
 paramlist.txt
 ```bash
 5e10 1e3
@@ -244,7 +244,7 @@ paramlist.txt
 1e12 5e4
 ```
 
-In our submision script we will parse these values with ```awk```.  Awk is a bit beyond the scope of this lesson, but it is handy shell tool for manipulating text. [Digital ocean has a nice primer on Awk](https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux)
+In our submission script we will parse these values with ```awk```.  Awk is a bit beyond the scope of this lesson, but it is a handy shell tool for manipulating text. [Digital ocean has a nice primer on Awk](https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux)
 
 submit_gpu_train_array
 ```bash

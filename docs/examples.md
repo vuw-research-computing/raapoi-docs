@@ -672,23 +672,23 @@ You could now copy the ```new-example-sif``` file to Rāpoi and run it there.  H
 
 ### Singularity/Custom Conda Container - idba example
 
-In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a bicontainer.  We'll build this container locally to match a local conda enviroment, then run it on the HPC and do an example assembly.
+In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a biocontainer.  We'll build this container locally to match a local conda environment, then run it on the HPC and do an example assembly.
 
 #### Locally
 
-Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda enviroment and install idba
+Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda environment and install idba
 
 ```bash
 conda create --name idba
 conda install -c bioconda idba
 ```
 
-Export your conda enviroment, we will use this to build the containter.
+Export your conda environment, we will use this to build the container.
 ```bash
 conda env export > environment.yml
 ```
 
-We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda enviroment is in the path. *[From stackoverflow](https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container)*
+We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda environment is in the path. *[From stackoverflow](https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container)*
 
 *idba.def*
 ```
@@ -716,11 +716,11 @@ Build the image
 sudo singularity build idba.img idba.def
 ```
 
-Now copy the idba.img and enviroment.yml (technically the enviroment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.
+Now copy the idba.img and environment.yml (technically the environment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.
 
 #### On Rāpoi
 
-Create a data directory, so we can seperate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the [Illumina public data library](https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html)
+Create a data directory, so we can separate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the [Illumina public data library](https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html)
 ```
 mkdir data
 cd data 
@@ -736,7 +736,7 @@ module load singularity
 singularity exec fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
 ```
 
-Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. Too see your usage after the job has run use ```vuw-job-report <job-id>```
+Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. To see your usage after the job has run use ```vuw-job-report <job-id>```
 
 *idba_submit.sh*
 ```bash

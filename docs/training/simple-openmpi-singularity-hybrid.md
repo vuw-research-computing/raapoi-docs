@@ -1,8 +1,8 @@
 ## Simple OpenMPI with Singularity using the hybrid approach.
 
-The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)
+The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading).
 
-First check what openMPI version we have on Rāpoi
+First check what openMPI version we have on Rāpoi.
 
 On **Rāpoi** switch to our new modules
 ```bash
@@ -12,7 +12,7 @@ module spider OpenMPI # search for openMPI - thre are several options, lets try
 module spider OpenMPI/4.0.5  # we will use this one, which requires GCC/10.2.0
 ```
 
-On your **local machine** we will create a very simple C openMPI program. Create this in a  sensible place.  I used ```~/projects/examples/singularity/openMPI```
+On your **local machine** we will create a very simple C openMPI program. Create this in a sensible place.  I used ```~/projects/examples/singularity/openMPI```
 
 ```c
 #include <mpi.h>
@@ -54,7 +54,7 @@ int main (int argc, char **argv) {
 }
 ```
 
-In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi
+In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi.
 
 
 ```bash
@@ -93,17 +93,17 @@ From: ubuntu:latest
     cd /opt && mpicc -o mpitest mpitest.c
 ```
 
-Now we build our container locally, giving it a sensible name.  We need ```OpenMPI-4.0.5``` to use this, so let's include that in the name
+Now we build our container locally, giving it a sensible name.  We need ```OpenMPI-4.0.5``` to use this, so let's include that in the name.
 ```bash
 sudo singularity build test-openmpi-4.0.5.sif test-openmpi-4.0.5.def
 ```
 
-Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity
+Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity.
 ```bash
 sftp <username>@raapoi.vuw.ac.nz
 put test-openmpi-4.0.5.sif
 ```
-Now on **Rāpoi** copy that file to a sensible location, I used ```~/projects/examples/singularity/openMPI``` again
+Now on **Rāpoi** copy that file to a sensible location, I used ```~/projects/examples/singularity/openMPI``` again.
 
 ```bash
 mv test-openmpi-4.0.5.sif ~/projects/examples/singularity/openMPI/

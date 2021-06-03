@@ -1,6 +1,6 @@
 ## Using Anaconda/Miniconda/conda - idba
 
-Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda enviroment inside - this allows the conda enviroment to load quickly as the many small conda files are inside a container whcih the file system sees aas one file.
+Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda environment inside - this allows the conda environment to load quickly as the many small conda files are inside a container whcih the file system sees as one file.
 
 However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can just install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with out module loading system.
 
@@ -10,16 +10,16 @@ Anaconda has many built in packages so we will use that in our examples, but Min
 module load old-mod-system/Anaconda3/2020.11 
 ```
 
-Let's create a new conda enviroment for this example, in a sensible location, I used ```~/examples/conda/idba```
+Let's create a new conda envirnoment for this example, in a sensible location, I used ```~/examples/conda/idba```
 
 ```bash
 conda create --name idba-example  # press y for the Proceed prompt if it looks correct
-conda activate idba-example  #activate our example enviroment.
+conda activate idba-example  #activate our example environment.
 ```
 
 Conda enviroments are beyond the scope of this example, but they are a good way to contain all the dependancies and programs for a particular workflow, in this case, idba.
 
-Install idba in our conda enviroment.
+Install idba in our conda environment.
 
 ```bash
 conda install -c bioconda idba
