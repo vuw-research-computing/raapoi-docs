@@ -143,23 +143,23 @@ may come a time when certain research groups purchase their own nodes and they a
 given exclusive access.</p>
 <p>To view the partitions available to use you can type the vuw-partitions
 command, eg</p>
-<pre class="codehilite"><code>harrelwe@raapoi-master:~$ vuw-partitions
+<div class="codehilite"><pre><span></span><code><span class="n">harrelwe</span><span class="nv">@raapoi</span><span class="o">-</span><span class="nl">master</span><span class="p">:</span><span class="o">~</span><span class="err">$</span><span class="w"> </span><span class="n">vuw</span><span class="o">-</span><span class="n">partitions</span><span class="w"></span>
 
-VUW CLUSTER PARTITIONS
-PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
-quicktest*    up    1:00:00      1   idle c03n01
+<span class="n">VUW</span><span class="w"> </span><span class="n">CLUSTER</span><span class="w"> </span><span class="n">PARTITIONS</span><span class="w"></span>
+<span class="k">PARTITION</span><span class="w">  </span><span class="n">AVAIL</span><span class="w">  </span><span class="n">TIMELIMIT</span><span class="w">  </span><span class="n">NODES</span><span class="w">  </span><span class="k">STATE</span><span class="w"> </span><span class="n">NODELIST</span><span class="w"></span>
+<span class="n">quicktest</span><span class="o">*</span><span class="w">    </span><span class="n">up</span><span class="w">    </span><span class="mi">1</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w">      </span><span class="mi">1</span><span class="w">   </span><span class="n">idle</span><span class="w"> </span><span class="n">c03n01</span><span class="w"></span>
 
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-bigmem       up 10-00:00:0      2   idle c10n01,c11n01
+<span class="k">PARTITION</span><span class="w"> </span><span class="n">AVAIL</span><span class="w">  </span><span class="n">TIMELIMIT</span><span class="w">  </span><span class="n">NODES</span><span class="w">  </span><span class="k">STATE</span><span class="w"> </span><span class="n">NODELIST</span><span class="w"></span>
+<span class="n">bigmem</span><span class="w">       </span><span class="n">up</span><span class="w"> </span><span class="mi">10</span><span class="o">-</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">0</span><span class="w">      </span><span class="mi">2</span><span class="w">   </span><span class="n">idle</span><span class="w"> </span><span class="n">c10n01</span><span class="p">,</span><span class="n">c11n01</span><span class="w"></span>
 
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-parallel     up 10-00:00:00      6  down* c04n01,c05n04,c06n[01-04]
-parallel     up 10-00:00:00     27   idle
-c03n[02-04],c04n[02-04],c05n[01-02],c07n[01,03-04],c08n[01-04],c09n[01-04]
+<span class="k">PARTITION</span><span class="w"> </span><span class="n">AVAIL</span><span class="w">  </span><span class="n">TIMELIMIT</span><span class="w">  </span><span class="n">NODES</span><span class="w">  </span><span class="k">STATE</span><span class="w"> </span><span class="n">NODELIST</span><span class="w"></span>
+<span class="n">parallel</span><span class="w">     </span><span class="n">up</span><span class="w"> </span><span class="mi">10</span><span class="o">-</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w">      </span><span class="mi">6</span><span class="w">  </span><span class="n">down</span><span class="o">*</span><span class="w"> </span><span class="n">c04n01</span><span class="p">,</span><span class="n">c05n04</span><span class="p">,</span><span class="n">c06n</span><span class="o">[</span><span class="n">01-04</span><span class="o">]</span><span class="w"></span>
+<span class="n">parallel</span><span class="w">     </span><span class="n">up</span><span class="w"> </span><span class="mi">10</span><span class="o">-</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="err">:</span><span class="mi">00</span><span class="w">     </span><span class="mi">27</span><span class="w">   </span><span class="n">idle</span><span class="w"></span>
+<span class="n">c03n</span><span class="o">[</span><span class="n">02-04</span><span class="o">]</span><span class="p">,</span><span class="n">c04n</span><span class="o">[</span><span class="n">02-04</span><span class="o">]</span><span class="p">,</span><span class="n">c05n</span><span class="o">[</span><span class="n">01-02</span><span class="o">]</span><span class="p">,</span><span class="n">c07n</span><span class="o">[</span><span class="n">01,03-04</span><span class="o">]</span><span class="p">,</span><span class="n">c08n</span><span class="o">[</span><span class="n">01-04</span><span class="o">]</span><span class="p">,</span><span class="n">c09n</span><span class="o">[</span><span class="n">01-04</span><span class="o">]</span><span class="w"></span>
 
-NOTE: This utility is a wrapper for the Slurm command:
-      sinfo -p PARTITION
-</code></pre>
+<span class="nl">NOTE</span><span class="p">:</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">utility</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">wrapper</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Slurm</span><span class="w"> </span><span class="nl">command</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">sinfo</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="k">PARTITION</span><span class="w"></span>
+</code></pre></div>
 
 <p>Notice the STATE field, this describes the current condition of nodes within the
 partition, the most common states are defined as:</p>

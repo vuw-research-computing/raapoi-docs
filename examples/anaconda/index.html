@@ -20,7 +20,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Anaconda";
-    var mkdocs_page_input_path = "examples/anaconda.md";
+    var mkdocs_page_input_path = "examples\\anaconda.md";
     var mkdocs_page_url = "/raapoi-docs/examples/anaconda/";
   </script>
   
@@ -115,72 +115,72 @@
 <p>Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda enviroment inside - this allows the conda enviroment to load quickly as the many small conda files are inside a container whcih the file system sees aas one file.</p>
 <p>However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can just install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with out module loading system.</p>
 <p>Anaconda has many built in packages so we will use that in our examples, but Miniconda is available if you want a more minimal initial setup.</p>
-<pre class="codehilite"><code class="language-bash">module load old-mod-system/Anaconda3/2020.11 
-</code></pre>
+<div class="codehilite"><pre><span></span><code>module load old-mod-system/Anaconda3/2020.11 
+</code></pre></div>
 
 <p>Let's create a new conda enviroment for this example, in a sensible location, I used <code>~/examples/conda/idba</code></p>
-<pre class="codehilite"><code class="language-bash">conda create --name idba-example  # press y for the Proceed prompt if it looks correct
-conda activate idba-example  #activate our example enviroment.
-</code></pre>
+<div class="codehilite"><pre><span></span><code>conda create --name idba-example  <span class="c1"># press y for the Proceed prompt if it looks correct</span>
+conda activate idba-example  <span class="c1">#activate our example enviroment.</span>
+</code></pre></div>
 
 <p>Conda enviroments are beyond the scope of this example, but they are a good way to contain all the dependancies and programs for a particular workflow, in this case, idba.</p>
 <p>Install idba in our conda enviroment.</p>
-<pre class="codehilite"><code class="language-bash">conda install -c bioconda idba
-</code></pre>
+<div class="codehilite"><pre><span></span><code>conda install -c bioconda idba
+</code></pre></div>
 
 <p>Idba is a genome assembler, we will use paired end illumina reads of Ecoli.  The data is availiable on an Amazon S3 bucket, we can download it with wget.</p>
-<pre class="codehilite"><code class="language-bash">mkdir data  # put our data in a sensible location
-cd data
-wget --content-disposition goo.gl/JDJTaz #sequence data
-wget --content-disposition goo.gl/tt9fsn #sequence data
-cd ..  #back to our project directory
-</code></pre>
+<div class="codehilite"><pre><span></span><code>mkdir data  <span class="c1"># put our data in a sensible location</span>
+<span class="nb">cd</span> data
+wget --content-disposition goo.gl/JDJTaz <span class="c1">#sequence data</span>
+wget --content-disposition goo.gl/tt9fsn <span class="c1">#sequence data</span>
+<span class="nb">cd</span> ..  <span class="c1">#back to our project directory</span>
+</code></pre></div>
 
 <p>The reads we have are paired end fastq files but idba requires a fasta file. We can use a tool installed with idba to convert them. We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
-<pre class="codehilite"><code class="language-bash">fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
-</code></pre>
+<div class="codehilite"><pre><span></span><code>fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
+</code></pre></div>
 
 <p>To create our submission script we need to know the path to our conda enviroment, to get this:</p>
-<pre class="codehilite"><code class="language-bash">conda env list
-</code></pre>
+<div class="codehilite"><pre><span></span><code>conda env list
+</code></pre></div>
 
 <p>You'll need to find your <code>idba-example</code> enviroment, next to it is the path you'll need for your submission script.  In my case:</p>
-<pre class="codehilite"><code class="language-bash"># conda environments:
-#
+<div class="codehilite"><pre><span></span><code><span class="c1"># conda environments:</span>
+<span class="c1">#</span>
 base                  *  /home/andre/anaconda3
-idba-example          /home/andre/anaconda3/envs/idba-example  # We need this line, it'll be different for you!
-</code></pre>
+idba-example          /home/andre/anaconda3/envs/idba-example  <span class="c1"># We need this line, it&#39;ll be different for you!</span>
+</code></pre></div>
 
 <p>Create our sbatch submission script. Note that this sequence doesn't need a lot of memory, so we'll use 3G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
 <p><em>idba_submit.sh</em></p>
-<pre class="codehilite"><code class="language-bash">#!/bin/bash
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-#SBATCH --job-name=idba_test
-#SBATCH -o _output.out
-#SBATCH -e _output.err
-#SBATCH --time=00:5:00
-#SBATCH --partition=quicktest
-#SBATCH --ntasks=12
-#SBATCH --mem=3G
+<span class="c1">#SBATCH --job-name=idba_test</span>
+<span class="c1">#SBATCH -o _output.out</span>
+<span class="c1">#SBATCH -e _output.err</span>
+<span class="c1">#SBATCH --time=00:5:00</span>
+<span class="c1">#SBATCH --partition=quicktest</span>
+<span class="c1">#SBATCH --ntasks=12</span>
+<span class="c1">#SBATCH --mem=3G</span>
 
 module load old-mod-system/Anaconda3/2020.11
-eval &quot;$(conda shell.bash hook)&quot; # basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...
-conda activate /home/andre/anaconda3/envs/idba-example  # We will need to activate our conda enviroment on the remote node
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>conda shell.bash hook<span class="k">)</span><span class="s2">&quot;</span> <span class="c1"># basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...</span>
+conda activate /home/andre/anaconda3/envs/idba-example  <span class="c1"># We will need to activate our conda enviroment on the remote node</span>
 idba idba_ud -r data/read.fa -o output
-</code></pre>
+</code></pre></div>
 
 <p>To submit our job</p>
-<pre class="codehilite"><code class="language-bash">sbatch idba_submit.sh
-</code></pre>
+<div class="codehilite"><pre><span></span><code>sbatch idba_submit.sh
+</code></pre></div>
 
 <p>To see our job running or queuing</p>
-<pre class="codehilite"><code class="language-bash">squeue -u $USER
-</code></pre>
+<div class="codehilite"><pre><span></span><code>squeue -u <span class="nv">$USER</span>
+</code></pre></div>
 
 <p>This job will take a few minutes to run, generally less than 5.
 When the job is done we can see the output in the output folder.  We can also see the std output and std err in the files <code>_output.out and _output.err</code>.  The quickest way to examine them is to <code>cat</code> the files when the run is done.</p>
-<pre class="codehilite"><code class="language-bash">cat _output.out
-</code></pre>
+<div class="codehilite"><pre><span></span><code>cat _output.out
+</code></pre></div>
               
             </div>
           </div>

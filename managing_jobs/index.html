@@ -134,29 +134,29 @@
 <h2 id="viewing-job-information">Viewing Job information<a class="headerlink" href="#viewing-job-information" title="Permanent link">&para;</a></h2>
 <h4 id="job-history">Job History<a class="headerlink" href="#job-history" title="Permanent link">&para;</a></h4>
 <p>If you want to get a quick view of all the jobs completed within the last 5 days you can use the <em>vuw-job-history</em> command, for example:</p>
-<pre class="codehilite"><code>$ vuw-job-history
+<div class="codehilite"><pre><span></span><code>$ vuw-job-history
 
-MY JOBS WITHIN LAST 5 days
+MY JOBS WITHIN LAST <span class="m">5</span> days
        JobID      State    JobName  MaxVMSize    CPUTime
 ------------ ---------- ---------- ---------- ----------
-2645          COMPLETED       bash              00:00:22
-2645.extern   COMPLETED     extern      0.15G   00:00:22
-2645.0        COMPLETED       bash      0.22G   00:00:20
-2734          COMPLETED       bash              00:07:40
-2734.extern   COMPLETED     extern      0.15G   00:07:40
-2734.0        COMPLETED       bash      0.22G   00:07:40
-</code></pre>
+<span class="m">2645</span>          COMPLETED       bash              <span class="m">00</span>:00:22
+<span class="m">2645</span>.extern   COMPLETED     extern      <span class="m">0</span>.15G   <span class="m">00</span>:00:22
+<span class="m">2645</span>.0        COMPLETED       bash      <span class="m">0</span>.22G   <span class="m">00</span>:00:20
+<span class="m">2734</span>          COMPLETED       bash              <span class="m">00</span>:07:40
+<span class="m">2734</span>.extern   COMPLETED     extern      <span class="m">0</span>.15G   <span class="m">00</span>:07:40
+<span class="m">2734</span>.0        COMPLETED       bash      <span class="m">0</span>.22G   <span class="m">00</span>:07:40
+</code></pre></div>
 
 <h4 id="job-reports">Job Reports<a class="headerlink" href="#job-reports" title="Permanent link">&para;</a></h4>
 <p>To view a report of your past jobs you can run <em>vuw-job-report</em>:</p>
-<pre class="codehilite"><code>$ vuw-job-report 162711
+<div class="codehilite"><pre><span></span><code>$ vuw-job-report <span class="m">162711</span>
 
-JOB REPORT FOR JOB 162711
-     JobName  Nodes    ReqMem   UsedMem(GB)  ReqCPUs CPUTime    State    Completed
-test-schro        1       64Gn                   24  00:02.513  COMPLETED 2019-05-28T16:17:10
-     batch        1       64Gn      0.15G        24  00:00.210  COMPLETED 2019-05-28T16:17:10
-    extern        1       64Gn      0.15G        24  00:00.002  COMPLETED 2019-05-28T16:17:10
-</code></pre>
+JOB REPORT FOR JOB <span class="m">162711</span>
+     JobName  Nodes    ReqMem   UsedMem<span class="o">(</span>GB<span class="o">)</span>  ReqCPUs CPUTime    State    Completed
+test-schro        <span class="m">1</span>       64Gn                   <span class="m">24</span>  <span class="m">00</span>:02.513  COMPLETED <span class="m">2019</span>-05-28T16:17:10
+     batch        <span class="m">1</span>       64Gn      <span class="m">0</span>.15G        <span class="m">24</span>  <span class="m">00</span>:00.210  COMPLETED <span class="m">2019</span>-05-28T16:17:10
+    extern        <span class="m">1</span>       64Gn      <span class="m">0</span>.15G        <span class="m">24</span>  <span class="m">00</span>:00.002  COMPLETED <span class="m">2019</span>-05-28T16:17:10
+</code></pre></div>
 
 <p><strong>NOTE:</strong> In this example you see that I requested 64 GigaBytes of memory but only used 0.15 GB.  This means that 63 GB of memory went unused, which was a waste of resources.</p>
 <p>You can also get a report of your completed jobs using the <em>sacct</em> command.  For example if I wanted to get a report on how much memory my job used I could do the following:</p>
@@ -168,10 +168,10 @@ test-schro        1       64Gn                   24  00:02.513  COMPLETED 2019-0
 </ul>
 <h2 id="viewing-jobs-in-the-queue">Viewing jobs in the Queue<a class="headerlink" href="#viewing-jobs-in-the-queue" title="Permanent link">&para;</a></h2>
 <p>To view your running jobs you can type <em>vuw-myjobs</em>  eg:</p>
-<pre class="codehilite"><code>$ vuw-myjobs
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
-</code></pre>
+<div class="codehilite"><pre><span></span><code>$ vuw-myjobs
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="m">7921967</span> quicktest     bash harrelwe  R       <span class="m">0</span>:12      <span class="m">1</span> c03n01
+</code></pre></div>
 
 <p>As you can see I have a single job running on the node c03n01 on the quicktest partition</p>
 <p>You can see all the jobs in the queues by running the <em>vuw-alljobs</em> command.  This will produce a very long list of jobs if the cluster is busy.</p>
