@@ -279,19 +279,19 @@ python test.py
 <p>Check for your job on the queue with <code>squeue</code> though it might finish very fast.  The output files will appear in your working directory.</p>
 <!-- BEGIN INCLUDE examples/anaconda.md   -->
 <h2 id="using-anacondaminicondaconda-idba">Using Anaconda/Miniconda/conda - idba<a class="headerlink" href="#using-anacondaminicondaconda-idba" title="Permanent link">&para;</a></h2>
-<p>Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda enviroment inside - this allows the conda enviroment to load quickly as the many small conda files are inside a container whcih the file system sees aas one file.</p>
+<p>Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda environment inside - this allows the conda environment to load quickly as the many small conda files are inside a container whcih the file system sees as one file.</p>
 <p>However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can just install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with out module loading system.</p>
 <p>Anaconda has many built in packages so we will use that in our examples, but Miniconda is available if you want a more minimal initial setup.</p>
 <div class="codehilite"><pre><span></span><code>module load old-mod-system/Anaconda3/2020.11 
 </code></pre></div>
 
-<p>Let's create a new conda enviroment for this example, in a sensible location, I used <code>~/examples/conda/idba</code></p>
+<p>Let's create a new conda envirnoment for this example, in a sensible location, I used <code>~/examples/conda/idba</code></p>
 <div class="codehilite"><pre><span></span><code>conda create --name idba-example  <span class="c1"># press y for the Proceed prompt if it looks correct</span>
-conda activate idba-example  <span class="c1">#activate our example enviroment.</span>
+conda activate idba-example  <span class="c1">#activate our example environment.</span>
 </code></pre></div>
 
 <p>Conda enviroments are beyond the scope of this example, but they are a good way to contain all the dependancies and programs for a particular workflow, in this case, idba.</p>
-<p>Install idba in our conda enviroment.</p>
+<p>Install idba in our conda environment.</p>
 <div class="codehilite"><pre><span></span><code>conda install -c bioconda idba
 </code></pre></div>
 
@@ -797,18 +797,18 @@ Singularity example:~&gt;  <span class="nb">exit</span>   <span class="c1">#exit
 
 <p>You could now copy the <code>new-example-sif</code> file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting <em>everything in the.def file</em>.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.</p>
 <h3 id="singularitycustom-conda-container-idba-example">Singularity/Custom Conda Container - idba example<a class="headerlink" href="#singularitycustom-conda-container-idba-example" title="Permanent link">&para;</a></h3>
-<p>In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a bicontainer.  We'll build this container locally to match a local conda enviroment, then run it on the HPC and do an example assembly.</p>
+<p>In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a biocontainer.  We'll build this container locally to match a local conda environment, then run it on the HPC and do an example assembly.</p>
 <h4 id="locally">Locally<a class="headerlink" href="#locally" title="Permanent link">&para;</a></h4>
-<p>Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda enviroment and install idba</p>
+<p>Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda environment and install idba</p>
 <div class="codehilite"><pre><span></span><code>conda create --name idba
 conda install -c bioconda idba
 </code></pre></div>
 
-<p>Export your conda enviroment, we will use this to build the containter.</p>
+<p>Export your conda environment, we will use this to build the container.</p>
 <div class="codehilite"><pre><span></span><code>conda env <span class="nb">export</span> &gt; environment.yml
 </code></pre></div>
 
-<p>We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda enviroment is in the path. <em><a href="https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container">From stackoverflow</a></em></p>
+<p>We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda environment is in the path. <em><a href="https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container">From stackoverflow</a></em></p>
 <p><em>idba.def</em></p>
 <div class="codehilite"><pre><span></span><code><span class="nl">Bootstrap</span><span class="p">:</span> <span class="n">docker</span>
 
@@ -833,9 +833,9 @@ conda install -c bioconda idba
 <div class="codehilite"><pre><span></span><code>sudo singularity build idba.img idba.def
 </code></pre></div>
 
-<p>Now copy the idba.img and enviroment.yml (technically the enviroment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.</p>
+<p>Now copy the idba.img and environment.yml (technically the environment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.</p>
 <h4 id="on-rapoi">On Rāpoi<a class="headerlink" href="#on-rapoi" title="Permanent link">&para;</a></h4>
-<p>Create a data directory, so we can seperate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the <a href="https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html">Illumina public data library</a></p>
+<p>Create a data directory, so we can separate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the <a href="https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html">Illumina public data library</a></p>
 <div class="codehilite"><pre><span></span><code>mkdir data
 cd data 
 wget --content-disposition goo.gl/JDJTaz #sequence data
@@ -848,7 +848,7 @@ cd ..  #back to our project directory
 singularity <span class="nb">exec</span> fq2fa --merge --filter data/MiSeq_Ecoli_MG1655_50x_R1.fastq data/MiSeq_Ecoli_MG1655_50x_R2.fastq data/read.fa
 </code></pre></div>
 
-<p>Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. Too see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
+<p>Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
 <p><em>idba_submit.sh</em></p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 

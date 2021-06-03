@@ -112,8 +112,8 @@
             <div class="section">
               
                 <h2 id="simple-openmpi-with-singularity-using-the-hybrid-approach">Simple OpenMPI with Singularity using the hybrid approach.<a class="headerlink" href="#simple-openmpi-with-singularity-using-the-hybrid-approach" title="Permanent link">&para;</a></h2>
-<p>The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading)</p>
-<p>First check what openMPI version we have on Rāpoi</p>
+<p>The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading).</p>
+<p>First check what openMPI version we have on Rāpoi.</p>
 <p>On <strong>Rāpoi</strong> switch to our new modules</p>
 <div class="codehilite"><pre><span></span><code>module unuse /home/software/tools/modulefiles <span class="c1"># stop using the older modules</span>
 module use /home/software/tools/eb_modulefiles/all/Core <span class="c1">#the new module files organised by compiler</span>
@@ -121,7 +121,7 @@ module spider OpenMPI <span class="c1"># search for openMPI - thre are several o
 module spider OpenMPI/4.0.5  <span class="c1"># we will use this one, which requires GCC/10.2.0</span>
 </code></pre></div>
 
-<p>On your <strong>local machine</strong> we will create a very simple C openMPI program. Create this in a  sensible place.  I used <code>~/projects/examples/singularity/openMPI</code></p>
+<p>On your <strong>local machine</strong> we will create a very simple C openMPI program. Create this in a sensible place.  I used <code>~/projects/examples/singularity/openMPI</code></p>
 <div class="codehilite"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;mpi.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
@@ -161,7 +161,7 @@ module spider OpenMPI/4.0.5  <span class="c1"># we will use this one, which requ
 <span class="p">}</span>
 </code></pre></div>
 
-<p>In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi</p>
+<p>In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi.</p>
 <div class="codehilite"><pre><span></span><code>Bootstrap: docker
 From: ubuntu:latest
 
@@ -197,16 +197,16 @@ From: ubuntu:latest
     <span class="nb">cd</span> /opt <span class="o">&amp;&amp;</span> mpicc -o mpitest mpitest.c
 </code></pre></div>
 
-<p>Now we build our container locally, giving it a sensible name.  We need <code>OpenMPI-4.0.5</code> to use this, so let's include that in the name</p>
+<p>Now we build our container locally, giving it a sensible name.  We need <code>OpenMPI-4.0.5</code> to use this, so let's include that in the name.</p>
 <div class="codehilite"><pre><span></span><code>sudo singularity build test-openmpi-4.0.5.sif test-openmpi-4.0.5.def
 </code></pre></div>
 
-<p>Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity</p>
+<p>Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity.</p>
 <div class="codehilite"><pre><span></span><code>sftp &lt;username&gt;@raapoi.vuw.ac.nz
 put test-openmpi-4.0.5.sif
 </code></pre></div>
 
-<p>Now on <strong>Rāpoi</strong> copy that file to a sensible location, I used <code>~/projects/examples/singularity/openMPI</code> again</p>
+<p>Now on <strong>Rāpoi</strong> copy that file to a sensible location, I used <code>~/projects/examples/singularity/openMPI</code> again.</p>
 <div class="codehilite"><pre><span></span><code>mv test-openmpi-4.0.5.sif ~/projects/examples/singularity/openMPI/
 <span class="nb">cd</span> ~/projects/examples/singularity/openMPI/
 </code></pre></div>
