@@ -155,15 +155,14 @@ Check for your job on the queue with `squeue` though it might finish very fast. 
 
 ## Loading R packages & running a simple job
 
-First login to Rāpoi and load the R/CRAN module:
+First login to Rāpoi and load the R and R/CRAN modules:
 ```bash
+module load R/4.0.2
 module load R/CRAN      
 ```
-(Note this will also load ```R/3.6```)
 
 
 Then run R on the command line:
-
 
 ```bash
 R
@@ -171,18 +170,30 @@ R
 
 Test library existence:
 ```R
-library(ggplot2)
+> library(tidyverse)
 ```
-This should load the package.
-Metapackages like ```tidyverse``` currently don't load on Rāpoi, but components can be loaded individually: 
+This should load the package, and give some output like this:
 
 ```R
-> library(tidyr)
-> library(dplyr)
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+✔ ggplot2 3.3.2     ✔ purrr   0.3.4
+✔ tibble  3.0.1     ✔ dplyr   1.0.0
+✔ tidyr   1.1.0     ✔ stringr 1.4.0
+✔ readr   1.3.1     ✔ forcats 0.5.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+```
+(These conflicts are normal and can be ignored.)
+
+To quit R, type:
+
+```R
+> q()
 ```
 
-Next create a bash submission script using your preferred text editor. An example submission script may look something like:
-a file called r_submit.sh with:
+Next create a bash submission script called ```r_submit.sh``` (or another name of your choice) using your preferred text editor, e.g. nano.
+
 ```bash
 #!/bin/bash
 #
@@ -194,25 +205,17 @@ a file called r_submit.sh with:
 #SBATCH --mem-per-cpu=1G
 #SBATCH --time=10:00
 #
-```
 
-Save this to the current working directory, then run: 
-
-```bash
+module load R/4.0.2
 module load R/CRAN
-```
 
-```bash
 Rscript mytest.R
 ```
 
-
-and then create another file with a test R script called ```mytest.R``` with:
+Save this to the current working directory, and then create another file using your preferred text editor called ```mytest.R``` (or another name of your choice) containing the following R commands:
 
 ```R
-library(tidyr)
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 
 sprintf("Hello World!")
 ```
@@ -229,7 +232,7 @@ Examining ```r_test.out``` (with nano, cat or less) should print:
 Matlab has various build in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called ```matlab_gpu.m```  I used ```~/examples/matlab/cuda/matlab_gpu.m```.
 
 ```matlab
-% Set an array to which will will calculate the eignevalues of
+% Set an array to which will will calculate the Eigenvalues of
 A=rand(1000);
 
 % Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
