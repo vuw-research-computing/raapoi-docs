@@ -52,7 +52,7 @@ If you're familiar with bash scripts, the above is a bit weird.  The ```#SBATCH`
  * 1 gig of memory.
  * a max runtime of 10 min
 
-If your job uses more memory or time than requested, slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.
+If your job uses more memory or time than requested, Slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.
 
 Our ```submit.sh``` script also names our job ```bash_test``` this is what the job will show up as in squeue. We ask for things printed out on the terminal to go to two seperate files.  Normal, non error, things that would be printed out on the terminal will be put into the text file ```bash_test.out```.  Errors will be printed into the text file ```bash_test.err```
 
@@ -224,15 +224,15 @@ then run it with the previously written bash script:
 sbatch r_submit.sh 
 ```
 This submits a task that should execute quickly and create files in the directory from which it was run.
-Examining ```r_test.out``` (with nano, cat or less) should print:
+Examine ```r_test.out```. You can use an editor like nano, vi or emacs, or you can just ```cat``` or ```less``` the file to see its contents on the terminal. You should see:
 ``` "Hello World"```
 
 ## Matlab GPU example
 
-Matlab has various build in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called ```matlab_gpu.m```  I used ```~/examples/matlab/cuda/matlab_gpu.m```.
+Matlab has various built-in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called ```matlab_gpu.m```  I used ```~/examples/matlab/cuda/matlab_gpu.m```.
 
 ```matlab
-% Set an array to which will will calculate the Eigenvalues of
+% Set an array which will calculate the Eigenvalues of
 A=rand(1000);
 
 % Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
@@ -247,7 +247,7 @@ B=eig(A);
 t2=toc
 ```
 
-We will also need a slurm submission script. Note that we will need to use the new Easybuild module files for our cuda libraries, so make sure to include the module use line ```module use /home/software/tools/eb_modulefiles/all/Core```
+We will also need a Slurm submission script; we'll call this ```matlab_gpu.sh```. Note that we will need to use the new Easybuild module files for our cuda libraries, so make sure to include the module use line ```module use /home/software/tools/eb_modulefiles/all/Core```
 
 ```bash
 #!/bin/bash
@@ -268,8 +268,8 @@ module load fosscuda/2020b
 matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
 ```
 
-To submit this job to the slurm queue ```sbatch matlab_gpu.sh```.  This job will take a few minutes to run - this is mostly the matlab startup time.
-Examine the queue for your job```squeue -u $USER```.  When your job is done, inspect the outputfile.  you can use an editor like nano, vi or emacs, or you can just ```cat``` the file to see it's contents on the terminal
+To submit this job to the Slurm queue ```sbatch matlab_gpu.sh```.  This job will take a few minutes to run - this is mostly the Matlab startup time.
+Examine the queue for your job ```squeue -u $USER```.  When your job is done, inspect the output file.  You can use an editor like nano, vi or emacs, or you can just ```cat``` or ```less``` the file to see its contents on the terminal.
 
 ```bash
 cat out-gpu-example.out
@@ -297,7 +297,7 @@ t2=toc
 
 To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.
 
-matlab_gpu.sh
+*matlab_gpu.sh*
 ```
 #!/bin/bash
 
@@ -339,7 +339,7 @@ t2 =
   223.0818
 ```
 
-So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it **less** CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.
+So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it **fewer** CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.
 
 
 ## Job Arrays - running many similar jobs
@@ -348,7 +348,7 @@ Slurm makes it easy to run many jobs which are similar to each other.  This coul
 
 ### Simple Bash Job Array example
 
-The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the slurm array task ID and exit.
+The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the Slurm array task ID and exit.
 
 submit.sh:
 ```bash
