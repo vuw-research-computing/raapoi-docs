@@ -274,13 +274,13 @@ Examine the queue for your job ```squeue -u $USER```.  When your job is done, in
 ```bash
 cat out-gpu-example.out
 ```
-What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performace!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!
+What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performance!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!
 
 To get a better idea of the advantage of the GPU let's increase the size of the array from ```1000``` to ```10000```
 
-matlab_gpu.m
+*matlab_gpu.m*
 ```Matlab
-% Set an array to which will will calculate the eignevalues of
+% Set an array which will calculate the Eigenvalues of
 A=rand(10000);
 
 % Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.
@@ -295,7 +295,7 @@ B=eig(A);
 t2=toc
 ```
 
-To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.
+To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to Matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.
 
 *matlab_gpu.sh*
 ```
@@ -350,7 +350,7 @@ Slurm makes it easy to run many jobs which are similar to each other.  This coul
 
 The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the Slurm array task ID and exit.
 
-submit.sh:
+*submit.sh:*
 ```bash
 #!/bin/bash
 
@@ -380,9 +380,9 @@ As a slightly more practical example the following will run an R script 5 times 
 
 This is one way you could run simulations or similar with a set parameters defined in a lookuop table in your code.
 
-To make outputs more tidy and to help organisation, instead of dumping all the outputs in to the directory with our code and submission script, we will seperate the outputs into directories.  Dataframes saved from R will be saved to output/ and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to stdout/  Both of these directories will need to be created before running the script.
+To make outputs more tidy and to help organisation, instead of dumping all the outputs into the directory with our code and submission script, we will separate the outputs into directories.  Dataframes saved from R will be saved to the output/ directory, and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to the stdout/ directory. Both of these directories will need to be created before running the script.
 
-r_random_alpha.R:
+*r_random_alpha.R:*
 ```R
 # get the arguments supplied to R.  
 # trailingOnly = TRUE gets the user supplied
