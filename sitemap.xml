@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/accessing_the_cluster/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/basic_commands/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/storage/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/partitions/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/environment/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/running_jobs/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/parallel_processing/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/managing_jobs/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/cloud_providers/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/containers/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/notebooks/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/examples/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/training/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://vuw-research-computing.github.io/raapoi-docs/support/</loc>
-     <lastmod>2021-06-08</lastmod>
+     <lastmod>2021-06-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
