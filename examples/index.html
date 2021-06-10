@@ -453,10 +453,10 @@ Examine the queue for your job <code>squeue -u $USER</code>.  When your job is d
 <div class="codehilite"><pre><span></span><code>cat out-gpu-example.out
 </code></pre></div>
 
-<p>What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performace!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!</p>
+<p>What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performance!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!</p>
 <p>To get a better idea of the advantage of the GPU let's increase the size of the array from <code>1000</code> to <code>10000</code></p>
-<p>matlab_gpu.m</p>
-<div class="codehilite"><pre><span></span><code><span class="c">% Set an array to which will will calculate the eignevalues of</span><span class="w"></span>
+<p><em>matlab_gpu.m</em></p>
+<div class="codehilite"><pre><span></span><code><span class="c">% Set an array which will calculate the Eigenvalues of</span><span class="w"></span>
 <span class="n">A</span><span class="p">=</span><span class="nb">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span><span class="w"></span>
 
 <span class="c">% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.</span><span class="w"></span>
@@ -471,7 +471,7 @@ Examine the queue for your job <code>squeue -u $USER</code>.  When your job is d
 <span class="n">t2</span><span class="p">=</span><span class="nb">toc</span><span class="w"></span>
 </code></pre></div>
 
-<p>To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.</p>
+<p>To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to Matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.</p>
 <p><em>matlab_gpu.sh</em></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -532,7 +532,7 @@ For product information, visit www.mathworks.com.
 <p>Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.</p>
 <h3 id="simple-bash-job-array-example">Simple Bash Job Array example<a class="headerlink" href="#simple-bash-job-array-example" title="Permanent link">&para;</a></h3>
 <p>The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the Slurm array task ID and exit.</p>
-<p>submit.sh:</p>
+<p><em>submit.sh:</em></p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1">#SBATCH --job-name=test_array</span>
@@ -557,8 +557,8 @@ For product information, visit www.mathworks.com.
 <h3 id="a-simple-r-job-array-example">A simple R job Array Example<a class="headerlink" href="#a-simple-r-job-array-example" title="Permanent link">&para;</a></h3>
 <p>As a slightly more practical example the following will run an R script 5 times as resources become available.  The R script takes as an input the <code>$SLURM_ARRAY_TASK_ID</code> which then selects a parameter <code>alpha</code> out of a lookup table.</p>
 <p>This is one way you could run simulations or similar with a set parameters defined in a lookuop table in your code.</p>
-<p>To make outputs more tidy and to help organisation, instead of dumping all the outputs in to the directory with our code and submission script, we will seperate the outputs into directories.  Dataframes saved from R will be saved to output/ and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to stdout/  Both of these directories will need to be created before running the script.</p>
-<p>r_random_alpha.R:</p>
+<p>To make outputs more tidy and to help organisation, instead of dumping all the outputs into the directory with our code and submission script, we will separate the outputs into directories.  Dataframes saved from R will be saved to the output/ directory, and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to the stdout/ directory. Both of these directories will need to be created before running the script.</p>
+<p><em>r_random_alpha.R:</em></p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># get the arguments supplied to R.  </span>
 <span class="c1"># trailingOnly = TRUE gets the user supplied</span>
 <span class="c1"># arguments, and for now we will only get the</span>
