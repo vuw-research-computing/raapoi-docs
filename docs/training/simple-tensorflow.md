@@ -68,7 +68,7 @@ submit.sh
 #SBATCH -o _test.out
 #SBATCH --time=00:10:00
 #SBATCH --partition=gpu
-#SBATCH --ntasks=20
+#SBATCH --ntasks=6
 #SBATCH --mem=50G
 #SBATCH --gres=gpu:1
 
