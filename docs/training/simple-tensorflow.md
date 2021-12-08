@@ -1,3 +1,5 @@
+## Simple tensorflow example (using new module system)
+
 
 In a sensible location create an example python script - this is basically copied verbatim from the tensorflow docs: ps://www.tensorflow.org/tutorials/quickstart/beginner
 
