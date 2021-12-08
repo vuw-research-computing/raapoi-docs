@@ -9,3 +9,7 @@ These are longer worked examples.  If you have domain specific training you'd li
 {%
    include-markdown "training/simple-openmpi-singularity-hybrid.md"
 %}
+
+{%
+   include-markdown "training/simple-tensorflow.md"
+%}
