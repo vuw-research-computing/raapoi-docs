@@ -7,23 +7,39 @@ Network) Cloudstor service which provides __1 TB__ of space to each researcher. 
 use this service first login and download an appropriate client to your laptop
 or desktop (or smarthone if you wish):
 
-[Cloudstor Login](https://apac01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcloudstor.aarnet.edu.au%2Fsimplesaml%2Fmodule.php%2Fdiscopower%2Fdisco.php%3FentityID%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fmetadata.php%252Fdefault-sp%26return%3Dhttps%253A%252F%252Fcloudstor.aarnet.edu.au%252Fsimplesaml%252Fmodule.php%252Fsaml%252Fsp%252Fdiscoresp.php%253FAuthID%253D_d8e2f7cbdf882a033df5b33385b5936c08e0e133a1%25253Ahttps%25253A%25252F%25252Fcloudstor.aarnet.edu.au%25252Fsimplesaml%25252Fmodule.php%25252Fcore%25252Fas_login.php%25253FAuthId%25253Ddefault-sp%252526ReturnTo%25253Dhttp%2525253A%2525252F%2525252Fcloudstor.aarnet.edu.au%2525252Fplus%2525252F%26returnIDParam%3Didpentityid&data=02%7C01%7Cwes.harrell%40vuw.ac.nz%7Cefa10aeb0f1d42a6cd2408d6953c9496%7Ccfe63e236951427e8683bb84dcf1d20c%7C0%7C0%7C636860484751891881&sdata=nkN7OI6g%2BKs%2FLoMG6tOtoWqk1%2FU1gbxZK%2FjCd8NNZ6c%3D&reserved=0)
+[Cloudstor Login](https://www.aarnet.edu.au/login)
 
 NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on Rāpoi, it does not use your VUW credentials for the command line login.
+
+We suggest setting up an App Password for Raapoi-rcopy  rather than a global sync password. This way if your password is compromised you can easily just remove that app password.  Setup an App Password by clicky on the settings gear on the top right and finding the [App Password lonk](https://cloudstor.aarnet.edu.au/plus/settings/personal?sectionid=security).
 
 Once you have setup your cloudstor (aka ownCloud) credentials you can use them
 to sync data to and from Rāpoi.  For example, if I wanted to sync my project
 space to Cloudstor I would do the following from Rāpoi login node:
 
+```bash
+# Use Tmux to keep your session alive if you disconnect. You can reconnect to your Tmux session if you reconnect. See Tmux docs.  
+tmux  
+cd /nfs/scratch/<username>/<your data directory>
+
+# Use our new module system
+module use /home/software/tools/eb_modulefiles/all/Core
+module load rclone/1.54.1
+
+#check if cloudstor remote is already configured
+rclone listremotes
 ```
-  tmux
-  cd /nfs/scratch/harrelwe
-  owncloudcmd -u wes.harrell@vuw.ac.nz project1 
-  https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
+The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
+(type `tmux attach` to reconnect) 
+
+If you don't already have CloudStor configured as a remote (which you won't if this is your first time using it) [follow the instructions on aarnet docs page](https://support.aarnet.edu.au/hc/en-us/articles/115007168507-Can-I-use-the-command-line-or-WebDav-)
+
+Once we have setup _rclone_ to connect to CloudStor, we copy our data
+
+```
+ rclone copy --progress --transfers 8 /nfs/scratch/geldenan/test CloudStor:/test
 ```
 
-The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
-(type `tmux attach` to reconnect), I then change directory (_cd_) to my scratch space and then use the command `owncloudcmd` to sync my project directory called project1 to the Cloudstor service.  You will be prompted for your Cloudstor password, you can also embed this within the command line using the -p paramter.  
 
 ## Amazon AWS
 
