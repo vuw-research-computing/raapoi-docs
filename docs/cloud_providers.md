@@ -11,7 +11,7 @@ or desktop (or smarthone if you wish):
 
 NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on Rāpoi, it does not use your VUW credentials for the command line login.
 
-We suggest setting up an App Password for Raapoi-rcopy  rather than a global sync password. This way if your password is compromised you can easily just remove that app password.  Setup an App Password by clicky on the settings gear on the top right and finding the [App Password lonk](https://cloudstor.aarnet.edu.au/plus/settings/personal?sectionid=security).
+We suggest setting up an App Password for Raapoi-rcopy  rather than a global sync password. This way if your password is compromised you can easily just remove that app password.  Setup an App Password by clicky on the settings gear on the top right and finding the [App Password link](https://cloudstor.aarnet.edu.au/plus/settings/personal?sectionid=security).
 
 Once you have setup your cloudstor (aka ownCloud) credentials you can use them
 to sync data to and from Rāpoi.  For example, if I wanted to sync my project
@@ -20,7 +20,6 @@ space to Cloudstor I would do the following from Rāpoi login node:
 ```bash
 # Use Tmux to keep your session alive if you disconnect. You can reconnect to your Tmux session if you reconnect. See Tmux docs.  
 tmux  
-cd /nfs/scratch/<username>/<your data directory>
 
 # Use our new module system
 module use /home/software/tools/eb_modulefiles/all/Core
@@ -30,11 +29,11 @@ module load rclone/1.54.1
 rclone listremotes
 ```
 The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
-(type `tmux attach` to reconnect) 
+(type `tmux attach` to reconnect) and then loads the rcopy module - which requires the use of our new module system.
 
-If you don't already have CloudStor configured as a remote (which you won't if this is your first time using it) [follow the instructions on aarnet docs page](https://support.aarnet.edu.au/hc/en-us/articles/115007168507-Can-I-use-the-command-line-or-WebDav-)
+If you don't already have CloudStor configured as a remote (which you won't if this is your first time using it) [follow the instructions on aarnet docs page](https://support.aarnet.edu.au/hc/en-us/articles/115007168507-Can-I-use-the-command-line-or-WebDav-).
 
-Once we have setup _rclone_ to connect to CloudStor, we copy our data
+Once we have setup _rclone_ to connect to CloudStor, we copy our data. In this case from``` <my scratch folder>/test``` to ```test``` on CloudStor
 
 ```
  rclone copy --progress --transfers 8 /nfs/scratch/geldenan/test CloudStor:/test
