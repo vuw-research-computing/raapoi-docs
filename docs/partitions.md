@@ -103,7 +103,7 @@ __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem
 ### Partition: parallel
 
 This partition is useful for parallel workflows, either loosely coupled or jobs
-requiring MPI or other message passing protocols for tightly bound jobs.
+requiring MPI or other message passing protocols for tightly bound jobs. The total number of CPU's in this partition is 6816
 
 *AMD nodes - amdXXnXX*
 
