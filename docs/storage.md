@@ -31,4 +31,4 @@ Each node has local storage you can use at ```/tmp```.  This storage is **not sh
 
 On the AMD nodes and GPU nodes this is very fast nvme storage with 1.7TB total space.  On the Intel and highmem nodes this storage is slower and 1.7TB is not always available.
 
-If you ue this storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  For more info see [Temp Disk Tips](storage/tmp.md).
+If you use this storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  For more info see [Temp Disk Tips](storage/tmp.md).
