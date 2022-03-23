@@ -1,6 +1,6 @@
 ### Temp Disk Tips
 
-This storage is very fast on the AMD ndoes and GPU nodes.  It is your job to move data to the tmp space and clean it up when done.
+This storage is very fast on the AMD nodes and GPU nodes.  It is your job to move data to the tmp space and clean it up when done.
 
 There is very little management of this space and currently it is not visible to slurm for fair use scheduling - in other words someone else might have used up most of the temp space on the node!  This is generally not the case though.
 
