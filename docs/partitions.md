@@ -67,25 +67,26 @@ hour and the parallel partition has a max runtime of 10 days.
 ### Partition: quicktest
 
 This partition is for quick tests of code, environment, software builds or
-similar short-run jobs.  Since the max time limit is 1 hour it should not take
+similar short-run jobs.  Since the max time limit is 5 hours it should not take
 long for your job to run.  This can also be used for near-on-demand interactive
 jobs.
 
-* Maximum CPU available per task: 24
+* Quicktest nodes available: 4
+* Maximum CPU available per task: 48
 * Maximum memory available per task: 62G
-* Maximum Runtime: 1 hour
+* Maximum Runtime: 5 hours
 
-<!--- ### Partition: gpu
+- ### Partition: gpu
 
 This partition is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)
 
 * GPU nodes available: 2
-* GPUs available per node: 3
-* Maximum CPU available per task: 32
-* Maximum memory available per task: 92G
+* GPUs available per node: 2 (A100's)
+* Maximum CPU available per task: 256
+* Maximum memory available per task: 512G
 * Maximum Runtime: 24 hours
 
-_Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1` --->
+_Note_:  To request GPU add the parameter, `--gres=gpu:X`  Where X is the number of GPUs required, typically 1:  `--gres=gpu:1` -
 
 ### Partition: bigmem
 
@@ -94,6 +95,7 @@ memory (greater than 125 GB).  These are known as memory-bound jobs.
 
 __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem partition.
 
+* Bigmem nodes available: 5 (4x512G, 1x1000G)
 * Maximum CPU available per task: 48
 * Maximum memory available per task: 1 TB (Note: maximum CPU for 1 TB is 40)
 * Maximum Runtime: 10 days
@@ -103,8 +105,8 @@ __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem
 This partition is useful for parallel workflows, either loosely coupled or jobs
 requiring MPI or other message passing protocols for tightly bound jobs.
 
-* Maximum CPU available per task: 64
-* Maximum memory available per task: 125G
+* Maximum CPU available per task: 256
+* Maximum memory available per task: 512G
 * Maximum Runtime: 10 days
 
 ### Cluster Default Resources
