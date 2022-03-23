@@ -22,13 +22,17 @@ PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
 quicktest*    up    5:00:00      4   idle itl04n[01-04]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-gpu          up 1-00:00:00      1   idle gpu[01-02]
+gpu          up 1-00:00:00      1  drain gpu01
+gpu          up 1-00:00:00      1   idle gpu02
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+bigmem       up 10-00:00:0      1  down* high05
 bigmem       up 10-00:00:0      1    mix high04
 bigmem       up 10-00:00:0      4   idle high[01-03,06]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+parallel     up 10-00:00:0      1  down* itl03n03
+parallel     up 10-00:00:0      1  drain amd01n04
 parallel     up 10-00:00:0      1   resv spj01
 parallel     up 10-00:00:0     19    mix amd01n[01-03],amd02n01,amd03n[01-02],amd05n[01,04],amd06n[01-04],itl01n[01-03],itl02n[01-02,04],itl03n01
 parallel     up 10-00:00:0      4  alloc itl01n04,itl02n03,itl03n[02,04]
@@ -36,6 +40,7 @@ parallel     up 10-00:00:0     10   idle amd02n[02-04],amd03n[03-04],amd04n[01-0
 
 NOTE: This utility is a wrapper for the Slurm command:
       sinfo -p PARTITION
+
 ```      
 
 Notice the STATE field, this describes the current condition of nodes within the
