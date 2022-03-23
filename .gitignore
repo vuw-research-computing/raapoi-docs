@@ -1,4 +1,5 @@
 # MkDocs documentation
 site/
+env/
 .README.md.swp
 .DS_Store
