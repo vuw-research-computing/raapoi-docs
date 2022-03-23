@@ -15,19 +15,24 @@ To view the partitions available to use you can type the vuw-partitions
 command, eg
 
 ```
-harrelwe@raapoi-master:~$ vuw-partitions
+<user>@raapoi-master:~$ vuw-partitions 
 
 VUW CLUSTER PARTITIONS
 PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
-quicktest*    up    1:00:00      1   idle c03n01
+quicktest*    up    5:00:00      4   idle itl04n[01-04]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-bigmem       up 10-00:00:0      2   idle c10n01,c11n01
+gpu          up 1-00:00:00      1   idle gpu[01-02]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-parallel     up 10-00:00:00      6  down* c04n01,c05n04,c06n[01-04]
-parallel     up 10-00:00:00     27   idle
-c03n[02-04],c04n[02-04],c05n[01-02],c07n[01,03-04],c08n[01-04],c09n[01-04]
+bigmem       up 10-00:00:0      1    mix high04
+bigmem       up 10-00:00:0      4   idle high[01-03,06]
+
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+parallel     up 10-00:00:0      1   resv spj01
+parallel     up 10-00:00:0     19    mix amd01n[01-03],amd02n01,amd03n[01-02],amd05n[01,04],amd06n[01-04],itl01n[01-03],itl02n[01-02,04],itl03n01
+parallel     up 10-00:00:0      4  alloc itl01n04,itl02n03,itl03n[02,04]
+parallel     up 10-00:00:0     10   idle amd02n[02-04],amd03n[03-04],amd04n[01-04],amd05n02
 
 NOTE: This utility is a wrapper for the Slurm command:
       sinfo -p PARTITION
