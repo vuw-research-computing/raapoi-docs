@@ -15,6 +15,7 @@ nav:
     - 'Using Jupyter Notebooks': 'notebooks.md'
     - 'Examples': 'examples.md' 
     - 'Training': 'training.md'
+    - 'User Submitted Docs': 'usersub.md'
     - Support: support.md
 
 
