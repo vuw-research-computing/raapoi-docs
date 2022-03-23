@@ -68,7 +68,7 @@ you can:  ```cd ..```
 
     Type ```Ctrl-c``` to stop the local server.
 
-1. When ready to publish, use:
+1. For Rāpoi admins - when ready to publish, use:
 
 	```mkdocs gh-deploy``` 
 
