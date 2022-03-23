@@ -105,8 +105,18 @@ __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem
 This partition is useful for parallel workflows, either loosely coupled or jobs
 requiring MPI or other message passing protocols for tightly bound jobs.
 
+*AMD nodes - amdXXnXX*
+
+* AMD nodes available: 24
 * Maximum CPU available per task: 256
 * Maximum memory available per task: 512G
+* Maximum Runtime: 10 days
+
+*Intel nodes - itlXXnXX*
+
+* Intel nodes available: 12
+* Maximum CPU available per task: 64
+* Maximum memory available per task: 124G
 * Maximum Runtime: 10 days
 
 ### Cluster Default Resources
