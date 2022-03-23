@@ -5,7 +5,7 @@ A partition is a collection of compute nodes, think of it as a sub-cluster or
 slice of the larger cluster.  Each partition has its own rules and
 configurations.  
 
-For example, the quicktest partition has a maximum job run-time of 1 hour, whereas the partition
+For example, the quicktest partition has a maximum job run-time of 5 hours, whereas the partition
 bigmem has a maximum runtime of 10 days.  Partitions can also
 limit who can run a job.  Currently any user can use any partition but there
 may come a time when certain research groups purchase their own nodes and they are
@@ -76,7 +76,7 @@ jobs.
 * Maximum memory available per task: 62G
 * Maximum Runtime: 5 hours
 
-- ### Partition: gpu
+### Partition: gpu
 
 This partition is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)
 
