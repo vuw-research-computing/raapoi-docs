@@ -7,7 +7,8 @@ Currently users have 3 main storage areas share across every node.  Each node ha
 
 * __/nfs/scratch/USERNAME__ - This is your scratch space, each user has a *5 TB* quota limit. [Scratch directory tips](storage/scratch.md)
 
-* __/beegfs-volatile/USERNAME__ - This is fast parallel filesystem.  There is no quota enforcement here.  There is 100TB of total space. [Beegfs tips](storage/beegfs.md)
+* __/beegfs-volatile/USERNAME__ - This is fast parallel filesystem.  There is no quota enforcement here.  There is 100TB of total space. **All data on this storage is periodically deleted** 
+[Beegfs tips](storage/beegfs.md)
 
 Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.
 
