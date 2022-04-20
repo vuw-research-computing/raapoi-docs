@@ -6,7 +6,8 @@ nav:
     - 'Basic Commands': 'basic_commands.md'
     - 'Storage and Quotas': 'storage.md'
     - 'Using Partitions': 'partitions.md'
-    - 'Preparing your Environment': 'environment.md'
+    - 'Preparing your Environment (modules)': 'environment.md'
+    - 'New module system' : 'new_mod.md'
     - 'Running Jobs': 'running_jobs.md'
     - 'Parallel Processing': 'parallel_processing.md'
     - 'Managing Jobs': 'managing_jobs.md'
@@ -27,6 +28,7 @@ markdown_extensions:
       baselevel: 1
       toc_depth: 3
   - codehilite
+  - footnotes
 
 plugins:
   - include-markdown
