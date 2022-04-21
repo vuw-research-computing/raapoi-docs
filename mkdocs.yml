@@ -27,14 +27,19 @@ markdown_extensions:
       permalink: True
       baselevel: 1
       toc_depth: 3
-  - codehilite
+  # - codehilite
   - footnotes
+  - pymdownx.superfences:
+      # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
 
 plugins:
   - search
   - include-markdown
   - mermaid2
-
 
 extra_css: [extra.css]
 
