@@ -39,6 +39,6 @@ plugins:
 extra_css: [extra.css]
 
 extra_javascript:
-    - https://unpkg.com/mermaid/dist/mermaid.min.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
 
 site_url: https://vuw-research-computing.github.io/raapoi-docs/
