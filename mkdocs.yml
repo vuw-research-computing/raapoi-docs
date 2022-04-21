@@ -31,7 +31,10 @@ markdown_extensions:
   - footnotes
 
 plugins:
+  - search
   - include-markdown
+  - mermaid2
+
 
 extra_css: [extra.css]
 
