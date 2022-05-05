@@ -4,7 +4,7 @@ In 2020 we started building packages and organising them into modules[^1] in a n
 
 In general this restricts you to using using programs in one toolchain "silo".  This is on the face of it, is annoying.  However, it resolves some very hard to diagnose and subtle bugs that occur when you load programs that are built with different compilers - in the old system this was not transparent to you.
 
-Before you module load a tooclhain the software contained within will not be visible to module loading (except via module spider).  You first need to load the compiler and MPI version the software was built with. For example, if you wanted to load `BioPython/1.79` you would first need to load `GCC/10.3.0` and `OpenMPI/4.1.1`
+Before you module load a toolchain the software contained within will not be visible to module loading (except via module spider).  You first need to load the compiler and MPI version the software was built with. For example, if you wanted to load `BioPython/1.79` you would first need to load `GCC/10.3.0` and `OpenMPI/4.1.1`
 
 To save you needing to load both a Compiler and MPI version, the compiler and MPI versions are bundled into half yearly packs.  For example `GCC/10.3.0 and OpenMPI/4.1.1` are bundled in the meta module `foss/2021a`
 
@@ -23,9 +23,6 @@ graph TD;
 
 Example loading `BioPython/1.7.9`
 ```bash
-# Search for BioPython and what you need to load it
-
-
 # loading the modules
 module load foss/2021a  # Needed for biopython to be loadable
 module load BioPython/1.7.9
