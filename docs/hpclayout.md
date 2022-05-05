@@ -129,84 +129,22 @@ classDiagram
         Connects to the wider internet
     }
         class Scratch {
-        100 TB
-        raapoi_fs01
     }
     class BeeGFS {
-        100TB across
-        Bee01
-        Bee02
-        Bee03
     }
     class Login {
-        raapoi-master
     }
     class Parallel_AMD {
-        amd01n01
-        amd01n02
-        amd01n03
-        amd01n04
-        -
-        amd02n01
-        amd02n02
-        amd02n03
-        amd02n04
-        -
-        amd03n01
-        amd03n02
-        amd03n03
-        amd03n04
-        -
-        amd04n01
-        amd04n02
-        amd04n03
-        amd04n04
-        -
-        amd05n01
-        amd05n02
-        amd05n03
-        amd05n04
-        -
-        amd06n01
-        amd06n02
-        amd06n03
-        amd06n04
     }
     class Parallel_Intel{
-        itl01n01
-        itl01n02
-        itl01n03
-        itl01n04
-        -
-        itl02n01
-        itl02n02
-        itl02n03
-        itl02n04
-        -
-        itl03n01
-        itl03n02
-        itl03n03
-        itl03n04
     }
     class Quicktest{
-        itl04n01
-        itl04n02
-        itl04n03
-        itl04n04
     }
     class Highmem{
-        high01
-        high02
-        high03
-        high04
-        high05
     }
     class Highmem_rack4{
-        high06
     }
-   class GPU{
-        gpu01
-        gpu02  
+   class GPU{ 
     }
 ```
 
@@ -224,83 +162,21 @@ classDiagram
       Low latency
     }
         class Scratch {
-        100 TB
-        raapoi_fs01
     }
     class BeeGFS {
-        100TB across
-        Bee01
-        Bee02
-        Bee03
     }
     class Login {
-        raapoi-master
     }
     class Parallel_AMD {
-        amd01n01
-        amd01n02
-        amd01n03
-        amd01n04
-        -
-        amd02n01
-        amd02n02
-        amd02n03
-        amd02n04
-        -
-        amd03n01
-        amd03n02
-        amd03n03
-        amd03n04
-        -
-        amd04n01
-        amd04n02
-        amd04n03
-        amd04n04
-        -
-        amd05n01
-        amd05n02
-        amd05n03
-        amd05n04
-        -
-        amd06n01
-        amd06n02
-        amd06n03
-        amd06n04
     }
     class Parallel_Intel{
-        itl01n01
-        itl01n02
-        itl01n03
-        itl01n04
-        -
-        itl02n01
-        itl02n02
-        itl02n03
-        itl02n04
-        -
-        itl03n01
-        itl03n02
-        itl03n03
-        itl03n04
     }
     class Quicktest{
-        itl04n01
-        itl04n02
-        itl04n03
-        itl04n04
     }
     class Highmem{
-        high01
-        high02
-        high03
-        high04
-        high05
     }
     class Highmem_rack4{
-        high06
     }
    class GPU{
-        gpu01
-        gpu02  
     }
 ```
