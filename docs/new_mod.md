@@ -122,7 +122,7 @@ module load netCDF
 ```
 
 
-## Compiler "silo" table
+## Toolchain "silo" table
 
 Toolchains currently on Rāpoi as of May 2022.
 
