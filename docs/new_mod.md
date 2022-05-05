@@ -159,7 +159,38 @@ Currently Loaded Modules:
 
 
 ## Add new module system for accounts prior to March 2022
-Users accounts setup prior to March 2022
+Users accounts setup prior to March 2022 will not automatically have the new module system loaded. You can automatically use this new module system (in parallel with the old one) by adding a line to your `.bashrc` file.  Users of zsh can make a similar change to their .zshrc file.
+
+Login to Rāpoi and backup your `.bashrc` file, then edit it to add the needed line in.
+
+```bash
+cd ~  # change to your home directory
+cp .bashrc .bashrc_backup #create backup of your bashrc file
+
+nano .bashrc  #open the nano editor to edit your file
+
+#in nano find the line 
+# module use -a /home/software/tools/modulefiles
+# it will be near the end of the file.  After that line, add the line:
+module use /home/software/tools/eb_modulefiles/all/Core
+
+#press control-x to exit nano.  It will ask if you want to save the modified buffer.  Type Y to save the change.  
+# It'll ask for the filename, just press enter to accept the name
+# .bashrc
+```
+
+After you have made that change logout and logback in to have the new module system loaded.  You can test it's working by loading a toolchain.
+```bash
+module load foss/2020a
+```
+
+If you run into problems, copy your .bashrc backup back to the original and try again with
+```bash
+cp .bashrc_backup .bashrc
+```
+
+Also feel free to ask for help on slack.
+
 
 [^1]: 
     Modules are the way programs are packaged up for you to use.  We can't just install them system wide as we have hundreds of programs installed in modules, often with many versions of the same thing, they would conflict with each other.  Modules let you load just what you need. See [Preparing your enviroment](environment.md)
