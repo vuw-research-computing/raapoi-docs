@@ -36,6 +36,8 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:mermaid2.fence_mermaid
   - codehilite
+  - attr_list
+  - md_in_html
 
 plugins:
   - search

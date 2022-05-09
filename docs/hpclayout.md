@@ -12,6 +12,17 @@ On Rāpoi the nodes are connected to each other in 2 ways - via 10G ethernet and
 
 The computers/servers making up the nodes are of serveral types, covered in [partitions](partitions.md).
 
+<figure markdown>
+![Rapoi_Servers](img/parallel_front.jpg){ align=left }
+<figcaption>Figure 1: Example of some of the computers making up Rāpoi.  This is the front panel in Rack 4 in the Datacentre</figcaption>
+</figure>
+
+<figure markdown>
+![Rapoi_Servers](img/parallel_back.jpg){ align=left }
+<figcaption>Figure 2: Example of some of the computers making up Rāpoi.  This is the back in Rack 4 in the Datacentre.  Here you can clearly see the 4 nodes in each chassis of the parallal partition</figcaption>
+</figure>
+
+<figure>
 ```mermaid
 classDiagram
     Parallel_AMD -- Login
@@ -110,7 +121,10 @@ classDiagram
         gpu02  
     }
 ```
+<figcaption>Figure 1: Logical HPC layout from the perspective of the login node.  Solid lines indicate ethernet connections, dashed Infiniband</figcaption>
+</figure>
 
+<figure>
 ```mermaid
 classDiagram
     Parallel_AMD .. Ethernet
@@ -147,7 +161,11 @@ classDiagram
     class GPU{ 
     }
 ```
+<figcaption>Figure 2: Logical HPC layout from the perspective of the ethernet connections. Node layout is the same as in Figure 1, but only the group headings have been retained.
+</figcaption>
+</figure>
 
+<figure>
 ```mermaid
 classDiagram    
     Parallel_AMD -- Infiniband
@@ -180,3 +198,6 @@ classDiagram
     class GPU{
     }
 ```
+<figcaption>Figure 3: Logical HPC layout from the perspective of the Infiniband connections. Note that not all nodes are connected via the infiniband link!
+</figcaption>
+</figure>
