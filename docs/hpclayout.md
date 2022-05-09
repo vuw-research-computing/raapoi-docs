@@ -20,9 +20,9 @@ classDiagram
     Parallel_Intel .. Login
     Quicktest -- Login
     Quicktest .. Login
-    Highmem .. Login
     Highmem_rack4 .. Login
     Highmem_rack4 -- Login
+    Highmem .. Login
     GPU .. Login
     Login .. Internet
     Login .. Scratch
@@ -116,8 +116,8 @@ classDiagram
     Parallel_AMD .. Ethernet
     Parallel_Intel .. Ethernet
     Quicktest .. Ethernet
-    Highmem .. Ethernet
     Highmem_rack4 .. Ethernet
+    Highmem .. Ethernet
     GPU .. Ethernet
     Ethernet .. Internet
     Ethernet .. Login
