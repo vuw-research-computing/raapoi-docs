@@ -105,7 +105,7 @@ classDiagram
     class Highmem_rack4{
         high06
     }
-   class GPU{
+    class GPU{
         gpu01
         gpu02  
     }
@@ -144,7 +144,7 @@ classDiagram
     }
     class Highmem_rack4{
     }
-   class GPU{ 
+    class GPU{ 
     }
 ```
 
@@ -177,6 +177,6 @@ classDiagram
     }
     class Highmem_rack4{
     }
-   class GPU{
+    class GPU{
     }
 ```
