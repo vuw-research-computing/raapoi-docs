@@ -1,6 +1,6 @@
 ![Rapoi_logo](img/Raapoi_logo.png)
 
-The Rāpoi HPC Cluster (aka raapoi) is a Uni-wide computing
+The Rāpoi HPC Cluster (aka raapoi) is a University-wide computing
 resource that uses the Slurm resource manager to schedule jobs and reserve
 resources.  Similar to most modern compute clusters, Rāpoi requires you to
 request CPU, Memory and Time for your job.  If you do not request these
@@ -24,3 +24,5 @@ tutorials with step-by-step instructions for our most popular apps and
 languages. You'll also find some simpler [examples](examples.md) on this site.
 
 Something in this documentation not up to date or incorrect?  Feel free to create an [issue](https://github.com/vuw-research-computing/raapoi-docs/issues) on the [documentation github page](https://github.com/vuw-research-computing/raapoi-docs).  Better yet, submit a pull request :)
+
+Current Rāpoi [layout](hopclayout.md)
