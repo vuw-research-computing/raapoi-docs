@@ -136,8 +136,8 @@ There are also tooclahin versions with CUDA for use on the GPU nodes - they cont
 
 Toolchain  | Compiler   | MPI           | CUDA
 :---------:|:----------:|:-------------:|:--------------:
-foss/2019b | GCC/8.3.0  | OpenMPI/3.1.4 | CUDA/10.1.243
-foss/2020b | GCC/10.2.0 | OpenMPI/4.0.5 | CUDA/11.1.1
+fosscuda/2019b | GCC/8.3.0  | OpenMPI/3.1.4 | CUDA/10.1.243
+fosscuda/2020b | GCC/10.2.0 | OpenMPI/4.0.5 | CUDA/11.1.1
 
 
 You can also just experimentally module load the various toolchains and list to see what the module loads to see what it contains.
