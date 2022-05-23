@@ -27,17 +27,17 @@ Most of the processors in Rāpoi are in the parallel AMD nodes such as AMD01n01,
 
 <figure markdown>
 ![Rapoi_Servers_sled](img/amd_sled.jpg){ align=left }
-<figcaption>Figure 3: An AMD compute node, one of 4 in a chassis.  The 2 black rectangles are the processor heatsinks, on each side are the ram modules. Each ram module is 32GB for a total of 512GB. On the lower left the green circuit board is the the InfiniBand network card.  Opposite that, in black, is the 1.7TB NvMe storage we use as fast /tmp space. </figcaption>
+<figcaption>Figure 3: An AMD compute node, one of 4 in a chassis.  The 2 black rectangles are the processor heatsinks, on each side are the ram modules. Each ram module is 32GB for a total of 512GB. On the lower left, the green circuit board is the the InfiniBand network card.  Opposite that, in black, is the 1.7TB NvMe storage we use as fast /tmp space. </figcaption>
 </figure>
 
 <figure markdown>
 ![Rapoi_Servers_cpu](img/amdCPU.jpg){ align=left }
-<figcaption>Figure 4: One of the CPUs with the heatsink removed. It is about 4x the size of processor in a desktop at 115.00 x 165.00 mm.  Each AMD node has 2 of these 7702 processors.  Each processor has 64Cores/128Threads (with SMT - symmetric multi-threading - enabled) for a total of 128Cores/256Threads per node.</figcaption>
+<figcaption>Figure 4: One of the CPUs with the heatsink removed. At 115.00 x 165.00 mm, it is physically much larger than the processor in a desktop   Each AMD node has 2 of these 7702 processors.  Each processor has 64Cores/128Threads (with SMT - symmetric multi-threading - enabled) for a total of 128Cores/256Threads per node.</figcaption>
 </figure>
 
 ## Network
 
-On Rāpoi the nodes are connected to each other in 2 ways - via 10G ethernet and via 40G infiniband.  Most of the time you can ignore this, but it is important for interconnected jobs running across multiple nodes like weather simulations.
+On Rāpoi the nodes are connected to each other in two ways - via 10G ethernet and via 40G infiniband.  Most of the time you can ignore this, but it is important for interconnected jobs running across multiple nodes like weather simulations.
 
 In figure 5 we can see the network layout of Rāpoi from the perspective of the Login node.  This is the node you ssh into, via the VUW intranet - either from a locally wired connection or via the VPN. The nodes are organised into groups mostly aligning with the [partition](partitions.md) the node is in.  
 
@@ -211,7 +211,7 @@ classDiagram
     Infiniband -- Scratch
     Infiniband -- BeeGFS
     class Infiniband{
-      40Gig
+      56Gb/s
       Low latency
     }
         class Scratch {
@@ -235,3 +235,5 @@ classDiagram
 ```
 <figcaption>Figure 7: Logical HPC layout from the perspective of the Infiniband connections. Note that not all nodes are connected via the infiniband link!  Node layout is the same as in Figure 5, but only the group headings have been retained.
 </figure>
+
+The Infiniband nodes are connected to one of two SX6036 Infiniband switches.  The intel and quicktest and login nodes are connected to one switch. Everything else is connected to the the other. The switches are broadly interconnected, but there is as small latency penalty for crossing the switch.
