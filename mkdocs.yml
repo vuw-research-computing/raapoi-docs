@@ -18,6 +18,7 @@ nav:
     - 'Training': 'training.md'
     - 'User Submitted Docs': 'usersub.md'
     - 'FAQ': 'faq.md'
+    - 'HPC Hardware Layout': 'hpclayout.md'
     - Support: support.md
 
 
@@ -35,6 +36,8 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:mermaid2.fence_mermaid
   - codehilite
+  - attr_list
+  - md_in_html
 
 plugins:
   - search
