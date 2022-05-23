@@ -25,4 +25,4 @@ languages. You'll also find some simpler [examples](examples.md) on this site.
 
 Something in this documentation not up to date or incorrect?  Feel free to create an [issue](https://github.com/vuw-research-computing/raapoi-docs/issues) on the [documentation github page](https://github.com/vuw-research-computing/raapoi-docs).  Better yet, submit a pull request :)
 
-Current Rāpoi [layout](hpclayout.md)
+Current Rāpoi hardware [layout](hpclayout.md)

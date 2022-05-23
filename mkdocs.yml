@@ -2,7 +2,6 @@ site_name: Rāpoi Cluster Documentation
 nav: 
   - Overview: 'index.md'
   - Documentation:
-    # - 'HPC Layout': 'hpclayout.md'
     - 'Accessing the Cluster': 'accessing_the_cluster.md'
     - 'Basic Commands': 'basic_commands.md'
     - 'Storage and Quotas': 'storage.md'
@@ -19,6 +18,7 @@ nav:
     - 'Training': 'training.md'
     - 'User Submitted Docs': 'usersub.md'
     - 'FAQ': 'faq.md'
+    - 'HPC Hardware Layout': 'hpclayout.md'
     - Support: support.md
 
 
