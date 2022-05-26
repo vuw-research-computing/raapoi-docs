@@ -139,11 +139,12 @@ Toolchain  | Compiler   | MPI           | CUDA
 fosscuda/2019b | GCC/8.3.0  | OpenMPI/3.1.4 | CUDA/10.1.243
 fosscuda/2020b | GCC/10.2.0 | OpenMPI/4.0.5 | CUDA/11.1.1
 
-Lastly we have one intel compiler toolchain built.  This *might* work on the AMD nodes, but you'l have an easier time with the intel nodes.
+Lastly we have some intel compiler toolchains built.  This *might* work on the AMD nodes, but you'll have an easier time with the intel nodes.
 
-Toolchain   | Compiler   | Intel Compiler | MPI           
-:----------:|:----------:|:--------------:|:--------------:
-intel/2021b | GCC/11.2.0 | 2021.4.0       | impi/2021     
+Toolchain     | Compiler   | Intel Compiler | MPI           | MKL 
+:------------:|:----------:|:--------------:|:-------------:|:-------------:
+intel/2021b   | GCC/11.2.0 | 2021.4.0       | impi/2021.4.0 | imkl/2021.4.0
+intel/2022.00 | GCC/11.2.0 | 2022.0.1       | impi/2021.5.0 | imkl/2022.0.1 
 
 You can also just experimentally module load the various toolchains and list to see what the module loads to see what it contains.
 <pre><code>
