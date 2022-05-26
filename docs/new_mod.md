@@ -1,6 +1,6 @@
 # New Module System
 
-In 2020 we started building packages and organising them into modules[^1] in a new way.  In the new system modules are organised into toolchains[^2].  These toolchains were used to build the software. For most users the most imporant thing is these these toolchains act like software "silos". 
+In 2020 we started building packages and organising them into modules[^1] in a new way.  In the new system modules are organised into toolchains[^2].  These toolchains were used to build the software. For most users the most important thing is these these toolchains act like software "silos". 
 
 In general this restricts you to using using programs in one toolchain "silo".  This is on the face of it, is annoying.  However, it resolves some very hard to diagnose and subtle bugs that occur when you load programs that are built with different compilers - in the old system this was not transparent to you.
 
@@ -30,11 +30,11 @@ module load BioPython/1.7.9
 
 ## Searching for Software with Spider
 
-As the software is siloed into toolchains methods for finding software like `module avail` are less useful than in the old system - it will only show software loadable in the current toolchain silo, or if no tooclahin silos are loaded it'll show you all the toolchains as well as software that's not tied to a toolchain.
+As the software is siloed into toolchains methods for finding software like `module avail` are less useful than in the old system - it will only show software loadable in the current toolchain silo, or if no toolchain silos are loaded it'll show you all the toolchains as well as software that's not tied to a toolchain.
 
 We can use `module spider` to search for software modules more broadly - it will also show what toolchain needs to be loaded first.
 
-If we wanted to load a version of netCDF, we could search for it with spider.  Note spider searches in a case sensite manner - but it will suggest other capitalisation if other search options exist.
+If we wanted to load a version of netCDF, we could search for it with spider.  Note spider searches in a case sensitive manner - but it will suggest other capitalisation if other search options exist.
 ```bash
 module spider netCDF
 ```
@@ -109,7 +109,7 @@ module load OpenMPI/3.1.4
 module load netCDF
 ```
 
-Alternativly you could load the toolchain containing `gcc/8.3.0` and `OpenMPI/3.1.4` - `foss/2019b`
+Alternatively you could load the toolchain containing `gcc/8.3.0` and `OpenMPI/3.1.4` - `foss/2019b`
 ```bash
 #Load prerequisites - the "silo"
 module load foss/2019b
@@ -123,15 +123,15 @@ module load netCDF
 
 Toolchains currently on Rāpoi as of May 2022.
 
-Toolchain  | Compiler   | MPI
-:---------:|:----------:|:-------------:
-foss/2018b | GCC/7.3.0  | OpenMPI/3.1.1
-foss/2019b | GCC/8.3.0  | OpenMPI/3.1.4
-foss/2020a | GCC/9.3.0  | OpenMPI/4.0.3
-foss/2020b | GCC/10.2.0 | OpenMPI/4.0.5
-foss/2021a | GCC/10.3.0 | OpenMPI/4.1.1
+Toolchain  | Compiler   | MPI           |
+:---------:|:----------:|:--------------:
+foss/2018b | GCC/7.3.0  | OpenMPI/3.1.1 |
+foss/2019b | GCC/8.3.0  | OpenMPI/3.1.4 |
+foss/2020a | GCC/9.3.0  | OpenMPI/4.0.3 |
+foss/2020b | GCC/10.2.0 | OpenMPI/4.0.5 |
+foss/2021a | GCC/10.3.0 | OpenMPI/4.1.1 |
 
-There are also tooclahin versions with CUDA for use on the GPU nodes - they contain the same compiler and OpnMPI but also include a CUDA version
+There are also toolchain versions with CUDA for use on the GPU nodes - they contain the same compiler and OpenMPI but also include a CUDA version
 
 
 Toolchain  | Compiler   | MPI           | CUDA
@@ -139,6 +139,11 @@ Toolchain  | Compiler   | MPI           | CUDA
 fosscuda/2019b | GCC/8.3.0  | OpenMPI/3.1.4 | CUDA/10.1.243
 fosscuda/2020b | GCC/10.2.0 | OpenMPI/4.0.5 | CUDA/11.1.1
 
+Lastly we have one intel compiler toolchain built.  This *might* work on the AMD nodes, but you'l have an easier time with the intel nodes.
+
+Toolchain   | Compiler   | Intel Compiler | MPI           
+:----------:|:----------:|:--------------:|:--------------:
+intel/2021b | GCC/11.2.0 | 2021.4.0       | impi/2021     
 
 You can also just experimentally module load the various toolchains and list to see what the module loads to see what it contains.
 <pre><code>
@@ -179,7 +184,7 @@ module use /home/software/tools/eb_modulefiles/all/Core
 # .bashrc
 ```
 
-After you have made that change logout and logback in to have the new module system loaded.  You can test it's working by loading a toolchain.
+After you have made that change logout and log back in to have the new module system loaded.  You can test it's working by loading a toolchain.
 ```bash
 module load foss/2020a
 ```
@@ -193,7 +198,7 @@ Also feel free to ask for help on slack.
 
 
 [^1]: 
-    Modules are the way programs are packaged up for you to use.  We can't just install them system wide as we have hundreds of programs installed in modules, often with many versions of the same thing, they would conflict with each other.  Modules let you load just what you need. See [Preparing your enviroment](environment.md)
+    Modules are the way programs are packaged up for you to use.  We can't just install them system wide as we have hundreds of programs installed in modules, often with many versions of the same thing, they would conflict with each other.  Modules let you load just what you need. See [Preparing your environment](environment.md)
 
 [^2]:
-    The toolchain is comprised of a compiler and a version of MPI that was used to build the software.  For instance the tooclhain foss/2021a uses GCC/10.3.0 and OpenMPI/4.1.1
+    The toolchain is comprised of a compiler and a version of MPI that was used to build the software.  For instance the toolchain foss/2021a uses GCC/10.3.0 and OpenMPI/4.1.1
