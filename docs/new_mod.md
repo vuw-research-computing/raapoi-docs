@@ -195,7 +195,7 @@ If you run into problems, copy your .bashrc backup back to the original and try 
 cp .bashrc_backup .bashrc
 ```
 
-Also feel free to ask for help on slack.
+Also feel free to ask for help on slack
 
 
 [^1]: 
