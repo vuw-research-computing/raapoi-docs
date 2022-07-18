@@ -37,7 +37,7 @@ Most of the processors in Rāpoi are in the parallel AMD nodes such as AMD01n01,
 
 ## Network
 
-On Rāpoi the nodes are connected to each other in two ways - via 10G ethernet and via 40G infiniband.  Most of the time you can ignore this, but it is important for interconnected jobs running across multiple nodes like weather simulations.
+On Rāpoi the nodes are connected to each other in two ways - via 10G ethernet and via 52G infiniband.  Most of the time you can ignore this, but it is important for interconnected jobs running across multiple nodes like weather simulations.
 
 In figure 5 we can see the network layout of Rāpoi from the perspective of the Login node.  This is the node you ssh into, via the VUW intranet - either from a locally wired connection or via the VPN. The nodes are organised into groups mostly aligning with the [partition](partitions.md) the node is in.  
 
@@ -56,12 +56,8 @@ Where infiniband is available, the scratch storage and BeeGFS storage is transmi
 classDiagram
     Parallel_AMD -- Login
     Parallel_AMD .. Login
-    Parallel_Intel -- Login
-    Parallel_Intel .. Login
     Quicktest -- Login
     Quicktest .. Login
-    Highmem_rack4 .. Login
-    Highmem_rack4 -- Login
     Highmem .. Login
     GPU .. Login
     Login .. Internet
@@ -116,13 +112,13 @@ classDiagram
         amd06n02
         amd06n03
         amd06n04
-    }
-    class Parallel_Intel{
-        itl01n01
-        itl01n02
-        itl01n03
-        itl01n04
         -
+        amd07n01
+        amd07n02
+        amd07n03
+        amd07n04
+    }
+    class Quicktest{
         itl02n01
         itl02n02
         itl02n03
@@ -130,28 +126,17 @@ classDiagram
         -
         itl03n01
         itl03n02
-        itl03n03
-        itl03n04
-    }
-    class Quicktest{
-        itl04n01
-        itl04n02
-        itl04n03
-        itl04n04
     }
     class Highmem{
         high01
         high02
         high03
         high04
-        high05
-    }
-    class Highmem_rack4{
-        high06
     }
     class GPU{
         gpu01
-        gpu02  
+        gpu02
+        gpu03  
     }
 ```
 <figcaption>Figure 5: Logical HPC layout from the perspective of the login node.  Solid lines indicate ethernet connections, dashed Infiniband</figcaption>
@@ -163,9 +148,7 @@ Looking at the HPC from the perspective of the ethernet and infiniband networks.
 ```mermaid
 classDiagram
     Parallel_AMD .. Ethernet
-    Parallel_Intel .. Ethernet
     Quicktest .. Ethernet
-    Highmem_rack4 .. Ethernet
     Highmem .. Ethernet
     GPU .. Ethernet
     Ethernet .. Internet
@@ -185,13 +168,9 @@ classDiagram
     }
     class Parallel_AMD {
     }
-    class Parallel_Intel{
-    }
     class Quicktest{
     }
     class Highmem{
-    }
-    class Highmem_rack4{
     }
     class GPU{ 
     }
@@ -204,9 +183,7 @@ classDiagram
 ```mermaid
 classDiagram    
     Parallel_AMD -- Infiniband
-    Parallel_Intel -- Infiniband
     Quicktest -- Infiniband
-    Highmem_rack4 -- Infiniband
     Infiniband -- Login
     Infiniband -- Scratch
     Infiniband -- BeeGFS
@@ -222,13 +199,9 @@ classDiagram
     }
     class Parallel_AMD {
     }
-    class Parallel_Intel{
-    }
     class Quicktest{
     }
     class Highmem{
-    }
-    class Highmem_rack4{
     }
     class GPU{
     }
