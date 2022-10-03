@@ -49,3 +49,5 @@ openconnect-sso
 ```
 
 You then just leave a tab of your command line open on this, and in a different tab connect to Raapoi.
+
+If this doesn't work for you, ogten due to the difficulty in resolving the QT5 dependancies on macOS silicon you could try [Alternative Openconnect-sso](vpn-alts2.md)
