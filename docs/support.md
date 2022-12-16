@@ -10,7 +10,7 @@ Need an account on Rāpoi or access to the Slack channel? Contact the CAD Resear
 <br>
 Andre Geldenhuis
 <br>
-Research Software Engineer 
+Research Computing Specialist
 <br>
 <a href="mailto:andre.geldenhuis@vuw.ac.nz">`andre.geldenhuis@vuw.ac.nz`</a>
 
@@ -20,9 +20,9 @@ Wes Harrell
 Research Software Engineer <br>
 <a href="mailto:wes.harrell@vuw.ac.nz">`wes.harrell@vuw.ac.nz`</a> -->
 
-<img src="../img/Matt.jpg" width="200" height="200"> <br> 
+<!-- <img src="../img/Matt.jpg" width="200" height="200"> <br> 
 Matt Plummer
 <br>
 Digital Research Consultant
 <br>
-<a href="mailto:matt.plummer@vuw.ac.nz">`matt.plummer@vuw.ac.nz`</a>
+<a href="mailto:matt.plummer@vuw.ac.nz">`matt.plummer@vuw.ac.nz`</a> -->
