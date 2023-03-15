@@ -122,7 +122,7 @@ Using nano create the submissions script called python_submit.sh with the follow
 #SBATCH -e python_test.err
 #
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=1G
+#SBATCH --mem=1G
 #SBATCH --time=10:00
 #
 #SBATCH --mail-type=BEGIN,END,FAIL
@@ -202,7 +202,7 @@ Next create a bash submission script called ```r_submit.sh``` (or another name o
 #SBATCH -e r_test.err
 #
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=1G
+#SBATCH --mem=1G
 #SBATCH --time=10:00
 #
 

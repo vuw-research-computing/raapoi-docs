@@ -34,7 +34,7 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
 ```
  #!/bin/bash
  #SBATCH --cpus-per-task=2
- #SBATCH --mem-per-cpu=2G
+ #SBATCH --mem=2G
  #SBATCH --partition=parallel
  #SBATCH --time=3-12:00
  #SBATCH -o /nfs/home/username/project1.out
