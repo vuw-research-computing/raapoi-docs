@@ -13,7 +13,7 @@ A rough example of how you could use this in an sbatch script
 #
 #SBATCH --partition=quicktest
 #
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus
 #SBATCH --mem=1G
 #SBATCH --time=10:00
 

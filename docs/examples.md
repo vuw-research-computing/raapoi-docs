@@ -38,7 +38,7 @@ Using nano again create a file called submit.sh with the following content
 #
 #SBATCH --partition=quicktest
 #
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus
 #SBATCH --mem=1G
 #SBATCH --time=10:00
 
@@ -121,7 +121,7 @@ Using nano create the submissions script called python_submit.sh with the follow
 #SBATCH -o python_test.out
 #SBATCH -e python_test.err
 #
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus
 #SBATCH --mem=1G
 #SBATCH --time=10:00
 #
@@ -201,7 +201,7 @@ Next create a bash submission script called ```r_submit.sh``` (or another name o
 #SBATCH -o r_test.out
 #SBATCH -e r_test.err
 #
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus
 #SBATCH --mem=1G
 #SBATCH --time=10:00
 #
