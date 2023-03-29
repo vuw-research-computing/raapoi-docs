@@ -11,9 +11,9 @@ cd gaussian_example
 
 ### Get the example input file
 
-The test0397.com file is an example input file for Gaussian. It contains instructions for Gaussian to perform a calculation on a molecule.
+The `test0397.com` file is an example input file for Gaussian. It contains instructions for Gaussian to perform a calculation on a molecule.
 
-To run the example job using this input file, you should copy the test0397.com file from the Gaussian installation directory at /home/software/apps/gaussian/g16/tests/com/test0397.com to their working directory (gaussian_example in this case). 
+To run the example job using this input file, you should copy the `test0397.com` file from the Gaussian installation directory at `/home/software/apps/gaussian/g16/tests/com/test0397.com` to your working directory (gaussian_example in this case). 
 
 To do that from the `gaussian_example` directory:
 ```bash
