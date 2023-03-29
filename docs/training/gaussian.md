@@ -13,7 +13,7 @@ cd gaussian_example
 
 The `test0397.com` file is an example input file for Gaussian. It contains instructions for Gaussian to perform a calculation on a molecule.
 
-To run the example job using this input file, you should copy the `test0397.com` file from the Gaussian installation directory at `/home/software/apps/gaussian/g16/tests/com/test0397.com` to your working directory (gaussian_example in this case). 
+To run the example job using this input file, you should copy the `test0397.com` file from the Gaussian installation directory at `/home/software/apps/gaussian/g16/tests/com/test0397.com` to your working directory (`gaussian_example` in this case). 
 
 To do that from the `gaussian_example` directory:
 ```bash
@@ -38,13 +38,13 @@ O,-0.3728418073,-0.530460483,3.8840401686
 O,2.3301890394,0.5231526187,1.7996834334
 ```
 
-The first line !%nproc=4 specifies the number of processors that Gaussian will use to run the calculation, in this case, 4.
+The first line `!%nproc=4` specifies the number of processors that Gaussian will use to run the calculation, in this case, 4.
 
 We will need to make sure that the number of processes used in this file matches the number of cpus we request from Slurm
 
 ### Slurm Submission
 
-Next, create a submission script called `submit.sh` and add the following contents:
+Next, create a submission script called `submit.sh` (using nano or similar) and add the following contents:
 
 ```bash
 #!/bin/sh
@@ -102,6 +102,6 @@ The Gaussian output files (test0397.log, test0397.chk, etc.) will also be genera
 less test0397.log
 ```
 
-Press `Q` to Quit the less program
+Press `q` to Quit the less program
 
 That's it! You have successfully submitted and run a Gaussian job on a HPC cluster using Slurm.
