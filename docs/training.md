@@ -13,3 +13,7 @@ These are longer worked examples.  If you have domain specific training you'd li
 {%
    include-markdown "training/simple-tensorflow.md"
 %}
+
+{%
+   include-markdown "training/gaussian.md"
+%}
