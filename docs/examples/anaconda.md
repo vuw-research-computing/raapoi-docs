@@ -19,7 +19,7 @@ conda activate idba-example  #activate our example environment.
 
 Conda environments are beyond the scope of this example, but they are a good way to contain all the dependencies and programs for a particular workflow, in this case, idba.
 
-Install idba in our conda environment.
+Install idba in our conda environment.  ** Note that best practise is to do the install on a compute node ** We'll just do it here on the login node for now - the code will run slower on the compute nodes as a result!
 
 ```bash
 conda install -c bioconda idba
