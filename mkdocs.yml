@@ -19,7 +19,7 @@ nav:
     - 'User Submitted Docs': 'usersub.md'
     - 'FAQ': 'faq.md'
     - 'HPC Hardware Layout': 'hpclayout.md'
-    - 'Linking Rāpoi outputs to Elements' : 'docs/elements/LinkingElements.md'
+    - 'Linking Rāpoi outputs to Elements' : 'elements/LinkingElements.md'
     - Support: support.md
 
 
