@@ -22,7 +22,7 @@ For full documentation on Staff Profiles with Elements, see [this page](https://
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_4.png)
 
-1. Type ```Rapoi``` into the ```Name``` field, and with ```Linked to``` set to Anyone and ``Type``` set to Any. 
+1. Type ```Rapoi``` into the ```Name``` field, and with ```Linked to``` set to Anyone and ```Type``` set to Any. 
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_5.png)
 
