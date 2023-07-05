@@ -26,9 +26,14 @@ For full documentation on Staff Profiles with Elements, see [this page](https://
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_5.png)
 
-1. Check links are correct, then click on ```Create one new link```. *Note* if you have multiple publications or grants to link, you can speed up the process by going to the Publications tab in the interface above, clicking on the```Click here``` link, and then using the date filter to return multiple outputs.
+1. Check links are correct, then click on ```Create one new link```. 
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_6.png)
+
+   *Note* if you have multiple publications or grants to link, you can speed up the process by going to the Publications tab in the interface above, clicking on the```Click here``` link, and then using the date filter to return multiple outputs.
+
+    ![](https://hackmd.io/_uploads/HJ7Z4PMK2.png)
+    ![](https://hackmd.io/_uploads/SJtm4DzFh.png)
 
 1. Check to see your item appears on the [public Rāpoi elements profile page](https://people.wgtn.ac.nz/equipment/412229) under [publications](https://people.wgtn.ac.nz/equipment/412229/publications) or [grants](https://people.wgtn.ac.nz/equipment/412229/grants).
 
