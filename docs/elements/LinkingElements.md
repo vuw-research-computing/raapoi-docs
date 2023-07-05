@@ -22,7 +22,7 @@ For full documentation on Staff Profiles with Elements, see [this page](https://
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_4.png)
 
-1. Type ```rāpoi``` into the ```Name``` field, and with ```Linked to``` set to Anyone and ```Type``` set to Any. (*Note*: be sure to include the macron over the ā in rāpoi) 
+1. Type ````HPC``` or ```Rāpoi``` into the ```Name``` field, and with ```Linked to``` set to Anyone and ```Type``` set to Any. (*Note*: be sure to include the macron over the ā in Rāpoi if using the latter option) 
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_5.png)
 
