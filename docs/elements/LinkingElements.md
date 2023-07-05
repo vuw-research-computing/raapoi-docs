@@ -18,11 +18,11 @@ For full documentation on Staff Profiles with Elements, see [this page](https://
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_3.png)
 
-1. The ```Create links to this publication``` pop-up window should appear. Select the ```Equipment``` option 
+1. The ```Create links to this publication``` pop-up window should appear. Select the ```Equipment``` option: 
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_4.png)
 
-1. Type ```rāpoi``` into the ```Name``` field, and with ```Linked to``` set to Anyone and ```Type``` set to Any. 
+1. Type ```rāpoi``` into the ```Name``` field, and with ```Linked to``` set to Anyone and ```Type``` set to Any. (*Note*: be sure to include the macron over the ā in rāpoi) 
 
     ![](https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_5.png)
 
