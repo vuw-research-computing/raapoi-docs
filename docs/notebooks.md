@@ -141,11 +141,11 @@ job to free up the resources for others, hint: *scancel*
 If you want more information on working with Jupyter, there is good
 documentation, here: [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io/en/latest/)
 
-### Working with notebooks using firefox tab containers
+### Working with notebooks using Firefox tab containers
 
 There is a perhaps simpler single step process of working with jupyter notebooks.  It relies on some nice features in [Firefox](https://www.mozilla.org/en-US/firefox/new/).  Firefox has tab containers - you can have categories of tabs that are basically independent from each other with separate web cookies but importantly for our case separate proxy settings.  You will also currenly need to get the firefox add-on [Container-Proxy](https://addons.mozilla.org/en-US/firefox/addon/container-proxy/) its [github page](https://github.com/bekh6ex/firefox-container-proxy)
 
-Setup a tab container in Firefox called something like Raapoi.  Use the container-proxy extension to assign a proxy to that tab set.  I choose 9001, but you can use any fairly hihg port number - note it doens't matter if many people connect on the same port.
+Setup a tab container in Firefox called something like Raapoi.  Use the container-proxy extension to assign a proxy to that tab set.  I choose 9001, but you can use any fairly high port number - note it doens't matter if many people connect on the same port.
 
 When you connect to raapoi, use ssh socks5 proxy settings.  In MacOS/linux/wsl2 
 ```bash
