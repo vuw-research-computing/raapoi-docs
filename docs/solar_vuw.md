@@ -72,8 +72,7 @@ There are several way to move/copy files and folder between SoLAR and Rāpoi
 
 ### Best Way: Mounting SoLAR Partition in Rāpoi
 
-**For Andre to give here**
-
+Ask Digital Solutions for a service account to be created against your Research storage.  Then a Raapoi admin will permanantly mount your storage on Raapoi - this process is time consuming and involves back and forth between DS and CAD. 
 
 ### Second Way: ``RClone``
 
