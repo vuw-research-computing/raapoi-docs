@@ -1,7 +1,9 @@
 
 ## Starting and Working with a Jupyter Notebook
 
-Running Jupyter notebooks on Rāpoi is usually a two step processes.  First you start the jupyter server on a compute node - either via an interactive session or an sbatch job.
+Running Jupyter notebooks on Rāpoi is usually a two step processes.  First you start the jupyter server on a compute node - either via an interactive session or an sbatch job.  Then you connect to Rāpoi again via a new ssh session port forwarding the port selected by Jupter to your local machine for the web session.  There is a potentially simpler method at the end of this guide using firefox and tab containers.
+
+The first step is getting and modifying a submission script.
 
 Example submission scripts are included at `/home/software/vuwrc/examples/jupyter/` 
 ```bash 
