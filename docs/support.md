@@ -14,6 +14,12 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
     <a href="mailto:andre.geldenhuis@vuw.ac.nz">`andre.geldenhuis@vuw.ac.nz`</a>
 </div>
 
+<div class="person-card">
+    <h3>David Alderman</h3>
+    <p>Systems Administrator in Digital Solutions</p>
+    <a href="mailto:david.alderman@vuw.ac.nz">`david.alderman@vuw.ac.nz`</a>
+</div>
+
 
 
 
