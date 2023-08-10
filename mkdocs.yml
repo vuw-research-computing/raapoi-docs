@@ -21,6 +21,7 @@ nav:
     - 'FAQ': 'faq.md'
     - 'HPC Hardware Layout': 'hpclayout.md'
     - 'Linking Rāpoi outputs to Elements' : 'elements/LinkingElements.md'
+    - 'Notes for Moderators' : 'mods_admins.md'
     - Support: support.md
 
 
