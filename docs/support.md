@@ -3,16 +3,19 @@ Check out the [Documentation](index.md) section for a comprehensive overview of 
 
 Visit the [Rāpoi Slack Channel](https://uwrc.slack.com) for help, software requests or to communicate with others in the Rāpoi community.
 
-Need an account on Rāpoi or access to the Slack channel? Contact the CAD Research Support team:
+Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Admins:
 
 
-<img src="../img/Andre.jpg" width="200" height="200"> 
-<br>
-Andre Geldenhuis
-<br>
-Research Computing Specialist
-<br>
-<a href="mailto:andre.geldenhuis@vuw.ac.nz">`andre.geldenhuis@vuw.ac.nz`</a>
+<div class="person-card">
+    <img src="../img/Andre.jpg" width="200" height="200">
+    <h3>Andre Geldenhuis</h3>
+    <p>Research Computing Specialist in the Center for Academic Development</p>
+    <p>Leaving on the 25th of August 2023</p>
+    <a href="mailto:andre.geldenhuis@vuw.ac.nz">`andre.geldenhuis@vuw.ac.nz`</a>
+</div>
+
+
+
 
 <!-- <img src="../img/Wes.jpg" width="200" height="200"> <br>
 Wes Harrell
