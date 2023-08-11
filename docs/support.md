@@ -21,7 +21,8 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
   content: |
     Systems Administrator in Digital Solutions
   url: mailto:david.alderman@vuw.ac.nz
-
+  
+::/cards::
 <!-- <div class="person-card">
     <h3>David Alderman</h3>
     <p>Systems Administrator in Digital Solutions</p>
