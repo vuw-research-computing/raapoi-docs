@@ -7,7 +7,7 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
 
 ## Raapoi Admins
 <!-- Admins and moderator cards, see https://www.neoteroi.dev/mkdocs-plugins/cards/ -->
-::cards::
+::cards:: flex=25
 
 - title: Andre Geldenhuis
   content: |
@@ -20,8 +20,9 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
 - title: David Alderman
   content: |
     Systems Administrator in Digital Solutions
+  image: ../img/blank_user.jpg
   url: mailto:david.alderman@vuw.ac.nz
-  
+
 ::/cards::
 <!-- <div class="person-card">
     <h3>David Alderman</h3>
