@@ -5,20 +5,28 @@ Visit the [Rāpoi Slack Channel](https://uwrc.slack.com) for help, software requ
 
 Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Admins:
 
+## Raapoi Admins
+<!-- Admins and moderator cards, see https://www.neoteroi.dev/mkdocs-plugins/cards/ -->
+::cards::
 
-<div class="person-card">
-    <img src="../img/Andre.jpg" width="200" height="200">
-    <h3>Andre Geldenhuis</h3>
-    <p>Research Computing Specialist in the Center for Academic Development</p>
-    <p>Leaving on the 25th of August 2023</p>
-    <a href="mailto:andre.geldenhuis@vuw.ac.nz">`andre.geldenhuis@vuw.ac.nz`</a>
-</div>
+- title: Andre Geldenhuis
+  content: |
+    Research Computing Specialist in the Center for Academic Development.
+    Leaving on the 25th of August 2023
+  image: ../img/Andre.jpg
+  url: mailto:andre.geldenhuis@vuw.ac.nz
 
-<div class="person-card">
+
+- title: David Alderman
+  content: |
+    Systems Administrator in Digital Solutions
+  url: mailto:david.alderman@vuw.ac.nz
+
+<!-- <div class="person-card">
     <h3>David Alderman</h3>
     <p>Systems Administrator in Digital Solutions</p>
     <a href="mailto:david.alderman@vuw.ac.nz">`david.alderman@vuw.ac.nz`</a>
-</div>
+</div> -->
 
 
 
