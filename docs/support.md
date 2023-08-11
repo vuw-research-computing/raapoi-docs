@@ -7,7 +7,7 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
 
 ## Raapoi Admins
 <!-- Admins and moderator cards, see https://www.neoteroi.dev/mkdocs-plugins/cards/ -->
-::cards:: flex=25, cols=2
+::cards:: cols=2
 
 - title: Andre Geldenhuis
   content: |
