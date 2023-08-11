@@ -41,13 +41,16 @@ markdown_extensions:
   - codehilite
   - attr_list
   - md_in_html
+  - neoteroi.cards
 
 plugins:
   - search
   - include-markdown
   - mermaid2
 
-extra_css: [extra.css]
+extra_css: 
+  - extra.css
+  - css/neoteroi-mkdocs.css
 
 extra_javascript:
   - https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js

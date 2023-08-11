@@ -78,34 +78,3 @@ figure {
     overflow-x: auto;
 }
 
-
-.person-card {
-    border: 1px solid #423d3d;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.person-card img {
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.person-card h3 {
-    margin: 10px 0;
-}
-
-.person-card p {
-    margin: 5px 0;
-}
-
-.person-card a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.person-card a:hover {
-    text-decoration: underline;
-}
