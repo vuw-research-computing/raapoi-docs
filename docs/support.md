@@ -13,15 +13,16 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
   content: |
     Research Computing Specialist in the Center for Academic Development.
     Leaving on the 25th of August 2023
+    andre.geldenhuis@vuw.ac.nz
   image: ../img/Andre.jpg
-  url: andre.geldenhuis@vuw.ac.nz
 
 
 - title: David Alderman
   content: |
     Systems Administrator in Digital Solutions
+    mailto:david.alderman@vuw.ac.nz
   image: ../img/blank_user.png
-  url: david.alderman@vuw.ac.nz
+  url: 
 
 ::/cards::
 <!-- <div class="person-card">
