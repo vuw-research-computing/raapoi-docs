@@ -1,14 +1,14 @@
 # Moderating a Slurm Cluster
 
-This a list of common cluster moderator actions, provided as refernce. Users without moderator privilages might find some of this of interest, but you won't be able to perorm the actions with affect other users.
+This a list of common cluster moderator actions, provided as reference. Users without moderator privileges might find some of this of interest, but you won't be able to perform the actions that affect other users.
 
-These commands will require you to be logged in with your moderator specific account
+These commands will require you to be logged in with your moderator-specific account
 
 ## Dealing with badly behaved jobs
 
 ### Holding jobs
 
-Users will occationally run jobs which consume an unfair amount of resources, if a single user is causes problems, you can hold their jobs.  This won't stop their current jobs, but will prevent more from starting
+Users will occasionally run jobs which consume an unfair amount of resources, if a single user is causes problems, you can hold their jobs.  This won't stop their current jobs, but will prevent more from starting
 
 ```bash
 # hold some jobs
@@ -74,9 +74,9 @@ sudo sacctmgr modify user <user> set GrpTRES=cpu=1026
 
 ## Using reservations
 
-If a research group has a good need and the other moderators agree, you can give them a reservation that only they can use. This is usually done for a specific time period.  This is also one of the steps when we put the cluster into maintainace
+If a research group has a good need and the other moderators agree, you can give them a reservation that only they can use. This is usually done for a specific time period.  This is also one of the steps when we put the cluster into maintenance
 
-Create a month long reservation on amd01n01 and amd01n02
+Create a month-long reservation on amd01n01 and amd01n02
 ```bash
 scontrol create reservationname=MyReservation starttime=2021-03-01T11:00:00 duration=30-00:00:00 user=user1,user2,user3 nodes=amd01n01,amd01n02
 ```
