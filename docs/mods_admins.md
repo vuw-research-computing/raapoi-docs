@@ -99,3 +99,65 @@ eb --version # see version
 
 eb --install-latest-eb-release  # upgrade - will create new module file for new version
 ```
+
+##Building New Version of Schrodinger Suite
+Schrödinger Suite releases new versions quarterly, it's good practice to keep up to date with the latest version of the software. To build the new version, first download the tar file from the Schrödinger website (www.schrodinger.com), then move the installation tar file to the directory `/home/software/src/Schrodinger` on Rāpoi.
+
+###Quick Installation 
+
+First, extract the tar file
+```bash
+tar -xvf Schrodinger_Download.tar
+```
+
+Change to the top-level directory of the download
+```bash
+cd Schrodinger_Download
+
+Then, run the instalaation script
+```bash
+sh ./INSTALL
+```
+
+Answer y/n to prompts from the INSTALL script, then all packages should be installed.
+
+**NOTE**
+During installation, you will be asked to confirm the `installation directory`, this is `/home/software/apps/Schrodinger/2023-3`, '2023-3' should be replaced with the current version being installed. The `scratch directory` should be `/nfs/scratch/projects/tmp`.
+
+The installation file will check for dependencies in the last stage, missing dependencies will be reported, and will need to be installed for Schrödinger Suite to run properly. Contact Rāpoi admin to install the missing dependencies.
+
+###Modify the hosts file
+Change directory to the installation folder
+
+```bash
+cd /home/software/apps/Schrodinger/2023-3
+```
+
+open the `schrodinger.hosts`file with `vi`, modify the contents to add hostnames. The hosts and settings can be found in the `schrodinger.hosts` file from the installation directory of older versions, such as `/home/software/apps/Schrodinger/2023-1`. Add all the remote hosts to the new host file. For example,
+
+```bash
+Name: parallel
+Host: raapoi-login
+Queue: SLURM2.1
+Qargs: "-p parallel --mem-per-cpu=2G --time=5-00:00 --constraint=AMD"
+processors: 1608
+tmpdir: /nfs/scratch/projects/tmp
+```
+
+###Add new module file
+Once installation is complete, add a new module file so that the new version can be loaded. Module files for existing Schrodinger versions can be found in `/home/software/tools/eb_modulefiles/all/Core/Schrodinger`. The module files are named with `.lua` extensions. Make a new module file by copying one of the older module files, for example,
+
+```bash
+cp 2023-1.lua 2023-3.lua
+```
+
+Then edit the new module file (in this case, `2023-3.lua`) to match the new version installed. Fields that will need to be updated include the `Whatis` section, and the `root`. For example:
+
+```bash
+local root="/home/software/apps/Schrodinger/2023-3"
+```
+
+You can check if the module has been properly installed by
+```bash
+module --ignore_cache avail
+```
