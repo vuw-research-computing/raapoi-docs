@@ -38,6 +38,16 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
       <p><a href="david.alderman@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
+
+  <div class="card">
+    <img src="../img/NickB.jpg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Nick Bray</b></h4>
+      <p>Technical Specialist - Storage in Digital Solutions.</p>
+      <p><a href="nick.bray@vuw.ac.nz">Email Me</a>  </p>
+    </div>
+  </div> 
+
 </div>
 
 <p></p>
