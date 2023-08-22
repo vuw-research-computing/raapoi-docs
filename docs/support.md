@@ -19,12 +19,11 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
   </div> 
 
   <div class="card">
-    <img src=" ../img/Andre.jpg" alt="Avatar" style="width:100%">
+    <img src="../img/blank_user.png" alt="Avatar" style="width:100%">
     <div class="container">
-      <h4><b>Andre Geldenhuis test</b></h4>
-      <p>Research Computing Specialist in the Center for Academic Development.
-      Leaving on the 25th of August 2023</p>
-      <p><a href="andre.geldenhuis@vuw.ac.nz">Email Me</a>  </p>
+      <h4><b>David Alderman</b></h4>
+      <p>Systems Administrator in Digital Solutions.</p>
+      <p><a href="david.alderman@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
 </div>
