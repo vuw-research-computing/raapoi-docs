@@ -141,3 +141,9 @@ code, .rst-content tt {
   .container {
     padding: 2px 16px;
   }
+
+  .card-container {
+    display: flex;          /* This turns on flexbox */
+    flex-wrap: wrap;        /* This allows the cards to wrap onto the next line if there's not enough space */
+    justify-content: space-between; /* This spaces out the cards equally */
+}
