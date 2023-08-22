@@ -31,7 +31,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
   </div> 
 
   <div class="card">
-    <img src="../img/blank_user.png" alt="Avatar" style="width:100%">
+    <img src="../img/DavidA" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>David Alderman</b></h4>
       <p>Systems Administrator in Digital Solutions.</p>
