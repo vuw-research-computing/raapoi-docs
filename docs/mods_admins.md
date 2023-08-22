@@ -86,3 +86,16 @@ Users will use the reservation with
 ##SBATCH --reservation=MyReservation
 ```
 
+## Building software with EasyBuild
+
+### Upgrading easybuild with Easybuild
+
+Get an interactice session on a node, then
+
+```bash
+module load EasyBuild # will load latest version by default
+
+eb --version # see version
+
+eb --install-latest-eb-release  # upgrade - will create new module file for new version
+```
