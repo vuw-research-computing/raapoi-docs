@@ -12,8 +12,8 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
     <img src=" ../img/Andre.jpg" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>Andre Geldenhuis</b></h4>
-      <p>Research Computing Specialist in the Center for Academic Development.
-      Leaving on the 25th of August 2023</p>
+      <p>Research Computing Specialist in the Center for Academic Development.</p>
+      <p>Leaving on the 25th of August 2023</p>
       <p><a href="andre.geldenhuis@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
