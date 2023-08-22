@@ -74,12 +74,12 @@ Moderators are members of the research community who have kindly volunteered the
   </div> 
 
   <div class="card">
-    <img src=" ../img/blank_user.png" alt="Avatar" style="width:100%">
+    <img src=" ../img/wanting_jiao.png" alt="Avatar" style="width:100%">
     <div class="container">
-      <h4><b>Some name</b></h4>
-      <p>What you do</p>
-      <p>Something extra if you like</p>
-      <p><a href="email.address@vuw.ac.nz">Email Me</a>  </p>
+      <h4><b>Wanting Jiao</b></h4>
+      <p>Senior Scientist</p>
+      <p>Ferrier Research Institute, Schrödinger Suite</p>
+      <p><a href="wanting.jiao@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
 
