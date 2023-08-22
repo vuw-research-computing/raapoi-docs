@@ -113,6 +113,7 @@ tar -xvf Schrodinger_Download.tar
 Change to the top-level directory of the download
 ```bash
 cd Schrodinger_Download
+```
 
 Then, run the instalaation script
 ```bash
