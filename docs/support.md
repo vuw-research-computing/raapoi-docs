@@ -102,5 +102,16 @@ Moderators are members of the research community who have kindly volunteered the
       <p><a href="geoffrey.weal@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
-
+  
+  <div class="card">
+    <img src=" ../img/KellyStyles.jpeg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Kelly Styles</b></h4>
+      <p>PhD Student</p>
+      <p>School of Biological Sciences</p>
+      <p>Microbial genomics and pipeline creation</p>
+      <p><a href="kelly.styles@vuw.ac.nz">Email Me</a>  </p>
+    </div>
+  </div> 
+  
 </div>
