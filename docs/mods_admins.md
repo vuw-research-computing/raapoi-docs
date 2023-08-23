@@ -88,6 +88,34 @@ Users will use the reservation with
 
 ## Building software with EasyBuild
 
+### Building a new toolchain
+
+Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node.  Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.
+
+```bash
+srun -c 10 --mem=10G -p parallel --time=6:00:00 --pty bash
+
+# now on the node
+module purge # just in case
+module load EasyBuild
+
+# Search for the package 
+eb -S foss-2022a
+
+# There is a long output as that toochain gets used in many packages, but we can see:
+$CFGS1/f/foss/foss-2022a.eb
+
+# Check what will be built
+# BE CAUTIOUS OF OPENMPI builds - the .eb file needs to be changed to use pmi2 rather than pmix each time!
+eb -Dr foss-2022a.eb
+
+#Trigger the build - this might take a long time, you could add more cpus or time if needed
+eb -r --parallel=$SLURM_CPUS_PER_TASK foss-2022a.eb
+
+```
+
+
+
 ### Rebuilding an existing package
 
 This might be needed for some old packages after the move to Rocky 8
@@ -118,6 +146,7 @@ eb -r --parallel=10 --rebuild ncurses-6.0.eb
 
 # test once done
 ```
+
 
 ### Upgrading easybuild with Easybuild
 
