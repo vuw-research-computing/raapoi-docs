@@ -88,9 +88,74 @@ Users will use the reservation with
 
 ## Building software with EasyBuild
 
+Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node. 
+
+### Build a simple program
+
+Here we will build a simple program called velvet - it's a genome assembler.
+
+```bash
+srun -c 10 --mem=10G -p parallel --time=6:00:00 --pty bash
+
+# now on the node
+module purge # just in case
+module load EasyBuild
+
+# Search for the package 
+eb -S velvet
+
+# Returns
+* $CFGS1/v/Velvet/Velvet-1.2.10-GCC-8.3.0-mt-kmer_191.eb
+* $CFGS1/v/Velvet/Velvet-1.2.10-GCC-11.2.0-mt-kmer_191.eb
+* $CFGS1/v/Velvet/Velvet-1.2.10-foss-2018a-mt-kmer_191.eb
+* $CFGS1/v/Velvet/Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+* $CFGS1/v/Velvet/Velvet-1.2.10-intel-2017a-mt-kmer_37.eb
+
+# We want to pick one that won't need to build a whole new toolchain if we can avoid it
+# Let's have a look at what would get built with a Dry (D) run.  The r is for robot to
+# find all the dependancies
+eb -Dr Velvet-1.2.10-intel-2017a-mt-kmer_37.eb
+
+# Partial return
+* [x] $CFGS/m/M4/M4-1.4.17.eb (module: Core | M4/1.4.17)
+* [x] $CFGS/b/Bison/Bison-3.0.4.eb (module: Core | Bison/3.0.4)
+* [x] $CFGS/f/flex/flex-2.6.0.eb (module: Core | flex/2.6.0)
+* [x] $CFGS/z/zlib/zlib-1.2.8.eb (module: Core | zlib/1.2.8)
+* [ ] $CFGS/b/binutils/binutils-2.27.eb (module: Core | binutils/2.27)
+* [ ] $CFGS/g/GCCcore/GCCcore-6.3.0.eb (module: Core | GCCcore/6.3.0)
+* [ ] $CFGS/z/zlib/zlib-1.2.11-GCCcore-6.3.0.eb 
+* [ ] $CFGS/h/help2man/help2man-1.47.4-GCCcore-6.3.0.eb 
+* [ ] $CFGS/m/M4/M4-1.4.18-GCCcore-6.3.0.eb 
+* [ ] $CFGS/b/Bison/Bison-3.0.4-GCCcore-6.3.0.eb 
+* [ ] $CFGS/f/flex/flex-2.6.3-GCCcore-6.3.0.eb 
+* [ ] $CFGS/i/icc/icc-2017.1.132-GCC-6.3.0-2.27.eb 
+* [ ] $CFGS/i/ifort/ifort-2017.1.132-GCC-6.3.0-2.27.eb 
+* [ ] $CFGS/i/iccifort/iccifort-2017.1.132-GCC-6.3.0-2.27.eb 
+* [ ] $CFGS/i/impi/impi-2017.1.132-iccifort-2017.1.132-GCC-6.3.0-2.27.eb 
+* [ ] $CFGS/i/iimpi/iimpi-2017a.eb (module: Core | iimpi/2017a)
+* [ ] $CFGS/i/imkl/imkl-2017.1.132-iimpi-2017a.eb 
+* [ ] $CFGS/i/intel/intel-2017a.eb (module: Core | intel/2017a)
+* [ ] $CFGS/v/Velvet/Velvet-1.2.10-intel-2017a-mt-kmer_37.eb 
+
+# Packages wiht a [x] are already built, [ ] will need to be built. This is a lot of building,, including a "new" compiler - intel-2017a.eb, let's avoid that and try another
+eb -Dr Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+
+# Partially returns, all [x] except for velvet
+...
+* [x] $CFGS/f/FFTW/FFTW-3.3.8-gompi-2018b.eb 
+* [x] $CFGS/s/ScaLAPACK/ScaLAPACK-2.0.2-gompi-2018b-OpenBLAS-0.3.1.eb
+* [x] $CFGS/f/foss/foss-2018b.eb (module: Core | foss/2018b)
+* [ ] $CFGS/v/Velvet/Velvet-1.2.10-foss-2018b-mt-kmer_191.eb 
+
+# To build this we would
+eb -r --parallel=$SLURM_CPUS_PER_TASK Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+
+```
+Remember to close the interactive session when done to stop it consuming resources.
+
 ### Building a new toolchain
 
-Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node.  Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.
+Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.
 
 ```bash
 srun -c 10 --mem=10G -p parallel --time=6:00:00 --pty bash
@@ -115,12 +180,11 @@ eb -r --parallel=$SLURM_CPUS_PER_TASK foss-2022a.eb
 ```
 
 
-
 ### Rebuilding an existing package
 
 This might be needed for some old packages after the move to Rocky 8
 
-Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node.  Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.
+Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.
 
 ```bash
 srun -c 10 --mem=10G -p parallel --time=6:00:00 --pty bash
