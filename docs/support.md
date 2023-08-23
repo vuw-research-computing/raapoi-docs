@@ -93,6 +93,14 @@ Moderators are members of the research community who have kindly volunteered the
     </div>
   </div> 
 
-
+  <div class="card">
+    <img src=" ../img/WealGeoffrey.png" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Geoffrey Weal</b></h4>
+      <p>Postdoctorial Fellowship</p>
+      <p>MacDiarmid Institute and iCeMS (Kyoto University, Japan) </p>
+      <p><a href="geoffrey.weal@vuw.ac.nz">Email Me</a>  </p>
+    </div>
+  </div> 
 
 </div>
