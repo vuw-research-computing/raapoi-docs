@@ -119,6 +119,14 @@ Folk who used to look after Raapoi.
     </div>
   </div> 
 
+  <div class="card">
+    <img src="../img/blank_user.png" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Alice Fage</b></h4>
+      <p>Research Assistant who helped out greatly with cluster admin</p>
+    </div>
+  </div> 
+
 </div>
 
 <p></p>
