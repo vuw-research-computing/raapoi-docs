@@ -11,24 +11,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
 <p></p>
 
 <div class="card-container">
-  <div class="card">
-    <img src=" ../img/Andre.jpg" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Andre Geldenhuis</b></h4>
-      <p>Research Computing Specialist in the Center for Academic Development.</p>
-      <p>Leaving on the 25th of August 2023</p>
-      <p><a href="andre.geldenhuis@vuw.ac.nz">Email Me</a>  </p>
-    </div>
-  </div> 
 
-  <div class="card">
-    <img src="../img/Matt.jpg" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Matt Plummer</b></h4>
-      <p>Senior Research Partner.</p>
-      <p><a href="matt.plummer@vuw.ac.nz">Email Me</a>  </p>
-    </div>
-  </div> 
 
   <div class="card">
     <img src="../img/DavidA.jpg" alt="Avatar" style="width:100%">
@@ -94,3 +77,54 @@ Moderators are members of the research community who have kindly volunteered the
   </div> 
   
 </div>
+
+
+<p></p>
+<p></p>
+<p></p>
+
+
+## Raapoi Admin Alumni
+
+Folk who used to look after Raapoi.
+
+
+
+
+<div class="card-container">
+
+  <div class="card">
+    <img src="../img/Wes.jpg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Wes Harrell</b></h4>
+      <p>Research Software Engineer</p>
+    </div>
+  </div> 
+
+  <div class="card">
+    <img src=" ../img/Andre.jpg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Andre Geldenhuis</b></h4>
+      <p>Research Computing Specialist in the Center for Academic Development.</p>
+      <p>Leaving on the 25th of August 2023</p>
+    </div>
+  </div> 
+
+  <div class="card">
+    <img src="../img/Matt.jpg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Matt Plummer</b></h4>
+      <p>Senior Research Partner.</p>
+      <p><a href="matt.plummer@vuw.ac.nz">Email Me</a>  </p>
+    </div>
+  </div> 
+
+</div>
+
+<p></p>
+<p></p>
+<p></p>
+
+## Raapoi Moderator Alumni
+
+Folk who were moderators in the past.
