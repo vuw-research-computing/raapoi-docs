@@ -88,6 +88,37 @@ Users will use the reservation with
 
 ## Building software with EasyBuild
 
+### Rebuilding an existing package
+
+This might be needed for some old packages after the move to Rocky 8
+
+Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node.  Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.
+
+```bash
+srun -c 10 --mem=10G -p parallel --time=6:00:00 --pty bash
+
+# now on the node
+module purge # just in case
+module load EasyBuild
+
+# Example of finding the problem
+ldd /home/software/apps/samtools/1.10/bin/samtools | grep found
+        libncursesw.so.5 => not found
+        libtinfo.so.5 => not found
+
+# See the what got build for samtools
+eb -Dr /home/software/EasyBuild/ebfiles_repo/SAMtools/SAMtools-1.10-GCC-8.3.0.eb
+
+# There are a few options
+ncurses-6.0.eb
+ncurses-6.1-GCCcore-8.3.0.eb
+
+# let's try one
+eb -r --parallel=10 --rebuild ncurses-6.0.eb
+
+# test once done
+```
+
 ### Upgrading easybuild with Easybuild
 
 Get an interactice session on a node, then
@@ -100,10 +131,11 @@ eb --version # see version
 eb --install-latest-eb-release  # upgrade - will create new module file for new version
 ```
 
-##Building New Version of Schrodinger Suite
+## Building New Version of Schrodinger Suite
+
 Schrödinger Suite releases new versions quarterly, it's good practice to keep up to date with the latest version of the software. To build the new version, first download the tar file from the Schrödinger website (www.schrodinger.com), then move the installation tar file to the directory `/home/software/src/Schrodinger` on Rāpoi.
 
-###Quick Installation 
+### Quick Installation 
 
 First, extract the tar file
 ```bash
@@ -127,7 +159,7 @@ During installation, you will be asked to confirm the `installation directory`, 
 
 The installation file will check for dependencies in the last stage, missing dependencies will be reported, and will need to be installed for Schrödinger Suite to run properly. Contact Rāpoi admin to install the missing dependencies.
 
-###Modify the hosts file
+### Modify the hosts file
 Change directory to the installation folder
 
 ```bash
@@ -145,7 +177,7 @@ processors: 1608
 tmpdir: /nfs/scratch/projects/tmp
 ```
 
-###Add new module file
+### Add new module file
 Once installation is complete, add a new module file so that the new version can be loaded. Module files for existing Schrodinger versions can be found in `/home/software/tools/eb_modulefiles/all/Core/Schrodinger`. The module files are named with `.lua` extensions. Make a new module file by copying one of the older module files, for example,
 
 ```bash
