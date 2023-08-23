@@ -62,27 +62,6 @@ Moderators are members of the research community who have kindly volunteered the
 <p></p>
 <div class="card-container">
 
-
-  <div class="card">
-    <img src=" ../img/blank_user.png" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Some name</b></h4>
-      <p>What you do</p>
-      <p>Something extra if you like</p>
-      <p><a href="email.address@vuw.ac.nz">Email Me</a>  </p>
-    </div>
-  </div> 
-
-  <div class="card">
-    <img src=" ../img/blank_user.png" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Some name</b></h4>
-      <p>What you do</p>
-      <p>Something extra if you like</p>
-      <p><a href="email.address@vuw.ac.nz">Email Me</a>  </p>
-    </div>
-  </div> 
-
   <div class="card">
     <img src=" ../img/Wanting.jpeg" alt="Avatar" style="width:100%">
     <div class="container">
