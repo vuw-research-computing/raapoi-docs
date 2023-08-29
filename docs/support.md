@@ -76,6 +76,17 @@ Moderators are members of the research community who have kindly volunteered the
     </div>
   </div> 
   
+  <div class="card">
+    <img src=" ../img/Brendan Harding Profile.jpeg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Brendan Harding</b></h4>
+      <p>Lecturer</p>
+      <p>School of Mathematics and Statistics</p>
+      <p>Faculty of Engineering</p>
+      <p><a href="brendan.harding@vuw.ac.nz">Email Me</a>  </p>
+    </div>
+  </div> 
+  
 </div>
 
 
