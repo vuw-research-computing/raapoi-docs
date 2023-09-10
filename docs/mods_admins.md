@@ -4,6 +4,18 @@ This a list of common cluster moderator actions, provided as reference. Users wi
 
 These commands will require you to be logged in with your moderator-specific account
 
+## Dealing with normal jobs
+
+### Extending jobs
+
+Jobs are normally given a limit of 10 days to run. If a little longer is needed and there is no reason such as upcoming maintenance then jobs can be given a bit longer to complete:
+
+```bash
+# Extend the job by 3 days, 23 hours, 59 minutes and 59 seconds (from 10 days to almost 14 days)
+scontrol update jobid=<jobid> TimeLimit=13-23:59:59
+
+```
+
 ## Dealing with badly behaved jobs
 
 ### Holding jobs
