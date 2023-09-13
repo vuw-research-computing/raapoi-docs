@@ -10,13 +10,12 @@ These commands will require you to be logged in with your moderator-specific acc
 
 Jobs are normally given a limit of 10 days to run. If a little longer is needed and there is no reason such as upcoming maintenance then jobs can be given a bit longer to complete:
 
-```bash
+```text
 # To set a new total run time for a job of 13 days, 23 hours, 59 minutes and 59 seconds
 scontrol update jobid=<jobid> TimeLimit=13-23:59:59
 
 # Extend the job by 3 days, 23 hours, 59 minutes and 59 seconds (the + extends the time)
 scontrol update jobid=<jobid> TimeLimit=+3-23:59:59
-
 ```
 
 ## Dealing with badly behaved jobs
