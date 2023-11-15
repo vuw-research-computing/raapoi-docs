@@ -83,7 +83,8 @@ cd python_test
 ```
 Next we load the python 3 module and use python 3 to create a python virtualenv.  This way we can install pip packages which are not installed on the cluster
 ```bash
-module load python/3.6.6
+module load GCCcore/10.3.0
+module load Python/3.9.5
 python3 -m venv mytest
 ```
 
@@ -128,7 +129,8 @@ Using nano create the submissions script called python_submit.sh with the follow
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=me@email.com
 
-module load python/3.6.6
+module load GCCcore/10.3.0
+module load Python/3.9.5
 
 source mytest/bin/activate
 python test.py
