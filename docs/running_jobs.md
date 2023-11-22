@@ -27,24 +27,23 @@ For example, if you want to request a compute node with AMD processors you can a
 
 To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
 
-  `sbatch myjob.sh`
+`sbatch myjob.sh`
 
 In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:
 
 ```
- #!/bin/bash
- #SBATCH --cpus-per-task=2
- #SBATCH --mem=2G
- #SBATCH --partition=parallel
- #SBATCH --time=3-12:00
- #SBATCH -o /nfs/home/username/project1.out
- #SBATCH -e /nfs/home/username/project1.err
- #SBATCH --mail-type=BEGIN,END,FAIL
- #SBATCH --mail-user=me@email.com
+#!/bin/bash
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=2G
+#SBATCH --partition=parallel
+#SBATCH --time=3-12:00
+#SBATCH -o /nfs/home/username/project1.out
+#SBATCH -e /nfs/home/username/project1.err
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=me@email.com
 
- module load python/3.6.3
- python3 project1.py
-
+module load python/3.6.3
+python3 project1.py
 ```
 
 This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
@@ -55,7 +54,7 @@ home directory in a file named project1.out and any error information in a file 
 
 NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
 
-  `cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh`
+`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh`
 
 The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
 
@@ -68,8 +67,8 @@ One of the basic job submittal tools is the command srun
 For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:
 
 ```
-  module load R/3.5.1
-  srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=quicktest R
+module load R/3.5.1
+srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=quicktest R
 ```
 
 So what does this all mean?
