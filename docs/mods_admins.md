@@ -74,7 +74,7 @@ JOBID REASON
 #### Show User CPU restruction details
 
 ```bash
-sacctmgr show assoc where user=wealge
+sacctmgr show assoc where user=write_username_here
 ```
 
 #### Limiting CPU resources
