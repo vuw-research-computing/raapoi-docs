@@ -71,6 +71,18 @@ JOBID REASON
 20583 Dependency
 ```
 
+#### Show User CPU restruction details
+
+```bash
+sacctmgr show assoc where user=wealge
+```
+
+#### Limiting CPU resources
+
+```bash
+sudo sacctmgr modify user <user> set GrpTRES=cpu=1026
+```
+
 #### Limiting GPU resources
 
 ```bash
@@ -78,12 +90,6 @@ sacctmgr modify user bob set GrpTRES=cpu=-1,mem=-1,gres/gpu=4  # -1 means no res
 
 #check result
 sacctmgr list assoc User=bob
-```
-
-#### Limiting CPU resources
-
-```bash
-sudo sacctmgr modify user <user> set GrpTRES=cpu=1026
 ```
 
 ## Using reservations
