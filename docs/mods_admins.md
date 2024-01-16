@@ -80,7 +80,7 @@ sacctmgr show assoc where user=write_username_here
 #### Limiting CPU resources
 
 ```bash
-sudo sacctmgr modify user <user> set GrpTRES=cpu=1026
+sacctmgr modify user <user> set GrpTRES=cpu=1026
 ```
 
 #### Limiting GPU resources
