@@ -83,6 +83,14 @@ sacctmgr show assoc where user=write_username_here
 sacctmgr modify user <user> set GrpTRES=cpu=1026
 ```
 
+#### Limiting Memory (RAM) resources
+
+This is a reference, but note that this may have unintended consequences. Please consult other moderators on Slack before proceeding with this.
+
+```bash
+sacctmgr modify user <user> set GrpTRES=mem=1000G # This is 1TB of Ram
+```
+
 #### Limiting GPU resources
 
 ```bash
