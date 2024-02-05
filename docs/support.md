@@ -7,17 +7,26 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
 
 ## Raapoi Admins
 
-Currently there are no full time Raapoi Admins. The listed folk have other roles and are very kindly helping out on a best effort as time permits basis.
+Raapoi admin is ready to assist you in getting started with your work on Raapoi and effectively handling your research data within the cluster. The listed folk in the team have other roles and are very kindly helping out on a best effort as time permits basis.
 <p></p>
 
 <div class="card-container">
 
 
   <div class="card">
+    <img src="../img/RohitDuggalProfile.jpg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Rohit Duggal</b></h4>
+      <p>Research Computing Specialist - Raapoi Admin</p>
+      <p><a href="rohit.duggal@vuw.ac.nz">Email Me</a>  </p>
+    </div>
+  </div> 
+
+  <div class="card">
     <img src="../img/DavidA.jpg" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>David Alderman</b></h4>
-      <p>Systems Administrator in Digital Solutions.</p>
+      <p>Systems Administrator - Storage in Digital Solutions.</p>
       <p><a href="david.alderman@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
@@ -30,6 +39,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
       <p><a href="nick.bray@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
+
 
 </div>
 
