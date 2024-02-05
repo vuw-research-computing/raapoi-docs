@@ -26,7 +26,7 @@ Raapoi admin is ready to assist you in getting started with your work on Raapoi 
     <img src="../img/DavidA.jpg" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>David Alderman</b></h4>
-      <p>Systems Administrator - Storage in Digital Solutions.</p>
+      <p>Systems Administrator in Digital Solutions.</p>
       <p><a href="david.alderman@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
