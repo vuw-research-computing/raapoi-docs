@@ -18,7 +18,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
     <div class="container">
       <h4><b>David Alderman</b></h4>
       <p>Systems Administrator in Digital Solutions.</p>
-      <p><a href="david.alderman@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:david.alderman@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
 
@@ -27,7 +27,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
     <div class="container">
       <h4><b>Nick Bray</b></h4>
       <p>Technical Specialist - Storage in Digital Solutions.</p>
-      <p><a href="nick.bray@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:nick.bray@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
 
@@ -51,7 +51,7 @@ Moderators are members of the research community who have kindly volunteered the
       <h4><b>Wanting Jiao</b></h4>
       <p>Senior Scientist</p>
       <p>Ferrier Research Institute, Schrödinger Suite</p>
-      <p><a href="wanting.jiao@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:wanting.jiao@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
 
@@ -61,7 +61,7 @@ Moderators are members of the research community who have kindly volunteered the
       <h4><b>Geoffrey Weal</b></h4>
       <p>Postdoctorial Fellowship</p>
       <p>MacDiarmid Institute and iCeMS (Kyoto University, Japan) </p>
-      <p><a href="geoffrey.weal@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:geoffrey.weal@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
   
@@ -72,7 +72,7 @@ Moderators are members of the research community who have kindly volunteered the
       <p>PhD Student</p>
       <p>School of Biological Sciences</p>
       <p>Microbial genomics and pipeline creation</p>
-      <p><a href="kelly.styles@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:kelly.styles@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
   
@@ -83,7 +83,7 @@ Moderators are members of the research community who have kindly volunteered the
       <p>Lecturer</p>
       <p>School of Mathematics and Statistics</p>
       <p>Faculty of Engineering</p>
-      <p><a href="brendan.harding@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:brendan.harding@vuw.ac.nz">Email Me</a>  </p>
     </div>
   </div> 
   
