@@ -17,7 +17,7 @@ Our admins are ready to assist you in getting started with your work on Rāpoi a
     <img src="../img/RohitDuggalProfile.jpg" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>Rohit Duggal</b></h4>
-      <p>Research Computing Specialist - Raapoi Admin</p>
+      <p>Research Computing Specialist - Rāpoi Admin</p>
       <p><a href="mailto:rohit.duggal@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
