@@ -5,7 +5,7 @@ Visit the [Rāpoi Slack Channel](https://uwrc.slack.com) for help, software requ
 
 Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Admins:
 
-## Raapoi Admins
+## Rāpoi Admins
 
 Currently there are no full time Raapoi Admins. The listed folk have other roles and are very kindly helping out on a best effort as time permits basis.
 <p></p>
@@ -27,7 +27,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
     <div class="container">
       <h4><b>Nick Bray</b></h4>
       <p>Technical Specialist - Storage in Digital Solutions.</p>
-      <p><a href="mailto:nick.bray@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:nick.bray@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
 
@@ -38,7 +38,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
 <p></p>
 
 
-## Raapoi Moderators
+## Rāpoi Moderators
 
 Moderators are members of the research community who have kindly volunteered their time to help support Raapoi - they can help build software and limit users who are causing problems on the cluster. They're busy people, but they might find time to build your weird software package - on a best effort and as time permits basis.
 
@@ -51,7 +51,7 @@ Moderators are members of the research community who have kindly volunteered the
       <h4><b>Wanting Jiao</b></h4>
       <p>Senior Scientist</p>
       <p>Ferrier Research Institute, Schrödinger Suite</p>
-      <p><a href="mailto:wanting.jiao@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:wanting.jiao@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
 
@@ -61,7 +61,7 @@ Moderators are members of the research community who have kindly volunteered the
       <h4><b>Geoffrey Weal</b></h4>
       <p>Postdoctorial Fellowship</p>
       <p>MacDiarmid Institute and iCeMS (Kyoto University, Japan) </p>
-      <p><a href="mailto:geoffrey.weal@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:geoffrey.weal@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
   
@@ -72,7 +72,7 @@ Moderators are members of the research community who have kindly volunteered the
       <p>PhD Student</p>
       <p>School of Biological Sciences</p>
       <p>Microbial genomics and pipeline creation</p>
-      <p><a href="mailto:kelly.styles@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:kelly.styles@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
   
@@ -83,7 +83,7 @@ Moderators are members of the research community who have kindly volunteered the
       <p>Lecturer</p>
       <p>School of Mathematics and Statistics</p>
       <p>Faculty of Engineering</p>
-      <p><a href="mailto:brendan.harding@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:brendan.harding@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
   
@@ -95,7 +95,7 @@ Moderators are members of the research community who have kindly volunteered the
 <p></p>
 
 
-## Raapoi Admin Alumni
+## Rāpoi Admin Alumni
 
 Folk who used to look after Raapoi.
 
@@ -126,7 +126,7 @@ Folk who used to look after Raapoi.
     <div class="container">
       <h4><b>Matt Plummer</b></h4>
       <p>Senior Research Partner.</p>
-      <p><a href="matt.plummer@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:matt.plummer@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
 
@@ -144,6 +144,6 @@ Folk who used to look after Raapoi.
 <p></p>
 <p></p>
 
-## Raapoi Moderator Alumni
+## Rāpoi Moderator Alumni
 
 Folk who were moderators in the past.
