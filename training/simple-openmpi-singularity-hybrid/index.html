@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/training/simple-openmpi-singularity-hybrid/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Simple openmpi singularity hybrid - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Simple openmpi singularity hybrid";
+        var mkdocs_page_input_path = "training/simple-openmpi-singularity-hybrid.md";
+        var mkdocs_page_url = "/raapoi-docs/training/simple-openmpi-singularity-hybrid/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../solar_vuw/">Connecting to SoLAR (VUW High Capacity Storage)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cloud_providers/">Connecting to Cloud Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../containers/">Using Containers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/">Using Jupyter Notebooks</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Simple openmpi singularity hybrid</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="simple-openmpi-with-singularity-using-the-hybrid-approach">Simple OpenMPI with Singularity using the hybrid approach.<a class="headerlink" href="#simple-openmpi-with-singularity-using-the-hybrid-approach" title="Permanent link">¶</a></h2>
+<p>The hybrid approach is one way of getting OpenMPI working with containers. It requires the OpenMPI version inside the container to match the OpenMPI outside the container (loaded via module loading).</p>
+<p>First check what openMPI version we have on Rāpoi.</p>
+<p>On <strong>Rāpoi</strong> switch to our new modules
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>unuse<span class="w"> </span>/home/software/tools/modulefiles<span class="w"> </span><span class="c1"># stop using the older modules</span>
+module<span class="w"> </span>use<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Core<span class="w"> </span><span class="c1">#the new module files organised by compiler</span>
+module<span class="w"> </span>spider<span class="w"> </span>OpenMPI<span class="w"> </span><span class="c1"># search for openMPI - thre are several options, lets try</span>
+module<span class="w"> </span>spider<span class="w"> </span>OpenMPI/4.0.5<span class="w">  </span><span class="c1"># we will use this one, which requires GCC/10.2.0</span>
+</code></pre></div></p>
+<p>On your <strong>local machine</strong> we will create a very simple C openMPI program. Create this in a sensible place.  I used <code>~/projects/examples/singularity/openMPI</code></p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">rc</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">myrank</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_Init</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MPI_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">fprintf</span><span class="w"> </span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"MPI_Init() failed"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_FAILURE</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_Comm_size</span><span class="w"> </span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MPI_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">fprintf</span><span class="w"> </span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"MPI_Comm_size() failed"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">goto</span><span class="w"> </span><span class="n">exit_with_error</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_Comm_rank</span><span class="w"> </span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">myrank</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MPI_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">fprintf</span><span class="w"> </span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"MPI_Comm_rank() failed"</span><span class="p">);</span>
+<span class="w">                </span><span class="k">goto</span><span class="w"> </span><span class="n">exit_with_error</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">fprintf</span><span class="w"> </span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello, I am rank %d/%d"</span><span class="p">,</span><span class="w"> </span><span class="n">myrank</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+
+<span class="w"> </span><span class="nl">exit_with_error</span><span class="p">:</span>
+<span class="w">        </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_FAILURE</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the same location as above create a singularity definition file, note that we choose to compile and install the same OpenMPI version as we will use on Rāpoi.</p>
+<div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
+From:<span class="w"> </span>ubuntu:latest
+
+%files
+<span class="w">    </span>mpitest.c<span class="w"> </span>/opt
+
+%environment
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_DIR</span><span class="o">=</span>/opt/ompi
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_OMPI_DIR</span><span class="o">=</span><span class="nv">$OMPI_DIR</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_APPEND_PATH</span><span class="o">=</span><span class="nv">$OMPI_DIR</span>/bin
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULAIRTYENV_APPEND_LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$OMPI_DIR</span>/lib
+
+%post
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Installing required packages..."</span>
+<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span>git<span class="w"> </span>bash<span class="w"> </span>gcc<span class="w"> </span>gfortran<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>file
+
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Installing Open MPI"</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_DIR</span><span class="o">=</span>/opt/ompi
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_VERSION</span><span class="o">=</span><span class="m">4</span>.0.5<span class="w">  </span><span class="c1">#NOTE matching version to that on Raapoi</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_URL</span><span class="o">=</span><span class="s2">"https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-</span><span class="nv">$OMPI_VERSION</span><span class="s2">.tar.bz2"</span>
+<span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/ompi
+<span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt
+<span class="w">    </span><span class="c1"># Download</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/tmp/ompi<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span>-O<span class="w"> </span>openmpi-<span class="nv">$OMPI_VERSION</span>.tar.bz2<span class="w"> </span><span class="nv">$OMPI_URL</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tar<span class="w"> </span>-xjf<span class="w"> </span>openmpi-<span class="nv">$OMPI_VERSION</span>.tar.bz2
+<span class="w">    </span><span class="c1"># Compile and install</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/tmp/ompi/openmpi-<span class="nv">$OMPI_VERSION</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./configure<span class="w"> </span>--prefix<span class="o">=</span><span class="nv">$OMPI_DIR</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
+<span class="w">    </span><span class="c1"># Set env variables so we can compile our application</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$OMPI_DIR</span>/bin:<span class="nv">$PATH</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$OMPI_DIR</span>/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">MANPATH</span><span class="o">=</span><span class="nv">$OMPI_DIR</span>/share/man:<span class="nv">$MANPATH</span>
+
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Compiling the MPI application..."</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/opt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mpicc<span class="w"> </span>-o<span class="w"> </span>mpitest<span class="w"> </span>mpitest.c
+</code></pre></div>
+<p>Now we build our container locally, giving it a sensible name.  We need <code>OpenMPI-4.0.5</code> to use this, so let's include that in the name.
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>test-openmpi-4.0.5.sif<span class="w"> </span>test-openmpi-4.0.5.def
+</code></pre></div></p>
+<p>Copy that file to Rāpoi somehow - Filezilla, rsync or similar.  I'll just use sftp for simplicity.
+<div class="highlight"><pre><span></span><code>sftp<span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+put<span class="w"> </span>test-openmpi-4.0.5.sif
+</code></pre></div>
+Now on <strong>Rāpoi</strong> copy that file to a sensible location, I used <code>~/projects/examples/singularity/openMPI</code> again.</p>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>test-openmpi-4.0.5.sif<span class="w"> </span>~/projects/examples/singularity/openMPI/
+<span class="nb">cd</span><span class="w"> </span>~/projects/examples/singularity/openMPI/
+</code></pre></div>
+<p>In that location create a sbatch file</p>
+<p>openmpi-test.sh
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=mpi_test</span>
+<span class="c1">#SBATCH --time=00-00:02:00</span>
+<span class="c1">#SBATCH --output=out_test.out</span>
+<span class="c1">#SBATCH --error=out_test.err</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">#SBATCH --ntasks=2</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --tasks-per-node=1</span>
+<span class="c1">#SBATCH --mem=1GB</span>
+<span class="c1">#SBATCH --constraint="IB,AMD"</span>
+<span class="c1">#SBATCH --nodes=2</span>
+
+module<span class="w"> </span>use<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Core
+module<span class="w"> </span>unuse<span class="w"> </span>/home/software/tools/modulefiles<span class="w"> </span><span class="c1"># to prevent conflicts with the old modules</span>
+module<span class="w"> </span>load<span class="w"> </span>GCC/10.2.0
+module<span class="w"> </span>load<span class="w"> </span>OpenMPI/4.0.5
+module<span class="w"> </span>load<span class="w"> </span>Singularity/3.7.3<span class="w"> </span><span class="c1"># Note this is a new singularity build</span>
+
+<span class="nv">CONPATH</span><span class="o">=</span><span class="nv">$HOME</span>/projects/examples/singularity/openMPI
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">2</span><span class="w"> </span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="nv">$CONPATH</span>/test-openmpi-4.0.5.sif<span class="w"> </span>/opt/mpitest
+</code></pre></div></p>
+<p>Submit that to slurm and see the output
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>openmpi-test.sh
+squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w">  </span><span class="c1"># see the job</span>
+cat<span class="w"> </span>out_test.out<span class="w"> </span><span class="c1"># examine the output after the job is done</span>
+</code></pre></div></p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

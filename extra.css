@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'National';
+    font-weight: 400;
+    src: url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.eot');
+    src: url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.woff') format('woff'), /* Modern Browsers */
+         url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+font-family: 'Segoe WP N';
+font-style: normal;
+font-weight: lighter;
+src: local('Segoe WP N'), url('../site/fonts/SegoeWPN.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Segoe UI Regular';
+font-style: normal;
+font-weight: lighter;
+src: local('Segoe UI Regular'), url('../site/fonts/Segoe UI.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Segoe UI Italic';
+font-style: normal;
+font-weight: normal;
+src: local('Segoe UI Italic'), url('../site/fonts/Segoe UI Italic.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Segoe UI Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Segoe UI Bold'), url('../site/fonts/Segoe UI Bold.woff') format('woff');
+}
+
+
+@font-face {
+font-family: 'Segoe UI Bold Italic';
+font-style: normal;
+font-weight: normal;
+src: local('Segoe UI Bold Italic'), url('site/fonts/Segoe UI Bold Italic.woff') format('woff');
+}
+
+h1 {
+  color: #115737;
+}
+
+h1, h2, h3, h4, h6, legend {
+    margin-top: 0px;
+    font-weight: 700;
+    font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    color: #115737;
+ }
+
+h5 { 
+    margin-top: 0px;
+    font-weight: 700;
+    font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    color: #343131;
+}
+
+.caption-text {
+    color: #B2A67F;
+}
+
+
+a:visited {
+    color: #B2A67F;
+}
+
+.wy-nav-top {
+    background: #115737;
+    color: #fff;
+    padding: 0.4045em 0.809em;
+    position: relative;
+    line-height: 50px;
+    text-align: center;
+    font-size: 100%;
+    *zoom: 1;
+}
+
+.wy-menu-vertical span {
+    color: #B2A67F;
+}
+
+.wy-menu-vertical li.current a {
+    color: #0a0707;
+}
+
+.wy-side-nav-search {
+    z-index: 200;
+    background-color: #115737;
+    text-align: center;
+    padding: 0.809em;
+    display: block;
+    color: #115737;
+    margin-bottom: 0.809em;
+}
+
+body {
+    font-family: "Segoe UI Regular","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    font-weight: normal;
+    color: #404040;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: #edf0f2;
+}
+
+code, .rst-content tt {
+    white-space: nowrap;
+    max-width: 100%;
+    background: #ededeb;
+    border: solid 1px #e1e4e5;
+    font-size: 75%;
+    padding: 0 5px;
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
+    color: #333;
+    overflow-x: auto;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* This centers the cards */
+}
+
+.card {
+    width: 30%;             /* Adjust based on your preference */
+    max-width: 300px;       /* Optional. Sets a max width for the card */
+    margin: 1% 0.5%;        /* Top/bottom spacing of 1%, left/right spacing of 0.5% */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: #f9f9f9;
+    padding: 15px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    max-height: 200px;
+    display: block;
+}
+
+/* Media query for screens narrower than 500px */
+@media (max-width: 500px) {
+    .card-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;    /* Center the cards */
+    }
+
+    .card {
+        width: 90%;          /* Make the card take up most of the screen width */
+        margin: 15px 0;      /* Adjust spacing as desired */
+    }
+}

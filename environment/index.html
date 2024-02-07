@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/environment/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Preparing your Environment (modules) - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Preparing your Environment (modules)";
+        var mkdocs_page_input_path = "environment.md";
+        var mkdocs_page_url = "/raapoi-docs/environment/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Preparing your Environment (modules)</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#preparing-your-environment">Preparing your environment</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-or-loading-software">Adding or loading software</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-loaded-modules">Listing loaded modules</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../solar_vuw/">Connecting to SoLAR (VUW High Capacity Storage)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cloud_providers/">Connecting to Cloud Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../containers/">Using Containers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/">Using Jupyter Notebooks</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Preparing your Environment (modules)</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="enviroment-setup">Enviroment Setup<a class="headerlink" href="#enviroment-setup" title="Permanent link">¶</a></h1>
+<h2 id="preparing-your-environment">Preparing your environment<a class="headerlink" href="#preparing-your-environment" title="Permanent link">¶</a></h2>
+<p>Rāpoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.</p>
+<p>Because of this, Rāpoi developers use a tool called <em>lmod</em> to allow a user to load a specific version of an application, language or library and start using it for their work. The <em>module</em> command will show you what software is available to load, and will add the software to your environment for immediate use. To show all software available to load type the following:</p>
+<p><code>module avail</code></p>
+<p>You will see a long list of available modules to load, including a path, eg <em>lua/5.3.5</em>
+However, instead of searching through a long list, if you know you want to use lua, you can find the path with the keyword subcommand:</p>
+<p><code>module keyword lua</code></p>
+<p>If you want to know more about a particular module you can use the <em>whatis</em> or
+<em>show</em> subcommand.  Some modules have this available, for instance:</p>
+<div class="highlight"><pre><span></span><code>harrelwe@raapoi-master:~$ module show trimmomatic/20190304
+----------------------------------------------------------------------
+   /home/software/tools/modulefiles/trimmomatic/20190304:
+----------------------------------------------------------------------
+load("java/jdk/1.8.0_121")
+setenv("TM_HOME","/home/software/apps/trimmomatic/20190304/bin")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  module whatis R/CRAN/3.5
+
+  R/CRAN/3.5          : Adds the R library path to the pre-built CRAN modules
+</code></pre></div>
+<h2 id="adding-or-loading-software">Adding or loading software<a class="headerlink" href="#adding-or-loading-software" title="Permanent link">¶</a></h2>
+<p>Once you have found the module path you can load the software:</p>
+<p><code>module load lua/5.3.5</code></p>
+<p>After the module loads you can type <code>srun --pty lua</code> at a prompt, or add it to the path of your lua script (the RC team recommends using /usr/bin/env instead of an absolute path).</p>
+<p>Showing/listing the module environment modifications
+You can discover what the module will load into your environment you can run
+module show, for example here is what R adds:</p>
+<div class="highlight"><pre><span></span><code>module show R/3.5.1
+--------------------------------------------------
+   /home/software/tools/modulefiles/R/3.5.1:
+--------------------------------------------------
+
+whatis("Adds the R language path to your environment ")
+prepend_path("PATH","/home/software/apps/R/3.5.1/bin")
+</code></pre></div>
+<h2 id="listing-loaded-modules">Listing loaded modules<a class="headerlink" href="#listing-loaded-modules" title="Permanent link">¶</a></h2>
+<p>To see what modules you have loaded into your environment you can run the command:</p>
+<p><code>module list</code> </p>
+<p>By default you will have the config module loaded (please do not unload that module).  For example, here are the modules I have loaded in my environment when I wrote this section:</p>
+<div class="highlight"><pre><span></span><code>module list
+
+Currently Loaded Modules:
+  1) config   2) tassel/3   3) python/3.7.0   4) python/modules/3.7
+</code></pre></div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../partitions/" title="Using Partitions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../new_mod/" title="New module system">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../partitions/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../new_mod/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
