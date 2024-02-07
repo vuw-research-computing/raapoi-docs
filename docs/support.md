@@ -7,7 +7,7 @@ Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Adm
 
 ## Rāpoi Admins
 
-Raapoi admin is ready to assist you in getting started with your work on Raapoi and effectively handling your research data within the cluster. The listed folk in the team have other roles and are very kindly helping out on a best effort as time permits basis.
+Our admins are ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster. The listed folk in the team have other roles and are very kindly helping out on a best effort as time permits basis.
 <p></p>
 
 <div class="card-container">
@@ -18,7 +18,7 @@ Raapoi admin is ready to assist you in getting started with your work on Raapoi 
     <div class="container">
       <h4><b>Rohit Duggal</b></h4>
       <p>Research Computing Specialist - Raapoi Admin</p>
-      <p><a href="rohit.duggal@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:rohit.duggal@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
 
