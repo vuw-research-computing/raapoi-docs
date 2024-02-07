@@ -18,7 +18,7 @@ Currently there are no full time Raapoi Admins. The listed folk have other roles
     <div class="container">
       <h4><b>David Alderman</b></h4>
       <p>Systems Administrator in Digital Solutions.</p>
-      <p><a href="mailto:david.alderman@vuw.ac.nz">Email Me</a>  </p>
+      <p><a href="mailto:david.alderman@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
 
