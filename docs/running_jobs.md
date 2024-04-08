@@ -67,13 +67,16 @@ One of the basic job submittal tools is the command srun
 For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:
 
 ```
-module load R/3.5.1
+module purge                         # clean/reset your environment
+module load config                   # reload utilities such as vuw-job-report
+module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module
+module load R/4.2.0
 srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=quicktest R
 ```
 
 So what does this all mean?
 
-The _module load_ command will introduce the environment necessary to run a particular program, in this case R version 3.5.1
+The _module load_ commands will introduce the environment necessary to run a particular program, in this case R version 4.2.0
 The _srun_ command will submit the job to the cluster.  The _srun_ command has many parameter available, some of the most common are in this example and explained below
 
 * --pty - Required to run interactively

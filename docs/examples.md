@@ -159,8 +159,10 @@ Check for your job on the queue with `squeue` though it might finish very fast. 
 
 First login to Rāpoi and load the R and R/CRAN modules:
 ```bash
-module load R/4.0.2
-module load R/CRAN      
+module purge                         # clean/reset your environment
+module load config                   # reload utilities such as vuw-job-report
+module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module
+module load R/4.2.0   
 ```
 
 
@@ -177,12 +179,12 @@ Test library existence:
 This should load the package, and give some output like this:
 
 ```R
-── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-✔ tibble  3.0.1     ✔ dplyr   1.0.0
-✔ tidyr   1.1.0     ✔ stringr 1.4.0
-✔ readr   1.3.1     ✔ forcats 0.5.0
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+── Attaching packages ──────────────────────────── tidyverse 1.3.1 ──
+✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+✔ tibble  3.1.6     ✔ dplyr   1.0.8
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1
+── Conflicts ─────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -208,8 +210,9 @@ Next create a bash submission script called ```r_submit.sh``` (or another name o
 #SBATCH --time=10:00
 #
 
-module load R/4.0.2
-module load R/CRAN
+module purge
+module load GCC/11.2.0 OpenMPI/4.1.1
+module load R/4.2.0   
 
 Rscript mytest.R
 ```
@@ -228,6 +231,42 @@ sbatch r_submit.sh
 This submits a task that should execute quickly and create files in the directory from which it was run.
 Examine ```r_test.out```. You can use an editor like nano, vi or emacs, or you can just ```cat``` or ```less``` the file to see its contents on the terminal. You should see:
 ``` "Hello World"```
+
+### Installing additional R packages/extensions to your user directory
+
+If you are in need of additional R packages which are not included in the R installation, you may intall them into your user directory.
+
+Start by launching an R session
+```
+module purge
+module load GCC/11.2.0 OpenMPI/4.1.1
+module load R/4.2.0
+R
+```
+Then, supposing you want to install a package from CRAN named "A3". 
+If this is the first time you are attempting to install local packages for this R version then the steps look something like this.
+```
+> library(A3) # confirm that foo is not already available
+> install.packages('A3')
+Warning in install.packages("A3") :
+  'lib = "/home/software/EasyBuild/software/R/4.2.0-foss-2021b/lib64/R/library"' is not writable
+Would you like to use a personal library instead? (yes/No/cancel) yes
+Would you like to create a personal library
+‘/nfs/home/<username>/R/x86_64-pc-linux-gnu-library/4.2’
+to install packages into? (yes/No/cancel) yes
+--- Please select a CRAN mirror for use in this session ---
+
+Secure CRAN mirrors
+
+<long list of mirrors, the NZ mirror was number 54 in my list>
+Selection: 54
+trying URL 'https://cran.stat.auckland.ac.nz/src/contrib/A3_1.0.0.tar.gz'
+<additional output from the installation steps...>
+```
+
+In future, when you run this version of R, it should automatically check the local user directory created above for installed packages. Any other packages you install in future should automatically go into this directory as well (assuming you don't play around with `.libPaths()`).
+
+
 
 ## Matlab GPU example
 
@@ -424,7 +463,9 @@ r_submit.sh:
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
 
-module load R/CRAN
+module purge
+module load GCC/11.2.0 OpenMPI/4.1.1
+module load R/4.2.0
 
 # Print the task id.
 Rscript r_random_alpha.R $SLURM_ARRAY_TASK_ID
