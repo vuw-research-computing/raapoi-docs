@@ -16,7 +16,7 @@ The Python installations generally have a minimal number of packages/libraries i
 If you require additional packages/libraries it is recommended to create a virtual environment and install any desired packages within that environment.
 This is illustrated in the examples below using both virtualenv/pip and anaconda/conda. 
 
-See also: [Using Jupyter Notebooks](notebooks.md)
+See also: [Using Jupyter Notebooks](../notebooks.md)
 
 ### Simple Python program using virtualenv and pip
 

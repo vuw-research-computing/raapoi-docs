@@ -2,7 +2,7 @@
 
 While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
 
-See also: [Using containers](containers.md)
+See also: [Using containers](../containers.md)
 
 ### Singularity/Docker container example
 
