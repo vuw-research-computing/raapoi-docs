@@ -72,5 +72,5 @@ include-markdown "storage/beegfs.md"
 
 
 {%
-include-markdown "storage/temp.md"
+include-markdown "storage/tmp.md"
 %}
