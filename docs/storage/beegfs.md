@@ -2,7 +2,7 @@
 
 The BeeGFS storage is spread across 3 nodes with SSD disks.  The aggregate storage is 100TB.  We don't enforce quotas here as some projects have large storage needs.  However, you do need to be a good HPC citizen and respect the rights of others.  Don't needlessly fill up this storage.
 
-We regularly **delete all data** here every 3-6 months.  We only post warnings on the [slack channel](uwrc.slack.com/).  If afteer 3 months the storage is not full and still performning well, we delay the wipe another 3 months.
+We regularly **delete all data** here every 3-6 months.  We only post warnings on the [slack channel](https://uwrc.slack.com/).  If afteer 3 months the storage is not full and still performning well, we delay the wipe another 3 months.
 
 This storage is **not backed up** at all.  It is on a raid array so if a hard drive fails your data is safe.  However in the event of a more dramatic hardware failure, earthquakes or fire - your data is gone forever.  If you accidentally delete something, it's gone forever. If an Admin misconfigures something, your data is gone (we try not to do this!).
 

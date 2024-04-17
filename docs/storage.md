@@ -28,11 +28,15 @@ User Quotas
 
 ## Per Node Storage
 
-Each node has local storage you can use at ```/tmp```.  This storage is **not shared** so a program running on ```amd01n02``` will not be able to see data stored on node ```amd01n04```'s ```/tmp``` storage.
+Each compute node has local storage you can use at ```/tmp```.  
+This storage is **not shared** so a program running on ```amd01n02``` will not be able to see data stored on node ```amd01n04```'s ```/tmp``` storage.
+Additionally, you can only access ```/tmp``` on any given node via a job running on that node.
 
-On the AMD nodes and GPU nodes this is very fast nvme storage with 1.7TB total space.  On the Intel and highmem nodes this storage is slower and 1.7TB is not always available.
+On the AMD nodes and GPU nodes the ```/tmp``` storage is very fast nvme storage with 1.7TB total space.  
+On the Intel and highmem nodes this storage is slower and 1.7TB is not always available.
 
-If you use this storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  For more info see [Temp Disk Tips](storage/tmp.md).
+**IMPORTANT:** If you use the ```/tmp``` storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  
+For more info see [Temp Disk Tips](storage/tmp.md).
 
 ## Storage Performance 
 <figure>
@@ -43,6 +47,30 @@ graph TD
    C[BeeGFS] --> D
    D[local tmp on AMD nodes]
 ```
-<figcaption>Figure 1: Storage speed hierarchy. The slowest storage is your user home directory as well as any mounted research storage.  The trade off for this is that this data is replicated off site as well as backed up by Digital Solutions.   The fastest is the local tmp space on the AMD nodes - it is usually deleted shortly after you logout and only visible to the node it's on, but it is extremely fast with excellent IO performance.
+<figcaption>Figure 1: Storage speed hierarchy. The slowest storage is your user home directory as well as any mounted research storage. The trade off for this is that this data is replicated off site as well as backed up by Digital Solutions. The fastest is the local tmp space on the AMD nodes - it is usually deleted shortly after you logout and only visible to the node it's on, but it is extremely fast with excellent IO performance.
 </figcaption>
 </figure>
+
+
+## Storage tips
+
+{%
+include-markdown "storage/home.md"
+%}
+
+
+{%
+include-markdown "storage/scratch.md"
+%}
+
+
+<!--
+{%
+include-markdown "storage/beegfs.md"
+%}
+-->
+
+
+{%
+include-markdown "storage/temp.md"
+%}
