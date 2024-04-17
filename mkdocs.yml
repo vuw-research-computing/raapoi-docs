@@ -11,7 +11,7 @@ nav:
     - 'Running Jobs': 'running_jobs.md'
     - 'Parallel Processing': 'parallel_processing.md'
     - 'Managing Jobs': 'managing_jobs.md'
-    - 'Examples and software user guides': 'examples.md'
+    - 'Examples and user guides': 'examples.md'
     - 'Connecting to Cloud/Storage Providers': 'external_providers.md'
     - 'Using Containers': 'containers.md'
     - 'Using Jupyter Notebooks': 'notebooks.md'
@@ -20,8 +20,9 @@ nav:
     - 'FAQ': 'faq.md'
     - 'Linking Rāpoi outputs to Elements' : 'elements/LinkingElements.md'
     - 'HPC Hardware Layout': 'hpclayout.md'
+    - 'Support': 'support.md'
+  - Moderators:
     - 'Notes for Moderators' : 'mods_admins.md'
-    - Support: support.md
 
 
 theme: readthedocs

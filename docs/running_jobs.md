@@ -83,8 +83,26 @@ The _srun_ command will submit the job to the cluster.  The _srun_ command has m
 * --cpus-per-task=2 - requests 2 CPUs, can also use the -c flag, eg. -c 2
 * --mem=2G - requests 2 GigaBytes (GB) of RAM.
 * --time=08:00:00 - requests a runtime of up to 8 hours (format is DAYS-HOURS:MINUTES:SECONDS), this is important in case the cluster or partition has a limited run-time, for example if an outage window is approaching.  Keep in mind time is a resource along with CPU and Memory.  
-* --partition=quicktest - requests a certain partition, in this case it requests the quicktest partition, see the section on using cluster partitions for more information.
+* --partition=quicktest - requests a certain partition, in this case it requests the quicktest partition, see the [section on cluster partitions](partitions.md) for more information.
 * R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)
 
 
 For more information on the srun command, please use the manpages, eg: _man srun_
+
+
+
+## Cluster Default Resources
+
+Please note that if you do not specify the Partition, CPU, Memory or Time in your job request 
+(via `srun` or `sbatch`)
+you will be assigned the corresponding cluster defaults.
+The defaults are:
+
+* Default Partition: quicktest
+* Default CPUs: 2
+* Default Memory: 2 GB
+* Default Time: 1 hour
+
+You can change these with the --partition , -c, --mem and --time parameters, respectively, to the srun and sbatch commands. 
+Please see [this section](partitions.md) of the documentation for more information on partitions.
+

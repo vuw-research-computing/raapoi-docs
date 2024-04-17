@@ -135,13 +135,19 @@ The total number of CPU's in this partition is 512 with 2GB ram per CPU.
 * Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs
 * Maximum Runtime: 30 days
 
-### Cluster Default Resources
 
-Please note that if you do not specify CPU, Memory or Time in your job request
-you will be given the cluster defaults which are:
+## Cluster Default Resources
 
-* Default CPU: 2
+Please note that if you do not specify the Partition, CPU, Memory or Time in your job request 
+(via `srun` or `sbatch`)
+you will be assigned the corresponding cluster defaults.
+The defaults are:
+
+* Default Partition: quicktest
+* Default CPUs: 2
 * Default Memory: 2 GB
 * Default Time: 1 hour
 
-You can change these with the -c, --mem and --time parameters to the srun and sbatch commands.  Please see this documentation for more information about srun and sbatch.
+You can change these with the --partition , -c, --mem and --time parameters, respectively, to the srun and sbatch commands.  
+Please see [this section](running_jobs.md) of the documentation for more information on how to run jobs using `srun` and `sbatch`.
+

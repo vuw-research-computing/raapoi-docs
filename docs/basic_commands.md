@@ -14,6 +14,8 @@ The commands available as of this update are:
 * _vuw-job-history_:     Show jobs finished in last 5 days
 * _vuw-job-eff_:         Show efficiency of your jobs. Use vuw-job-eff --help for more information
 
+If you are unable to use these commands (e.g. with an error message "command not found") then double check you have the "config" module loaded (i.e. enter the command `module load config`).
+
 ### Linux Commands
 
 Rāpoi is built using the Linux operating system. Access is primarily via command line interface (CLI) as opposed to the graphical user interfaces (GUI) that you are more familiar with (such as those on Windows or Mac) Below are a list of common commands for viewing and managing files and directories (replace the file and directory names with ones you own):
