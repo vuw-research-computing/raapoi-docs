@@ -2,7 +2,7 @@
 # Using Containers
 Researchers can use Docker or Singularity containers within the cluster.  This is a great way to run difficult-to-compile applications or to share workflows among colleagues.
 
-See also: [Singularity](https://vuw-research-computing.github.io/raapoi-docs/examples/#singularity)
+See also: [Singularity](examples/Singularity.md)
 
 ## Running an interactive container
 

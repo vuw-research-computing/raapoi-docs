@@ -1,6 +1,7 @@
 # Training
 
-These are longer worked examples.  If you have domain specific training you'd like to provide for your students or peers, contact Andre, or make a pull request against this repo.
+These are longer worked examples.  
+If you have domain specific training you'd like to provide for your students or peers, contact someone on the [support team](https://vuw-research-computing.github.io/raapoi-docs/support/), or make a pull request against this repo.
 
 {%
    include-markdown "training/gpu-neural-style.md"

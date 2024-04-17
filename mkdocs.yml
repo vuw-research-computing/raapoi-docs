@@ -11,7 +11,7 @@ nav:
     - 'Running Jobs': 'running_jobs.md'
     - 'Parallel Processing': 'parallel_processing.md'
     - 'Managing Jobs': 'managing_jobs.md'
-    - 'Examples': 'examples.md'
+    - 'Examples and software user guides': 'examples.md'
     - 'Connecting to Cloud/Storage Providers': 'external_providers.md'
     - 'Using Containers': 'containers.md'
     - 'Using Jupyter Notebooks': 'notebooks.md'
