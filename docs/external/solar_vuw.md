@@ -1,11 +1,11 @@
-# Storage for Learning and Research (SoLAR) - VUW High Capacity Storage
+## Storage for Learning and Research (SoLAR) - VUW High Capacity Storage
 
 The SoLAR Drive is the VUW High Capacity Storage system, allowing you to store all your research work. You can require many many terabytes of storage. It is also possible to connect your SoLAR drive to Rāpoi, which is great!
 
 The following document will describe how to sign up for storage on the SoLAR Drive, as well as how to move and copy data between Rāpoi and your SoLAR Drive. 
 
 
-## Signing up and getting storage on SoLAR
+### Signing up and getting storage on SoLAR
 
 To get your own space on SoLAR. Do the following:
 
@@ -30,13 +30,13 @@ Source: [https://intranet.wgtn.ac.nz/staff/services-resources/digital-solutions/
 
 
 
-## Accessing your SoLAR Drive on Windows/Mac
+### Accessing your SoLAR Drive on Windows/Mac
 
-### Accessing the SoLAR Drive from off Campus
+#### Accessing the SoLAR Drive from off Campus
 
 You will want to sign up to the Uictoria University VPN to gain access to SoLAR. Click [https://vpn.vuw.ac.nz/](https://vpn.vuw.ac.nz/) to get access to the VPN and to download the Cisco AnyConnect program on to your computer
 
-### Windows
+#### Windows
 
 1. Open **This PC (My Computer)** and click **Computer -> Map network drive** at the top of the This PC explorer window.
 
@@ -52,7 +52,7 @@ You will want to sign up to the Uictoria University VPN to gain access to SoLAR.
   <li>Enter in your username as <b>STAFF\username</b> and your password if required</li>
 </ol>
 
-### Mac
+#### Mac
 
 1. If you are off campus, login to your VPN using the Cisco AnyConnect program.
 2. In Finder, click **Go -> Connect to Server...**
@@ -65,21 +65,21 @@ You will want to sign up to the Uictoria University VPN to gain access to SoLAR.
 </ol>
 
 
-## Moving/Copying files and folders between SoLAR and Rāpoi
+### Moving/Copying files and folders between SoLAR and Rāpoi
 
 There are several way to move/copy files and folder between SoLAR and Rāpoi
 
 
-### Best Way: Mounting SoLAR Partition in Rāpoi
+#### Best Way: Mounting SoLAR Partition in Rāpoi
 
 Ask Digital Solutions for a service account to be created against your Research storage.  Then a Raapoi admin will permanantly mount your storage on Raapoi - this process is time consuming and involves back and forth between DS and CAD. 
 
-### Second Way: ``RClone``
+#### Second Way: ``RClone``
 
 **To do once I get it fixed**
 
 
-### Third Way: ``smbclient``
+#### Third Way: ``smbclient``
 
 ``smbclient`` is specifically designed to transfer files and folders to and from smb clients. It is a bit cumbersome to use, but it is an alternative way for copying files between Rāpoi and SoLAR
 

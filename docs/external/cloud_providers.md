@@ -1,6 +1,7 @@
 
-# Connecting to Cloud Providers
-## AARNET Cloudstor
+## Connecting to Cloud Providers
+
+### AARNET Cloudstor
 
 All VUW researchers have access to the AARNET (Australia’s Academic and Research
 Network) Cloudstor service which provides __1 TB__ of space to each researcher.  To
@@ -40,7 +41,7 @@ Once we have setup _rclone_ to connect to CloudStor, we copy our data. In this c
 ```
 
 
-## Amazon AWS
+### Amazon AWS
 
 A feature-rich CLI is available in Rāpoi.  To use it you need to load the appropriate module and its module dependencies:
 
@@ -83,7 +84,7 @@ Amazon has a number of data analytics and database services available.  Using th
 A listing of available services and documentation can be found at the following:
 [https://aws.amazon.com/products/analytics/](https://aws.amazon.com/products/analytics/)
 
-## Google Cloud (gcloud) Connections 
+### Google Cloud (gcloud) Connections 
 
 The Google Cloud SDK is available in Rāpoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the `module spider` command.  As of this writing the current version can be loaded thusly:
 
@@ -125,7 +126,7 @@ Google Cloud has a number of data analytics and database services available.  Us
 A listing of available services and documentation can be found at the following:
 [https://cloud.google.com/products/](https://cloud.google.com/products/)
 
-## DropBox Cloud Storage
+### DropBox Cloud Storage
 
 __NOTE:__ Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.
 

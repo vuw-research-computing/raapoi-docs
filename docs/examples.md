@@ -211,6 +211,9 @@ t2 =
 So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it **fewer** CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.
 
 
+
+
+
 ## Job Arrays - running many similar jobs
 
 Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.
@@ -307,6 +310,8 @@ sbatch r_submit.sh
 ## Singularity
 
 While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
+
+See also: [Using containers](https://vuw-research-computing.github.io/raapoi-docs/containers/)
 
 ### Singularity/Docker container example
 
