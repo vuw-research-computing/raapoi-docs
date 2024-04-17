@@ -6,4 +6,4 @@ If you accidentally delete something here it can be recovered with a service des
 
 While this storage is not performant, is is quite safe and is a good place for you scripts and code to live.  Your data sets can also be on your home if they fit and the performance doesn't cause you any problems.
 
-For bigger or faster storage see the [Scratch](scratch.md) or [BeeGFS](beegfs.md) pages.
+For bigger or faster storage see the [Scratch](scratch.md) page.
