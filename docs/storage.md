@@ -7,8 +7,10 @@ Currently users have 3 main storage areas share across every node.  Each node ha
 
 * __/nfs/scratch/USERNAME__ - This is your scratch space, each user has a *5 TB* quota limit. This data is *not backed up!*  [Scratch directory tips](storage/scratch.md)
 
+<!--
 * __/beegfs-volatile/USERNAME__ - This is fast parallel filesystem.  There is no quota enforcement here.  There is 100TB of total space. This data is *not backed up!* **All data on this storage is periodically deleted** 
 [BeeGFS tips](storage/beegfs.md)
+-->
 
 Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.
 
@@ -44,7 +46,6 @@ For more info see [Temp Disk Tips](storage/tmp.md).
 graph TD
    A(Home and Research Storage) --> B
    B[Scratch] --> C
-   C[BeeGFS] --> D
    D[local tmp on AMD nodes]
 ```
 <figcaption>Figure 1: Storage speed hierarchy. The slowest storage is your user home directory as well as any mounted research storage. The trade off for this is that this data is replicated off site as well as backed up by Digital Solutions. The fastest is the local tmp space on the AMD nodes - it is usually deleted shortly after you logout and only visible to the node it's on, but it is extremely fast with excellent IO performance.
@@ -61,11 +62,6 @@ include-markdown "storage/home.md"
 
 {%
 include-markdown "storage/scratch.md"
-%}
-
-
-{%
-include-markdown "storage/beegfs.md"
 %}
 
 
