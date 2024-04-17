@@ -45,7 +45,7 @@ For more info see [Temp Disk Tips](storage/tmp.md).
 ```mermaid
 graph TD
    A(Home and Research Storage) --> B
-   B[Scratch] --> C
+   B[Scratch] --> D
    D[local tmp on AMD nodes]
 ```
 <figcaption>Figure 1: Storage speed hierarchy. The slowest storage is your user home directory as well as any mounted research storage. The trade off for this is that this data is replicated off site as well as backed up by Digital Solutions. The fastest is the local tmp space on the AMD nodes - it is usually deleted shortly after you logout and only visible to the node it's on, but it is extremely fast with excellent IO performance.
