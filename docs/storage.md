@@ -13,6 +13,7 @@ Currently users have 3 main storage areas share across every node.  Each node ha
 -->
 
 Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.
+There was previously a third *beegfs* storage option, but this is no longer in service.
 
 To view your current quota and usage use the _vuw-quota_ command, for example:
 
