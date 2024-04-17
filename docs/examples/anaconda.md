@@ -1,13 +1,13 @@
-## Using Anaconda/Miniconda/conda - idba
+### Using Anaconda/Miniconda/conda - idba
 
 Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda environment inside - this allows the conda environment to load quickly as the many small conda files are inside a container which the file system sees as one file.
 
 However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with our module loading system.
 
-Anaconda has many built in packages so we will use that in our examples, but Miniconda is available if you want a more minimal initial setup.
+Anaconda has many built in packages so we will use that in our examples, but Miniconda is also available if prefer to start from a minimal initial setup.
 
 ```bash
-module load old-mod-system/Anaconda3/2020.11 
+module load Anaconda3/2020.11 
 ```
 
 Let's create a new conda environment for this example, in a sensible location, I used ```~/examples/conda/idba```
@@ -67,7 +67,7 @@ Create our sbatch submission script. Note that this sequence doesn't need a lot 
 #SBATCH --ntasks=12
 #SBATCH --mem=3G
 
-module load old-mod-system/Anaconda3/2020.11
+module load Anaconda3/2020.11
 eval "$(conda shell.bash hook)" # basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...
 conda activate /home/andre/anaconda3/envs/idba-example  # We will need to activate our conda enviroment on the remote node
 idba idba_ud -r data/read.fa -o output
