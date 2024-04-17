@@ -155,16 +155,25 @@ Check for your job on the queue with `squeue` though it might finish very fast. 
 %}
 
 
-## Loading R packages & running a simple job
+## R users guide
 
-First login to Rāpoi and load the R and R/CRAN modules:
+### Which versions of R are working on Rāpoi?
+
+There are a number of versions of R on Rāpoi, although many of these are old installations (prior to an OS update and changes to the module system) and no longer work.
+There are three relatively recent versions of R which currently work (as of April 2024), these are `R/3.6.3`, `R/4.1.0` and `R/4.2.0`.
+Each of these modules has a couple of pre-requisite modules that need to be loaded prior to loading the R module. 
+To find out what you need to load first you just need to check the output of `module spider R/x.y.z` (with the appropriate values for x,y,z).
+The following example shows how to use `R/4.2.0`.
+
+### Loading R packages & running a simple job
+
+First login to Rāpoi and load the R module:
 ```bash
 module purge                         # clean/reset your environment
 module load config                   # reload utilities such as vuw-job-report
 module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module
 module load R/4.2.0   
 ```
-
 
 Then run R on the command line:
 
@@ -232,12 +241,12 @@ This submits a task that should execute quickly and create files in the director
 Examine ```r_test.out```. You can use an editor like nano, vi or emacs, or you can just ```cat``` or ```less``` the file to see its contents on the terminal. You should see:
 ``` "Hello World"```
 
-### Installing additional R packages/extensions to your user directory
+### Installing additional R packages/extensions in your local user directory
 
 If you are in need of additional R packages which are not included in the R installation, you may intall them into your user directory.
 
 Start by launching an R session
-```
+```bash
 module purge
 module load GCC/11.2.0 OpenMPI/4.1.1
 module load R/4.2.0
@@ -245,7 +254,7 @@ R
 ```
 Then, supposing you want to install a package from CRAN named "A3". 
 If this is the first time you are attempting to install local packages for this R version then the steps look something like this.
-```
+```R
 > library(A3) # confirm that foo is not already available
 > install.packages('A3')
 Warning in install.packages("A3") :
@@ -265,7 +274,6 @@ trying URL 'https://cran.stat.auckland.ac.nz/src/contrib/A3_1.0.0.tar.gz'
 ```
 
 In future, when you run this version of R, it should automatically check the local user directory created above for installed packages. Any other packages you install in future should automatically go into this directory as well (assuming you don't play around with `.libPaths()`).
-
 
 
 ## Matlab GPU example
