@@ -62,11 +62,12 @@ _/nfs/home/username_ or _/nfs/scratch/username_
 
 ### File transfer with cloud tools
 
-If you are using cloud storage such as AWS, DropBox, Cloudstor please look at the examples we have in [Connecting to Cloud Providers](https://vuw-research-computing.github.io/raapoi-docs/cloud_providers/)
+If you are using cloud storage such as AWS, DropBox, Cloudstor please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
 
 ### Host Keys
+
 An SSH host key identifies the server to your ssh client. They are an important security feature and not something you should just hit ENTER to accept.
-The fist time an SSH client connects to the server, it displays the servers public key fingerprint.
+The first time an SSH client connects to the server, it displays the servers public key fingerprint.
 
 ``` text
 The authenticity of host 'raapoi.vuw.ac.nz (130.195.19.126)' can't be established.
@@ -78,20 +79,24 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
 Confirm that the finger print on the login server matches the fingerprints shown below and type 'yes'.
 
+<!--
 * Old Raapoi 130.195.19.14:
 
 ``` text
 ssh-ed25519 255 SHA256:SFQSPRtu5o4cpj/CuS37DXzfrFyalMz1FA2NVmissxo
 ```
+-->
 
-* From August 2023 New Raapoi 130.195.19.126:
+* From August 2023 ("New Raapoi" 130.195.19.126):
 
 ``` text
 ssh-ed25519 255 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
 ```
 
->[!IMPORTANT]
-> If the host key does not match the one stored on your client, you will see a warning. The Raapoi login node was replaced in August 2023, if you had been using the previous login node you can expect to see this warning about the change of host key. Double check that the fingerprint matches one of the above before replacing the key stored in your client.
+#### Notes regarding old host keys
+
+>**IMPORTANT**
+> If the host key does not match the one stored on your client, you will see a warning  (example below). The Raapoi login node was replaced in August 2023, if you had been using the previous login node you can expect to see this warning about the change of host key. Double check that the fingerprint matches one of the above before replacing the key stored in your client.
 
 ``` text
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -122,3 +127,5 @@ ssh-keygen -R raapoi.vuw.ac.nz
 ssh-keygen -R 130.195.19.14
 ssh-keygen -R 130.195.19.126
 ```
+
+If you remove all of these, on your next login you'll be asked to verify the fingerprint again, as illustrated above.
