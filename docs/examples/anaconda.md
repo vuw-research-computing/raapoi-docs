@@ -1,4 +1,4 @@
-### Using Anaconda/Miniconda/conda - idba
+### Using Anaconda/Miniconda/conda
 
 Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda environment inside - this allows the conda environment to load quickly as the many small conda files are inside a container which the file system sees as one file.
 

@@ -31,7 +31,7 @@ To run a batch job (aka a job that runs unattended) you use the _sbatch_ command
 
 In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:
 
-```
+```text
 #!/bin/bash
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G
@@ -66,7 +66,7 @@ One of the basic job submittal tools is the command srun
 
 For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:
 
-```
+```bash
 module purge                         # clean/reset your environment
 module load config                   # reload utilities such as vuw-job-report
 module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module

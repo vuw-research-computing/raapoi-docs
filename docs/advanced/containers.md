@@ -1,10 +1,10 @@
 
-# Using Containers
+## Using Containers
 Researchers can use Docker or Singularity containers within the cluster.  This is a great way to run difficult-to-compile applications or to share workflows among colleagues.
 
-See also: [Singularity](examples/Singularity.md)
+See also: [Singularity](../examples/Singularity.md)
 
-## Running an interactive container
+### Running an interactive container
 
 User can run within a container interactively, this is great for testing code before running a job.  Here is an example of running within a docker container that has the blockchain software called BlockSci:
 
@@ -19,7 +19,7 @@ Once you have typed the _singularity shell_ command you will be within the
 container and can type the commands available from within the container such as
 the BlockSci utility **blocksci_parser**
 
-## Running a container in batch
+### Running a container in batch
 
 Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the _autometa_ software that was created in a docker image, lets name the submit file runContainer.sh:
 

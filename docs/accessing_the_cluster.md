@@ -29,6 +29,7 @@ Here is a general overview of SSH [https://www.howtogeek.com/311287/how-to-conne
 ### SSH Clients
 
 _Mac OSX SSH Clients_
+
 You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. 
 XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.
 
@@ -84,7 +85,7 @@ This host key is known by the following other names/addresses:
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
-Confirm that the finger print on the login server matches the fingerprints shown below and type 'yes'.
+Confirm that the finger print on the login server matches the appropriate fingerprint shown below and type 'yes'.
 
 <!--
 * Old Raapoi 130.195.19.14:
@@ -97,7 +98,9 @@ ssh-ed25519 255 SHA256:SFQSPRtu5o4cpj/CuS37DXzfrFyalMz1FA2NVmissxo
 * From August 2023 ("New Rāpoi" 130.195.19.126):
 
 ``` text
-ssh-ed25519 255 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
+ssh-ed25519  256 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
+ssh-ecdsa    256 SHA256:ChU88YMNnUiXWmQRV0cgeDdnUpsdybgF14Dk3KW3dr4
+ssh-rsa     3072 SHA256:izq2NXKroc7gpu0vkWNQnXd4kmjk/pmrQw9vMvwAsIs 
 ```
 
 #### Notes regarding old host keys

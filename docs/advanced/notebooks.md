@@ -6,7 +6,7 @@ First you start the jupyter server on a compute node - either via an interactive
 Then you connect to Rāpoi again via a new ssh session port forwarding the port selected by Jupter to your local machine for the web session.  
 There is a potentially simpler method at the end of this guide using firefox and tab containers.
 
-For general information on using Python, see the [Python users guide](examples/Python_users_guide.md).
+For general information on using Python, see the [Python users guide](../examples/Python_users_guide.md).
 
 The first step is getting and modifying a submission script.
 
