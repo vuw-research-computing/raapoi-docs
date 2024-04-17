@@ -64,11 +64,9 @@ include-markdown "storage/scratch.md"
 %}
 
 
-<!--
 {%
 include-markdown "storage/beegfs.md"
 %}
--->
 
 
 {%

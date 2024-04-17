@@ -11,7 +11,7 @@ If you don't have a VUW staff account, it may still be possible to be given acce
 _Access is via SSH_
 
 *  Hostname: raapoi.vuw.ac.nz
-*  IP Address: 130.195.19.14
+*  IP Address: 130.195.19.126
 *  Port: 22
 *  Username: Your VUW username
 *  Password: Your VUW password
@@ -19,7 +19,7 @@ _Access is via SSH_
 *NOTE:* A wired network connection or [VPN](https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
 connecting from campus wifi or from off-campus. Some users have had issues with
 using the hostname and instead need to use the IP address, eg
-`harrelwe@130.195.19.14`
+`harrelwe@130.195.19.126`
 
 More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
 
@@ -27,8 +27,10 @@ Here is a general overview of SSH [https://www.howtogeek.com/311287/how-to-conne
 
 
 ### SSH Clients
+
 _Mac OSX SSH Clients_
-You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.
+You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. 
+XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.
 
 * Terminal.app is the default application for command-line interface
   * To login using the built-in Terminal.app on Mac, go to
@@ -51,6 +53,7 @@ _Windows SSH Clients_
   * [MobaXterm](https://mobaxterm.mobatek.net/) is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.
 
 
+
 ### File Transfer with SFTP, SCP or rsync
 
 There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
@@ -60,9 +63,13 @@ One can also use built-in command-line tools on Linux, Mac and Windows (if runni
 In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
 _/nfs/home/username_ or _/nfs/scratch/username_
 
+
+
 ### File transfer with cloud tools
 
 If you are using cloud storage such as AWS, DropBox, Cloudstor please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
+
+
 
 ### Host Keys
 
@@ -87,7 +94,7 @@ ssh-ed25519 255 SHA256:SFQSPRtu5o4cpj/CuS37DXzfrFyalMz1FA2NVmissxo
 ```
 -->
 
-* From August 2023 ("New Raapoi" 130.195.19.126):
+* From August 2023 ("New Rāpoi" 130.195.19.126):
 
 ``` text
 ssh-ed25519 255 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
@@ -95,8 +102,10 @@ ssh-ed25519 255 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
 
 #### Notes regarding old host keys
 
->**IMPORTANT**
-> If the host key does not match the one stored on your client, you will see a warning  (example below). The Raapoi login node was replaced in August 2023, if you had been using the previous login node you can expect to see this warning about the change of host key. Double check that the fingerprint matches one of the above before replacing the key stored in your client.
+**IMPORTANT:**
+If the host key does not match the one stored on your client, you will see a warning  (example below). 
+The Raapoi login node was replaced in August 2023, if you had been using the previous login node you can expect to see this warning about the change of host key. 
+Double check that the fingerprint matches one of the above before replacing the key stored in your client.
 
 ``` text
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -121,7 +130,7 @@ To remove an old host key for raapoi.vuw.ac.nz cached on your client run the fol
 ssh-keygen -R raapoi.vuw.ac.nz
 ```
 
-... and you could also run this to remove the IP address(s) for raapoi:
+... and you could also run this to remove the IP address(s) for Rāpoi:
 
 ``` bash
 ssh-keygen -R 130.195.19.14
