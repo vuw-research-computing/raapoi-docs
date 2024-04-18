@@ -121,7 +121,7 @@ module load netCDF
 
 ## Toolchain "silo" table
 
-Toolchains currently on Rāpoi as of May 2022.
+Toolchains currently on Rāpoi as of April 2024.
 
 Toolchain  | Compiler   | MPI           |
 :---------:|:----------:|:--------------:
@@ -130,6 +130,11 @@ foss/2019b | GCC/8.3.0  | OpenMPI/3.1.4 |
 foss/2020a | GCC/9.3.0  | OpenMPI/4.0.3 |
 foss/2020b | GCC/10.2.0 | OpenMPI/4.0.5 |
 foss/2021a | GCC/10.3.0 | OpenMPI/4.1.1 |
+foss/2021b | GCC/11.2.0 | OpenMPI/4.1.1 |
+foss/2022a | GCC/11.3.0 | OpenMPI/4.1.4 |
+foss/2022b | GCC/12.2.0 | OpenMPI/4.1.4 |
+foss/2023a | GCC/12.3.0 | OpenMPI/4.1.5 |
+foss/2023b | GCC/13.2.0 | OpenMPI/4.1.6 |
 
 There are also toolchain versions with CUDA for use on the GPU nodes - they contain the same compiler and OpenMPI but also include a CUDA version
 
@@ -144,7 +149,9 @@ Lastly we have some intel compiler toolchains built.  This *might* work on the A
 Toolchain     | Compiler   | Intel Compiler | MPI           | MKL 
 :------------:|:----------:|:--------------:|:-------------:|:-------------:
 intel/2021b   | GCC/11.2.0 | 2021.4.0       | impi/2021.4.0 | imkl/2021.4.0
+intel/2022a   | GCC/11.3.0 | 2022.1.0       | impi/2021.6.0 | imkl/2022.1.0
 intel/2022.00 | GCC/11.2.0 | 2022.0.1       | impi/2021.5.0 | imkl/2022.0.1 
+intel/2022.05 | GCC/11.3.0 | 2022.1.0       | impi/2021.6.0 | imkl/2022.1.0
 
 You can also just experimentally module load the various toolchains and list to see what the module loads to see what it contains.
 <pre><code>
