@@ -18,6 +18,8 @@ graph TD;
     foss2021a --- id6["Haploflow/1.0"]
 ```
 
+<br/>
+
 Example loading `BioPython/1.7.9`
 ```bash
 # loading the modules

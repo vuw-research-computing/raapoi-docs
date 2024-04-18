@@ -21,26 +21,27 @@ This is a long list of software packages which can each be loaded immediately (i
 Generally each software package is listed as a path of the form *<software name>/<version number>*, eg. _lua/5.3.5_.
 The list is separated into a few sections (via lines of dashes).
 The section of most interest has the heading 
-```
------------------------ /home/software/tools/eb_modulefiles/all/Core -----------------------
+```bash
+-------------------- /home/software/tools/eb_modulefiles/all/Core --------------------
 ```
 The modules under this heading (or similar) are from the new module system (see [New Module System](new_mod.md) for more extensive details).
 
 In contrast, the modules listed under the heading
-```
------------------------------ /home/software/tools/modulefiles -----------------------------
+```bash
+-------------------------- /home/software/tools/modulefiles --------------------------
 ```
 are from the old module system. 
 Beware that many of these older software packages in this section may no longer work.
 
 There may be other sections, depending on what modules you already have loaded.
 For example, if `GCC/10.3.0` is loaded then you will see the additional sections
-```
---------------- /home/software/tools/eb_modulefiles/all/Compiler/GCC/10.3.0 ----------------
-   Bio-SearchIO-hmmer/1.7.3    FlexiBLAS/3.0.4    GSL/2.7          OpenBLAS/0.3.15    Subread/2.0.3
-   Boost/1.76.0                GEOS/3.9.1         Haploflow/1.0    OpenMPI/4.1.1
+```bash
+------------ /home/software/tools/eb_modulefiles/all/Compiler/GCC/10.3.0 -------------
+   Bio-SearchIO-hmmer/1.7.3    GEOS/3.9.1       Haploflow/1.0      OpenMPI/4.1.1
+   Boost/1.76.0                GSL/2.7          OpenBLAS/0.3.15    Subread/2.0.3
+   FlexiBLAS/3.0.4
 
-------------- /home/software/tools/eb_modulefiles/all/Compiler/GCCcore/10.3.0 --------------
+---------- /home/software/tools/eb_modulefiles/all/Compiler/GCCcore/10.3.0 -----------
    Autoconf/2.71           (D)    Python/3.9.5                (D)    libevent/2.1.12
    Automake/1.16.3                Qhull/2020.2                       libfabric/1.12.1
    Autotools/20210128             RE2/2022-02-01                     libffi/3.3
@@ -59,11 +60,12 @@ Suppose you want to find out which Python versions are available, you can search
 ```bash
 username@raapoi-login:~$ module spider Python
 
----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
   Python:
----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
     Description:
-      Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+      Python is a programming language that lets you work more quickly and integrate 
+      your systems more effectively.
 
      Versions:
         Python/2.7.15-bare
@@ -72,7 +74,7 @@ username@raapoi-login:~$ module spider Python
         Python/2.7.18
 <additional output not included here>
 ```
-Note that the capital **P** in `Python` is important here. 
+Note that the capital **P** in `Python` is important here, the `module spider` command is case-sensitive. 
 Capital **P** `Python` modules/packages are generally from the new module system, whereas lower case `python` modules/packages are older (and may no longer work).
 The same goes for many several other software packages such as `R` 
 (versus `r`) and `OpenMPI` (versus `openmpi`).
@@ -86,7 +88,8 @@ username@raapoi-login:~$ module spider Python/3.9.6
   Python: Python/3.9.6
 --------------------------------------------------------------------------------------
     Description:
-      Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+      Python is a programming language that lets you work more quickly and integrate 
+      your systems more effectively.
 
 
     You will need to load all module(s) on any one of the lines below before the "Python/3.9.6" module is available to load.
