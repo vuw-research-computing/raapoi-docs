@@ -8,7 +8,6 @@ Before you module load a toolchain the software contained within will not be vis
 
 To save you needing to load both a Compiler and MPI version, the compiler and MPI versions are bundled into half yearly packs.  For example `GCC/10.3.0 and OpenMPI/4.1.1` are bundled in the meta module `foss/2021a`
 
-
 ```mermaid
 graph TD;
     LMOD["Module System"] --toolchain --- foss2020b["foss2020b <br> GCC/10.2.0 OpenMPI/4.0.5"]
@@ -18,8 +17,6 @@ graph TD;
     foss2021a --- id5["Biopython/1.79"]
     foss2021a --- id6["Haploflow/1.0"]
 ```
-
-<br />
 
 Example loading `BioPython/1.7.9`
 ```bash
@@ -154,7 +151,8 @@ intel/2022.00 | GCC/11.2.0 | 2022.0.1       | impi/2021.5.0 | imkl/2022.0.1
 intel/2022.05 | GCC/11.3.0 | 2022.1.0       | impi/2021.6.0 | imkl/2022.1.0
 
 You can also just experimentally module load the various toolchains and list to see what the module loads to see what it contains.
-<pre><code>
+
+```bash
 #load toolchain
 module load foss/2020b
 
@@ -168,7 +166,7 @@ Currently Loaded Modules:
   3) binutils/2.35    8) numactl/2.0.13    13) hwloc/2.2.0        18) ScaLAPACK/2.1.0
   4) <b>GCC/10.2.0</b>       9) XZ/5.2.5          14) PMIx/3.1.5         19) foss/2020b
   5) UCX/1.9.0       10) zlib/1.2.11       15) <b>OpenMPI/4.0.5</b>
-</pre>
+```
 
 
 ## Add new module system for accounts prior to March 2022
