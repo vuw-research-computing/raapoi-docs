@@ -131,7 +131,7 @@ We will also need a Slurm submission script; we'll call this ```matlab_gpu.sh```
 #SBATCH --mem=60G
 
 module use /home/software/tools/eb_modulefiles/all/Core
-module load matlab/2021a
+module load matlab/2024a
 module load fosscuda/2020b
 
 matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
@@ -180,7 +180,7 @@ To make things fairer for the CPU in this case, we will also allocate half the C
 #SBATCH --mem=256G
 
 module use /home/software/tools/eb_modulefiles/all/Core
-module load matlab/2021a
+module load MATLAB/2024a
 module load fosscuda/2020b
 
 matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
@@ -189,13 +189,14 @@ matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
 The output in my case was:
 ```bash
                             < M A T L A B (R) >
-                  Copyright 1984-2021 The MathWorks, Inc.
-             R2021a Update 1 (9.10.0.1649659) 64-bit (glnxa64)
-                               April 13, 2021
+                  Copyright 1984-2024 The MathWorks, Inc.
+                  R2024a (24.1.0.2537033) 64-bit (glnxa64)
+                             February 21, 2024
 
- 
-To get started, type doc.
+
+For online documentation, see https://www.mathworks.com/support
 For product information, visit www.mathworks.com.
+
  
 
 t1 =
