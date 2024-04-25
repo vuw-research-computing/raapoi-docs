@@ -12,8 +12,9 @@ Currently users have 3 main storage areas share across every node.  Each node ha
 [BeeGFS tips](storage/beegfs.md)
 -->
 
+* __/nfs/scratch/noquota-volatile__ - This is an additional filesystem (previously referred to as beegfs). There is no quota enforcement here.  There is 100TB of total space. This data is *not backed up!* **All data on this storage is periodically deleted** 
+
 Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.
-There was previously a third *beegfs* storage option, but this is no longer in service.
 
 To view your current quota and usage use the _vuw-quota_ command, for example:
 
@@ -60,12 +61,14 @@ graph TD
 include-markdown "storage/home.md"
 %}
 
-
 {%
 include-markdown "storage/scratch.md"
 %}
 
-
 {%
 include-markdown "storage/tmp.md"
+%}
+
+{%
+include-markdown "storage/beegfs.md"
 %}
