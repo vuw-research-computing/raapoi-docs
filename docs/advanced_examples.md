@@ -15,3 +15,8 @@ include-markdown "advanced/notebooks.md"
 
 
 
+{%
+include-markdown "advanced/OpenMPI_users_guide.md"
+%}
+
+
