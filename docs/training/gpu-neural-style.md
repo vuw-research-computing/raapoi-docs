@@ -29,6 +29,8 @@ module load torchvision/0.8.2-PyTorch-1.7.1
 module list #see all the dependencies we have loaded, in particular which version of python we're using now. Currently Python 3.8.6
 ```
 
+*PyTorch note: When running jobs which utilise PyTorch, make sure you allocate sufficient memory for the job. If you encounter error messages which are vague, it is possible that you don't have enough memory allocated. Just to import torch it is recommended to have 4GB (or you may see errors such as* ```ImportError: <library>.so: failed to map segment from shared object``` *).* 
+
 ### Optional: Setup a virtualenv
 
 ```bash
