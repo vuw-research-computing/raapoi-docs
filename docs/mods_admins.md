@@ -54,7 +54,7 @@ scancel <jobid>  # be careful to get the correct job id!
 squeue -p parallel -u <username> -t running --format "scancel %i" | sh
 ```
 
-## Limiting an unresponsive users resource allowance on Raapoi
+## Limiting user's resource allowance on Raapoi
 
 ### Set maxjobs
 ```bash
