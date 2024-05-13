@@ -13,3 +13,9 @@
     * you want 16 processes to stay on the same node: `--ntasks=16 --ntasks-per-node=16`
     * you want one process that can use 16 cores for multithreading: -`-ntasks=1 --cpus-per-task=16`
     * you want 4 processes that can use 4 cores each for multithreading: `--ntasks=4 --cpus-per-task=4`
+
+* *How do I increase the memory available to Java based applications?*
+    * Add the command line option `-Xms<n>` where `<n>` should be replaced with the desired initial size of the memory allocation pool. For example, `-Xms512m` will result in an initial memory allocation pool of 512MB.
+    * Add the command line option `-Xmx<n>` where `<n>` should be replaced with the desired maximum size of the memory allocation pool. For example, `-Xmx4096m` will set the maximum size of the memory allocation pool as 4096MB (i.e. 4GB).
+    * The value supplied to these options obviously should not exceed the memory requested for a job through the srun/sbatch arguments.
+    * See the [java documentation](https://docs.oracle.com/javase/6/docs/technotes/tools/windows/java.html) for more details.

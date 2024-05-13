@@ -10,6 +10,7 @@ Running a job in parallel is a great way to utilize the power of the cluster.  S
 It is important to understand the capabilities and limitations of an application in order to fully leverage the parallel processing options available on the cluster. For instance, many popular scientific computing languages like Python, R, and Matlab now offer packages that allow for GPU, multi-core or multithreaded processing, especially for matrix and vector operations.  If you need help with the design of your parallel workflow, send us a message in the raapoi-help Slack channel.
 
 ## Job Array Example
+
 Here is an example of running a job array to run 50 simultaneous processes:
 
   `sbatch array.sh`
@@ -76,7 +77,7 @@ requesting 12 CPU cores per task and a total of 256GB of memory. The program its
 
 ## MPI Jobs
 
-Most users do not require MPI to run their jobs but many do.  Please read on if you want to learn more about using MPI for tightly-coupled jobs.
+Most users do not require MPI to run their jobs but many do.  Please read on if you want to learn more about using MPI for tightly-coupled jobs. See also the [OpenMPI Users Guide](advanced/OpenMPI_users_guide.md)
 
 MPI (Message Passing Interface) code require special attention within Slurm. Slurm allocates and launches MPI jobs differently depending on the version of MPI used (e.g. OpenMPI, MPICH2). We recommend using OpenMPI version 2.1.1 or later to compile your C code (using mpicc) and then using the mpirun command in a batch submit script to launch parallel MPI jobs. The example below runs MPI code compiled by OpenMPI 2.1.1:
 
