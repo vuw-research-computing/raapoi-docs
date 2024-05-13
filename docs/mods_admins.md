@@ -54,9 +54,9 @@ scancel <jobid>  # be careful to get the correct job id!
 squeue -p parallel -u <username> -t running --format "scancel %i" | sh
 ```
 
-### Limiting an unresponsive users resource allowance on Raapoi
+## Limiting user's resource allowance on Raapoi
 
-#### Set maxjobs
+### Set maxjobs
 ```bash
 sacctmgr modify user where name=bob set MaxJobs=2
 ```
@@ -71,19 +71,19 @@ JOBID REASON
 20583 Dependency
 ```
 
-#### Show User CPU restruction details
+### Show User CPU restruction details
 
 ```bash
 sacctmgr show assoc where user=write_username_here
 ```
 
-#### Limiting CPU resources
+### Limiting CPU resources
 
 ```bash
 sacctmgr modify user <user> set GrpTRES=cpu=1026
 ```
 
-#### Limiting Memory (RAM) resources
+### Limiting Memory (RAM) resources
 
 This is a reference, but note that this may have unintended consequences. Please consult other moderators on Slack before proceeding with this.
 
@@ -91,7 +91,7 @@ This is a reference, but note that this may have unintended consequences. Please
 sacctmgr modify user <user> set GrpTRES=mem=1000G # This is 1TB of Ram
 ```
 
-#### Limiting GPU resources
+### Limiting GPU resources
 
 ```bash
 sacctmgr modify user bob set GrpTRES=cpu=-1,mem=-1,gres/gpu=4  # -1 means no restriction.
