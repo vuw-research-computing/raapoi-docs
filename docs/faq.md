@@ -24,3 +24,27 @@
     * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself if computationally intensive and/or requires specialised hardware (like a gpu).
     * The Rāpoi operating system is primarily designed for command line use, and thus doesn't include most of the software libraries that support graphical interfaces. This typically makes the installation of visualisation software a time consuming process.
     * Should you really need to plot/visualise on Rāpoi, there are several things you probably need to do. The first will be to have a suitable ssh client (see the section on the [Accessing the Cluster](accessing_the_cluster.md) page) and enable X11 forwarding by adding the `-X` option when you `ssh` into Rāpoi. Other steps can vary greatly depending on your local operating system and exactly what you want to do. If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
+
+
+* *How do I start a job that depends on the previous job finishing successfully?*
+    * Submit your first job `sbatch submit1.sl`. This will print a job id on your terminal `Submitted batch job 1042939`. 
+    * Now submit the job you would like to start once the previous job has completed successfully, using: `sbatch --depend=afterok:1042939 submit2.sl`
+    * Similar can be achieved for array jobs. 
+    * If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
+    
+    
+    From the [Bioinformatics Workbook](https://bioinformaticsworkbook.org/Appendix/HPC/SLURM/submitting-dependency-jobs-using-slurm.html#gsc.tab=0)
+
+
+    | Argument | Description  |
+    |-------|-------|
+    | after    | The job begins executing after the specified job have begun executing |
+    | afterany    | The job begins executing after the specified job have terminated |
+    | aftercorr    | A task of this job array can begin executing after the corresponding task ID in the specified job has completed successfully |
+    | afternotok    | This job can begin execution after the specified jobs have terminated in some failed state |
+    | afterok    | This job can begin execution after the specified jobs have successfully executed |
+    | singleton    | This job can begin execution after any previously launched jobs sharing the same job name and user have terminated |
+
+
+    
+    
