@@ -31,7 +31,23 @@
     * Now submit the job you would like to start once the previous job has completed successfully, using: `sbatch --depend=afterok:1042939 submit2.sl`
     * Similar can be achieved for array jobs. 
     * If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
+
+    Here is an example:
+    ```
+    $ sbatch submit.sl 
+    Submitted batch job 1042939
+    $ sbatch --depend=afterok:1042939 submit.sl
+    Submitted batch job 1042940
+    $ squeue --me
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    1042940 quicktest dependen duggalro PD       0:00      1 (Dependency)
+    1042939 quicktest dependen duggalro  R       0:37      1 itl02n01
+
+    ```
     
+
+
+
     
     From the [Bioinformatics Workbook](https://bioinformaticsworkbook.org/Appendix/HPC/SLURM/submitting-dependency-jobs-using-slurm.html#gsc.tab=0)
 
@@ -47,4 +63,9 @@
 
 
     
-    
+* *How do I know resource requirement for my job?*
+    * The best and most reliable method of determining resource requirement is from testing. #Note: It is possible to find out a ballpark figure for a particular software in terms of memory, cpus, or time, for example: MATLAB (~16 GB memory to initialize), see documentation or consult in slack help channel.
+    * Select a test job carefully. As a rule of thumb, a test job should not run for more than 15 mins. Perhaps you could use smaller input, coarse parameters or use a subset of the calculations. 
+    * Make sure your test job is quick to run and quick to start. The later can be ensured by keeping resource requirement to be small (mem or cpu).
+    * Often a good first test to run, is to execute your job serially e.g., using only 1 CPU. These jobs should be easier to debug, and quicker to run.
+    * It is recommended to ask for 20% to 30% more time and memory than you think the job will use.
