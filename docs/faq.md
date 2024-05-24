@@ -69,3 +69,44 @@
     * Make sure your test job is quick to run and quick to start. The later can be ensured by keeping resource requirement to be small (mem or cpu).
     * Often a good first test to run, is to execute your job serially e.g., using only 1 CPU. These jobs should be easier to debug, and quicker to run.
     * It is recommended to ask for 20% to 30% more time and memory than you think the job will use.
+
+* *How do I simulate COMSOL model?*
+    * [COMSOL Docs](https://www.comsol.com/support/knowledgebase/1001)
+
+
+
+    | Parameter       | SLURM                      | COMSOL                        |
+    |-----------------|----------------------------|-------------------------------|
+    | --nn            | Total number of Slurm Tasks | Total number of Compute Nodes |
+    |                 | across all Slurm Nodes      | across all Hosts              |
+    | --nnhost        | Number of Slurm Tasks per   | Number of compute nodes to    |
+    |                 | Slurm Node                  | run on each host              |
+    |                 | (*A COMSOL instance resides |                               |
+    |                 | in each Slurm Task, and     |                               |
+    |                 | communicates with other     |                               |
+    |                 | Slurm Tasks using MPI)      |                               |
+    | -np             | Number of Cores / CPUs used | Number of Cores / CPUs to be  |
+    |                 | by each Slurm Task          |  used by each compute node    |
+    
+
+    * For e.g., let's assume a workload distribution of starting two COMSOL instances each using four CPUs/cores on a single node would look like:
+    
+    ```
+    #SBATCH --nodes=1
+    #SBATCH --ntasks-per-node=2
+    #SBATCH --cpus-per-task=4
+    
+    <your stuff here>
+    
+    # COMSOL execution command
+    /path/to/executable/comsol batch -nn 2 -nnhost 2 -np 4 -inputfile <your${INPUTFILE}> ..... >> rest of the arguments
+    
+    ```
+
+
+* *How do I ask for help?*
+    * If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
+    * Good request for help will include:
+    * A JobID that you tried with a short description of the problem like what are you trying to achieve and what went wrong.
+    * If possible, attach your script and error file. 
+    
