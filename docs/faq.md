@@ -110,3 +110,9 @@
     * A JobID that you tried with a short description of the problem like what are you trying to achieve and what went wrong.
     * If possible, attach your script and error file. 
     
+* *How do I know when will my job start?*
+    * You can find start time for some of the jobs in pending state using:
+
+    ```
+    squeue --start -j <JobID>
+    ```
