@@ -121,6 +121,8 @@ __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem
 * Minimum allocated cpus: 1 - These cpus are not currently SMT enabled.
 * Maximum Runtime: 10 days
 
+_Note_: The bigmem nodes also each have one NVIDIA Tesla T4 GPU. These are not as powerful as the A100's in the gpu nodes, but may still be of use at times when (a) the gpu partition is particularly busy or a gpu node is down, **and** (b) the bigmem node is being under-utilised. (I.e. please try to avoid using these gpus when there is a high demand for jobs requiring lots of memory in the bigmem partition, at other time, please go ahead.)
+
 ### Partition: longrun
 
 This partition is useful for long running jobs (with modest resource requirements).
