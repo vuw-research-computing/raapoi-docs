@@ -116,8 +116,13 @@
 
     ```
     squeue --start -j <JobID>
+
     ```
-* *How do I know if I should use ntasks, cpus-per-tasks, etc.?* *#This is still a draft as I am working on the examples to demonstrate it. ([Tutorial Material](https://www.mcs.anl.gov/research/projects/mpi/tutorial/index.html))*
+
+
+
+* *How do I know if I should use ntasks, cpus-per-tasks, etc.? This is still a draft as I am working on the examples to demonstrate it. ([Tutorial Material](https://www.mcs.anl.gov/research/projects/mpi/tutorial/index.html))*
+
     * A little complicated as it depends on whether your program needs tasks or cores 
     ([1](<https://scicomp.stackexchange.com/questions/27409/requesting-less-than-a-node-with-slurm#:~:text=1-,tl%3Bdr,-For%20multiprocessing%20(MPI>),[2](https://hpc-uit.readthedocs.io/en/latest/jobs/slurm_parameter.html#:~:text=Requesting%20Resources)). 
     
@@ -133,7 +138,7 @@
 
     In case of a multithreaded program, then you want to use `--cpus-per-task` instead and set `--ntasks = 1` (or leave it unspecified, as it defaults to 1). This way if you request 13 CPUs but the maximum available is 12, your job will just be rejected.
 
-    #Note: Check if your script uses MPI, if it does, it would benefit from running on multiple nodes simultaneously. If not, it doesn't make sense to request more than one node. For example, you made a mistake in your MPI code, you are running non-optimized simple applications on HPC like python or R scripts without utilising parallelism. 
+    *Note: Check if your script uses MPI, if it does, it would benefit from running on multiple nodes simultaneously. If not, it doesn't make sense to request more than one node. For example, you made a mistake in your MPI code, you are running non-optimized simple applications on HPC like python or R scripts without utilising parallelism. 
 
     - OpenMP is a multiprocessing library is often used for programs on shared memory systems. Shared memory describes systems which share the memory between all processing units (CPU cores), so that each process can access all data on that system.
 
