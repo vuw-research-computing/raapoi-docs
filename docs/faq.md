@@ -109,10 +109,68 @@
     * Good request for help will include:
     * A JobID that you tried with a short description of the problem like what are you trying to achieve and what went wrong.
     * If possible, attach your script and error file. 
+  
     
-* *How do I know when will my job start?*
+* *How do I know when will my job start?* 
     * You can find start time for some of the jobs in pending state using:
 
     ```
     squeue --start -j <JobID>
     ```
+* *How do I know if I should use ntasks, cpus-per-tasks, etc.?* *#This is still a draft as I am working on the examples to demonstrate it. ([Tutorial Material](https://www.mcs.anl.gov/research/projects/mpi/tutorial/index.html))*
+    * A little complicated as it depends on whether your program needs tasks or cores 
+    ([1](<https://scicomp.stackexchange.com/questions/27409/requesting-less-than-a-node-with-slurm#:~:text=1-,tl%3Bdr,-For%20multiprocessing%20(MPI>),[2](https://hpc-uit.readthedocs.io/en/latest/jobs/slurm_parameter.html#:~:text=Requesting%20Resources)). 
+    
+    A simple difference to understand between *MPI* and *OpenMP* is that an *MPI based program* will be launced several times and communicates via messgae passing, while an *OpenMP based program* will only be launched once and will then launch several threads which communicate via shared memory. In case of a shared memory job, it is required that tasks run on the same node while a message passing job doesn't care about nodes as long as the tasks can communicate (via Infiniband, Ethernet, etc.). A general guide could be:
+
+    * For *multiprocessing* (MPI, message parssing) use `ntasks`.
+    * For *multithreading* (OpenMP, pthreads) use `cpus-per-task` - use 1 for MPI. For parallelized applications benchmark this is the number of threads.
+    * For hybrid codes, you need both options and probably also want to tune `ntasks-per-node`; refers to the number of (MPI) processes per node. For OpenMP, only 1 task is necessary.
+    * In nodes with *hyper-threading* enabled, use `--ntasks-per-core=1` to avoid distributing cores across sockets.
+    * `--nodes=<num_nodes>` with more than 1 node is useful for jobs with distributed-memory (e.g. MPI).
+
+    The `--ntasks` option of SLURM specifies how many tasks your program will launch, which could be threads of independent instances of the MPI program. However, SLURM assumes that when you say `--ntasks` you mean tasks which communicate by message passing and in case your machine has 12 cores but you requested 13 tasks, it will happily launch 12 tasks on one node and 1 on another node. (I don't think this behaviour is guaranteed. SLURM could also throw all 13 tasks on one node with 12 CPUs and let the CPU schedule the tasks. You can get more fine-grained control using `--ntasks-per-core` and `--ntasks-per-node`.)
+
+    In case of a multithreaded program, then you want to use `--cpus-per-task` instead and set `--ntasks = 1` (or leave it unspecified, as it defaults to 1). This way if you request 13 CPUs but the maximum available is 12, your job will just be rejected.
+
+    #Note: Check if your script uses MPI, if it does, it would benefit from running on multiple nodes simultaneously. If not, it doesn't make sense to request more than one node. For example, you made a mistake in your MPI code, you are running non-optimized simple applications on HPC like python or R scripts without utilising parallelism. 
+
+    - OpenMP is a multiprocessing library is often used for programs on shared memory systems. Shared memory describes systems which share the memory between all processing units (CPU cores), so that each process can access all data on that system.
+
+    - If your job requires more than the default available memory per core (32GB/node gives 2 GB/core for 16 core nodes and 1.6GB for 20 core nodes) you should adjust this need with the following command: `#SBATCH --mem-per-cpu=4GB`. When doing this, the batch system will automatically allocate 8 cores or less per node.
+
+* *How do I request a whole node?*
+    
+    We request users to be very careful with their requirements for such a job. However, here's a simple guide to follow:
+    ([1](https://hpc-uit.readthedocs.io/en/latest/jobs/slurm_parameter.html#:~:text=Requesting%20Resources)):
+    
+    | Parameter       | Function                      | 
+    |-----------------|----------------------------|
+    | --nodes=<num+nodes>            | Start a parallel job for 
+    | | a distributed memory system on several nodes | 
+    | --ntasks-per-node=<num_procs> | Number of (MPI) processes per node.
+    | |  Maximum number depends on cores per node |
+    | --cpus-per-task=1 | User one CPU core per task |
+    | --exclusive | Job will not share nodes with other running jobs.
+    | | You don't need to specify memory 
+    | | as you will get all available on the node. |
+
+    To distribute your job:
+    
+    | Parameter | Function |
+    |--|--|
+    | --ntasks=<num_proc> | Total number of (MPI) processes. |
+    | | Equal to the number of cores. |
+    | --mem-per-cpu=<MB> | Memory (RAM) per requested CPU core. |
+
+    You should run a few tests to see that your job is requested cpus that it can actually utilise efficiently. Try to run your job on 1, 2, 4, 8, 16, etc. cores to see when the runtime for your job starts tailing off. 
+
+
+
+
+    
+ 
+
+
+
+
