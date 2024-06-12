@@ -142,7 +142,7 @@
 
     - OpenMP is a multiprocessing library is often used for programs on shared memory systems. Shared memory describes systems which share the memory between all processing units (CPU cores), so that each process can access all data on that system.
 
-    - If your job requires more than the default available memory per core (32GB/node gives 2 GB/core for 16 core nodes and 1.6GB for 20 core nodes) you should adjust this need with the following command: `#SBATCH --mem-per-cpu=4GB`. When doing this, the batch system will automatically allocate 8 cores or less per node.
+    - If your job requires more than the default available memory per core (2GB/core on a 256 core node) you should adjust this need with the following command: `#SBATCH --mem-per-cpu=10GB`. When doing this, the batch system will automatically allocate 50 cores or less per node (for a 500GB node).
 
 * *How do I request a whole node?*
     
@@ -170,7 +170,16 @@
 
     You should run a few tests to see that your job is requested cpus that it can actually utilise efficiently. Try to run your job on 1, 2, 4, 8, 16, etc. cores to see when the runtime for your job starts tailing off. 
 
-
+* *What should I do when my job fails?*
+    
+    See if you can get your job to run by yourself when you follow these steps:
+    * Make sure you have added `#SBATCH --error = slurm_%j.err` to your submission script.
+    * Look through the file to get a hint of the possible error that caused your job to fail.
+    * Check slurm exit code by `sacct -o Exitcode -j <JobId>', look up on the web for help around the exit code.
+    * Look for some common problems, e.g., OOM which means out-of-memory and try to increase memory request; permissions error - look for if files/folders referenced in your script exist by manually checking the directories.
+    * Resubmit your batch script but this time include `#!/bin/bash -x` at the top of your submission script. 
+    * Now, the error file will produce debugging information for further inquiries to make into the program's behaviour and identifying where it failed.
+    * If nothing works, send the script file, JobId, error file, and other logs to [raapoi-help slack channel](https://uwrc.slack.com) to ask for help from the admins. They know the system and may have helped another user do something similar.
 
 
     
