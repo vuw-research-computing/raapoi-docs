@@ -173,6 +173,7 @@
 * *What should I do when my job fails?*
     
     See if you can get your job to run by yourself when you follow these steps:
+    
     * Make sure you have added `#SBATCH --error = slurm_%j.err` to your submission script.
     * Look through the file to get a hint of the possible error that caused your job to fail.
     * Check slurm exit code by `sacct -o Exitcode -j <JobId>', look up on the web for help around the exit code.
