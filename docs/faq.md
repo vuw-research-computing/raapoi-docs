@@ -174,13 +174,17 @@
     
     See if you can get your job to run by yourself when you follow these steps:
     
+    * Make sure the job is a scaled down version of a huge problem. For example, it can be a single parameter of a huge parameter sweep study. A rule of thumb should be a job that can finish in about 10 - 15 mins. 
     * Make sure you have added `#SBATCH --error = slurm_%j.err` to your submission script.
     * Look through the file to get a hint of the possible error that caused your job to fail.
-    * Check slurm exit code by `sacct -o Exitcode -j <JobId>', look up on the web for help around the exit code.
+    * Check slurm exit code by `sacct -o Exitcode -j <JobId>`, look up on the web for help around the exit code. Exit codes: `0:53`. For example, here error `0:53` often means that something wasn't readable or writable.
     * Look for some common problems, e.g., OOM which means out-of-memory and try to increase memory request; permissions error - look for if files/folders referenced in your script exist by manually checking the directories.
     * Resubmit your batch script but this time include `#!/bin/bash -x` at the top of your submission script. 
     * Now, the error file will produce debugging information for further inquiries to make into the program's behaviour and identifying where it failed.
     * If nothing works, send the script file, JobId, error file, and other logs to [raapoi-help slack channel](https://uwrc.slack.com) to ask for help from the admins. They know the system and may have helped another user do something similar.
+
+   
+    
 
 
     

@@ -9,6 +9,8 @@ To cancel all of your jobs you can use the -u flag followed by your username:
 
    `scancel -u harrelwe`
 
+**Note:** Before cancelling your jobs, please make sure it runs for at least 2 mins, including the jobs submitted in error. 
+
 
 ## Viewing Job information
 
