@@ -3,6 +3,8 @@
 
 ### AARNET Cloudstor
 
+__NOTE:__  Cloudstor service has been decommissioned since Dec 2023. For old accounts, please check access with the provider.
+
 All VUW researchers have access to the AARNET (Australia’s Academic and Research
 Network) Cloudstor service which provides __1 TB__ of space to each researcher.  To
 use this service first login and download an appropriate client to your laptop
@@ -43,9 +45,11 @@ Once we have setup _rclone_ to connect to CloudStor, we copy our data. In this c
 
 ### Amazon AWS
 
-A feature-rich CLI is available in Rāpoi.  To use it you need to load the appropriate module and its module dependencies:
+Create a python environment and install awscli module.
 
-  `module load amazon/aws/cli`
+``` text
+python3 -m pip install awscli
+``` 
 
 Before you proceed you will need to configure your environment with your Access Key ID and Secret Access Key, both of which will be sent to you once your account is created or linked.  The command to configure your environment is `aws configure`  You only need to do this once, unless of course you use more than one user/Access Key.  Most users can simply click through the region and profile questions (using the default of "none").  If you do have a specific region this should be relayed along with your access and secret keys.
 
@@ -88,11 +92,16 @@ A listing of available services and documentation can be found at the following:
 
 The Google Cloud SDK is available in Rāpoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the `module spider` command.  As of this writing the current version can be loaded thusly:
 
-  module load google/cloud/sdk/212.0.0
+
+``` text
+module load gcloud/481.0.0
+``` 
 
 This will give you access to the `gcloud` command.  To setup a connection to your gcloud account use the init sub-command, eg.
 
-  `gcloud init --console-only`
+``` text
+gcloud init --console-only
+``` 
 
 Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the Rāpoi terminal window.
 
@@ -103,7 +112,7 @@ To transfer data from gcloud storage you first need to setup your gcloud credent
 For example, if I wanted to copy data from gcloud to my project directory I could do the following:
 ```
   tmux
-  module load google/cloud/sdk/212.0.0
+  module load gcloud/481.0.0
   cd /nfs/scratch/harrelwe/project
   gsutil cp gs://mybucket/mydata.dat mydata.dat
 ```
@@ -126,6 +135,9 @@ Google Cloud has a number of data analytics and database services available.  Us
 A listing of available services and documentation can be found at the following:
 [https://cloud.google.com/products/](https://cloud.google.com/products/)
 
+
+
+
 ### DropBox Cloud Storage
 
 __NOTE:__ Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.
@@ -136,13 +148,17 @@ __Step A:__  On your local laptop or desktop start your browser and login to you
 
 __Step B:__ On Rāpoi type the following:
 
-   `module load dropbox`
+``` text
+module load dropbox
+``` 
 
 __Step C:__ Setup account credentials (You should only need to do this once):
 
 Run the following command from Rāpoi
 
-   `dbxcli account`
+``` text
+dbxcli account
+``` 
 
 You will now see something like the following:
 
@@ -165,29 +181,54 @@ Remember to load the dropbox environment module if you have not already (see `mo
 
 Now type `dbx` or `dbxcli` at a prompt.  You will see a number of sub-commands, for instance ls, which will list the contents of your Dropbox, eg
 
-  `dbxcli ls`
+``` text
+dbxcli ls
+``` 
 
 #### Downloading from Dropbox
 
 Downloading uses the subcommand called: get.   The basic format for get is:
 
-  `dbxcli get fileOnDropbox fileOnRaapoi`
+``` text
+dbxcli get fileOnDropbox fileOnRaapoi
+``` 
 
 For instance, if I have a datafile called 2018-financials.csv on Dropbox that I want to copy to my project folder I would type:
 
-  `dbxcli get 2018-financials.csv /nfs/scratch/harrelwe/projects/finance_proj/2018-financials.csv`
+``` text
+dbxcli get 2018-financials.csv /nfs/scratch/harrelwe/projects/finance_proj/2018-financials.csv
+```
 
 #### Uploading to Dropbox
 
 Uploading is similar to downloading except now we use the subcommand: put.  The basic format for put is:
 
-  `dbxcli put fileOnRaapoi fileOnDropbox`
+``` text
+dbxcli put fileOnRaapoi fileOnDropbox
+```
 
 For example I want to upload a PDF I generated from one of my jobs called final-report.pdf I would type:
 
-  `dbxcli put final-report.pdf final-report.pdf`
+``` text
+dbxcli put final-report.pdf final-report.pdf
+```
 
 This will upload the PDF and name it the same thing, if I wanted to change the name on Dropbox I could:
 
-  `dbxcli put final-report.pdf analytics-class-final-report.pdf`
+``` text
+dbxcli put final-report.pdf analytics-class-final-report.pdf
+```
+
+
+
+
+### GLOBUS
+
+First time users should be able to sign up on GLOBUS website using their university credentials by following this link: [https://app.globus.org/](https://app.globus.org/).
+
+![GLOBUS_Login_Page](../img/GLOBUS_Login_Page.png)
+
+Please install and start GLOBUS connect personal. Please find those instructions here: [https://globus.org/globus-connect-personal](https://globus.org/globus-connect-personal)   
+
+You should now be able to share or transfer your data by following their guide: [https://docs.globus.org/guides/tutorials/manage-files/share-files/](https://docs.globus.org/guides/tutorials/manage-files/share-files/).
 

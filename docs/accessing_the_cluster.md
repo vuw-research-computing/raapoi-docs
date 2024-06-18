@@ -57,9 +57,23 @@ _Windows SSH Clients_
 
 ### File Transfer with SFTP, SCP or rsync
 
+__NOTE:__ Please do not perform massive data transfer on the login node. It is preferable to parallel transfer data as a slurm job on multiple compute nodes rather than on the login node.
+
 There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
 
-One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_
+One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_. [Software Carpentry](https://carpentries-incubator.github.io/hpc-intro/16-transferring-files/index.html) has some useful information to follow.
+
+To copy a single file to or from the cluster, we can use scp (“secure copy”). To upload to another computer, try:
+
+``` text
+[you@laptop:~]$ scp <file_name_to_transfer> <username>@raapoi.vuw.ac.nz:/nfs/home/<username>/<destination>
+```
+
+I would upload a file from my device(local) to Rāpoi(remote) using:
+
+``` text
+rohit@ava:~$ scp demo.tar.gz duggalro@raapoi.vuw.ac.nz:/nfs/scratch/duggalrohi/
+```
 
 In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
 _/nfs/home/username_ or _/nfs/scratch/username_
@@ -68,7 +82,7 @@ _/nfs/home/username_ or _/nfs/scratch/username_
 
 ### File transfer with cloud tools
 
-If you are using cloud storage such as AWS, DropBox, Cloudstor please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
+If you are using cloud storage such as AWS, DropBox, Cloudstor, GLOBUS please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
 
 
 
