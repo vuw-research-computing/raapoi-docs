@@ -224,6 +224,8 @@ dbxcli put final-report.pdf analytics-class-final-report.pdf
 
 ### GLOBUS
 
+__NOTE:__ Presently, users can share/transfer data to and from locations including cluster, research storage, and personal devices. Options for enabling data sharing externally are being explored.
+
 First time users should be able to sign up on GLOBUS website using their university credentials by following this link: [https://app.globus.org/](https://app.globus.org/).
 
 ![GLOBUS_Login_Page](../img/GLOBUS_Login_Page.png)
