@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/examples/Singularity/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Singularity - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Singularity";
+        var mkdocs_page_input_path = "examples/Singularity.md";
+        var mkdocs_page_url = "/raapoi-docs/examples/Singularity/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Singularity</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="singularity">Singularity<a class="headerlink" href="#singularity" title="Permanent link">¶</a></h2>
+<p>While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you <em>can</em> have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.</p>
+<p>See also: <a href="../../advanced/containers/">Using containers</a></p>
+<h3 id="singularitydocker-container-example">Singularity/Docker container example<a class="headerlink" href="#singularitydocker-container-example" title="Permanent link">¶</a></h3>
+<p>Singularity allows you to use most (but not all!) docker images on Rāpoi.</p>
+<p>On your local machine create the singularity definition file</p>
+<p>input_args_example.def
+<div class="highlight"><pre><span></span><code><span class="k">BootStrap</span>:<span class="w"> </span>library
+<span class="k">From</span>:<span class="w"> </span>ubuntu:<span class="m">16.04</span>
+
+<span class="gh">%runscript</span>
+<span class="w">    </span><span class="nb">exec</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+
+<span class="gh">%labels</span>
+<span class="w">    </span>Author<span class="w"> </span>Andre
+</code></pre></div></p>
+<p>This will build an ubuntu 16.04 container that will eventually run on Rāpoi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.</p>
+<p>Build the container <em>locally</em> with sudo and singularity
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>inputexample.sif<span class="w"> </span>input_args_example.def<span class="w"> </span>
+</code></pre></div></p>
+<p>This will build an image that you can't modify any further and is immediately suitable to run on Rāpoi
+Copy this file to Rāpoi via sftp
+<div class="highlight"><pre><span></span><code>sftp<span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+</code></pre></div></p>
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=singularity_test</span>
+<span class="c1">#SBATCH -o sing_test.out</span>
+<span class="c1">#SBATCH -e sing_test.err</span>
+<span class="c1">#SBATCH --time=00:00:20</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --mem=1G</span>
+
+module<span class="w"> </span>load<span class="w"> </span>singularity
+
+singularity<span class="w"> </span>run<span class="w"> </span>inputtest.sif<span class="w"> </span><span class="s2">"hello from a container"</span>
+</code></pre></div></p>
+<p>Run the script with the usual
+<div class="highlight"><pre><span></span><code>singularity_submit.sh
+</code></pre></div></p>
+<h3 id="singularitytensorflow-example">Singularity/TensorFlow Example<a class="headerlink" href="#singularitytensorflow-example" title="Permanent link">¶</a></h3>
+<p>tensor.def
+<div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
+From:<span class="w"> </span>tensorflow/tensorflow:latest-py3
+
+%post
+apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>wget<span class="w"> </span>build-essential<span class="w"> </span>
+
+%runscript
+<span class="w">    </span><span class="nb">exec</span><span class="w"> </span>python<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div></p>
+<p>compile this <em>locally</em> with sudo and singularity.
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>tensorflow.sif<span class="w"> </span>tensor.def<span class="w"> </span>
+</code></pre></div></p>
+<p>Create a quick tensorflow test code
+tensortest.py
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">'sparse_categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Copy your files to Rāpoi via sftp (or whatever you prefer)
+<div class="highlight"><pre><span></span><code>sftp<span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+<span class="nb">cd</span><span class="w"> </span>&lt;where<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>work&gt;
+put<span class="w"> </span>*<span class="w">   </span><span class="c1">#put all files in your local directory onto Rāpoi</span>
+</code></pre></div></p>
+<p>Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.
+<div class="highlight"><pre><span></span><code>srun<span class="w"> </span>--partition<span class="o">=</span><span class="s2">"parallel"</span><span class="w"> </span>--constraint<span class="o">=</span><span class="s2">"Intel"</span><span class="w"> </span>--pty<span class="w"> </span>bash
+
+<span class="c1">#now on the remote node - note you might need to wait if nodes are busy</span>
+module<span class="w"> </span>load<span class="w"> </span>singularity<span class="w"> </span><span class="c1">#load singularity</span>
+singularity<span class="w"> </span>shell<span class="w"> </span>tensorflow.sif<span class="w"> </span>
+
+<span class="c1">#now inside the tensorflow container on the remote node</span>
+python<span class="w"> </span>tensortest.py<span class="w"> </span>
+
+<span class="c1">#once that runs, exit the container</span>
+<span class="nb">exit</span><span class="w"> </span><span class="c1">#exit the container</span>
+<span class="nb">exit</span><span class="w"> </span><span class="c1">#exit the interactive session on the node</span>
+</code></pre></div></p>
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=singularity_test</span>
+<span class="c1">#SBATCH -o sing_test.out</span>
+<span class="c1">#SBATCH -e sing_test.err</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">#SBATCH --constraint=Intel</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --mem=4G</span>
+
+module<span class="w"> </span>load<span class="w"> </span>singularity
+
+<span class="c1">#run the container with the runscript defined when we created it</span>
+singularity<span class="w"> </span>run<span class="w"> </span>tensorflow.sif<span class="w"> </span>tensortest.py<span class="w"> </span>
+</code></pre></div></p>
+<h3 id="singularitymaxbin2-example">Singularity/MaxBin2 Example<a class="headerlink" href="#singularitymaxbin2-example" title="Permanent link">¶</a></h3>
+<p>In a sensible location, either in your home directory or on the scratch:</p>
+<p>Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced on the official maxbin site.</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>singularity
+singularity<span class="w"> </span>pull<span class="w"> </span>docker://quay.io/biocontainers/maxbin2:2.2.6--h14c3975_0
+mv<span class="w"> </span>maxbin2_2.2.6--h14c3975_0.sif<span class="w"> </span>maxbin2_2.2.6.sif<span class="w"> </span><span class="c1">#rename for convenience</span>
+</code></pre></div>
+<p>Download some test data</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>rawdata
+curl<span class="w"> </span>https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.scaffold<span class="w"> </span>&gt;<span class="w"> </span>rawdata/20x.scaffold
+curl<span class="w"> </span>https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.abund<span class="w"> </span>&gt;<span class="w"> </span>rawdata/20x.abund
+</code></pre></div>
+<p>Create an output data location
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>output
+</code></pre></div></p>
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=maxbin2_test</span>
+<span class="c1">#SBATCH -o sing_test.out</span>
+<span class="c1">#SBATCH -e sing_test.err</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">#SBATCH --ntasks=4</span>
+<span class="c1">#SBATCH --mem=4G</span>
+
+module<span class="w"> </span>load<span class="w"> </span>singularity
+
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>maxbin2_2.2.6.sif<span class="w"> </span>run_MaxBin.pl<span class="w"> </span>-contig<span class="w"> </span>rawdata/20x.scaffold<span class="w"> </span>-abund<span class="w"> </span>rawdata/20x.abund<span class="w"> </span>-out<span class="w"> </span>output/20x.out<span class="w"> </span>-thread<span class="w"> </span><span class="m">4</span><span class="w"> </span>
+</code></pre></div></p>
+<h3 id="singularitysandbox-example">Singularity/Sandbox Example<a class="headerlink" href="#singularitysandbox-example" title="Permanent link">¶</a></h3>
+<p>This lets you have root inside a container <em>locally</em> and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on Rāpoi, I suggest you <em>don't do this</em>. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a <code>.def</code> file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.</p>
+<p>example.def
+<div class="highlight"><pre><span></span><code>BootStrap:<span class="w"> </span>library
+From:<span class="w"> </span>ubuntu:16.04
+
+%post
+apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>wget<span class="w"> </span>build-essential<span class="w"> </span>
+
+%runscript
+<span class="w">    </span><span class="nb">exec</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+
+%labels
+<span class="w">    </span>Author<span class="w"> </span>Andre
+</code></pre></div></p>
+<p>Compile this <em>locally</em> with sudo and singularity.  We are using the sandbox flag to create a writable <em>container directory</em> (<code>example/</code>) on our local machine where we have sudo rights.
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>--sandbox<span class="w"> </span>example/<span class="w"> </span>example.def
+</code></pre></div></p>
+<p>Now we can run the container we just built, but with sudo rights inside the container.  Your rights outside the container match the rights inside the container, so we need to do this with sudo.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>shell<span class="w"> </span>--writable<span class="w"> </span>example/
+</code></pre></div>
+<p>Inside the container we now have root and can install packages and modify files in the root directories
+<div class="highlight"><pre><span></span><code>Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>apt<span class="w"> </span>update
+Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>apt<span class="w"> </span>install<span class="w"> </span>sqlite
+Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>touch<span class="w"> </span>/test.txt<span class="w">  </span><span class="c1">#create an empty file in root</span>
+Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>ls<span class="w"> </span>/
+Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span><span class="nb">exit</span><span class="w">   </span><span class="c1">#exit container</span>
+</code></pre></div></p>
+<p>To run the container on Rāpoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.</p>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>new-example-sif<span class="w"> </span>example/
+</code></pre></div>
+You could now copy the <code>new-example-sif</code> file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting <em>everything in the.def file</em>.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.</p>
+<h3 id="singularitycustom-conda-container-idba-example">Singularity/Custom Conda Container - idba example<a class="headerlink" href="#singularitycustom-conda-container-idba-example" title="Permanent link">¶</a></h3>
+<p>In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a biocontainer.  We'll build this container locally to match a local conda environment, then run it on the HPC and do an example assembly.</p>
+<h4 id="locally">Locally<a class="headerlink" href="#locally" title="Permanent link">¶</a></h4>
+<p>Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda environment and install idba</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>idba
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>idba
+</code></pre></div>
+<p>Export your conda environment, we will use this to build the container.
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+</code></pre></div></p>
+<p>We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda environment is in the path. <em><a href="https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container">From stackoverflow</a></em></p>
+<p><em>idba.def</em>
+<div class="highlight"><pre><span></span><code>Bootstrap: docker
+
+From: continuumio/miniconda3
+
+%files
+    environment.yml
+
+%environment
+    PATH=/opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
+
+%post
+    echo ". /opt/conda/etc/profile.d/conda.sh" &gt;&gt; ~/.bashrc
+    echo "source activate $(head -1 environment.yml | cut -d' ' -f2)" &gt; ~/.bashrc
+    /opt/conda/bin/conda env create -f environment.yml
+
+%runscript
+    exec "$@"
+</code></pre></div></p>
+<p>Build the image
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>idba.img<span class="w"> </span>idba.def
+</code></pre></div></p>
+<p>Now copy the idba.img and environment.yml (technically the environment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.</p>
+<h4 id="on-rapoi">On Rāpoi<a class="headerlink" href="#on-rapoi" title="Permanent link">¶</a></h4>
+<p>Create a data directory, so we can separate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the <a href="https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html">Illumina public data library</a>
+<div class="highlight"><pre><span></span><code>mkdir data
+cd data 
+wget --content-disposition goo.gl/JDJTaz #sequence data
+wget --content-disposition goo.gl/tt9fsn #sequence data
+cd ..  #back to our project directory
+</code></pre></div></p>
+<p>The reads we have are paired end fastq files but idba requires a fasta file.  We can use a tool built into our container to convert them.  We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>singularity
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>fq2fa<span class="w"> </span>--merge<span class="w"> </span>--filter<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R1.fastq<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R2.fastq<span class="w"> </span>data/read.fa
+</code></pre></div>
+<p>Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
+<p><em>idba_submit.sh</em>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=idba_test</span>
+<span class="c1">#SBATCH -o output.out</span>
+<span class="c1">#SBATCH -e output.err</span>
+<span class="c1">#SBATCH --time=00:10:00</span>
+<span class="c1">#SBATCH --partition=quicktest</span>
+<span class="c1">#SBATCH --ntasks=12</span>
+<span class="c1">#SBATCH --mem=1G</span>
+
+module<span class="w"> </span>load<span class="w"> </span>singularity
+
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>idba.img<span class="w"> </span>idba<span class="w"> </span>idba_ud<span class="w"> </span>-r<span class="w"> </span>data/read.fa<span class="w"> </span>-o<span class="w"> </span>output
+</code></pre></div></p>
+<p>Now we can submit our script to the queue with
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>idba_submit.sh<span class="w"> </span>
+</code></pre></div></p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
