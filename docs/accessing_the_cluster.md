@@ -61,9 +61,9 @@ __NOTE:__ Please do not perform massive data transfer on the login node. It is p
 
 There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
 
-One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_. [Software Carpentry](https://carpentries-incubator.github.io/hpc-intro/16-transferring-files/index.html) has some useful information to follow.
+One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_. 
 
-To copy a single file to or from the cluster, we can use scp (“secure copy”). To upload to another computer, try:
+To copy a single file to or from the cluster, we can use _scp_ (“secure copy”). To upload to another computer, try:
 
 ``` text
 [you@laptop:~]$ scp <file_name_to_transfer> <username>@raapoi.vuw.ac.nz:/nfs/home/<username>/<destination>
@@ -72,8 +72,12 @@ To copy a single file to or from the cluster, we can use scp (“secure copy”)
 I would upload a file from my device(local) to Rāpoi(remote) using:
 
 ``` text
-rohit@ava:~$ scp demo.tar.gz duggalro@raapoi.vuw.ac.nz:/nfs/scratch/duggalrohi/
+rohit@ava:~$ scp demo.tar.gz duggalro@raapoi.vuw.ac.nz:/nfs/scratch/duggalro/
 ```
+
+_SFTP_ client can be also be set up. In the address bar of my file explorer, I can add the directory I wish to access in the form `sftp://<username>@raapoi.vuw.ac.nz:/nfs/home/<username>`. A dialog will appear to confirm my password to finally let me access the specific path.
+
+![SFTP_Login_Page](img/SFTP_Login_Page.png)
 
 In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
 _/nfs/home/username_ or _/nfs/scratch/username_
