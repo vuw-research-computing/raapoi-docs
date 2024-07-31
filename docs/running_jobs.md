@@ -38,7 +38,6 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
 #SBATCH --partition=parallel
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
-#SBATCH -e /nfs/home/username/project1.err
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=me@email.com
 
