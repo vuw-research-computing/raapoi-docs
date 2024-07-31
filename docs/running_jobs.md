@@ -36,8 +36,8 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G
 #SBATCH --partition=parallel
-#SBATCH --time=3-12:00
-#SBATCH -o /nfs/home/username/project1.out
+#SBATCH --output=slurm-%j.out
+#SBATCH --error=slurm-%j.err
 #SBATCH -e /nfs/home/username/project1.err
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=me@email.com
