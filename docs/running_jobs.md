@@ -54,7 +54,7 @@ home directory in a file named project1.out and any error information in a file 
 
 NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
 
-`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh`
+`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sl`
 
 The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
 
