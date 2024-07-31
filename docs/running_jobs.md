@@ -27,7 +27,7 @@ For example, if you want to request a compute node with AMD processors you can a
 
 To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
 
-`sbatch myjob.sh`
+`sbatch myjob.sl`
 
 In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:
 
