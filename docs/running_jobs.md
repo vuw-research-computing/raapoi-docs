@@ -36,6 +36,7 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G
 #SBATCH --partition=parallel
+#SBATCH --constraint="AVX"
 #SBATCH --output=slurm-%j.out
 #SBATCH --error=slurm-%j.err
 #SBATCH --mail-type=BEGIN,END,FAIL
