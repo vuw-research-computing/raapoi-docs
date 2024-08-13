@@ -6,18 +6,19 @@ See also: [Singularity](../examples/Singularity.md)
 
 ### Running an interactive container
 
-User can run within a container interactively, this is great for testing code before running a job.  Here is an example of running within a docker container that has the blockchain software called BlockSci:
+User can run within a container interactively, this is great for testing code before running a job.  Here is an example of running within a docker container lolcow:
 
 ```
-module load singularity
-srun --pty -c 4 --mem=16G bash
-singularity pull docker://tislaamo/blocksci
-singularity shell blocksci.simg
+srun --pty -c 4 --mem=64G bash
+module purge
+module load GCC/10.2.0 OpenMPI/4.0.5 Singularity/3.10.2
+singularity pull docker://godlovedc/lolcow
+singularity shell lolcow.sif
 ```
 
 Once you have typed the _singularity shell_ command you will be within the
 container and can type the commands available from within the container such as
-the BlockSci utility **blocksci_parser**
+the lolcow utility **fortune | cowsay | lolcat**
 
 ### Running a container in batch
 
