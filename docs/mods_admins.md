@@ -175,8 +175,14 @@ eb -Dr Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
 * [x] $CFGS/f/foss/foss-2018b.eb (module: Core | foss/2018b)
 * [ ] $CFGS/v/Velvet/Velvet-1.2.10-foss-2018b-mt-kmer_191.eb 
 
+# Before you proceed to build, make sure appropriate folder permissions will be set
+umask 0002
+
 # To build this we would
 eb -r --parallel=$SLURM_CPUS_PER_TASK Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+
+# Afterwards, reset the default permissions for anything else you go on to do
+umask 0022
 
 ```
 Remember to close the interactive session when done to stop it consuming resources.
@@ -202,8 +208,11 @@ $CFGS1/f/foss/foss-2022a.eb
 # BE CAUTIOUS OF OPENMPI builds - the .eb file needs to be changed to use pmi2 rather than pmix each time!
 eb -Dr foss-2022a.eb
 
-#Trigger the build - this might take a long time, you could add more cpus or time if needed
+# Trigger the build - this might take a long time, you could add more cpus or time if needed
+# (making sure permissions will be set appropriately, as described above)
+umask 0002
 eb -r --parallel=$SLURM_CPUS_PER_TASK foss-2022a.eb
+umask 0022
 
 ```
 
@@ -230,11 +239,13 @@ ldd /home/software/apps/samtools/1.10/bin/samtools | grep found
 eb -Dr /home/software/EasyBuild/ebfiles_repo/SAMtools/SAMtools-1.10-GCC-8.3.0.eb
 
 # There are a few options
-ncurses-6.0.eb
-ncurses-6.1-GCCcore-8.3.0.eb
+# ncurses-6.0.eb
+# ncurses-6.1-GCCcore-8.3.0.eb
 
-# let's try one
+# let's try one (making sure permissions will be set appropriately, as described above)
+umask 0002
 eb -r --parallel=10 --rebuild ncurses-6.0.eb
+umask 0022
 
 # test once done
 ```
@@ -315,3 +326,23 @@ You can check if the module has been properly installed by
 ```bash
 module --ignore_cache avail
 ```
+
+
+
+## Installing non-easybuild software for other users
+
+Before you proceed, ask yourself: how likely is it another user will want to use this software, even if they do will they potentially want different/newer version, etc.
+For software which is unlikely to be used by many users, and/or different users may want to install different versions, then it is probably not worth the hassle to install centrally (i.e. users can install local copies as needed).
+This is something you should only attempt if you are confident in using/modifying build scripts and associated tools.
+
+If you decide it is worth the hassle to proceed, you should first carefully examine the **entire** installation documentation of the desired software.
+For any required dependencies, check if modules for these already exist and pre-load them to minimise the amount of stuff you need to compile (otherwise you will need to install any remaining dependencies first, following these same broad steps).
+Depending on what's available, this may help inform which compiler toolchain you will use during the installation (e.g. typically one of the `foss/YEAR<a/b>` toolchains). 
+You'll also need to modify the installation steps so that the sofware is ultimately installed into `/home/software/apps/<software name>/<version number>/` taking care that no existing software is overwritten.
+However, before installing software in this directory, it is recommended you install a copy into your home/local directory and test that it works properly first.
+Lastly, to allow others to load the software you'll need to write a `.lua` file to be copied into `/home/software/tools/modulefiles/<software name>/<version number>/`.
+The `.lua` file contains some basic module information, help information, and instructions on what modules need to be loaded and environment variables which need to be set/modified when the software is loaded.
+You should have a good idea of what is required based on the installation steps, but you may also want to examine (and possibly copy+modify) the `.lua` file for a similar piece of software.
+
+
+
