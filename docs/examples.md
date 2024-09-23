@@ -131,7 +131,7 @@ We will also need a Slurm submission script; we'll call this ```matlab_gpu.sh```
 #SBATCH --mem=60G
 
 module use /home/software/tools/eb_modulefiles/all/Core
-module load matlab/2024a
+module load MATLAB/2024a
 module load fosscuda/2020b
 
 matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"

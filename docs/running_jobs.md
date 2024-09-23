@@ -64,6 +64,16 @@ For more information on the sbatch command, please use the manpages, eg: _man sb
 
 One of the basic job submittal tools is the command srun
 
+To request an interactive session 
+
+`srun --pty bash`
+
+Depending on the node assigned by the scheduler, the prompt will change to:
+```bash
+duggalro@amd01n01:~$
+```
+
+
 For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:
 
 ```bash
@@ -74,12 +84,9 @@ module load R/4.2.0
 srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=quicktest R
 ```
 
-Depending on the node assigned by the scheduler, the prompt will change to:
-```bash
-duggalro@itl02n01:~$
-```
 
-**Note:** Sometimes when the cluster is busy, it might take some time before the prompt appears (10 secs or so). Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.
+!!! note
+    Sometimes when the cluster is busy, it might take some time before the prompt appears (10 secs or so). Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.
 
 So what does this all mean?
 

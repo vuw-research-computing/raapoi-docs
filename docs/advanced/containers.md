@@ -27,12 +27,12 @@ Running a batch job with containers is similar to running a regular job, but wil
 ```
 #SBATCH -J autometa-job
 #SBATCH -c 4
-#SBATCH --mem=16G
+#SBATCH --mem=64G
 #SBATCH --mailtype=BEGIN,END,FAIL
 #SBATCH --mail-user=myemail@email.net
 #SBATCH --time=12:00:00
 
-module load singularity
+module load Singularity/3.10.2
 singularity pull docker://jasonkwan/autometa:latest
 singularity exec autometa_latest.sif calculate_read_coverage.py somedata.dat
 ```

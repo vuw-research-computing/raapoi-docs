@@ -57,7 +57,8 @@ _Windows SSH Clients_
 
 ### File Transfer with SFTP, SCP or rsync
 
-__NOTE:__ Please do not perform massive data transfer on the login node. It is preferable to parallel transfer data as a slurm job on multiple compute nodes rather than on the login node.
+!!! note
+    Please do not perform massive data transfer on the login node. Use an [interactive session](running_jobs.md/#interactive-jobs) on a compute node as your first preference or please reach out to [the support team](support.md) to know your options.
 
 There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
 

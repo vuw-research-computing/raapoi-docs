@@ -41,6 +41,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - neoteroi.cards
+  - admonition
 
 plugins:
   - search
