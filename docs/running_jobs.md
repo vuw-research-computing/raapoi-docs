@@ -81,7 +81,7 @@ module purge                         # clean/reset your environment
 module load config                   # reload utilities such as vuw-job-report
 module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module
 module load R/4.2.0
-srun --pty --cpus-per-task=2 --mem=2G  --time=08:00:00 --partition=quicktest R
+srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
 ```
 
 
