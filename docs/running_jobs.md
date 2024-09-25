@@ -1,7 +1,7 @@
 # Running Jobs
 ## Job Basics
 
-Rāpoi uses a scheduler and resource manager called Slurm that requires researchers to submit jobs for processing.  There are 2 main types of jobs: batch and interactive.  More details about submitting these types of jobs are below, but in general interactive jobs allow a user to interact with the application, for example a researcher can start a MATLAB session and can type MATLAB commands at a prompt or within a GUI.  Batch jobs can work in the background and require no user interaction, they will start when resources are available and can be configured to email once a job completes.
+_Rāpoi_ uses a scheduler and resource manager called Slurm that requires researchers to submit jobs for processing.  There are 2 main types of jobs: _batch_ and _interactive_.  More details about submitting these types of jobs are below, but in general interactive jobs allow a user to interact with the application, for example a researcher can start a MATLAB session and can type MATLAB commands at a prompt or within a GUI.  Batch jobs can work in the background and require no user interaction, they will start when resources are available and can be configured to email once a job completes.
 
 ### Job resources
 
@@ -21,6 +21,59 @@ Below is a list of constraints that have need defined and a brief description:
 * AVX - Advanced Vector Extensions
 
 For example, if you want to request a compute node with AMD processors you can add `--constraint="AMD"` in your submit script or srun request.
+
+
+## Interactive jobs
+
+One of the basic job submittal tools is the command _**srun**_. It is a useful command that let's us _**a)**_ work on a compute node (_a.k.a_ request an _interactive_ _session_) and _**b)**_ run your program written in _python_, _R_, etc.
+
+_**a) To request an interactive session:**_
+```
+srun --pty bash
+```
+Depending on the node assigned by the scheduler, the prompt will change to:
+
+```bash
+duggalro@amd01n01:~$
+```
+
+!!! note "Why can't I run programs directly on the login node?"
+    
+    _Rāpoi_ _login_ is a shared resource and running programs directly on the login node puts unnecessary strain. 
+    The recommended method is to use `srun` or `sbatch`. Please request an interactive session to work on the cluster, e.g., writing programs, debugging, or even data transfer. 
+
+Interactive sessions will take me to one of the compute nodes where I can perform tasks such as writing my program, debugging, and even data transfer.
+
+
+_**b) To run a small quick program**_
+
+
+I can use `hello.py` program available on _Rāpoi_ to test a quick example on my own. I can then use the method to run my other programs that finish under 5 hours. 
+
+```
+srun --mem=100M --time=00:10:00 --partition=quicktest python3 /home/software/tools/examples/python_venv/hello.py
+```
+
+To run my own python program, I can do: 
+
+```
+srun --mem=100M --time=00:10:00 --partition=quicktest python3 <your_program_name>
+```
+
+
+In case I use a programming language other than python, the method is slightly different. For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:
+
+```bash
+module purge                         # clean/reset your environment
+module load config                   # reload utilities such as vuw-job-report
+module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module
+module load R/4.2.0
+srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
+```
+
+
+!!! info
+    It may take a few seconds until the prompt appears when the cluster is busy. Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.
 
 
 ## Batch jobs
@@ -60,33 +113,6 @@ The ~/ in front of the file is a short-cut to your home directory path.  You wil
 
 For more information on the sbatch command, please use the manpages, eg: _man sbatch_
 
-## Interactive jobs
-
-One of the basic job submittal tools is the command srun
-
-To request an interactive session 
-
-`srun --pty bash`
-
-Depending on the node assigned by the scheduler, the prompt will change to:
-```bash
-duggalro@amd01n01:~$
-```
-
-
-For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:
-
-```bash
-module purge                         # clean/reset your environment
-module load config                   # reload utilities such as vuw-job-report
-module load GCC/11.2.0 OpenMPI/4.1.1 # pre-requisites for the new R module
-module load R/4.2.0
-srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
-```
-
-
-!!! note
-    Sometimes when the cluster is busy, it might take some time before the prompt appears (10 secs or so). Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.
 
 So what does this all mean?
 
