@@ -234,3 +234,105 @@ Please install and start GLOBUS connect personal. Please find those instructions
 
 You should now be able to share or transfer your data by following their guide: [https://docs.globus.org/guides/tutorials/manage-files/share-files/](https://docs.globus.org/guides/tutorials/manage-files/share-files/).
 
+
+# Transfer files using Globus
+
+We will need to have Globus on personal device and on _Rāpoi_'s compute node.
+We will start Globus on both devices.
+Transfer data using Globus File Manager.
+
+# Installation
+I have a linux device similar to the OS on Rāpoi. 
+For Windows OS, please see [https://globus.org/globus-connect-personal](https://globus.org/globus-connect-personal) 
+
+## Personal device setup
+On you personal device, 
+
+```
+wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
+tar xzf globusconnectpersonal-latest.tgz
+# this will produce a versioned globusconnectpersonal directory
+# replace `x.y.z` in the line below with the version number you see
+cd globusconnectpersonal-x.y.z
+```
+
+```
+./globusconnect -setup --no-gui
+```
+
+Here, we'll be presented with a url. If it is our first time, it will ask for creating an account, if you haven't done it before. Once, the account is set up, you'll be presented with an authorization code to enter into the code prompt. An example of this process is shown below:
+
+```bash
+$ ./globusconnect -setup --no-gui
+
+We will display a login URL. Copy it into any browser and log in to get a
+single-use code. Return to this command with the code to continue setup.
+
+Login here:
+-----
+https://auth.globus.org/v2/oauth2/authorize...
+-----
+Enter the auth code: 0ZaZ....
+
+== starting endpoint setup
+
+
+Input a value for the Endpoint Name: <enter_relevant_name>
+registered new endpoint, id: 56d4c388....
+setup completed successfully
+
+Will now start globusconnectpersonal in GUI mode
+Graphical environment not detected
+
+To launch Globus Connect Personal in CLI mode, use
+  globusconnectpersonal -start
+
+Or, if you want to force the use of the GUI, use
+  globusconnectpersonal -gui
+```
+
+Finally, run globusconnect
+
+```bash
+globusconnectpersonal -start &
+```
+On the personal device it will display a window 
+
+![Globus_Client](../img/Globus_client.png)
+
+This completes our setup on the personal device. Now, we should be able to set it up on _Rāpoi_.
+
+
+## On Rāpoi
+
+Launch an interactive session
+
+```bash
+srun --pty bash
+```
+
+Now, follow similar steps as above starting from _Personal device setup_
+
+```bash
+globusconnectpersonal -start &
+```
+
+This should now makes our two points of data transfer accessible from _Globus_ website.
+
+## Globus File Manager
+
+Leave the above running, and login to Globus website.
+Open the ``File Manager`` Tab from the login page.
+
+
+You should now be able to browse the names of your personal device and _Rāpoi_'s compute node to transfer your files. An example shown below:
+
+![Globus_File_Manager](../img/Globus_File_Manager.png)
+
+You are now ready to transfer your data. 
+
+!!! tip
+    Request more time for the interactive session, if you have huge data to transfer.
+    `srun --time=0-05:00:00 --pty bash`
+
+
