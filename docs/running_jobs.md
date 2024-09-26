@@ -37,7 +37,7 @@ Depending on the node assigned by the scheduler, the prompt will change to:
 duggalro@amd01n01:~$
 ```
 
-!!! note "Why can't I run programs directly on the login node?"
+!!! warning "Why can't I run programs directly on the login node?"
     
     _Rāpoi_ _login_ is a shared resource and running programs directly on the login node puts unnecessary strain. 
     The recommended method is to use `srun` or `sbatch`. Please request an interactive session to work on the cluster, e.g., writing programs, debugging, or even data transfer. 

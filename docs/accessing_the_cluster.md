@@ -57,7 +57,7 @@ _Windows SSH Clients_
 
 ### File Transfer with SFTP, SCP or rsync
 
-!!! warning
+!!! danger "Caution: Massive Data Transfer"
     For massive data transfer, please use [interactive session](running_jobs.md/#interactive-jobs) on a compute node or follow instructions to transfer data using [Globus](https://vuw-research-computing.github.io/raapoi-docs/external_providers/#globus). Please contact [the support team](support.md) for help. 
 
 There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
