@@ -1,15 +1,16 @@
 # HPC layout
 
-> Note! Understanding the Rāpoi hardware layout is not critical for most users!  It is useful for users running big parallel MPI jobs and may be of interest to others.
+!!! note
+    Understanding the Rāpoi hardware layout is not critical for most users!  It is useful for users running big parallel MPI jobs and may be of interest to others.
 
-To a first approximation a High Performance Computer (HPC) is a collection of large computers or servers (nodes) that are connected together.  There will also be some attached storage.
+To a first approximation, a High Performance Computer (HPC) is a collection of large computers or servers (nodes) that are connected together.  There will also be some attached storage.
 
 Rather than logging into the system and immediately running your program or code, it is organised into a job and submitted to a scheduler that takes your job and runs it on one of the nodes that has enough free resources (cpu and memory) to meet your job request.  Most of the time you will be sharing a node with other users.  
 
 It is important to try and not over request resources as requested resources are kept in reserve for you and not available to others, even if you don't use them. This is particularly important when requesting a lot of resources or running array jobs which can use up a lot of the HPCs resources. 
 
 ## Hardware
-On Rāpoi, the node you login into and submit your jobs to is called `raapoi-master`. 
+On Rāpoi, the node you login into and submit your jobs to is called `raapoi-login`. 
 
 The computers/servers making up the nodes are of several types, covered in [partitions](partitions.md).
 
@@ -17,6 +18,7 @@ Most of the processors in Rāpoi are in the parallel AMD nodes such as AMD01n01,
 
 <figure markdown>
 ![Rapoi_Servers_front](img/parallel_front.jpg){ align=left }
+
 <figcaption>Figure 1: Example of some of the computers making up Rāpoi.  This is the front panel in Rack 4 in the Datacentre - highlighted is one of the AMD chassis, which have 4 nodes each. </figcaption>
 </figure>
 
@@ -49,7 +51,7 @@ The dashed lines indicate an Ethernet connection, all nodes are connected via et
 
 Many nodes are also connected by a solid line indicating an Infiniband network connection. This connection is faster than the ethernet connection but more importantly lower latency than the ethernet connection.  This helps with large interconnected (eg MPI) jobs running across multiple nodes.  The latency of the interprocess communication carried over the Infiniband link can have a dramatic affect on large scale calculations which for instance need to communicate grid boundary conditions across the nodes
 
-Where infiniband is available, the scratch storage and BeeGFS storage is transmitted over the link as the latency helps with IO performance.
+Where infiniband is available, the scratch storage is transmitted over the link as the latency helps with IO performance.
 
 <figure>
 ```mermaid
@@ -58,29 +60,28 @@ classDiagram
     Parallel_AMD .. Login
     Quicktest -- Login
     Quicktest .. Login
-    Highmem .. Login
+    Bigmem .. Login
     GPU .. Login
     Login .. Internet
     Login .. Scratch
     Login -- Scratch
-    Login .. BeeGFS
-    Login -- BeeGFS
+    Login .. Longrun
+    Login -- Longrun
     class Internet {
         vuw intranet 
         wider internet
     }
     class Scratch {
         100 TB
-        raapoi_fs01
+        raapoizfs01
     }
-    class BeeGFS {
-        100TB across
-        Bee01
-        Bee02
-        Bee03
+    class Longrun {
+        
+        bigtmp01
+        bigtmp02
     }
     class Login {
-        raapoi-master
+        raapoi-login
     }
     class Parallel_AMD {
         amd01n01
@@ -127,7 +128,7 @@ classDiagram
         itl03n01
         itl03n02
     }
-    class Highmem{
+    class Bigmem{
         high01
         high02
         high03
@@ -149,12 +150,12 @@ Looking at the HPC from the perspective of the ethernet and infiniband networks.
 classDiagram
     Parallel_AMD .. Ethernet
     Quicktest .. Ethernet
-    Highmem .. Ethernet
+    Bigmem .. Ethernet
     GPU .. Ethernet
     Ethernet .. Internet
     Ethernet .. Login
     Ethernet .. Scratch
-    Ethernet .. BeeGFS
+    Ethernet .. Longrun
     
     class Ethernet{
         1-10Gig
@@ -170,7 +171,7 @@ classDiagram
     }
     class Quicktest{
     }
-    class Highmem{
+    class Bigmem{
     }
     class GPU{ 
     }
@@ -179,34 +180,49 @@ classDiagram
 </figcaption>
 </figure>
 
+
 <figure>
 ```mermaid
-classDiagram    
-    Parallel_AMD -- Infiniband
-    Quicktest -- Infiniband
-    Infiniband -- Login
-    Infiniband -- Scratch
-    Infiniband -- BeeGFS
-    class Infiniband{
-      56Gb/s
-      Low latency
+classDiagram
+    Parallel_AMD -- Login
+    Parallel_AMD .. Login
+    Quicktest -- Login
+    Quicktest .. Login
+    Bigmem .. Login
+    GPU .. Login
+    Login .. Internet
+    Login .. Scratch
+    Login -- Scratch
+    Login .. Longrun
+    Login -- Longrun
+    class Internet {
+        vuw intranet 
+        wider internet
     }
-        class Scratch {
+    class Scratch {
+        100 TB
+        raapoizfs01
     }
-    class BeeGFS {
+    class Longrun {
+        bigtmp01
+        bigtmp02
+        
     }
     class Login {
+        raapoi-login
     }
     class Parallel_AMD {
     }
     class Quicktest{
     }
-    class Highmem{
+    class Bigmem{
     }
     class GPU{
     }
 ```
-<figcaption>Figure 7: Logical HPC layout from the perspective of the Infiniband connections. Note that not all nodes are connected via the infiniband link!  Node layout is the same as in Figure 5, but only the group headings have been retained.
+
+
+<figcaption>Figure 7: Logical HPC layout from the perspective of the Infiniband connections. Note that not all nodes are connected via the infiniband link!  Node layout is the same as in Figure 5, but only the group headings have been retained.</figcaption>
 </figure>
 
 The Infiniband nodes are connected to one of two SX6036 Infiniband switches.  The intel and quicktest and login nodes are connected to one switch. Everything else is connected to the the other. The switches are broadly interconnected, but there is as small latency penalty for crossing the switch.
