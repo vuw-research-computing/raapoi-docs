@@ -25,6 +25,8 @@ More information on VUW VPN services can be found [here](https://www.victoria.ac
 
 Here is a general overview of SSH [https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/](https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/).
 
+!!! warning "Get yourself familiar with a _Compute_ node!"
+    After logging in, do most things on the compute node by running command *_``srun --pty bash``_*. For more info, please see [_Interactive Jobs._](running_jobs.md/#interactive-jobs)
 
 ### SSH Clients
 
@@ -67,13 +69,14 @@ One can also use built-in command-line tools on Linux, Mac and Windows (if runni
 To copy a single file to or from the cluster, we can use _scp_ (“secure copy”). To upload to another computer, try:
 
 ``` text
-[you@laptop:~]$ scp <file_name_to_transfer> <username>@raapoi.vuw.ac.nz:/nfs/home/<username>/<destination>
+[you@laptop:~]$ scp <file_name_to_transfer> \
+<user_name>@raapoi.vuw.ac.nz:/nfs/home/<user_name>/<destination>
 ```
 
 I would upload a file from my device(local) to Rāpoi(remote) using:
 
 ``` text
-local_username@local_device:~$ scp demo.tar.gz <username>@raapoi.vuw.ac.nz:/nfs/scratch/<username>/
+you@laptop:~$ scp demo.tar.gz <user_name>@raapoi.vuw.ac.nz:/nfs/scratch/<user_name>/
 ```
 
 _SFTP_ client can be also be set up. In the address bar of my file explorer, I can add the directory I wish to access in the form `sftp://<username>@raapoi.vuw.ac.nz:/nfs/home/<username>`. 

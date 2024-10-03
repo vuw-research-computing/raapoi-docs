@@ -39,7 +39,8 @@ Additionally, you can only access ```/tmp``` on any given node via a job running
 On the AMD nodes and GPU nodes the ```/tmp``` storage is very fast nvme storage with 1.7TB total space.  
 On the Intel and highmem nodes this storage is slower and 1.7TB is not always available.
 
-**IMPORTANT:** If you use the ```/tmp``` storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  
+!!! tip "_Temp Disk Tips_"
+    If you use the ```/tmp``` storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  
 For more info see [Temp Disk Tips](storage/tmp.md).
 
 ## Storage Performance 
