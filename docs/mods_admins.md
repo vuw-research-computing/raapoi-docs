@@ -29,7 +29,8 @@ Users will occasionally run jobs which consume an unfair amount of resources, if
 scontrol hold jobid1,jobid2,etc
 
 # Allow the jobs back onto the queue
-scontrol requeue jobid1,jobid2,etc    ## previous step sets priority to zero so they won'ßt actually start now
+scontrol requeue jobid1,jobid2,etc    ## previous step sets priority to zero \
+## so they won'ßt actually start now
 
 # Release the jobs to run again
 scontrol release jobid1,jobid2,etc
@@ -38,7 +39,8 @@ scontrol release jobid1,jobid2,etc
 Alterativly you can reduce their priority to a low  setting
 
 ```bash
-squeue -p gpu -u <username> -t pending --format "scontrol update jobid=%i nice=1000000" | sh
+squeue -p gpu -u <username> -t pending --format \
+"scontrol update jobid=%i nice=1000000" | sh
 ```
 
 ### Cancelling jobs
@@ -96,7 +98,7 @@ sacctmgr modify user <user> set GrpTRES=mem=1000G # This is 1TB of Ram
 ```bash
 sacctmgr modify user bob set GrpTRES=cpu=-1,mem=-1,gres/gpu=4  # -1 means no restriction.
 
-#check result
+# check result
 sacctmgr list assoc User=bob
 ```
 
@@ -106,12 +108,13 @@ If a research group has a good need and the other moderators agree, you can give
 
 Create a month-long reservation on amd01n01 and amd01n02
 ```bash
-scontrol create reservationname=MyReservation starttime=2021-03-01T11:00:00 duration=30-00:00:00 user=user1,user2,user3 nodes=amd01n01,amd01n02
+scontrol create reservationname=MyReservation starttime=2021-03-01T11:00:00 \
+duration=30-00:00:00 user=user1,user2,user3 nodes=amd01n01,amd01n02
 ```
 
 Users will use the reservation with
 ```bash
-##SBATCH --reservation=MyReservation
+#SBATCH --reservation=MyReservation
 ```
 
 ## Building software with EasyBuild
@@ -331,7 +334,8 @@ module --ignore_cache avail
 
 ## Installing non-easybuild software for other users
 
-Before you proceed, ask yourself: how likely is it another user will want to use this software, even if they do will they potentially want different/newer version, etc.
+!!! warning "Caution:"
+    Before you proceed, ask yourself: how likely is it another user will want to use this software, even if they do will they potentially want different/newer version, etc.
 For software which is unlikely to be used by many users, and/or different users may want to install different versions, then it is probably not worth the hassle to install centrally (i.e. users can install local copies as needed).
 This is something you should only attempt if you are confident in using/modifying build scripts and associated tools.
 

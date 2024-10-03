@@ -81,8 +81,8 @@
     Submitted batch job 1042940
     $ squeue --me
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    1042940 quicktest dependen duggalro PD       0:00      1 (Dependency)
-    1042939 quicktest dependen duggalro  R       0:37      1 itl02n01
+    1042940 quicktest dependen janedoe PD       0:00      1 (Dependency)
+    1042939 quicktest dependen janedoe  R       0:37      1 itl02n01
 
     ```
     
@@ -135,7 +135,8 @@
     <your stuff here>
     
     # COMSOL execution command
-    /path/to/executable/comsol batch -nn 2 -nnhost 2 -np 4 -inputfile <your${INPUTFILE}> ..... >> rest of the arguments
+    /path/to/executable/comsol batch -nn 2 -nnhost 2 -np 4 \
+    -inputfile <your${INPUTFILE}> ..... >> rest of the arguments
     
     ```
 
@@ -156,8 +157,7 @@
 ## Full Node
 * *How do I request a whole node?*
     
-    We request users to be very careful with their requirements for such a job. However, here's a simple guide to follow:
-    ([1](https://hpc-uit.readthedocs.io/en/latest/jobs/slurm_parameter.html#:~:text=Requesting%20Resources)):
+    We request users to be very careful with their requirements for such a job. However, here's a simple guide to follow [[1](https://hpc-uit.readthedocs.io/en/latest/jobs/slurm_parameter.html#:~:text=Requesting%20Resources)]:
     
     | Parameter       | Function                      | 
     |-----------------|----------------------------|

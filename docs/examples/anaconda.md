@@ -19,7 +19,12 @@ conda activate idba-example  #activate our example environment.
 
 Conda environments are beyond the scope of this example, but they are a good way to contain all the dependencies and programs for a particular workflow, in this case, idba.
 
-Install idba in our conda environment.  ** Note that best practise is to do the install on a compute node ** We'll just do it here on the login node for now - the code will run slower on the compute nodes as a result!
+Install idba in our conda environment.  
+
+!!! tip
+    Note that best practise is to do the install on a compute node  
+
+We'll just do it here on the login node for now - the code will run slower on the compute nodes as a result!
 
 ```bash
 conda install -c bioconda idba
@@ -48,8 +53,8 @@ You'll need to find your ```idba-example``` environment, and next to it is the p
 ```bash
 # conda environments:
 #
-base                  *  /home/andre/anaconda3
-idba-example          /home/andre/anaconda3/envs/idba-example  # We need this line, it'll be different for you!
+base                  *  /home/username/anaconda3
+idba-example          /home/username/anaconda3/envs/idba-example  # We need this line, it'll be different for you!
 ```
 
 
@@ -69,7 +74,7 @@ Create our sbatch submission script. Note that this sequence doesn't need a lot 
 
 module load Anaconda3/2020.11
 eval "$(conda shell.bash hook)" # basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...
-conda activate /home/andre/anaconda3/envs/idba-example  # We will need to activate our conda enviroment on the remote node
+conda activate /home/username/anaconda3/envs/idba-example  # We will need to activate our conda enviroment on the remote node
 idba idba_ud -r data/read.fa -o output
 ```
 
@@ -82,8 +87,10 @@ To see our job running or queuing
 ```bash
 squeue -u $USER
 ```
+
 This job will take a few minutes to run, generally less than 5.
 When the job is done we can see the output in the output folder.  We can also see the std output and std err in the files ```_output.out and _output.err```.  The quickest way to examine them is to ```cat``` the files when the run is done.
+
 ```bash
 cat _output.out
 ```

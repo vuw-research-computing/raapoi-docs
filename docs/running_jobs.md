@@ -34,7 +34,7 @@ srun --pty bash
 Depending on the node assigned by the scheduler, the prompt will change to:
 
 ```bash
-duggalro@amd01n01:~$
+username@amd01n01:~$
 ```
 
 !!! warning "Why can't I run programs directly on the login node?"

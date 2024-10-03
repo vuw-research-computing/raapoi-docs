@@ -7,7 +7,7 @@ To cancel a job, first find the jobID, you can use the _vuw-myjobs_ (or _squeue_
 
 To cancel all of your jobs you can use the -u flag followed by your username:
 
-   `scancel -u harrelwe`
+   `scancel -u <username>`
 
 **Note:** Before cancelling your jobs, please make sure it runs for at least 2 mins, including the jobs submitted in error. 
 
@@ -66,7 +66,7 @@ To view your running jobs you can type _vuw-myjobs_  eg:
 ```
 $ vuw-myjobs
 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-7921967 quicktest     bash harrelwe  R       0:12      1 c03n01
+7921967 quicktest     bash username  R       0:12      1 c03n01
 ```
 
 As you can see I have a single job running on the node c03n01 on the quicktest partition

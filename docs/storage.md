@@ -19,7 +19,7 @@ Note: Home directory quotas cannot be increased, however if you need more space 
 To view your current quota and usage use the _vuw-quota_ command, for example:
 
 ```bash
-<username@raapoi-master:~$ vuw-quota 
+<username@raapoi-login:~$ vuw-quota 
 
 User Quotas
 

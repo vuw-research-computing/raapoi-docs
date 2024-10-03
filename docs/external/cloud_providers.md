@@ -3,7 +3,8 @@
 
 ### AARNET Cloudstor
 
-__NOTE:__  Cloudstor service has been decommissioned since Dec 2023. For old accounts, please check access with the provider.
+!!! note
+    Cloudstor service has been decommissioned since Dec 2023. For old accounts, please check access with the provider.
 
 All VUW researchers have access to the AARNET (Australia’s Academic and Research
 Network) Cloudstor service which provides __1 TB__ of space to each researcher.  To
@@ -31,6 +32,7 @@ module load rclone/1.54.1
 #check if cloudstor remote is already configured
 rclone listremotes
 ```
+
 The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
 (type `tmux attach` to reconnect) and then loads the rcopy module - which requires the use of our new module system.
 
@@ -39,7 +41,7 @@ If you don't already have CloudStor configured as a remote (which you won't if t
 Once we have setup _rclone_ to connect to CloudStor, we copy our data. In this case from``` <my scratch folder>/test``` to ```test``` on CloudStor
 
 ```
- rclone copy --progress --transfers 8 /nfs/scratch/geldenan/test CloudStor:/test
+ rclone copy --progress --transfers 8 /nfs/scratch/<username>/test CloudStor:/test
 ```
 
 
@@ -64,16 +66,19 @@ To transfer data from S3 you first need to setup your AWS connect, instructions 
 Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  
 
 For example if I wanted to copy data from my S3 storage to my project directory I could do the following:
-```
+```bash
   tmux
   module load amazon/aws/cli
-  cd /nfs/scratch/harrelwe/project
+  cd /nfs/scratch/<username>/project
   aws s3 cp s3://mybucket/mydata.dat mydata.dat
 ```
+
 To copy something to storage simply reverse the file paths, eg.
+
 ```
   aws s3 cp mydata.dat s3://mybucket/mydata.dat 
 ```
+
 The above starts a tmux session to allow the transfer to continue even if I
 disconnect from the cluster (type `tmux attach` to reconnect).  I then load the
 modules necessary to use the AWS commands.  I change directory to my project
@@ -110,10 +115,10 @@ Follow the instructions to authorize your gcloud account.  Once on the Google we
 To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the `gsutil` command to copy data to and from your gcloud storage.  
 
 For example, if I wanted to copy data from gcloud to my project directory I could do the following:
-```
+```bash
   tmux
   module load gcloud/481.0.0
-  cd /nfs/scratch/harrelwe/project
+  cd /nfs/scratch/<username>/project
   gsutil cp gs://mybucket/mydata.dat mydata.dat
 ```
 To copy something to storage simply reverse the file paths, eg.
@@ -140,7 +145,8 @@ A listing of available services and documentation can be found at the following:
 
 ### DropBox Cloud Storage
 
-__NOTE:__ Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.
+!!! tip "Upload/Download Limits with DropBox"
+    Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.
 
 Configuring your Dropbox account on Rāpoi
 
@@ -162,7 +168,7 @@ dbxcli account
 
 You will now see something like the following:
 
-  1. Go to https://www.dropbox.com/1/oauth2/authorize?client_id=X12345678&response_type=code&state=state
+  1. Go to https://www.dropbox.com/1/oauth2/authorize?client_id=X123...
   2. Click "Allow" (you might have to log in first).
   3. Copy the authorization code.
   Enter the authorization code here:
@@ -195,8 +201,9 @@ dbxcli get fileOnDropbox fileOnRaapoi
 
 For instance, if I have a datafile called 2018-financials.csv on Dropbox that I want to copy to my project folder I would type:
 
-``` text
-dbxcli get 2018-financials.csv /nfs/scratch/harrelwe/projects/finance_proj/2018-financials.csv
+``` 
+dbxcli get 2018-financials.csv /nfs/scratch/<username>/projects\
+/finance_proj/2018-financials.csv
 ```
 
 #### Uploading to Dropbox
@@ -224,7 +231,8 @@ dbxcli put final-report.pdf analytics-class-final-report.pdf
 
 ### GLOBUS
 
-__NOTE:__ Presently, users can share/transfer data to and from locations including cluster, research storage, and personal devices. Options for enabling data sharing externally are being explored.
+!!! warning "External sharing coming soon!"
+    Presently, users can share/transfer data to and from locations including cluster, research storage, and personal devices. Options for enabling data sharing externally are being explored.
 
 First time users should be able to sign up on GLOBUS website using their university credentials by following this link: [https://app.globus.org/](https://app.globus.org/).
 
@@ -249,7 +257,8 @@ For Windows OS, please see [https://globus.org/globus-connect-personal](https://
 On you personal device, 
 
 ```
-wget https://downloads.globus.org/globus-connect-personal/linux/stable/globusconnectpersonal-latest.tgz
+wget https://downloads.globus.org/globus-connect-personal/\
+linux/stable/globusconnectpersonal-latest.tgz
 tar xzf globusconnectpersonal-latest.tgz
 # this will produce a versioned globusconnectpersonal directory
 # replace `x.y.z` in the line below with the version number you see

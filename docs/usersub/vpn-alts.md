@@ -35,10 +35,12 @@ sudo apt install pipx
 pipx install "openconnect-sso[full]"  # can just use "openconnect-sso" if Qt 5.x already installed
 pipx ensurepath
 ```
+
 Last line required because of the 'Note' that displays when you run ```pipx install "openconnect-sso[full]"```
 If you have Qt 5.x installed you can skip 2 to 3 and instead: ```pipx install openconect-sso]```
 
 Now you can connect using CLI:
+
 ```bash
 openconnect-sso --server vpn.vuw.ac.nz --user <firstname.lastname>@vuw.ac.nz
 ```

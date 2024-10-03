@@ -108,7 +108,7 @@ _ALSO NOTE:_  If using python or another language you will also need to add the 
 
   `mpirun --oversubscribe -np 24 mpiscript.py`
 
-More information about running MPI jobs within Slurm can be found here here: http://slurm.schedmd.com/mpi_guide.html.
+More information about running MPI jobs within Slurm can be found here: [http://slurm.schedmd.com/mpi_guide.html](http://slurm.schedmd.com/mpi_guide.html).
 
 {%
 include-markdown "advanced/OpenMPI_users_guide.md"

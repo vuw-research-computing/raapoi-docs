@@ -19,7 +19,7 @@ From: ubuntu:16.04
     exec echo "$@"
 
 %labels
-    Author Andre
+    Author JaneDoe
 ```
 
 This will build an ubuntu 16.04 container that will eventually run on Rāpoi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.
@@ -209,7 +209,7 @@ apt-get update && apt-get -y install wget build-essential
     exec echo "$@"
 
 %labels
-    Author Andre
+    Author JaneDoe
     
 ```
 
@@ -238,6 +238,7 @@ To run the container on Rāpoi we convert it to the default immutable image with
 ```bash
 sudo singularity build new-example-sif example/
 ```
+
 You could now copy the ```new-example-sif``` file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting *everything in the.def file*.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.
 
 ### Singularity/Custom Conda Container - idba example

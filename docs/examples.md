@@ -3,7 +3,7 @@
 
 ## Simple Bash Example - start here if new to HPC
 
-In this example we will run a very simple bash script on the quicktest partition.  The bash script is very simple, it just prints the hostname - the node you're running on - and prints the date into a file.  It also sleeps for 1 minute - it just does this to give you a chance to see your job in the queue with ```squeue```
+In this example we will run a very simple bash script on the quicktest partition.  The bash script is very simple, it just prints the hostname - the node you're running on - and prints the date into a file.  It also sleeps for 1 minute - it just does this to give you a chance to see your job in the queue with `squeue`
 
 First lets create a sensible working directory
 
@@ -11,6 +11,7 @@ First lets create a sensible working directory
 mkdir bash_example
 cd bash_example
 ```
+
 We'll use the text editor nano to create our bash script as well as our submission script.  In real life, you might find it easier to create your code and submission script on your local machine, then copy them over as nano is not a great editor for large projects.
 
 Create and edit our simple bash script - this is our code we will run on the HPC
@@ -143,6 +144,7 @@ Examine the queue for your job ```squeue -u $USER```.  When your job is done, in
 ```bash
 cat out-gpu-example.out
 ```
+
 What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performance!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!
 
 To get a better idea of the advantage of the GPU let's increase the size of the array from ```1000``` to ```10000```

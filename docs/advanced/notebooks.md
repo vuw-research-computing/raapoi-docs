@@ -2,9 +2,12 @@
 ## Starting and Working with a Jupyter Notebook
 
 Running Jupyter notebooks on Rāpoi is usually a two step processes.  
-First you start the jupyter server on a compute node - either via an interactive session or an sbatch job.  
-Then you connect to Rāpoi again via a new ssh session port forwarding the port selected by Jupter to your local machine for the web session.  
-There is a potentially simpler method at the end of this guide using firefox and tab containers.
+
+1. First you start the jupyter server on a compute node - either via an interactive session or an sbatch job.  
+2. Then you connect to Rāpoi again via a new ssh session port forwarding the port selected by Jupter to your local machine for the web session.  
+
+!!! tip
+    There is a potentially simpler method at the end of this guide using firefox and tab containers.
 
 For general information on using Python, see the [Python users guide](../examples/Python_users_guide.md).
 
@@ -50,7 +53,7 @@ pip install jupyterlab pandas plotnine # install dependancies - you *must* at le
 #exit the interactive session
 exit
 #prompt changes to something like 
-#<username@raapoi-master> you are now back on the login/master node
+#<username@raapoi-login> you are now back on the login/master node
 ```
 
 This script is ready to run as is, but we recommend editing it to satisfy your own CPU, memory and time requirements.  Once you have edited the file you can run it thusly:
@@ -95,7 +98,7 @@ ssh -L <PORT_NUMBER>:<IP_ADDRESS>:<PORT_NUMBER> username@raapoi.vuw.ac.nz
 For example:
 
 ```
-ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+ssh -L 47033:130.195.19.20:47033 janedoe@raapoi.vuw.ac.nz
 ```
 
 Once you are at a prompt you can go to Step 3
@@ -115,7 +118,7 @@ ssh -L <PORT_NUMBER>:<IP_ADDRESS>:<PORT_NUMBER> username@raapoi.vuw.ac.nz
 For example:
 
 ```
-ssh -L 47033:130.195.19.20:47033 harrelwe@raapoi.vuw.ac.nz
+ssh -L 47033:130.195.19.20:47033 janedoe@raapoi.vuw.ac.nz
 ```
 
 Once you are at a prompt you can go to Step 3

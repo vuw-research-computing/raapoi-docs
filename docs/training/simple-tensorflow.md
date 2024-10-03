@@ -91,19 +91,19 @@ sbatch submit.sh
 squeue -u <username>
 ```
 
-Possible errors - Tensorflow jobs on the gpu nodes can be a bit dicey
-I'd suggest always choosing more memory than the GPU has (40GB) the gpu nodes have a lot of memory so I'd suggest asking for 50GB of ram minimum.
+!!! tip "_Possible Errors_" 
+    Tensorflow jobs on the gpu nodes can be a bit dicey
+1. I'd suggest always choosing more memory than the GPU has (40GB) the gpu nodes have a lot of memory so I'd suggest asking for 50GB of ram minimum.
 
-There is also a relationship between cpu's allocated and memory used - the errors are not always obvious.  If you're running into issues try increasing the requested memory or reducing the requested CPUs
+2. There is also a relationship between cpu's allocated and memory used - the errors are not always obvious.  If you're running into issues try increasing the requested memory or reducing the requested CPUs
 
-Example errors due to requesting many cpus while requesting only 50GB ram
+3. Example errors due to requesting many cpus while requesting only 50GB ram
 Note std::bad_alloc - this suggests a problem allocating memory
-```
+```python
 terminate called after throwing an instance of 'std::bad_alloc'
   what():  std::bad_alloc
-/var/lib/slurm/slurmd/job1125851/slurm_script: line 21: 46983 Aborted                 (core dumped) python example.py
+/var/lib/slurm/slurmd/job1125851/slurm_script: line 21: 46983 Aborted
+(core dumped) python example.py
 ```
 
-Note this example is also in our example git repo: https://github.com/vuw-research-computing/raapoi-examples
-
-In the *tensorflow-simple* directory
+Note this example is also in our example git repo: [https://github.com/vuw-research-computing/raapoi-examples](https://github.com/vuw-research-computing/raapoi-examples) inside the *tensorflow-simple* directory

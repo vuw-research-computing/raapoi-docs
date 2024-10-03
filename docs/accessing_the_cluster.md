@@ -73,12 +73,10 @@ To copy a single file to or from the cluster, we can use _scp_ (“secure copy�
 I would upload a file from my device(local) to Rāpoi(remote) using:
 
 ``` text
-rohit@ava:~$ scp demo.tar.gz duggalro@raapoi.vuw.ac.nz:/nfs/scratch/duggalro/
+local_username@local_device:~$ scp demo.tar.gz <username>@raapoi.vuw.ac.nz:/nfs/scratch/<username>/
 ```
 
-_SFTP_ client can be also be set up. In the address bar of my file explorer, I can add the directory I wish to access in the form `sftp://<username>@raapoi.vuw.ac.nz:/nfs/home/<username>`. A dialog will appear to confirm my password to finally let me access the specific path.
-
-![SFTP_Login_Page](img/SFTP_Login_Page.png)
+_SFTP_ client can be also be set up. In the address bar of my file explorer, I can add the directory I wish to access in the form `sftp://<username>@raapoi.vuw.ac.nz:/nfs/home/<username>`. 
 
 In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
 _/nfs/home/username_ or _/nfs/scratch/username_

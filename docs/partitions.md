@@ -15,7 +15,7 @@ To view the partitions available to use you can type the vuw-partitions
 command, eg
 
 ```
-<user>@raapoi-master:~$ vuw-partitions 
+<user>@raapoi-login:~$ vuw-partitions 
 
 VUW CLUSTER PARTITIONS
 PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
