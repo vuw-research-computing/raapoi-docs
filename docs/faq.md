@@ -181,7 +181,7 @@
     You should run a few tests to see that your job is requested cpus that it can actually utilise efficiently. Try to run your job on 1, 2, 4, 8, 16, etc. cores to see when the runtime for your job starts tailing off. 
 
 ## Job Failed
-* *What should I do when my job fails?*
+* *What should I do when my job fails (or hangs)?*
     
     See if you can get your job to run by yourself when you follow these steps:
     
@@ -192,6 +192,7 @@
     * Look for some common problems, e.g., OOM which means out-of-memory and try to increase memory request; permissions error - look for if files/folders referenced in your script exist by manually checking the directories.
     * Resubmit your batch script but this time include `#!/bin/bash -x` at the top of your submission script. 
     * Now, the error file will produce debugging information for further inquiries to make into the program's behaviour and identifying where it failed.
+    * If you software utilises OpenMPI or OpenBLAS, please check the related faq's and user guides to ensure you are following best practice with these pieces of software.
     * If nothing works, send the script file, JobId, error file, and other logs to [raapoi-help slack channel](https://uwrc.slack.com) to ask for help from the admins. They know the system and may have helped another user do something similar.
 
 
