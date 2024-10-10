@@ -27,22 +27,31 @@ For example, if you want to request a compute node with AMD processors you can a
 
 One of the basic job submittal tools is the command _**srun**_. It is a useful command that let's us _**a)**_ work on a compute node (_a.k.a_ request an _interactive_ _session_) and _**b)**_ run your program written in _python_, _R_, etc.
 
+
+Interactive sessions will take me to one of the compute nodes where I can perform tasks such as writing my program, debugging, and even data transfer.
+
 _**a) To request an interactive session:**_
 ```
-srun --pty bash
+username@raapoi-login:~$ srun --pty bash
 ```
-Depending on the node assigned by the scheduler, the prompt will change to:
+Depending on the node assigned by the scheduler (in this case - _amd01n01_), the prompt (_raapoi-login_) will change to:
 
 ```bash
-username@amd01n01:~$
+username@amd01n01:~$ #start_your_applications_here
 ```
+
+
+!!! tip
+    You could playaround with _flags_ for the _srun_ command, e.g., `srun --cpus-per-task=2 --mem=4G --time=0-00:10:00 --pty bash`. 
+
+
 
 !!! warning "Why can't I run programs directly on the login node?"
     
     _Rāpoi_ _login_ is a shared resource and running programs directly on the login node puts unnecessary strain. 
     The recommended method is to use `srun` or `sbatch`. Please request an interactive session to work on the cluster, e.g., writing programs, debugging, or even data transfer. 
 
-Interactive sessions will take me to one of the compute nodes where I can perform tasks such as writing my program, debugging, and even data transfer.
+
 
 
 _**b) To run a small quick program**_
@@ -51,13 +60,15 @@ _**b) To run a small quick program**_
 I can use `hello.py` program available on _Rāpoi_ to test a quick example on my own. I can then use the method to run my other programs that finish under 5 hours. 
 
 ```
-srun --mem=100M --time=00:10:00 --partition=quicktest python3 /home/software/tools/examples/python_venv/hello.py
+ username@raapoi-login:~$ srun --mem=100M --time=00:10:00 --partition=quicktest python3 
+ /home/software/tools/examples/python_venv/hello.py
 ```
 
 To run my own python program, I can do: 
 
-```
-srun --mem=100M --time=00:10:00 --partition=quicktest python3 <your_program_name>
+``` bash
+ username@raapoi-login:~$ srun --mem=100M --time=00:10:00 --partition=quicktest python3 
+ <your_program_name>
 ```
 
 
