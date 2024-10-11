@@ -14,10 +14,10 @@ If yes, it is not a guarantee they are being used, but is certainly a possibilit
 
 ### Known issues
 
-Some versions of OpenBLAS have been installed with OpenMP support. 
-When using software that links to one of those versions it is essential that you set the environment variable `OMP_NUM_THREADS` to the desired number of threads. 
-If you do not set this environment variable, then your software may hang when OpenBLAS is trying to determine how many threads are available to use (unless you allocate an obscene and uneccessary amount of memory). 
-The recommended approach is to add the line `export OMP_NUM_THREADS=$SLURM_NTASKS` after you have loaded all of the modules you need. 
-(You will need to change this accordingly if you are using some form of hybrid paralellism, and/or are setting a value of `--ncpus-per-task` which is more than one.)
+Most versions of OpenBLAS have been installed with OpenMP support.
+Some of the newer versions (0.3.20 onwards) have a bug which can cause OpenBLAS to hang on startup (unless you allocate an obscene and uneccessary amount of memory).
+When using software that links to one of those versions it is essential that you: (i) set the environment variable `OMP_NUM_THREADS` to the desired number of threads, and/or (ii) set the environment varialbe `OMP_PROC_BIND=true` (or any other valid option, apart from `false`).  
+The recommended approach is to add the line `export OMP_NUM_THREADS=$SLURM_NTASKS` and/or `export OMP_PROC_BIND=true` after you have loaded all of the modules you require. 
+(You will need to change `export OMP_NUM_THREADS=$SLURM_NTASKS` accordingly if you are using some form of hybrid paralellism, and/or are setting a value of `--ncpus-per-task` which is more than one.)
 
 
