@@ -3,7 +3,7 @@
 
 ### AARNET Cloudstor
 
-!!! note
+???+ caution "_**NOTE**_"
     Cloudstor service has been decommissioned since Dec 2023. For old accounts, please check access with the provider.
 
 All VUW researchers have access to the AARNET (Australia’s Academic and Research

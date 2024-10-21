@@ -51,9 +51,6 @@ username@amd01n01:~$ #start_your_applications_here
     _Rāpoi_ _login_ is a shared resource and running programs directly on the login node puts unnecessary strain. 
     The recommended method is to use `srun` or `sbatch`. Please request an interactive session to work on the cluster, e.g., writing programs, debugging, or even data transfer. 
 
-
-
-
 _**b) To run a small quick program**_
 
 
@@ -85,7 +82,7 @@ srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
 
 !!! info
     It may take a few seconds until the prompt appears when the cluster is busy. Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.
-
+    
 
 ## Batch jobs
 

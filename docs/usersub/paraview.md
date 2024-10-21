@@ -1,4 +1,4 @@
-## ParaView on Rāpoi
+## ParaView 
 
 To connect ParaView to Rāpoi, you will need 3 terminal windows: two to extend the virtual handshake from Rāpoi and from your local computer, and one to open ParaView.
 

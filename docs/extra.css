@@ -160,3 +160,249 @@ code, .rst-content tt {
         margin: 15px 0;      /* Adjust spacing as desired */
     }
 }
+
+/* Tab style starts here */
+
+/* REMOVE RADIO BuTTON AT THE TOP OF TABBED CONTENT */
+.tabbed-alternate > input {
+  display: none;
+}
+
+.tabbed-labels {
+  display: flex; /* COMMENT #TABS>4 */
+  width: 100%;
+  overflow: auto;
+}
+
+.tabbed-labels > label {
+  width: auto;
+  padding: 0.0em 1.0em 0.78125em;
+  font-weight: 700;
+  font-size: 0.9em;
+  white-space: nowrap;
+  border-bottom: 0.1rem solid transparent;
+  scroll-snap-align: start;
+  border-top-left-radius: 0.1rem;
+  border-top-right-radius: 0.1rem;
+  cursor: pointer;
+  transition: background-color 250ms, color 250ms;
+}
+
+.tabbed-labels > label:hover {
+  color: red;
+}
+
+ 
+.tabbed-alternate .tabbed-content {
+  font-size: 0.9em;
+  padding-top: 0.64em;
+  padding-left: 0.55em;
+  
+} 
+
+.tabbed-alternate input:nth-child(1):checked ~ .tabbed-content > :nth-child(1),
+.tabbed-alternate input:nth-child(2):checked ~ .tabbed-content > :nth-child(2),
+.tabbed-alternate input:nth-child(3):checked ~ .tabbed-content > :nth-child(3) { 
+    display: block;
+} 
+
+.tabbed-alternate .tabbed-block {
+  display: none;
+}
+
+@media screen {
+  .tabbed-alternate input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+  .tabbed-alternate input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+  .tabbed-alternate input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3) {
+    color: red;
+    border-color: red;
+  }
+}
+
+/* Tab style ends here */
+
+
+/* ADMONITION STYLE*/
+
+
+/* INFO */
+.admonition.info .admonition-title::before {
+  content: "🔅";
+  padding-right: 0.25rem;
+  
+}
+
+.rst-content .admonition.info .admonition-title {
+  font-size: medium;
+  color: rgb(74, 89, 96);
+  padding-left: 0.5rem;
+  background-color: rgb(84, 117, 77, 0.2);
+}
+
+.admonition.info {
+  box-shadow: 0.2em 0.2em 0.2em rgba(84, 117, 77,0.2);
+
+  border: 1.5px solid rgb(84, 117, 77);
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+
+
+
+/* EXAMPLE */
+.admonition.example .admonition-title::before {
+  content: "🔥";
+  padding-right: 0.25rem;
+  
+}
+.rst-content .admonition.example .admonition-title {
+  font-size: medium;
+  color: rgb(74, 89, 96);
+  padding-left: 0.5rem;
+  background-color: rgb(82, 217, 53, 0.2);
+}
+
+.admonition.example {
+  box-shadow: 0.2em 0.2em 0.2em rgba(82, 217, 53,0.2);
+
+  border: 1.5px solid rgba(82, 217, 53);
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+
+
+
+
+/* WARNING */
+.admonition.warning .admonition-title::before {
+  content: "⚠️";
+  padding-right: 0.25rem;
+  
+}
+.rst-content .admonition.warning .admonition-title {
+  font-size: medium;
+  color: rgb(74, 89, 96);
+  padding-left: 0.5rem;
+  background-color: rgba(194, 121, 201,0.2);
+}
+
+.admonition.warning {
+  box-shadow: 0.2em 0.2em 0.2em rgba(194, 121, 201,0.2);
+  border: 1.5px solid rgb(194, 121, 201);
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+
+
+
+/* TIP */
+.admonition.tip .admonition-title::before {
+  content: "💡";
+  padding-right: 0.25rem;
+  
+}
+.rst-content .admonition.tip .admonition-title {
+  font-size: medium;
+  color: rgb(74, 89, 96);
+  padding-left: 0.5rem;
+  background-color: rgba(0, 182, 208, 0.2);
+}
+
+.admonition.tip {
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 182, 208, 0.2);
+  border: 1.5px solid rgb(74, 89, 96);
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+
+
+
+
+
+/* DANGER */
+.admonition.danger .admonition-title::before {
+  content: "👽";
+  padding-right: 0.25rem;
+  
+}
+.rst-content .admonition.danger .admonition-title {
+  font-size: medium;
+  color: rgb(74, 89, 96);
+  padding-left: 0.5rem;
+  background-color: rgba(252, 81, 86, 0.2);
+}
+
+.admonition.danger {
+  box-shadow: 0.2em 0.2em 0.2em rgba(103, 62, 63,0.2);
+  border: 1.5px solid rgb(252, 81, 86);
+  border-radius: 0.25rem;
+  background-color: white;
+  
+}
+
+
+
+
+
+
+
+/* NOTE */
+.admonition.note .admonition-title::before {
+  
+  content: "💬";
+  padding-right: 0.25rem;
+  
+}
+
+.rst-content .admonition.note .admonition-title {
+  font-size: medium;
+  color: rgb(74, 89, 96);
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+  background-color: rgb(255, 146, 41, 0.2);
+}
+
+.admonition.note {
+  box-shadow: 0.2em 0.2em 0.2em rgba(255, 146, 41, 0.2);
+  border: 1.5px solid rgba(255, 146, 41);
+  border-radius: 0.25rem;
+  background-color: white;
+  
+}
+
+
+
+ /* NOTE COLLAPSIBLE */
+
+.rst-content .caution p {
+  padding: 0.8rem;
+  background-color: white;
+}
+
+.rst-content .caution summary {
+  font-size: medium;
+  color: rgba(125,50,180);
+  padding-left: 0.5rem;
+}
+
+.rst-content .caution {
+  padding: 0rem;
+  background-color: rgba(125,125,195,0.25);
+  border: 1.5px solid rgba(125,50,180,0.8);
+  border-radius: 0.25rem;
+} 
+
+
+/* FENCES */
+div.highlight  {
+  background-color: red;
+  
+}
+
+.rst-content div[class^=highlight] pre {
+  padding: 0rem;
+}

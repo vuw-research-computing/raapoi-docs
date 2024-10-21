@@ -1,6 +1,6 @@
 # HPC layout
 
-!!! note
+???+ caution "_**NOTE**_"
     Understanding the Rāpoi hardware layout is not critical for most users!  It is useful for users running big parallel MPI jobs and may be of interest to others.
 
 To a first approximation, a High Performance Computer (HPC) is a collection of large computers or servers (nodes) that are connected together.  There will also be some attached storage.

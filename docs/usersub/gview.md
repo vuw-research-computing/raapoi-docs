@@ -1,4 +1,4 @@
-## Gview on Rāpoi
+## Gview 
 
 First, log in to Rāpoi using ``-X`` flag when using graphical applications on your local machine.
 

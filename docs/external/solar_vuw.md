@@ -94,10 +94,10 @@ folder_on_Raapoi_you_want_to_copy_to_SoLAR "
 
 You will then be asked to give your VUW password to copy data to SoLAR.
 
-???+ note "*Note:*"
+???+ caution "*Note:*"
     This may take a while if you are copying lots of files or large files. It is recommended that if you have lots of file in folders to copy (i.e. in the 100,000s of files) that you copy individually big folders rather than the whole directory at once so you can keep track of what has been copied if there are issues. 
 
-!!! tip
+!!! tip 
     You may see it not doing anything for a while, and then all of a sudden it will show you that it is doing things. This is normal. 
 
 If you want to copy files from SoLAR to Rāpoi, first ``cd`` into the directory on Rāpoi that you want to copy the SoLAR folder/file to. Then in the terminal give the following input:
