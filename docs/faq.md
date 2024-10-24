@@ -18,7 +18,7 @@
 
 ## Visualisation
 * *How do I plot/visualise my results/data on Rāpoi?*
-    * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself is computationally intensive and/or requires specialised hardware (like a gpu).
+    * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself is computationally intensive, the dataset is large and difficult to move, and/or requires specialised hardware (like a gpu).
     * The Rāpoi operating system is primarily designed for command line use, and thus doesn't include most of the software libraries that support graphical interfaces. This typically makes the installation of visualisation software a time consuming process.
     * Should you really need to plot/visualise on Rāpoi, there are several things you probably need to do. The first will be to have a suitable ssh client (see the section on the [Accessing the Cluster](accessing_the_cluster.md) page) and enable X11 forwarding by adding the `-X` option when you `ssh` into Rāpoi. Other steps can vary greatly depending on your local operating system and exactly what you want to do. If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
 
@@ -66,7 +66,7 @@
 
 
 ## VS Code tips
-* *How do I clean up my VS Code Server processes on Rāpoi?
+* *How do I clean up my VS Code Server processes on Rāpoi?*
     * Unfortunately, VS Code seems to have somewhat poor process management when used to connect to Rāpoi for remote code development. In particular, it tends to leave a large number of processes sitting on the cluster occupying resources (even after you leave/close the session on your local machine). [This link from the vscode docs](https://code.visualstudio.com/docs/remote/troubleshooting#_cleaning-up-the-vs-code-server-on-the-remote) tells you how to cleanup your VS Code Server. In particular, they recommend running `kill -9 $(ps aux | grep vscode-server | grep $USER | grep -v grep | awk '{print $2}')` to kill server processes. If you are a user of VS Code, please do this whenever we you finish a session.
 
 
