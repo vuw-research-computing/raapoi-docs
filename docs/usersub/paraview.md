@@ -1,4 +1,6 @@
-## ParaView 
+## ParaView (via OpenFOAM)
+
+*Firstly, see the FAQ entry on visualisation (i.e. consider if this is something you really need to do remotely). If doing your visualisation/plotting locally is not an option, proceed. Note that this FAQ entry is aimed at those using ParaView alongside OpenFOAM, i.e. you'll need an installation of OpenFOAM on your local computer and on Rāpoi.* 
 
 To connect ParaView to Rāpoi, you will need 3 terminal windows: two to extend the virtual handshake from Rāpoi and from your local computer, and one to open ParaView.
 

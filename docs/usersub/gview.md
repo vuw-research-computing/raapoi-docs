@@ -1,6 +1,8 @@
 ## Gview 
 
-First, log in to Rāpoi using ``-X`` flag when using graphical applications on your local machine.
+*Firstly, see the FAQ entry on visualisation (i.e. consider if this is something you really need to do remotely). If doing your visualisation/plotting locally is not an option, proceed.*
+
+Begin by logging into Rāpoi using ``-X`` flag when using graphical applications on your local machine.
 
 ```bash
 ssh -X <username>@raapoi.vuw.ac.nz
