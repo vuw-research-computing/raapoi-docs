@@ -13,12 +13,12 @@
     * Select a test job carefully. As a rule of thumb, a test job should not run for more than 15 mins. Perhaps you could use smaller input, coarse parameters or use a subset of the calculations. 
     * Make sure your test job is quick to run and quick to start. The later can be ensured by keeping resource requirement to be small (mem or cpu).
     * Often a good first test to run, is to execute your job serially e.g., using only 1 CPU. These jobs should be easier to debug, and quicker to run.
-    * It is recommended to ask for 20% to 30% more time and memory than you think the job will use.
+    * Generally it is okay to request roughly 20% more time and memory than you think the job will use, any more than that can impact on other users.
 
 
 ## Visualisation
 * *How do I plot/visualise my results/data on Rāpoi?*
-    * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself if computationally intensive and/or requires specialised hardware (like a gpu).
+    * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself is computationally intensive and/or requires specialised hardware (like a gpu).
     * The Rāpoi operating system is primarily designed for command line use, and thus doesn't include most of the software libraries that support graphical interfaces. This typically makes the installation of visualisation software a time consuming process.
     * Should you really need to plot/visualise on Rāpoi, there are several things you probably need to do. The first will be to have a suitable ssh client (see the section on the [Accessing the Cluster](accessing_the_cluster.md) page) and enable X11 forwarding by adding the `-X` option when you `ssh` into Rāpoi. Other steps can vary greatly depending on your local operating system and exactly what you want to do. If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
 
@@ -64,6 +64,10 @@
 
     - If your job requires more than the default available memory per core (2GB/core on a 256 core node) you should adjust this need with the following command: `#SBATCH --mem-per-cpu=10GB`. When doing this, the batch system will automatically allocate 50 cores or less per node (for a 500GB node).
 
+
+## VS Code tips
+* *How do I clean up my VS Code Server processes on Rāpoi?
+    * Unfortunately, VS Code seems to have somewhat poor process management when used to connect to Rāpoi for remote code development. In particular, it tends to leave a large number of processes sitting on the cluster occupying resources (even after you leave/close the session on your local machine). [This link from the vscode docs](https://code.visualstudio.com/docs/remote/troubleshooting#_cleaning-up-the-vs-code-server-on-the-remote) tells you how to cleanup your VS Code Server. In particular, they recommend running `kill -9 $(ps aux | grep vscode-server | grep $USER | grep -v grep | awk '{print $2}')` to kill server processes. If you are a user of VS Code, please do this whenever we you finish a session.
 
 
 ## Dependent Jobs
