@@ -1,6 +1,6 @@
 # Accessing the Cluster
 
-To access Rāpoi, you'll first need to get an account provisioned for you by contacting the [Rāpoi support team](support.md) with your:
+To access Rāpoi, you'll first need to get an account provisioned for you by completing the form in the [Service Desk Portal](https://service.victoria.ac.nz/asm/Core.aspx?Lite&Form=Request&MODE=NEW&TEMPLATE_REF=331026) or contacting the [Rāpoi support team](support.md) with your:
 
 *  Full Name
 *  VUW staff username
