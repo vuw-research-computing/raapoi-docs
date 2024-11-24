@@ -3,7 +3,10 @@ Check out the [Documentation](index.md) section for a comprehensive overview of 
 
 Visit the [Rāpoi Slack Channel](https://uwrc.slack.com) for help, software requests or to communicate with others in the Rāpoi community.
 
-Need an account on Rāpoi or access to the Slack channel? Contact the Rāpoi Admins:
+Need an account on Rāpoi or access to the Slack channel? 
+Log a request on the [Service Desk Portal](https://service.victoria.ac.nz/asm/Core.aspx?Lite&Form=Request&MODE=NEW&TEMPLATE_REF=331026)
+
+or Contact the Rāpoi Admins:
 
 ## Rāpoi Admins
 
