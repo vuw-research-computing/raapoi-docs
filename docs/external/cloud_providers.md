@@ -226,7 +226,25 @@ This will upload the PDF and name it the same thing, if I wanted to change the n
 dbxcli put final-report.pdf analytics-class-final-report.pdf
 ```
 
+### Microsoft OneDrive
 
+``RClone`` can be used to connect to onedrive, google drive, etc. The steps below implement onedrive setup on Rāpoi.
+
+```console
+module load rclone/1.54.1
+rclone config
+```
+
+Follow the on-screen instructions, e.g., make a new remote - enter "n"; to select storage type; "onedrive" and keep following default options until "Use auto config" and enter "y" here. 
+
+This should display a url; copy and paste in the browser and it should get set up. 
+
+To view your files on the remote onedrive, you can use: 
+
+```console
+# For example, rclone lsd <remote>:<dir_name>, in my case, I would do:
+rclone lsd my_staff_onedrive:Documents
+```
 
 
 ### GLOBUS
@@ -243,17 +261,17 @@ Please install and start GLOBUS connect personal. Please find those instructions
 You should now be able to share or transfer your data by following their guide: [https://docs.globus.org/guides/tutorials/manage-files/share-files/](https://docs.globus.org/guides/tutorials/manage-files/share-files/).
 
 
-# Transfer files using Globus
+#### Transfer files using Globus
 
 We will need to have Globus on personal device and on _Rāpoi_'s compute node.
 We will start Globus on both devices.
 Transfer data using Globus File Manager.
 
-# Installation
+##### Installation
 I have a linux device similar to the OS on Rāpoi. 
 For Windows OS, please see [https://globus.org/globus-connect-personal](https://globus.org/globus-connect-personal) 
 
-## Personal device setup
+##### Personal device setup
 On you personal device, 
 
 ```
@@ -312,7 +330,7 @@ On the personal device it will display a window
 This completes our setup on the personal device. Now, we should be able to set it up on _Rāpoi_.
 
 
-## On Rāpoi
+##### On Rāpoi
 
 Launch an interactive session
 
@@ -328,7 +346,7 @@ globusconnectpersonal -start &
 
 This should now makes our two points of data transfer accessible from _Globus_ website.
 
-## Globus File Manager
+##### Globus File Manager
 
 Leave the above running, and login to Globus website.
 Open the ``File Manager`` Tab from the login page.
