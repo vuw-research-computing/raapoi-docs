@@ -103,7 +103,7 @@ In this example the sbatch command runs the file myjob.sh, the contents of this 
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=me@email.com
 
-module load python/3.6.3
+module load python/3.6.8
 python3 project1.py
 ```
 
