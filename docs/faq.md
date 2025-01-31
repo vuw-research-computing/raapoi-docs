@@ -41,7 +41,9 @@
 
 
 ## MPI
-* *How do I know if I should use ntasks, cpus-per-tasks, etc.? This is still a draft as I am working on the examples to demonstrate it. ([Tutorial Material](https://www.mcs.anl.gov/research/projects/mpi/tutorial/index.html))*
+* *How do I know if I should use ntasks, cpus-per-tasks, etc.? ([1](https://www.mcs.anl.gov/research/projects/mpi/tutorial/index.html))*
+
+    For demo purposes, you could try this mpi example on Rāpoi: [example_mpi](https://hackmd.io/@vuwrd1/HkDYM2YOyg)
 
     * A little complicated as it depends on whether your program needs tasks or cores 
     ([1](<https://scicomp.stackexchange.com/questions/27409/requesting-less-than-a-node-with-slurm#:~:text=1-,tl%3Bdr,-For%20multiprocessing%20(MPI>),[2](https://hpc-uit.readthedocs.io/en/latest/jobs/slurm_parameter.html#:~:text=Requesting%20Resources)). 
