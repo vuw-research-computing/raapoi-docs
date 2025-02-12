@@ -263,16 +263,20 @@ You should now be able to share or transfer your data by following their guide: 
 
 #### Transfer files using Globus
 
-We will need to have Globus on personal device and on _Rāpoi_'s compute node.
-We will start Globus on both devices.
-Transfer data using Globus File Manager.
+Globus works by seting up _**endpoints**_ which are like locations for data transfer. This means, we will need two endpoints to transfer data; one - a source, and the other - a destination. 
+
+The steps below will walk you through the _**[Installation](/raapoi-docs/external_providers/#installation)**_ and then navigating the _**[Globus File Manager](/raapoi-docs/external_providers/#globus-file-manager)**_.  
+
+The installation process is same for both the _**[globusconnectpersonal setup](/raapoi-docs/external_providers/#globusconnectpersonal-setup)**_ and for any of the _**[_Rāpoi's_ compute nodes](/raapoi-docs/external_providers/#on-rapoi)**_.
 
 ##### Installation
-I have a linux device similar to the OS on Rāpoi. 
-For Windows OS, please see [https://globus.org/globus-connect-personal](https://globus.org/globus-connect-personal) 
 
-##### Personal device setup
-On you personal device, 
+!!! note "Working on a Windows machine?"
+    The steps below are for a non-windows based operating system. For Windows OS, please see [https://globus.org/globus-connect-personal](https://globus.org/globus-connect-personal) 
+
+
+##### globusconnectpersonal setup
+Inside the termial of your device, please run the following command: 
 
 ```
 wget https://downloads.globus.org/globus-connect-personal/\
@@ -287,7 +291,7 @@ cd globusconnectpersonal-x.y.z
 ./globusconnect -setup --no-gui
 ```
 
-Here, we'll be presented with a url. If it is our first time, it will ask for creating an account, if you haven't done it before. Once, the account is set up, you'll be presented with an authorization code to enter into the code prompt. An example of this process is shown below:
+Here, we'll be presented with a _url_. If it is our first time, it will ask for creating an account, if you haven't done it before. Once, the account is set up, you'll be presented with an authorization code to enter into the code prompt. An example of this process is shown below:
 
 ```bash
 $ ./globusconnect -setup --no-gui
@@ -338,13 +342,23 @@ Launch an interactive session
 srun --pty bash
 ```
 
-Now, follow similar steps as above starting from _Personal device setup_
+!!! tip
+    Request more time for the interactive session, if you are wanting to transfer huge amount of data.
+    `srun --time=0-05:00:00 --pty bash`
+
+Once you are on a compute node, please follow the steps starting from _[globusconnectpersonal setup](/raapoi-docs/external_providers/#globusconnectpersonal-setup)_ as above 
 
 ```bash
 globusconnectpersonal -start &
 ```
 
-This should now makes our two points of data transfer accessible from _Globus_ website.
+!!! tip "Changing default directory to put your data?"
+    
+    `echo "/new/path/address/,0,1" > /nfs/home/$USER/.globusonline/lta/config-paths`
+    
+    Here, the `/new/path/address` will be the path of your choice, e.g., `/nfs/scratch/$USER/`
+
+This should now makes our two _**endpoints**_ of data transfer accessible from the _Globus_ website.
 
 ##### Globus File Manager
 
@@ -358,8 +372,6 @@ You should now be able to browse the names of your personal device and _Rāpoi_'
 
 You are now ready to transfer your data. 
 
-!!! tip
-    Request more time for the interactive session, if you have huge data to transfer.
-    `srun --time=0-05:00:00 --pty bash`
+
 
 
