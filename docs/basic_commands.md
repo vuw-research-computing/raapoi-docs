@@ -5,16 +5,18 @@ In an effort to make using Rāpoi just a bit easier, CAD staff have created comm
 
 The commands available as of this update are:
 
-| Command      | Description                          |
-| :---------- | :----------------------------------- |
-| _`vuw-help`_    |            Prints this help information  |
-| _`vuw-job-report`_    |      Provides some summary information about a job  |
-| _`vuw-quota`_    |           Prints current storage quota and usage  |
-| _`vuw-partitions`_    |      Prints a list of available partitions and the availability of compute nodes  |
-| _`vuw-alljobs`_    |         Prints a list of all user jobs  |
-| _`vuw-myjobs`_    |          Prints a list of your running or pending jobs  |
-| _`vuw-job-history`_    |     Show jobs finished in last 5 days  |
-| _`vuw-job-eff`_    |         Show efficiency of your jobs. Use vuw-job-eff --help for more information  |
+| Command          | Description                                                              |
+|------------------|--------------------------------------------------------------------------|
+| `vuw-help`       | Prints this help information                                            |
+| `vuw-job-report` | Provides summary information about a job                                |
+| `vuw-quota`      | Prints current storage quota and usage                                   |
+| `vuw-partitions` | Lists available partitions and compute node availability                 |
+| `vuw-alljobs`    | Lists all user jobs                                                      |
+| `vuw-myjobs`     | Lists your running or pending jobs                                       |
+| `vuw-job-history`| Shows jobs finished in the last 5 days                                   |
+| `vuw-job-eff`    | Shows job efficiency (use `vuw-job-eff --help` for details)              |
+| `vuw-info`       | Shows node resource usage and availability (use `vuw-info --help` for details) |
+| `vuw-alloc`      | Shows current usage against user accounts (use `vuw-alloc --help` for details) |
 
 !!! tip
     If you are unable to use these commands (e.g. with an error message "command not found") then double check you have the "config" module loaded (i.e. enter the command `module load config`).

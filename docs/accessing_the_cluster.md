@@ -8,6 +8,11 @@ To access Rāpoi, you'll first need to get an account provisioned for you by com
 
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](support.md) to determine options.
 
+Once your account has been provisioned. Open any terminal window of your choice and enter:
+``` bash
+$ ssh <username>@raapoi.vuw.ac.nz #replace <username> with your own username; e.g., harrelwe
+```
+
 _Access is via SSH_
 
 *  Hostname: raapoi.vuw.ac.nz
