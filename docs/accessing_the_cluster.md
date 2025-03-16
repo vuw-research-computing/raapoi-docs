@@ -3,15 +3,12 @@
 To access Rāpoi, you'll first need to get an account provisioned for you by completing the form in the [Service Desk Portal](https://service.victoria.ac.nz/asm/Core.aspx?Lite&Form=Request&MODE=NEW&TEMPLATE_REF=331026) or contacting the [Rāpoi support team](support.md) with your:
 
 *  Full Name
-*  VUW staff username
+*  VUW **_STAFF_** username
 *  Faculty, School or Institute affiliation.
 
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](support.md) to determine options.
 
-Once your account has been provisioned. Open any terminal window of your choice and enter:
-``` bash
-$ ssh <username>@raapoi.vuw.ac.nz #replace <username> with your own username; e.g., harrelwe
-```
+## Connecting to the login node
 
 _Access is via SSH_
 
@@ -21,19 +18,60 @@ _Access is via SSH_
 *  Username: Your VUW username
 *  Password: Your VUW password
 
-*NOTE:* A wired network connection or [VPN](https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
-connecting from campus wifi or from off-campus. Some users have had issues with
-using the hostname and instead need to use the IP address, eg
-`harrelwe@130.195.19.126`
+!!! note
+    A wired network connection or [VPN](https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
+    connecting from campus wifi or from off-campus. Some users have had issues with
+    using the hostname and instead need to use the IP address, eg
+    `harrelwe@130.195.19.126`
 
-More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
+    More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
 
-Here is a general overview of SSH [https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/](https://www.howtogeek.com/311287/how-to-connect-to-an-ssh-server-from-windows-macos-or-linux/).
+Once your account has been activated, you will receive a welcome email with instructions to getting started with _Rāpoi_. Open any terminal window of your choice and enter the following command to connect to the **_login_** node:
+``` bash
+$ ssh <username>@raapoi.vuw.ac.nz #replace <username> with your own username; e.g., harrelwe
+```
+
+The first time an SSH client connects to the server, it displays the servers public key fingerprint. An SSH host key identifies the server to your ssh client. They are an important security feature and not something you should just hit ENTER to accept.
+
+
+``` text
+The authenticity of host 'raapoi.vuw.ac.nz (130.195.19.126)' can't be established.
+ED25519 key fingerprint is SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg.
+This host key is known by the following other names/addresses:
+    C:\Users\username/.ssh/known_hosts:109: raapoi
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+Confirm that the finger print on the login server matches the appropriate fingerprint shown below and type **_'yes'_**.
+
+<!--
+* Old Raapoi 130.195.19.14:
+
+``` text
+ssh-ed25519 255 SHA256:SFQSPRtu5o4cpj/CuS37DXzfrFyalMz1FA2NVmissxo
+```
+-->
+
+* From August 2023 ("New Rāpoi" 130.195.19.126):
+
+``` text
+ssh-ed25519  256 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
+ssh-ecdsa    256 SHA256:ChU88YMNnUiXWmQRV0cgeDdnUpsdybgF14Dk3KW3dr4
+ssh-rsa     3072 SHA256:izq2NXKroc7gpu0vkWNQnXd4kmjk/pmrQw9vMvwAsIs 
+```
+
+For returning users, please follow these instructions to update SSH public key: [Notes regarding old host keys](/raapoi-docs/accessing_the_cluster/#notes-regarding-old-host-keys)
+
+Upon successfully logging in, the prompt will display: 
+``` bash
+<username>@raapoi-login:~$ # Remember to not compute on the login node!
+```
 
 !!! warning "Get yourself familiar with a _Compute_ node!"
     After logging in, do most things on the compute node by running command *_``srun --pty bash``_*. For more info, please see [_Interactive Jobs._](running_jobs.md/#interactive-jobs)
 
-### SSH Clients
+
+## SSH Clients
 
 _Mac OSX SSH Clients_
 
@@ -62,7 +100,7 @@ _Windows SSH Clients_
 
 
 
-### File Transfer with SFTP, SCP or rsync
+## File Transfer with SFTP, SCP or rsync
 
 !!! danger "Caution: Massive Data Transfer"
     For massive data transfer, please use [interactive session](running_jobs.md/#interactive-jobs) on a compute node or follow instructions to transfer data using [Globus](https://vuw-research-computing.github.io/raapoi-docs/external_providers/#globus). Please contact [the support team](support.md) for help. 
@@ -90,43 +128,9 @@ In all cases you will need to supply the hostname or IP address of the cluster, 
 _/nfs/home/username_ or _/nfs/scratch/username_
 
 
+!!! tip "File transfer with cloud tools"
+    If you are using cloud storage such as AWS, DropBox, Cloudstor, GLOBUS please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
 
-### File transfer with cloud tools
-
-If you are using cloud storage such as AWS, DropBox, Cloudstor, GLOBUS please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
-
-
-
-### Host Keys
-
-An SSH host key identifies the server to your ssh client. They are an important security feature and not something you should just hit ENTER to accept.
-The first time an SSH client connects to the server, it displays the servers public key fingerprint.
-
-``` text
-The authenticity of host 'raapoi.vuw.ac.nz (130.195.19.126)' can't be established.
-ED25519 key fingerprint is SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg.
-This host key is known by the following other names/addresses:
-    C:\Users\username/.ssh/known_hosts:109: raapoi
-Are you sure you want to continue connecting (yes/no/[fingerprint])?
-```
-
-Confirm that the finger print on the login server matches the appropriate fingerprint shown below and type 'yes'.
-
-<!--
-* Old Raapoi 130.195.19.14:
-
-``` text
-ssh-ed25519 255 SHA256:SFQSPRtu5o4cpj/CuS37DXzfrFyalMz1FA2NVmissxo
-```
--->
-
-* From August 2023 ("New Rāpoi" 130.195.19.126):
-
-``` text
-ssh-ed25519  256 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
-ssh-ecdsa    256 SHA256:ChU88YMNnUiXWmQRV0cgeDdnUpsdybgF14Dk3KW3dr4
-ssh-rsa     3072 SHA256:izq2NXKroc7gpu0vkWNQnXd4kmjk/pmrQw9vMvwAsIs 
-```
 
 #### Notes regarding old host keys
 

@@ -61,9 +61,8 @@ The _`-r`_ flag recursively removes files and directories
 To find more detailed information about any command you can use the manpages,
 eg:  _`man ls`_
 
-### Learning the Linux Shell
+!!! tip "Learning the Linux Shell"
+    - A good tutorial for using linux can be found here:
+    [Learning the linux shell](http://linuxcommand.org/lc3_learning_the_shell.php).
 
-A good tutorial for using linux can be found here:
-[Learning the linux shell](http://linuxcommand.org/lc3_learning_the_shell.php).
-
-[Software Carpentry](http://swcarpentry.github.io/shell-novice/) also provides a good introduction to the shell, including [how to work with files and directories](http://swcarpentry.github.io/shell-novice/03-create/index.html).
+    - [Software Carpentry](http://swcarpentry.github.io/shell-novice/) also provides a good introduction to the shell, including [how to work with files and directories](http://swcarpentry.github.io/shell-novice/03-create/index.html).

@@ -45,12 +45,6 @@ username@amd01n01:~$ #start_your_applications_here
     You could playaround with _flags_ for the _srun_ command, e.g., `srun --cpus-per-task=2 --mem=4G --time=0-00:10:00 --pty bash`. 
 
 
-
-!!! warning "Why can't I run programs directly on the login node?"
-    
-    _Rāpoi_ _login_ is a shared resource and running programs directly on the login node puts unnecessary strain. 
-    The recommended method is to use `srun` or `sbatch`. Please request an interactive session to work on the cluster, e.g., writing programs, debugging, or even data transfer. 
-
 _**b) To run a small quick program**_
 
 
