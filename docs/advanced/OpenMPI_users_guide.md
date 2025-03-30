@@ -37,4 +37,11 @@ export OMPI_MCA_pml='ucx'
 export OMPI_MCA_mtl='^ofi'
 ```
 
-
+Software module ORCA users, sometimes, come across an error message: 
+```bash
+PML ucx cannot be selected
+```
+To address this, update mpirun variables to: 
+```bash
+mpirun --mca btl ^openib --mca pml ob1 --mca osc ucx -np ...<remaining params>`
+```
