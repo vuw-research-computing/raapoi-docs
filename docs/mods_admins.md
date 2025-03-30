@@ -289,8 +289,9 @@ sh ./INSTALL
 
 Answer y/n to prompts from the INSTALL script, then all packages should be installed.
 
-**NOTE**
-During installation, you will be asked to confirm the `installation directory`, this is `/home/software/apps/Schrodinger/2023-3`, '2023-3' should be replaced with the current version being installed. The `scratch directory` should be `/nfs/scratch/projects/tmp`.
+!!! note 
+    During installation, you will be asked to confirm the `installation directory`, this is `/home/software/apps/Schrodinger/2023-3`, '2023-3' should be replaced with the current version being installed. The `scratch directory` should be `/nfs/scratch/projects/tmp`.
+    Select `no` where it prompts for creating application launchers. 
 
 The installation file will check for dependencies in the last stage, missing dependencies will be reported, and will need to be installed for Schrödinger Suite to run properly. Contact Rāpoi admin to install the missing dependencies.
 
