@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/elements/LinkingElements/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Linking Rāpoi outputs to Elements - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Linking R\u0101poi outputs to Elements";
+        var mkdocs_page_input_path = "elements/LinkingElements.md";
+        var mkdocs_page_url = "/raapoi-docs/elements/LinkingElements/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Linking Rāpoi outputs to Elements</a>
+<ul class="current">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Linking Rāpoi outputs to Elements</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="linking-research-outputs-to-rapoi-in-elements">Linking Research outputs to Rāpoi in Elements<a class="headerlink" href="#linking-research-outputs-to-rapoi-in-elements" title="Permanent link">¶</a></h1>
+<p><strong>Prerequisites</strong> - to complete this process, you'll need to have an Elements profile. Elements is VUW's research management system, and all academic staff should have access by default. If you are a post-graduate student, you may not have a public profile page, but you should still be able to log in with your VUW staff credentials and carry out the process.</p>
+<p>For full documentation on Staff Profiles with Elements, see <a href="https://intranet.wgtn.ac.nz/staff/research/using-elements/guide-staff-profiles.pdf">this page</a>.</p>
+<ol>
+<li>
+<p>Log in to Elements (elements.wgtn.ac.nz) and make sure relevant research outputs (funded grant, journal article etc) are present in your Elements profile. If they are not showing, the outputs can be added manually (see <a href="https://intranet.wgtn.ac.nz/staff/research/using-elements/guide-staff-profiles.pdf">guide pdf, pp 38-39</a>).</p>
+</li>
+<li>
+<p>Navigate to output that's made use of Rāpoi (publication, grant or activity) by clicking on the <code>VIEW ALL</code> button at the bottom right of each card (For this example, we'll use <code>Publication &gt; VIEW ALL</code>):</p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_1.png"/></p>
+</li>
+<li>
+<p>Click on the relevant publication:</p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_2.png"/></p>
+</li>
+<li>
+<p>Click on <code>RELATIONSHIPS</code> - <code>CREATE NEW</code> on the right hand side of the interface:</p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_3.png"/></p>
+</li>
+<li>
+<p>The <code>Create links to this publication</code> pop-up window should appear. Select the <code>Equipment</code> option: </p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_4.png"/></p>
+</li>
+<li>
+<p>Type <code>HPC</code> or <code>Rāpoi</code> into the <code>Name</code> field, and with <code>Linked to</code> set to Anyone and <code>Type</code> set to Any. (<em>Note</em>: be sure to include the macron over the ā in Rāpoi if using the latter option) </p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_5.png"/></p>
+</li>
+<li>
+<p>Check links are correct, then click on <code>Create one new link</code>. <em>(<em>Note</em>: if you have multiple publications or grants to link, you can speed up the process by going to the Publications tab in the interface above, clicking on the <code>Click here</code> link, and then using the date filter to return multiple outputs.)</em></p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_6.png"/></p>
+</li>
+<li>
+<p>Check to see your item appears on the <a href="https://people.wgtn.ac.nz/equipment/412229">public Rāpoi elements profile page</a> under <a href="https://people.wgtn.ac.nz/equipment/412229/publications">publications</a> or <a href="https://people.wgtn.ac.nz/equipment/412229/grants">grants</a>.</p>
+<p><img alt="" src="https://mattsresbazsite.netlify.app/post/rapoi_elements/images/Rapoi_Elements_7.png"/></p>
+</li>
+<li>
+<p>Repeat steps 2-8 as needed.</p>
+</li>
+</ol>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../../faq/" title="FAQ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../../hpclayout/" title="HPC Hardware Layout">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../../faq/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../../hpclayout/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

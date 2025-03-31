@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/advanced/containers/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Containers - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Containers";
+        var mkdocs_page_input_path = "advanced/containers.md";
+        var mkdocs_page_url = "/raapoi-docs/advanced/containers/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Containers</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="using-containers">Using Containers<a class="headerlink" href="#using-containers" title="Permanent link">¶</a></h2>
+<p>Researchers can use Docker or Singularity containers within the cluster.  This is a great way to run difficult-to-compile applications or to share workflows among colleagues.</p>
+<p>See also: <a href="../../examples/Singularity/">Singularity</a></p>
+<h3 id="running-an-interactive-container">Running an interactive container<a class="headerlink" href="#running-an-interactive-container" title="Permanent link">¶</a></h3>
+<p>User can run within a container interactively, this is great for testing code before running a job.  Here is an example of running within a docker container lolcow:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>srun --pty -c 4 --mem=64G bash
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>module purge
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>module load GCC/10.2.0 OpenMPI/4.0.5 Singularity/3.10.2
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>singularity pull docker://godlovedc/lolcow
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>singularity shell lolcow.sif
+</span></code></pre></div>
+<p>Once you have typed the <em>singularity shell</em> command you will be within the
+container and can type the commands available from within the container such as
+the lolcow utility <strong>fortune | cowsay | lolcat</strong></p>
+<h3 id="running-a-container-in-batch">Running a container in batch<a class="headerlink" href="#running-a-container-in-batch" title="Permanent link">¶</a></h3>
+<p>Running a batch job with containers is similar to running a regular job, but will ultimately depend on how the container was created, so your mileage may vary.  Here is an example batch submit script that will run the <em>autometa</em> software that was created in a docker image, lets name the submit file runContainer.sh:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>#SBATCH -J autometa-job
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>#SBATCH -c 4
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>#SBATCH --mem=64G
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>#SBATCH --mailtype=BEGIN,END,FAIL
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>#SBATCH --mail-user=myemail@email.net
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>#SBATCH --time=12:00:00
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>module load Singularity/3.10.2
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>singularity pull docker://jasonkwan/autometa:latest
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>singularity exec autometa_latest.sif calculate_read_coverage.py somedata.dat
+</span></code></pre></div>
+<p>Now to run the file you can:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sbatch runContainer.sh
+</span></code></pre></div>
+<p>Note that <em>singularity shell</em> is primarily for interactive use and <em>singularity exec</em> (or possibly <em>singularity run</em>) are for executing the applications that were built within the container directly.  It is important to know how the container was created to make effective use of the software.</p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
