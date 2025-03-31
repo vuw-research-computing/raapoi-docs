@@ -19,13 +19,13 @@ command, eg
 
 VUW CLUSTER PARTITIONS
 PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
-quicktest*    up    5:00:00      1  down* itl03n02
-quicktest*    up    5:00:00      4    mix itl02n[01-04]
-quicktest*    up    5:00:00      1   idle itl03n01
+quicktest*    up    5:00:00      1  down* amd01n01
+quicktest*    up    5:00:00      4    mix amd01n[02-03]
+quicktest*    up    5:00:00      1   idle amd01n04
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
 parallel     up 10-00:00:0      1   resv spj01
-parallel     up 10-00:00:0     24    mix amd01n[01-04],amd02n[01-04],amd03n[01-04],amd04n[01-04],amd05n[01-04],amd06n[01-04]
+parallel     up 10-00:00:0     24    mix amd02n[01-04],amd03n[01-04],amd04n[01-04],amd05n[01-04],amd06n[01-04]
 parallel     up 10-00:00:0      2  alloc amd07n[03-04]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
