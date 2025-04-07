@@ -17,3 +17,7 @@ This is user submitted documentation.  This will eventually contain tip and tric
 {%
    include-markdown "usersub/ray.md"
 %}
+
+{%
+   include-markdown "usersub/vscode.md"
+%}
