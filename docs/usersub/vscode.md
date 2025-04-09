@@ -64,7 +64,7 @@ user@local:~$ ssh raapoi_login
 
 Once logged in alloc resources for the VSCode session
 ```bash 
-RAAPOI_USERNAME@raapoi-login:~$ srun -t0-01:00:00 -wamd01n01 --pty bash
+RAAPOI_USERNAME@raapoi-login:~$ srun -t0-01:00:00 -wamd01n01 --mem=4G --pty bash
 ```
 
 !!! Tip
