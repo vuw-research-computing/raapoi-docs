@@ -51,11 +51,6 @@ Host *
     ForwardX11Trusted yes
     IdentityFile ~/.ssh/id_rsa # Add your own private key path here
     AddKeysToAgent yes
-    ControlMaster auto
-    ControlPath ~/.ssh/control-%h-%p-%r
-    ControlPersist 3s
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
 ```
 
 Step 5. On your local machine, open a terminal window and login to _Rāpoi_ normally 
