@@ -94,6 +94,7 @@ Once a connection is established, your VSCode session should be running on a com
         "search.exclude": {
             "**":true,
         },
+        "terminal.integrated.inheritEnv": false,
     }
     ```
 
