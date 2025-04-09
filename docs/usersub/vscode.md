@@ -38,12 +38,13 @@ Create `~/.ssh/config` file if it does not exist. Add hostname details to it:
 
 ```bash
 Host VSCode_Compute
+    User <YOUR_RAAPOI_USERNAME>
     HostName amd01n01
     ProxyJump raapoi_login
 
 Host raapoi_login
     HostName raapoi.vuw.ac.nz
-    User <RAAPOI_RAAPOI_USERNAME>
+    User <YOUR_RAAPOI_USERNAME>
 
 Host *
     ForwardAgent yes
@@ -51,6 +52,8 @@ Host *
     ForwardX11Trusted yes
     IdentityFile ~/.ssh/id_rsa # Add your own private key path here
     AddKeysToAgent yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
 ```
 
 Step 5. On your local machine, open a terminal window and login to _Rāpoi_ normally 
