@@ -10,12 +10,27 @@ Anaconda has many built in packages so we will use that in our examples, but Min
 module load Anaconda3/2020.11 
 ```
 
+
+
+```bash
+export PIP_NO_CACHE_DIR=1
+export PYTHONNOUSERSITE=1
+```
+
+!!! note
+    Setting the variables ```PIP_NO_CACHE_DIR``` and ```PYTHONNOUSERSITE``` prevents conda from trying to use the system python and pip. This ensures an isolated environment and avoids potential conflicts with system packages.
+
 Let's create a new conda environment for this example, in a sensible location, I used ```~/examples/conda/idba```
 
 ```bash
 conda create --name idba-example  # press y for the Proceed prompt if it looks correct
+source $(conda info --base)/etc/profile.d/conda.sh
 conda activate idba-example  #activate our example environment.
 ```
+
+!!! warning conda init
+    On HPC systems, ```conda init``` is not recommended as it modifies your shell configuration files.  This can cause problems with the module system and other software.  Instead, use the ```source $(conda info --base)/etc/profile.d/conda.sh``` command to activate conda in your current shell session.
+
 
 Conda environments are beyond the scope of this example, but they are a good way to contain all the dependencies and programs for a particular workflow, in this case, idba.
 
