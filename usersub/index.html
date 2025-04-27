@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/usersub/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>User Submitted Docs - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "User Submitted Docs";
+        var mkdocs_page_input_path = "usersub.md";
+        var mkdocs_page_url = "/raapoi-docs/usersub/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">User Submitted Docs</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#vpn-alternatives">VPN alternatives</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#ecs-ssh-bastions">ECS ssh bastions</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#openconnect">OpenConnect</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#paraview-via-openfoam">ParaView (via OpenFOAM)</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gview">Gview</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ray">Ray</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#vscode">VSCode</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">User Submitted Docs</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="user-submitted-documentation">User Submitted Documentation<a class="headerlink" href="#user-submitted-documentation" title="Permanent link">¶</a></h1>
+<p>This is user submitted documentation.  This will eventually contain tip and tricks from users.</p>
+<h2 id="vpn-alternatives">VPN alternatives<a class="headerlink" href="#vpn-alternatives" title="Permanent link">¶</a></h2>
+<p>While the official way to connect to Rāpoi is using the Cisco Anyconnect client, there are some alternatives if that is causing problems.</p>
+<h3 id="ecs-ssh-bastions">ECS ssh bastions<a class="headerlink" href="#ecs-ssh-bastions" title="Permanent link">¶</a></h3>
+<p>ECS users can come in via the ECS ssh bastions <code>greta-pt.ecs.vuw.ac.nz</code> or <code>barretts.ecs.vuw.ac.nz</code>.  Note that this will only work for users with valid ECS credentials.</p>
+<p>The best way to do this is with a <strong>ProxyJump</strong> either in the ssh command directly, or you can add it to your ssh_config file.</p>
+<p>Directly
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>ssh<span class="w"> </span>-J<span class="w"> </span>&lt;ecs<span class="w"> </span>user&gt;@barretts.ecs.vuw.ac.nz<span class="w"> </span>&lt;raapoi<span class="w"> </span>user&gt;@raapoi.vuw.ac.nz
+</span></code></pre></div></p>
+<p>Or via you ssh_config file</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>Host<span class="w"> </span>raapoi
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span>HostName<span class="w"> </span>raapoi.vuw.ac.nz
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span>ProxyJump<span class="w"> </span>&lt;ECS<span class="w"> </span>user&gt;@greta-pt.ecs.vuw.ac.nz
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span>User<span class="w"> </span>&lt;Raapoi<span class="w"> </span>user&gt;
+</span></code></pre></div>
+<h3 id="openconnect">OpenConnect<a class="headerlink" href="#openconnect" title="Permanent link">¶</a></h3>
+<p><a href="https://www.infradead.org/openconnect/">OpenConnect</a> is an opensource implimentation of the Cisco anyconnect clients.  Some users find this easier to use than the official client.</p>
+<p>As all VPN connections currently require 2FA you need to use the <a href="https://github.com/vlaci/openconnect-sso">openconnect-sso python package</a>.  This has only been tested in Linux, it should be possible to make this work in a windows WSL2 terminal as well as in MacOS, but it may require modifications.</p>
+<p>Step 0: make sure you've already setup the Microsoft Authenticator App on your phone or setup SMS as the 2FA method.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pipx
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>pipx<span class="w"> </span>install<span class="w"> </span><span class="s2">"openconnect-sso[full]"</span><span class="w">  </span><span class="c1"># can just use "openconnect-sso" if Qt 5.x already installed</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>pipx<span class="w"> </span>ensurepath
+</span></code></pre></div>
+<p>Last line required because of the 'Note' that displays when you run <code>pipx install "openconnect-sso[full]"</code>
+If you have Qt 5.x installed you can skip 2 to 3 and instead: <code>pipx install openconect-sso]</code></p>
+<p>Now you can connect using CLI:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>openconnect-sso<span class="w"> </span>--server<span class="w"> </span>vpn.vuw.ac.nz<span class="w"> </span>--user<span class="w"> </span>&lt;firstname.lastname&gt;@vuw.ac.nz
+</span></code></pre></div>
+<p>It remembers the last used server so after the first time you can reconnect with just
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>openconnect-sso
+</span></code></pre></div></p>
+<p>You then just leave a tab of your command line open on this, and in a different tab connect to Raapoi.</p>
+<p>If this doesn't work for you, ogten due to the difficulty in resolving the QT5 dependancies on macOS silicon you could try <a href="vpn-alts2/">Alternative Openconnect-sso</a></p>
+<h2 id="paraview-via-openfoam">ParaView (via OpenFOAM)<a class="headerlink" href="#paraview-via-openfoam" title="Permanent link">¶</a></h2>
+<p><em>Firstly, see the FAQ entry on visualisation (i.e. consider if this is something you really need to do remotely). If doing your visualisation/plotting locally is not an option, proceed. Note that this FAQ entry is aimed at those using ParaView alongside OpenFOAM, i.e. you'll need an installation of OpenFOAM on your local computer and on Rāpoi.</em> </p>
+<p>To connect ParaView to Rāpoi, you will need 3 terminal windows: two to extend the virtual handshake from Rāpoi and from your local computer, and one to open ParaView.</p>
+<p>Terminal window 1:</p>
+<ol>
+<li>
+<p>Log in to Rāpoi.</p>
+</li>
+<li>
+<p>Initiate an interactive job to avoid putting strain on the login node (assign desired cpus and memory).</p>
+</li>
+<li>
+<p>Run command <code>hostname -I | awk '{print $1}'</code> to identify the IP address of the computing node.</p>
+</li>
+<li>
+<p>Run command <code>./pvserver</code></p>
+</li>
+</ol>
+<p>Terminal window 2:</p>
+<ol>
+<li>Run command <code>ssh -N -L 11111:&lt;IP address&gt;:11111 &lt;username&gt;@raapoi.vuw.ac.nz</code> (make sure to enter the IP address of the computing node you identified earlier).</li>
+</ol>
+<p>Terminal window 3:</p>
+<ol>
+<li>
+<p>Source OpenFOAM from your local computer (make sure the OpenFOAM version you source is the same version as what is installed on Rāpoi)</p>
+</li>
+<li>
+<p>Run command <code>paraFoam</code> to open ParaView.</p>
+</li>
+<li>
+<p>On ParaView, select File -&gt; Connect...</p>
+</li>
+<li>
+<p>Highlight the desired server, and click Connect</p>
+</li>
+</ol>
+<h2 id="gview">Gview<a class="headerlink" href="#gview" title="Permanent link">¶</a></h2>
+<p><em>Firstly, see the FAQ entry on visualisation (i.e. consider if this is something you really need to do remotely). If doing your visualisation/plotting locally is not an option, proceed.</em></p>
+<p>Begin by logging into Rāpoi using <code>-X</code> flag when using graphical applications on your local machine.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>ssh<span class="w"> </span>-X<span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>Then, from the login node. Get an interactive session by passing <code>--x11</code> flag.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>&lt;username&gt;@raapoi-login:~$ srun --x11 --pty bash
+</span></code></pre></div>
+<p>Once a compute node has been allocated, load Gaussview module</p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>&lt;username&gt;@amd01n01:~$ module load Gaussview/6.1
+</span></code></pre></div>
+<p>Launch gview and it should open graphical windows on your local device. </p>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>&lt;username&gt;@amd01n01:~$ gview
+</span></code></pre></div>
+<h2 id="ray">Ray<a class="headerlink" href="#ray" title="Permanent link">¶</a></h2>
+<p>Ray is a powerful distributed computing framework that can be used to accelerate High Performance Computing (HPC) workloads.</p>
+<p>For this exercise, I'll need two terminal windows and a browser.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1"># Terminal 1</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c1"># Start by requesting an interactive session</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>srun<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">4</span><span class="w"> </span>--mem<span class="o">=</span>8G<span class="w"> </span>--time<span class="o">=</span><span class="m">0</span>-00:59:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1"># Begin with a clear environment</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>module<span class="w"> </span>purge
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="c1"># Create a python environment</span>
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a>module<span class="w"> </span>load<span class="w"> </span>gompi/2022a<span class="w"> </span>Python/3.10.4-bare
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="nb">source</span><span class="w"> </span>env/bin/activate
+</span><span id="__span-9-12"><a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="c1"># Install Ray</span>
+</span><span id="__span-9-14"><a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">'ray[default]'</span>
+</span><span id="__span-9-15"><a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="c1"># Verify installation</span>
+</span><span id="__span-9-17"><a href="#__codelineno-9-17" id="__codelineno-9-17" name="__codelineno-9-17"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import ray;print(ray.__version__)"</span><span class="p">;</span>
+</span><span id="__span-9-18"><a href="#__codelineno-9-18" id="__codelineno-9-18" name="__codelineno-9-18"></a>
+</span><span id="__span-9-19"><a href="#__codelineno-9-19" id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="c1"># Start Ray head node by defining port,object_store_memory(osm),</span>
+</span><span id="__span-9-20"><a href="#__codelineno-9-20" id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="c1"># ncpus, dashboardhost; osm should be 80% of the requested mem </span>
+</span><span id="__span-9-21"><a href="#__codelineno-9-21" id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="c1"># srun command. Here just using 20% 1.6G of 8G</span>
+</span><span id="__span-9-22"><a href="#__codelineno-9-22" id="__codelineno-9-22" name="__codelineno-9-22"></a><span class="nv">PORT</span><span class="o">=</span><span class="s2">"6379"</span>
+</span><span id="__span-9-23"><a href="#__codelineno-9-23" id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="nv">OSM</span><span class="o">=</span><span class="s2">"1600000000"</span>
+</span><span id="__span-9-24"><a href="#__codelineno-9-24" id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="nv">NCPUS</span><span class="o">=</span><span class="s2">"4"</span>
+</span><span id="__span-9-25"><a href="#__codelineno-9-25" id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="nv">DBHOST</span><span class="o">=</span><span class="s2">"0.0.0.0"</span>
+</span><span id="__span-9-26"><a href="#__codelineno-9-26" id="__codelineno-9-26" name="__codelineno-9-26"></a>
+</span><span id="__span-9-27"><a href="#__codelineno-9-27" id="__codelineno-9-27" name="__codelineno-9-27"></a>ray<span class="w"> </span>start<span class="w"> </span>--head<span class="w"> </span>--port<span class="w"> </span><span class="nv">$PORT</span><span class="w"> </span>--object_store_memory<span class="w"> </span><span class="nv">$OSM</span><span class="w"> </span>--num-cpus<span class="w"> </span><span class="nv">$NCPUS</span><span class="w"> </span>--dashboard-host<span class="o">=</span><span class="nv">$DBHOST</span>
+</span><span id="__span-9-28"><a href="#__codelineno-9-28" id="__codelineno-9-28" name="__codelineno-9-28"></a>
+</span><span id="__span-9-29"><a href="#__codelineno-9-29" id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="c1"># A node name should be printed and</span>
+</span><span id="__span-9-30"><a href="#__codelineno-9-30" id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="c1"># Ray runtime started </span>
+</span><span id="__span-9-31"><a href="#__codelineno-9-31" id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="c1"># with address to the dashboard</span>
+</span><span id="__span-9-32"><a href="#__codelineno-9-32" id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="c1"># In my case it was: 130.195.XX.XX:8265</span>
+</span><span id="__span-9-33"><a href="#__codelineno-9-33" id="__codelineno-9-33" name="__codelineno-9-33"></a>
+</span><span id="__span-9-34"><a href="#__codelineno-9-34" id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="c1"># Terminal 2</span>
+</span><span id="__span-9-35"><a href="#__codelineno-9-35" id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="c1"># Now, leave this terminal running and </span>
+</span><span id="__span-9-36"><a href="#__codelineno-9-36" id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="c1"># open a new terminal to that port and ip</span>
+</span><span id="__span-9-37"><a href="#__codelineno-9-37" id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="c1"># to start a tunnel</span>
+</span><span id="__span-9-38"><a href="#__codelineno-9-38" id="__codelineno-9-38" name="__codelineno-9-38"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">8265</span>:130.195.XX.XX:8265<span class="w"> </span>USERNAME@raapoi.vuw.ac.nz
+</span><span id="__span-9-39"><a href="#__codelineno-9-39" id="__codelineno-9-39" name="__codelineno-9-39"></a>
+</span><span id="__span-9-40"><a href="#__codelineno-9-40" id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="c1"># You should now open a browser to view your dashboard at</span>
+</span><span id="__span-9-41"><a href="#__codelineno-9-41" id="__codelineno-9-41" name="__codelineno-9-41"></a>http://127.0.0.1:8265
+</span><span id="__span-9-42"><a href="#__codelineno-9-42" id="__codelineno-9-42" name="__codelineno-9-42"></a>
+</span><span id="__span-9-43"><a href="#__codelineno-9-43" id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="c1"># To submit a job</span>
+</span><span id="__span-9-44"><a href="#__codelineno-9-44" id="__codelineno-9-44" name="__codelineno-9-44"></a><span class="nv">RAY_ADDRESS</span><span class="o">=</span><span class="s1">'http://130.195.XX.XX:8265'</span><span class="w"> </span>ray<span class="w"> </span>job<span class="w"> </span>submit<span class="w"> </span>--working-dir<span class="w"> </span>.<span class="w"> </span>--<span class="w"> </span>python<span class="w"> </span>my_script.py
+</span><span id="__span-9-45"><a href="#__codelineno-9-45" id="__codelineno-9-45" name="__codelineno-9-45"></a>
+</span><span id="__span-9-46"><a href="#__codelineno-9-46" id="__codelineno-9-46" name="__codelineno-9-46"></a><span class="c1"># To stop Ray</span>
+</span><span id="__span-9-47"><a href="#__codelineno-9-47" id="__codelineno-9-47" name="__codelineno-9-47"></a><span class="c1"># Go back to terminal 1 and type</span>
+</span><span id="__span-9-48"><a href="#__codelineno-9-48" id="__codelineno-9-48" name="__codelineno-9-48"></a>ray<span class="w"> </span>stop
+</span></code></pre></div>
+<h2 id="vscode">VSCode<a class="headerlink" href="#vscode" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Windows users are recommended to use <a href="https://git-scm.com/downloads"><code>Git Bash</code></a> for the following instructions to work. </p>
+</div>
+<p>The instructions below should let users run their VSCode session on a compute node.</p>
+<p>Pre-requisite installations: </p>
+<ul>
+<li>A recent version of vscode.</li>
+<li>Extension <code>Remote tunnels</code> from <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server">https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server</a>.</li>
+</ul>
+<p>Step 1. On your local machine, create ssh keys <em>(existing ssh keys can also be used - no need to create new ones)</em></p>
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>user@local:~$<span class="w"> </span>ssh-keygen
+</span></code></pre></div>
+<p>Follow the prompts on the terminal to generate ssh-key pair, and note the directory where keys are being saved. </p>
+<p>Step 2. Send the <em>public</em> key to <em>Rāpoi</em></p>
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>user@local:~$<span class="w"> </span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/path/to/public/key<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>The path <code>~/path/to/public/key</code> should be the same as displayed when generating the ssh-key <code>~/.ssh/id_rsa.pub</code> in some cases. </p>
+<p>Step 3. Test the new keys </p>
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>user@local:~$<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>~/path/to/public/key<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>Step 4. On your local machine, update <code>ssh config</code> file</p>
+<p>Create <code>~/.ssh/config</code> file if it does not exist. Add hostname details to it:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>Host<span class="w"> </span>VSCode_Compute
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span>User<span class="w"> </span>&lt;YOUR_RAAPOI_USERNAME&gt;
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span>HostName<span class="w"> </span>amd01n01
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span>ProxyJump<span class="w"> </span>raapoi_login
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a>
+</span><span id="__span-13-6"><a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a>Host<span class="w"> </span>raapoi_login
+</span><span id="__span-13-7"><a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span>HostName<span class="w"> </span>raapoi.vuw.ac.nz
+</span><span id="__span-13-8"><a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">    </span>User<span class="w"> </span>&lt;YOUR_RAAPOI_USERNAME&gt;
+</span><span id="__span-13-9"><a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a>Host<span class="w"> </span>*
+</span><span id="__span-13-11"><a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">    </span>ForwardAgent<span class="w"> </span>yes
+</span><span id="__span-13-12"><a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">    </span>ForwardX11<span class="w"> </span>yes
+</span><span id="__span-13-13"><a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">    </span>ForwardX11Trusted<span class="w"> </span>yes
+</span><span id="__span-13-14"><a href="#__codelineno-13-14" id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span><span class="c1"># Add your own private key path here</span>
+</span><span id="__span-13-15"><a href="#__codelineno-13-15" id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="w">    </span>AddKeysToAgent<span class="w"> </span>yes
+</span><span id="__span-13-16"><a href="#__codelineno-13-16" id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">    </span>StrictHostKeyChecking<span class="w"> </span>no
+</span><span id="__span-13-17"><a href="#__codelineno-13-17" id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="w">    </span>UserKnownHostsFile<span class="w"> </span>/dev/null
+</span></code></pre></div>
+<p>Step 5. On your local machine, open a terminal window and login to <em>Rāpoi</em> normally </p>
+<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>user@local:~$<span class="w"> </span>ssh<span class="w"> </span>raapoi_login
+</span></code></pre></div>
+<p>Once logged in alloc resources for the VSCode session
+<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>RAAPOI_USERNAME@raapoi-login:~$<span class="w"> </span>srun<span class="w"> </span>-t0-01:00:00<span class="w"> </span>-wamd01n01<span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--pty<span class="w"> </span>bash
+</span></code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Extend the time to maximum 5 hours with <code>-t0-04:59:59</code></p>
+</div>
+<p>Step 6. Connect VSCode session </p>
+<p>Open VSCode window, and click on the bottom left corner that says <code>Open a Remote Window</code>, and then choose <code>Connect to Host</code> and then selecting <code>VSCode_Compute</code> as a host. </p>
+<p>Once a connection is established, your VSCode session should be running on a compute node now. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To speed up VSCode, there are steps mentioned in <a href="https://code.visualstudio.com/docs/configure/settings">the official VSCode docs</a>. Below is just a part of it: </p>
+<p>Once connected, update VSCode's <code>/nfs/home/$USER/.vscode-server/data/Machine/settings.json</code>, and add the following lines to it:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="o">{</span>
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">    </span><span class="s2">"files.watcherExclude"</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">        </span><span class="s2">"**"</span>:true,
+</span><span id="__span-16-4"><a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-16-5"><a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">    </span><span class="s2">"files.exclude"</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-6"><a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">        </span><span class="s2">"**/.*"</span>:<span class="w"> </span>true,
+</span><span id="__span-16-7"><a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-16-8"><a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">    </span><span class="s2">"search.followSymlinks"</span>:false,
+</span><span id="__span-16-9"><a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">    </span><span class="s2">"search.exclude"</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-16-10"><a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">        </span><span class="s2">"**"</span>:true,
+</span><span id="__span-16-11"><a href="#__codelineno-16-11" id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-16-12"><a href="#__codelineno-16-12" id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">    </span><span class="s2">"terminal.integrated.inheritEnv"</span>:<span class="w"> </span>false,
+</span><span id="__span-16-13"><a href="#__codelineno-16-13" id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="o">}</span>
+</span></code></pre></div>
+</div>
+<p>Step 7. To close VSCode session. </p>
+<p>Go to <code>File</code> &gt; <code>Close Remote Connection</code></p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../external_providers/" title="Connecting to Cloud/Storage Providers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../faq/" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../external_providers/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../faq/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
