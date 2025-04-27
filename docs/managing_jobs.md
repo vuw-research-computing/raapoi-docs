@@ -60,18 +60,28 @@ You can also get a report of your completed jobs using the _sacct_ command.  For
 ## Viewing jobs in the Queue
 
 
-To view your running jobs you can type _vuw-myjobs_  eg:
+To view your running jobs you can type `vuw-myjobs`  eg:
 
 
 ```
 $ vuw-myjobs
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-7921967 quicktest     bash username  R       0:12      1 c03n01
+               JOBID    PARTITION   CPUS  MIN_MEM   GPUs             RUN_TIME   TIME_LIMIT   PRIORITY      STATE             NODELIST JOB_NAME
+      2039592_[9-10]     parallel      9     180G      0  2025-04-28T16:27:25  10-00:00:00      27365    PENDING          (Resources) MLMAP
+     2042371_[11-20]     parallel      9     180G      0  2025-04-29T15:46:36  10-00:00:00      24560    PENDING           (Priority) MLMAP
+     2042372_[11-20]     parallel      9     180G      0  2025-04-29T15:46:36  10-00:00:00      24560    PENDING           (Priority) MLMAP
+           2039591_1     parallel     10     200G      0             11:17:24  10-00:00:00      24484    RUNNING             amd07n02 MLMAP
+           2039591_2     parallel     10     200G      0             11:17:24  10-00:00:00      24484    RUNNING             amd06n03 MLMAP
+           2039591_3     parallel     10     200G      0             11:17:24  10-00:00:00      24484    RUNNING             amd06n04 MLMAP
+
 ```
 
-As you can see I have a single job running on the node c03n01 on the quicktest partition
+The `vuw-myjobs` command will show you all your jobs - _running_ and _pending_, the _partition_ they are in, the requested resources, the _priority_ of the job and the _state_ of the job.  For the jobs in _PENDING_ state, the reason for the job being in that state is also shown and an expectation of when the job will start.  
 
 You can see all the jobs in the queues by running the _vuw-alljobs_ command.  This will produce a very long list of jobs if the cluster is busy.
+
+!!! note
+      By default, each user is allowed _1,024 CPU cores_, _2,048 GB of memory_ and _3 GPUs_ at any one time. Once you reach these limits, your jobs will be queued until resources are available.  These limits are set to ensure that all users have fair access to the cluster.  If you need more resources, please contact the [Rāpoi support team](support.md).
+
 
 ## Job Queuing (aka Why isn't my job running?)
 
