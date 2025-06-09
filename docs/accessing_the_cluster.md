@@ -8,9 +8,11 @@ To access Rāpoi, you'll first need to get an account provisioned for you by com
 
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](support.md) to determine options.
 
+Users receive a welcome email and instructions to getting started with Rāpoi once their accounts are successfully set up. If you haven't received one, please reach out to [the support team.](support.md)
+
 ## Connecting to the login node
 
-_Access is via SSH_
+Access _Rāpoi_ via [SSH clients](#ssh-clients) or _a terminal application._ The details are as follows:
 
 *  Hostname: raapoi.vuw.ac.nz
 *  IP Address: 130.195.19.126
@@ -26,10 +28,43 @@ _Access is via SSH_
 
     More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
 
-Once your account has been activated, you will receive a welcome email with instructions to getting started with _Rāpoi_. Open any terminal window of your choice and enter the following command to connect to the **_login_** node:
-``` bash
-$ ssh <username>@raapoi.vuw.ac.nz #replace <username> with your own username; e.g., harrelwe
+
+## SSH Clients
+
+**_Linux SSH Clients_**
+
+Linux built-in terminal application e.g., GNOME Terminal, Konsole, xTerm, etc. can provide access. 
+
+**_Windows SSH Clients_**
+
+* Recommended Clients:
+  * [Git Bash](https://gitforwindows.org/) is a great option and is part of the Git for Windows project.  
+  * [MobaXterm](https://mobaxterm.mobatek.net/) is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.
+
+
+**_Mac OSX SSH Clients_**
+
+You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. 
+XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.
+
+* Terminal.app is the default application for command-line interface
+  * To login using the built-in Terminal.app on Mac, go to
+    * Applications --> Utilities --> Terminal.app
+    * Or use Spotlight search (aka Command-Space)
+* [iTerm2](https://www.iterm2.com/) is a good replacement for the default Terminal app
+* [XQuartz](https://www.xquartz.org/) is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: `sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true`   We have found that this allows some older GUI applications to run with fewer errors.
+
+
+!!! note
+    Once at the command prompt you can type the following to login (replace "username" with your VUW user):
+
+```bash
+ssh -X username@raapoi.vuw.ac.nz
 ```
+
+The _-X_ parameter tells SSH to forward any GUI windows to your local machine, this is called X forwarding.
+
+
 
 The first time an SSH client connects to the server, it displays the servers public key fingerprint. An SSH host key identifies the server to your ssh client. They are an important security feature and not something you should just hit ENTER to accept.
 
@@ -70,44 +105,18 @@ Upon successfully logging in, the prompt will display:
 !!! warning "Get yourself familiar with a _Compute_ node!"
     After logging in, do most things on the compute node by running command *_``srun --pty bash``_*. For more info, please see [_Interactive Jobs._](running_jobs.md/#interactive-jobs)
 
-
-## SSH Clients
-
-_Mac OSX SSH Clients_
-
-You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. 
-XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.
-
-* Terminal.app is the default application for command-line interface
-  * To login using the built-in Terminal.app on Mac, go to
-    * Applications --> Utilities --> Terminal.app
-    * Or use Spotlight search (aka Command-Space)
-* [iTerm2](https://www.iterm2.com/) is a good replacement for the default Terminal app
-* [XQuartz](https://www.xquartz.org/) is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: `sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true`   We have found that this allows some older GUI applications to run with fewer errors.
-
-
-NOTE:  Once at the command prompt you can type the following to login (replace "username" with your VUW user):
-
-`ssh -X username@raapoi.vuw.ac.nz`
-
-The _-X_ parameter tells SSH to forward any GUI windows to your local machine, this is called X forwarding.
-
-_Windows SSH Clients_
-
-* Recommended Clients:
-  * [Git Bash](https://gitforwindows.org/) is a great option and is part of the Git for Windows project.  
-  * [MobaXterm](https://mobaxterm.mobatek.net/) is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.
-
-
-
 ## File Transfer with SFTP, SCP or rsync
 
 !!! danger "Caution: Massive Data Transfer"
-    For massive data transfer, please use [interactive session](running_jobs.md/#interactive-jobs) on a compute node or follow instructions to transfer data using [WinSCP](https://www.notion.so/WinSCP-File-Transfer-20d426d58abf8014be97e04a8fd9a97c?source=copy_link) or [Globus](https://vuw-research-computing.github.io/raapoi-docs/external_providers/#globus). Please contact [the support team](support.md) for help. 
+    Kindly use a non-login node for massive data transfer. This can be done by requesting an [interactive session](running_jobs.md/#interactive-jobs). If you are using a file trasnfer tool, instructions are available for
 
-There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
+    - [WinSCP](https://www.notion.so/WinSCP-File-Transfer-20d426d58abf8014be97e04a8fd9a97c?source=copy_link) 
+    - [MobaXterm](https://www.notion.so/MobaXterm-File-Transfer-20d426d58abf80a38bb0f6d32459e5ca?source=copy_link)
+    - [Globus](https://vuw-research-computing.github.io/raapoi-docs/external_providers/#globus)
+    
+    Please contact [the support team](support.md) for help. 
 
-One can also use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_. 
+One can use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are _scp, sftp_ and _rsync_. 
 
 To copy a single file to or from the cluster, we can use _scp_ (“secure copy”). To upload to another computer, try:
 
@@ -127,6 +136,7 @@ _SFTP_ client can be also be set up. In the address bar of my file explorer, I c
 In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
 _/nfs/home/username_ or _/nfs/scratch/username_
 
+There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc
 
 !!! tip "File transfer with cloud tools"
     If you are using cloud storage such as AWS, DropBox, Cloudstor, GLOBUS please look at the examples we have in [Connecting to Cloud Providers](external/cloud_providers.md)
