@@ -20,6 +20,8 @@ Access _Rāpoi_ via [SSH clients](#ssh-clients) or _a terminal application._ The
 *  Username: Your VUW username
 *  Password: Your VUW password
 
+<div style="padding:54.11% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1091981314?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Login to Rāpoi HPC"></iframe></div><p><script src="https://player.vimeo.com/api/player.js"></script></p>
+
 !!! note
     A wired network connection or [VPN](https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text) is required if
     connecting from campus wifi or from off-campus. Some users have had issues with
@@ -53,7 +55,6 @@ XQuartz is required to be installed if you wish to forward GUI applications (mat
     * Or use Spotlight search (aka Command-Space)
 * [iTerm2](https://www.iterm2.com/) is a good replacement for the default Terminal app
 * [XQuartz](https://www.xquartz.org/) is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: `sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true`   We have found that this allows some older GUI applications to run with fewer errors.
-
 
 !!! note
     Once at the command prompt you can type the following to login (replace "username" with your VUW user):

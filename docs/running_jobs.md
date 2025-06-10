@@ -77,6 +77,9 @@ srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
 !!! info
     It may take a few seconds until the prompt appears when the cluster is busy. Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.
     
+!!! note 
+    MATLAB on X server should use `matlab -softwareopengl` to run the application.
+    
 
 ## Batch jobs
 
