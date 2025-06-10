@@ -110,6 +110,7 @@ Upon successfully logging in, the prompt will display:
 !!! danger "Caution: Massive Data Transfer"
     Kindly use a non-login node for massive data transfer. This can be done by requesting an [interactive session](running_jobs.md/#interactive-jobs). If you are using a file trasnfer tool, instructions are available for
 
+    - [FileZilla](https://www.notion.so/FileZilla-Data-Transfer-on-Compute-20d426d58abf809fb4c2ed3bb9dae1e0?source=copy_link)
     - [WinSCP](https://www.notion.so/WinSCP-File-Transfer-20d426d58abf8014be97e04a8fd9a97c?source=copy_link) 
     - [MobaXterm](https://www.notion.so/MobaXterm-File-Transfer-20d426d58abf80a38bb0f6d32459e5ca?source=copy_link)
     - [Globus](https://vuw-research-computing.github.io/raapoi-docs/external_providers/#globus)
