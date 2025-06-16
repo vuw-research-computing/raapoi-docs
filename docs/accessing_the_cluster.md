@@ -8,8 +8,6 @@ To access Rāpoi, you'll first need to get an account provisioned for you by com
 
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](support.md) to determine options.
 
-Users receive a welcome email and instructions to getting started with Rāpoi once their accounts are successfully set up. If you haven't received one, please reach out to [the support team.](support.md)
-
 ## Connecting to the login node
 
 Access _Rāpoi_ via [SSH clients](#ssh-clients) or _a terminal application._ The details are as follows:
@@ -19,6 +17,9 @@ Access _Rāpoi_ via [SSH clients](#ssh-clients) or _a terminal application._ The
 *  Port: 22
 *  Username: Your VUW username
 *  Password: Your VUW password
+
+!!! note
+    **_VSCode users_**, please follow this link to connect: [VSCode on _Rāpoi_](usersub/vscode.md)
 
 <div style="padding:54.11% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1091981314?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Login to Rāpoi HPC"></iframe></div><p><script src="https://player.vimeo.com/api/player.js"></script></p>
 
