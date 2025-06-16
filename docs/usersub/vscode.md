@@ -8,7 +8,7 @@ The instructions below should let users run their VSCode session on a compute no
 Pre-requisite installations: 
 
 - A recent version of vscode.
-- Extension `Remote tunnels` from [https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server).
+- Extension `Remote - SSH` from [https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
 
 Step 1. On your local machine, create ssh keys _(existing ssh keys can also be used - no need to create new ones)_
 
