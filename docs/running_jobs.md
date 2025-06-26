@@ -22,6 +22,8 @@ Below is a list of constraints that have need defined and a brief description:
 
 For example, if you want to request a compute node with AMD processors you can add `--constraint="AMD"` in your submit script or srun request.
 
+---
+
 
 ## Interactive jobs
 
@@ -81,6 +83,8 @@ srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
     MATLAB on X server should use `matlab -softwareopengl` to run the application.
     
 
+---
+
 ## Batch jobs
 
 To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
@@ -135,6 +139,8 @@ The _srun_ command will submit the job to the cluster.  The _srun_ command has m
 For more information on the srun command, please use the manpages, eg: _man srun_
 
 
+
+---
 
 ## Cluster Default Resources
 

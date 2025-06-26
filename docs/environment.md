@@ -7,6 +7,8 @@ Because of this, Rāpoi developers use a tool called *lmod* to allow a user to l
 Entering `module help` into the command prompt will give you some basic information about all of the `module` sub-commands. 
 Here we briefly describe the most important ones.
 
+---
+
 ## Searching for software packages
 
 This section will give you a brief description on how to find which software packages are available and load them.
@@ -99,6 +101,8 @@ username@raapoi-login:~$ module spider Python/3.9.6
 <additional output not included here>
 ```
 
+---
+
 ## Loading software packages
 
 Loading a software package is done via the command `module load <package name>` where *<package name>* should generally include the version as well.
@@ -119,6 +123,8 @@ In either case, you will now be able to run Python version 3.9.6 by entering `py
 If you are intending to do some computation, you should call `srun --pty python` to start an interactive job on the quicktest node running Python.
 
 
+
+---
 
 ## Other useful module sub-commands
 

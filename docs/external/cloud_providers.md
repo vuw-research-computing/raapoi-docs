@@ -44,6 +44,8 @@ Once we have setup _rclone_ to connect to CloudStor, we copy our data. In this c
  rclone copy --progress --transfers 8 /nfs/scratch/<username>/test CloudStor:/test
 ```
 
+---
+
 
 ### Amazon AWS
 
@@ -93,6 +95,9 @@ Amazon has a number of data analytics and database services available.  Using th
 A listing of available services and documentation can be found at the following:
 [https://aws.amazon.com/products/analytics/](https://aws.amazon.com/products/analytics/)
 
+
+---
+
 ### Google Cloud (gcloud) Connections 
 
 The Google Cloud SDK is available in Rāpoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the `module spider` command.  As of this writing the current version can be loaded thusly:
@@ -141,6 +146,8 @@ A listing of available services and documentation can be found at the following:
 [https://cloud.google.com/products/](https://cloud.google.com/products/)
 
 
+
+---
 
 
 ### DropBox Cloud Storage
@@ -226,6 +233,10 @@ This will upload the PDF and name it the same thing, if I wanted to change the n
 dbxcli put final-report.pdf analytics-class-final-report.pdf
 ```
 
+
+---
+
+
 ### Microsoft OneDrive
 
 ``RClone`` can be used to connect to onedrive, google drive, etc. The steps below implement onedrive setup on Rāpoi.
@@ -246,6 +257,8 @@ To view your files on the remote onedrive, you can use:
 rclone lsd my_staff_onedrive:Documents
 ```
 
+
+---
 
 ### GLOBUS
 

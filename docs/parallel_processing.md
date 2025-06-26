@@ -46,6 +46,8 @@ So what do these parameter mean?:
 Running the array.sh script will cause the SLURM manager to spawn 50 parallel jobs.
 
 
+---
+
 
 ## Multi-threaded or Multi-processing Job Example
 
@@ -74,6 +76,8 @@ requesting 12 CPU cores per task and a total of 256GB of memory. The program its
   module load java/1.8.0-91
   java -jar threaded-app.jar
 ```
+
+---
 
 ## MPI Jobs
 

@@ -8,6 +8,8 @@ Log a request on the [Service Desk Portal](https://service.victoria.ac.nz/asm/Co
 
 or Contact the Rāpoi Admins:
 
+---
+
 ## Rāpoi Admins
 
 Our admins are ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster. The listed folk in the team have other roles and are very kindly helping out on a best effort as time permits basis.
@@ -50,6 +52,8 @@ Our admins are ready to assist you in getting started with your work on Rāpoi a
 <p></p>
 <p></p>
 
+
+---
 
 ## Rāpoi Moderators
 
@@ -108,6 +112,8 @@ Moderators are members of the research community who have kindly volunteered the
 <p></p>
 
 
+---
+
 ## Rāpoi Admin Alumni
 
 Folk who used to look after Raapoi.
@@ -157,6 +163,13 @@ Folk who used to look after Raapoi.
 <p></p>
 <p></p>
 
+---
+
 ## Rāpoi Moderator Alumni
 
 Folk who were moderators in the past.
+
+---
+
+## SNAP Community
+Connect with SNAP community here: [SNAP - VUW-hub for Simulation, Numerics, Analytics and Programming](https://vuw-snap.github.io/SNAP-decisions/)

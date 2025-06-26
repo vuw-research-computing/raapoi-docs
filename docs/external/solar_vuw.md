@@ -70,14 +70,21 @@ You will want to sign up to the Uictoria University VPN to gain access to SoLAR.
 There are several way to move/copy files and folder between SoLAR and Rāpoi
 
 
+
+---
+
 #### Best Way: Mounting SoLAR Partition in Rāpoi
 
 Ask Digital Solutions for a service account to be created against your Research storage.  Then a Raapoi admin will permanantly mount your storage on Raapoi - this process is time consuming and involves back and forth between DS and CAD. 
+
+---
 
 #### Second Way: ``RClone``
 
 **To do once I get it fixed**
 
+
+---
 
 #### Third Way: ``smbclient``
 

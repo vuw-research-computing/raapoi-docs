@@ -30,6 +30,8 @@ User Quotas
 
 ```
 
+---
+
 ## Per Node Storage
 
 Each compute node has local storage you can use at ```/tmp```.  
@@ -42,6 +44,8 @@ On the Intel and highmem nodes this storage is slower and 1.7TB is not always av
 !!! tip "_Temp Disk Tips_"
     If you use the ```/tmp``` storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  
 For more info see [Temp Disk Tips](storage/tmp.md).
+
+---
 
 ## Storage Performance 
 <figure>
@@ -56,19 +60,27 @@ graph TD
 </figure>
 
 
+---
+
 ## Storage tips
 
 {%
 include-markdown "storage/home.md"
 %}
 
+---
+
 {%
 include-markdown "storage/scratch.md"
 %}
 
+---
+
 {%
 include-markdown "storage/tmp.md"
 %}
+
+---
 
 {%
 include-markdown "storage/beegfs.md"

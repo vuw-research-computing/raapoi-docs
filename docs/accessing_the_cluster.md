@@ -8,6 +8,8 @@ To access Rāpoi, you'll first need to get an account provisioned for you by com
 
 If you don't have a VUW staff account, it may still be possible to be given access - please [contact us](support.md) to determine options.
 
+--- 
+
 ## Connecting to the login node
 
 Access _Rāpoi_ via [SSH clients](#ssh-clients) or _a terminal application._ The details are as follows:
@@ -31,6 +33,7 @@ Access _Rāpoi_ via [SSH clients](#ssh-clients) or _a terminal application._ The
 
     More information on VUW VPN services can be found [here](https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access).
 
+---
 
 ## SSH Clients
 
@@ -106,6 +109,8 @@ Upon successfully logging in, the prompt will display:
 
 !!! warning "Get yourself familiar with a _Compute_ node!"
     After logging in, do most things on the compute node by running command *_``srun --pty bash``_*. For more info, please see [_Interactive Jobs._](running_jobs.md/#interactive-jobs)
+
+---
 
 ## File Transfer with SFTP, SCP or rsync
 

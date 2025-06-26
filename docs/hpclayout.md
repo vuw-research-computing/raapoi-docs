@@ -9,6 +9,8 @@ Rather than logging into the system and immediately running your program or code
 
 It is important to try and not over request resources as requested resources are kept in reserve for you and not available to others, even if you don't use them. This is particularly important when requesting a lot of resources or running array jobs which can use up a lot of the HPCs resources. 
 
+---
+
 ## Hardware
 On Rāpoi, the node you login into and submit your jobs to is called `raapoi-login`. 
 
@@ -36,6 +38,8 @@ Most of the processors in Rāpoi are in the parallel AMD nodes such as AMD01n01,
 ![Rapoi_Servers_cpu](img/amdCPU.jpg){ align=left }
 <figcaption>Figure 4: One of the CPUs with the heatsink removed. At 115.00 x 165.00 mm, it is physically much larger than the processor in a desktop   Each AMD node has 2 of these 7702 processors.  Each processor has 64Cores/128Threads (with SMT - symmetric multi-threading - enabled) for a total of 128Cores/256Threads per node.</figcaption>
 </figure>
+
+---
 
 ## Network
 

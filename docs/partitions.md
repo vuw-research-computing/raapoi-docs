@@ -63,6 +63,8 @@ Also notice the _TIMELIMIT_ field, this describes the maximum runtime of a
 partition.  For example, the quicktest partition has a maximum runtime of 1
 hour and the parallel partition has a max runtime of 10 days.
 
+---
+
 ## Partition Descriptions
 
 ### Partition: quicktest
@@ -137,6 +139,8 @@ The total number of CPU's in this partition is 512 with 2GB ram per CPU.
 * Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs
 * Maximum Runtime: 30 days
 
+
+---
 
 ## Cluster Default Resources
 

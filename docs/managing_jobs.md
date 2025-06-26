@@ -12,6 +12,8 @@ To cancel all of your jobs you can use the -u flag followed by your username:
 **Note:** Before cancelling your jobs, please make sure it runs for at least 2 mins, including the jobs submitted in error. 
 
 
+---
+
 ## Viewing Job information
 
 #### Job History
@@ -57,6 +59,8 @@ You can also get a report of your completed jobs using the _sacct_ command.  For
 * type _man sacct_ at a prompt in engaging to see the documentation on the _sacct_ command
 
 
+---
+
 ## Viewing jobs in the Queue
 
 
@@ -82,6 +86,8 @@ You can see all the jobs in the queues by running the _vuw-alljobs_ command.  Th
 !!! note
       By default, each user is allowed _1,024 CPU cores_, _2,048 GB of memory_ and _3 GPUs_ at any one time. Once you reach these limits, your jobs will be queued until resources are available.  These limits are set to ensure that all users have fair access to the cluster.  If you need more resources, please contact the [Rāpoi support team](support.md).
 
+
+---
 
 ## Job Queuing (aka Why isn't my job running?)
 

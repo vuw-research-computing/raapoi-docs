@@ -6,12 +6,16 @@
     The recommended method is to use `srun` or `sbatch`. Please request an interactive session to work on the cluster, e.g., writing programs, debugging, or even data transfer. 
 
 
+---
+
 ## Requesting Resources
 *  **_I don't want to interfere with other people work, what does it mean "Other users are prevented from using resources you request, even if you don't use them"?_**  
     * The system is shared, you will very rarely have full use of a node.  You need to be careful to request resources, leaving the extra space available to others.  For example, say you submitted a job to bigmem which asked for 800GB of ram and 10 CPUs.  Your job would end up on the node with 1000GB ram as only that one would fit it - if your job actually only used 300GB of ram - the extra 500GB of ram you requested would be "wasted" no one else could use it.  So, another user with a job requesting 600GB of ram would have to wait for your job to end even if there was space for it to run alongside yours.
 
     * The same issue occurs with CPU requests.   It can be very hard to accurately estimate memory and cpu needs before running your job.  If your job has a short run time (less than ~10 hours), you can just request more than you need and check the memory usage afterward to guide further jobs.  If your job has a long run time (several days), you should run a test job with a  short runtime (a few hours) to estimate your needs first. 
 
+
+---
 
 ## Job Requirements    
 * **_How do I know resource requirement for my job?_**
@@ -22,12 +26,16 @@
     * Generally it is okay to request roughly 20% more time and memory than you think the job will use, any more than that can impact on other users.
 
 
+---
+
 ## Visualisation
 * **_How do I plot/visualise my results/data on Rāpoi?_**
     * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself is computationally intensive, the dataset is large and difficult to move, and/or requires specialised hardware (like a gpu).
     * The Rāpoi operating system is primarily designed for command line use, and thus doesn't include most of the software libraries that support graphical interfaces. This typically makes the installation of visualisation software a time consuming process.
     * Should you really need to plot/visualise on Rāpoi, there are several things you probably need to do. The first will be to have a suitable ssh client (see the section on the [Accessing the Cluster](accessing_the_cluster.md) page) and enable X11 forwarding by adding the `-X` option when you `ssh` into Rāpoi. Other steps can vary greatly depending on your local operating system and exactly what you want to do. If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
 
+
+---
 
 ## MPI Tips
 * **_Allocating tasks, threads and MPI processes - or how to parse the meanings of "ntasks", "cpus-per-task" and "nodes" in my sbatch scripts? source: [C.E.C.I hpc docs](https://support.ceci-hpc.be/doc/_contents/SubmittingJobs/SlurmFAQ.html#Q05)_**
@@ -72,11 +80,15 @@
 
     - If your job requires more than the default available memory per core (2GB/core on a 256 core node) you should adjust this need with the following command: `#SBATCH --mem-per-cpu=10GB`. When doing this, the batch system will automatically allocate 50 cores or less per node (for a 500GB node).
 
+---
+
 
 ## VS Code tips
 * **_How do I clean up my VS Code Server processes on Rāpoi?_**
     * Unfortunately, VS Code seems to have somewhat poor process management when used to connect to Rāpoi for remote code development. In particular, it tends to leave a large number of processes sitting on the cluster occupying resources (even after you leave/close the session on your local machine). [This link from the vscode docs](https://code.visualstudio.com/docs/remote/troubleshooting#_cleaning-up-the-vs-code-server-on-the-remote) tells you how to cleanup your VS Code Server. In particular, they recommend running `kill -9 $(ps aux | grep vscode-server | grep $USER | grep -v grep | awk '{print $2}')` to kill server processes. If you are a user of VS Code, please do this whenever we you finish a session.
 
+
+---
 
 ## Dependent Jobs
 * **_How do I start a job that depends on the previous job finishing successfully?_**
@@ -116,6 +128,8 @@
 
 
 
+---
+
 
 ## COMSOL
 * **_How do I simulate COMSOL model?_**
@@ -153,6 +167,8 @@
     ```
 
 
+---
+
   
 ## Job Start    
 * **_How do I know when will my job start?_** 
@@ -163,6 +179,8 @@
 
     ```
 
+
+---
 
 
 
@@ -192,6 +210,8 @@
 
     You should run a few tests to see that your job is requested cpus that it can actually utilise efficiently. Try to run your job on 1, 2, 4, 8, 16, etc. cores to see when the runtime for your job starts tailing off. 
 
+---
+
 ## Job Failed
 * **_What should I do when my job fails (or hangs)?_**
     
@@ -208,6 +228,8 @@
     * If nothing works, send the script file, JobId, error file, and other logs to [raapoi-help slack channel](https://uwrc.slack.com) to ask for help from the admins. They know the system and may have helped another user do something similar.
 
 
+---
+
 ## Bug Report
 * **_How do I ask for help?_**
     * If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
@@ -216,6 +238,8 @@
     * If possible, attach your script and error file. 
    
     
+
+---
 
 
     

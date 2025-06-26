@@ -18,6 +18,8 @@ scontrol update jobid=<jobid> TimeLimit=13-23:59:59
 scontrol update jobid=<jobid> TimeLimit=+3-23:59:59
 ```
 
+---
+
 ## Dealing with badly behaved jobs
 
 ### Holding jobs
@@ -55,6 +57,8 @@ scancel <jobid>  # be careful to get the correct job id!
 # to cancel all their running jobs on parallel
 squeue -p parallel -u <username> -t running --format "scancel %i" | sh
 ```
+
+---
 
 ## Limiting user's resource allowance on Raapoi
 
@@ -102,6 +106,8 @@ sacctmgr modify user bob set GrpTRES=cpu=-1,mem=-1,gres/gpu=4  # -1 means no res
 sacctmgr list assoc User=bob
 ```
 
+---
+
 ## Using reservations
 
 If a research group has a good need and the other moderators agree, you can give them a reservation that only they can use. This is usually done for a specific time period.  This is also one of the steps when we put the cluster into maintenance
@@ -116,6 +122,8 @@ Users will use the reservation with
 ```bash
 #SBATCH --reservation=MyReservation
 ```
+
+---
 
 ## Building software with EasyBuild
 
@@ -266,6 +274,8 @@ eb --version # see version
 eb --install-latest-eb-release  # upgrade - will create new module file for new version
 ```
 
+---
+
 ## Building New Version of Schrodinger Suite
 
 Schrödinger Suite releases new versions quarterly, it's good practice to keep up to date with the latest version of the software. To build the new version, first download the tar file from the Schrödinger website (www.schrodinger.com), then move the installation tar file to the directory `/home/software/src/Schrodinger` on Rāpoi.
@@ -331,6 +341,8 @@ You can check if the module has been properly installed by
 module --ignore_cache avail
 ```
 
+
+---
 
 
 ## Installing non-easybuild software for other users

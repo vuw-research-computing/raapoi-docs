@@ -76,6 +76,8 @@ cat date_when_job_ran.txt
 
 
 
+---
+
 
 
 
@@ -86,6 +88,8 @@ include-markdown "examples/Python_users_guide.md"
 
 
 
+---
+
 
 
 {%
@@ -94,6 +98,8 @@ include-markdown "examples/R_users_guide.md"
 
 
 
+
+---
 
 
 
@@ -216,6 +222,8 @@ So in thise case the GPU was considerably faster.  Matlab can do this a bit fast
 
 
 
+---
+
 
 ## Job Arrays - running many similar jobs
 
@@ -310,6 +318,8 @@ Run the jobs with
 sbatch r_submit.sh
 ```
 
+
+---
 
 
 
