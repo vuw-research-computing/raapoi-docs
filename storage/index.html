@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/storage/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Storage and Quotas - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Storage and Quotas";
+        var mkdocs_page_input_path = "storage.md";
+        var mkdocs_page_url = "/raapoi-docs/storage/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Storage and Quotas</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#shared-storage">Shared Storage</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#per-node-storage">Per Node Storage</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-performance">Storage Performance</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-tips">Storage tips</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#home-directory-tips">Home Directory Tips</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scratch-tips">Scratch Tips</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#temp-disk-tips">Temp Disk Tips</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#beegfs-tips">BeeGFS Tips</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Storage and Quotas</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="storage-and-quotas">Storage and quotas<a class="headerlink" href="#storage-and-quotas" title="Permanent link">¶</a></h1>
+<h2 id="shared-storage">Shared Storage<a class="headerlink" href="#shared-storage" title="Permanent link">¶</a></h2>
+<p>Currently users have 3 main storage areas share across every node.  Each node has access to to this storage at all times and data is shared.  Be careful with parallel jobs trying to write to the same filename!</p>
+<ul>
+<li>
+<p><strong>/nfs/home/USERNAME</strong> - This is your Home Directory, each user has a <em>50 GB</em> quota limit. The data is replicated off site and backed up regularly by Digital Solutions. <a href="home/">Home directory tips</a></p>
+</li>
+<li>
+<p><strong>/nfs/scratch/USERNAME</strong> - This is your scratch space, each user has a <em>5 TB</em> quota limit. This data is <em>not backed up!</em> <a href="scratch/">Scratch directory tips</a></p>
+</li>
+</ul>
+<!--
+* __/beegfs-volatile/USERNAME__ - This is fast parallel filesystem.  There is no quota enforcement here.  There is 100TB of total space. This data is *not backed up!* **All data on this storage is periodically deleted** 
+[BeeGFS tips](storage/beegfs.md)
+-->
+<ul>
+<li><strong>/nfs/scratch/noquota-volatile</strong> - This is an additional filesystem (previously referred to as beegfs). There is no quota enforcement here.  There is 100TB of total space. This data is <em>not backed up!</em> <strong>All data on this storage is periodically deleted</strong> </li>
+</ul>
+<p>Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.</p>
+<p>To view your current quota and usage use the <em>vuw-quota</em> command, for example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>&lt;username@raapoi-login:~$<span class="w"> </span>vuw-quota<span class="w"> </span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>User<span class="w"> </span>Quotas
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">                       </span>Storage<span class="w">  </span>Usage<span class="w"> </span><span class="o">(</span>GB<span class="o">)</span><span class="w">  </span>Quota<span class="w"> </span><span class="o">(</span>GB<span class="o">)</span><span class="w">     </span>%<span class="w"> </span>Used<span class="w"> </span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">            </span>/nfs/home/&lt;username&gt;<span class="w">      </span><span class="m">18</span>.32<span class="w">       </span><span class="m">50</span>.00<span class="w">     </span><span class="m">36</span>.63%
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">         </span>/nfs/scratch/&lt;username&gt;<span class="w">       </span><span class="m">0</span>.00<span class="w">     </span><span class="m">5000</span>.00<span class="w">      </span><span class="m">0</span>.00%
+</span></code></pre></div>
+<hr/>
+<h2 id="per-node-storage">Per Node Storage<a class="headerlink" href="#per-node-storage" title="Permanent link">¶</a></h2>
+<p>Each compute node has local storage you can use at <code>/tmp</code>.<br/>
+This storage is <strong>not shared</strong> so a program running on <code>amd01n02</code> will not be able to see data stored on node <code>amd01n04</code>'s <code>/tmp</code> storage.
+Additionally, you can only access <code>/tmp</code> on any given node via a job running on that node.</p>
+<p>On the AMD nodes and GPU nodes the <code>/tmp</code> storage is very fast nvme storage with 1.7TB total space.<br/>
+On the Intel and highmem nodes this storage is slower and 1.7TB is not always available.</p>
+<div class="admonition tip">
+<p class="admonition-title"><em>Temp Disk Tips</em></p>
+<p>If you use the <code>/tmp</code> storage it is your responsibility to copy data to the <code>/tmp</code> and <strong>clean it up</strong> when your job is done.  </p>
+</div>
+<p>For more info see <a href="tmp/">Temp Disk Tips</a>.</p>
+<hr/>
+<h2 id="storage-performance">Storage Performance<a class="headerlink" href="#storage-performance" title="Permanent link">¶</a></h2>
+<figure>
+<div class="mermaid">graph TD
+   A(Home and Research Storage) --&gt; B
+   B[Scratch] --&gt; D
+   D[local tmp on AMD nodes]
+</div>
+<figcaption>Figure 1: Storage speed hierarchy. The slowest storage is your user home directory as well as any mounted research storage. The trade off for this is that this data is replicated off site as well as backed up by Digital Solutions. The fastest is the local tmp space on the AMD nodes - it is usually deleted shortly after you logout and only visible to the node it's on, but it is extremely fast with excellent IO performance.
+</figcaption>
+</figure>
+<hr/>
+<h2 id="storage-tips">Storage tips<a class="headerlink" href="#storage-tips" title="Permanent link">¶</a></h2>
+<h3 id="home-directory-tips">Home Directory Tips<a class="headerlink" href="#home-directory-tips" title="Permanent link">¶</a></h3>
+<p>Home directories have a small quota and are on fairly slow storage.  The data here is <strong>backed up</strong>.  It is replicated off site live as well as periodically backed up to off site tape.  In theory data here is fairly safe, even in a catastophic event it should be recoverable eventually.</p>
+<p>If you accidentally delete something here it can be recovered with a service desk request.</p>
+<p>While this storage is not performant, is is quite safe and is a good place for you scripts and code to live.  Your data sets can also be on your home if they fit and the performance doesn't cause you any problems.</p>
+<p>For bigger or faster storage see the <a href="scratch/">Scratch</a> page.</p>
+<hr/>
+<h3 id="scratch-tips">Scratch Tips<a class="headerlink" href="#scratch-tips" title="Permanent link">¶</a></h3>
+<p>The scratch storage is on a large storage node with 2 raid arrays with 50TB of storage each.  Your scratch will always be available at <code>/nfs/scratch/&lt;username&gt;</code>.</p>
+<p>Your scratch storage could be on scratch or scratch2, to find out run <code>vuw-quota</code>.</p>
+<p>Each user has a quota of 5TB on scratch - you can ask <a href="../support/">the support team</a> to increase it if needed.  While each user has a quota of 5TB, we don't actually have enough storage for each user to fill 5TB of storage!  This is a shared resource and we will occasionally ask on the <a href="https://uwrc.slack.com/">slack channel</a> for users to clean up their storage to make space for others. Individuals using a large amount of scratch space may recieve an email.</p>
+<p>To check how much space is free on the scratch storage for all users, on Rāpoi: 
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>df -h | grep scratch  #df -h is disk free with human units, | pipes the output to grep, which shows lines which contain the word scratch
+</span></code></pre></div>
+On the <a href="https://uwrc.slack.com/">slack channel</a> in any DM or channel type
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>/df-scratch 
+</span></code></pre></div>
+The output should only be visible to you</p>
+<p>This storage is <strong>not backed up</strong> at all.  It is on a raid array so if a hard drive fails your data is safe.  However in the event of a more dramatic hardware failure, earthquakes or fire - your data is gone forever.  If you accidentally delete something, it's gone forever. If an Admin misconfigures something, your data is gone (we try not to do this!).</p>
+<p>It is <strong>your responsiblilty to backup your data</strong> here - a good place is to use Digital Solutions Research Storage (see <a href="storage/external/solar_vuw.md">Connecting to SoLAR</a>).</p>
+<p>Scratch is also not a place for your old data to live forever, please clean up datasets you're no longer using!</p>
+<hr/>
+<h3 id="temp-disk-tips">Temp Disk Tips<a class="headerlink" href="#temp-disk-tips" title="Permanent link">¶</a></h3>
+<p>This storage is very fast on the AMD nodes and GPU nodes.  It is your job to move data to the tmp space and clean it up when done.</p>
+<p>There is very little management of this space and currently it is not visible to slurm for fair use scheduling - in other words someone else might have used up most of the temp space on the node!  This is generally not the case though.</p>
+<p>A rough example of how you could use this in an sbatch script</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">#</span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#SBATCH --job-name=bash_test</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">#</span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">#SBATCH --partition=quicktest</span>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">#</span>
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus</span>
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1">#SBATCH --time=10:00</span>
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1"># Do the needed module loading for your use case</span>
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>module<span class="w"> </span>load<span class="w"> </span>etc
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="c1">#make a temporary directory with your usename so you don't tread on others</span>
+</span><span id="__span-3-15"><a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>mkdir<span class="w"> </span>/tmp/&lt;username&gt;
+</span><span id="__span-3-16"><a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="c1">#Copy dataset from scratch to the local tmp on the node (could also use rsync)</span>
+</span><span id="__span-3-18"><a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a>cp<span class="w"> </span>-r<span class="w"> </span>/nfs/scratch/&lt;user&gt;/dataset<span class="w"> </span>/tmp/&lt;user&gt;/dataset
+</span><span id="__span-3-19"><a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a>Process<span class="w"> </span>data<span class="w"> </span>against<span class="w"> </span>/tmp/&lt;user&gt;/dataset
+</span><span id="__span-3-21"><a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a>Lets<span class="w"> </span>say<span class="w"> </span>the<span class="w"> </span>data<span class="w"> </span>is<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>/tmp/&lt;user&gt;/dataoutput/
+</span><span id="__span-3-22"><a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a>
+</span><span id="__span-3-23"><a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="c1"># Copy data from output to your scratch - I suggest not overwriting your original dataset!</span>
+</span><span id="__span-3-24"><a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a>cp<span class="w"> </span>-r<span class="w"> </span>/tmp/&lt;user&gt;/dataoutput/*<span class="w"> </span>/nfs/scratch/&lt;user&gt;/dataset/dataoutput/
+</span><span id="__span-3-25"><a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a>
+</span><span id="__span-3-26"><a href="#__codelineno-3-26" id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="c1"># Delete the data you copy to and created on tmp</span>
+</span><span id="__span-3-27"><a href="#__codelineno-3-27" id="__codelineno-3-27" name="__codelineno-3-27"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/&lt;user&gt;<span class="w">  </span><span class="c1">#DANGER!!  </span>
+</span></code></pre></div>
+<hr/>
+<h3 id="beegfs-tips">BeeGFS Tips<a class="headerlink" href="#beegfs-tips" title="Permanent link">¶</a></h3>
+<p>The BeeGFS storage is spread across 3 nodes with SSD disks.  The aggregate storage is 100TB.  We don't enforce quotas here as some projects have large storage needs.  However, you do need to be a good HPC citizen and respect the rights of others.  Don't needlessly fill up this storage.</p>
+<p>We regularly <strong>delete all data</strong> here every 3-6 months.  We only post warnings on the <a href="https://uwrc.slack.com/">slack channel</a>.  If after 3 months the storage is not full and still performning well, we delay the wipe another 3 months.</p>
+<p>This storage is <strong>not backed up</strong> at all.  It is on a raid array so if a hard drive fails your data is safe.  However in the event of a more dramatic hardware failure, earthquakes or fire - your data is gone forever.  If you accidentally delete something, it's gone forever. If an Admin misconfigures something, your data is gone (we try not to do this!).</p>
+<p>It is <strong>your responsiblilty to backup your data</strong> here - a good place is to use Digital Solutions Research Storage.</p>
+<p>BeeGFS should have better IO performance than the scratch storage - however it does depend what other users are doing.  No filesystem likes small files, BeeGFS likes small files even less than scratch.  Filesizes over 1MB are best.   If you have a large amount of files you can improve performance by splitting your files accross many directories - the load balancing accross the metadata and storage servers is by directory, not file.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../basic_commands/" title="Basic Commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../partitions/" title="Using Partitions">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../basic_commands/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../partitions/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script>mermaid.initialize({});</script></body>
+</html>
