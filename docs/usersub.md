@@ -35,3 +35,9 @@ This is user submitted documentation.  This will eventually contain tip and tric
 {%
    include-markdown "usersub/rstudio-server.md"
 %}
+
+--- 
+
+{%
+   include-markdown "usersub/matlab-gui.md"
+%}
