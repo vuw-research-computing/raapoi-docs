@@ -44,7 +44,7 @@ username@amd01n01:~$ #start_your_applications_here
 
 
 !!! tip
-    You could playaround with _flags_ for the _srun_ command, e.g., `srun --cpus-per-task=2 --mem=4G --time=0-00:10:00 --pty bash`. 
+    You could playaround with _flags_ for the _srun_ command, e.g., `srun -J<Job_Name> --cpus-per-task=2 --mem=4G --time=0-00:10:00 --pty bash`. 
 
 
 _**b) To run a small quick program**_
