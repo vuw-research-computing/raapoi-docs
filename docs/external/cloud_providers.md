@@ -338,7 +338,7 @@ Or, if you want to force the use of the GUI, use
 Finally, run globusconnect
 
 ```bash
-globusconnectpersonal -start &
+./globusconnectpersonal -start &
 ```
 On the personal device it will display a window 
 
@@ -362,7 +362,7 @@ srun --pty bash
 Once you are on a compute node, please follow the steps starting from _[globusconnectpersonal setup](/raapoi-docs/external_providers/#globusconnectpersonal-setup)_ as above 
 
 ```bash
-globusconnectpersonal -start &
+./globusconnectpersonal -start &
 ```
 
 !!! tip "Changing default directory to put your data?"
