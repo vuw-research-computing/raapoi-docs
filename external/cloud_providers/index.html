@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/external/cloud_providers/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Cloud providers - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Cloud providers";
+        var mkdocs_page_input_path = "external/cloud_providers.md";
+        var mkdocs_page_url = "/raapoi-docs/external/cloud_providers/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Cloud providers</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="connecting-to-cloud-providers">Connecting to Cloud Providers<a class="headerlink" href="#connecting-to-cloud-providers" title="Permanent link">¶</a></h2>
+<h3 id="aarnet-cloudstor">AARNET Cloudstor<a class="headerlink" href="#aarnet-cloudstor" title="Permanent link">¶</a></h3>
+<details class="caution" open="open">
+<summary><em><strong>NOTE</strong></em></summary>
+<p>Cloudstor service has been decommissioned since Dec 2023. For old accounts, please check access with the provider.</p>
+</details>
+<p>All VUW researchers have access to the AARNET (Australia’s Academic and Research
+Network) Cloudstor service which provides <strong>1 TB</strong> of space to each researcher.  To
+use this service first login and download an appropriate client to your laptop
+or desktop (or smarthone if you wish):</p>
+<p><a href="https://www.aarnet.edu.au/login">Cloudstor Login</a></p>
+<p>NOTE: Within the Cloudstor web login settings you will need to create a Cloudstor Password, this is the password you will use to login on Rāpoi, it does not use your VUW credentials for the command line login.</p>
+<p>We suggest setting up an App Password for Raapoi-rcopy  rather than a global sync password. This way if your password is compromised you can easily just remove that app password.  Setup an App Password by clicky on the settings gear on the top right and finding the <a href="https://cloudstor.aarnet.edu.au/plus/settings/personal?sectionid=security">App Password link</a>.</p>
+<p>Once you have setup your cloudstor (aka ownCloud) credentials you can use them
+to sync data to and from Rāpoi.  For example, if I wanted to sync my project
+space to Cloudstor I would do the following from Rāpoi login node:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># Use Tmux to keep your session alive if you disconnect. You can reconnect to your Tmux session if you reconnect. See Tmux docs.  </span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>tmux<span class="w">  </span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># Use our new module system</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>module<span class="w"> </span>use<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Core
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>module<span class="w"> </span>load<span class="w"> </span>rclone/1.54.1
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1">#check if cloudstor remote is already configured</span>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>rclone<span class="w"> </span>listremotes
+</span></code></pre></div>
+<p>The above sequence starts a tmux session to allow the transfer to continue even if I disconnect from the cluster
+(type <code>tmux attach</code> to reconnect) and then loads the rcopy module - which requires the use of our new module system.</p>
+<p>If you don't already have CloudStor configured as a remote (which you won't if this is your first time using it) <a href="https://support.aarnet.edu.au/hc/en-us/articles/115007168507-Can-I-use-the-command-line-or-WebDav-">follow the instructions on aarnet docs page</a>.</p>
+<p>Once we have setup <em>rclone</em> to connect to CloudStor, we copy our data. In this case from<code>&lt;my scratch folder&gt;/test</code> to <code>test</code> on CloudStor</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a> rclone copy --progress --transfers 8 /nfs/scratch/&lt;username&gt;/test CloudStor:/test
+</span></code></pre></div>
+<hr/>
+<h3 id="amazon-aws">Amazon AWS<a class="headerlink" href="#amazon-aws" title="Permanent link">¶</a></h3>
+<p>Create a python environment and install awscli module.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>python3 -m pip install awscli
+</span></code></pre></div>
+<p>Before you proceed you will need to configure your environment with your Access Key ID and Secret Access Key, both of which will be sent to you once your account is created or linked.  The command to configure your environment is <code>aws configure</code>  You only need to do this once, unless of course you use more than one user/Access Key.  Most users can simply click through the region and profile questions (using the default of "none").  If you do have a specific region this should be relayed along with your access and secret keys.</p>
+<p>Once you have the appropriate environment in place and your configuration setup you can use the aws command, plus an appropriate sub-command (s3, emr, rds, dynamodb, etc) and supporting arguments. </p>
+<p>More information on the CLI can be found here:
+<a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html</a></p>
+<h4 id="transferring-data-tofrom-amazon-aws-s3">Transferring Data to/from Amazon (AWS) S3<a class="headerlink" href="#transferring-data-tofrom-amazon-aws-s3" title="Permanent link">¶</a></h4>
+<p>To transfer data from S3 you first need to setup your AWS connect, instructions for that can be found above.
+Once that is done you should be able to use the aws commands to copy data to and from your S3 storage.  </p>
+<p>For example if I wanted to copy data from my S3 storage to my project directory I could do the following:
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">  </span>tmux
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span>module<span class="w"> </span>load<span class="w"> </span>amazon/aws/cli
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="nb">cd</span><span class="w"> </span>/nfs/scratch/&lt;username&gt;/project
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://mybucket/mydata.dat<span class="w"> </span>mydata.dat
+</span></code></pre></div></p>
+<p>To copy something to storage simply reverse the file paths, eg.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>  aws s3 cp mydata.dat s3://mybucket/mydata.dat 
+</span></code></pre></div>
+<p>The above starts a tmux session to allow the transfer to continue even if I
+disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
+modules necessary to use the AWS commands.  I change directory to my project
+space and use the aws s3 cp command to copy from S3.  More information on using
+aws can be found here:
+<a href="http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3">http://docs.aws.amazon.com/cli/latest/reference/s3/index.html#cli-aws-s3</a></p>
+<h4 id="working-with-aws-data-analysis-tools">Working with AWS Data Analysis Tools<a class="headerlink" href="#working-with-aws-data-analysis-tools" title="Permanent link">¶</a></h4>
+<p>Amazon has a number of data analytics and database services available.  Using the command line utilities available in Rāpoi, researchers can perform work on the eo cluster and transfer data to AWS to perform further analysis with tools such as MapReduce (aka Hadoop), RedShift or Quicksight.</p>
+<p>A listing of available services and documentation can be found at the following:
+<a href="https://aws.amazon.com/products/analytics/">https://aws.amazon.com/products/analytics/</a></p>
+<hr/>
+<h3 id="google-cloud-gcloud-connections">Google Cloud (gcloud) Connections<a class="headerlink" href="#google-cloud-gcloud-connections" title="Permanent link">¶</a></h3>
+<p>The Google Cloud SDK is available in Rāpoi.  This includes a command-line interface for connecting to gloud services.  To get started, first load the environment module.  You can find the path with the <code>module spider</code> command.  As of this writing the current version can be loaded thusly:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>module load gcloud/481.0.0
+</span></code></pre></div>
+<p>This will give you access to the <code>gcloud</code> command.  To setup a connection to your gcloud account use the init sub-command, eg.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>gcloud init --console-only
+</span></code></pre></div>
+<p>Follow the instructions to authorize your gcloud account.  Once on the Google website, you will be given an authorization code which you will copy/paste back into the Rāpoi terminal window.</p>
+<h4 id="transferring-data-tofrom-google-cloud-gcloud">Transferring Data to/from Google Cloud (gcloud)<a class="headerlink" href="#transferring-data-tofrom-google-cloud-gcloud" title="Permanent link">¶</a></h4>
+<p>To transfer data from gcloud storage you first need to setup your gcloud credentials, instructions for that can be found above.  Once that is done you should be able to use the <code>gsutil</code> command to copy data to and from your gcloud storage.  </p>
+<p>For example, if I wanted to copy data from gcloud to my project directory I could do the following:
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="w">  </span>tmux
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span>module<span class="w"> </span>load<span class="w"> </span>gcloud/481.0.0
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span><span class="nb">cd</span><span class="w"> </span>/nfs/scratch/&lt;username&gt;/project
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://mybucket/mydata.dat<span class="w"> </span>mydata.dat
+</span></code></pre></div>
+To copy something to storage simply reverse the file paths, eg.
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>  gsutil cp mydata.dat gs://mybucket/mydata.dat 
+</span></code></pre></div></p>
+<p>The above starts a tmux session to allow the transfer to continue even if I
+disconnect from the cluster (type <code>tmux attach</code> to reconnect).  I then load the
+modules necessary to use the gsutil commands.  I change directory to my project
+space and use the gsutil cp command to copy from gcloud.  More information on
+using gcloud can be found here:
+<a href="https://cloud.google.com/sdk/gcloud/">https://cloud.google.com/sdk/gcloud/</a></p>
+<h4 id="working-with-gcloud-data-analysis-tools">Working with GCloud Data Analysis Tools<a class="headerlink" href="#working-with-gcloud-data-analysis-tools" title="Permanent link">¶</a></h4>
+<p>Google Cloud has a number of data analytics and database services available.  Using the gcloud command line utilities available on Rāpoi, researchers can perform work on the cluster and transfer data to gcloud to perform further analysis with tools such as Dataproc (Hadoop/Spark), BigQuery or Datalab (Visualization)</p>
+<p>A listing of available services and documentation can be found at the following:
+<a href="https://cloud.google.com/products/">https://cloud.google.com/products/</a></p>
+<hr/>
+<h3 id="dropbox-cloud-storage">DropBox Cloud Storage<a class="headerlink" href="#dropbox-cloud-storage" title="Permanent link">¶</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Upload/Download Limits with DropBox</p>
+<p>Dropbox has upload/download limitations and we have found that once your file gets above 50GB in size the transfer will have a better chance of timing out and failing.</p>
+</div>
+<p>Configuring your Dropbox account on Rāpoi</p>
+<p><strong>Step A:</strong>  On your local laptop or desktop start your browser and login to your Dropbox account</p>
+<p><strong>Step B:</strong> On Rāpoi type the following:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>module load dropbox
+</span></code></pre></div>
+<p><strong>Step C:</strong> Setup account credentials (You should only need to do this once):</p>
+<p>Run the following command from Rāpoi</p>
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>dbxcli account
+</span></code></pre></div>
+<p>You will now see something like the following:</p>
+<ol>
+<li>Go to https://www.dropbox.com/1/oauth2/authorize?client_id=X123...</li>
+<li>Click "Allow" (you might have to log in first).</li>
+<li>Copy the authorization code.
+  Enter the authorization code here:</li>
+</ol>
+<p><strong>Step D:</strong></p>
+<p>Copy the URL link listed in Step C1 and paste it into the web browser that you started in Step A</p>
+<p>This will provide you with a long access code (aka hash).  Now copy that access code and paste it into your Rāpoi terminal after Step C3 where it is asking for Enter the authorization code here </p>
+<p>Now hit enter or return.  You should see that you are now logged in with your Dropbox credentials</p>
+<h4 id="basic-dropbox-commands">Basic Dropbox commands<a class="headerlink" href="#basic-dropbox-commands" title="Permanent link">¶</a></h4>
+<p>Remember to load the dropbox environment module if you have not already (see <code>module spider</code> for the path)</p>
+<p>Now type <code>dbx</code> or <code>dbxcli</code> at a prompt.  You will see a number of sub-commands, for instance ls, which will list the contents of your Dropbox, eg</p>
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>dbxcli ls
+</span></code></pre></div>
+<h4 id="downloading-from-dropbox">Downloading from Dropbox<a class="headerlink" href="#downloading-from-dropbox" title="Permanent link">¶</a></h4>
+<p>Downloading uses the subcommand called: get.   The basic format for get is:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>dbxcli get fileOnDropbox fileOnRaapoi
+</span></code></pre></div>
+<p>For instance, if I have a datafile called 2018-financials.csv on Dropbox that I want to copy to my project folder I would type:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>dbxcli get 2018-financials.csv /nfs/scratch/&lt;username&gt;/projects\
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>/finance_proj/2018-financials.csv
+</span></code></pre></div>
+<h4 id="uploading-to-dropbox">Uploading to Dropbox<a class="headerlink" href="#uploading-to-dropbox" title="Permanent link">¶</a></h4>
+<p>Uploading is similar to downloading except now we use the subcommand: put.  The basic format for put is:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>dbxcli put fileOnRaapoi fileOnDropbox
+</span></code></pre></div>
+<p>For example I want to upload a PDF I generated from one of my jobs called final-report.pdf I would type:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>dbxcli put final-report.pdf final-report.pdf
+</span></code></pre></div>
+<p>This will upload the PDF and name it the same thing, if I wanted to change the name on Dropbox I could:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>dbxcli put final-report.pdf analytics-class-final-report.pdf
+</span></code></pre></div>
+<hr/>
+<h3 id="microsoft-onedrive">Microsoft OneDrive<a class="headerlink" href="#microsoft-onedrive" title="Permanent link">¶</a></h3>
+<p><code>RClone</code> can be used to connect to onedrive, google drive, etc. The steps below implement onedrive setup on Rāpoi.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="go">module load rclone/1.54.1</span>
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="go">rclone config</span>
+</span></code></pre></div>
+<p>Follow the on-screen instructions, e.g., make a new remote - enter "n"; to select storage type; "onedrive" and keep following default options until "Use auto config" and enter "y" here. </p>
+<p>This should display a url; copy and paste in the browser and it should get set up. </p>
+<p>To view your files on the remote onedrive, you can use: </p>
+<div class="highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="gp"># </span>For<span class="w"> </span>example,<span class="w"> </span>rclone<span class="w"> </span>lsd<span class="w"> </span>&lt;remote&gt;:&lt;dir_name&gt;,<span class="w"> </span><span class="k">in</span><span class="w"> </span>my<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>I<span class="w"> </span>would<span class="w"> </span><span class="k">do</span>:
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="go">rclone lsd my_staff_onedrive:Documents</span>
+</span></code></pre></div>
+<hr/>
+<h3 id="globus">GLOBUS<a class="headerlink" href="#globus" title="Permanent link">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">External sharing coming soon!</p>
+<p>Presently, users can share/transfer data to and from locations including cluster, research storage, and personal devices. Options for enabling data sharing externally are being explored.</p>
+</div>
+<p>First time users should be able to sign up on GLOBUS website using their university credentials by following this link: <a href="https://app.globus.org/">https://app.globus.org/</a>.</p>
+<p><img alt="GLOBUS_Login_Page" src="../../img/GLOBUS_Login_Page.png"/></p>
+<p>Please install and start GLOBUS connect personal. Please find those instructions here: <a href="https://globus.org/globus-connect-personal">https://globus.org/globus-connect-personal</a> </p>
+<p>You should now be able to share or transfer your data by following their guide: <a href="https://docs.globus.org/guides/tutorials/manage-files/share-files/">https://docs.globus.org/guides/tutorials/manage-files/share-files/</a>.</p>
+<h4 id="transfer-files-using-globus">Transfer files using Globus<a class="headerlink" href="#transfer-files-using-globus" title="Permanent link">¶</a></h4>
+<p>Globus works by seting up <em><strong>endpoints</strong></em> which are like locations for data transfer. This means, we will need two endpoints to transfer data; one - a source, and the other - a destination. </p>
+<p>The steps below will walk you through the <em><strong><a href="/raapoi-docs/external_providers/#installation">Installation</a></strong></em> and then navigating the <em><strong><a href="/raapoi-docs/external_providers/#globus-file-manager">Globus File Manager</a></strong></em>.  </p>
+<p>The installation process is same for both the <em><strong><a href="/raapoi-docs/external_providers/#globusconnectpersonal-setup">globusconnectpersonal setup</a></strong></em> and for any of the <em><strong><a href="/raapoi-docs/external_providers/#on-rapoi"><em>Rāpoi's</em> compute nodes</a></strong></em>.</p>
+<h5 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Working on a Windows machine?</p>
+<p>The steps below are for a non-windows based operating system. For Windows OS, please see <a href="https://globus.org/globus-connect-personal">https://globus.org/globus-connect-personal</a> </p>
+</div>
+<h5 id="globusconnectpersonal-setup">globusconnectpersonal setup<a class="headerlink" href="#globusconnectpersonal-setup" title="Permanent link">¶</a></h5>
+<p>Inside the termial of your device, please run the following command: </p>
+<div class="highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>wget https://downloads.globus.org/globus-connect-personal/\
+</span><span id="__span-19-2"><a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>linux/stable/globusconnectpersonal-latest.tgz
+</span><span id="__span-19-3"><a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a>tar xzf globusconnectpersonal-latest.tgz
+</span><span id="__span-19-4"><a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a># this will produce a versioned globusconnectpersonal directory
+</span><span id="__span-19-5"><a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a># replace `x.y.z` in the line below with the version number you see
+</span><span id="__span-19-6"><a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a>cd globusconnectpersonal-x.y.z
+</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>./globusconnect -setup --no-gui
+</span></code></pre></div>
+<p>Here, we'll be presented with a <em>url</em>. If it is our first time, it will ask for creating an account, if you haven't done it before. Once, the account is set up, you'll be presented with an authorization code to enter into the code prompt. An example of this process is shown below:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>$<span class="w"> </span>./globusconnect<span class="w"> </span>-setup<span class="w"> </span>--no-gui
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a>
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a>We<span class="w"> </span>will<span class="w"> </span>display<span class="w"> </span>a<span class="w"> </span>login<span class="w"> </span>URL.<span class="w"> </span>Copy<span class="w"> </span>it<span class="w"> </span>into<span class="w"> </span>any<span class="w"> </span>browser<span class="w"> </span>and<span class="w"> </span>log<span class="w"> </span><span class="k">in</span><span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>a
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a>single-use<span class="w"> </span>code.<span class="w"> </span>Return<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span><span class="nb">command</span><span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>code<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span><span class="w"> </span>setup.
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a>
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a>Login<span class="w"> </span>here:
+</span><span id="__span-21-7"><a href="#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a>-----
+</span><span id="__span-21-8"><a href="#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a>https://auth.globus.org/v2/oauth2/authorize...
+</span><span id="__span-21-9"><a href="#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a>-----
+</span><span id="__span-21-10"><a href="#__codelineno-21-10" id="__codelineno-21-10" name="__codelineno-21-10"></a>Enter<span class="w"> </span>the<span class="w"> </span>auth<span class="w"> </span>code:<span class="w"> </span>0ZaZ....
+</span><span id="__span-21-11"><a href="#__codelineno-21-11" id="__codelineno-21-11" name="__codelineno-21-11"></a>
+</span><span id="__span-21-12"><a href="#__codelineno-21-12" id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="o">==</span><span class="w"> </span>starting<span class="w"> </span>endpoint<span class="w"> </span>setup
+</span><span id="__span-21-13"><a href="#__codelineno-21-13" id="__codelineno-21-13" name="__codelineno-21-13"></a>
+</span><span id="__span-21-14"><a href="#__codelineno-21-14" id="__codelineno-21-14" name="__codelineno-21-14"></a>
+</span><span id="__span-21-15"><a href="#__codelineno-21-15" id="__codelineno-21-15" name="__codelineno-21-15"></a>Input<span class="w"> </span>a<span class="w"> </span>value<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>Endpoint<span class="w"> </span>Name:<span class="w"> </span>&lt;enter_relevant_name&gt;
+</span><span id="__span-21-16"><a href="#__codelineno-21-16" id="__codelineno-21-16" name="__codelineno-21-16"></a>registered<span class="w"> </span>new<span class="w"> </span>endpoint,<span class="w"> </span>id:<span class="w"> </span>56d4c388....
+</span><span id="__span-21-17"><a href="#__codelineno-21-17" id="__codelineno-21-17" name="__codelineno-21-17"></a>setup<span class="w"> </span>completed<span class="w"> </span>successfully
+</span><span id="__span-21-18"><a href="#__codelineno-21-18" id="__codelineno-21-18" name="__codelineno-21-18"></a>
+</span><span id="__span-21-19"><a href="#__codelineno-21-19" id="__codelineno-21-19" name="__codelineno-21-19"></a>Will<span class="w"> </span>now<span class="w"> </span>start<span class="w"> </span>globusconnectpersonal<span class="w"> </span><span class="k">in</span><span class="w"> </span>GUI<span class="w"> </span>mode
+</span><span id="__span-21-20"><a href="#__codelineno-21-20" id="__codelineno-21-20" name="__codelineno-21-20"></a>Graphical<span class="w"> </span>environment<span class="w"> </span>not<span class="w"> </span>detected
+</span><span id="__span-21-21"><a href="#__codelineno-21-21" id="__codelineno-21-21" name="__codelineno-21-21"></a>
+</span><span id="__span-21-22"><a href="#__codelineno-21-22" id="__codelineno-21-22" name="__codelineno-21-22"></a>To<span class="w"> </span>launch<span class="w"> </span>Globus<span class="w"> </span>Connect<span class="w"> </span>Personal<span class="w"> </span><span class="k">in</span><span class="w"> </span>CLI<span class="w"> </span>mode,<span class="w"> </span>use
+</span><span id="__span-21-23"><a href="#__codelineno-21-23" id="__codelineno-21-23" name="__codelineno-21-23"></a><span class="w">  </span>globusconnectpersonal<span class="w"> </span>-start
+</span><span id="__span-21-24"><a href="#__codelineno-21-24" id="__codelineno-21-24" name="__codelineno-21-24"></a>
+</span><span id="__span-21-25"><a href="#__codelineno-21-25" id="__codelineno-21-25" name="__codelineno-21-25"></a>Or,<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>force<span class="w"> </span>the<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>GUI,<span class="w"> </span>use
+</span><span id="__span-21-26"><a href="#__codelineno-21-26" id="__codelineno-21-26" name="__codelineno-21-26"></a><span class="w">  </span>globusconnectpersonal<span class="w"> </span>-gui
+</span></code></pre></div>
+<p>Finally, run globusconnect</p>
+<p><div class="highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>./globusconnectpersonal<span class="w"> </span>-start<span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div>
+On the personal device it will display a window </p>
+<p><img alt="Globus_Client" src="../../img/Globus_client.png"/></p>
+<p>This completes our setup on the personal device. Now, we should be able to set it up on <em>Rāpoi</em>.</p>
+<h5 id="on-rapoi">On Rāpoi<a class="headerlink" href="#on-rapoi" title="Permanent link">¶</a></h5>
+<p>Launch an interactive session</p>
+<div class="highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>srun<span class="w"> </span>--pty<span class="w"> </span>bash
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Request more time for the interactive session, if you are wanting to transfer huge amount of data.
+<code>srun --time=0-05:00:00 --pty bash</code></p>
+</div>
+<p>Once you are on a compute node, please follow the steps starting from <em><a href="/raapoi-docs/external_providers/#globusconnectpersonal-setup">globusconnectpersonal setup</a></em> as above </p>
+<div class="highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>./globusconnectpersonal<span class="w"> </span>-start<span class="w"> </span><span class="p">&amp;</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Changing default directory to put your data?</p>
+<p><code>echo "/new/path/address/,0,1" &gt; /nfs/home/$USER/.globusonline/lta/config-paths</code></p>
+<p>Here, the <code>/new/path/address</code> will be the path of your choice, e.g., <code>/nfs/scratch/$USER/</code></p>
+</div>
+<p>This should now makes our two <em><strong>endpoints</strong></em> of data transfer accessible from the <em>Globus</em> website.</p>
+<h5 id="globus-file-manager">Globus File Manager<a class="headerlink" href="#globus-file-manager" title="Permanent link">¶</a></h5>
+<p>Leave the above running, and login to Globus website.
+Open the <code>File Manager</code> Tab from the login page.</p>
+<p>You should now be able to browse the names of your personal device and <em>Rāpoi</em>'s compute node to transfer your files. An example shown below:</p>
+<p><img alt="Globus_File_Manager" src="../../img/Globus_File_Manager.png"/></p>
+<p>You are now ready to transfer your data. </p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
