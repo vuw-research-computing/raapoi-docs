@@ -64,7 +64,7 @@ XQuartz is required to be installed if you wish to forward GUI applications (mat
     Once at the command prompt you can type the following to login (replace "username" with your VUW user):
 
 ```bash
-ssh -X username@raapoi.vuw.ac.nz
+$ ssh -X username@raapoi.vuw.ac.nz
 ```
 
 The _-X_ parameter tells SSH to forward any GUI windows to your local machine, this is called X forwarding.

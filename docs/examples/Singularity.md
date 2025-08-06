@@ -29,6 +29,13 @@ Build the container *locally* with sudo and singularity
 sudo singularity build inputexample.sif input_args_example.def 
 ```
 
+OR 
+
+Using [Sylabs Remote Builder](https://www.sylabs.io/docs/) is another option to build containers remotely. A Sylabs account and access token are required to use this feature. To build the container remotely, use the following command:
+```bash
+singularity build --remote inputexample.sif input_args_example.def
+```
+
 This will build an image that you can't modify any further and is immediately suitable to run on Rāpoi
 Copy this file to Rāpoi via sftp
 ```bash

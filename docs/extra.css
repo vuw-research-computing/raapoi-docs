@@ -1,65 +1,73 @@
+/* --- Font Definitions --- */
 @font-face {
     font-family: 'National';
     font-weight: 400;
     src: url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.eot');
-    src: url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.woff') format('woff'), /* Modern Browsers */
-         url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+    src: url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.eot?#iefix') format('embedded-opentype'),
+         url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.woff') format('woff'),
+         url('https://www.victoria.ac.nz/assets/fonts/NationalWebLF-Regular.ttf') format('truetype');
 }
 
 @font-face {
-font-family: 'Segoe WP N';
-font-style: normal;
-font-weight: lighter;
-src: local('Segoe WP N'), url('../site/fonts/SegoeWPN.woff') format('woff');
+    font-family: 'Segoe WP N';
+    font-style: normal;
+    font-weight: lighter;
+    src: local('Segoe WP N'), url('../site/fonts/SegoeWPN.woff') format('woff');
 }
 
 @font-face {
-font-family: 'Segoe UI Regular';
-font-style: normal;
-font-weight: lighter;
-src: local('Segoe UI Regular'), url('../site/fonts/Segoe UI.woff') format('woff');
+    font-family: 'Segoe UI Regular';
+    font-style: normal;
+    font-weight: lighter;
+    src: local('Segoe UI Regular'), url('../site/fonts/Segoe UI.woff') format('woff');
 }
-
 
 @font-face {
-font-family: 'Segoe UI Italic';
-font-style: normal;
-font-weight: normal;
-src: local('Segoe UI Italic'), url('../site/fonts/Segoe UI Italic.woff') format('woff');
+    font-family: 'Segoe UI Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe UI Italic'), url('../site/fonts/Segoe UI Italic.woff') format('woff');
 }
-
 
 @font-face {
-font-family: 'Segoe UI Bold';
-font-style: normal;
-font-weight: normal;
-src: local('Segoe UI Bold'), url('../site/fonts/Segoe UI Bold.woff') format('woff');
+    font-family: 'Segoe UI Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe UI Bold'), url('../site/fonts/Segoe UI Bold.woff') format('woff');
 }
-
 
 @font-face {
-font-family: 'Segoe UI Bold Italic';
-font-style: normal;
-font-weight: normal;
-src: local('Segoe UI Bold Italic'), url('site/fonts/Segoe UI Bold Italic.woff') format('woff');
+    font-family: 'Segoe UI Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe UI Bold Italic'), url('site/fonts/Segoe UI Bold Italic.woff') format('woff');
 }
 
-h1 {
-  color: #115737;
+/* --- Global Body & Typography --- */
+body {
+    font-family: "Segoe UI Regular", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
+    font-weight: normal;
+    color: #404040;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: #edf0f2;
 }
 
 h1, h2, h3, h4, h6, legend {
     margin-top: 0px;
     font-weight: 700;
-    font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     color: #115737;
- }
+}
 
-h5 { 
+h1 {
+    color: #115737;
+}
+
+h5 {
     margin-top: 0px;
     font-weight: 700;
-    font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+    font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     color: #343131;
 }
 
@@ -67,20 +75,20 @@ h5 {
     color: #B2A67F;
 }
 
-
 a:visited {
     color: #B2A67F;
 }
 
+/* --- Navigation & Header --- */
 .wy-nav-top {
     background: #115737;
     color: #fff;
-    padding: 0.4045em 0.809em;
+    padding: 0.8em 1.2em;
     position: relative;
-    line-height: 50px;
+    line-height: 1.5;
     text-align: center;
     font-size: 100%;
-    *zoom: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .wy-menu-vertical span {
@@ -89,320 +97,328 @@ a:visited {
 
 .wy-menu-vertical li.current a {
     color: #0a0707;
+    border-radius: 4px;
+}
+
+.wy-menu-vertical li.current li.current a {
+    color: #0a0707;
+    border-radius: 4px;
 }
 
 .wy-side-nav-search {
     z-index: 200;
     background-color: #115737;
     text-align: center;
-    padding: 0.809em;
+    padding: 1em;
     display: block;
     color: #115737;
-    margin-bottom: 0.809em;
+    margin-bottom: 1em;
 }
 
-body {
-    font-family: "Segoe UI Regular","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
-    font-weight: normal;
-    color: #404040;
-    min-height: 100%;
-    overflow-x: hidden;
-    background: #edf0f2;
+.wy-side-nav-search input {
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    border: 2px solid #B2A67F;
 }
 
+.rst-content .admonition code {
+    color: #ff0000ff;
+    /* border: transparent;
+    background: transparent; */
+}
+
+/* --- Inline Code Styling --- */
 code, .rst-content tt {
     white-space: nowrap;
     max-width: 100%;
-    background: #ededeb;
-    border: solid 1px #e1e4e5;
-    font-size: 75%;
-    padding: 0 5px;
-    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
-    color: #333;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    padding: 2px 5px;
+    font-family: inherit;
+    color: #8B0000;
     overflow-x: auto;
+    border-radius: 3px;
 }
 
+/* --- Card Container & Card Styling --- */
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* This centers the cards */
+    justify-content: center;
+    gap: 1.5em;
+    padding: 1em;
 }
 
 .card {
-    width: 30%;             /* Adjust based on your preference */
-    max-width: 300px;       /* Optional. Sets a max width for the card */
-    margin: 1% 0.5%;        /* Top/bottom spacing of 1%, left/right spacing of 0.5% */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    background-color: #f9f9f9;
-    padding: 15px;
+    width: calc(33.333% - 1em);
+    max-width: 320px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
 }
 
 .card img {
     width: 100%;
-    max-height: 200px;
+    max-height: 180px;
     display: block;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
 }
 
-/* Media query for screens narrower than 500px */
+/* --- Media query for screens narrower than 500px --- */
 @media (max-width: 500px) {
     .card-container {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center;    /* Center the cards */
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
     }
 
     .card {
-        width: 90%;          /* Make the card take up most of the screen width */
-        margin: 15px 0;      /* Adjust spacing as desired */
+        width: 90%;
+        margin: 10px 0;
     }
 }
 
-/* Tab style starts here */
-
-/* REMOVE RADIO BuTTON AT THE TOP OF TABBED CONTENT */
+/* --- Tab Style --- */
 .tabbed-alternate > input {
-  display: none;
+    display: none;
 }
 
 .tabbed-labels {
-  display: flex; /* COMMENT #TABS>4 */
-  width: 100%;
-  overflow: auto;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1.5em;
 }
 
 .tabbed-labels > label {
-  width: auto;
-  padding: 0.0em 1.0em 0.78125em;
-  font-weight: 700;
-  font-size: 0.9em;
-  white-space: nowrap;
-  border-bottom: 0.1rem solid transparent;
-  scroll-snap-align: start;
-  border-top-left-radius: 0.1rem;
-  border-top-right-radius: 0.1rem;
-  cursor: pointer;
-  transition: background-color 250ms, color 250ms;
+    flex-shrink: 0;
+    padding: 0.8em 1.2em;
+    font-weight: 600;
+    font-size: 0.95em;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
+    color: #607d8b;
 }
 
 .tabbed-labels > label:hover {
-  color: red;
+    color: #115737;
+    background-color: #f5f5f5;
 }
 
- 
 .tabbed-alternate .tabbed-content {
-  font-size: 0.9em;
-  padding-top: 0.64em;
-  padding-left: 0.55em;
-  
-} 
+    font-size: 0.95em;
+    padding: 0.8em 1em;
+    line-height: 1.6;
+    color: #404040;
+}
 
 .tabbed-alternate input:nth-child(1):checked ~ .tabbed-content > :nth-child(1),
 .tabbed-alternate input:nth-child(2):checked ~ .tabbed-content > :nth-child(2),
-.tabbed-alternate input:nth-child(3):checked ~ .tabbed-content > :nth-child(3) { 
+.tabbed-alternate input:nth-child(3):checked ~ .tabbed-content > :nth-child(3) {
     display: block;
-} 
+}
 
 .tabbed-alternate .tabbed-block {
-  display: none;
+    display: none;
 }
 
 @media screen {
-  .tabbed-alternate input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
-  .tabbed-alternate input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
-  .tabbed-alternate input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3) {
-    color: red;
-    border-color: red;
-  }
+    .tabbed-alternate input:nth-child(1):checked ~ .tabbed-labels > :nth-child(1),
+    .tabbed-alternate input:nth-child(2):checked ~ .tabbed-labels > :nth-child(2),
+    .tabbed-alternate input:nth-child(3):checked ~ .tabbed-labels > :nth-child(3) {
+        color: #115737;
+        border-color: #115737;
+        background-color: #ffffff;
+    }
 }
 
-/* Tab style ends here */
-
-
-/* ADMONITION STYLE*/
-
-
-/* INFO */
-.admonition.info .admonition-title::before {
-  content: "🔅";
-  padding-right: 0.25rem;
-  
-}
-
-.rst-content .admonition.info .admonition-title {
-  font-size: medium;
-  color: rgb(74, 89, 96);
-  padding-left: 0.5rem;
-  background-color: rgb(84, 117, 77, 0.2);
-}
-
-.admonition.info {
-  box-shadow: 0.2em 0.2em 0.2em rgba(84, 117, 77,0.2);
-
-  border: 1.5px solid rgb(84, 117, 77);
-  border-radius: 0.25rem;
-  background-color: white;
-}
-
-
-
-
-/* EXAMPLE */
-.admonition.example .admonition-title::before {
-  content: "🔥";
-  padding-right: 0.25rem;
-  
-}
-.rst-content .admonition.example .admonition-title {
-  font-size: medium;
-  color: rgb(74, 89, 96);
-  padding-left: 0.5rem;
-  background-color: rgb(82, 217, 53, 0.2);
-}
-
-.admonition.example {
-  box-shadow: 0.2em 0.2em 0.2em rgba(82, 217, 53,0.2);
-
-  border: 1.5px solid rgba(82, 217, 53);
-  border-radius: 0.25rem;
-  background-color: white;
-}
-
-
-
-
-
-/* WARNING */
-.admonition.warning .admonition-title::before {
-  content: "⚠️";
-  padding-right: 0.25rem;
-  
-}
-.rst-content .admonition.warning .admonition-title {
-  font-size: medium;
-  color: rgb(74, 89, 96);
-  padding-left: 0.5rem;
-  background-color: rgba(194, 121, 201,0.2);
-}
-
-.admonition.warning {
-  box-shadow: 0.2em 0.2em 0.2em rgba(194, 121, 201,0.2);
-  border: 1.5px solid rgb(194, 121, 201);
-  border-radius: 0.25rem;
-  background-color: white;
-}
-
-
-
-
-/* TIP */
-.admonition.tip .admonition-title::before {
-  content: "💡";
-  padding-right: 0.25rem;
-  
-}
-.rst-content .admonition.tip .admonition-title {
-  font-size: medium;
-  color: rgb(74, 89, 96);
-  padding-left: 0.5rem;
-  background-color: rgba(0, 182, 208, 0.2);
-}
-
-.admonition.tip {
-  box-shadow: 0.2em 0.2em 0.2em rgba(0, 182, 208, 0.2);
-  border: 1.5px solid rgb(74, 89, 96);
-  border-radius: 0.25rem;
-  background-color: white;
-}
-
-
-
-
-
-
-/* DANGER */
-.admonition.danger .admonition-title::before {
-  content: "👽";
-  padding-right: 0.25rem;
-  
-}
-.rst-content .admonition.danger .admonition-title {
-  font-size: medium;
-  color: rgb(74, 89, 96);
-  padding-left: 0.5rem;
-  background-color: rgba(252, 81, 86, 0.2);
-}
-
-.admonition.danger {
-  box-shadow: 0.2em 0.2em 0.2em rgba(103, 62, 63,0.2);
-  border: 1.5px solid rgb(252, 81, 86);
-  border-radius: 0.25rem;
-  background-color: white;
-  
-}
-
-
-
-
-
-
-
-/* NOTE */
-.admonition.note .admonition-title::before {
-  
-  content: "💬";
-  padding-right: 0.25rem;
-  
-}
-
-.rst-content .admonition.note .admonition-title {
-  font-size: medium;
-  color: rgb(74, 89, 96);
-  padding-left: 0.5rem;
-  box-sizing: border-box;
-  background-color: rgb(255, 146, 41, 0.2);
-}
-
-.admonition.note {
-  box-shadow: 0.2em 0.2em 0.2em rgba(255, 146, 41, 0.2);
-  border: 1.5px solid rgba(255, 146, 41);
-  border-radius: 0.25rem;
-  background-color: white;
-  
-}
-
-
-
- /* NOTE COLLAPSIBLE */
-
-.rst-content .caution p {
-  padding: 0.8rem;
-  background-color: white;
-}
-
-.rst-content .caution summary {
-  font-size: medium;
-  color: rgba(125,50,180);
-  padding-left: 0.5rem;
-}
-
-.rst-content .caution {
-  padding: 0rem;
-  background-color: rgba(125,125,195,0.25);
-  border: 1.5px solid rgba(125,50,180,0.8);
-  border-radius: 0.25rem;
-} 
-
-
-/* FENCES */
-div.highlight  {
-  background-color: red;
-  
+/* --- Code Block Styling --- */
+div.highlight {
+    margin: 1.5em 0;
+    background-color: #f8f8f8;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .rst-content div[class^=highlight] pre {
-  padding: 0rem;
+    padding: 0; /*1em 1.2em;*/
+    background: transparent;
+    border: none;
+    border-left: 5px solid #115737;
+    border-radius: 0;
+    overflow-x: auto;
+    white-space: pre;
+    color: #2c3e50;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* ---- ADMONITIONS ---- */
+
+
+
+
+
+
+/* ---- ADMONITIONS ---- */
+.rst-content .admonition {
+    padding: 0.8em 1.2em; /* Reduced padding */
+    margin: 1.5em 0;
+    border-left: 4px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 4px;
+    font-size: 0.9em; /* Slightly smaller overall text */
+    line-height: 1.5; /* Adjusted line height for smaller text */
+}
+
+
+.rst-content .admonition .admonition-title {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0.4em; /* Reduced bottom margin */
+    padding-bottom: 0.4em; /* Reduced bottom padding */
+    background: none;
+    background-color: none;
+}
+
+
+.rst-content .admonition .admonition-title::before {
+    margin-right: 0.4em; /* Slightly reduced space before emoji */
+}
+
+
+/* --- Specific Admonition Types --- */
+
+
+/* Note Admonition */
+.rst-content .admonition.note {
+    border-color: #4CAF50;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.note .admonition-title {
+    color: #4CAF50;
+}
+
+
+
+
+
+/* Warning Admonition */
+.rst-content .admonition.warning {
+    border-color: #FFC107;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.warning .admonition-title {
+    color: #FFC107;
+}
+
+
+.rst-content .admonition.warning .admonition-title::before {
+    content: " 📣 ";
+}
+
+
+/* Tip Admonition */
+.rst-content .admonition.tip {
+    border-color: #2196F3;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.tip .admonition-title {
+    color: #2196F3;
+}
+
+
+.rst-content .admonition.tip .admonition-title::before {
+    content: "🔥";
+}
+
+
+/* Important Admonition */
+.rst-content .admonition.important {
+    border-color: #F44336;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.important .admonition-title {
+    color: #F44336;
+}
+
+
+.rst-content .admonition.important .admonition-title::before {
+    content: " 💡 ";
+}
+
+
+/* Caution Admonition */
+.rst-content .admonition.caution {
+    border-color: #af7c4c;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.caution .admonition-title {
+    color: #af7c4c;
+}
+
+
+.rst-content .admonition.caution .admonition-title::before {
+    content: " ⚠️ ";
+}
+
+
+/* Danger Admonition */
+.rst-content .admonition.danger {
+    border-color: #ff4d07;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.danger .admonition-title {
+    color: #ff4d07;
+}
+
+
+.rst-content .admonition.danger .admonition-title::before {
+    content: " 🚩 ";
+}
+
+/* info Admonition */
+.rst-content .admonition.info {
+    border-color: #2125f3ff;
+    background-color: #ffffff;
+}
+
+
+.rst-content .admonition.info .admonition-title {
+    color: #2125f3ff;
+}
+
+.rst-content .admonition.info .admonition-title::before {
+    content: " 🔔 ";
 }
