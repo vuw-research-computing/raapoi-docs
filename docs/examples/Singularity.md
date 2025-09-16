@@ -2,6 +2,22 @@
 
 While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you *can* have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.
 
+!!! Note 
+    As per updated singularity configuration, `mount hostfs` is set to `false` and `mount home` is set to `true`. As a result, filesystems available inside a singularity session by default are:
+    ```
+    devtmpfs  /dev
+    tmpfs     /dev/shm
+    /vg<id>   /etc/hosts
+    ..        /tmp
+    ..        /var/tmp
+    ..        /etc/group
+    $HOME     /nfs/home/$USER
+    ```
+    This means any other file system such as `nfs` should be manually specified using `--bind` command. For example,
+    ```
+    singularity shell --bind /nfs/scratch/$USER:/nfs/scratch/$USER image_file.simg pwd
+    ```
+
 See also: [Using containers](../advanced/containers.md)
 
 ### Singularity/Docker container example
