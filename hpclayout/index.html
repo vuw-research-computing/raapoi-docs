@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/hpclayout/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>HPC Hardware Layout - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "HPC Hardware Layout";
+        var mkdocs_page_input_path = "hpclayout.md";
+        var mkdocs_page_url = "/raapoi-docs/hpclayout/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">HPC Hardware Layout</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#network">Network</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#ethernet">Ethernet</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#infiniband">Infiniband</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">HPC Hardware Layout</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="hpc-layout">HPC layout<a class="headerlink" href="#hpc-layout" title="Permanent link">¶</a></h1>
+<details class="caution" open="open">
+<summary><em><strong>NOTE</strong></em></summary>
+<p>Understanding the Rāpoi hardware layout is not critical for most users!  It is useful for users running big parallel MPI jobs and may be of interest to others.</p>
+</details>
+<p>To a first approximation, a High Performance Computer (HPC) is a collection of large computers or servers (nodes) that are connected together.  There will also be some attached storage.</p>
+<p>Rather than logging into the system and immediately running your program or code, it is organised into a job and submitted to a scheduler that takes your job and runs it on one of the nodes that has enough free resources (cpu and memory) to meet your job request.  Most of the time you will be sharing a node with other users.  </p>
+<p>It is important to try and not over request resources as requested resources are kept in reserve for you and not available to others, even if you don't use them. This is particularly important when requesting a lot of resources or running array jobs which can use up a lot of the HPCs resources. </p>
+<hr/>
+<h2 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">¶</a></h2>
+<p>On Rāpoi, the node you login into and submit your jobs to is called <code>raapoi-login</code>. </p>
+<p>The computers/servers making up the nodes are of several types, covered in <a href="../partitions/">partitions</a>.</p>
+<p>Most of the processors in Rāpoi are in the parallel AMD nodes such as AMD01n01, AMD01n02 etc. Figures 1-4 show more details of these nodes.</p>
+<figure>
+<p><img align="left" alt="Rapoi_Servers_front" src="../img/parallel_front.jpg"/></p>
+<figcaption>Figure 1: Example of some of the computers making up Rāpoi.  This is the front panel in Rack 4 in the Datacentre - highlighted is one of the AMD chassis, which have 4 nodes each. </figcaption>
+</figure>
+<figure>
+<p><img align="left" alt="Rapoi_Servers_back" src="../img/parallel_back.jpg"/></p>
+<figcaption>Figure 2: Example of some of the computers making up Rāpoi.  This is the back in Rack 4 in the Datacentre.  Here you can clearly see the 4 nodes in each chassis of the parallel partition</figcaption>
+</figure>
+<figure>
+<p><img align="left" alt="Rapoi_Servers_sled" src="../img/amd_sled.jpg"/></p>
+<figcaption>Figure 3: An AMD compute node, one of 4 in a chassis.  The 2 black rectangles are the processor heatsinks, on each side are the ram modules. Each ram module is 32GB for a total of 512GB. On the lower left, the green circuit board is the the InfiniBand network card.  Opposite that, in black, is the 1.7TB NvMe storage we use as fast /tmp space. </figcaption>
+</figure>
+<figure>
+<p><img align="left" alt="Rapoi_Servers_cpu" src="../img/amdCPU.jpg"/></p>
+<figcaption>Figure 4: One of the CPUs with the heatsink removed. At 115.00 x 165.00 mm, it is physically much larger than the processor in a desktop   Each AMD node has 2 of these 7702 processors.  Each processor has 64Cores/128Threads (with SMT - symmetric multi-threading - enabled) for a total of 128Cores/256Threads per node.</figcaption>
+</figure>
+<hr/>
+<h2 id="network">Network<a class="headerlink" href="#network" title="Permanent link">¶</a></h2>
+<p>On Rāpoi the nodes are connected to each other in two ways - via 10G ethernet and via 52G infiniband.  Most of the time you can ignore this, but it is important for interconnected jobs running across multiple nodes like weather simulations.</p>
+<p>In figure 5 we can see the network layout of Rāpoi from the perspective of the Login node.  This is the node you ssh into, via the VUW intranet - either from a locally wired connection or via the VPN. The nodes are organised into groups mostly aligning with the <a href="../partitions/">partition</a> the node is in.  </p>
+<h3 id="ethernet">Ethernet<a class="headerlink" href="#ethernet" title="Permanent link">¶</a></h3>
+<p>The dashed lines indicate an Ethernet connection, all nodes are connected via ethernet at either 1G or 10G depending on the node.  Most of the intel nodes are only connected at 1G due to their age.  The newer nodes are all 10G connected.  The ethernet connection can also reach out into the wider internet for downloading updates, datasets etc.</p>
+<h3 id="infiniband">Infiniband<a class="headerlink" href="#infiniband" title="Permanent link">¶</a></h3>
+<p>Many nodes are also connected by a solid line indicating an Infiniband network connection. This connection is faster than the ethernet connection but more importantly lower latency than the ethernet connection.  This helps with large interconnected (eg MPI) jobs running across multiple nodes.  The latency of the interprocess communication carried over the Infiniband link can have a dramatic affect on large scale calculations which for instance need to communicate grid boundary conditions across the nodes</p>
+<p>Where infiniband is available, the scratch storage is transmitted over the link as the latency helps with IO performance.</p>
+<figure>
+<div class="mermaid">classDiagram
+    Parallel_AMD -- Login
+    Parallel_AMD .. Login
+    Quicktest -- Login
+    Quicktest .. Login
+    Bigmem .. Login
+    GPU .. Login
+    Login .. Internet
+    Login .. Scratch
+    Login -- Scratch
+    Login .. Longrun
+    Login -- Longrun
+    class Internet {
+        vuw intranet 
+        wider internet
+    }
+    class Scratch {
+        100 TB
+        raapoizfs01
+    }
+    class Longrun {
+
+        bigtmp01
+        bigtmp02
+    }
+    class Login {
+        raapoi-login
+    }
+    class Parallel_AMD {
+        amd01n01
+        amd01n02
+        amd01n03
+        amd01n04
+        -
+        amd02n01
+        amd02n02
+        amd02n03
+        amd02n04
+        -
+        amd03n01
+        amd03n02
+        amd03n03
+        amd03n04
+        -
+        amd04n01
+        amd04n02
+        amd04n03
+        amd04n04
+        -
+        amd05n01
+        amd05n02
+        amd05n03
+        amd05n04
+        -
+        amd06n01
+        amd06n02
+        amd06n03
+        amd06n04
+        -
+        amd07n01
+        amd07n02
+        amd07n03
+        amd07n04
+    }
+    class Quicktest{
+        itl02n01
+        itl02n02
+        itl02n03
+        itl02n04
+        -
+        itl03n01
+        itl03n02
+    }
+    class Bigmem{
+        high01
+        high02
+        high03
+        high04
+    }
+    class GPU{
+        gpu01
+        gpu02
+        gpu03  
+    }
+</div>
+<figcaption>Figure 5: Logical HPC layout from the perspective of the login node.  Solid lines indicate ethernet connections, dashed Infiniband</figcaption>
+</figure>
+<p>Looking at the HPC from the perspective of the ethernet and infiniband networks.  The nodes in Figure 6 and 7 are the same as before, but we're just using the group container label to simplify the diagram.</p>
+<figure>
+<div class="mermaid">classDiagram
+    Parallel_AMD .. Ethernet
+    Quicktest .. Ethernet
+    Bigmem .. Ethernet
+    GPU .. Ethernet
+    Ethernet .. Internet
+    Ethernet .. Login
+    Ethernet .. Scratch
+    Ethernet .. Longrun
+
+    class Ethernet{
+        1-10Gig
+        Connects to the wider internet
+    }
+        class Scratch {
+    }
+    class BeeGFS {
+    }
+    class Login {
+    }
+    class Parallel_AMD {
+    }
+    class Quicktest{
+    }
+    class Bigmem{
+    }
+    class GPU{ 
+    }
+</div>
+<figcaption>Figure 6: Logical HPC layout from the perspective of the ethernet connections.  Node layout is the same as in Figure 5, but only the group headings have been retained.
+</figcaption>
+</figure>
+<figure>
+<div class="mermaid">classDiagram
+    Parallel_AMD -- Login
+    Parallel_AMD .. Login
+    Quicktest -- Login
+    Quicktest .. Login
+    Bigmem .. Login
+    GPU .. Login
+    Login .. Internet
+    Login .. Scratch
+    Login -- Scratch
+    Login .. Longrun
+    Login -- Longrun
+    class Internet {
+        vuw intranet 
+        wider internet
+    }
+    class Scratch {
+        100 TB
+        raapoizfs01
+    }
+    class Longrun {
+        bigtmp01
+        bigtmp02
+
+    }
+    class Login {
+        raapoi-login
+    }
+    class Parallel_AMD {
+    }
+    class Quicktest{
+    }
+    class Bigmem{
+    }
+    class GPU{
+    }
+</div>
+<figcaption>Figure 7: Logical HPC layout from the perspective of the Infiniband connections. Note that not all nodes are connected via the infiniband link!  Node layout is the same as in Figure 5, but only the group headings have been retained.</figcaption>
+</figure>
+<p>The Infiniband nodes are connected to one of two SX6036 Infiniband switches.  The intel and quicktest and login nodes are connected to one switch. Everything else is connected to the the other. The switches are broadly interconnected, but there is as small latency penalty for crossing the switch.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../elements/LinkingElements/" title="Linking Rāpoi outputs to Elements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../support/" title="Support">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../elements/LinkingElements/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../support/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script>mermaid.initialize({});</script></body>
+</html>
