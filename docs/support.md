@@ -10,22 +10,43 @@ or Contact the Rāpoi Admins:
 
 ---
 
-## Rāpoi Admins
+## Research Compute Specialist
 
-Our admins are ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster. The listed folk in the team have other roles and are very kindly helping out on a best effort as time permits basis.
+<p>Our research compute specialist is usually ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster. </p>
+
+<p>The Research Computing Specialist role—previously held by Rohit Duggal in ECS—is currently vacant. While a replacement is being sought, please direct any support queries to the #raapoi-help channel in 
+[UWRC Slack](https://uwrc.slack.com). This space is actively used by experienced cluster users who are far more likely to have the knowledge and expertise to assist you.</p>
+ 
+<p>We appreciate your understanding and encourage peer collaboration in the meantime.</p>
+
+
 <p></p>
 
 <div class="card-container">
 
 
   <div class="card">
-    <img src="../img/RohitDuggalProfile.jpg" alt="Avatar" style="width:100%">
+    <img src="../img/blank_user.png" alt="Avatar" style="width:100%">
     <div class="container">
-      <h4><b>Rohit Duggal</b></h4>
+      <h4><b>?????????</b></h4>
       <p>Research Computing Specialist - Rāpoi</p>
-      <p><a href="mailto:rohit.duggal@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
+      <p>Position Vacant</p>
     </div>
   </div> 
+
+</div>
+
+<p></p>
+
+---
+
+## Rāpoi Systems Administrators
+
+Our admins from Digital Solutions build the cluster nodes and keep an eye on the hardware as well as provisioning new users. The listed folk in the team have other roles and are very kindly helping out on a best effort as time permits basis.
+<p></p>
+
+<div class="card-container">
+
 
   <div class="card">
     <img src="../img/DavidA.jpg" alt="Avatar" style="width:100%">
@@ -118,16 +139,15 @@ Moderators are members of the research community who have kindly volunteered the
 
 Folk who used to look after Raapoi.
 
-
-
-
 <div class="card-container">
 
+
   <div class="card">
-    <img src="../img/Wes.jpg" alt="Avatar" style="width:100%">
+    <img src="../img/RohitDuggalProfile.jpg" alt="Avatar" style="width:100%">
     <div class="container">
-      <h4><b>Wes Harrell</b></h4>
-      <p>Research Software Engineer</p>
+      <h4><b>Rohit Duggal</b></h4>
+      <p>Research Computing Specialist - Rāpoi</p>
+      <p>Left September 2025</p>
     </div>
   </div> 
 
@@ -136,7 +156,7 @@ Folk who used to look after Raapoi.
     <div class="container">
       <h4><b>Andre Geldenhuis</b></h4>
       <p>Research Computing Specialist in the Center for Academic Development.</p>
-      <p>Leaving on the 25th of August 2023</p>
+      <p>Left August 2023</p>
     </div>
   </div> 
 
@@ -146,6 +166,14 @@ Folk who used to look after Raapoi.
       <h4><b>Matt Plummer</b></h4>
       <p>Senior Research Partner.</p>
       <p><a href="mailto:matt.plummer@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
+    </div>
+  </div> 
+
+  <div class="card">
+    <img src="../img/Wes.jpg" alt="Avatar" style="width:100%">
+    <div class="container">
+      <h4><b>Wes Harrell</b></h4>
+      <p>Research Software Engineer</p>
     </div>
   </div> 
 
