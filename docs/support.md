@@ -12,12 +12,12 @@ or Contact the Rāpoi Admins:
 
 ## Research Compute Specialist
 
-<p>Our research compute specialist is usually ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster. </p>
+Our research compute specialist is usually ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster.
 
-<p>The Research Computing Specialist role—previously held by Rohit Duggal in ECS—is currently vacant. While a replacement is being sought, please direct any support queries to the #raapoi-help channel in 
-[UWRC Slack](https://uwrc.slack.com). This space is actively used by experienced cluster users who are far more likely to have the knowledge and expertise to assist you.</p>
+The Research Computing Specialist role—previously held by Rohit Duggal in ECS—is currently vacant. While a replacement is being sought, please direct any support queries to the #raapoi-help channel in
+[UWRC Slack](https://uwrc.slack.com). This space is actively used by experienced cluster users who are likely to have the knowledge and expertise to assist you.
  
-<p>We appreciate your understanding and encourage peer collaboration in the meantime.</p>
+We appreciate your understanding and encourage peer collaboration in the meantime.
 
 
 <p></p>
@@ -28,7 +28,7 @@ or Contact the Rāpoi Admins:
   <div class="card">
     <img src="../img/blank_user.png" alt="Avatar" style="width:100%">
     <div class="container">
-      <h4><b>?????????</b></h4>
+      <h4><b>????? ?????</b></h4>
       <p>Research Computing Specialist - Rāpoi</p>
       <p>Position Vacant</p>
     </div>
