@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/accessing_the_cluster/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Accessing the Cluster - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Accessing the Cluster";
+        var mkdocs_page_input_path = "accessing_the_cluster.md";
+        var mkdocs_page_url = "/raapoi-docs/accessing_the_cluster/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Accessing the Cluster</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#connecting-to-the-login-node">Connecting to the login node</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-clients">SSH Clients</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#file-transfer-with-sftp-scp-or-rsync">File Transfer with SFTP, SCP or rsync</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Accessing the Cluster</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="accessing-the-cluster">Accessing the Cluster<a class="headerlink" href="#accessing-the-cluster" title="Permanent link">¶</a></h1>
+<p>To access Rāpoi, you'll first need to get an account provisioned for you by completing the form in the <a href="https://service.victoria.ac.nz/asm/Core.aspx?Lite&amp;Form=Request&amp;MODE=NEW&amp;TEMPLATE_REF=331026">Service Desk Portal</a> or contacting the <a href="../support/">Rāpoi support team</a> with your:</p>
+<ul>
+<li>Full Name</li>
+<li>VUW <strong><em>STAFF</em></strong> username</li>
+<li>Faculty, School or Institute affiliation.</li>
+</ul>
+<p>If you don't have a VUW staff account, it may still be possible to be given access - please <a href="../support/">contact us</a> to determine options.</p>
+<hr/>
+<h2 id="connecting-to-the-login-node">Connecting to the login node<a class="headerlink" href="#connecting-to-the-login-node" title="Permanent link">¶</a></h2>
+<p>Access <em>Rāpoi</em> via <a href="#ssh-clients">SSH clients</a> or <em>a terminal application.</em> The details are as follows:</p>
+<ul>
+<li>Hostname: raapoi.vuw.ac.nz</li>
+<li>IP Address: 130.195.19.126</li>
+<li>Port: 22</li>
+<li>Username: Your VUW username</li>
+<li>Password: Your VUW password</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong><em>VSCode users</em></strong>, please follow this link to connect: <a href="../usersub/vscode/">VSCode on <em>Rāpoi</em></a></p>
+</div>
+<div style="padding:54.11% 0 0 0;position:relative;"><iframe allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" frameborder="0" src="https://player.vimeo.com/video/1091981314?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Login to Rāpoi HPC"></iframe></div>
+<p><script src="https://player.vimeo.com/api/player.js"></script></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A wired network connection or <a href="https://vpn.victoria.ac.nz/+CSCOE+/logon.html#form_title_text">VPN</a> is required if
+connecting from campus wifi or from off-campus. Some users have had issues with
+using the hostname and instead need to use the IP address, eg
+<code>harrelwe@130.195.19.126</code></p>
+<p>More information on VUW VPN services can be found <a href="https://www.victoria.ac.nz/its/staff-services/core-tools-and-services/remote-access">here</a>.</p>
+</div>
+<hr/>
+<h2 id="ssh-clients">SSH Clients<a class="headerlink" href="#ssh-clients" title="Permanent link">¶</a></h2>
+<p><strong><em>Linux SSH Clients</em></strong></p>
+<p>Linux built-in terminal application e.g., GNOME Terminal, Konsole, xTerm, etc. can provide access. </p>
+<p><strong><em>Windows SSH Clients</em></strong></p>
+<ul>
+<li>Recommended Clients:</li>
+<li><a href="https://gitforwindows.org/">Git Bash</a> is a great option and is part of the Git for Windows project.  </li>
+<li><a href="https://mobaxterm.mobatek.net/">MobaXterm</a> is a good option, especially if you require access to GUI applications such as MATLAB or xStata.  This also has a built-in SFTP transfer window.</li>
+</ul>
+<p><strong><em>Mac OSX SSH Clients</em></strong></p>
+<p>You can use the built-in Terminal.app or you can download iTerm2 or XQuartz. 
+XQuartz is required to be installed if you wish to forward GUI applications (matlab, rstudio, xstata, sas, etc), aka X forwarding.</p>
+<ul>
+<li>Terminal.app is the default application for command-line interface</li>
+<li>To login using the built-in Terminal.app on Mac, go to<ul>
+<li>Applications --&gt; Utilities --&gt; Terminal.app</li>
+<li>Or use Spotlight search (aka Command-Space)</li>
+</ul>
+</li>
+<li><a href="https://www.iterm2.com/">iTerm2</a> is a good replacement for the default Terminal app</li>
+<li><a href="https://www.xquartz.org/">XQuartz</a> is a Xforwarding application with its own terminal.  XQuartz can be used in conjuction with the Terminal.app for GUI apps.  NOTE: Mac users should run the following command: <code>sudo defaults write org.macosforge.xquartz.X11 enable_iglx -bool true</code>   We have found that this allows some older GUI applications to run with fewer errors.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once at the command prompt you can type the following to login (replace "username" with your VUW user):</p>
+</div>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$<span class="w"> </span>ssh<span class="w"> </span>-X<span class="w"> </span>username@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>The <em>-X</em> parameter tells SSH to forward any GUI windows to your local machine, this is called X forwarding.</p>
+<p>The first time an SSH client connects to the server, it displays the servers public key fingerprint. An SSH host key identifies the server to your ssh client. They are an important security feature and not something you should just hit ENTER to accept.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>The authenticity of host 'raapoi.vuw.ac.nz (130.195.19.126)' can't be established.
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>ED25519 key fingerprint is SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg.
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>This host key is known by the following other names/addresses:
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>    C:\Users\username/.ssh/known_hosts:109: raapoi
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>Are you sure you want to continue connecting (yes/no/[fingerprint])?
+</span></code></pre></div>
+<p>Confirm that the finger print on the login server matches the appropriate fingerprint shown below and type <strong><em>'yes'</em></strong>.</p>
+<!--
+* Old Raapoi 130.195.19.14:
+
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ssh-ed25519 255 SHA256:SFQSPRtu5o4cpj/CuS37DXzfrFyalMz1FA2NVmissxo
+</span></code></pre></div>
+-->
+<ul>
+<li>From August 2023 ("New Rāpoi" 130.195.19.126):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>ssh-ed25519  256 SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>ssh-ecdsa    256 SHA256:ChU88YMNnUiXWmQRV0cgeDdnUpsdybgF14Dk3KW3dr4
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>ssh-rsa     3072 SHA256:izq2NXKroc7gpu0vkWNQnXd4kmjk/pmrQw9vMvwAsIs 
+</span></code></pre></div>
+<p>For returning users, please follow these instructions to update SSH public key: <a href="/raapoi-docs/accessing_the_cluster/#notes-regarding-old-host-keys">Notes regarding old host keys</a></p>
+<p>Upon successfully logging in, the prompt will display: 
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>&lt;username&gt;@raapoi-login:~$<span class="w"> </span><span class="c1"># Remember to not compute on the login node!</span>
+</span></code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Get yourself familiar with a <em>Compute</em> node!</p>
+<p>After logging in, do most things on the compute node by running command <em><em><code>srun --pty bash</code></em></em>. For more info, please see <a href="../running_jobs/#interactive-jobs"><em>Interactive Jobs.</em></a></p>
+</div>
+<hr/>
+<h2 id="file-transfer-with-sftp-scp-or-rsync">File Transfer with SFTP, SCP or rsync<a class="headerlink" href="#file-transfer-with-sftp-scp-or-rsync" title="Permanent link">¶</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Caution: Massive Data Transfer</p>
+<p>Kindly use a non-login node for massive data transfer. This can be done by requesting an <a href="../running_jobs/#interactive-jobs">interactive session</a>. If you are using a file trasnfer tool, instructions are available for</p>
+<ul>
+<li><a href="https://www.notion.so/FileZilla-Data-Transfer-on-Compute-20d426d58abf809fb4c2ed3bb9dae1e0?source=copy_link">FileZilla</a></li>
+<li><a href="https://www.notion.so/WinSCP-File-Transfer-20d426d58abf8014be97e04a8fd9a97c?source=copy_link">WinSCP</a> </li>
+<li><a href="https://www.notion.so/MobaXterm-File-Transfer-20d426d58abf80a38bb0f6d32459e5ca?source=copy_link">MobaXterm</a></li>
+<li><a href="https://vuw-research-computing.github.io/raapoi-docs/external_providers/#globus">Globus</a></li>
+</ul>
+<p>Please contact <a href="../support/">the support team</a> for help. </p>
+</div>
+<p>One can use built-in command-line tools on Linux, Mac and Windows (if running Git Bash or MobaXterm).  The most common command-line utilities are <em>scp, sftp</em> and <em>rsync</em>. </p>
+<p>To copy a single file to or from the cluster, we can use <em>scp</em> (“secure copy”). To upload to another computer, try:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>[you@laptop:~]$ scp &lt;file_name_to_transfer&gt; \
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>&lt;user_name&gt;@raapoi.vuw.ac.nz:/nfs/home/&lt;user_name&gt;/&lt;destination&gt;
+</span></code></pre></div>
+<p>I would upload a file from my device(local) to Rāpoi(remote) using:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>you@laptop:~$ scp demo.tar.gz &lt;user_name&gt;@raapoi.vuw.ac.nz:/nfs/scratch/&lt;user_name&gt;/
+</span></code></pre></div>
+<p><em>SFTP</em> client can be also be set up. In the address bar of my file explorer, I can add the directory I wish to access in the form <code>sftp://&lt;username&gt;@raapoi.vuw.ac.nz:/nfs/home/&lt;username&gt;</code>. </p>
+<p>In all cases you will need to supply the hostname or IP address of the cluster, see above.  You may also need to supply the port (22) and a path.  The paths that you will most likely use are your home or your scratch space:
+<em>/nfs/home/username</em> or <em>/nfs/scratch/username</em></p>
+<p>There are many file transfer clients available for Mac, Windows and Linux, including but not limited to Free/OpenSource Desktop tools such as Filezilla, Cyberduck, Dolphin and proprietary/licenced offerings such as WinSCP, ExpanDrive, etc</p>
+<div class="admonition tip">
+<p class="admonition-title">File transfer with cloud tools</p>
+<p>If you are using cloud storage such as AWS, DropBox, Cloudstor, GLOBUS please look at the examples we have in <a href="../external/cloud_providers/">Connecting to Cloud Providers</a></p>
+</div>
+<h4 id="notes-regarding-old-host-keys">Notes regarding old host keys<a class="headerlink" href="#notes-regarding-old-host-keys" title="Permanent link">¶</a></h4>
+<p><strong>IMPORTANT:</strong>
+If the host key does not match the one stored on your client, you will see a warning  (example below). 
+The Raapoi login node was replaced in August 2023, if you had been using the previous login node you can expect to see this warning about the change of host key. 
+Double check that the fingerprint matches one of the above before replacing the key stored in your client.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+</span><span id="__span-7-6"><a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a>It is also possible that a host key has just been changed.
+</span><span id="__span-7-7"><a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>The fingerprint for the ED25519 key sent by the remote host is
+</span><span id="__span-7-8"><a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a>SHA256:f+rhB7q5nt/HxcNK3qA8UfSdSJ7J05L1dU4C2fslkxg.
+</span><span id="__span-7-9"><a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a>Please contact your system administrator.
+</span><span id="__span-7-10"><a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a>Add correct host key in C:\\Users\\username/.ssh/known_hosts to get rid of this message.
+</span><span id="__span-7-11"><a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a>Offending ED25519 key in C:\\Users\\username/.ssh/known_hosts:38
+</span><span id="__span-7-12"><a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a>Host key for raapoi.vuw.ac.nz has changed and you have requested strict checking.
+</span><span id="__span-7-13"><a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a>Host key verification failed.
+</span></code></pre></div>
+<p>To remove an old host key for raapoi.vuw.ac.nz cached on your client run the following:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>ssh-keygen<span class="w"> </span>-R<span class="w"> </span>raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>... and you could also run this to remove the IP address(s) for Rāpoi:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>ssh-keygen<span class="w"> </span>-R<span class="w"> </span><span class="m">130</span>.195.19.14
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>ssh-keygen<span class="w"> </span>-R<span class="w"> </span><span class="m">130</span>.195.19.126
+</span></code></pre></div>
+<p>If you remove all of these, on your next login you'll be asked to verify the fingerprint again, as illustrated above.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href=".." title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../basic_commands/" title="Basic Commands">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href=".." style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../basic_commands/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
