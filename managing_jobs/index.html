@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/managing_jobs/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Managing Jobs - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Managing Jobs";
+        var mkdocs_page_input_path = "managing_jobs.md";
+        var mkdocs_page_url = "/raapoi-docs/managing_jobs/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Managing Jobs</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#cancelling-a-job">Cancelling a Job</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-job-information">Viewing Job information</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#viewing-jobs-in-the-queue">Viewing jobs in the Queue</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#job-queuing-aka-why-isnt-my-job-running">Job Queuing (aka Why isn't my job running?)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Managing Jobs</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="managing-jobs">Managing Jobs<a class="headerlink" href="#managing-jobs" title="Permanent link">¶</a></h1>
+<h2 id="cancelling-a-job">Cancelling a Job<a class="headerlink" href="#cancelling-a-job" title="Permanent link">¶</a></h2>
+<p>To cancel a job, first find the jobID, you can use the <em>vuw-myjobs</em> (or <em>squeue</em>) command to see a list of your jobs, including jobIDs.  Once you have that you can use the <em>scancel</em> command, eg</p>
+<p><code>scancel 236789</code></p>
+<p>To cancel all of your jobs you can use the -u flag followed by your username:</p>
+<p><code>scancel -u &lt;username&gt;</code></p>
+<p><strong>Note:</strong> Before cancelling your jobs, please make sure it runs for at least 2 mins, including the jobs submitted in error. </p>
+<hr/>
+<h2 id="viewing-job-information">Viewing Job information<a class="headerlink" href="#viewing-job-information" title="Permanent link">¶</a></h2>
+<h4 id="job-history">Job History<a class="headerlink" href="#job-history" title="Permanent link">¶</a></h4>
+<p>If you want to get a quick view of all the jobs completed within the last 5 days you can use the <em>vuw-job-history</em> command, for example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$ vuw-job-history
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>MY JOBS WITHIN LAST 5 days
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>       JobID      State    JobName  MaxVMSize    CPUTime
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>------------ ---------- ---------- ---------- ----------
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>2645          COMPLETED       bash              00:00:22
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>2645.extern   COMPLETED     extern      0.15G   00:00:22
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>2645.0        COMPLETED       bash      0.22G   00:00:20
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>2734          COMPLETED       bash              00:07:40
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>2734.extern   COMPLETED     extern      0.15G   00:07:40
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>2734.0        COMPLETED       bash      0.22G   00:07:40
+</span></code></pre></div>
+<h4 id="job-reports">Job Reports<a class="headerlink" href="#job-reports" title="Permanent link">¶</a></h4>
+<p>To view a report of your past jobs you can run <em>vuw-job-report</em>:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$ vuw-job-report 162711
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>JOB REPORT FOR JOB 162711
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>     JobName  Nodes    ReqMem   UsedMem(GB)  ReqCPUs CPUTime    State    Completed
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>test-schro        1       64Gn                   24  00:02.513  COMPLETED 2019-05-28T16:17:10
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>     batch        1       64Gn      0.15G        24  00:00.210  COMPLETED 2019-05-28T16:17:10
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>    extern        1       64Gn      0.15G        24  00:00.002  COMPLETED 2019-05-28T16:17:10
+</span></code></pre></div>
+<p><strong>NOTE:</strong> In this example you see that I requested 64 GigaBytes of memory but only used 0.15 GB.  This means that 63 GB of memory went unused, which was a waste of resources.</p>
+<p>You can also get a report of your completed jobs using the <em>sacct</em> command.  For example if I wanted to get a report on how much memory my job used I could do the following:</p>
+<p><code>sacct --units=G --format="MaxVMSize" -j 2156</code></p>
+<ul>
+<li>MaxVMSize will report the maximum virtual memory (RAM plus swap space) used by my job in GigBytes ( --units=G )</li>
+<li>-j 2156 shows the information for job ID 2156</li>
+<li>type <em>man sacct</em> at a prompt in engaging to see the documentation on the <em>sacct</em> command</li>
+</ul>
+<hr/>
+<h2 id="viewing-jobs-in-the-queue">Viewing jobs in the Queue<a class="headerlink" href="#viewing-jobs-in-the-queue" title="Permanent link">¶</a></h2>
+<p>To view your running jobs you can type <code>vuw-myjobs</code>  eg:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>$ vuw-myjobs
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>               JOBID    PARTITION   CPUS  MIN_MEM   GPUs             RUN_TIME   TIME_LIMIT   PRIORITY      STATE             NODELIST JOB_NAME
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>      2039592_[9-10]     parallel      9     180G      0  2025-04-28T16:27:25  10-00:00:00      27365    PENDING          (Resources) MLMAP
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>     2042371_[11-20]     parallel      9     180G      0  2025-04-29T15:46:36  10-00:00:00      24560    PENDING           (Priority) MLMAP
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>     2042372_[11-20]     parallel      9     180G      0  2025-04-29T15:46:36  10-00:00:00      24560    PENDING           (Priority) MLMAP
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>           2039591_1     parallel     10     200G      0             11:17:24  10-00:00:00      24484    RUNNING             amd07n02 MLMAP
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>           2039591_2     parallel     10     200G      0             11:17:24  10-00:00:00      24484    RUNNING             amd06n03 MLMAP
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>           2039591_3     parallel     10     200G      0             11:17:24  10-00:00:00      24484    RUNNING             amd06n04 MLMAP
+</span></code></pre></div>
+<p>The <code>vuw-myjobs</code> command will show you all your jobs - <em>running</em> and <em>pending</em>, the <em>partition</em> they are in, the requested resources, the <em>priority</em> of the job and the <em>state</em> of the job.  For the jobs in <em>PENDING</em> state, the reason for the job being in that state is also shown and an expectation of when the job will start.  </p>
+<p>You can see all the jobs in the queues by running the <em>vuw-alljobs</em> command.  This will produce a very long list of jobs if the cluster is busy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, each user is allowed <em>1,024 CPU cores</em>, <em>2,048 GB of memory</em> and <em>3 GPUs</em> at any one time. Once you reach these limits, your jobs will be queued until resources are available.  These limits are set to ensure that all users have fair access to the cluster.  If you need more resources, please contact the <a href="../support/">Rāpoi support team</a>.</p>
+</div>
+<hr/>
+<h2 id="job-queuing-aka-why-isnt-my-job-running">Job Queuing (aka Why isn't my job running?)<a class="headerlink" href="#job-queuing-aka-why-isnt-my-job-running" title="Permanent link">¶</a></h2>
+<p>When a partition is busy, jobs will be placed in a queue.  You can observe this
+in the <em>vuw-myjobs</em> and <em>vuw-alljobs</em> commands.  The STATE of your job will be PENDING, this means it is waiting for resources or your job has been re-prioritized to allow other users access to run their jobs (this is called fair-share queueing).</p>
+<p>The resource manager will list a reason the job is pending, these reasons can include:</p>
+<ul>
+<li><strong>Priority</strong> - Your job priority has been reduced to allow other users access to the cluster.  If no other user with normal priority is also pending then your job will start once resources are available.  Possible reasons why your priority has been lowered can include:  the number of jobs you have run in the past 24-48 hours; the duration of the job and the amount of resources requested.  The Slurm manager uses fair-share queuing to ensure the best use of the cluster.  You can google fair-share queuing  if you want to know more</li>
+<li><strong>Resources</strong>- There are insufficient resources to start your job.  Some combination of CPU, Memory, Time or other specialized resource are unavailable.  Once resources are freed up your job will begin to run.<br/>
+Time:   If you request more time than the max run-time of a partition, your job will be queued indefinitely (in other words:  it will never run).  Your time request must be less than or equal to the Partition Max Run-Time.  Also if a special reservation is placed on the cluster, for instance prior to a scheduled maintenance, this too will reduce the available time to run your job.  You can see Max Run-Time for our partitions described in this document.  CAD or ITS Staff will alert all users prior to any scheduled maintenance and advise them of the time restrictions.</li>
+<li><strong>QOSGrpCPULimit</strong> - This is a Quality of Service configuration to limit the number of CPUs per user.   The QOSMax is the maximum that can be requested for any single job.  If a user requests more CPUs than the QOSMax for a single job then the job will not run.  If the user requests more than QOSMax in 2 or more jobs then the subsequent jobs will queue until the users running jobs complete.</li>
+<li><strong>PartitionTimeLimit</strong> - This means you have requested more time than the maximum runtime of the partition.  This document contains information about the different partitions, including max run-time.  Typing <em>vuw-partitions</em> will also show the max run-time for the partitions available to you.</li>
+<li><strong>ReqNodeNotAvail</strong> - 99% of the time you will receive this code if you have asked for too much time. This frequently occurs when the cluster is about to go into maintenance and a reservation has been placed on the cluster, which reduces the maximum run-time of all jobs.  For example, if maintenance on the cluster is 1 week away, the maximum run-time on all jobs needs to be less than 1 week, regardless if the configured maximum run-time on a partition is greater than 1 week.  To request time you can use the --time parameter.  Another issue is if you request too much memory or a CPU configuration that does not exist on any node in a partition.  </li>
+<li><strong>Required node not available (down, drained or reserved)</strong> - This is related to ReqNodeNotAvail, see above.</li>
+</ul>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../running_jobs/" title="Running Jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../examples/" title="Examples and User Guides">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../running_jobs/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../examples/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
