@@ -361,5 +361,54 @@ Lastly, to allow others to load the software you'll need to write a `.lua` file 
 The `.lua` file contains some basic module information, help information, and instructions on what modules need to be loaded and environment variables which need to be set/modified when the software is loaded.
 You should have a good idea of what is required based on the installation steps, but you may also want to examine (and possibly copy+modify) the `.lua` file for a similar piece of software.
 
+## Pruning unattended vscode-server processes 
+
+!!! warning: "Caution:"
+    Killing processes may result in lost work, you may need an Admin to perform the tasks as root user.
+
+If the login node is behaving erratically or unresponse it may be running out of memory due to left over vscode-server processes which don't exit when the user has finished with them.
+
+Used these commands to identify that this is happening.
+
+This will output a sorted list of processes by memory usage.
+Commands named "node" or "pvserver-real" belonging to users may show large memory usage.
+
+You may also see mysql, slurmctld, and other slum things as well as polkitd and httpd are system related and are expected to use lots of memory to run the cluster.
+
+```
+top -o VIRT
+```
 
 
+This command will list all the processes by username once you have identified the top memory users
+
+```
+ps -ef | grep username
+```
+
+To proceed to kill the resource hungry processes, you need to identify the numeric uid (user id) of the user to whom the process belongs.
+
+```
+id username
+```
+
+This will output something like this:
+
+```
+uid=1001(username) gid=100(users) groups=100(users)
+```
+
+Make a note of the uid - in this case 1001
+
+To kill all the processes related to that uid run this
+
+!!! note:
+    Note the use of sudo so this needs to be done with a moderator or admin account
+
+!!! warning: "Caution:"
+    Don't kill processes belonging to slurm, apache or polkitd - they are needed to run the cluster
+
+
+```
+sudo pkill --uid 1001
+```
