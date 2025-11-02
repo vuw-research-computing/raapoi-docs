@@ -363,22 +363,21 @@ You should have a good idea of what is required based on the installation steps,
 
 ## Pruning unattended vscode-server processes 
 
-!!! warning: "Caution:"
-    Killing processes may result in lost work, you may need an Admin to perform the tasks as root user.
-
 If the login node is behaving erratically or unresponse it may be running out of memory due to left over vscode-server processes which don't exit when the user has finished with them.
 
-Used these commands to identify that this is happening.
+!!! warning "Caution:"
+    Killing processes may result in lost work, you may need an Admin to perform the tasks as root user.
+
+Use these commands to identify that this is happening:
 
 This will output a sorted list of processes by memory usage.
 Commands named "node" or "pvserver-real" belonging to users may show large memory usage.
-
-You may also see mysql, slurmctld, and other slum things as well as polkitd and httpd are system related and are expected to use lots of memory to run the cluster.
 
 ```
 top -o VIRT
 ```
 
+You may also see mysql, slurmctld, and other slum things as well as polkitd and httpd are system related and are expected to use lots of memory to run the cluster.
 
 This command will list all the processes by username once you have identified the top memory users
 
@@ -402,10 +401,10 @@ Make a note of the uid - in this case 1001
 
 To kill all the processes related to that uid run this
 
-!!! note:
+!!! note
     Note the use of sudo so this needs to be done with a moderator or admin account
 
-!!! warning: "Caution:"
+!!! warning "Caution:"
     Don't kill processes belonging to slurm, apache or polkitd - they are needed to run the cluster
 
 
