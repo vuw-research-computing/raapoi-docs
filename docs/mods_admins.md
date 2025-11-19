@@ -128,7 +128,7 @@ Users will use the reservation with
 ## Building software with EasyBuild
 
 !!! warning "Caution:"
-    EasyBuild v5.0 and above includes a number of backwards-incompatible changes, see [easybuild-v5/#breaking-changes](https://docs.easybuild.io/easybuild-v5/#breaking-changes). If you attempt to install software using EasyBuild v5.0 or above it will quite likely get installed into your local directory by default. We don't yet have a robust workaround for ensuring both software and module files are installed into the correct location. Please refrain from using these versions of EasyBuild and/or consult with other moderators/admin before proceeding!
+    EasyBuild v5.0 and above includes a number of backwards-incompatible changes, see [easybuild-v5/#breaking-changes](https://docs.easybuild.io/easybuild-v5/#breaking-changes). If you attempt to install software using EasyBuild v5.0 or above it will quite likely get installed into your local directory by default. We don't yet have a robust workaround for ensuring both software and module files are installed into the correct location. Please refrain from using these versions of EasyBuild and/or consult with other moderators/admin before proceeding! (Load a prior easybuild version with `module load EasyBuild/4.9.4`.)
 
 Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node. 
 
