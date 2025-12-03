@@ -219,4 +219,10 @@ If you execute `module purge` you will lose access to the *vuw-* commands, but y
 Individual modules/packages can also be unloaded via `module unload <package name>`.
 
   
+## Troubleshooting modules/lmod
 
+There are occasions where your local lmod cache may become corrupted, resulting in error messages such as `/usr/bin/lua: <...> bad argument #1 to 'next' <...>` or similar when you try to use `module` commands.
+The first thing you can try to resolve this is to delete your local lmode cache file `rm ~/.cache/lmod/*.lua`.
+When you next run a module command the cache files will be re-generated.
+In most cases this resolves module/lmod issues. 
+If you continue to have issues after trying this, get in touch with support people via the slack channel.
