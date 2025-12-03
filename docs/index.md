@@ -12,6 +12,6 @@ In this documentation, you will find all the information you need to get started
 
 If you notice any errors or outdated information in the documentation, please don't hesitate to create an [issue](https://github.com/vuw-research-computing/raapoi-docs/issues) on the [documentation github page](https://github.com/vuw-research-computing/raapoi-docs) or submit a pull request to improve the documentation.
 
-Visit the [Rāpoi Slack Channel](https://uwrc.slack.com) for help, software requests or to communicate with others in the Rāpoi community.
+Visit the [Rāpoi Slack Channel](https://uwrc.slack.com) for help, software requests or to communicate with others in the Rāpoi community. The Slack Channel should be the first place you go to for help with issues related to the HPC. (Please do not contact Digital Solutions for help with issues related to Rāpoi!)
 
 You can also find more information about the current Rāpoi hardware [layout](hpclayout.md).
