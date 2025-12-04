@@ -104,3 +104,7 @@ Once a connection is established, your VSCode session should be running on a com
 Step 7. To close VSCode session. 
 
 Go to `File` > `Close Remote Connection`
+
+!!! Tip
+    The instructions above assume that the node amd01n01 is up and has sufficient resources available. There may be times when this is not the case and you need to adapt these steps to access cpus on a different node. As a workaround you'll need to modify steps 4 and 5 to point towards a different node. If you do, you should remember point change these back to utilise amd01n01 once it is available again.
+
