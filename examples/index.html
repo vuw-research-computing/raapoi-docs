@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/examples/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Examples and User Guides - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Examples and User Guides";
+        var mkdocs_page_input_path = "examples.md";
+        var mkdocs_page_url = "/raapoi-docs/examples/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Examples and User Guides</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#simple-bash-example-start-here-if-new-to-hpc">Simple Bash Example - start here if new to HPC</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python-users-guide">Python users guide</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#which-versions-of-python-are-working-on-rapoi">Which versions of Python are working on Rāpoi?</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-anacondaminicondaconda">Using Anaconda/Miniconda/conda</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#r-users-guide">R users guide</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#which-versions-of-r-are-working-on-rapoi">Which versions of R are working on Rāpoi?</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-additional-r-packagesextensions-in-your-local-user-directory">Installing additional R packages/extensions in your local user directory</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#matlab-gpu-example">Matlab GPU example</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-bash-job-array-example">Simple Bash Job Array example</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#a-simple-r-job-array-example">A simple R job Array Example</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#singularity">Singularity</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#singularitydocker-container-example">Singularity/Docker container example</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#singularitytensorflow-example">Singularity/TensorFlow Example</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#singularitymaxbin2-example">Singularity/MaxBin2 Example</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#singularitysandbox-example">Singularity/Sandbox Example</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#singularitycustom-conda-container-idba-example">Singularity/Custom Conda Container - idba example</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Examples and User Guides</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">¶</a></h1>
+<h2 id="simple-bash-example-start-here-if-new-to-hpc">Simple Bash Example - start here if new to HPC<a class="headerlink" href="#simple-bash-example-start-here-if-new-to-hpc" title="Permanent link">¶</a></h2>
+<p>In this example we will run a very simple bash script on the quicktest partition.  The bash script is very simple, it just prints the hostname - the node you're running on - and prints the date into a file.  It also sleeps for 1 minute - it just does this to give you a chance to see your job in the queue with <code>squeue</code></p>
+<p>First lets create a sensible working directory</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>mkdir<span class="w"> </span>bash_example
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>bash_example
+</span></code></pre></div>
+<p>We'll use the text editor nano to create our bash script as well as our submission script.  In real life, you might find it easier to create your code and submission script on your local machine, then copy them over as nano is not a great editor for large projects.</p>
+<p>Create and edit our simple bash script - this is our code we will run on the HPC
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>nano<span class="w"> </span>test.sh
+</span></code></pre></div></p>
+<p>Paste or type the following into the file
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>hostname<span class="w">  </span><span class="c1">#prints the host name to the terminal</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>date<span class="w"> </span>&gt;<span class="w"> </span>date_when_job_ran.txt<span class="w">  </span><span class="c1">#puts the content of the date command into a txt file</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>sleep<span class="w"> </span>1m<span class="w"> </span><span class="c1"># do nothing for 1 minute.  Job will still be "running" </span>
+</span></code></pre></div>
+press ctrl-O to save the text in nano, then ctrl-X to exit nano.</p>
+<p>Using nano again create a file called submit.sh with the following content
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">#</span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#SBATCH --job-name=bash_test</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1">#SBATCH -o bash_test.out</span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">#SBATCH -e bash_test.err</span>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">#</span>
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">#SBATCH --partition=quicktest</span>
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1">#</span>
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1">#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus</span>
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1">#SBATCH --time=10:00</span>
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>bash<span class="w"> </span>test.sh<span class="w">  </span><span class="c1">#actually run our bash script, using bash</span>
+</span></code></pre></div></p>
+<p>If you're familiar with bash scripts, the above is a bit weird.  The <code>#SBATCH</code> lines would normally be comments and hence not do anything, but Slurm will read those lines to determine how many resources to provide your job.  In this case we ask for the following:</p>
+<ul>
+<li>quicktest partition (the default - so you don't technically need to ask for it). </li>
+<li>1 cpu per task - we have one task, so we're asking for 1 cpu</li>
+<li>1 gig of memory.</li>
+<li>a max runtime of 10 min</li>
+</ul>
+<p>If your job uses more memory or time than requested, Slurm will immediately kill it.  If you use more CPU's than requested - your job will keep running, but your "cpus" will be shared bewteen the CPUs you actually requested. So if your job tried to use 10 CPUs but you only asked for one, it'll run extremely slowly - don't do this.</p>
+<p>Our <code>submit.sh</code> script also names our job <code>bash_test</code> this is what the job will show up as in squeue. We ask for things printed out on the terminal to go to two seperate files.  Normal, non error, things that would be printed out on the terminal will be put into the text file <code>bash_test.out</code>.  Errors will be printed into the text file <code>bash_test.err</code></p>
+<p>Now submit your job to the Slurm queue.
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sbatch<span class="w"> </span>submit.sh<span class="w">  </span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1">#See your job in the queue</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>squeue<span class="w"> </span>-u<span class="w"> </span>&lt;your_username&gt;
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="c1">#When job is done see the new files</span>
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>ls
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1">#look at the content that would have been printed to the terminal if running locally</span>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>cat<span class="w"> </span>bash_test.out
+</span><span id="__span-4-11"><a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="c1"># See the content of the file that your bash script created</span>
+</span><span id="__span-4-13"><a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a>cat<span class="w"> </span>date_when_job_ran.txt
+</span></code></pre></div></p>
+<hr/>
+<h2 id="python-users-guide">Python users guide<a class="headerlink" href="#python-users-guide" title="Permanent link">¶</a></h2>
+<h3 id="which-versions-of-python-are-working-on-rapoi">Which versions of Python are working on Rāpoi?<a class="headerlink" href="#which-versions-of-python-are-working-on-rapoi" title="Permanent link">¶</a></h3>
+<p>There are a number of versions of Python on Rāpoi, although many of these are old installations (prior to an OS update and changes to the module system) and <em>may</em> no longer work.
+Generally speaking, your best bet is to try a version which appears when you search via <code>module spider Python</code> (noting that the capital 'P' in <code>Python</code> is important here).
+A few examples of relatively recent version of Python which are available (as of April 2024) are <code>Python/3.9.5</code>, <code>Python/3.10.8</code> and <code>Python/3.11.5</code>.</p>
+<p>Each of these Python modules has one or more of pre-requisite modules that need to be loaded first (generally a specific version of GCC compilers).
+To find out what you need to load first for a specific version of Python you just need to check the output of <code>module spider Python/x.y.z</code> (with the appropriate values for x,y,z).
+One of the examples below shows how to use <code>Python/3.9.5</code>.
+In cases where your Python code needs to interact with software from another module which also requires a specific GCC module, that will dictate which version of Python to load (i.e. whichever one depends on the same GCC version).
+Otherwise, you are free to use any desired Python module. </p>
+<p>The Python installations generally have a minimal number of packages/libraries installed.
+If you require additional packages/libraries it is recommended to create a virtual environment and install any desired packages within that environment.
+This is illustrated in the examples below using both virtualenv/pip and anaconda/conda. </p>
+<p>See also: <a href="../advanced/notebooks/">Using Jupyter Notebooks</a></p>
+<h3 id="simple-python-program-using-virtualenv-and-pip">Simple Python program using virtualenv and pip<a class="headerlink" href="#simple-python-program-using-virtualenv-and-pip" title="Permanent link">¶</a></h3>
+<p>First we need to create a working directory and move there
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>mkdir<span class="w"> </span>python_test
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>python_test
+</span></code></pre></div>
+Next we load the python 3 module and use python 3 to create a python virtualenv.  This way we can install pip packages which are not installed on the cluster
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>module<span class="w"> </span>load<span class="w"> </span>GCCcore/10.3.0
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>module<span class="w"> </span>load<span class="w"> </span>Python/3.9.5
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>mytest
+</span></code></pre></div></p>
+<p>Activate the <code>mytest</code> virtualenv and use pip to install the <code>webcolors</code> package
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">source</span><span class="w"> </span>mytest/bin/activate
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>pip<span class="w"> </span>install<span class="w"> </span>webcolors
+</span></code></pre></div></p>
+<p>Create the file test.py with the following contents using nano
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">webcolors</span>
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">randint</span>
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">socket</span><span class="w"> </span><span class="kn">import</span> <span class="n">gethostname</span>
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="n">colour_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">webcolors</span><span class="o">.</span><span class="n">CSS3_HEX_TO_NAMES</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</span><span id="__span-8-6"><a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">requested_colour</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">colour_list</span><span class="p">))</span>
+</span><span id="__span-8-7"><a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="n">colour_name</span> <span class="o">=</span> <span class="n">colour_list</span><span class="p">[</span><span class="n">requested_colour</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-8-8"><a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Random colour name:"</span><span class="p">,</span> <span class="n">colour_name</span><span class="p">,</span> <span class="s2">" on host: "</span><span class="p">,</span> <span class="n">gethostname</span><span class="p">())</span>
+</span></code></pre></div></p>
+<p>Alternatively download it with wget:
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/<span class="se">\</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span>vuw-research-computing/raapoi-tools/<span class="se">\</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span>master/examples/python_venv/test.py
+</span></code></pre></div></p>
+<p>Using nano create the submissions script called python_submit.sh with the following content - change <code>me@email.com</code> to your email address.
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="c1">#</span>
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="c1">#SBATCH --job-name=python_test</span>
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1">#SBATCH -o python_test.out</span>
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="c1">#SBATCH -e python_test.err</span>
+</span><span id="__span-10-6"><a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="c1">#</span>
+</span><span id="__span-10-7"><a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="c1">#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus</span>
+</span><span id="__span-10-8"><a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-10-9"><a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="c1">#SBATCH --time=10:00</span>
+</span><span id="__span-10-10"><a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="c1">#</span>
+</span><span id="__span-10-11"><a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="c1">#SBATCH --mail-type=BEGIN,END,FAIL</span>
+</span><span id="__span-10-12"><a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="c1">#SBATCH --mail-user=me@email.com</span>
+</span><span id="__span-10-13"><a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a>
+</span><span id="__span-10-14"><a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a>module<span class="w"> </span>load<span class="w"> </span>GCCcore/10.3.0
+</span><span id="__span-10-15"><a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a>module<span class="w"> </span>load<span class="w"> </span>Python/3.9.5
+</span><span id="__span-10-16"><a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a href="#__codelineno-10-17" id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="nb">source</span><span class="w"> </span>mytest/bin/activate
+</span><span id="__span-10-18"><a href="#__codelineno-10-18" id="__codelineno-10-18" name="__codelineno-10-18"></a>python<span class="w"> </span>test.py
+</span></code></pre></div></p>
+<p>Alternatively download it with wget
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/<span class="se">\</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span>vuw-research-computing/raapoi-tools/<span class="se">\</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span>master/examples/python_venv/python_submit.sh
+</span></code></pre></div></p>
+<p>To submit your job to the Slurm scheduler
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>sbatch<span class="w"> </span>python_submit.sh
+</span></code></pre></div></p>
+<p>Check for your job on the queue with <code>squeue</code> though it might finish very fast.  The output files will appear in your working directory.</p>
+<hr/>
+<h3 id="using-anacondaminicondaconda">Using Anaconda/Miniconda/conda<a class="headerlink" href="#using-anacondaminicondaconda" title="Permanent link">¶</a></h3>
+<p>Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda environment inside - this allows the conda environment to load quickly as the many small conda files are inside a container which the file system sees as one file.</p>
+<p>However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with our module loading system.</p>
+<p>Anaconda has many built in packages so we will use that in our examples, but Miniconda is also available if prefer to start from a minimal initial setup.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11<span class="w"> </span>
+</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PIP_NO_CACHE_DIR</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONNOUSERSITE</span><span class="o">=</span><span class="m">1</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting the variables <code>PIP_NO_CACHE_DIR</code> and <code>PYTHONNOUSERSITE</code> prevents conda from trying to use the system python and pip. This ensures an isolated environment and avoids potential conflicts with system packages.</p>
+</div>
+<p>Let's create a new conda environment for this example, in a sensible location, I used <code>~/examples/conda/idba</code></p>
+<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>idba-example<span class="w">  </span><span class="c1"># press y for the Proceed prompt if it looks correct</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nb">source</span><span class="w"> </span><span class="k">$(</span>conda<span class="w"> </span>info<span class="w"> </span>--base<span class="k">)</span>/etc/profile.d/conda.sh
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>idba-example<span class="w">  </span><span class="c1">#activate our example environment.</span>
+</span></code></pre></div>
+<div class="admonition warning conda init">
+<p class="admonition-title">Warning</p>
+<p>On HPC systems, <code>conda init</code> is not recommended as it modifies your shell configuration files.  This can cause problems with the module system and other software.  Instead, use the <code>source $(conda info --base)/etc/profile.d/conda.sh</code> command to activate conda in your current shell session.</p>
+</div>
+<p>Conda environments are beyond the scope of this example, but they are a good way to contain all the dependencies and programs for a particular workflow, in this case, idba.</p>
+<p>Install idba in our conda environment.  </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that best practise is to do the install on a compute node  </p>
+</div>
+<p>We'll just do it here on the login node for now - the code will run slower on the compute nodes as a result!</p>
+<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>idba
+</span></code></pre></div>
+<p>Idba is a genome assembler, we will use paired-end illumina reads of E. coli.  The data is available on an Amazon S3 bucket (a cloud storage location), and we can download it using wget.
+<div class="highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>mkdir<span class="w"> </span>data<span class="w">  </span><span class="c1"># put our data in a sensible location</span>
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="nb">cd</span><span class="w"> </span>data
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>wget<span class="w"> </span>--content-disposition<span class="w"> </span>goo.gl/JDJTaz<span class="w"> </span><span class="c1">#sequence data</span>
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>wget<span class="w"> </span>--content-disposition<span class="w"> </span>goo.gl/tt9fsn<span class="w"> </span><span class="c1">#sequence data</span>
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="nb">cd</span><span class="w"> </span>..<span class="w">  </span><span class="c1">#back to our project directory</span>
+</span></code></pre></div></p>
+<p>The reads we have are paired-end fastq files but idba requires a fasta file. We can use a tool installed with idba to convert them. We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>fq2fa<span class="w"> </span>--merge<span class="w"> </span>--filter<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R1.fastq<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R2.fastq<span class="w"> </span>data/read.fa
+</span></code></pre></div>
+<p>To create our submission script we need to know the path to our conda enviroment. To get this:
+<div class="highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>conda<span class="w"> </span>env<span class="w"> </span>list
+</span></code></pre></div>
+You'll need to find your <code>idba-example</code> environment, and next to it is the path you'll need for your submission script.  In my case:
+<div class="highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1"># conda environments:</span>
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="c1">#</span>
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>base<span class="w">                  </span>*<span class="w">  </span>/home/username/anaconda3
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a>idba-example<span class="w">          </span>/home/username/anaconda3/envs/idba-example<span class="w">  </span><span class="c1"># We need this line, it'll be different for you!</span>
+</span></code></pre></div></p>
+<p>Create our sbatch submission script. Note that this sequence doesn't need a lot of memory, so we'll use 3G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
+<p><em>idba_submit.sh</em>
+<div class="highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-21-2"><a href="#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a>
+</span><span id="__span-21-3"><a href="#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="c1">#SBATCH --job-name=idba_test</span>
+</span><span id="__span-21-4"><a href="#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="c1">#SBATCH -o _output.out</span>
+</span><span id="__span-21-5"><a href="#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="c1">#SBATCH -e _output.err</span>
+</span><span id="__span-21-6"><a href="#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="c1">#SBATCH --time=00:5:00</span>
+</span><span id="__span-21-7"><a href="#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="c1">#SBATCH --partition=quicktest</span>
+</span><span id="__span-21-8"><a href="#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="c1">#SBATCH --ntasks=12</span>
+</span><span id="__span-21-9"><a href="#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="c1">#SBATCH --mem=3G</span>
+</span><span id="__span-21-10"><a href="#__codelineno-21-10" id="__codelineno-21-10" name="__codelineno-21-10"></a>
+</span><span id="__span-21-11"><a href="#__codelineno-21-11" id="__codelineno-21-11" name="__codelineno-21-11"></a>module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
+</span><span id="__span-21-12"><a href="#__codelineno-21-12" id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="c1"># basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...</span>
+</span><span id="__span-21-13"><a href="#__codelineno-21-13" id="__codelineno-21-13" name="__codelineno-21-13"></a>conda<span class="w"> </span>activate<span class="w"> </span>/home/username/anaconda3/envs/idba-example<span class="w">  </span><span class="c1"># We will need to activate our conda enviroment on the remote node</span>
+</span><span id="__span-21-14"><a href="#__codelineno-21-14" id="__codelineno-21-14" name="__codelineno-21-14"></a>idba<span class="w"> </span>idba_ud<span class="w"> </span>-r<span class="w"> </span>data/read.fa<span class="w"> </span>-o<span class="w"> </span>output
+</span></code></pre></div></p>
+<p>To submit our job
+<div class="highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>sbatch<span class="w"> </span>idba_submit.sh
+</span></code></pre></div></p>
+<p>To see our job running or queuing
+<div class="highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</span></code></pre></div></p>
+<p>This job will take a few minutes to run, generally less than 5.
+When the job is done we can see the output in the output folder.  We can also see the std output and std err in the files <code>_output.out and _output.err</code>.  The quickest way to examine them is to <code>cat</code> the files when the run is done.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>cat<span class="w"> </span>_output.out
+</span></code></pre></div>
+<hr/>
+<h2 id="r-users-guide">R users guide<a class="headerlink" href="#r-users-guide" title="Permanent link">¶</a></h2>
+<h3 id="which-versions-of-r-are-working-on-rapoi">Which versions of R are working on Rāpoi?<a class="headerlink" href="#which-versions-of-r-are-working-on-rapoi" title="Permanent link">¶</a></h3>
+<p>There are a number of versions of R on Rāpoi, although many of these are old installations (prior to an OS update and changes to the module system) and no longer work.
+There are three relatively recent versions of R which currently work (as of April 2024), these are <code>R/3.6.3</code>, <code>R/4.1.0</code> and <code>R/4.2.0</code>.
+Each of these modules has a couple of pre-requisite modules that need to be loaded prior to loading the R module. 
+To find out what you need to load first you just need to check the output of <code>module spider R/x.y.z</code> (with the appropriate values for x,y,z).
+The following example shows how to use <code>R/4.2.0</code>.</p>
+<h3 id="loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job<a class="headerlink" href="#loading-r-packages-running-a-simple-job" title="Permanent link">¶</a></h3>
+<p>First login to Rāpoi and load the R module:
+<div class="highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>module<span class="w"> </span>purge<span class="w">                         </span><span class="c1"># clean/reset your environment</span>
+</span><span id="__span-25-2"><a href="#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a>module<span class="w"> </span>load<span class="w"> </span>config<span class="w">                   </span><span class="c1"># reload utilities such as vuw-job-report</span>
+</span><span id="__span-25-3"><a href="#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span><span class="c1"># pre-requisites for the new R module</span>
+</span><span id="__span-25-4"><a href="#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0<span class="w">   </span>
+</span></code></pre></div></p>
+<p>Then run R on the command line:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>R
+</span></code></pre></div>
+<p>Test library existence:
+<div class="highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></code></pre></div>
+This should load the package, and give some output like this:</p>
+<p><div class="highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a>──<span class="w"> </span><span class="n">Attaching</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span>────────────────────────────<span class="w"> </span><span class="n">tidyverse</span><span class="w"> </span><span class="m">1.3</span><span class="n">.</span><span class="m">1</span><span class="w"> </span>──
+</span><span id="__span-28-2"><a href="#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a>✔<span class="w"> </span><span class="n">ggplot2</span><span class="w"> </span><span class="m">3.3</span><span class="n">.</span><span class="m">5</span><span class="w">     </span>✔<span class="w"> </span><span class="n">purrr</span><span class="w">   </span><span class="m">0.3</span><span class="n">.</span><span class="m">4</span>
+</span><span id="__span-28-3"><a href="#__codelineno-28-3" id="__codelineno-28-3" name="__codelineno-28-3"></a>✔<span class="w"> </span><span class="n">tibble</span><span class="w">  </span><span class="m">3.1</span><span class="n">.</span><span class="m">6</span><span class="w">     </span>✔<span class="w"> </span><span class="n">dplyr</span><span class="w">   </span><span class="m">1.0</span><span class="n">.</span><span class="m">8</span>
+</span><span id="__span-28-4"><a href="#__codelineno-28-4" id="__codelineno-28-4" name="__codelineno-28-4"></a>✔<span class="w"> </span><span class="n">tidyr</span><span class="w">   </span><span class="m">1.2</span><span class="n">.</span><span class="m">0</span><span class="w">     </span>✔<span class="w"> </span><span class="n">stringr</span><span class="w"> </span><span class="m">1.4</span><span class="n">.</span><span class="m">0</span>
+</span><span id="__span-28-5"><a href="#__codelineno-28-5" id="__codelineno-28-5" name="__codelineno-28-5"></a>✔<span class="w"> </span><span class="n">readr</span><span class="w">   </span><span class="m">2.1</span><span class="n">.</span><span class="m">2</span><span class="w">     </span>✔<span class="w"> </span><span class="n">forcats</span><span class="w"> </span><span class="m">0.5</span><span class="n">.</span><span class="m">1</span>
+</span><span id="__span-28-6"><a href="#__codelineno-28-6" id="__codelineno-28-6" name="__codelineno-28-6"></a>──<span class="w"> </span><span class="n">Conflicts</span><span class="w"> </span>───────────────────────────────<span class="w"> </span><span class="nf">tidyverse_conflicts</span><span class="p">()</span><span class="w"> </span>──
+</span><span id="__span-28-7"><a href="#__codelineno-28-7" id="__codelineno-28-7" name="__codelineno-28-7"></a>✖<span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">filter</span><span class="p">()</span><span class="w"> </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">filter</span><span class="p">()</span>
+</span><span id="__span-28-8"><a href="#__codelineno-28-8" id="__codelineno-28-8" name="__codelineno-28-8"></a>✖<span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">lag</span><span class="p">()</span><span class="w">    </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">lag</span><span class="p">()</span>
+</span></code></pre></div>
+(These conflicts are normal and can be ignored.)</p>
+<p>To quit R, type:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">q</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Next create a bash submission script called <code>r_submit.sh</code> (or another name of your choice) using your preferred text editor, e.g. nano.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-30-2"><a href="#__codelineno-30-2" id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="c1">#</span>
+</span><span id="__span-30-3"><a href="#__codelineno-30-3" id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="c1">#SBATCH --job-name=r_test</span>
+</span><span id="__span-30-4"><a href="#__codelineno-30-4" id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="c1">#SBATCH -o r_test.out</span>
+</span><span id="__span-30-5"><a href="#__codelineno-30-5" id="__codelineno-30-5" name="__codelineno-30-5"></a><span class="c1">#SBATCH -e r_test.err</span>
+</span><span id="__span-30-6"><a href="#__codelineno-30-6" id="__codelineno-30-6" name="__codelineno-30-6"></a><span class="c1">#</span>
+</span><span id="__span-30-7"><a href="#__codelineno-30-7" id="__codelineno-30-7" name="__codelineno-30-7"></a><span class="c1">#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus</span>
+</span><span id="__span-30-8"><a href="#__codelineno-30-8" id="__codelineno-30-8" name="__codelineno-30-8"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-30-9"><a href="#__codelineno-30-9" id="__codelineno-30-9" name="__codelineno-30-9"></a><span class="c1">#SBATCH --time=10:00</span>
+</span><span id="__span-30-10"><a href="#__codelineno-30-10" id="__codelineno-30-10" name="__codelineno-30-10"></a>
+</span><span id="__span-30-11"><a href="#__codelineno-30-11" id="__codelineno-30-11" name="__codelineno-30-11"></a>module<span class="w"> </span>purge
+</span><span id="__span-30-12"><a href="#__codelineno-30-12" id="__codelineno-30-12" name="__codelineno-30-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1
+</span><span id="__span-30-13"><a href="#__codelineno-30-13" id="__codelineno-30-13" name="__codelineno-30-13"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0<span class="w">   </span>
+</span><span id="__span-30-14"><a href="#__codelineno-30-14" id="__codelineno-30-14" name="__codelineno-30-14"></a>
+</span><span id="__span-30-15"><a href="#__codelineno-30-15" id="__codelineno-30-15" name="__codelineno-30-15"></a>Rscript<span class="w"> </span>mytest.R
+</span></code></pre></div>
+<p>Save this to the current working directory, and then create another file using your preferred text editor called <code>mytest.R</code> (or another name of your choice) containing the following R commands:
+<div class="highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-31-2"><a href="#__codelineno-31-2" id="__codelineno-31-2" name="__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a href="#__codelineno-31-3" id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="nf">sprintf</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
+</span></code></pre></div>
+then run it with the previously written bash script:<br/>
+<div class="highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a>sbatch<span class="w"> </span>r_submit.sh<span class="w"> </span>
+</span></code></pre></div>
+This submits a task that should execute quickly and create files in the directory from which it was run.
+Examine <code>r_test.out</code>. You can use an editor like nano, vi or emacs, or you can just <code>cat</code> or <code>less</code> the file to see its contents on the terminal. You should see:
+<code>"Hello World"</code></p>
+<h3 id="installing-additional-r-packagesextensions-in-your-local-user-directory">Installing additional R packages/extensions in your local user directory<a class="headerlink" href="#installing-additional-r-packagesextensions-in-your-local-user-directory" title="Permanent link">¶</a></h3>
+<p>If you are in need of additional R packages which are not included in the R installation, you may intall them into your user directory.</p>
+<p>Start by launching an R session
+<div class="highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a>module<span class="w"> </span>purge
+</span><span id="__span-33-2"><a href="#__codelineno-33-2" id="__codelineno-33-2" name="__codelineno-33-2"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1
+</span><span id="__span-33-3"><a href="#__codelineno-33-3" id="__codelineno-33-3" name="__codelineno-33-3"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0
+</span><span id="__span-33-4"><a href="#__codelineno-33-4" id="__codelineno-33-4" name="__codelineno-33-4"></a>R
+</span></code></pre></div>
+Then, supposing you want to install a package from CRAN named "A3". 
+If this is the first time you are attempting to install local packages for this R version then the steps look something like this.
+<div class="highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span><span class="w"> </span><span class="c1"># confirm that foo is not already available</span>
+</span><span id="__span-34-2"><a href="#__codelineno-34-2" id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">'A3'</span><span class="p">)</span>
+</span><span id="__span-34-3"><a href="#__codelineno-34-3" id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="n">Warning</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"A3"</span><span class="p">)</span><span class="w"> </span><span class="o">:</span>
+</span><span id="__span-34-4"><a href="#__codelineno-34-4" id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="w">  </span><span class="s">'lib = "/home/software/EasyBuild/software/R/4.2.0-foss-2021b/lib64/R/library"'</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">writable</span>
+</span><span id="__span-34-5"><a href="#__codelineno-34-5" id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">personal</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="n">instead</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">yes</span><span class="o">/</span><span class="n">No</span><span class="o">/</span><span class="n">cancel</span><span class="p">)</span><span class="w"> </span><span class="n">yes</span>
+</span><span id="__span-34-6"><a href="#__codelineno-34-6" id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">personal</span><span class="w"> </span><span class="n">library</span>
+</span><span id="__span-34-7"><a href="#__codelineno-34-7" id="__codelineno-34-7" name="__codelineno-34-7"></a>‘<span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">R</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="m">4.2</span>’
+</span><span id="__span-34-8"><a href="#__codelineno-34-8" id="__codelineno-34-8" name="__codelineno-34-8"></a><span class="n">to</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="n">into</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">yes</span><span class="o">/</span><span class="n">No</span><span class="o">/</span><span class="n">cancel</span><span class="p">)</span><span class="w"> </span><span class="n">yes</span>
+</span><span id="__span-34-9"><a href="#__codelineno-34-9" id="__codelineno-34-9" name="__codelineno-34-9"></a><span class="o">---</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">CRAN</span><span class="w"> </span><span class="n">mirror</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">---</span>
+</span><span id="__span-34-10"><a href="#__codelineno-34-10" id="__codelineno-34-10" name="__codelineno-34-10"></a>
+</span><span id="__span-34-11"><a href="#__codelineno-34-11" id="__codelineno-34-11" name="__codelineno-34-11"></a><span class="n">Secure</span><span class="w"> </span><span class="n">CRAN</span><span class="w"> </span><span class="n">mirrors</span>
+</span><span id="__span-34-12"><a href="#__codelineno-34-12" id="__codelineno-34-12" name="__codelineno-34-12"></a>
+</span><span id="__span-34-13"><a href="#__codelineno-34-13" id="__codelineno-34-13" name="__codelineno-34-13"></a><span class="o">&lt;</span><span class="n">long</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">mirrors</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">NZ</span><span class="w"> </span><span class="n">mirror</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="m">54</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">list</span><span class="o">&gt;</span>
+</span><span id="__span-34-14"><a href="#__codelineno-34-14" id="__codelineno-34-14" name="__codelineno-34-14"></a><span class="n">Selection</span><span class="o">:</span><span class="w"> </span><span class="m">54</span>
+</span><span id="__span-34-15"><a href="#__codelineno-34-15" id="__codelineno-34-15" name="__codelineno-34-15"></a><span class="n">trying</span><span class="w"> </span><span class="n">URL</span><span class="w"> </span><span class="s">'https://cran.stat.auckland.ac.nz/src/contrib/A3_1.0.0.tar.gz'</span>
+</span><span id="__span-34-16"><a href="#__codelineno-34-16" id="__codelineno-34-16" name="__codelineno-34-16"></a><span class="o">&lt;</span><span class="n">additional</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="n">steps...</span><span class="o">&gt;</span>
+</span></code></pre></div></p>
+<p>In future, when you run this version of R, it should automatically check the local user directory created above for installed packages. Any other packages you install in future should automatically go into this directory as well (assuming you don't play around with <code>.libPaths()</code>).</p>
+<hr/>
+<h2 id="matlab-gpu-example">Matlab GPU example<a class="headerlink" href="#matlab-gpu-example" title="Permanent link">¶</a></h2>
+<p>Matlab has various built-in routines which are GPU accelerated.  We will run a simple speed comparison between cpu and gpu tasks. In a sensible location create a file called <code>matlab_gpu.m</code>  I used <code>~/examples/matlab/cuda/matlab_gpu.m</code>.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="c">% Set an array which will calculate the Eigenvalues of</span>
+</span><span id="__span-35-2"><a href="#__codelineno-35-2" id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="n">A</span><span class="p">=</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-35-3"><a href="#__codelineno-35-3" id="__codelineno-35-3" name="__codelineno-35-3"></a>
+</span><span id="__span-35-4"><a href="#__codelineno-35-4" id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="c">% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.</span>
+</span><span id="__span-35-5"><a href="#__codelineno-35-5" id="__codelineno-35-5" name="__codelineno-35-5"></a><span class="n">Agpu</span><span class="p">=</span><span class="n">gpuArray</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-35-6"><a href="#__codelineno-35-6" id="__codelineno-35-6" name="__codelineno-35-6"></a><span class="n">tic</span>
+</span><span id="__span-35-7"><a href="#__codelineno-35-7" id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="s">B=eig(Agpu)</span><span class="p">;</span>
+</span><span id="__span-35-8"><a href="#__codelineno-35-8" id="__codelineno-35-8" name="__codelineno-35-8"></a><span class="n">t1</span><span class="p">=</span><span class="nb">toc</span>
+</span><span id="__span-35-9"><a href="#__codelineno-35-9" id="__codelineno-35-9" name="__codelineno-35-9"></a>
+</span><span id="__span-35-10"><a href="#__codelineno-35-10" id="__codelineno-35-10" name="__codelineno-35-10"></a><span class="c">% Let's compare the time with CPU</span>
+</span><span id="__span-35-11"><a href="#__codelineno-35-11" id="__codelineno-35-11" name="__codelineno-35-11"></a><span class="nb">tic</span>
+</span><span id="__span-35-12"><a href="#__codelineno-35-12" id="__codelineno-35-12" name="__codelineno-35-12"></a><span class="n">B</span><span class="p">=</span><span class="nb">eig</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-35-13"><a href="#__codelineno-35-13" id="__codelineno-35-13" name="__codelineno-35-13"></a><span class="n">t2</span><span class="p">=</span><span class="nb">toc</span>
+</span></code></pre></div>
+<p>We will also need a Slurm submission script; we'll call this <code>matlab_gpu.sh</code>. Note that we will need to use the new Easybuild module files for our cuda libraries, so make sure to include the module use line <code>module use /home/software/tools/eb_modulefiles/all/Core</code></p>
+<div class="highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-36-2"><a href="#__codelineno-36-2" id="__codelineno-36-2" name="__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a href="#__codelineno-36-3" id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="c1">#SBATCH --job-name=matlab-gpu-example</span>
+</span><span id="__span-36-4"><a href="#__codelineno-36-4" id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="c1">#SBATCH --output=out-gpu-example.out</span>
+</span><span id="__span-36-5"><a href="#__codelineno-36-5" id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="c1">#SBATCH --error=out-gpu-example.err</span>
+</span><span id="__span-36-6"><a href="#__codelineno-36-6" id="__codelineno-36-6" name="__codelineno-36-6"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-36-7"><a href="#__codelineno-36-7" id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="c1">#SBATCH --partition=gpu</span>
+</span><span id="__span-36-8"><a href="#__codelineno-36-8" id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="c1">#SBATCH --gres=gpu:1</span>
+</span><span id="__span-36-9"><a href="#__codelineno-36-9" id="__codelineno-36-9" name="__codelineno-36-9"></a><span class="c1">#SBATCH --ntasks=2</span>
+</span><span id="__span-36-10"><a href="#__codelineno-36-10" id="__codelineno-36-10" name="__codelineno-36-10"></a><span class="c1">#SBATCH --mem=60G</span>
+</span><span id="__span-36-11"><a href="#__codelineno-36-11" id="__codelineno-36-11" name="__codelineno-36-11"></a>
+</span><span id="__span-36-12"><a href="#__codelineno-36-12" id="__codelineno-36-12" name="__codelineno-36-12"></a>module<span class="w"> </span>use<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Core
+</span><span id="__span-36-13"><a href="#__codelineno-36-13" id="__codelineno-36-13" name="__codelineno-36-13"></a>module<span class="w"> </span>load<span class="w"> </span>MATLAB/2024a
+</span><span id="__span-36-14"><a href="#__codelineno-36-14" id="__codelineno-36-14" name="__codelineno-36-14"></a>module<span class="w"> </span>load<span class="w"> </span>fosscuda/2020b
+</span><span id="__span-36-15"><a href="#__codelineno-36-15" id="__codelineno-36-15" name="__codelineno-36-15"></a>
+</span><span id="__span-36-16"><a href="#__codelineno-36-16" id="__codelineno-36-16" name="__codelineno-36-16"></a>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop<span class="w"> </span>-r<span class="w"> </span><span class="s2">"run('matlab_gpu.m');exit;"</span>
+</span></code></pre></div>
+<p>To submit this job to the Slurm queue <code>sbatch matlab_gpu.sh</code>.  This job will take a few minutes to run - this is mostly the Matlab startup time.
+Examine the queue for your job <code>squeue -u $USER</code>.  When your job is done, inspect the output file.  You can use an editor like nano, vi or emacs, or you can just <code>cat</code> or <code>less</code> the file to see its contents on the terminal.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-37-1"><a href="#__codelineno-37-1" id="__codelineno-37-1" name="__codelineno-37-1"></a>cat<span class="w"> </span>out-gpu-example.out
+</span></code></pre></div>
+<p>What do you notice about the output?  Surely GPUs should be faster than the CPU!  It takes time for the GPU to start processing your task, the CPU is able to start the task far more quickly.  So for short operations, the CPU can be faster than the GPU - remember to benchmark your code for optimal performance!  Just because you can use a GPU for your task doesn't mean it is necessarily faster!</p>
+<p>To get a better idea of the advantage of the GPU let's increase the size of the array from <code>1000</code> to <code>10000</code></p>
+<p><em>matlab_gpu.m</em>
+<div class="highlight"><pre><span></span><code><span id="__span-38-1"><a href="#__codelineno-38-1" id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="c">% Set an array which will calculate the Eigenvalues of</span>
+</span><span id="__span-38-2"><a href="#__codelineno-38-2" id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="n">A</span><span class="p">=</span><span class="nb">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+</span><span id="__span-38-3"><a href="#__codelineno-38-3" id="__codelineno-38-3" name="__codelineno-38-3"></a>
+</span><span id="__span-38-4"><a href="#__codelineno-38-4" id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="c">% Copy the Array to the GPU memory - this process takes an erratic amount of time, so we will not time it.</span>
+</span><span id="__span-38-5"><a href="#__codelineno-38-5" id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="n">Agpu</span><span class="p">=</span><span class="n">gpuArray</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-38-6"><a href="#__codelineno-38-6" id="__codelineno-38-6" name="__codelineno-38-6"></a><span class="n">tic</span>
+</span><span id="__span-38-7"><a href="#__codelineno-38-7" id="__codelineno-38-7" name="__codelineno-38-7"></a><span class="s">B=eig(Agpu)</span><span class="p">;</span>
+</span><span id="__span-38-8"><a href="#__codelineno-38-8" id="__codelineno-38-8" name="__codelineno-38-8"></a><span class="n">t1</span><span class="p">=</span><span class="nb">toc</span>
+</span><span id="__span-38-9"><a href="#__codelineno-38-9" id="__codelineno-38-9" name="__codelineno-38-9"></a>
+</span><span id="__span-38-10"><a href="#__codelineno-38-10" id="__codelineno-38-10" name="__codelineno-38-10"></a><span class="c">% Let's compare the time with CPU</span>
+</span><span id="__span-38-11"><a href="#__codelineno-38-11" id="__codelineno-38-11" name="__codelineno-38-11"></a><span class="nb">tic</span>
+</span><span id="__span-38-12"><a href="#__codelineno-38-12" id="__codelineno-38-12" name="__codelineno-38-12"></a><span class="n">B</span><span class="p">=</span><span class="nb">eig</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</span><span id="__span-38-13"><a href="#__codelineno-38-13" id="__codelineno-38-13" name="__codelineno-38-13"></a><span class="n">t2</span><span class="p">=</span><span class="nb">toc</span>
+</span></code></pre></div></p>
+<p>To make things fairer for the CPU in this case, we will also allocate half the CPUs on the node to Matlab.  Half the CPUs, half the memory and half the GPUs, just to be fair.</p>
+<p><em>matlab_gpu.sh</em>
+<div class="highlight"><pre><span></span><code><span id="__span-39-1"><a href="#__codelineno-39-1" id="__codelineno-39-1" name="__codelineno-39-1"></a>#!/bin/bash
+</span><span id="__span-39-2"><a href="#__codelineno-39-2" id="__codelineno-39-2" name="__codelineno-39-2"></a>
+</span><span id="__span-39-3"><a href="#__codelineno-39-3" id="__codelineno-39-3" name="__codelineno-39-3"></a>#SBATCH --job-name=matlab-gpu-example
+</span><span id="__span-39-4"><a href="#__codelineno-39-4" id="__codelineno-39-4" name="__codelineno-39-4"></a>#SBATCH --output=out-gpu-example.out
+</span><span id="__span-39-5"><a href="#__codelineno-39-5" id="__codelineno-39-5" name="__codelineno-39-5"></a>#SBATCH --error=out-gpu-example.err
+</span><span id="__span-39-6"><a href="#__codelineno-39-6" id="__codelineno-39-6" name="__codelineno-39-6"></a>#SBATCH --time=00:05:00
+</span><span id="__span-39-7"><a href="#__codelineno-39-7" id="__codelineno-39-7" name="__codelineno-39-7"></a>#SBATCH --partition=gpu
+</span><span id="__span-39-8"><a href="#__codelineno-39-8" id="__codelineno-39-8" name="__codelineno-39-8"></a>#SBATCH --gres=gpu:1
+</span><span id="__span-39-9"><a href="#__codelineno-39-9" id="__codelineno-39-9" name="__codelineno-39-9"></a>#SBATCH --ntasks=128
+</span><span id="__span-39-10"><a href="#__codelineno-39-10" id="__codelineno-39-10" name="__codelineno-39-10"></a>#SBATCH --mem=256G
+</span><span id="__span-39-11"><a href="#__codelineno-39-11" id="__codelineno-39-11" name="__codelineno-39-11"></a>
+</span><span id="__span-39-12"><a href="#__codelineno-39-12" id="__codelineno-39-12" name="__codelineno-39-12"></a>module use /home/software/tools/eb_modulefiles/all/Core
+</span><span id="__span-39-13"><a href="#__codelineno-39-13" id="__codelineno-39-13" name="__codelineno-39-13"></a>module load MATLAB/2024a
+</span><span id="__span-39-14"><a href="#__codelineno-39-14" id="__codelineno-39-14" name="__codelineno-39-14"></a>module load fosscuda/2020b
+</span><span id="__span-39-15"><a href="#__codelineno-39-15" id="__codelineno-39-15" name="__codelineno-39-15"></a>
+</span><span id="__span-39-16"><a href="#__codelineno-39-16" id="__codelineno-39-16" name="__codelineno-39-16"></a>matlab -nodisplay -nosplash -nodesktop -r "run('matlab_gpu.m');exit;"
+</span></code></pre></div></p>
+<p>The output in my case was:
+<div class="highlight"><pre><span></span><code><span id="__span-40-1"><a href="#__codelineno-40-1" id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="w">                            </span>&lt;<span class="w"> </span>M<span class="w"> </span>A<span class="w"> </span>T<span class="w"> </span>L<span class="w"> </span>A<span class="w"> </span>B<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>&gt;
+</span><span id="__span-40-2"><a href="#__codelineno-40-2" id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="w">                  </span>Copyright<span class="w"> </span><span class="m">1984</span>-2024<span class="w"> </span>The<span class="w"> </span>MathWorks,<span class="w"> </span>Inc.
+</span><span id="__span-40-3"><a href="#__codelineno-40-3" id="__codelineno-40-3" name="__codelineno-40-3"></a><span class="w">                  </span>R2024a<span class="w"> </span><span class="o">(</span><span class="m">24</span>.1.0.2537033<span class="o">)</span><span class="w"> </span><span class="m">64</span>-bit<span class="w"> </span><span class="o">(</span>glnxa64<span class="o">)</span>
+</span><span id="__span-40-4"><a href="#__codelineno-40-4" id="__codelineno-40-4" name="__codelineno-40-4"></a><span class="w">                             </span>February<span class="w"> </span><span class="m">21</span>,<span class="w"> </span><span class="m">2024</span>
+</span><span id="__span-40-5"><a href="#__codelineno-40-5" id="__codelineno-40-5" name="__codelineno-40-5"></a>
+</span><span id="__span-40-6"><a href="#__codelineno-40-6" id="__codelineno-40-6" name="__codelineno-40-6"></a>
+</span><span id="__span-40-7"><a href="#__codelineno-40-7" id="__codelineno-40-7" name="__codelineno-40-7"></a>For<span class="w"> </span>online<span class="w"> </span>documentation,<span class="w"> </span>see<span class="w"> </span>https://www.mathworks.com/support
+</span><span id="__span-40-8"><a href="#__codelineno-40-8" id="__codelineno-40-8" name="__codelineno-40-8"></a>For<span class="w"> </span>product<span class="w"> </span>information,<span class="w"> </span>visit<span class="w"> </span>www.mathworks.com.
+</span><span id="__span-40-9"><a href="#__codelineno-40-9" id="__codelineno-40-9" name="__codelineno-40-9"></a>
+</span><span id="__span-40-10"><a href="#__codelineno-40-10" id="__codelineno-40-10" name="__codelineno-40-10"></a>
+</span><span id="__span-40-11"><a href="#__codelineno-40-11" id="__codelineno-40-11" name="__codelineno-40-11"></a>
+</span><span id="__span-40-12"><a href="#__codelineno-40-12" id="__codelineno-40-12" name="__codelineno-40-12"></a><span class="nv">t1</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-40-13"><a href="#__codelineno-40-13" id="__codelineno-40-13" name="__codelineno-40-13"></a>
+</span><span id="__span-40-14"><a href="#__codelineno-40-14" id="__codelineno-40-14" name="__codelineno-40-14"></a><span class="w">   </span><span class="m">62</span>.0212
+</span><span id="__span-40-15"><a href="#__codelineno-40-15" id="__codelineno-40-15" name="__codelineno-40-15"></a>
+</span><span id="__span-40-16"><a href="#__codelineno-40-16" id="__codelineno-40-16" name="__codelineno-40-16"></a>
+</span><span id="__span-40-17"><a href="#__codelineno-40-17" id="__codelineno-40-17" name="__codelineno-40-17"></a><span class="nv">t2</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-40-18"><a href="#__codelineno-40-18" id="__codelineno-40-18" name="__codelineno-40-18"></a>
+</span><span id="__span-40-19"><a href="#__codelineno-40-19" id="__codelineno-40-19" name="__codelineno-40-19"></a><span class="w">  </span><span class="m">223</span>.0818
+</span></code></pre></div></p>
+<p>So in thise case the GPU was considerably faster.  Matlab can do this a bit faster on the CPU if you give it <strong>fewer</strong> CPUs, the optimum appears to be around 20, but it still takes 177s.  Again, optimise your resource requests for your problem, less can sometimes be more, however the GPU easily wins  in this case.</p>
+<hr/>
+<h2 id="job-arrays-running-many-similar-jobs">Job Arrays - running many similar jobs<a class="headerlink" href="#job-arrays-running-many-similar-jobs" title="Permanent link">¶</a></h2>
+<p>Slurm makes it easy to run many jobs which are similar to each other.  This could be one piece of code running over many datasets in parallel or running a set of simulations with a different set of parameters for each run.</p>
+<h3 id="simple-bash-job-array-example">Simple Bash Job Array example<a class="headerlink" href="#simple-bash-job-array-example" title="Permanent link">¶</a></h3>
+<p>The following code will run the submission script 16 times as resources become available (i.e. they will not neccesarily run at the same time).  It will just print out the Slurm array task ID and exit.</p>
+<p><em>submit.sh:</em>
+<div class="highlight"><pre><span></span><code><span id="__span-41-1"><a href="#__codelineno-41-1" id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-41-2"><a href="#__codelineno-41-2" id="__codelineno-41-2" name="__codelineno-41-2"></a>
+</span><span id="__span-41-3"><a href="#__codelineno-41-3" id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="c1">#SBATCH --job-name=test_array</span>
+</span><span id="__span-41-4"><a href="#__codelineno-41-4" id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="c1">#SBATCH --output=out_array_%A_%a.out</span>
+</span><span id="__span-41-5"><a href="#__codelineno-41-5" id="__codelineno-41-5" name="__codelineno-41-5"></a><span class="c1">#SBATCH --error=out_array_%A_%a.err</span>
+</span><span id="__span-41-6"><a href="#__codelineno-41-6" id="__codelineno-41-6" name="__codelineno-41-6"></a><span class="c1">#SBATCH --array=1-16</span>
+</span><span id="__span-41-7"><a href="#__codelineno-41-7" id="__codelineno-41-7" name="__codelineno-41-7"></a><span class="c1">#SBATCH --time=00:00:20</span>
+</span><span id="__span-41-8"><a href="#__codelineno-41-8" id="__codelineno-41-8" name="__codelineno-41-8"></a><span class="c1">#SBATCH --partition=parallel</span>
+</span><span id="__span-41-9"><a href="#__codelineno-41-9" id="__codelineno-41-9" name="__codelineno-41-9"></a><span class="c1">#SBATCH --ntasks=1</span>
+</span><span id="__span-41-10"><a href="#__codelineno-41-10" id="__codelineno-41-10" name="__codelineno-41-10"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-41-11"><a href="#__codelineno-41-11" id="__codelineno-41-11" name="__codelineno-41-11"></a>
+</span><span id="__span-41-12"><a href="#__codelineno-41-12" id="__codelineno-41-12" name="__codelineno-41-12"></a><span class="c1"># Print the task id.</span>
+</span><span id="__span-41-13"><a href="#__codelineno-41-13" id="__codelineno-41-13" name="__codelineno-41-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"My SLURM_ARRAY_TASK_ID: "</span><span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span><span id="__span-41-14"><a href="#__codelineno-41-14" id="__codelineno-41-14" name="__codelineno-41-14"></a>
+</span><span id="__span-41-15"><a href="#__codelineno-41-15" id="__codelineno-41-15" name="__codelineno-41-15"></a><span class="c1"># Add lines here to run your computations.</span>
+</span></code></pre></div></p>
+<p>Run the example with the standard
+<div class="highlight"><pre><span></span><code><span id="__span-42-1"><a href="#__codelineno-42-1" id="__codelineno-42-1" name="__codelineno-42-1"></a>sbatch<span class="w"> </span>submit.sh
+</span></code></pre></div></p>
+<h3 id="a-simple-r-job-array-example">A simple R job Array Example<a class="headerlink" href="#a-simple-r-job-array-example" title="Permanent link">¶</a></h3>
+<p>As a slightly more practical example the following will run an R script 5 times as resources become available.  The R script takes as an input the <code>$SLURM_ARRAY_TASK_ID</code> which then selects a parameter <code>alpha</code> out of a lookup table.</p>
+<p>This is one way you could run simulations or similar with a set parameters defined in a lookuop table in your code.</p>
+<p>To make outputs more tidy and to help organisation, instead of dumping all the outputs into the directory with our code and submission script, we will separate the outputs into directories.  Dataframes saved from R will be saved to the output/ directory, and all output which would otherwise be printed to the commnd line (stdout and stderr) will be saved to the stdout/ directory. Both of these directories will need to be created before running the script.</p>
+<p><em>r_random_alpha.R:</em>
+<div class="highlight"><pre><span></span><code><span id="__span-43-1"><a href="#__codelineno-43-1" id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="c1"># get the arguments supplied to R.  </span>
+</span><span id="__span-43-2"><a href="#__codelineno-43-2" id="__codelineno-43-2" name="__codelineno-43-2"></a><span class="c1"># trailingOnly = TRUE gets the user supplied</span>
+</span><span id="__span-43-3"><a href="#__codelineno-43-3" id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="c1"># arguments, and for now we will only get the</span>
+</span><span id="__span-43-4"><a href="#__codelineno-43-4" id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="c1"># first user supplied argument</span>
+</span><span id="__span-43-5"><a href="#__codelineno-43-5" id="__codelineno-43-5" name="__codelineno-43-5"></a><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-43-6"><a href="#__codelineno-43-6" id="__codelineno-43-6" name="__codelineno-43-6"></a><span class="n">inputparam</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</span><span id="__span-43-7"><a href="#__codelineno-43-7" id="__codelineno-43-7" name="__codelineno-43-7"></a>
+</span><span id="__span-43-8"><a href="#__codelineno-43-8" id="__codelineno-43-8" name="__codelineno-43-8"></a><span class="c1"># a vector with all our parameters.</span>
+</span><span id="__span-43-9"><a href="#__codelineno-43-9" id="__codelineno-43-9" name="__codelineno-43-9"></a><span class="n">alpha_vec</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2.5</span><span class="p">,</span><span class="w"> </span><span class="m">3.3</span><span class="p">,</span><span class="w"> </span><span class="m">5.1</span><span class="p">,</span><span class="w"> </span><span class="m">8.2</span><span class="p">,</span><span class="w"> </span><span class="m">10.9</span><span class="p">)</span>
+</span><span id="__span-43-10"><a href="#__codelineno-43-10" id="__codelineno-43-10" name="__codelineno-43-10"></a><span class="n">alpha</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha_vec</span><span class="p">[</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">inputparam</span><span class="p">)]</span>
+</span><span id="__span-43-11"><a href="#__codelineno-43-11" id="__codelineno-43-11" name="__codelineno-43-11"></a>
+</span><span id="__span-43-12"><a href="#__codelineno-43-12" id="__codelineno-43-12" name="__codelineno-43-12"></a><span class="c1"># Generate a random number between 0 and alpha </span>
+</span><span id="__span-43-13"><a href="#__codelineno-43-13" id="__codelineno-43-13" name="__codelineno-43-13"></a><span class="c1"># store it in dataframe with the coresponding </span>
+</span><span id="__span-43-14"><a href="#__codelineno-43-14" id="__codelineno-43-14" name="__codelineno-43-14"></a><span class="c1"># alpha value</span>
+</span><span id="__span-43-15"><a href="#__codelineno-43-15" id="__codelineno-43-15" name="__codelineno-43-15"></a><span class="n">randomnum</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+</span><span id="__span-43-16"><a href="#__codelineno-43-16" id="__codelineno-43-16" name="__codelineno-43-16"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="s">"alpha"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="s">"random_num"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomnum</span><span class="p">)</span>
+</span><span id="__span-43-17"><a href="#__codelineno-43-17" id="__codelineno-43-17" name="__codelineno-43-17"></a>
+</span><span id="__span-43-18"><a href="#__codelineno-43-18" id="__codelineno-43-18" name="__codelineno-43-18"></a><span class="c1"># Save the data frame to a file with the alpha value</span>
+</span><span id="__span-43-19"><a href="#__codelineno-43-19" id="__codelineno-43-19" name="__codelineno-43-19"></a><span class="c1"># Note that the output/ folder will need to be </span>
+</span><span id="__span-43-20"><a href="#__codelineno-43-20" id="__codelineno-43-20" name="__codelineno-43-20"></a><span class="c1"># manually created first!</span>
+</span><span id="__span-43-21"><a href="#__codelineno-43-21" id="__codelineno-43-21" name="__codelineno-43-21"></a><span class="n">outputname</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">"output/"</span><span class="p">,</span><span class="w"> </span><span class="s">"alpha_"</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="s">".Rda"</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">""</span><span class="p">)</span>
+</span><span id="__span-43-22"><a href="#__codelineno-43-22" id="__codelineno-43-22" name="__codelineno-43-22"></a><span class="nf">save</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">file</span><span class="o">=</span><span class="n">outputname</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p>Next create the submision script. Which we will run on the parallel partition rather than quicktest.</p>
+<p>r_submit.sh:
+<div class="highlight"><pre><span></span><code><span id="__span-44-1"><a href="#__codelineno-44-1" id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-44-2"><a href="#__codelineno-44-2" id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="c1">#SBATCH --job-name=test_R_array</span>
+</span><span id="__span-44-3"><a href="#__codelineno-44-3" id="__codelineno-44-3" name="__codelineno-44-3"></a><span class="c1">#SBATCH --output=stdout/array_%A_%a.out</span>
+</span><span id="__span-44-4"><a href="#__codelineno-44-4" id="__codelineno-44-4" name="__codelineno-44-4"></a><span class="c1">#SBATCH --error=stdout/array_%A_%a.err</span>
+</span><span id="__span-44-5"><a href="#__codelineno-44-5" id="__codelineno-44-5" name="__codelineno-44-5"></a><span class="c1">#SBATCH --array=1-5</span>
+</span><span id="__span-44-6"><a href="#__codelineno-44-6" id="__codelineno-44-6" name="__codelineno-44-6"></a><span class="c1">#SBATCH --time=00:00:20</span>
+</span><span id="__span-44-7"><a href="#__codelineno-44-7" id="__codelineno-44-7" name="__codelineno-44-7"></a><span class="c1">#SBATCH --partition=parallel</span>
+</span><span id="__span-44-8"><a href="#__codelineno-44-8" id="__codelineno-44-8" name="__codelineno-44-8"></a><span class="c1">#SBATCH --ntasks=1</span>
+</span><span id="__span-44-9"><a href="#__codelineno-44-9" id="__codelineno-44-9" name="__codelineno-44-9"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-44-10"><a href="#__codelineno-44-10" id="__codelineno-44-10" name="__codelineno-44-10"></a>
+</span><span id="__span-44-11"><a href="#__codelineno-44-11" id="__codelineno-44-11" name="__codelineno-44-11"></a>module<span class="w"> </span>purge
+</span><span id="__span-44-12"><a href="#__codelineno-44-12" id="__codelineno-44-12" name="__codelineno-44-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1
+</span><span id="__span-44-13"><a href="#__codelineno-44-13" id="__codelineno-44-13" name="__codelineno-44-13"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0
+</span><span id="__span-44-14"><a href="#__codelineno-44-14" id="__codelineno-44-14" name="__codelineno-44-14"></a>
+</span><span id="__span-44-15"><a href="#__codelineno-44-15" id="__codelineno-44-15" name="__codelineno-44-15"></a><span class="c1"># Print the task id.</span>
+</span><span id="__span-44-16"><a href="#__codelineno-44-16" id="__codelineno-44-16" name="__codelineno-44-16"></a>Rscript<span class="w"> </span>r_random_alpha.R<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></code></pre></div></p>
+<p>Run the jobs with
+<div class="highlight"><pre><span></span><code><span id="__span-45-1"><a href="#__codelineno-45-1" id="__codelineno-45-1" name="__codelineno-45-1"></a>sbatch<span class="w"> </span>r_submit.sh
+</span></code></pre></div></p>
+<hr/>
+<h2 id="singularity">Singularity<a class="headerlink" href="#singularity" title="Permanent link">¶</a></h2>
+<p>While there are many modules on Rāpoi, sometimes you might want to install your own packages in your own way.  Singularity allows you to do this.  If you are familiar with Docker, Singularity is similar, except you can't get root (or sudo) once your container is running on the Rāpoi.  However, you <em>can</em> have sudo rights locally on your own machine, setup your container however you like, then run it without sudo on the cluster.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As per updated singularity configuration, <code>mount hostfs</code> is set to <code>false</code> and <code>mount home</code> is set to <code>true</code>. As a result, filesystems available inside a singularity session by default are:
+<div class="highlight"><pre><span></span><code><span id="__span-46-1"><a href="#__codelineno-46-1" id="__codelineno-46-1" name="__codelineno-46-1"></a>devtmpfs  /dev
+</span><span id="__span-46-2"><a href="#__codelineno-46-2" id="__codelineno-46-2" name="__codelineno-46-2"></a>tmpfs     /dev/shm
+</span><span id="__span-46-3"><a href="#__codelineno-46-3" id="__codelineno-46-3" name="__codelineno-46-3"></a>/vg&lt;id&gt;   /etc/hosts
+</span><span id="__span-46-4"><a href="#__codelineno-46-4" id="__codelineno-46-4" name="__codelineno-46-4"></a>..        /tmp
+</span><span id="__span-46-5"><a href="#__codelineno-46-5" id="__codelineno-46-5" name="__codelineno-46-5"></a>..        /var/tmp
+</span><span id="__span-46-6"><a href="#__codelineno-46-6" id="__codelineno-46-6" name="__codelineno-46-6"></a>..        /etc/group
+</span><span id="__span-46-7"><a href="#__codelineno-46-7" id="__codelineno-46-7" name="__codelineno-46-7"></a>$HOME     /nfs/home/$USER
+</span></code></pre></div>
+This means any other file system such as <code>nfs</code> should be manually specified using <code>--bind</code> command. For example,
+<div class="highlight"><pre><span></span><code><span id="__span-47-1"><a href="#__codelineno-47-1" id="__codelineno-47-1" name="__codelineno-47-1"></a>singularity shell --bind /nfs/scratch/$USER:/nfs/scratch/$USER image_file.simg pwd
+</span></code></pre></div></p>
+</div>
+<p>See also: <a href="../advanced/containers/">Using containers</a></p>
+<h3 id="singularitydocker-container-example">Singularity/Docker container example<a class="headerlink" href="#singularitydocker-container-example" title="Permanent link">¶</a></h3>
+<p>Singularity allows you to use most (but not all!) docker images on Rāpoi.</p>
+<p>On your local machine create the singularity definition file</p>
+<p>input_args_example.def
+<div class="highlight"><pre><span></span><code><span id="__span-48-1"><a href="#__codelineno-48-1" id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="k">BootStrap</span>:<span class="w"> </span>library
+</span><span id="__span-48-2"><a href="#__codelineno-48-2" id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="k">From</span>:<span class="w"> </span>ubuntu:<span class="m">16.04</span>
+</span><span id="__span-48-3"><a href="#__codelineno-48-3" id="__codelineno-48-3" name="__codelineno-48-3"></a>
+</span><span id="__span-48-4"><a href="#__codelineno-48-4" id="__codelineno-48-4" name="__codelineno-48-4"></a><span class="gh">%runscript</span>
+</span><span id="__span-48-5"><a href="#__codelineno-48-5" id="__codelineno-48-5" name="__codelineno-48-5"></a><span class="w">    </span><span class="nb">exec</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</span><span id="__span-48-6"><a href="#__codelineno-48-6" id="__codelineno-48-6" name="__codelineno-48-6"></a>
+</span><span id="__span-48-7"><a href="#__codelineno-48-7" id="__codelineno-48-7" name="__codelineno-48-7"></a><span class="gh">%labels</span>
+</span><span id="__span-48-8"><a href="#__codelineno-48-8" id="__codelineno-48-8" name="__codelineno-48-8"></a><span class="w">    </span>Author<span class="w"> </span>JaneDoe
+</span></code></pre></div></p>
+<p>This will build an ubuntu 16.04 container that will eventually run on Rāpoi which runs Centos.  This container has a runscript which just echos back any arguments sent to the container when your start it up.</p>
+<p>Build the container <em>locally</em> with sudo and singularity
+<div class="highlight"><pre><span></span><code><span id="__span-49-1"><a href="#__codelineno-49-1" id="__codelineno-49-1" name="__codelineno-49-1"></a>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>inputexample.sif<span class="w"> </span>input_args_example.def<span class="w"> </span>
+</span></code></pre></div></p>
+<p>OR </p>
+<p>Using <a href="https://www.sylabs.io/docs/">Sylabs Remote Builder</a> is another option to build containers remotely. A Sylabs account and access token are required to use this feature. To build the container remotely, use the following command:
+<div class="highlight"><pre><span></span><code><span id="__span-50-1"><a href="#__codelineno-50-1" id="__codelineno-50-1" name="__codelineno-50-1"></a>singularity<span class="w"> </span>build<span class="w"> </span>--remote<span class="w"> </span>inputexample.sif<span class="w"> </span>input_args_example.def
+</span></code></pre></div></p>
+<p>This will build an image that you can't modify any further and is immediately suitable to run on Rāpoi
+Copy this file to Rāpoi via sftp
+<div class="highlight"><pre><span></span><code><span id="__span-51-1"><a href="#__codelineno-51-1" id="__codelineno-51-1" name="__codelineno-51-1"></a>sftp<span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+</span></code></pre></div></p>
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh
+<div class="highlight"><pre><span></span><code><span id="__span-52-1"><a href="#__codelineno-52-1" id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-52-2"><a href="#__codelineno-52-2" id="__codelineno-52-2" name="__codelineno-52-2"></a>
+</span><span id="__span-52-3"><a href="#__codelineno-52-3" id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="c1">#SBATCH --job-name=singularity_test</span>
+</span><span id="__span-52-4"><a href="#__codelineno-52-4" id="__codelineno-52-4" name="__codelineno-52-4"></a><span class="c1">#SBATCH -o sing_test.out</span>
+</span><span id="__span-52-5"><a href="#__codelineno-52-5" id="__codelineno-52-5" name="__codelineno-52-5"></a><span class="c1">#SBATCH -e sing_test.err</span>
+</span><span id="__span-52-6"><a href="#__codelineno-52-6" id="__codelineno-52-6" name="__codelineno-52-6"></a><span class="c1">#SBATCH --time=00:00:20</span>
+</span><span id="__span-52-7"><a href="#__codelineno-52-7" id="__codelineno-52-7" name="__codelineno-52-7"></a><span class="c1">#SBATCH --ntasks=1</span>
+</span><span id="__span-52-8"><a href="#__codelineno-52-8" id="__codelineno-52-8" name="__codelineno-52-8"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-52-9"><a href="#__codelineno-52-9" id="__codelineno-52-9" name="__codelineno-52-9"></a>
+</span><span id="__span-52-10"><a href="#__codelineno-52-10" id="__codelineno-52-10" name="__codelineno-52-10"></a>module<span class="w"> </span>load<span class="w"> </span>singularity
+</span><span id="__span-52-11"><a href="#__codelineno-52-11" id="__codelineno-52-11" name="__codelineno-52-11"></a>
+</span><span id="__span-52-12"><a href="#__codelineno-52-12" id="__codelineno-52-12" name="__codelineno-52-12"></a>singularity<span class="w"> </span>run<span class="w"> </span>inputtest.sif<span class="w"> </span><span class="s2">"hello from a container"</span>
+</span></code></pre></div></p>
+<p>Run the script with the usual
+<div class="highlight"><pre><span></span><code><span id="__span-53-1"><a href="#__codelineno-53-1" id="__codelineno-53-1" name="__codelineno-53-1"></a>singularity_submit.sh
+</span></code></pre></div></p>
+<h3 id="singularitytensorflow-example">Singularity/TensorFlow Example<a class="headerlink" href="#singularitytensorflow-example" title="Permanent link">¶</a></h3>
+<p>tensor.def
+<div class="highlight"><pre><span></span><code><span id="__span-54-1"><a href="#__codelineno-54-1" id="__codelineno-54-1" name="__codelineno-54-1"></a>Bootstrap:<span class="w"> </span>docker
+</span><span id="__span-54-2"><a href="#__codelineno-54-2" id="__codelineno-54-2" name="__codelineno-54-2"></a>From:<span class="w"> </span>tensorflow/tensorflow:latest-py3
+</span><span id="__span-54-3"><a href="#__codelineno-54-3" id="__codelineno-54-3" name="__codelineno-54-3"></a>
+</span><span id="__span-54-4"><a href="#__codelineno-54-4" id="__codelineno-54-4" name="__codelineno-54-4"></a>%post
+</span><span id="__span-54-5"><a href="#__codelineno-54-5" id="__codelineno-54-5" name="__codelineno-54-5"></a>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>wget<span class="w"> </span>build-essential<span class="w"> </span>
+</span><span id="__span-54-6"><a href="#__codelineno-54-6" id="__codelineno-54-6" name="__codelineno-54-6"></a>
+</span><span id="__span-54-7"><a href="#__codelineno-54-7" id="__codelineno-54-7" name="__codelineno-54-7"></a>%runscript
+</span><span id="__span-54-8"><a href="#__codelineno-54-8" id="__codelineno-54-8" name="__codelineno-54-8"></a><span class="w">    </span><span class="nb">exec</span><span class="w"> </span>python<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</span></code></pre></div></p>
+<p>compile this <em>locally</em> with sudo and singularity.
+<div class="highlight"><pre><span></span><code><span id="__span-55-1"><a href="#__codelineno-55-1" id="__codelineno-55-1" name="__codelineno-55-1"></a>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>tensorflow.sif<span class="w"> </span>tensor.def<span class="w"> </span>
+</span></code></pre></div></p>
+<p>Create a quick tensorflow test code
+tensortest.py
+<div class="highlight"><pre><span></span><code><span id="__span-56-1"><a href="#__codelineno-56-1" id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+</span><span id="__span-56-2"><a href="#__codelineno-56-2" id="__codelineno-56-2" name="__codelineno-56-2"></a><span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+</span><span id="__span-56-3"><a href="#__codelineno-56-3" id="__codelineno-56-3" name="__codelineno-56-3"></a>
+</span><span id="__span-56-4"><a href="#__codelineno-56-4" id="__codelineno-56-4" name="__codelineno-56-4"></a><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+</span><span id="__span-56-5"><a href="#__codelineno-56-5" id="__codelineno-56-5" name="__codelineno-56-5"></a><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+</span><span id="__span-56-6"><a href="#__codelineno-56-6" id="__codelineno-56-6" name="__codelineno-56-6"></a>
+</span><span id="__span-56-7"><a href="#__codelineno-56-7" id="__codelineno-56-7" name="__codelineno-56-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+</span><span id="__span-56-8"><a href="#__codelineno-56-8" id="__codelineno-56-8" name="__codelineno-56-8"></a>  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+</span><span id="__span-56-9"><a href="#__codelineno-56-9" id="__codelineno-56-9" name="__codelineno-56-9"></a>  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
+</span><span id="__span-56-10"><a href="#__codelineno-56-10" id="__codelineno-56-10" name="__codelineno-56-10"></a>  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+</span><span id="__span-56-11"><a href="#__codelineno-56-11" id="__codelineno-56-11" name="__codelineno-56-11"></a>  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+</span><span id="__span-56-12"><a href="#__codelineno-56-12" id="__codelineno-56-12" name="__codelineno-56-12"></a><span class="p">])</span>
+</span><span id="__span-56-13"><a href="#__codelineno-56-13" id="__codelineno-56-13" name="__codelineno-56-13"></a><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>
+</span><span id="__span-56-14"><a href="#__codelineno-56-14" id="__codelineno-56-14" name="__codelineno-56-14"></a>              <span class="n">loss</span><span class="o">=</span><span class="s1">'sparse_categorical_crossentropy'</span><span class="p">,</span>
+</span><span id="__span-56-15"><a href="#__codelineno-56-15" id="__codelineno-56-15" name="__codelineno-56-15"></a>              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+</span><span id="__span-56-16"><a href="#__codelineno-56-16" id="__codelineno-56-16" name="__codelineno-56-16"></a>
+</span><span id="__span-56-17"><a href="#__codelineno-56-17" id="__codelineno-56-17" name="__codelineno-56-17"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-56-18"><a href="#__codelineno-56-18" id="__codelineno-56-18" name="__codelineno-56-18"></a><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p>Copy your files to Rāpoi via sftp (or whatever you prefer)
+<div class="highlight"><pre><span></span><code><span id="__span-57-1"><a href="#__codelineno-57-1" id="__codelineno-57-1" name="__codelineno-57-1"></a>sftp<span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+</span><span id="__span-57-2"><a href="#__codelineno-57-2" id="__codelineno-57-2" name="__codelineno-57-2"></a><span class="nb">cd</span><span class="w"> </span>&lt;where<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>work&gt;
+</span><span id="__span-57-3"><a href="#__codelineno-57-3" id="__codelineno-57-3" name="__codelineno-57-3"></a>put<span class="w"> </span>*<span class="w">   </span><span class="c1">#put all files in your local directory onto Rāpoi</span>
+</span></code></pre></div></p>
+<p>Lets quickly test the code via an interactive session on a node.  Note I find the tensorflow container only runs properly on intel nodes, which we don't have many of at the moment, I'll investigate this further.
+<div class="highlight"><pre><span></span><code><span id="__span-58-1"><a href="#__codelineno-58-1" id="__codelineno-58-1" name="__codelineno-58-1"></a>srun<span class="w"> </span>--partition<span class="o">=</span><span class="s2">"parallel"</span><span class="w"> </span>--constraint<span class="o">=</span><span class="s2">"Intel"</span><span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-58-2"><a href="#__codelineno-58-2" id="__codelineno-58-2" name="__codelineno-58-2"></a>
+</span><span id="__span-58-3"><a href="#__codelineno-58-3" id="__codelineno-58-3" name="__codelineno-58-3"></a><span class="c1">#now on the remote node - note you might need to wait if nodes are busy</span>
+</span><span id="__span-58-4"><a href="#__codelineno-58-4" id="__codelineno-58-4" name="__codelineno-58-4"></a>module<span class="w"> </span>load<span class="w"> </span>singularity<span class="w"> </span><span class="c1">#load singularity</span>
+</span><span id="__span-58-5"><a href="#__codelineno-58-5" id="__codelineno-58-5" name="__codelineno-58-5"></a>singularity<span class="w"> </span>shell<span class="w"> </span>tensorflow.sif<span class="w"> </span>
+</span><span id="__span-58-6"><a href="#__codelineno-58-6" id="__codelineno-58-6" name="__codelineno-58-6"></a>
+</span><span id="__span-58-7"><a href="#__codelineno-58-7" id="__codelineno-58-7" name="__codelineno-58-7"></a><span class="c1">#now inside the tensorflow container on the remote node</span>
+</span><span id="__span-58-8"><a href="#__codelineno-58-8" id="__codelineno-58-8" name="__codelineno-58-8"></a>python<span class="w"> </span>tensortest.py<span class="w"> </span>
+</span><span id="__span-58-9"><a href="#__codelineno-58-9" id="__codelineno-58-9" name="__codelineno-58-9"></a>
+</span><span id="__span-58-10"><a href="#__codelineno-58-10" id="__codelineno-58-10" name="__codelineno-58-10"></a><span class="c1">#once that runs, exit the container</span>
+</span><span id="__span-58-11"><a href="#__codelineno-58-11" id="__codelineno-58-11" name="__codelineno-58-11"></a><span class="nb">exit</span><span class="w"> </span><span class="c1">#exit the container</span>
+</span><span id="__span-58-12"><a href="#__codelineno-58-12" id="__codelineno-58-12" name="__codelineno-58-12"></a><span class="nb">exit</span><span class="w"> </span><span class="c1">#exit the interactive session on the node</span>
+</span></code></pre></div></p>
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh
+<div class="highlight"><pre><span></span><code><span id="__span-59-1"><a href="#__codelineno-59-1" id="__codelineno-59-1" name="__codelineno-59-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-59-2"><a href="#__codelineno-59-2" id="__codelineno-59-2" name="__codelineno-59-2"></a>
+</span><span id="__span-59-3"><a href="#__codelineno-59-3" id="__codelineno-59-3" name="__codelineno-59-3"></a><span class="c1">#SBATCH --job-name=singularity_test</span>
+</span><span id="__span-59-4"><a href="#__codelineno-59-4" id="__codelineno-59-4" name="__codelineno-59-4"></a><span class="c1">#SBATCH -o sing_test.out</span>
+</span><span id="__span-59-5"><a href="#__codelineno-59-5" id="__codelineno-59-5" name="__codelineno-59-5"></a><span class="c1">#SBATCH -e sing_test.err</span>
+</span><span id="__span-59-6"><a href="#__codelineno-59-6" id="__codelineno-59-6" name="__codelineno-59-6"></a><span class="c1">#SBATCH --time=00:10:00</span>
+</span><span id="__span-59-7"><a href="#__codelineno-59-7" id="__codelineno-59-7" name="__codelineno-59-7"></a><span class="c1">#SBATCH --partition=parallel</span>
+</span><span id="__span-59-8"><a href="#__codelineno-59-8" id="__codelineno-59-8" name="__codelineno-59-8"></a><span class="c1">#SBATCH --constraint=Intel</span>
+</span><span id="__span-59-9"><a href="#__codelineno-59-9" id="__codelineno-59-9" name="__codelineno-59-9"></a><span class="c1">#SBATCH --ntasks=1</span>
+</span><span id="__span-59-10"><a href="#__codelineno-59-10" id="__codelineno-59-10" name="__codelineno-59-10"></a><span class="c1">#SBATCH --mem=4G</span>
+</span><span id="__span-59-11"><a href="#__codelineno-59-11" id="__codelineno-59-11" name="__codelineno-59-11"></a>
+</span><span id="__span-59-12"><a href="#__codelineno-59-12" id="__codelineno-59-12" name="__codelineno-59-12"></a>module<span class="w"> </span>load<span class="w"> </span>singularity
+</span><span id="__span-59-13"><a href="#__codelineno-59-13" id="__codelineno-59-13" name="__codelineno-59-13"></a>
+</span><span id="__span-59-14"><a href="#__codelineno-59-14" id="__codelineno-59-14" name="__codelineno-59-14"></a><span class="c1">#run the container with the runscript defined when we created it</span>
+</span><span id="__span-59-15"><a href="#__codelineno-59-15" id="__codelineno-59-15" name="__codelineno-59-15"></a>singularity<span class="w"> </span>run<span class="w"> </span>tensorflow.sif<span class="w"> </span>tensortest.py<span class="w"> </span>
+</span></code></pre></div></p>
+<h3 id="singularitymaxbin2-example">Singularity/MaxBin2 Example<a class="headerlink" href="#singularitymaxbin2-example" title="Permanent link">¶</a></h3>
+<p>In a sensible location, either in your home directory or on the scratch:</p>
+<p>Get the maxbin2 container, there are a few places to get this, but will get the bioconda container as it is more recent than the one referenced on the official maxbin site.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-60-1"><a href="#__codelineno-60-1" id="__codelineno-60-1" name="__codelineno-60-1"></a>module<span class="w"> </span>load<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>singularity
+</span><span id="__span-60-2"><a href="#__codelineno-60-2" id="__codelineno-60-2" name="__codelineno-60-2"></a>singularity<span class="w"> </span>pull<span class="w"> </span>docker://quay.io/biocontainers/maxbin2:2.2.6--h14c3975_0
+</span><span id="__span-60-3"><a href="#__codelineno-60-3" id="__codelineno-60-3" name="__codelineno-60-3"></a>mv<span class="w"> </span>maxbin2_2.2.6--h14c3975_0.sif<span class="w"> </span>maxbin2_2.2.6.sif<span class="w"> </span><span class="c1">#rename for convenience</span>
+</span></code></pre></div>
+<p>Download some test data</p>
+<div class="highlight"><pre><span></span><code><span id="__span-61-1"><a href="#__codelineno-61-1" id="__codelineno-61-1" name="__codelineno-61-1"></a>mkdir<span class="w"> </span>rawdata
+</span><span id="__span-61-2"><a href="#__codelineno-61-2" id="__codelineno-61-2" name="__codelineno-61-2"></a>curl<span class="w"> </span>https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.scaffold<span class="w"> </span>&gt;<span class="w"> </span>rawdata/20x.scaffold
+</span><span id="__span-61-3"><a href="#__codelineno-61-3" id="__codelineno-61-3" name="__codelineno-61-3"></a>curl<span class="w"> </span>https://downloads.jbei.org/data/microbial_communities/MaxBin/getfile.php?20x.abund<span class="w"> </span>&gt;<span class="w"> </span>rawdata/20x.abund
+</span></code></pre></div>
+<p>Create an output data location
+<div class="highlight"><pre><span></span><code><span id="__span-62-1"><a href="#__codelineno-62-1" id="__codelineno-62-1" name="__codelineno-62-1"></a>mkdir<span class="w"> </span>output
+</span></code></pre></div></p>
+<p>Create a submit script using singularity on the cluster</p>
+<p>singularity_submit.sh
+<div class="highlight"><pre><span></span><code><span id="__span-63-1"><a href="#__codelineno-63-1" id="__codelineno-63-1" name="__codelineno-63-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-63-2"><a href="#__codelineno-63-2" id="__codelineno-63-2" name="__codelineno-63-2"></a>
+</span><span id="__span-63-3"><a href="#__codelineno-63-3" id="__codelineno-63-3" name="__codelineno-63-3"></a><span class="c1">#SBATCH --job-name=maxbin2_test</span>
+</span><span id="__span-63-4"><a href="#__codelineno-63-4" id="__codelineno-63-4" name="__codelineno-63-4"></a><span class="c1">#SBATCH -o sing_test.out</span>
+</span><span id="__span-63-5"><a href="#__codelineno-63-5" id="__codelineno-63-5" name="__codelineno-63-5"></a><span class="c1">#SBATCH -e sing_test.err</span>
+</span><span id="__span-63-6"><a href="#__codelineno-63-6" id="__codelineno-63-6" name="__codelineno-63-6"></a><span class="c1">#SBATCH --time=00:10:00</span>
+</span><span id="__span-63-7"><a href="#__codelineno-63-7" id="__codelineno-63-7" name="__codelineno-63-7"></a><span class="c1">#SBATCH --partition=parallel</span>
+</span><span id="__span-63-8"><a href="#__codelineno-63-8" id="__codelineno-63-8" name="__codelineno-63-8"></a><span class="c1">#SBATCH --ntasks=4</span>
+</span><span id="__span-63-9"><a href="#__codelineno-63-9" id="__codelineno-63-9" name="__codelineno-63-9"></a><span class="c1">#SBATCH --mem=4G</span>
+</span><span id="__span-63-10"><a href="#__codelineno-63-10" id="__codelineno-63-10" name="__codelineno-63-10"></a>
+</span><span id="__span-63-11"><a href="#__codelineno-63-11" id="__codelineno-63-11" name="__codelineno-63-11"></a>module<span class="w"> </span>load<span class="w"> </span>singularity
+</span><span id="__span-63-12"><a href="#__codelineno-63-12" id="__codelineno-63-12" name="__codelineno-63-12"></a>
+</span><span id="__span-63-13"><a href="#__codelineno-63-13" id="__codelineno-63-13" name="__codelineno-63-13"></a>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>maxbin2_2.2.6.sif<span class="w"> </span>run_MaxBin.pl<span class="w"> </span>-contig<span class="w"> </span>rawdata/20x.scaffold<span class="w"> </span>-abund<span class="w"> </span>rawdata/20x.abund<span class="w"> </span>-out<span class="w"> </span>output/20x.out<span class="w"> </span>-thread<span class="w"> </span><span class="m">4</span><span class="w"> </span>
+</span></code></pre></div></p>
+<h3 id="singularitysandbox-example">Singularity/Sandbox Example<a class="headerlink" href="#singularitysandbox-example" title="Permanent link">¶</a></h3>
+<p>This lets you have root inside a container <em>locally</em> and make changes to it.  This is really handy for determining how to setuop your container.  While you can convert the sandbox container to one you can run on Rāpoi, I suggest you <em>don't do this</em>. Use the sandbox to figure out how you need to configure your container, what packages to install, config files to change etc. Then create a <code>.def</code> file that contains all the nessesary steps without the need to use the sandbox - this will make your work more reproducable and easier to share with others.</p>
+<p>example.def
+<div class="highlight"><pre><span></span><code><span id="__span-64-1"><a href="#__codelineno-64-1" id="__codelineno-64-1" name="__codelineno-64-1"></a>BootStrap:<span class="w"> </span>library
+</span><span id="__span-64-2"><a href="#__codelineno-64-2" id="__codelineno-64-2" name="__codelineno-64-2"></a>From:<span class="w"> </span>ubuntu:16.04
+</span><span id="__span-64-3"><a href="#__codelineno-64-3" id="__codelineno-64-3" name="__codelineno-64-3"></a>
+</span><span id="__span-64-4"><a href="#__codelineno-64-4" id="__codelineno-64-4" name="__codelineno-64-4"></a>%post
+</span><span id="__span-64-5"><a href="#__codelineno-64-5" id="__codelineno-64-5" name="__codelineno-64-5"></a>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>wget<span class="w"> </span>build-essential<span class="w"> </span>
+</span><span id="__span-64-6"><a href="#__codelineno-64-6" id="__codelineno-64-6" name="__codelineno-64-6"></a>
+</span><span id="__span-64-7"><a href="#__codelineno-64-7" id="__codelineno-64-7" name="__codelineno-64-7"></a>%runscript
+</span><span id="__span-64-8"><a href="#__codelineno-64-8" id="__codelineno-64-8" name="__codelineno-64-8"></a><span class="w">    </span><span class="nb">exec</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</span><span id="__span-64-9"><a href="#__codelineno-64-9" id="__codelineno-64-9" name="__codelineno-64-9"></a>
+</span><span id="__span-64-10"><a href="#__codelineno-64-10" id="__codelineno-64-10" name="__codelineno-64-10"></a>%labels
+</span><span id="__span-64-11"><a href="#__codelineno-64-11" id="__codelineno-64-11" name="__codelineno-64-11"></a><span class="w">    </span>Author<span class="w"> </span>JaneDoe
+</span></code></pre></div></p>
+<p>Compile this <em>locally</em> with sudo and singularity.  We are using the sandbox flag to create a writable <em>container directory</em> (<code>example/</code>) on our local machine where we have sudo rights.
+<div class="highlight"><pre><span></span><code><span id="__span-65-1"><a href="#__codelineno-65-1" id="__codelineno-65-1" name="__codelineno-65-1"></a>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>--sandbox<span class="w"> </span>example/<span class="w"> </span>example.def
+</span></code></pre></div></p>
+<p>Now we can run the container we just built, but with sudo rights inside the container.  Your rights outside the container match the rights inside the container, so we need to do this with sudo.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-66-1"><a href="#__codelineno-66-1" id="__codelineno-66-1" name="__codelineno-66-1"></a>sudo<span class="w"> </span>singularity<span class="w"> </span>shell<span class="w"> </span>--writable<span class="w"> </span>example/
+</span></code></pre></div>
+<p>Inside the container we now have root and can install packages and modify files in the root directories
+<div class="highlight"><pre><span></span><code><span id="__span-67-1"><a href="#__codelineno-67-1" id="__codelineno-67-1" name="__codelineno-67-1"></a>Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>apt<span class="w"> </span>update
+</span><span id="__span-67-2"><a href="#__codelineno-67-2" id="__codelineno-67-2" name="__codelineno-67-2"></a>Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>apt<span class="w"> </span>install<span class="w"> </span>sqlite
+</span><span id="__span-67-3"><a href="#__codelineno-67-3" id="__codelineno-67-3" name="__codelineno-67-3"></a>Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>touch<span class="w"> </span>/test.txt<span class="w">  </span><span class="c1">#create an empty file in root</span>
+</span><span id="__span-67-4"><a href="#__codelineno-67-4" id="__codelineno-67-4" name="__codelineno-67-4"></a>Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span>ls<span class="w"> </span>/
+</span><span id="__span-67-5"><a href="#__codelineno-67-5" id="__codelineno-67-5" name="__codelineno-67-5"></a>Singularity<span class="w"> </span>example:~&gt;<span class="w">  </span><span class="nb">exit</span><span class="w">   </span><span class="c1">#exit container</span>
+</span></code></pre></div></p>
+<p>To run the container on Rāpoi we convert it to the default immutable image with build.  We might need sudo for this as the prior use of sudo will have created a directory that your usual user can't see every file.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-68-1"><a href="#__codelineno-68-1" id="__codelineno-68-1" name="__codelineno-68-1"></a>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>new-example-sif<span class="w"> </span>example/
+</span></code></pre></div>
+<p>You could now copy the <code>new-example-sif</code> file to Rāpoi and run it there.  However a better workflow is to use this to experiment, to find out what changes you need to make to the image and what packages you need to install.  Once you've done that, I suggest starting afresh and putting <em>everything in the.def file</em>.  That way when you return to your project in 6 months, or hand it over to someone else, there is a clear record of how the image was built.</p>
+<h3 id="singularitycustom-conda-container-idba-example">Singularity/Custom Conda Container - idba example<a class="headerlink" href="#singularitycustom-conda-container-idba-example" title="Permanent link">¶</a></h3>
+<p>In this example we'll build a singularity container using conda.  The example is building a container for idba - a genome assembler.  Idba is available in bioconda, but not as a biocontainer.  We'll build this container locally to match a local conda environment, then run it on the HPC and do an example assembly.</p>
+<h4 id="locally">Locally<a class="headerlink" href="#locally" title="Permanent link">¶</a></h4>
+<p>Make sure you have conda setup on your local machine, anaconda and miniconda are good choices.  Create a new conda environment and install idba</p>
+<div class="highlight"><pre><span></span><code><span id="__span-69-1"><a href="#__codelineno-69-1" id="__codelineno-69-1" name="__codelineno-69-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>idba
+</span><span id="__span-69-2"><a href="#__codelineno-69-2" id="__codelineno-69-2" name="__codelineno-69-2"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>idba
+</span></code></pre></div>
+<p>Export your conda environment, we will use this to build the container.
+<div class="highlight"><pre><span></span><code><span id="__span-70-1"><a href="#__codelineno-70-1" id="__codelineno-70-1" name="__codelineno-70-1"></a>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+</span></code></pre></div></p>
+<p>We will use a singularity definition, basing our build on a docker miniconda image.  There is a bunch of stuff in this file to make sure the conda environment is in the path. <em><a href="https://stackoverflow.com/questions/54678805/containerize-a-conda-environment-in-a-singularity-container">From stackoverflow</a></em></p>
+<p><em>idba.def</em>
+<div class="highlight"><pre><span></span><code><span id="__span-71-1"><a href="#__codelineno-71-1" id="__codelineno-71-1" name="__codelineno-71-1"></a>Bootstrap: docker
+</span><span id="__span-71-2"><a href="#__codelineno-71-2" id="__codelineno-71-2" name="__codelineno-71-2"></a>
+</span><span id="__span-71-3"><a href="#__codelineno-71-3" id="__codelineno-71-3" name="__codelineno-71-3"></a>From: continuumio/miniconda3
+</span><span id="__span-71-4"><a href="#__codelineno-71-4" id="__codelineno-71-4" name="__codelineno-71-4"></a>
+</span><span id="__span-71-5"><a href="#__codelineno-71-5" id="__codelineno-71-5" name="__codelineno-71-5"></a>%files
+</span><span id="__span-71-6"><a href="#__codelineno-71-6" id="__codelineno-71-6" name="__codelineno-71-6"></a>    environment.yml
+</span><span id="__span-71-7"><a href="#__codelineno-71-7" id="__codelineno-71-7" name="__codelineno-71-7"></a>
+</span><span id="__span-71-8"><a href="#__codelineno-71-8" id="__codelineno-71-8" name="__codelineno-71-8"></a>%environment
+</span><span id="__span-71-9"><a href="#__codelineno-71-9" id="__codelineno-71-9" name="__codelineno-71-9"></a>    PATH=/opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
+</span><span id="__span-71-10"><a href="#__codelineno-71-10" id="__codelineno-71-10" name="__codelineno-71-10"></a>
+</span><span id="__span-71-11"><a href="#__codelineno-71-11" id="__codelineno-71-11" name="__codelineno-71-11"></a>%post
+</span><span id="__span-71-12"><a href="#__codelineno-71-12" id="__codelineno-71-12" name="__codelineno-71-12"></a>    echo ". /opt/conda/etc/profile.d/conda.sh" &gt;&gt; ~/.bashrc
+</span><span id="__span-71-13"><a href="#__codelineno-71-13" id="__codelineno-71-13" name="__codelineno-71-13"></a>    echo "source activate $(head -1 environment.yml | cut -d' ' -f2)" &gt; ~/.bashrc
+</span><span id="__span-71-14"><a href="#__codelineno-71-14" id="__codelineno-71-14" name="__codelineno-71-14"></a>    /opt/conda/bin/conda env create -f environment.yml
+</span><span id="__span-71-15"><a href="#__codelineno-71-15" id="__codelineno-71-15" name="__codelineno-71-15"></a>
+</span><span id="__span-71-16"><a href="#__codelineno-71-16" id="__codelineno-71-16" name="__codelineno-71-16"></a>%runscript
+</span><span id="__span-71-17"><a href="#__codelineno-71-17" id="__codelineno-71-17" name="__codelineno-71-17"></a>    exec "$@"
+</span></code></pre></div></p>
+<p>Build the image
+<div class="highlight"><pre><span></span><code><span id="__span-72-1"><a href="#__codelineno-72-1" id="__codelineno-72-1" name="__codelineno-72-1"></a>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>idba.img<span class="w"> </span>idba.def
+</span></code></pre></div></p>
+<p>Now copy the idba.img and environment.yml (technically the environment file is not needed, but not having it creates a warning) to somewhere sensible on Rāpoi.</p>
+<h4 id="on-rapoi">On Rāpoi<a class="headerlink" href="#on-rapoi" title="Permanent link">¶</a></h4>
+<p>Create a data directory, so we can separate our inputs and outputs.  Download a paired end illumina read of Ecoli from S3 with wget.  The data comes from the <a href="https://www.illumina.com/informatics/sequencing-data-analysis/data-examples.html">Illumina public data library</a>
+<div class="highlight"><pre><span></span><code><span id="__span-73-1"><a href="#__codelineno-73-1" id="__codelineno-73-1" name="__codelineno-73-1"></a>mkdir data
+</span><span id="__span-73-2"><a href="#__codelineno-73-2" id="__codelineno-73-2" name="__codelineno-73-2"></a>cd data 
+</span><span id="__span-73-3"><a href="#__codelineno-73-3" id="__codelineno-73-3" name="__codelineno-73-3"></a>wget --content-disposition goo.gl/JDJTaz #sequence data
+</span><span id="__span-73-4"><a href="#__codelineno-73-4" id="__codelineno-73-4" name="__codelineno-73-4"></a>wget --content-disposition goo.gl/tt9fsn #sequence data
+</span><span id="__span-73-5"><a href="#__codelineno-73-5" id="__codelineno-73-5" name="__codelineno-73-5"></a>cd ..  #back to our project directory
+</span></code></pre></div></p>
+<p>The reads we have are paired end fastq files but idba requires a fasta file.  We can use a tool built into our container to convert them.  We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-74-1"><a href="#__codelineno-74-1" id="__codelineno-74-1" name="__codelineno-74-1"></a>module<span class="w"> </span>load<span class="w"> </span>singularity
+</span><span id="__span-74-2"><a href="#__codelineno-74-2" id="__codelineno-74-2" name="__codelineno-74-2"></a>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>fq2fa<span class="w"> </span>--merge<span class="w"> </span>--filter<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R1.fastq<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R2.fastq<span class="w"> </span>data/read.fa
+</span></code></pre></div>
+<p>Create our sbatch submission script.  Note that this sequence doesn't need a lot of memory, so we'll use 1G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
+<p><em>idba_submit.sh</em>
+<div class="highlight"><pre><span></span><code><span id="__span-75-1"><a href="#__codelineno-75-1" id="__codelineno-75-1" name="__codelineno-75-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-75-2"><a href="#__codelineno-75-2" id="__codelineno-75-2" name="__codelineno-75-2"></a>
+</span><span id="__span-75-3"><a href="#__codelineno-75-3" id="__codelineno-75-3" name="__codelineno-75-3"></a><span class="c1">#SBATCH --job-name=idba_test</span>
+</span><span id="__span-75-4"><a href="#__codelineno-75-4" id="__codelineno-75-4" name="__codelineno-75-4"></a><span class="c1">#SBATCH -o output.out</span>
+</span><span id="__span-75-5"><a href="#__codelineno-75-5" id="__codelineno-75-5" name="__codelineno-75-5"></a><span class="c1">#SBATCH -e output.err</span>
+</span><span id="__span-75-6"><a href="#__codelineno-75-6" id="__codelineno-75-6" name="__codelineno-75-6"></a><span class="c1">#SBATCH --time=00:10:00</span>
+</span><span id="__span-75-7"><a href="#__codelineno-75-7" id="__codelineno-75-7" name="__codelineno-75-7"></a><span class="c1">#SBATCH --partition=quicktest</span>
+</span><span id="__span-75-8"><a href="#__codelineno-75-8" id="__codelineno-75-8" name="__codelineno-75-8"></a><span class="c1">#SBATCH --ntasks=12</span>
+</span><span id="__span-75-9"><a href="#__codelineno-75-9" id="__codelineno-75-9" name="__codelineno-75-9"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-75-10"><a href="#__codelineno-75-10" id="__codelineno-75-10" name="__codelineno-75-10"></a>
+</span><span id="__span-75-11"><a href="#__codelineno-75-11" id="__codelineno-75-11" name="__codelineno-75-11"></a>module<span class="w"> </span>load<span class="w"> </span>singularity
+</span><span id="__span-75-12"><a href="#__codelineno-75-12" id="__codelineno-75-12" name="__codelineno-75-12"></a>
+</span><span id="__span-75-13"><a href="#__codelineno-75-13" id="__codelineno-75-13" name="__codelineno-75-13"></a>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>idba.img<span class="w"> </span>idba<span class="w"> </span>idba_ud<span class="w"> </span>-r<span class="w"> </span>data/read.fa<span class="w"> </span>-o<span class="w"> </span>output
+</span></code></pre></div></p>
+<p>Now we can submit our script to the queue with
+<div class="highlight"><pre><span></span><code><span id="__span-76-1"><a href="#__codelineno-76-1" id="__codelineno-76-1" name="__codelineno-76-1"></a>sbatch<span class="w"> </span>idba_submit.sh<span class="w"> </span>
+</span></code></pre></div></p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../managing_jobs/" title="Managing Jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../parallel_processing/" title="Parallel Processing">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../managing_jobs/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../parallel_processing/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

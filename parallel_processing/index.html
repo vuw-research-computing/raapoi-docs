@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/parallel_processing/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Parallel Processing - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Parallel Processing";
+        var mkdocs_page_input_path = "parallel_processing.md";
+        var mkdocs_page_url = "/raapoi-docs/parallel_processing/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Parallel Processing</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#job-array-example">Job Array Example</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-threaded-or-multi-processing-job-example">Multi-threaded or Multi-processing Job Example</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mpi-jobs">MPI Jobs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#openmpi-users-guide">OpenMPI users guide</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#which-versions-of-openmpi-are-working-on-rapoi">Which versions of OpenMPI are working on Rāpoi?</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues-and-workarounds">Known issues and workarounds</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Parallel Processing</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="parallel-processing">Parallel processing<a class="headerlink" href="#parallel-processing" title="Permanent link">¶</a></h1>
+<p>Running a job in parallel is a great way to utilize the power of the cluster.  So what is a parallel job/workflow?</p>
+<ul>
+<li>Loosely-coupled jobs (sometimes referred to as embarrassingly or naively parallel jobs) are processes in which multiple instances of the same program execute on multiple data files simultaneously, with each instance running independently from others on its own allocated resources (i.e. CPUs and memory). Slurm job arrays offer a simple mechanism for achieving this.</li>
+<li>Multi-threaded programs that include explicit support for shared memory processing via multiple threads of execution (e.g. Posix Threads or OpenMP) running across multiple CPU cores.</li>
+<li>Distributed memory programs that include explicit support for message passing between processes (e.g. MPI). These processes execute across multiple CPU cores and/or nodes, these are often referred to as tightly-coupled jobs.</li>
+<li>GPU (graphics processing unit) programs including explicit support for offloading to the device via languages like CUDA or OpenCL.</li>
+</ul>
+<p>It is important to understand the capabilities and limitations of an application in order to fully leverage the parallel processing options available on the cluster. For instance, many popular scientific computing languages like Python, R, and Matlab now offer packages that allow for GPU, multi-core or multithreaded processing, especially for matrix and vector operations.  If you need help with the design of your parallel workflow, send us a message in the raapoi-help Slack channel.</p>
+<h2 id="job-array-example">Job Array Example<a class="headerlink" href="#job-array-example" title="Permanent link">¶</a></h2>
+<p>Here is an example of running a job array to run 50 simultaneous processes:</p>
+<p><code>sbatch array.sh</code></p>
+<p>The contents of the array.sh batch script looks like this:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>  #!/bin/bash
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>  #SBATCH -a 1-50
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>  #SBATCH --cpus-per-task=1
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>  #SBATCH --mem-per-cpu=2G
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>  #SBATCH --time=00:10:00
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>  #SBATCH --partition=parallel
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>  #SBATCH --mail-type=BEGIN,END,FAIL
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>  #SBATCH --mail-user=me@email.com
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>  module load fastqc/0.11.7
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>  fastqc --nano -o $TMPDIR/output_dir seqfile_${SLURM_ARRAY_TASK_ID}
+</span></code></pre></div>
+<p>So what do these parameter mean?:</p>
+<ul>
+<li><em>-a</em> sets this up as a parallel array job (this sets up the "loop" that will be run</li>
+<li><em>--cpus-per-task</em> requests the number of CPUs per array task, in this case I just want one CPU per task, we will use 50 in total</li>
+<li><em>--mem-per-cpu</em> request 2GB of RAM per CPU, for this parallel job I will request a total of 100GB RAM (50 CPUs * 2GB RAM)</li>
+<li><em>--time</em> is the max run time for this job, 10 minutes in this case</li>
+<li><em>--partition</em> assigns this job to a partition</li>
+<li><em>module load fastqc/0.11.7</em>: Load software into my environment, in this case fastqc</li>
+<li><em>fastqc --nano -o $TMPDIR/output_dir seqfile</em>${SLURM_ARRAY_TASK_ID}_ Run fastqc on each input data file with the filenames seqfile_1, seqfile_2...seqfile_50</li>
+</ul>
+<p>Running the array.sh script will cause the SLURM manager to spawn 50 parallel jobs.</p>
+<hr/>
+<h2 id="multi-threaded-or-multi-processing-job-example">Multi-threaded or Multi-processing Job Example<a class="headerlink" href="#multi-threaded-or-multi-processing-job-example" title="Permanent link">¶</a></h2>
+<p>Multi-threaded or multi-processing programs are applications that are able to
+execute in parallel across multiple CPU cores within a single node using a
+shared memory execution model. In general, a multi-threaded application uses a
+single process (aka “task” in Slurm) which then spawns multiple threads of
+execution. By default, Slurm allocates 1 CPU core per task. In order to make use
+of multiple CPU cores in a multi-threaded program, one must include the
+--cpus-per-task option.  Below is an example of a multi-threaded program
+requesting 12 CPU cores per task and a total of 256GB of memory. The program itself is responsible for spawning the appropriate number of threads.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>  #!/bin/bash
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>  #SBATCH --nodes=1
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>  #SBATCH --ntasks=1
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>  #SBATCH --cpus-per-task=12 # 12 threads per task
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>  #SBATCH --time=02:00:00 # two hours
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>  #SBATCH --mem=256G
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>  #SBATCH -p bigmem
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>  #SBATCH --output=threaded.out
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>  #SBATCH --job-name=threaded
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>  #SBATCH --mail-type=BEGIN,END,FAIL
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>  #SBATCH --mail-user=me@email.com
+</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>  # Run multi-threaded application
+</span><span id="__span-1-13"><a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>  module load java/1.8.0-91
+</span><span id="__span-1-14"><a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a>  java -jar threaded-app.jar
+</span></code></pre></div>
+<hr/>
+<h2 id="mpi-jobs">MPI Jobs<a class="headerlink" href="#mpi-jobs" title="Permanent link">¶</a></h2>
+<p>Most users do not require MPI to run their jobs but many do.  Please read on if you want to learn more about using MPI for tightly-coupled jobs. See also the <a href="../advanced/OpenMPI_users_guide/">OpenMPI Users Guide</a></p>
+<p>MPI (Message Passing Interface) code require special attention within Slurm. Slurm allocates and launches MPI jobs differently depending on the version of MPI used (e.g. OpenMPI, MPICH2). We recommend using OpenMPI version 2.1.1 or later to compile your C code (using mpicc) and then using the mpirun command in a batch submit script to launch parallel MPI jobs. The example below runs MPI code compiled by OpenMPI 2.1.1:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>  #!/bin/bash
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>  #SBATCH --nodes=3
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>  #SBATCH --tasks-per-node=8 # 8 MPI processes per node
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>  #SBATCH --time=3-00:00:00
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>  #SBATCH --mem=4G # 4 GB RAM per node
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>  #SBATCH --output=mpi_job.log
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>  #SBATCH --partition=parallel
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>  #SBATCH --constraint="IB"
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>  #SBATCH --mail-type=BEGIN,END,FAIL
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>  #SBATCH --mail-user=me@email.com
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>  module load openmpi
+</span><span id="__span-2-13"><a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a>  echo $SLURM_JOB_NODELIST
+</span><span id="__span-2-14"><a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a>  mpirun -np 24 mpiscript.o
+</span></code></pre></div>
+<p>This example requests 3 nodes and 8 tasks (i.e. processes) per node, for a total of 24 tasks.  I use this number to tell mpirun how many processes to start, -np 24</p>
+<p><em>NOTE:</em> We highly recomend adding the <code>--constraint="IB"</code> parameter to your MPI job as
+this will ensure the job is run on nodes with an Infiniband interconnect.</p>
+<p><em>ALSO NOTE:</em>  If using python or another language you will also need to add the --oversubscribe parameter to mpirun, eg.</p>
+<p><code>mpirun --oversubscribe -np 24 mpiscript.py</code></p>
+<p>More information about running MPI jobs within Slurm can be found here: <a href="http://slurm.schedmd.com/mpi_guide.html">http://slurm.schedmd.com/mpi_guide.html</a>.</p>
+<h2 id="openmpi-users-guide">OpenMPI users guide<a class="headerlink" href="#openmpi-users-guide" title="Permanent link">¶</a></h2>
+<h3 id="which-versions-of-openmpi-are-working-on-rapoi">Which versions of OpenMPI are working on Rāpoi?<a class="headerlink" href="#which-versions-of-openmpi-are-working-on-rapoi" title="Permanent link">¶</a></h3>
+<p>There are a number of versions of OpenMPI on Rāpoi, although many of these are old installations (prior to an OS update and changes to the module system) and <em>may</em> no longer work.
+Generally speaking, your best bet is to try a version which appears when you search via <code>module spider OpenMPI</code> (noting that the capital 'O M P I' is important here).
+A few examples of relatively recent version of OpenMPI which are available (as of April 2024) are <code>OpenMPI/4.1.1</code>, <code>OpenMPI/4.1.4</code> and <code>OpenMPI/4.1.6</code>.</p>
+<p>Each of these OpenMPI modules has one or more of pre-requisite modules that need to be loaded first (generally a specific version of GCC compilers).
+To find out what you need to load first for a specific version of OpenMPI you just need to check the output of <code>module spider OpenMPI/x.y.z</code> (with the appropriate values for x,y,z).
+One of the examples below shows how to use <code>OpenMPI/4.1.6</code>.
+In cases where your code utilises software from another module which also requires a specific GCC module, that will dictate which version of OpenMPI to load (i.e. whichever one depends on the same GCC version).
+Otherwise, you are free to use any desired OpenMPI module. </p>
+<h3 id="known-issues-and-workarounds">Known issues and workarounds<a class="headerlink" href="#known-issues-and-workarounds" title="Permanent link">¶</a></h3>
+<p>There is a known issue with the communication/networking interfaces with several of the installations of OpenMPI. 
+The error/warning messages occur sporadically, making it difficult to pin down and resolve, but it is likely there is a combination of internal and external factors that cause this (OpenMPI is a very complex beast).
+The warning messages take the form:
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>Failed to modify UD QP to INIT on mlx5_0: Operation not permitted
+</span></code></pre></div>
+A workaround is described below, this page will be updated in the future when a more permanent solution is found.</p>
+<p>Exectute your mpi jobs using the additional arguments:
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>mpirun<span class="w"> </span>-mca<span class="w"> </span>pml<span class="w"> </span>ucx<span class="w"> </span>-mca<span class="w"> </span>btl<span class="w"> </span><span class="s1">'^uct,ofi'</span><span class="w"> </span>-mca<span class="w"> </span>mtl<span class="w"> </span><span class="s1">'^ofi'</span><span class="w"> </span>-np<span class="w"> </span><span class="nv">$SLURM_NTASKS</span><span class="w"> </span>&lt;your<span class="w"> </span>executable&gt;
+</span></code></pre></div>
+This will ensure OpenMPI avoids trying to use the communication libraries which are problematic.
+If your executable is launched without using mpirun (i.e. it implements its own wrapper/launcher), you will instead need to set the following environment variables:
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_btl</span><span class="o">=</span><span class="s1">'^uct,ofi'</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_pml</span><span class="o">=</span><span class="s1">'ucx'</span>
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_mtl</span><span class="o">=</span><span class="s1">'^ofi'</span>
+</span></code></pre></div></p>
+<p>Software module ORCA users, sometimes, come across an error message: 
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>PML<span class="w"> </span>ucx<span class="w"> </span>cannot<span class="w"> </span>be<span class="w"> </span>selected
+</span></code></pre></div>
+To address this, update mpirun variables to: 
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>mpirun<span class="w"> </span>--mca<span class="w"> </span>btl<span class="w"> </span>^openib<span class="w"> </span>--mca<span class="w"> </span>pml<span class="w"> </span>ob1<span class="w"> </span>--mca<span class="w"> </span>osc<span class="w"> </span>ucx<span class="w"> </span>-np<span class="w"> </span>...&lt;remaining<span class="w"> </span>params&gt;<span class="sb">`</span>
+</span></code></pre></div></p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../examples/" title="Examples and User Guides"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../advanced_examples/" title="Advanced Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../examples/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../advanced_examples/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
