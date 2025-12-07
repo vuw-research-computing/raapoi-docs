@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="None" name="description"/><link href="https://vuw-research-computing.github.io/raapoi-docs/" rel="canonical"/>
+<link href="img/favicon.ico" rel="shortcut icon"/>
+<title>Rāpoi Cluster Documentation</title>
+<link href="css/theme.css" rel="stylesheet"/>
+<link href="css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="extra.css" rel="stylesheet"/>
+<link href="css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/raapoi-docs/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="./search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Overview</a>
+<ul class="current">
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href=".">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="."></a></li>
+<li class="breadcrumb-item active">Overview</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<p><img alt="Rapoi_logo" src="img/Raapoi_logo.png"/></p>
+<h1 id="welcome-to-the-rapoi-hpc-documentation">Welcome to the Rāpoi HPC documentation!<a class="headerlink" href="#welcome-to-the-rapoi-hpc-documentation" title="Permanent link">¶</a></h1>
+<p>The Rāpoi HPC (High Performance Computing) system, also known as Raapoi, is a computing resource provided by Te Herenga Waka that allows you to run large and complex computing tasks. The cluster uses the Slurm resource manager to schedule jobs and allocate resources, such as CPU, memory, and time, to each job. It's important to carefully consider how much of these resources you need for your job, as requesting too little can result in your job terminating prematurely or running slowly, while requesting too much may unnecessarily delay the execution of other jobs.</p>
+<p>Rāpoi consists of different partitions, each of which is a group of compute nodes with a specific hardware configuration. The partition you use for your job will depend on the type of work or task you want to submit.</p>
+<p>To customize your computing environment, Rāpoi uses the module system, which allows you to easily access the applications and programming languages you need.</p>
+<p>In this documentation, you will find all the information you need to get started with running jobs on the Rāpoi HPC Cluster. If you need more help, check out the <a href="training/">training</a> tutorials, which provide step-by-step instructions for popular applications and languages, or the <a href="examples/">examples</a> section for simpler examples.</p>
+<p>If you notice any errors or outdated information in the documentation, please don't hesitate to create an <a href="https://github.com/vuw-research-computing/raapoi-docs/issues">issue</a> on the <a href="https://github.com/vuw-research-computing/raapoi-docs">documentation github page</a> or submit a pull request to improve the documentation.</p>
+<p>Visit the <a href="https://uwrc.slack.com">Rāpoi Slack Channel</a> for help, software requests or to communicate with others in the Rāpoi community. The Slack Channel should be the first place you go for help with issues related to the HPC. (Please do not contact Digital Solutions for help with issues related to Rāpoi!)</p>
+<p>You can also find more information about the current Rāpoi hardware <a href="hpclayout/">layout</a>.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-right" href="accessing_the_cluster/" title="Accessing the Cluster">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="accessing_the_cluster/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>var base_url = ".";</script>
+<script src="js/theme_extra.js"></script>
+<script src="js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-12-07 23:47:12.367247+00:00
+-->

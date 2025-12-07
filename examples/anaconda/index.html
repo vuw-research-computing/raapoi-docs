@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/examples/anaconda/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Anaconda - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Anaconda";
+        var mkdocs_page_input_path = "examples/anaconda.md";
+        var mkdocs_page_url = "/raapoi-docs/examples/anaconda/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Anaconda</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h3 id="using-anacondaminicondaconda">Using Anaconda/Miniconda/conda<a class="headerlink" href="#using-anacondaminicondaconda" title="Permanent link">¶</a></h3>
+<p>Many users use Anaconda/Miniconda to manage software stacks.  One way to do this is to use singularity containers with the conda environment inside - this allows the conda environment to load quickly as the many small conda files are inside a container which the file system sees as one file.</p>
+<p>However, this is also an additional bit of complexity so many users just use conda outside of singularity.  You can install your own version of Anaconda/Miniconda to your home directory or scratch.  We have also got packaged versions of Anaconda/Miniconda installed with our module loading system.</p>
+<p>Anaconda has many built in packages so we will use that in our examples, but Miniconda is also available if prefer to start from a minimal initial setup.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11<span class="w"> </span>
+</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PIP_NO_CACHE_DIR</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONNOUSERSITE</span><span class="o">=</span><span class="m">1</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting the variables <code>PIP_NO_CACHE_DIR</code> and <code>PYTHONNOUSERSITE</code> prevents conda from trying to use the system python and pip. This ensures an isolated environment and avoids potential conflicts with system packages.</p>
+</div>
+<p>Let's create a new conda environment for this example, in a sensible location, I used <code>~/examples/conda/idba</code></p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>idba-example<span class="w">  </span><span class="c1"># press y for the Proceed prompt if it looks correct</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span><span class="k">$(</span>conda<span class="w"> </span>info<span class="w"> </span>--base<span class="k">)</span>/etc/profile.d/conda.sh
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>idba-example<span class="w">  </span><span class="c1">#activate our example environment.</span>
+</span></code></pre></div>
+<div class="admonition warning conda init">
+<p class="admonition-title">Warning</p>
+<p>On HPC systems, <code>conda init</code> is not recommended as it modifies your shell configuration files.  This can cause problems with the module system and other software.  Instead, use the <code>source $(conda info --base)/etc/profile.d/conda.sh</code> command to activate conda in your current shell session.</p>
+</div>
+<p>Conda environments are beyond the scope of this example, but they are a good way to contain all the dependencies and programs for a particular workflow, in this case, idba.</p>
+<p>Install idba in our conda environment.  </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that best practise is to do the install on a compute node  </p>
+</div>
+<p>We'll just do it here on the login node for now - the code will run slower on the compute nodes as a result!</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>idba
+</span></code></pre></div>
+<p>Idba is a genome assembler, we will use paired-end illumina reads of E. coli.  The data is available on an Amazon S3 bucket (a cloud storage location), and we can download it using wget.
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>mkdir<span class="w"> </span>data<span class="w">  </span><span class="c1"># put our data in a sensible location</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>data
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>wget<span class="w"> </span>--content-disposition<span class="w"> </span>goo.gl/JDJTaz<span class="w"> </span><span class="c1">#sequence data</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>wget<span class="w"> </span>--content-disposition<span class="w"> </span>goo.gl/tt9fsn<span class="w"> </span><span class="c1">#sequence data</span>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="nb">cd</span><span class="w"> </span>..<span class="w">  </span><span class="c1">#back to our project directory</span>
+</span></code></pre></div></p>
+<p>The reads we have are paired-end fastq files but idba requires a fasta file. We can use a tool installed with idba to convert them. We'll do this on the Rāpoi login node as it is a fast task that doesn't need many resources.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>fq2fa<span class="w"> </span>--merge<span class="w"> </span>--filter<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R1.fastq<span class="w"> </span>data/MiSeq_Ecoli_MG1655_50x_R2.fastq<span class="w"> </span>data/read.fa
+</span></code></pre></div>
+<p>To create our submission script we need to know the path to our conda enviroment. To get this:
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>conda<span class="w"> </span>env<span class="w"> </span>list
+</span></code></pre></div>
+You'll need to find your <code>idba-example</code> environment, and next to it is the path you'll need for your submission script.  In my case:
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># conda environments:</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1">#</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>base<span class="w">                  </span>*<span class="w">  </span>/home/username/anaconda3
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>idba-example<span class="w">          </span>/home/username/anaconda3/envs/idba-example<span class="w">  </span><span class="c1"># We need this line, it'll be different for you!</span>
+</span></code></pre></div></p>
+<p>Create our sbatch submission script. Note that this sequence doesn't need a lot of memory, so we'll use 3G. To see your usage after the job has run use <code>vuw-job-report &lt;job-id&gt;</code></p>
+<p><em>idba_submit.sh</em>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="c1">#SBATCH --job-name=idba_test</span>
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="c1">#SBATCH -o _output.out</span>
+</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="c1">#SBATCH -e _output.err</span>
+</span><span id="__span-8-6"><a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="c1">#SBATCH --time=00:5:00</span>
+</span><span id="__span-8-7"><a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="c1">#SBATCH --partition=quicktest</span>
+</span><span id="__span-8-8"><a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="c1">#SBATCH --ntasks=12</span>
+</span><span id="__span-8-9"><a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="c1">#SBATCH --mem=3G</span>
+</span><span id="__span-8-10"><a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a>module<span class="w"> </span>load<span class="w"> </span>Anaconda3/2020.11
+</span><span id="__span-8-12"><a href="#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>conda<span class="w"> </span>shell.bash<span class="w"> </span>hook<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="c1"># basically inits your conda - prevents errors like: CommandNotFoundError: Your shell has not been properly configured ...</span>
+</span><span id="__span-8-13"><a href="#__codelineno-8-13" id="__codelineno-8-13" name="__codelineno-8-13"></a>conda<span class="w"> </span>activate<span class="w"> </span>/home/username/anaconda3/envs/idba-example<span class="w">  </span><span class="c1"># We will need to activate our conda enviroment on the remote node</span>
+</span><span id="__span-8-14"><a href="#__codelineno-8-14" id="__codelineno-8-14" name="__codelineno-8-14"></a>idba<span class="w"> </span>idba_ud<span class="w"> </span>-r<span class="w"> </span>data/read.fa<span class="w"> </span>-o<span class="w"> </span>output
+</span></code></pre></div></p>
+<p>To submit our job
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sbatch<span class="w"> </span>idba_submit.sh
+</span></code></pre></div></p>
+<p>To see our job running or queuing
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</span></code></pre></div></p>
+<p>This job will take a few minutes to run, generally less than 5.
+When the job is done we can see the output in the output folder.  We can also see the std output and std err in the files <code>_output.out and _output.err</code>.  The quickest way to examine them is to <code>cat</code> the files when the run is done.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>cat<span class="w"> </span>_output.out
+</span></code></pre></div>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

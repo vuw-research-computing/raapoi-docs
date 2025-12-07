@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/examples/R_users_guide/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>R users guide - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "R users guide";
+        var mkdocs_page_input_path = "examples/R_users_guide.md";
+        var mkdocs_page_url = "/raapoi-docs/examples/R_users_guide/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">R users guide</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="r-users-guide">R users guide<a class="headerlink" href="#r-users-guide" title="Permanent link">¶</a></h2>
+<h3 id="which-versions-of-r-are-working-on-rapoi">Which versions of R are working on Rāpoi?<a class="headerlink" href="#which-versions-of-r-are-working-on-rapoi" title="Permanent link">¶</a></h3>
+<p>There are a number of versions of R on Rāpoi, although many of these are old installations (prior to an OS update and changes to the module system) and no longer work.
+There are three relatively recent versions of R which currently work (as of April 2024), these are <code>R/3.6.3</code>, <code>R/4.1.0</code> and <code>R/4.2.0</code>.
+Each of these modules has a couple of pre-requisite modules that need to be loaded prior to loading the R module. 
+To find out what you need to load first you just need to check the output of <code>module spider R/x.y.z</code> (with the appropriate values for x,y,z).
+The following example shows how to use <code>R/4.2.0</code>.</p>
+<h3 id="loading-r-packages-running-a-simple-job">Loading R packages &amp; running a simple job<a class="headerlink" href="#loading-r-packages-running-a-simple-job" title="Permanent link">¶</a></h3>
+<p>First login to Rāpoi and load the R module:
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>module<span class="w"> </span>purge<span class="w">                         </span><span class="c1"># clean/reset your environment</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>module<span class="w"> </span>load<span class="w"> </span>config<span class="w">                   </span><span class="c1"># reload utilities such as vuw-job-report</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span><span class="c1"># pre-requisites for the new R module</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0<span class="w">   </span>
+</span></code></pre></div></p>
+<p>Then run R on the command line:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>R
+</span></code></pre></div>
+<p>Test library existence:
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></code></pre></div>
+This should load the package, and give some output like this:</p>
+<p><div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>──<span class="w"> </span><span class="n">Attaching</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span>────────────────────────────<span class="w"> </span><span class="n">tidyverse</span><span class="w"> </span><span class="m">1.3</span><span class="n">.</span><span class="m">1</span><span class="w"> </span>──
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>✔<span class="w"> </span><span class="n">ggplot2</span><span class="w"> </span><span class="m">3.3</span><span class="n">.</span><span class="m">5</span><span class="w">     </span>✔<span class="w"> </span><span class="n">purrr</span><span class="w">   </span><span class="m">0.3</span><span class="n">.</span><span class="m">4</span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>✔<span class="w"> </span><span class="n">tibble</span><span class="w">  </span><span class="m">3.1</span><span class="n">.</span><span class="m">6</span><span class="w">     </span>✔<span class="w"> </span><span class="n">dplyr</span><span class="w">   </span><span class="m">1.0</span><span class="n">.</span><span class="m">8</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>✔<span class="w"> </span><span class="n">tidyr</span><span class="w">   </span><span class="m">1.2</span><span class="n">.</span><span class="m">0</span><span class="w">     </span>✔<span class="w"> </span><span class="n">stringr</span><span class="w"> </span><span class="m">1.4</span><span class="n">.</span><span class="m">0</span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>✔<span class="w"> </span><span class="n">readr</span><span class="w">   </span><span class="m">2.1</span><span class="n">.</span><span class="m">2</span><span class="w">     </span>✔<span class="w"> </span><span class="n">forcats</span><span class="w"> </span><span class="m">0.5</span><span class="n">.</span><span class="m">1</span>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>──<span class="w"> </span><span class="n">Conflicts</span><span class="w"> </span>───────────────────────────────<span class="w"> </span><span class="nf">tidyverse_conflicts</span><span class="p">()</span><span class="w"> </span>──
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>✖<span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">filter</span><span class="p">()</span><span class="w"> </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">filter</span><span class="p">()</span>
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>✖<span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">lag</span><span class="p">()</span><span class="w">    </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">lag</span><span class="p">()</span>
+</span></code></pre></div>
+(These conflicts are normal and can be ignored.)</p>
+<p>To quit R, type:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">q</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Next create a bash submission script called <code>r_submit.sh</code> (or another name of your choice) using your preferred text editor, e.g. nano.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1">#</span>
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">#SBATCH --job-name=r_test</span>
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1">#SBATCH -o r_test.out</span>
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="c1">#SBATCH -e r_test.err</span>
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c1">#</span>
+</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1">#SBATCH --cpus-per-task=2 #Note: you are always allocated an even number of cpus</span>
+</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="c1">#SBATCH --mem=1G</span>
+</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="c1">#SBATCH --time=10:00</span>
+</span><span id="__span-5-10"><a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>module<span class="w"> </span>purge
+</span><span id="__span-5-12"><a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1
+</span><span id="__span-5-13"><a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0<span class="w">   </span>
+</span><span id="__span-5-14"><a href="#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a href="#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a>Rscript<span class="w"> </span>mytest.R
+</span></code></pre></div>
+<p>Save this to the current working directory, and then create another file using your preferred text editor called <code>mytest.R</code> (or another name of your choice) containing the following R commands:
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nf">sprintf</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
+</span></code></pre></div>
+then run it with the previously written bash script:<br/>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sbatch<span class="w"> </span>r_submit.sh<span class="w"> </span>
+</span></code></pre></div>
+This submits a task that should execute quickly and create files in the directory from which it was run.
+Examine <code>r_test.out</code>. You can use an editor like nano, vi or emacs, or you can just <code>cat</code> or <code>less</code> the file to see its contents on the terminal. You should see:
+<code>"Hello World"</code></p>
+<h3 id="installing-additional-r-packagesextensions-in-your-local-user-directory">Installing additional R packages/extensions in your local user directory<a class="headerlink" href="#installing-additional-r-packagesextensions-in-your-local-user-directory" title="Permanent link">¶</a></h3>
+<p>If you are in need of additional R packages which are not included in the R installation, you may intall them into your user directory.</p>
+<p>Start by launching an R session
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>module<span class="w"> </span>purge
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>R
+</span></code></pre></div>
+Then, supposing you want to install a package from CRAN named "A3". 
+If this is the first time you are attempting to install local packages for this R version then the steps look something like this.
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">library</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span><span class="w"> </span><span class="c1"># confirm that foo is not already available</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">'A3'</span><span class="p">)</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">Warning</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"A3"</span><span class="p">)</span><span class="w"> </span><span class="o">:</span>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span><span class="s">'lib = "/home/software/EasyBuild/software/R/4.2.0-foss-2021b/lib64/R/library"'</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">writable</span>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">personal</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="n">instead</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">yes</span><span class="o">/</span><span class="n">No</span><span class="o">/</span><span class="n">cancel</span><span class="p">)</span><span class="w"> </span><span class="n">yes</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="n">Would</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">personal</span><span class="w"> </span><span class="n">library</span>
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>‘<span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">R</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">-</span><span class="n">library</span><span class="o">/</span><span class="m">4.2</span>’
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="n">to</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="n">into</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">yes</span><span class="o">/</span><span class="n">No</span><span class="o">/</span><span class="n">cancel</span><span class="p">)</span><span class="w"> </span><span class="n">yes</span>
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="o">---</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">select</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">CRAN</span><span class="w"> </span><span class="n">mirror</span><span class="w"> </span><span class="kr">for</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="o">---</span>
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="n">Secure</span><span class="w"> </span><span class="n">CRAN</span><span class="w"> </span><span class="n">mirrors</span>
+</span><span id="__span-9-12"><a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="o">&lt;</span><span class="n">long</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">mirrors</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">NZ</span><span class="w"> </span><span class="n">mirror</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="m">54</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">list</span><span class="o">&gt;</span>
+</span><span id="__span-9-14"><a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="n">Selection</span><span class="o">:</span><span class="w"> </span><span class="m">54</span>
+</span><span id="__span-9-15"><a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="n">trying</span><span class="w"> </span><span class="n">URL</span><span class="w"> </span><span class="s">'https://cran.stat.auckland.ac.nz/src/contrib/A3_1.0.0.tar.gz'</span>
+</span><span id="__span-9-16"><a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="o">&lt;</span><span class="n">additional</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="n">steps...</span><span class="o">&gt;</span>
+</span></code></pre></div></p>
+<p>In future, when you run this version of R, it should automatically check the local user directory created above for installed packages. Any other packages you install in future should automatically go into this directory as well (assuming you don't play around with <code>.libPaths()</code>).</p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

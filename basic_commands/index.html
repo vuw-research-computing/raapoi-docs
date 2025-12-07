@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/basic_commands/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Basic Commands - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Basic Commands";
+        var mkdocs_page_input_path = "basic_commands.md";
+        var mkdocs_page_url = "/raapoi-docs/basic_commands/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Basic Commands</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#the-vuw-commands">The vuw Commands</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-commands">Linux Commands</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Basic Commands</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="basic-commands">Basic Commands<a class="headerlink" href="#basic-commands" title="Permanent link">¶</a></h1>
+<h3 id="the-vuw-commands">The <em>vuw</em> Commands<a class="headerlink" href="#the-vuw-commands" title="Permanent link">¶</a></h3>
+<p>In an effort to make using Rāpoi just a bit easier, CAD staff have created commands to help you view useful information.  We call these the <em>vuw</em> commands.  This is because all the commands begin with the string <em>vuw</em>.  This makes it easier to see the commands available to you.  If, at a command prompt you type <em>vuw</em> followed immediately by two <em>TAB</em> keys you will see a list of available commands beginning with <em>vuw</em>.  Go ahead and type vuw-TAB-TAB to see for yourself.</p>
+<p>The commands available as of this update are:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vuw-help</code></td>
+<td>Prints this help information</td>
+</tr>
+<tr>
+<td><code>vuw-job-report</code></td>
+<td>Provides summary information about a job</td>
+</tr>
+<tr>
+<td><code>vuw-quota</code></td>
+<td>Prints current storage quota and usage</td>
+</tr>
+<tr>
+<td><code>vuw-partitions</code></td>
+<td>Lists available partitions and compute node availability</td>
+</tr>
+<tr>
+<td><code>vuw-alljobs</code></td>
+<td>Lists all user jobs</td>
+</tr>
+<tr>
+<td><code>vuw-myjobs</code></td>
+<td>Lists your running or pending jobs</td>
+</tr>
+<tr>
+<td><code>vuw-job-history</code></td>
+<td>Shows jobs finished in the last 5 days</td>
+</tr>
+<tr>
+<td><code>vuw-job-eff</code></td>
+<td>Shows job efficiency (use <code>vuw-job-eff --help</code> for details)</td>
+</tr>
+<tr>
+<td><code>vuw-info</code></td>
+<td>Shows node resource usage and availability (use <code>vuw-info --help</code> for details)</td>
+</tr>
+<tr>
+<td><code>vuw-alloc</code></td>
+<td>Shows current usage against user accounts (use <code>vuw-alloc --help</code> for details)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are unable to use these commands (e.g. with an error message "command not found") then double check you have the "config" module loaded (i.e. enter the command <code>module load config</code>).</p>
+</div>
+<hr/>
+<h3 id="linux-commands">Linux Commands<a class="headerlink" href="#linux-commands" title="Permanent link">¶</a></h3>
+<p>Rāpoi is built using the Linux operating system. Access is primarily via command line interface (CLI) as opposed to the graphical user interfaces (GUI) that you are more familiar with (such as those on Windows or Mac) Below are a list of common commands for viewing and managing files and directories (replace the file and directory names with ones you own):</p>
+<p><strong>ls</strong> - This command lists the contents of the current directory</p>
+<ul>
+<li><em><code>ls -l</code></em> This is the same command with a flag (-l) which lists the contents with more information, including access permissions</li>
+<li><em><code>ls -a</code></em> Same ls command but this time the -a flag which will also list hidden files. Hidden files start with a . (period)</li>
+<li><em><code>ls -la</code></em> Stringing flags together</li>
+</ul>
+<p><strong>cd</strong> - This will change your location to a different directory (folder)</p>
+<ul>
+<li><em><code>cd projects/calctest_proj</code></em></li>
+<li>Typing <em><code>cd</code></em> with no arguments will take you back to your home directory</li>
+</ul>
+<p><strong>mv</strong> - This will move or rename a file</p>
+<ul>
+<li><em><code>mv project1.txt project2.txt</code></em></li>
+<li><em><code>mv project2.txt projects/calctest_proj/</code></em></li>
+</ul>
+<p><strong>cp</strong> - This allows you to copy file/s and/or directories to defined locations. The <code>cp</code> command works very much like <code>mv</code>, except it copies a file instead of moving it. 
+The general form of the command is <strong>cp <em>source destination</em></strong>, for example:</p>
+<ul>
+<li><code>cp myfile.txt myfilecopy.txt</code></li>
+</ul>
+<p>Further examples and options can be seen <a href="https://www.howtoforge.com/linux-cp-command/">here</a>.</p>
+<p><strong>rm</strong> - This will delete a file</p>
+<ul>
+<li><em><code>rm projects/calctest_proj/projects2.txt</code></em></li>
+<li><em><code>rm -r projects/calctest_proj/code</code></em>
+The <em><code>-r</code></em> flag recursively removes files and directories</li>
+</ul>
+<p><strong>mkdir</strong> - This will create a new directory</p>
+<ul>
+<li><em><code>mkdir /nfs/home/myusername/financial</code></em></li>
+</ul>
+<p>To find more detailed information about any command you can use the manpages,
+eg:  <em><code>man ls</code></em></p>
+<div class="admonition tip">
+<p class="admonition-title">Learning the Linux Shell</p>
+<ul>
+<li>
+<p>A good tutorial for using linux can be found here:
+<a href="http://linuxcommand.org/lc3_learning_the_shell.php">Learning the linux shell</a>.</p>
+</li>
+<li>
+<p><a href="http://swcarpentry.github.io/shell-novice/">Software Carpentry</a> also provides a good introduction to the shell, including <a href="http://swcarpentry.github.io/shell-novice/03-create/index.html">how to work with files and directories</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../accessing_the_cluster/" title="Accessing the Cluster"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../storage/" title="Storage and Quotas">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../accessing_the_cluster/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../storage/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

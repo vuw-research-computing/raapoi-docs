@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/partitions/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Using Partitions - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Using Partitions";
+        var mkdocs_page_input_path = "partitions.md";
+        var mkdocs_page_url = "/raapoi-docs/partitions/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Using Partitions</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#using-partitions">Using Partitions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#partition-descriptions">Partition Descriptions</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#partition-quicktest">Partition: quicktest</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partition-parallel">Partition: parallel</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partition-gpu">Partition: gpu</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partition-bigmem">Partition: bigmem</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#partition-longrun">Partition: longrun</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cluster-default-resources">Cluster Default Resources</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Using Partitions</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="partitions">Partitions<a class="headerlink" href="#partitions" title="Permanent link">¶</a></h1>
+<h2 id="using-partitions">Using Partitions<a class="headerlink" href="#using-partitions" title="Permanent link">¶</a></h2>
+<p>A partition is a collection of compute nodes, think of it as a sub-cluster or
+slice of the larger cluster.  Each partition has its own rules and
+configurations.  </p>
+<p>For example, the quicktest partition has a maximum job run-time of 5 hours, whereas the partition
+bigmem has a maximum runtime of 10 days.  Partitions can also
+limit who can run a job.  Currently any user can use any partition but there
+may come a time when certain research groups purchase their own nodes and they are
+given exclusive access.</p>
+<p>To view the partitions available to use you can type the vuw-partitions
+command, eg</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>&lt;user&gt;@raapoi-login:~$ vuw-partitions 
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>VUW CLUSTER PARTITIONS
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>quicktest*    up    5:00:00      1  down* amd01n01
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>quicktest*    up    5:00:00      4    mix amd01n[02-03]
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>quicktest*    up    5:00:00      1   idle amd01n04
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>parallel     up 10-00:00:0      1   resv spj01
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>parallel     up 10-00:00:0     24    mix amd02n[01-04],amd03n[01-04],amd04n[01-04],amd05n[01-04],amd06n[01-04]
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>parallel     up 10-00:00:0      2  alloc amd07n[03-04]
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+</span><span id="__span-0-15"><a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>gpu          up 1-00:00:00      1    mix gpu02
+</span><span id="__span-0-16"><a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>gpu          up 1-00:00:00      2   idle gpu[01,03]
+</span><span id="__span-0-17"><a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+</span><span id="__span-0-19"><a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>bigmem       up 10-00:00:0      3    mix high[01-02,04]
+</span><span id="__span-0-20"><a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>bigmem       up 10-00:00:0      1  alloc high03
+</span><span id="__span-0-21"><a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+</span><span id="__span-0-23"><a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>longrun      up 30-00:00:0      2   idle bigtmp[01-02]
+</span><span id="__span-0-24"><a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>NOTE: This utility is a wrapper for the Slurm command:
+</span><span id="__span-0-26"><a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>      sinfo -p PARTITION
+</span></code></pre></div>
+<p>Notice the STATE field, this describes the current condition of nodes within the
+partition, the most common states are defined as:</p>
+<ul>
+<li><strong>idle</strong> - nodes in an idle state have no jobs running, all resources are available
+for work</li>
+<li><strong>mix</strong> - nodes in a mixed state have some jobs running, but still have some
+resources available for work</li>
+<li><strong>alloc</strong> - nodes in an alloc state are completely full, all resources are in use.</li>
+<li><strong>drain</strong> - nodes in a drain state have some running jobs, but no new jobs can be
+run.  This is typically done before the node goes into maintenance</li>
+<li><strong>maint</strong> - node is in maintenance mode, no jobs can be submitted</li>
+<li><strong>resv</strong> - node is in a reservation.  A reservation is setup for future maintenance
+or for special purposes such as temporary dedicated access</li>
+<li><strong>down</strong> - node is down, either for maitnenance or due to failure</li>
+</ul>
+<p>Also notice the <em>TIMELIMIT</em> field, this describes the maximum runtime of a
+partition.  For example, the quicktest partition has a maximum runtime of 1
+hour and the parallel partition has a max runtime of 10 days.</p>
+<hr/>
+<h2 id="partition-descriptions">Partition Descriptions<a class="headerlink" href="#partition-descriptions" title="Permanent link">¶</a></h2>
+<h3 id="partition-quicktest">Partition: quicktest<a class="headerlink" href="#partition-quicktest" title="Permanent link">¶</a></h3>
+<p>This partition is for quick tests of code, environment, software builds or
+similar short-run jobs.  Since the max time limit is 5 hours it should not take
+long for your job to run.  This can also be used for near-on-demand interactive
+jobs.  Note that unlike the other partitions, these nodes have intel cpus.</p>
+<ul>
+<li>Quicktest nodes available: 6</li>
+<li>Maximum CPU available per task: 64</li>
+<li>Maximum memory available per task: 128G</li>
+<li>Optimal cpu/mem ratio: 1 cpu/2G ram</li>
+<li>Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs</li>
+<li>Maximum Runtime: 5 hours</li>
+</ul>
+<h3 id="partition-parallel">Partition: parallel<a class="headerlink" href="#partition-parallel" title="Permanent link">¶</a></h3>
+<p>This partition is useful for parallel workflows, either loosely coupled or jobs
+requiring MPI or other message passing protocols for tightly bound jobs. The total number of CPU's in this partition is 6816 with 2GB ram per CPU.</p>
+<p><em>AMD nodes - amdXXnXX</em></p>
+<ul>
+<li>AMD nodes available: 28</li>
+<li>Maximum CPU available per task: 256</li>
+<li>Maximum memory available per task: 512G</li>
+<li>Optimal cpu/mem ratio: 1 cpu/2G ram</li>
+<li>Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs</li>
+<li>Maximum Runtime: 10 days</li>
+</ul>
+<h3 id="partition-gpu">Partition: gpu<a class="headerlink" href="#partition-gpu" title="Permanent link">¶</a></h3>
+<p>This partition is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)</p>
+<ul>
+<li>GPU nodes available: 3</li>
+<li>GPUs available per node: 2 (A100's)</li>
+<li>Maximum CPU available per task: 256</li>
+<li>Maximum memory available per task: 512G</li>
+<li>Optimal cpu/mem ratio: 1 cpu/2G ram</li>
+<li>Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs</li>
+<li>Maximum Runtime: 24 hours</li>
+</ul>
+<p><em>Note</em>:  To request GPU add the parameter, <code>--gres=gpu:X</code>  Where X is the number of GPUs required, typically 1:  <code>--gres=gpu:1</code> -</p>
+<h3 id="partition-bigmem">Partition: bigmem<a class="headerlink" href="#partition-bigmem" title="Permanent link">¶</a></h3>
+<p>This partition is primarily useful for jobs that require very large shared
+memory (greater than 125 GB).  These are known as memory-bound jobs.</p>
+<p><strong>NOTE:</strong> Please do not schedule jobs of less than 125GB of memory on the bigmem partition.</p>
+<ul>
+<li>Bigmem nodes available: 4 (4x1024G ram)</li>
+<li>Maximum CPU available per task: 128</li>
+<li>Maximum memory available per task: 1 TB</li>
+<li>Optimal cpu/mem ratio: 1 cpu/8G ram - note jobs here often use much more ram than this.</li>
+<li>Minimum allocated cpus: 1 - These cpus are not currently SMT enabled.</li>
+<li>Maximum Runtime: 10 days</li>
+</ul>
+<p><em>Note</em>: The bigmem nodes also each have one NVIDIA Tesla T4 GPU. These are not as powerful as the A100's in the gpu nodes, but may still be of use at times when (a) the gpu partition is particularly busy or a gpu node is down, <strong>and</strong> (b) the bigmem node is being under-utilised. (I.e. please try to avoid using these gpus when there is a high demand for jobs requiring lots of memory in the bigmem partition, at other time, please go ahead.)</p>
+<h3 id="partition-longrun">Partition: longrun<a class="headerlink" href="#partition-longrun" title="Permanent link">¶</a></h3>
+<p>This partition is useful for long running jobs (with modest resource requirements).
+The total number of CPU's in this partition is 512 with 2GB ram per CPU.</p>
+<p><em>AMD nodes - bigtmp##</em></p>
+<ul>
+<li>AMD nodes available: 2</li>
+<li>Maximum CPU available per task: 256</li>
+<li>Maximum memory available per task: 512G</li>
+<li>Optimal cpu/mem ratio: 1 cpu/2G ram</li>
+<li>Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs</li>
+<li>Maximum Runtime: 30 days</li>
+</ul>
+<hr/>
+<h2 id="cluster-default-resources">Cluster Default Resources<a class="headerlink" href="#cluster-default-resources" title="Permanent link">¶</a></h2>
+<p>Please note that if you do not specify the Partition, CPU, Memory or Time in your job request 
+(via <code>srun</code> or <code>sbatch</code>)
+you will be assigned the corresponding cluster defaults.
+The defaults are:</p>
+<ul>
+<li>Default Partition: quicktest</li>
+<li>Default CPUs: 2</li>
+<li>Default Memory: 2 GB</li>
+<li>Default Time: 1 hour</li>
+</ul>
+<p>You can change these with the --partition , -c, --mem and --time parameters, respectively, to the srun and sbatch commands.<br/>
+Please see <a href="../running_jobs/">this section</a> of the documentation for more information on how to run jobs using <code>srun</code> and <code>sbatch</code>.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../storage/" title="Storage and Quotas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../environment/" title="Preparing your Environment (modules)">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../storage/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../environment/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

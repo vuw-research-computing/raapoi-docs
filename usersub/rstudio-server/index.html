@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/usersub/rstudio-server/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Rstudio server - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Rstudio server";
+        var mkdocs_page_input_path = "usersub/rstudio-server.md";
+        var mkdocs_page_url = "/raapoi-docs/usersub/rstudio-server/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Rstudio server</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="rstudio-server">RStudio-Server<a class="headerlink" href="#rstudio-server" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Pre-requisites:</strong></p>
+<ul>
+<li><a href="https://www.notion.so/Beginner-Workshop-1-Getting-started-with-Remote-HPC-system-1c7426d58abf8016ba1bc5116eb8e5bb?pvs=21">How to set up SSH Keys?</a></li>
+<li><a href="https://www.notion.so/Request-a-Compute-Node-20d426d58abf80abbcabd81d04e95ef7?pvs=21">Request a Compute Node</a></li>
+</ul>
+<p>This tutorial assumes an interactive session requested via:
+<code>srun --mem=64G --cpus-per-task=8 -wamd01n04 --pty bash</code></p>
+</div>
+<p>RStudio-Server on the cluster instructions modifies <a href="https://rocker-project.org/use/singularity.html">[1]</a> and <a href="https://www.c4.ucsf.edu/howto/rstudio-server.html">[2]</a></p>
+<p><strong>Step 1.</strong> Create appropriate directories and pull singularity image to run RStudio-Server:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>module<span class="w"> </span>purge<span class="p">;</span><span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCC/10.2.0<span class="w"> </span>OpenMPI/4.0.5<span class="w"> </span>Singularity/3.10.2
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/singularity-images"</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>singularity<span class="w"> </span>pull<span class="w"> </span>--dir<span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/singularity-images"</span><span class="w"> </span>--name<span class="o">=</span>rstudio-server.sif<span class="w"> </span>docker://rocker/rstudio
+</span></code></pre></div>
+<p><strong>Step 2.</strong> Create bind-mounts to later use inside the container.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nv">workdir</span><span class="o">=</span><span class="nv">$HOME</span>/rstudio-server
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/<span class="o">{</span>run,tmp,var/lib/rstudio-server<span class="o">}</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/database.conf<span class="w"> </span><span class="s">&lt;&lt;END</span>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="s">provider=sqlite</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="s">directory=/var/lib/rstudio-server</span>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="s">END</span>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/rsession.sh<span class="w"> </span><span class="s">&lt;&lt;END</span>
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="s">#! /bin/sh</span>
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="s">export OMP_NUM_THREADS=${SLURM_JOB_CPUS_PER_NODE}</span>
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="s">export R_LIBS_USER=~/R/%p-library/%v-rocker-rstudio</span>
+</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="s">exec /usr/lib/rstudio-server/bin/rsession "\${@}"</span>
+</span><span id="__span-1-13"><a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="s">END</span>
+</span><span id="__span-1-14"><a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/rsession.sh
+</span><span id="__span-1-15"><a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/run:/run,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/tmp:/tmp,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/database.conf:/etc/rstudio/database.conf,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/rsession.sh:/etc/rstudio/rsession.sh,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/var/lib/rstudio-server:/var/lib/rstudio-server"</span>
+</span><span id="__span-1-16"><a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_RSTUDIO_SESSION_TIMEOUT</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-1-17"><a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_USER</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-un<span class="k">)</span>
+</span><span id="__span-1-18"><a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_PASSWORD</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">15</span><span class="k">)</span>
+</span><span id="__span-1-19"><a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="k">$(</span>/usr/bin/python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()'</span><span class="k">)</span>
+</span><span id="__span-1-20"><a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-i<span class="k">)</span>
+</span></code></pre></div>
+<p><strong>Step 3.</strong> Run this to get instructions to connect to the RStudio-Server later.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="w"> </span><span class="s">&lt;&lt;END</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="s">A new instance of the RStudio Server was just launched. To access it,</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="s">1. SSH tunnel from your workstation using the following command from a terminal on your local workstation:</span>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="s">   IP="${IP}"; PORT="${PORT}"; ssh -L ${PORT}:${IP}:${PORT} ${SINGULARITYENV_USER}@raapoi.vuw.ac.nz</span>
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="s">   and point your local web browser to &lt;http://localhost:${PORT}&gt;</span>
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="s">2. Log in to RStudio Server using the following credentials:</span>
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="s">   user: ${SINGULARITYENV_USER}</span>
+</span><span id="__span-2-14"><a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="s">   password: ${SINGULARITYENV_PASSWORD}</span>
+</span><span id="__span-2-15"><a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="s">When done, make sure to terminate everything by:</span>
+</span><span id="__span-2-17"><a href="#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a href="#__codelineno-2-18" id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="s">1. Exit the RStudio Session ("power" button in the top right corner of the RStudio window)</span>
+</span><span id="__span-2-19"><a href="#__codelineno-2-19" id="__codelineno-2-19" name="__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a href="#__codelineno-2-20" id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="s">2. Cancel the job by issuing the following command on the login node:</span>
+</span><span id="__span-2-21"><a href="#__codelineno-2-21" id="__codelineno-2-21" name="__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a href="#__codelineno-2-22" id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="s">      scancel -f ${SLURM_JOB_ID}</span>
+</span><span id="__span-2-23"><a href="#__codelineno-2-23" id="__codelineno-2-23" name="__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a href="#__codelineno-2-24" id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="s">END</span>
+</span></code></pre></div>
+<p><strong>Step 4.</strong> Finally, start RStudio-Server</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">[</span>user@amd01n04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--cleanenv<span class="w"> </span>--scratch<span class="w"> </span>/run,/tmp,/var/lib/rstudio-server<span class="w"> </span>--workdir<span class="w"> </span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/singularity-images/rstudio-server.sif<span class="w"> </span>rserver<span class="w"> </span>--www-port<span class="w"> </span><span class="si">${</span><span class="nv">PORT</span><span class="si">}</span><span class="w"> </span>--auth-none<span class="o">=</span><span class="m">0</span><span class="w"> </span>--auth-pam-helper-path<span class="o">=</span>pam-helper<span class="w"> </span>--auth-stay-signed-in-days<span class="o">=</span><span class="m">30</span><span class="w"> </span>--auth-timeout-minutes<span class="o">=</span><span class="m">0</span><span class="w"> </span>--server-user<span class="o">=</span><span class="k">$(</span>whoami<span class="k">)</span><span class="w"> </span>--rsession-path<span class="o">=</span>/etc/rstudio/rsession.sh
+</span></code></pre></div>
+<p><strong>Step 5.</strong> Inside a new terminal on your personal device, create a tunnel following the instructions of the above command.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">[</span>user@personal-device:~<span class="o">]</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">PORT</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span>ssh<span class="w"> </span>-L<span class="w"> </span><span class="si">${</span><span class="nv">PORT</span><span class="si">}</span>:<span class="si">${</span><span class="nv">IP</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">SINGULARITYENV_USER</span><span class="si">}</span>@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to note down output of the environment variables above.</p>
+</div>
+<p>Once the tunnel is set up successfully, go to your browser and with the port from the above output:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>http://localhost:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span>/
+</span></code></pre></div>
+<p>For running this inside a batch script, submit the following via sbatch.</p>
+<p><code>submit.sl</code> </p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="ch">#! /bin/bash</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="c1">#SBATCH --time=00-01:00:00</span>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="c1">#SBATCH --ntasks=2</span>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1">#SBATCH --mem=8G</span>
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="c1">#SBATCH --output=rstudio-server.%j</span>
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="c1">#SBATCH --error=rstudio-server.%j.err</span>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="c1">#SBATCH --export=NONE</span>
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="c1"># customize --output path as appropriate (to a directory readable only by the user!)</span>
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="c1"># Load Singularity module</span>
+</span><span id="__span-6-11"><a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a>module<span class="w"> </span>purge
+</span><span id="__span-6-12"><a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/10.2.0<span class="w"> </span>OpenMPI/4.0.5<span class="w"> </span>Singularity/3.10.2
+</span><span id="__span-6-13"><a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a href="#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="c1"># Create temporary directory to be populated with directories to bind-mount in the container</span>
+</span><span id="__span-6-15"><a href="#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="c1"># where writable file systems are necessary. Adjust path as appropriate for your computing environment.</span>
+</span><span id="__span-6-16"><a href="#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="nv">workdir</span><span class="o">=</span><span class="nv">$HOME</span>/rstudio-server
+</span><span id="__span-6-17"><a href="#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a href="#__codelineno-6-18" id="__codelineno-6-18" name="__codelineno-6-18"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/<span class="o">{</span>run,tmp,var/lib/rstudio-server<span class="o">}</span>
+</span><span id="__span-6-19"><a href="#__codelineno-6-19" id="__codelineno-6-19" name="__codelineno-6-19"></a>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-6-20"><a href="#__codelineno-6-20" id="__codelineno-6-20" name="__codelineno-6-20"></a>cat<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/database.conf<span class="w"> </span><span class="s">&lt;&lt;END</span>
+</span><span id="__span-6-21"><a href="#__codelineno-6-21" id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="s">provider=sqlite</span>
+</span><span id="__span-6-22"><a href="#__codelineno-6-22" id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="s">directory=/var/lib/rstudio-server</span>
+</span><span id="__span-6-23"><a href="#__codelineno-6-23" id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="s">END</span>
+</span><span id="__span-6-24"><a href="#__codelineno-6-24" id="__codelineno-6-24" name="__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a href="#__codelineno-6-25" id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="c1"># Set OMP_NUM_THREADS to prevent OpenBLAS (and any other OpenMP-enhanced</span>
+</span><span id="__span-6-26"><a href="#__codelineno-6-26" id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="c1"># libraries used by R) from spawning more threads than the number of processors</span>
+</span><span id="__span-6-27"><a href="#__codelineno-6-27" id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="c1"># allocated to the job.</span>
+</span><span id="__span-6-28"><a href="#__codelineno-6-28" id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="c1">#</span>
+</span><span id="__span-6-29"><a href="#__codelineno-6-29" id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="c1"># Set R_LIBS_USER to a path specific to Rocker/RStudio to avoid conflicts with</span>
+</span><span id="__span-6-30"><a href="#__codelineno-6-30" id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="c1"># personal libraries from any R installation in the host environment</span>
+</span><span id="__span-6-31"><a href="#__codelineno-6-31" id="__codelineno-6-31" name="__codelineno-6-31"></a>
+</span><span id="__span-6-32"><a href="#__codelineno-6-32" id="__codelineno-6-32" name="__codelineno-6-32"></a>cat<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/rsession.sh<span class="w"> </span><span class="s">&lt;&lt;END</span>
+</span><span id="__span-6-33"><a href="#__codelineno-6-33" id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="s">#! /bin/sh</span>
+</span><span id="__span-6-34"><a href="#__codelineno-6-34" id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="s">export OMP_NUM_THREADS=${SLURM_JOB_CPUS_PER_NODE}</span>
+</span><span id="__span-6-35"><a href="#__codelineno-6-35" id="__codelineno-6-35" name="__codelineno-6-35"></a><span class="s">export R_LIBS_USER=~/R/%p-library/%v-rocker-rstudio</span>
+</span><span id="__span-6-36"><a href="#__codelineno-6-36" id="__codelineno-6-36" name="__codelineno-6-36"></a><span class="s">exec /usr/lib/rstudio-server/bin/rsession "\${@}"</span>
+</span><span id="__span-6-37"><a href="#__codelineno-6-37" id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="s">END</span>
+</span><span id="__span-6-38"><a href="#__codelineno-6-38" id="__codelineno-6-38" name="__codelineno-6-38"></a>
+</span><span id="__span-6-39"><a href="#__codelineno-6-39" id="__codelineno-6-39" name="__codelineno-6-39"></a>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">"</span>/rsession.sh
+</span><span id="__span-6-40"><a href="#__codelineno-6-40" id="__codelineno-6-40" name="__codelineno-6-40"></a>
+</span><span id="__span-6-41"><a href="#__codelineno-6-41" id="__codelineno-6-41" name="__codelineno-6-41"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/run:/run,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/tmp:/tmp,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/database.conf:/etc/rstudio/database.conf,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/rsession.sh:/etc/rstudio/rsession.sh,</span><span class="si">${</span><span class="nv">workdir</span><span class="si">}</span><span class="s2">/var/lib/rstudio-server:/var/lib/rstudio-server"</span>
+</span><span id="__span-6-42"><a href="#__codelineno-6-42" id="__codelineno-6-42" name="__codelineno-6-42"></a>
+</span><span id="__span-6-43"><a href="#__codelineno-6-43" id="__codelineno-6-43" name="__codelineno-6-43"></a><span class="c1"># Do not suspend idle sessions.</span>
+</span><span id="__span-6-44"><a href="#__codelineno-6-44" id="__codelineno-6-44" name="__codelineno-6-44"></a><span class="c1"># Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf</span>
+</span><span id="__span-6-45"><a href="#__codelineno-6-45" id="__codelineno-6-45" name="__codelineno-6-45"></a><span class="c1"># https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126</span>
+</span><span id="__span-6-46"><a href="#__codelineno-6-46" id="__codelineno-6-46" name="__codelineno-6-46"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_RSTUDIO_SESSION_TIMEOUT</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-6-47"><a href="#__codelineno-6-47" id="__codelineno-6-47" name="__codelineno-6-47"></a>
+</span><span id="__span-6-48"><a href="#__codelineno-6-48" id="__codelineno-6-48" name="__codelineno-6-48"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_USER</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-un<span class="k">)</span>
+</span><span id="__span-6-49"><a href="#__codelineno-6-49" id="__codelineno-6-49" name="__codelineno-6-49"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_PASSWORD</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">15</span><span class="k">)</span>
+</span><span id="__span-6-50"><a href="#__codelineno-6-50" id="__codelineno-6-50" name="__codelineno-6-50"></a><span class="c1"># Get unused socket per https://unix.stackexchange.com/a/132524</span>
+</span><span id="__span-6-51"><a href="#__codelineno-6-51" id="__codelineno-6-51" name="__codelineno-6-51"></a><span class="c1"># Tiny race condition between the python &amp; singularity commands</span>
+</span><span id="__span-6-52"><a href="#__codelineno-6-52" id="__codelineno-6-52" name="__codelineno-6-52"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="k">$(</span>/usr/bin/python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()'</span><span class="k">)</span>
+</span><span id="__span-6-53"><a href="#__codelineno-6-53" id="__codelineno-6-53" name="__codelineno-6-53"></a><span class="nb">export</span><span class="w"> </span><span class="nv">IP</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-i<span class="k">)</span>
+</span><span id="__span-6-54"><a href="#__codelineno-6-54" id="__codelineno-6-54" name="__codelineno-6-54"></a>cat<span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="w"> </span><span class="s">&lt;&lt;END</span>
+</span><span id="__span-6-55"><a href="#__codelineno-6-55" id="__codelineno-6-55" name="__codelineno-6-55"></a>
+</span><span id="__span-6-56"><a href="#__codelineno-6-56" id="__codelineno-6-56" name="__codelineno-6-56"></a><span class="s">A new instance of the RStudio Server was just launched. To access it,</span>
+</span><span id="__span-6-57"><a href="#__codelineno-6-57" id="__codelineno-6-57" name="__codelineno-6-57"></a>
+</span><span id="__span-6-58"><a href="#__codelineno-6-58" id="__codelineno-6-58" name="__codelineno-6-58"></a><span class="s">1. SSH tunnel from your workstation using the following command from a terminal on your local workstation:</span>
+</span><span id="__span-6-59"><a href="#__codelineno-6-59" id="__codelineno-6-59" name="__codelineno-6-59"></a>
+</span><span id="__span-6-60"><a href="#__codelineno-6-60" id="__codelineno-6-60" name="__codelineno-6-60"></a><span class="s">   IP="${IP}"; PORT="${PORT}"; ssh -L ${PORT}:${IP}:${PORT} ${SINGULARITYENV_USER}@raapoi.vuw.ac.nz</span>
+</span><span id="__span-6-61"><a href="#__codelineno-6-61" id="__codelineno-6-61" name="__codelineno-6-61"></a>
+</span><span id="__span-6-62"><a href="#__codelineno-6-62" id="__codelineno-6-62" name="__codelineno-6-62"></a><span class="s">   and point your local web browser to &lt;http://localhost:${PORT}&gt;</span>
+</span><span id="__span-6-63"><a href="#__codelineno-6-63" id="__codelineno-6-63" name="__codelineno-6-63"></a>
+</span><span id="__span-6-64"><a href="#__codelineno-6-64" id="__codelineno-6-64" name="__codelineno-6-64"></a><span class="s">2. Log in to RStudio Server using the following credentials:</span>
+</span><span id="__span-6-65"><a href="#__codelineno-6-65" id="__codelineno-6-65" name="__codelineno-6-65"></a>
+</span><span id="__span-6-66"><a href="#__codelineno-6-66" id="__codelineno-6-66" name="__codelineno-6-66"></a><span class="s">   user: ${SINGULARITYENV_USER}</span>
+</span><span id="__span-6-67"><a href="#__codelineno-6-67" id="__codelineno-6-67" name="__codelineno-6-67"></a><span class="s">   password: ${SINGULARITYENV_PASSWORD}</span>
+</span><span id="__span-6-68"><a href="#__codelineno-6-68" id="__codelineno-6-68" name="__codelineno-6-68"></a>
+</span><span id="__span-6-69"><a href="#__codelineno-6-69" id="__codelineno-6-69" name="__codelineno-6-69"></a><span class="s">When done, make sure to terminate everything by:</span>
+</span><span id="__span-6-70"><a href="#__codelineno-6-70" id="__codelineno-6-70" name="__codelineno-6-70"></a>
+</span><span id="__span-6-71"><a href="#__codelineno-6-71" id="__codelineno-6-71" name="__codelineno-6-71"></a><span class="s">1. Exit the RStudio Session ("power" button in the top right corner of the RStudio window)</span>
+</span><span id="__span-6-72"><a href="#__codelineno-6-72" id="__codelineno-6-72" name="__codelineno-6-72"></a>
+</span><span id="__span-6-73"><a href="#__codelineno-6-73" id="__codelineno-6-73" name="__codelineno-6-73"></a><span class="s">2. Cancel the job by issuing the following command on the login node:</span>
+</span><span id="__span-6-74"><a href="#__codelineno-6-74" id="__codelineno-6-74" name="__codelineno-6-74"></a>
+</span><span id="__span-6-75"><a href="#__codelineno-6-75" id="__codelineno-6-75" name="__codelineno-6-75"></a><span class="s">      scancel -f ${SLURM_JOB_ID}</span>
+</span><span id="__span-6-76"><a href="#__codelineno-6-76" id="__codelineno-6-76" name="__codelineno-6-76"></a>
+</span><span id="__span-6-77"><a href="#__codelineno-6-77" id="__codelineno-6-77" name="__codelineno-6-77"></a><span class="s">END</span>
+</span><span id="__span-6-78"><a href="#__codelineno-6-78" id="__codelineno-6-78" name="__codelineno-6-78"></a>
+</span><span id="__span-6-79"><a href="#__codelineno-6-79" id="__codelineno-6-79" name="__codelineno-6-79"></a>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/singularity-images/rstudio-server.sif"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-80"><a href="#__codelineno-6-80" id="__codelineno-6-80" name="__codelineno-6-80"></a><span class="w">    </span>rserver<span class="w"> </span>--www-port<span class="w"> </span><span class="s2">"</span><span class="nv">$PORT</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-81"><a href="#__codelineno-6-81" id="__codelineno-6-81" name="__codelineno-6-81"></a><span class="w">            </span>--auth-none<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-82"><a href="#__codelineno-6-82" id="__codelineno-6-82" name="__codelineno-6-82"></a><span class="w">            </span>--auth-pam-helper-path<span class="o">=</span>pam-helper<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-83"><a href="#__codelineno-6-83" id="__codelineno-6-83" name="__codelineno-6-83"></a><span class="w">            </span>--auth-stay-signed-in-days<span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-84"><a href="#__codelineno-6-84" id="__codelineno-6-84" name="__codelineno-6-84"></a><span class="w">            </span>--auth-timeout-minutes<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-85"><a href="#__codelineno-6-85" id="__codelineno-6-85" name="__codelineno-6-85"></a><span class="w">            </span>--rsession-path<span class="o">=</span>/etc/rstudio/rsession.sh<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-86"><a href="#__codelineno-6-86" id="__codelineno-6-86" name="__codelineno-6-86"></a><span class="w">            </span>--server-user<span class="o">=</span><span class="s2">"</span><span class="nv">$USER</span><span class="s2">"</span>
+</span><span id="__span-6-87"><a href="#__codelineno-6-87" id="__codelineno-6-87" name="__codelineno-6-87"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'RStudio Server exited\n'</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+</span></code></pre></div>
+<p>Step 2. Once your job starts note the JOBID, read the output file for instructions to connect to the running RStudio-Server.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="o">[</span>user@raapoi-login:~<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>submit.sl<span class="p">;</span><span class="w"> </span>vuw-myjobs
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span>&lt;job_id&gt;<span class="w"> </span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="o">[</span>user@raapoi-login:~<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>rstudio-server.%j<span class="w"> </span><span class="c1"># %j is the job id </span>
+</span></code></pre></div>
+<p>For any help, please contact one of our support team members: <a href="../../support/">Support</a></p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

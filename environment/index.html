@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/environment/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Preparing your Environment (modules) - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Preparing your Environment (modules)";
+        var mkdocs_page_input_path = "environment.md";
+        var mkdocs_page_url = "/raapoi-docs/environment/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Preparing your Environment (modules)</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#searching-for-software-packages">Searching for software packages</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#searching-with-module-avail">Searching with module avail</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#searching-with-module-spider">Searching with module spider</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-software-packages">Loading software packages</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-useful-module-sub-commands">Other useful module sub-commands</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#listing-loaded-modules">Listing loaded modules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-module-whatis-and-module-show-commands">The module whatis and module show commands</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-module-keyword-command">The module keyword command</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clearingpurging-your-environment">Clearing/purging your environment</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-moduleslmod">Troubleshooting modules/lmod</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Preparing your Environment (modules)</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="enviroment-setup">Enviroment Setup<a class="headerlink" href="#enviroment-setup" title="Permanent link">¶</a></h1>
+<p>Rāpoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.</p>
+<p>Because of this, Rāpoi developers use a tool called <em>lmod</em> to allow a user to load a specific version of an application, language or library and start using it for their work. The <em>module</em> command will show you what software is available to load, and will add the software to your environment for immediate use. </p>
+<p>Entering <code>module help</code> into the command prompt will give you some basic information about all of the <code>module</code> sub-commands. 
+Here we briefly describe the most important ones.</p>
+<hr/>
+<h2 id="searching-for-software-packages">Searching for software packages<a class="headerlink" href="#searching-for-software-packages" title="Permanent link">¶</a></h2>
+<p>This section will give you a brief description on how to find which software packages are available and load them.</p>
+<h3 id="searching-with-module-avail">Searching with <code>module avail</code><a class="headerlink" href="#searching-with-module-avail" title="Permanent link">¶</a></h3>
+<p>To show all software available to load type the following:</p>
+<p><code>module avail</code></p>
+<p>This is a long list of software packages which can each be loaded immediately (i.e. without first loading pre-requisites).
+Generally each software package is listed as a path of the form <em><software name="">/<version number=""></version></software></em>, eg. <em>lua/5.3.5</em>.
+The list is separated into a few sections (via lines of dashes).
+The section of most interest has the heading 
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>--------------------<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Core<span class="w"> </span>--------------------
+</span></code></pre></div>
+The modules under this heading (or similar) are from the new module system (see <a href="../new_mod/">New Module System</a> for more extensive details).</p>
+<p>In contrast, the modules listed under the heading
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>--------------------------<span class="w"> </span>/home/software/tools/modulefiles<span class="w"> </span>--------------------------
+</span></code></pre></div>
+are from the old module system. 
+Beware that many of these older software packages in this section may no longer work.</p>
+<p>There may be other sections, depending on what modules you already have loaded.
+For example, if <code>GCC/10.3.0</code> is loaded then you will see the additional sections
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>------------<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Compiler/GCC/10.3.0<span class="w"> </span>-------------
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">   </span>Bio-SearchIO-hmmer/1.7.3<span class="w">    </span>GEOS/3.9.1<span class="w">       </span>Haploflow/1.0<span class="w">      </span>OpenMPI/4.1.1
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">   </span>Boost/1.76.0<span class="w">                </span>GSL/2.7<span class="w">          </span>OpenBLAS/0.3.15<span class="w">    </span>Subread/2.0.3
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">   </span>FlexiBLAS/3.0.4
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>----------<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Compiler/GCCcore/10.3.0<span class="w"> </span>-----------
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">   </span>Autoconf/2.71<span class="w">           </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>Python/3.9.5<span class="w">                </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>libevent/2.1.12
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">   </span>Automake/1.16.3<span class="w">                </span>Qhull/2020.2<span class="w">                       </span>libfabric/1.12.1
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">   </span>Autotools/20210128<span class="w">             </span>RE2/2022-02-01<span class="w">                     </span>libffi/3.3
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">   </span>BLIS/0.8.1<span class="w">                     </span>RapidJSON/1.1.0<span class="w">                    </span>libgeotiff/1.6.0
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">   </span>Bazel/3.7.2<span class="w">                    </span>Rust/1.52.1<span class="w">                        </span>libgit2/1.1.0
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>&lt;etc.<span class="w"> </span>many<span class="w"> </span>more<span class="w"> </span>lines...&gt;
+</span></code></pre></div>
+These sections show various additional modules for which <code>GCC/10.3.0</code> is a pre-requisite.
+Many pieces of software have one or more pre-requisites in the new module system.
+A more convenient way to search for specific pieces of software, and determine what their pre-requisite modules are, is via the <code>module spider</code> command.</p>
+<h3 id="searching-with-module-spider">Searching with <code>module spider</code><a class="headerlink" href="#searching-with-module-spider" title="Permanent link">¶</a></h3>
+<p>Suppose you want to find out which Python versions are available, you can search via the command <code>module spider Python</code>, for example:</p>
+<p><div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Python
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>--------------------------------------------------------------------------------------
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span>Python:
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>--------------------------------------------------------------------------------------
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span>Description:
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">      </span>Python<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>programming<span class="w"> </span>language<span class="w"> </span>that<span class="w"> </span>lets<span class="w"> </span>you<span class="w"> </span>work<span class="w"> </span>more<span class="w"> </span>quickly<span class="w"> </span>and<span class="w"> </span>integrate<span class="w"> </span>
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">      </span>your<span class="w"> </span>systems<span class="w"> </span>more<span class="w"> </span>effectively.
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">     </span>Versions:
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span>Python/2.7.15-bare
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span>Python/2.7.15
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">        </span>Python/2.7.16
+</span><span id="__span-3-14"><a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">        </span>Python/2.7.18
+</span><span id="__span-3-15"><a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>&lt;additional<span class="w"> </span>output<span class="w"> </span>not<span class="w"> </span>included<span class="w"> </span>here&gt;
+</span></code></pre></div>
+Note that the capital <strong>P</strong> in <code>Python</code> is important here, the <code>module spider</code> command is case-sensitive. 
+Capital <strong>P</strong> <code>Python</code> modules/packages are generally from the new module system, whereas lower case <code>python</code> modules/packages are older (and may no longer work).
+The same goes for many several other software packages such as <code>R</code> 
+(versus <code>r</code>) and <code>OpenMPI</code> (versus <code>openmpi</code>).</p>
+<p>Among the list of Python versions is <code>Python/3.9.6</code>.
+To find out how to load it we call <code>module spider</code> again with the specific Python version included, e.g.
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>Python/3.9.6
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>--------------------------------------------------------------------------------------
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">  </span>Python:<span class="w"> </span>Python/3.9.6
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>--------------------------------------------------------------------------------------
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span>Description:
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">      </span>Python<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>programming<span class="w"> </span>language<span class="w"> </span>that<span class="w"> </span>lets<span class="w"> </span>you<span class="w"> </span>work<span class="w"> </span>more<span class="w"> </span>quickly<span class="w"> </span>and<span class="w"> </span>integrate<span class="w"> </span>
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">      </span>your<span class="w"> </span>systems<span class="w"> </span>more<span class="w"> </span>effectively.
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span>You<span class="w"> </span>will<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>all<span class="w"> </span>module<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>any<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>lines<span class="w"> </span>below<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span><span class="s2">"Python/3.9.6"</span><span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>to<span class="w"> </span>load.
+</span><span id="__span-4-12"><a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">      </span>GCCcore/11.2.0
+</span><span id="__span-4-14"><a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a>&lt;additional<span class="w"> </span>output<span class="w"> </span>not<span class="w"> </span>included<span class="w"> </span>here&gt;
+</span></code></pre></div></p>
+<hr/>
+<h2 id="loading-software-packages">Loading software packages<a class="headerlink" href="#loading-software-packages" title="Permanent link">¶</a></h2>
+<p>Loading a software package is done via the command <code>module load &lt;package name&gt;</code> where <em><package name=""></package></em> should generally include the version as well.</p>
+<p>For example, the output of <code>module spider Python/3.9.6</code> (from above) tells us that in order to load this version of Python we must first load <code>GCCcore/11.2.0</code>. 
+That is, we can load this version of Python via
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>GCCcore/11.2.0
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Python/3.9.6
+</span></code></pre></div>
+If we wanted to ensure we had a clean/minimal software environment, we could start with a purge (see below for details), that is 
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>purge
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>config<span class="w"> </span>GCCcore/11.2.0
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>Python/3.9.6
+</span></code></pre></div>
+In either case, you will now be able to run Python version 3.9.6 by entering <code>python</code> at the command prompt.
+If you are intending to do some computation, you should call <code>srun --pty python</code> to start an interactive job on the quicktest node running Python.</p>
+<hr/>
+<h2 id="other-useful-module-sub-commands">Other useful module sub-commands<a class="headerlink" href="#other-useful-module-sub-commands" title="Permanent link">¶</a></h2>
+<h3 id="listing-loaded-modules">Listing loaded modules<a class="headerlink" href="#listing-loaded-modules" title="Permanent link">¶</a></h3>
+<p>To see what modules you have loaded into your environment you can run the command:</p>
+<p><code>module list</code> </p>
+<p>By default you will have the config module loaded (which makes the <em>vuw-</em> commands available) and possibly several others. 
+For example, here are the modules I have loaded in my environment when I login:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>list
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>autotools<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>gnu9/9.4.0<span class="w">    </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>ucx/1.11.2<span class="w">         </span><span class="m">7</span><span class="o">)</span><span class="w"> </span>openmpi4/4.1.1<span class="w">   </span><span class="m">9</span><span class="o">)</span><span class="w"> </span>config
+</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>prun/2.2<span class="w">    </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>hwloc/2.7.2<span class="w">   </span><span class="m">6</span><span class="o">)</span><span class="w"> </span>libfabric/1.13.0<span class="w">   </span><span class="m">8</span><span class="o">)</span><span class="w"> </span>ohpc
+</span></code></pre></div>
+<p>You can also check if a specific module is loaded via the command <code>module is-loaded &lt;package name&gt;</code>.</p>
+<h3 id="the-module-whatis-and-module-show-commands">The <code>module whatis</code> and <code>module show</code> commands<a class="headerlink" href="#the-module-whatis-and-module-show-commands" title="Permanent link">¶</a></h3>
+<p>If you want to know more about a particular module you can use the <em>whatis</em> or
+<em>show</em> subcommand.<br/>
+The output of <em>module whatis</em> will be more details for some modules than others. 
+Here is one example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>whatis<span class="w"> </span>foss/2020b
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>foss/2020b<span class="w">          </span>:<span class="w"> </span>Description:<span class="w"> </span>GNU<span class="w"> </span>Compiler<span class="w"> </span>Collection<span class="w"> </span><span class="o">(</span>GCC<span class="o">)</span><span class="w"> </span>based<span class="w"> </span>compiler<span class="w"> </span>toolchain,<span class="w"> </span>including
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w"> </span>OpenMPI<span class="w"> </span><span class="k">for</span><span class="w"> </span>MPI<span class="w"> </span>support,<span class="w"> </span>OpenBLAS<span class="w"> </span><span class="o">(</span>BLAS<span class="w"> </span>and<span class="w"> </span>LAPACK<span class="w"> </span>support<span class="o">)</span>,<span class="w"> </span>FFTW<span class="w"> </span>and<span class="w"> </span>ScaLAPACK.
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>foss/2020b<span class="w">          </span>:<span class="w"> </span>Homepage:<span class="w"> </span>https://easybuild.readthedocs.io/en/master/Common-toolchains.html#foss-toolchain
+</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a>foss/2020b<span class="w">          </span>:<span class="w"> </span>URL:<span class="w"> </span>https://easybuild.readthedocs.io/en/master/Common-toolchains.html#foss-toolchain
+</span></code></pre></div>
+<p>The output of <em>module show</em> shows the help information associated with the module/package as well as various steps which are executed when the module is loaded.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>username@raapoi-login:~$<span class="w"> </span>module<span class="w"> </span>show<span class="w"> </span>GCC/10.3.0
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>-----------------------------------------------------------------------------------------
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">   </span>/home/software/tools/eb_modulefiles/all/Core/GCC/10.3.0.lua:
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>-----------------------------------------------------------------------------------------
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a>help<span class="o">([[</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="nv">Description</span>
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="o">===========</span>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>The<span class="w"> </span>GNU<span class="w"> </span>Compiler<span class="w"> </span>Collection<span class="w"> </span>includes<span class="w"> </span>front<span class="w"> </span>ends<span class="w"> </span><span class="k">for</span><span class="w"> </span>C,<span class="w"> </span>C++,<span class="w"> </span>Objective-C,<span class="w"> </span>Fortran,<span class="w"> </span>Java,<span class="w"> </span>and<span class="w"> </span>Ada,
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w"> </span>as<span class="w"> </span>well<span class="w"> </span>as<span class="w"> </span>libraries<span class="w"> </span><span class="k">for</span><span class="w"> </span>these<span class="w"> </span>languages<span class="w"> </span><span class="o">(</span>libstdc++,<span class="w"> </span>libgcj,...<span class="o">)</span>.
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a>More<span class="w"> </span><span class="nv">information</span>
+</span><span id="__span-9-13"><a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="o">================</span>
+</span><span id="__span-9-14"><a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w"> </span>-<span class="w"> </span>Homepage:<span class="w"> </span>https://gcc.gnu.org/
+</span><span id="__span-9-15"><a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="o">]])</span>
+</span><span id="__span-9-16"><a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a>whatis<span class="o">(</span><span class="s2">"Description: The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,</span>
+</span><span id="__span-9-17"><a href="#__codelineno-9-17" id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="s2"> as well as libraries for these languages (libstdc++, libgcj,...)."</span><span class="o">)</span>
+</span><span id="__span-9-18"><a href="#__codelineno-9-18" id="__codelineno-9-18" name="__codelineno-9-18"></a>whatis<span class="o">(</span><span class="s2">"Homepage: https://gcc.gnu.org/"</span><span class="o">)</span>
+</span><span id="__span-9-19"><a href="#__codelineno-9-19" id="__codelineno-9-19" name="__codelineno-9-19"></a>whatis<span class="o">(</span><span class="s2">"URL: https://gcc.gnu.org/"</span><span class="o">)</span>
+</span><span id="__span-9-20"><a href="#__codelineno-9-20" id="__codelineno-9-20" name="__codelineno-9-20"></a>conflict<span class="o">(</span><span class="s2">"GCC"</span><span class="o">)</span>
+</span><span id="__span-9-21"><a href="#__codelineno-9-21" id="__codelineno-9-21" name="__codelineno-9-21"></a>load<span class="o">(</span><span class="s2">"GCCcore/10.3.0"</span><span class="o">)</span>
+</span><span id="__span-9-22"><a href="#__codelineno-9-22" id="__codelineno-9-22" name="__codelineno-9-22"></a>load<span class="o">(</span><span class="s2">"binutils/2.36.1"</span><span class="o">)</span>
+</span><span id="__span-9-23"><a href="#__codelineno-9-23" id="__codelineno-9-23" name="__codelineno-9-23"></a>prepend_path<span class="o">(</span><span class="s2">"MODULEPATH"</span>,<span class="s2">"/home/software/tools/eb_modulefiles/all/Compiler/GCC/10.3.0"</span><span class="o">)</span>
+</span><span id="__span-9-24"><a href="#__codelineno-9-24" id="__codelineno-9-24" name="__codelineno-9-24"></a>setenv<span class="o">(</span><span class="s2">"EBROOTGCC"</span>,<span class="s2">"/home/software/EasyBuild/software/GCCcore/10.3.0"</span><span class="o">)</span>
+</span><span id="__span-9-25"><a href="#__codelineno-9-25" id="__codelineno-9-25" name="__codelineno-9-25"></a>setenv<span class="o">(</span><span class="s2">"EBVERSIONGCC"</span>,<span class="s2">"10.3.0"</span><span class="o">)</span>
+</span><span id="__span-9-26"><a href="#__codelineno-9-26" id="__codelineno-9-26" name="__codelineno-9-26"></a>setenv<span class="o">(</span><span class="s2">"EBDEVELGCC"</span>,<span class="s2">"/home/software/EasyBuild/software/GCC/10.3.0/easybuild/Core-GCC-10.3.0-easybuild-devel"</span><span class="o">)</span>
+</span></code></pre></div>
+<p>Note that both the <em>whatis</em> and <em>show</em> commands will only work if you have loaded the pre-requisites of the module/package you are looking up.</p>
+<h3 id="the-module-keyword-command">The <code>module keyword</code> command<a class="headerlink" href="#the-module-keyword-command" title="Permanent link">¶</a></h3>
+<p>Using <code>module keyword</code> is another way to search through the module system.
+Specifically, <code>module keyword blah</code> will search through help messages and whatis descriptions to find any mention of <code>blah</code>.
+For example, if you know you want to do a search for <code>lua</code>, you can find lua packages and any packages which mention lua in their help/whatis via keyword subcommand:</p>
+<p><code>module keyword lua</code></p>
+<h3 id="clearingpurging-your-environment">Clearing/purging your environment<a class="headerlink" href="#clearingpurging-your-environment" title="Permanent link">¶</a></h3>
+<p>The command <code>module purge</code> will unload all of your modules.
+This can be quite useful to do as a first step before loading modules.
+It can help ensure you don't accidentally end up with conflicting versions of any modules (which generally gets taken care of by lmod, but can sometimes be an issue), and can help you work out a <em>minimal</em> environment that works for your desired software.</p>
+<p>If you execute <code>module purge</code> you will lose access to the <em>vuw-</em> commands, but you can reload them via <code>module load config</code>.</p>
+<p>Individual modules/packages can also be unloaded via <code>module unload &lt;package name&gt;</code>.</p>
+<h2 id="troubleshooting-moduleslmod">Troubleshooting modules/lmod<a class="headerlink" href="#troubleshooting-moduleslmod" title="Permanent link">¶</a></h2>
+<p>There are occasions where your local lmod cache may become corrupted, resulting in error messages such as <code>/usr/bin/lua: &lt;...&gt; bad argument #1 to 'next' &lt;...&gt;</code> or similar when you try to use <code>module</code> commands.
+The first thing you can try to resolve this issue is to delete your local lmod cache files <code>rm ~/.cache/lmod/*.lua</code>.
+When you next run a module command the cache files will be re-generated.
+In most cases this resolves module/lmod issues. 
+If you continue to have issues after deleting the local cache, get in touch with support people via the Rāpoi Slack channel.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../partitions/" title="Using Partitions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../new_mod/" title="New module system">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../partitions/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../new_mod/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/new_mod/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>New module system - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "New module system";
+        var mkdocs_page_input_path = "new_mod.md";
+        var mkdocs_page_url = "/raapoi-docs/new_mod/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">New module system</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#searching-for-software-with-spider">Searching for Software with Spider</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#toolchain-silo-table">Toolchain "silo" table</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#add-new-module-system-for-accounts-prior-to-march-2022">Add new module system for accounts prior to March 2022</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">New module system</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="new-module-system">New Module System<a class="headerlink" href="#new-module-system" title="Permanent link">¶</a></h1>
+<p>In 2020 we started building packages and organising them into modules<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> in a new way.  In the new system modules are organised into toolchains<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.  These toolchains were used to build the software. For most users the most important thing is these these toolchains act like software "silos". </p>
+<p>In general this restricts you to using using programs in one toolchain "silo".  This is on the face of it, is annoying.  However, it resolves some very hard to diagnose and subtle bugs that occur when you load programs that are built with different compilers - in the old system this was not transparent to you.</p>
+<p>Before you module load a toolchain the software contained within will not be visible to module loading (except via module spider).  You first need to load the compiler and MPI version the software was built with. For example, if you wanted to load <code>BioPython/1.79</code> you would first need to load <code>GCC/10.3.0</code> and <code>OpenMPI/4.1.1</code></p>
+<p>To save you needing to load both a Compiler and MPI version, the compiler and MPI versions are bundled into half yearly packs.  For example <code>GCC/10.3.0 and OpenMPI/4.1.1</code> are bundled in the meta module <code>foss/2021a</code></p>
+<div class="mermaid">graph TD;
+    LMOD["Module System"] --toolchain --- foss2020b["foss2020b <br/> GCC/10.2.0 OpenMPI/4.0.5"]
+    LMOD --toolchain --- foss2021a["foss2021a <br/> GCC/10.3.0 OpenMPI/4.1.1"]
+    foss2020b --- id3["ORCA/4.2.1"]
+    foss2020b --- id4["Singularity/3.7.3"]
+    foss2021a --- id5["Biopython/1.79"]
+    foss2021a --- id6["Haploflow/1.0"]
+</div>
+<p><br/></p>
+<p>Example loading <code>BioPython/1.7.9</code>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># loading the modules</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>module<span class="w"> </span>load<span class="w"> </span>foss/2021a<span class="w">  </span><span class="c1"># Needed for biopython to be loadable</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>module<span class="w"> </span>load<span class="w"> </span>BioPython/1.7.9
+</span></code></pre></div></p>
+<h2 id="searching-for-software-with-spider">Searching for Software with Spider<a class="headerlink" href="#searching-for-software-with-spider" title="Permanent link">¶</a></h2>
+<p>As the software is siloed into toolchains methods for finding software like <code>module avail</code> are less useful than in the old system - it will only show software loadable in the current toolchain silo, or if no toolchain silos are loaded it'll show you all the toolchains as well as software that's not tied to a toolchain.</p>
+<p>We can use <code>module spider</code> to search for software modules more broadly - it will also show what toolchain needs to be loaded first.</p>
+<p>If we wanted to load a version of netCDF, we could search for it with spider.  Note spider searches in a case sensitive manner - but it will suggest other capitalisation if other search options exist.
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>module<span class="w"> </span>spider<span class="w"> </span>netCDF
+</span></code></pre></div></p>
+<p>This returns a lot of information, but the important bit is:
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>-------------
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span>netCDF:
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>-------------
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span>Description:
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">      </span>NetCDF<span class="w"> </span><span class="o">(</span>network<span class="w"> </span>Common<span class="w"> </span>Data<span class="w"> </span>Form<span class="o">)</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>software<span class="w"> </span>libraries
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">      </span>and<span class="w"> </span>machine-independent<span class="w"> </span>data<span class="w"> </span>formats<span class="w"> </span>that<span class="w"> </span>support
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">      </span>the<span class="w"> </span>creation,<span class="w"> </span>access,<span class="w"> </span>and<span class="w"> </span>sharing<span class="w"> </span>of<span class="w"> </span>array-oriented<span class="w"> </span>scientific
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">      </span>data.<span class="w"> </span>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">     </span>Versions:
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">        </span>netCDF/4.7.1
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">        </span>netCDF/4.7.4
+</span><span id="__span-2-13"><a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span>netCDF/4.8.0
+</span><span id="__span-2-14"><a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a>--------------
+</span><span id="__span-2-16"><a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span>For<span class="w"> </span>detailed<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span><span class="s2">"netCDF"</span><span class="w"> </span>module<span class="w"> </span><span class="o">(</span>including
+</span><span id="__span-2-17"><a href="#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">  </span>how<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>the<span class="w"> </span>modules<span class="o">)</span><span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>modules<span class="w"> </span>full<span class="w"> </span>name.
+</span><span id="__span-2-18"><a href="#__codelineno-2-18" id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">  </span>For<span class="w"> </span>example:
+</span><span id="__span-2-19"><a href="#__codelineno-2-19" id="__codelineno-2-19" name="__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a href="#__codelineno-2-20" id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">     </span>$<span class="w"> </span>module<span class="w"> </span>spider<span class="w"> </span>netCDF/4.7.1
+</span><span id="__span-2-21"><a href="#__codelineno-2-21" id="__codelineno-2-21" name="__codelineno-2-21"></a>--------------
+</span></code></pre></div></p>
+<p>We have 3 versions of netCDF available in the new module system, <code>4.7.1</code>,<code>4.7.4</code> and <code>4.8.0</code>.  To see which toolchain needs to be loaded, we spider that particular version
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>module<span class="w"> </span>spider<span class="w"> </span>netCDF/4.7.1
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#returns</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>----------
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span>netCDF:<span class="w"> </span>netCDF/4.7.1
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>----------
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span>Description:
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">      </span>NetCDF<span class="w"> </span><span class="o">(</span>network<span class="w"> </span>Common<span class="w"> </span>Data<span class="w"> </span>Form<span class="o">)</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>software<span class="w"> </span>libraries<span class="w"> </span>
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">      </span>and<span class="w"> </span>machine-independent<span class="w"> </span>data<span class="w"> </span>formats<span class="w"> </span>that<span class="w"> </span>support
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">      </span>the<span class="w"> </span>creation,<span class="w"> </span>access,<span class="w"> </span>and<span class="w"> </span>sharing<span class="w"> </span>of<span class="w"> </span>array-oriented<span class="w"> </span>scientific
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">    </span>data.<span class="w"> </span>
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span>You<span class="w"> </span>will<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>all<span class="w"> </span>module<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>any<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>lines<span class="w"> </span>below<span class="w"> </span>
+</span><span id="__span-3-14"><a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span>before<span class="w"> </span>the<span class="w"> </span><span class="s2">"netCDF/4.7.1"</span><span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>available<span class="w"> </span>to<span class="w"> </span>load.
+</span><span id="__span-3-15"><a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">      </span>GCC/8.3.0<span class="w">  </span>OpenMPI/3.1.4
+</span><span id="__span-3-17"><a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span>Help:
+</span><span id="__span-3-19"><a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">      </span><span class="nv">Description</span>
+</span><span id="__span-3-21"><a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">      </span><span class="o">===========</span>
+</span><span id="__span-3-22"><a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">      </span>NetCDF<span class="w"> </span><span class="o">(</span>network<span class="w"> </span>Common<span class="w"> </span>Data<span class="w"> </span>Form<span class="o">)</span><span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>software<span class="w"> </span>libraries<span class="w"> </span>
+</span><span id="__span-3-23"><a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">       </span>and<span class="w"> </span>machine-independent<span class="w"> </span>data<span class="w"> </span>formats<span class="w"> </span>that<span class="w"> </span>support<span class="w"> </span>the<span class="w"> </span>creation,
+</span><span id="__span-3-24"><a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">       </span>access,<span class="w"> </span>and<span class="w"> </span>sharing<span class="w"> </span>of<span class="w"> </span>array-oriented<span class="w"> </span>
+</span><span id="__span-3-25"><a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">       </span>scientific<span class="w"> </span>data.
+</span><span id="__span-3-26"><a href="#__codelineno-3-26" id="__codelineno-3-26" name="__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a href="#__codelineno-3-27" id="__codelineno-3-27" name="__codelineno-3-27"></a>
+</span><span id="__span-3-28"><a href="#__codelineno-3-28" id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">      </span>More<span class="w"> </span><span class="nv">information</span>
+</span><span id="__span-3-29"><a href="#__codelineno-3-29" id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">      </span><span class="o">================</span>
+</span><span id="__span-3-30"><a href="#__codelineno-3-30" id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">       </span>-<span class="w"> </span>Homepage:<span class="w"> </span>https://www.unidata.ucar.edu/software/netcdf/
+</span></code></pre></div></p>
+<p>This gives some information about the software as well as what we need to load it, in this case <code>GCC/8.3.0</code> and <code>OpenMPI/3.1.4</code>.  We can just use that and load netcdf -
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">#Load prerequisites - the "silo"</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/8.3.0
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>module<span class="w"> </span>load<span class="w"> </span>OpenMPI/3.1.4
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1">#Load NetCDF</span>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>module<span class="w"> </span>load<span class="w"> </span>netCDF
+</span></code></pre></div></p>
+<p>Alternatively you could load the toolchain containing <code>gcc/8.3.0</code> and <code>OpenMPI/3.1.4</code> - <code>foss/2019b</code>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">#Load prerequisites - the "silo"</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>module<span class="w"> </span>load<span class="w"> </span>foss/2019b
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1">#Load NetCDF</span>
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>module<span class="w"> </span>load<span class="w"> </span>netCDF
+</span></code></pre></div></p>
+<hr/>
+<h2 id="toolchain-silo-table">Toolchain "silo" table<a class="headerlink" href="#toolchain-silo-table" title="Permanent link">¶</a></h2>
+<p>Toolchains currently on Rāpoi as of April 2024.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Toolchain</th>
+<th style="text-align: center;">Compiler</th>
+<th style="text-align: center;">MPI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">foss/2018b</td>
+<td style="text-align: center;">GCC/7.3.0</td>
+<td style="text-align: center;">OpenMPI/3.1.1</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2019b</td>
+<td style="text-align: center;">GCC/8.3.0</td>
+<td style="text-align: center;">OpenMPI/3.1.4</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2020a</td>
+<td style="text-align: center;">GCC/9.3.0</td>
+<td style="text-align: center;">OpenMPI/4.0.3</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2020b</td>
+<td style="text-align: center;">GCC/10.2.0</td>
+<td style="text-align: center;">OpenMPI/4.0.5</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2021a</td>
+<td style="text-align: center;">GCC/10.3.0</td>
+<td style="text-align: center;">OpenMPI/4.1.1</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2021b</td>
+<td style="text-align: center;">GCC/11.2.0</td>
+<td style="text-align: center;">OpenMPI/4.1.1</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2022a</td>
+<td style="text-align: center;">GCC/11.3.0</td>
+<td style="text-align: center;">OpenMPI/4.1.4</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2022b</td>
+<td style="text-align: center;">GCC/12.2.0</td>
+<td style="text-align: center;">OpenMPI/4.1.4</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2023a</td>
+<td style="text-align: center;">GCC/12.3.0</td>
+<td style="text-align: center;">OpenMPI/4.1.5</td>
+</tr>
+<tr>
+<td style="text-align: center;">foss/2023b</td>
+<td style="text-align: center;">GCC/13.2.0</td>
+<td style="text-align: center;">OpenMPI/4.1.6</td>
+</tr>
+</tbody>
+</table>
+<p>There are also toolchain versions with CUDA for use on the GPU nodes - they contain the same compiler and OpenMPI but also include a CUDA version</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Toolchain</th>
+<th style="text-align: center;">Compiler</th>
+<th style="text-align: center;">MPI</th>
+<th style="text-align: center;">CUDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">fosscuda/2019b</td>
+<td style="text-align: center;">GCC/8.3.0</td>
+<td style="text-align: center;">OpenMPI/3.1.4</td>
+<td style="text-align: center;">CUDA/10.1.243</td>
+</tr>
+<tr>
+<td style="text-align: center;">fosscuda/2020b</td>
+<td style="text-align: center;">GCC/10.2.0</td>
+<td style="text-align: center;">OpenMPI/4.0.5</td>
+<td style="text-align: center;">CUDA/11.1.1</td>
+</tr>
+</tbody>
+</table>
+<p>Lastly we have some intel compiler toolchains built.  This <em>might</em> work on the AMD nodes, but you'll have an easier time with the intel nodes.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Toolchain</th>
+<th style="text-align: center;">Compiler</th>
+<th style="text-align: center;">Intel Compiler</th>
+<th style="text-align: center;">MPI</th>
+<th style="text-align: center;">MKL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">intel/2021b</td>
+<td style="text-align: center;">GCC/11.2.0</td>
+<td style="text-align: center;">2021.4.0</td>
+<td style="text-align: center;">impi/2021.4.0</td>
+<td style="text-align: center;">imkl/2021.4.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">intel/2022a</td>
+<td style="text-align: center;">GCC/11.3.0</td>
+<td style="text-align: center;">2022.1.0</td>
+<td style="text-align: center;">impi/2021.6.0</td>
+<td style="text-align: center;">imkl/2022.1.0</td>
+</tr>
+<tr>
+<td style="text-align: center;">intel/2022.00</td>
+<td style="text-align: center;">GCC/11.2.0</td>
+<td style="text-align: center;">2022.0.1</td>
+<td style="text-align: center;">impi/2021.5.0</td>
+<td style="text-align: center;">imkl/2022.0.1</td>
+</tr>
+<tr>
+<td style="text-align: center;">intel/2022.05</td>
+<td style="text-align: center;">GCC/11.3.0</td>
+<td style="text-align: center;">2022.1.0</td>
+<td style="text-align: center;">impi/2021.6.0</td>
+<td style="text-align: center;">imkl/2022.1.0</td>
+</tr>
+</tbody>
+</table>
+<p>You can also just experimentally module load the various toolchains and list to see what the module loads to see what it contains.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">#load toolchain</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>module<span class="w"> </span>load<span class="w"> </span>foss/2020b
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="c1"># List what it loads</span>
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>module<span class="w"> </span>list
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="c1"># Returns</span>
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>config<span class="w">           </span><span class="m">6</span><span class="o">)</span><span class="w"> </span>libfabric/1.11.0<span class="w">  </span><span class="m">11</span><span class="o">)</span><span class="w"> </span>libxml2/2.9.10<span class="w">     </span><span class="m">16</span><span class="o">)</span><span class="w"> </span>FFTW/3.3.8
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">  </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>GCCcore/10.2.0<span class="w">   </span><span class="m">7</span><span class="o">)</span><span class="w"> </span>libevent/2.1.12<span class="w">   </span><span class="m">12</span><span class="o">)</span><span class="w"> </span>libpciaccess/0.16<span class="w">  </span><span class="m">17</span><span class="o">)</span><span class="w"> </span>OpenBLAS/0.3.12
+</span><span id="__span-6-11"><a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">  </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>binutils/2.35<span class="w">    </span><span class="m">8</span><span class="o">)</span><span class="w"> </span>numactl/2.0.13<span class="w">    </span><span class="m">13</span><span class="o">)</span><span class="w"> </span>hwloc/2.2.0<span class="w">        </span><span class="m">18</span><span class="o">)</span><span class="w"> </span>ScaLAPACK/2.1.0
+</span><span id="__span-6-12"><a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">  </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>&lt;b&gt;GCC/10.2.0&lt;/b&gt;<span class="w">       </span><span class="m">9</span><span class="o">)</span><span class="w"> </span>XZ/5.2.5<span class="w">          </span><span class="m">14</span><span class="o">)</span><span class="w"> </span>PMIx/3.1.5<span class="w">         </span><span class="m">19</span><span class="o">)</span><span class="w"> </span>foss/2020b
+</span><span id="__span-6-13"><a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">  </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>UCX/1.9.0<span class="w">       </span><span class="m">10</span><span class="o">)</span><span class="w"> </span>zlib/1.2.11<span class="w">       </span><span class="m">15</span><span class="o">)</span><span class="w"> </span>&lt;b&gt;OpenMPI/4.0.5&lt;/b&gt;
+</span></code></pre></div>
+<hr/>
+<h2 id="add-new-module-system-for-accounts-prior-to-march-2022">Add new module system for accounts prior to March 2022<a class="headerlink" href="#add-new-module-system-for-accounts-prior-to-march-2022" title="Permanent link">¶</a></h2>
+<p>Users accounts setup prior to March 2022 will not automatically have the new module system loaded. You can automatically use this new module system (in parallel with the old one) by adding a line to your <code>.bashrc</code> file.  Users of zsh can make a similar change to their .zshrc file.</p>
+<p>Login to Rāpoi and backup your <code>.bashrc</code> file, then edit it to add the needed line in.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>~<span class="w">  </span><span class="c1"># change to your home directory</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>cp<span class="w"> </span>.bashrc<span class="w"> </span>.bashrc_backup<span class="w"> </span><span class="c1">#create backup of your bashrc file</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>nano<span class="w"> </span>.bashrc<span class="w">  </span><span class="c1">#open the nano editor to edit your file</span>
+</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="c1">#in nano find the line </span>
+</span><span id="__span-7-7"><a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1"># module use -a /home/software/tools/modulefiles</span>
+</span><span id="__span-7-8"><a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="c1"># it will be near the end of the file.  After that line, add the line:</span>
+</span><span id="__span-7-9"><a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a>module<span class="w"> </span>use<span class="w"> </span>/home/software/tools/eb_modulefiles/all/Core
+</span><span id="__span-7-10"><a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="c1">#press control-x to exit nano.  It will ask if you want to save the modified buffer.  Type Y to save the change.  </span>
+</span><span id="__span-7-12"><a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="c1"># It'll ask for the filename, just press enter to accept the name</span>
+</span><span id="__span-7-13"><a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="c1"># .bashrc</span>
+</span></code></pre></div>
+<p>After you have made that change logout and log back in to have the new module system loaded.  You can test it's working by loading a toolchain.
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>module<span class="w"> </span>load<span class="w"> </span>foss/2020a
+</span></code></pre></div></p>
+<p>If you run into problems, copy your .bashrc backup back to the original and try again with
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>cp<span class="w"> </span>.bashrc_backup<span class="w"> </span>.bashrc
+</span></code></pre></div></p>
+<p>Also feel free to ask for help on slack</p>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Modules are the way programs are packaged up for you to use.  We can't just install them system wide as we have hundreds of programs installed in modules, often with many versions of the same thing, they would conflict with each other.  Modules let you load just what you need. See <a href="../environment/">Preparing your environment</a> <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>The toolchain is comprised of a compiler and a version of MPI that was used to build the software.  For instance the toolchain foss/2021a uses GCC/10.3.0 and OpenMPI/4.1.1 <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../environment/" title="Preparing your Environment (modules)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../running_jobs/" title="Running Jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../environment/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../running_jobs/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script>mermaid.initialize({});</script></body>
+</html>

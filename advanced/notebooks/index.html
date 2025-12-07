@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/advanced/notebooks/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Notebooks - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Notebooks";
+        var mkdocs_page_input_path = "advanced/notebooks.md";
+        var mkdocs_page_url = "/raapoi-docs/advanced/notebooks/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Notebooks</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="starting-and-working-with-a-jupyter-notebook">Starting and Working with a Jupyter Notebook<a class="headerlink" href="#starting-and-working-with-a-jupyter-notebook" title="Permanent link">¶</a></h2>
+<p>Running Jupyter notebooks on Rāpoi is usually a two step processes.  </p>
+<ol>
+<li>First you start the jupyter server on a compute node - either via an interactive session or an sbatch job.  </li>
+<li>Then you connect to Rāpoi again via a new ssh session port forwarding the port selected by Jupter to your local machine for the web session.  </li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There is a potentially simpler method at the end of this guide using firefox and tab containers.</p>
+</div>
+<p>For general information on using Python, see the <a href="../../examples/Python_users_guide/">Python users guide</a>.</p>
+<p>The first step is getting and modifying a submission script.</p>
+<p>Example submission scripts are included at <code>/home/software/vuwrc/examples/jupyter/</code>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>notebook-bare.sh<span class="w"> </span><span class="c1"># The base notebook script - you manage your dependancies via pip</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>notebook-anaconda.sh<span class="w"> </span><span class="c1"># a version for if you prefer anaconda</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>R-notebook.sh<span class="w"> </span><span class="c1"># Using the R kernel instead</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>R-notebook-anaconda.sh<span class="w"> </span><span class="c1"># R kernel and managed by anaconda</span>
+</span></code></pre></div></p>
+<p>All these scripts will need to be copied to your working directory and modified to suit your needs.</p>
+<p>In each case you'll need to install your dependancies first - at a bare minimum you'll need Jupyter, installed either via pip or anaconda.</p>
+<p>Note if you are intending to do anything needing GPU in your notebooks,  you'll need to do all these installs in the gpu or highmem nodes as you'll likely need the relavent CUDA modules loaded during the installs.</p>
+<h3 id="notebook-baresh-example">notebook-bare.sh example<a class="headerlink" href="#notebook-baresh-example" title="Permanent link">¶</a></h3>
+<p><strong>Step 1:</strong> The best way to start jupyter is with a batch submit script.  We have created an example script.  You can copy this script from one available on the cluster, just type the following:
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>cp /home/software/vuwrc/examples/jupyter/notebook-bare.sh notebook.sh
+</span></code></pre></div>
+If you are using Anaconda and have installed it in the default location you need to use the following submit file instead:
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>cp /home/software/vuwrc/examples/jupyter/notebook-anaconda.sh notebook-anaconda.sh
+</span></code></pre></div></p>
+<p>If you have any python dependancies you will need to install them before you run your script.  You will also have to install jupyter. Currenly you'll need to do that in an interactive session.  You only need to do this once.
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>srun<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w">  </span>--mem<span class="o">=</span>8G<span class="w"> </span>--partition<span class="o">=</span>quicktest<span class="w"> </span>--time<span class="o">=</span><span class="m">0</span>-01:00:00<span class="w"> </span>--pty<span class="w"> </span>bash<span class="w"> </span><span class="c1"># get a 1 hour interactive session on quicktest</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">#prompt changes to something like </span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">#&lt;username@itl02n02&gt; you are now "on" a quicktest node</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1"># Load required module for the python version in the notebook-bare.sh</span>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>module<span class="w"> </span>load<span class="w"> </span>gompi/2022a
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>module<span class="w"> </span>load<span class="w"> </span>Python/3.10.4-bare
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env<span class="w"> </span><span class="c1"># setup python virtual env in the env directory</span>
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab<span class="w"> </span>pandas<span class="w"> </span>plotnine<span class="w"> </span><span class="c1"># install dependancies - you *must* at least install jupyter</span>
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1">#exit the interactive session</span>
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="nb">exit</span>
+</span><span id="__span-3-14"><a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="c1">#prompt changes to something like </span>
+</span><span id="__span-3-15"><a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="c1">#&lt;username@raapoi-login&gt; you are now back on the login/master node</span>
+</span></code></pre></div></p>
+<p>This script is ready to run as is, but we recommend editing it to satisfy your own CPU, memory and time requirements.  Once you have edited the file you can run it thusly:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sbatch notebook.sh
+</span></code></pre></div>
+<p>or if using Anaconda:</p>
+<p><div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sbatch notebook-anaconda.sh
+</span></code></pre></div>
+<strong>NOTE:</strong> If you copied the R notebook script, replace notebook.sh with R-notebook.sh</p>
+<p>This will submit the file to run a job.  It may take some time for the job to
+run, depending on how busy the cluster is at the time.  Once the job begins to
+run you will see some information in the file called notebook-JOBID.out (JOBID
+will be the actual jobid of this job, eg notebook-478903.out.  If you view this
+file (users can type <code>cat notebook-JOBID.out</code> to view the file onscreen).  You will see a line such as:
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>    Or copy and paste one of these URLs:
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>        http://130.195.19.20:47033/lab?token=&lt;some string of characters&gt;
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>        http://127.0.0.1:47033/lab?token=&lt;some string of characters&gt;
+</span></code></pre></div></p>
+<p>The 2 important pieces of information here are the IP address, in this case <em>130.195.19.20</em> and the port number, <em>47033</em>.   These numbers should be different for you since the port number is random, although the IP Address may be the same since we have a limited number of compute nodes. Also notice after the ?token= you will see a random hash.  This hash is a security feature and allows you to connect to the notebook.  You will need to use these to view the notebook from your local machine.  </p>
+<p><strong>Step 2:</strong> To start working with the notebook you will need to tunnel a ssh
+session.  In your SSH tunnel you will use the cluster login node (raapoi.vuw.ac.nz)
+to connect to the compute node (in the example above the compute node is at
+address 130.195.19.20) and transfer all the traffic back and forth between your computer and the compute node).  </p>
+<p><strong>Step 2a from a Mac:</strong></p>
+<p>Open a new session window from Terminal.app or other terminal utility such as Xquartz and type the following:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>ssh -L 47033:130.195.19.20:47033 janedoe@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>Once you are at a prompt you can go to Step 3</p>
+<p><strong>Step 2b: from Windows</strong></p>
+<p>We recommend tunnelling using Git Bash, which is part of the <a href="https://gitforwindows.org/">Git for Windows project</a> or <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a>.  There are 2 methods for tunneling in Moba, one is command line, the other is GUI-based.</p>
+<p><em>Method 1 (Git Bash or MobaXterm):</em>
+Command-line, start a local Git Bash or MobaXterm terminal (or try the GUI method, below)</p>
+<p>From the command prompt type:
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>ssh -L &lt;PORT_NUMBER&gt;:&lt;IP_ADDRESS&gt;:&lt;PORT_NUMBER&gt; username@raapoi.vuw.ac.nz
+</span></code></pre></div></p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>ssh -L 47033:130.195.19.20:47033 janedoe@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>Once you are at a prompt you can go to Step 3</p>
+<p><em>Method 2 (MobaXterm):</em>
+GUI-based, go to the Tunneling menu:</p>
+<p>Now click on <em>New SSH Tunnel</em></p>
+<p>When you complete the creation of your tunnel click <strong>Start all tunnels</strong>.  Enter your password and reply "yes" to any questions asked about accepting hostkeys or opening firewalls.  You can safely exit the tunnel building menu.</p>
+<p><strong>Step 3</strong></p>
+<p>Now open your favorite web browser and then use the URL from your job output file and paste it in your browsers location bar, for example my full URL was:</p>
+<p><strong>http://130.195.19.20:47033/?token=badef11b1371945b314e2e89b9a182f68e39dc40783ed68e</strong></p>
+<p><strong>Step 4</strong></p>
+<p>One last thing you need to do is to replace the IP address with the word <em>localhost</em>.  This will allow your browser to follow the tunnel you just opened and connect to the notebook running on an engaging compute node, in my case my address line will now look like this:</p>
+<p><strong>http://localhost:47033/?token=badef11b1371945b314e2e89b9a182f68e39dc40783ed68e</strong></p>
+<p>Now you can hit return and you should see your notebook running on an Engaging compute node.</p>
+<p><strong>NOTE</strong>: when you are done with your notebook, please remember to cancel your
+job to free up the resources for others, hint: <em>scancel</em></p>
+<p>If you want more information on working with Jupyter, there is good
+documentation, here: <a href="http://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebooks</a></p>
+<h3 id="working-with-notebooks-using-firefox-tab-containers">Working with notebooks using Firefox tab containers<a class="headerlink" href="#working-with-notebooks-using-firefox-tab-containers" title="Permanent link">¶</a></h3>
+<p>There is a perhaps simpler single step process of working with jupyter notebooks.  It relies on some nice features in <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>.  Firefox has tab containers - you can have categories of tabs that are basically independent from each other with separate web cookies but importantly for our case separate proxy settings.  You will also currenly need to get the firefox add-on <a href="https://addons.mozilla.org/en-US/firefox/addon/container-proxy/">Container-Proxy</a> its <a href="https://github.com/bekh6ex/firefox-container-proxy">github page</a></p>
+<p>Setup a tab container in Firefox called something like Raapoi.  Use the container-proxy extension to assign a proxy to that tab set.  I choose 9001, but you can use any fairly high port number - note it doens't matter if many people connect on the same port.</p>
+<p>When you connect to raapoi, use ssh socks5 proxy settings.  In MacOS/linux/wsl2 
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>ssh<span class="w"> </span>-D<span class="w"> </span><span class="m">9001</span><span class="w"> </span>&lt;username&gt;@raapoi.vuw.ac.nz
+</span></code></pre></div></p>
+<ul>
+<li>putty: <a href="https://www.pwndefend.com/2022/06/25/how-to-use-putty-as-a-socks-proxy/">Use Putty as a Socks Proxy</a></li>
+<li>MobaXterm: <a href="https://stackoverflow.com/questions/63608784/mobaxterm-socks5-proxy-for-ssh">MobaXterm SOCKS5 Proxy - stackoverflow</a></li>
+</ul>
+<p>In Firefox open a new tab by holding down the new tab + button and selecting your Raapoi tab container.  Any tabs opened with that container will have all their webtraffic directed via the Rāpoi login node.  Your laptop/desktop can't directly see all the compute nodes, but the login node can.  When you start a jupyter notebook and get the message:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>    Or copy and paste one of these URLs:
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>        http://130.195.19.20:47033/lab?token=&lt;some string of characters&gt;
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a>        http://127.0.0.1:47033/lab?token=&lt;some string of characters&gt;
+</span></code></pre></div>
+<p>You can just immediatly open <code>http://130.195.19.20:47033/lab?token=&lt;some string of characters&gt;</code> in your Raapoi container tab.</p>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/mods_admins/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Notes for Moderators - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Notes for Moderators";
+        var mkdocs_page_input_path = "mods_admins.md";
+        var mkdocs_page_url = "/raapoi-docs/mods_admins/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Notes for Moderators</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#expectations-of-moderators">Expectations of moderators</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dealing-with-jobs-in-the-queue">Dealing with jobs in the queue</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-with-normal-jobs">Dealing with normal jobs</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-with-badly-behaved-jobs">Dealing with badly behaved jobs</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#limiting-users-resource-allowance-on-raapoi">Limiting user's resource allowance on Raapoi</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-maxjobs">Set maxjobs</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#show-user-cpu-restruction-details">Show User CPU restruction details</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#limiting-cpu-resources">Limiting CPU resources</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#limiting-memory-ram-resources">Limiting Memory (RAM) resources</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#limiting-gpu-resources">Limiting GPU resources</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-reservations">Using reservations</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-software-with-easybuild">Building software with EasyBuild</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-a-simple-program">Build a simple program</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#building-a-new-toolchain">Building a new toolchain</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rebuilding-an-existing-package">Rebuilding an existing package</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-easybuild-with-easybuild">Upgrading easybuild with Easybuild</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-new-version-of-schrodinger-suite">Building New Version of Schrodinger Suite</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#quick-installation">Quick Installation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modify-the-hosts-file">Modify the hosts file</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#add-new-module-file">Add new module file</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-non-easybuild-software-for-other-users">Installing non-easybuild software for other users</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pruning-unattended-vscode-server-processes">Pruning unattended vscode-server processes</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Moderators Section</li>
+<li class="breadcrumb-item active">Notes for Moderators</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="moderating-a-slurm-cluster">Moderating a Slurm Cluster<a class="headerlink" href="#moderating-a-slurm-cluster" title="Permanent link">¶</a></h1>
+<h2 id="expectations-of-moderators">Expectations of moderators<a class="headerlink" href="#expectations-of-moderators" title="Permanent link">¶</a></h2>
+<p>If you are responding to a user query in the raapoi-help or software-request channels, please leave a message indicating you are looking into the problem, and subsequently post a message when it has been completed. 
+This ensures that other moderators/admins are aware that a request is currently being handled so that they need not double handle it.
+If you get stuck on a problem, let other moderators/admins know in the mod-chat channel so they can jump in and help.</p>
+<p>If you are taking action with respect to something not directly related to a request in the raapoi-help or software-request channels, please make sure you make a note/record of this in the mod-chat channel on slack.
+This might include making unsolicited software updates or limiting a user's access to resources to address a fair use issue in the queue.
+Posting a clear message indicating what you have done and why helps to ensure transparency with regards to response to various issues on the cluster and, once more, reduce instances of double handling.</p>
+<h2 id="dealing-with-jobs-in-the-queue">Dealing with jobs in the queue<a class="headerlink" href="#dealing-with-jobs-in-the-queue" title="Permanent link">¶</a></h2>
+<p>This a list of common cluster moderator actions, provided as reference. Users without moderator privileges might find some of this of interest, but you won't be able to perform the actions that affect other users.</p>
+<p>These commands will require you to be logged in with your moderator-specific account.</p>
+<h3 id="dealing-with-normal-jobs">Dealing with normal jobs<a class="headerlink" href="#dealing-with-normal-jobs" title="Permanent link">¶</a></h3>
+<h4 id="extending-jobs">Extending jobs<a class="headerlink" href="#extending-jobs" title="Permanent link">¶</a></h4>
+<p>Jobs are normally given a limit of 10 days to run. If a little longer is needed and there is no reason such as upcoming maintenance then jobs can be given a bit longer to complete:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># To set a new total run time for a job of 13 days, 23 hours, 59 minutes and 59 seconds</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">scontrol</span> <span class="n">update</span> <span class="n">jobid</span><span class="o">=&lt;</span><span class="n">jobid</span><span class="o">&gt;</span> <span class="n">TimeLimit</span><span class="o">=</span><span class="mi">13</span><span class="o">-</span><span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># Extend the job by 3 days, 23 hours, 59 minutes and 59 seconds (the + extends the time)</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">scontrol</span> <span class="n">update</span> <span class="n">jobid</span><span class="o">=&lt;</span><span class="n">jobid</span><span class="o">&gt;</span> <span class="n">TimeLimit</span><span class="o">=+</span><span class="mi">3</span><span class="o">-</span><span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span>
+</span></code></pre></div>
+<hr/>
+<h3 id="dealing-with-badly-behaved-jobs">Dealing with badly behaved jobs<a class="headerlink" href="#dealing-with-badly-behaved-jobs" title="Permanent link">¶</a></h3>
+<h4 id="holding-jobs">Holding jobs<a class="headerlink" href="#holding-jobs" title="Permanent link">¶</a></h4>
+<p>Users will occasionally run jobs which consume an unfair amount of resources, if a single user is causes problems, you can hold their jobs.  This won't stop their current jobs, but will prevent more from starting</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># hold some jobs</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>scontrol<span class="w"> </span>hold<span class="w"> </span>jobid1,jobid2,etc
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Allow the jobs back onto the queue</span>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>scontrol<span class="w"> </span>requeue<span class="w"> </span>jobid1,jobid2,etc<span class="w">    </span><span class="c1">## previous step sets priority to zero \</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c1">## so they won't actually start now</span>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c1"># Release the jobs to run again</span>
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>scontrol<span class="w"> </span>release<span class="w"> </span>jobid1,jobid2,etc
+</span></code></pre></div>
+<p>Alterativly you can reduce their priority to a low  setting</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>squeue<span class="w"> </span>-p<span class="w"> </span>gpu<span class="w"> </span>-u<span class="w"> </span>&lt;username&gt;<span class="w"> </span>-t<span class="w"> </span>pending<span class="w"> </span>--format<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="s2">"scontrol update jobid=%i nice=1000000"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</span></code></pre></div>
+<h4 id="cancelling-jobs">Cancelling jobs<a class="headerlink" href="#cancelling-jobs" title="Permanent link">¶</a></h4>
+<p>If a users jobs are causing too many problems, you can cancel their jobs.
+Note this is drastic and can throw away many days of compute, it's best to try get hold of a user first. Get them to cancel their own jobs. </p>
+<p>If needed though:
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>scancel<span class="w"> </span>&lt;jobid&gt;<span class="w">  </span><span class="c1"># be careful to get the correct job id!</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1"># to cancel all their running jobs on parallel</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>squeue<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>-u<span class="w"> </span>&lt;username&gt;<span class="w"> </span>-t<span class="w"> </span>running<span class="w"> </span>--format<span class="w"> </span><span class="s2">"scancel %i"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</span></code></pre></div></p>
+<hr/>
+<h2 id="limiting-users-resource-allowance-on-raapoi">Limiting user's resource allowance on Raapoi<a class="headerlink" href="#limiting-users-resource-allowance-on-raapoi" title="Permanent link">¶</a></h2>
+<p>Limiting a user's access to resources should generally be a last resort, i.e. after an educative approach has been unsuccessful.
+Note that placing a limit on resources will not affect jobs which are already running on the cluster (i.e. even if they exceed any newly imposed limits), it will only affect any pending or newly submitted jobs to the queue.</p>
+<h3 id="set-maxjobs">Set maxjobs<a class="headerlink" href="#set-maxjobs" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sacctmgr<span class="w"> </span>modify<span class="w"> </span>user<span class="w"> </span>where<span class="w"> </span><span class="nv">name</span><span class="o">=</span>bob<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">MaxJobs</span><span class="o">=</span><span class="m">2</span>
+</span></code></pre></div>
+<p>After a few minutes you should be able to see the results on squeue
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>squeue<span class="w"> </span>-u<span class="w"> </span>bob<span class="w"> </span>-o<span class="w"> </span><span class="s2">"%i %r"</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># returns something like</span>
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>JOBID<span class="w"> </span>REASON
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="m">20582</span><span class="w"> </span>AssocMaxJobsLimit
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="m">20583</span><span class="w"> </span>Dependency
+</span></code></pre></div></p>
+<h3 id="show-user-cpu-restruction-details">Show User CPU restruction details<a class="headerlink" href="#show-user-cpu-restruction-details" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sacctmgr<span class="w"> </span>show<span class="w"> </span>assoc<span class="w"> </span>where<span class="w"> </span><span class="nv">user</span><span class="o">=</span>write_username_here
+</span></code></pre></div>
+<h3 id="limiting-cpu-resources">Limiting CPU resources<a class="headerlink" href="#limiting-cpu-resources" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sacctmgr<span class="w"> </span>modify<span class="w"> </span>user<span class="w"> </span>&lt;user&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">MaxTRES</span><span class="o">=</span><span class="nv">cpu</span><span class="o">=</span><span class="m">1026</span>
+</span></code></pre></div>
+<h3 id="limiting-memory-ram-resources">Limiting Memory (RAM) resources<a class="headerlink" href="#limiting-memory-ram-resources" title="Permanent link">¶</a></h3>
+<p>This is a reference, but note that this may have unintended consequences. Please consult other moderators on Slack before proceeding with this.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sacctmgr<span class="w"> </span>modify<span class="w"> </span>user<span class="w"> </span>&lt;user&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">MaxTRES</span><span class="o">=</span><span class="nv">mem</span><span class="o">=</span>1000G<span class="w"> </span><span class="c1"># This is 1TB of Ram</span>
+</span></code></pre></div>
+<h3 id="limiting-gpu-resources">Limiting GPU resources<a class="headerlink" href="#limiting-gpu-resources" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sacctmgr<span class="w"> </span>modify<span class="w"> </span>user<span class="w"> </span>bob<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">MaxTRES</span><span class="o">=</span><span class="nv">cpu</span><span class="o">=</span>-1,mem<span class="o">=</span>-1,gres/gpu<span class="o">=</span><span class="m">4</span><span class="w">  </span><span class="c1"># -1 means no restriction.</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="c1"># check result</span>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>sacctmgr<span class="w"> </span>list<span class="w"> </span>assoc<span class="w"> </span><span class="nv">User</span><span class="o">=</span>bob
+</span></code></pre></div>
+<hr/>
+<h2 id="using-reservations">Using reservations<a class="headerlink" href="#using-reservations" title="Permanent link">¶</a></h2>
+<p>If a research group has a good need and the other moderators agree, you can give them a reservation that only they can use. This is usually done for a specific time period.  This is also one of the steps when we put the cluster into maintenance</p>
+<p>Create a month-long reservation on amd01n01 and amd01n02
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>scontrol<span class="w"> </span>create<span class="w"> </span><span class="nv">reservationname</span><span class="o">=</span>MyReservation<span class="w"> </span><span class="nv">starttime</span><span class="o">=</span><span class="m">2021</span>-03-01T11:00:00<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="nv">duration</span><span class="o">=</span><span class="m">30</span>-00:00:00<span class="w"> </span><span class="nv">user</span><span class="o">=</span>user1,user2,user3<span class="w"> </span><span class="nv">nodes</span><span class="o">=</span>amd01n01,amd01n02
+</span></code></pre></div></p>
+<p>Users will use the reservation with
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">#SBATCH --reservation=MyReservation</span>
+</span></code></pre></div></p>
+<hr/>
+<h2 id="building-software-with-easybuild">Building software with EasyBuild<a class="headerlink" href="#building-software-with-easybuild" title="Permanent link">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Caution:</p>
+<p>EasyBuild v5.0 and above includes a number of backwards-incompatible changes, see <a href="https://docs.easybuild.io/easybuild-v5/#breaking-changes">easybuild-v5/#breaking-changes</a>. One issue is related to where easybuild looks for config files. As a workaround, first check whether easybuild can find our config files using <code>eb --show-default-configfiles</code>. If the output indicates that no config files are found, you may need to add the argument <code>--configfiles=/etc/easybuild.d/config.cfg</code> when building with easybuild to ensure software is correctly built into the correct directories on the cluster. If in doubt, check with an experienced moderator/admin. (You could also try loading and using a prior easybuild version, such as <code>module load EasyBuild/4.9.4</code>.)</p>
+</div>
+<p>Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node. </p>
+<h3 id="build-a-simple-program">Build a simple program<a class="headerlink" href="#build-a-simple-program" title="Permanent link">¶</a></h3>
+<p>Here we will build a simple program called velvet - it's a genome assembler.</p>
+<p><div class="highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>srun<span class="w"> </span>-c<span class="w"> </span><span class="m">10</span><span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>--time<span class="o">=</span><span class="m">6</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="c1"># now on the node</span>
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>module<span class="w"> </span>purge<span class="w"> </span><span class="c1"># just in case</span>
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a>module<span class="w"> </span>load<span class="w"> </span>EasyBuild
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="c1"># Search for the package </span>
+</span><span id="__span-12-8"><a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a>eb<span class="w"> </span>-S<span class="w"> </span>velvet
+</span><span id="__span-12-9"><a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="c1"># Returns</span>
+</span><span id="__span-12-11"><a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a>*<span class="w"> </span><span class="nv">$CFGS1</span>/v/Velvet/Velvet-1.2.10-GCC-8.3.0-mt-kmer_191.eb
+</span><span id="__span-12-12"><a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a>*<span class="w"> </span><span class="nv">$CFGS1</span>/v/Velvet/Velvet-1.2.10-GCC-11.2.0-mt-kmer_191.eb
+</span><span id="__span-12-13"><a href="#__codelineno-12-13" id="__codelineno-12-13" name="__codelineno-12-13"></a>*<span class="w"> </span><span class="nv">$CFGS1</span>/v/Velvet/Velvet-1.2.10-foss-2018a-mt-kmer_191.eb
+</span><span id="__span-12-14"><a href="#__codelineno-12-14" id="__codelineno-12-14" name="__codelineno-12-14"></a>*<span class="w"> </span><span class="nv">$CFGS1</span>/v/Velvet/Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+</span><span id="__span-12-15"><a href="#__codelineno-12-15" id="__codelineno-12-15" name="__codelineno-12-15"></a>*<span class="w"> </span><span class="nv">$CFGS1</span>/v/Velvet/Velvet-1.2.10-intel-2017a-mt-kmer_37.eb
+</span><span id="__span-12-16"><a href="#__codelineno-12-16" id="__codelineno-12-16" name="__codelineno-12-16"></a>
+</span><span id="__span-12-17"><a href="#__codelineno-12-17" id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="c1"># We want to pick one that won't need to build a whole new toolchain if we can avoid it</span>
+</span><span id="__span-12-18"><a href="#__codelineno-12-18" id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="c1"># Let's have a look at what would get built with a Dry (D) run.  The r is for robot to</span>
+</span><span id="__span-12-19"><a href="#__codelineno-12-19" id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="c1"># find all the dependancies</span>
+</span><span id="__span-12-20"><a href="#__codelineno-12-20" id="__codelineno-12-20" name="__codelineno-12-20"></a>eb<span class="w"> </span>-Dr<span class="w"> </span>Velvet-1.2.10-intel-2017a-mt-kmer_37.eb
+</span><span id="__span-12-21"><a href="#__codelineno-12-21" id="__codelineno-12-21" name="__codelineno-12-21"></a>
+</span><span id="__span-12-22"><a href="#__codelineno-12-22" id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="c1"># Partial return</span>
+</span><span id="__span-12-23"><a href="#__codelineno-12-23" id="__codelineno-12-23" name="__codelineno-12-23"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/m/M4/M4-1.4.17.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>M4/1.4.17<span class="o">)</span>
+</span><span id="__span-12-24"><a href="#__codelineno-12-24" id="__codelineno-12-24" name="__codelineno-12-24"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/b/Bison/Bison-3.0.4.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>Bison/3.0.4<span class="o">)</span>
+</span><span id="__span-12-25"><a href="#__codelineno-12-25" id="__codelineno-12-25" name="__codelineno-12-25"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/f/flex/flex-2.6.0.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>flex/2.6.0<span class="o">)</span>
+</span><span id="__span-12-26"><a href="#__codelineno-12-26" id="__codelineno-12-26" name="__codelineno-12-26"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/z/zlib/zlib-1.2.8.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>zlib/1.2.8<span class="o">)</span>
+</span><span id="__span-12-27"><a href="#__codelineno-12-27" id="__codelineno-12-27" name="__codelineno-12-27"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/b/binutils/binutils-2.27.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>binutils/2.27<span class="o">)</span>
+</span><span id="__span-12-28"><a href="#__codelineno-12-28" id="__codelineno-12-28" name="__codelineno-12-28"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/g/GCCcore/GCCcore-6.3.0.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>GCCcore/6.3.0<span class="o">)</span>
+</span><span id="__span-12-29"><a href="#__codelineno-12-29" id="__codelineno-12-29" name="__codelineno-12-29"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/z/zlib/zlib-1.2.11-GCCcore-6.3.0.eb<span class="w"> </span>
+</span><span id="__span-12-30"><a href="#__codelineno-12-30" id="__codelineno-12-30" name="__codelineno-12-30"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/h/help2man/help2man-1.47.4-GCCcore-6.3.0.eb<span class="w"> </span>
+</span><span id="__span-12-31"><a href="#__codelineno-12-31" id="__codelineno-12-31" name="__codelineno-12-31"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/m/M4/M4-1.4.18-GCCcore-6.3.0.eb<span class="w"> </span>
+</span><span id="__span-12-32"><a href="#__codelineno-12-32" id="__codelineno-12-32" name="__codelineno-12-32"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/b/Bison/Bison-3.0.4-GCCcore-6.3.0.eb<span class="w"> </span>
+</span><span id="__span-12-33"><a href="#__codelineno-12-33" id="__codelineno-12-33" name="__codelineno-12-33"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/f/flex/flex-2.6.3-GCCcore-6.3.0.eb<span class="w"> </span>
+</span><span id="__span-12-34"><a href="#__codelineno-12-34" id="__codelineno-12-34" name="__codelineno-12-34"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/icc/icc-2017.1.132-GCC-6.3.0-2.27.eb<span class="w"> </span>
+</span><span id="__span-12-35"><a href="#__codelineno-12-35" id="__codelineno-12-35" name="__codelineno-12-35"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/ifort/ifort-2017.1.132-GCC-6.3.0-2.27.eb<span class="w"> </span>
+</span><span id="__span-12-36"><a href="#__codelineno-12-36" id="__codelineno-12-36" name="__codelineno-12-36"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/iccifort/iccifort-2017.1.132-GCC-6.3.0-2.27.eb<span class="w"> </span>
+</span><span id="__span-12-37"><a href="#__codelineno-12-37" id="__codelineno-12-37" name="__codelineno-12-37"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/impi/impi-2017.1.132-iccifort-2017.1.132-GCC-6.3.0-2.27.eb<span class="w"> </span>
+</span><span id="__span-12-38"><a href="#__codelineno-12-38" id="__codelineno-12-38" name="__codelineno-12-38"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/iimpi/iimpi-2017a.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>iimpi/2017a<span class="o">)</span>
+</span><span id="__span-12-39"><a href="#__codelineno-12-39" id="__codelineno-12-39" name="__codelineno-12-39"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/imkl/imkl-2017.1.132-iimpi-2017a.eb<span class="w"> </span>
+</span><span id="__span-12-40"><a href="#__codelineno-12-40" id="__codelineno-12-40" name="__codelineno-12-40"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/i/intel/intel-2017a.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>intel/2017a<span class="o">)</span>
+</span><span id="__span-12-41"><a href="#__codelineno-12-41" id="__codelineno-12-41" name="__codelineno-12-41"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/v/Velvet/Velvet-1.2.10-intel-2017a-mt-kmer_37.eb<span class="w"> </span>
+</span><span id="__span-12-42"><a href="#__codelineno-12-42" id="__codelineno-12-42" name="__codelineno-12-42"></a>
+</span><span id="__span-12-43"><a href="#__codelineno-12-43" id="__codelineno-12-43" name="__codelineno-12-43"></a><span class="c1"># Packages wiht a [x] are already built, [ ] will need to be built. This is a lot of building,, including a "new" compiler - intel-2017a.eb, let's avoid that and try another</span>
+</span><span id="__span-12-44"><a href="#__codelineno-12-44" id="__codelineno-12-44" name="__codelineno-12-44"></a>eb<span class="w"> </span>-Dr<span class="w"> </span>Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+</span><span id="__span-12-45"><a href="#__codelineno-12-45" id="__codelineno-12-45" name="__codelineno-12-45"></a>
+</span><span id="__span-12-46"><a href="#__codelineno-12-46" id="__codelineno-12-46" name="__codelineno-12-46"></a><span class="c1"># Partially returns, all [x] except for velvet</span>
+</span><span id="__span-12-47"><a href="#__codelineno-12-47" id="__codelineno-12-47" name="__codelineno-12-47"></a>...
+</span><span id="__span-12-48"><a href="#__codelineno-12-48" id="__codelineno-12-48" name="__codelineno-12-48"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/f/FFTW/FFTW-3.3.8-gompi-2018b.eb<span class="w"> </span>
+</span><span id="__span-12-49"><a href="#__codelineno-12-49" id="__codelineno-12-49" name="__codelineno-12-49"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/s/ScaLAPACK/ScaLAPACK-2.0.2-gompi-2018b-OpenBLAS-0.3.1.eb
+</span><span id="__span-12-50"><a href="#__codelineno-12-50" id="__codelineno-12-50" name="__codelineno-12-50"></a>*<span class="w"> </span><span class="o">[</span>x<span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/f/foss/foss-2018b.eb<span class="w"> </span><span class="o">(</span>module:<span class="w"> </span>Core<span class="w"> </span><span class="p">|</span><span class="w"> </span>foss/2018b<span class="o">)</span>
+</span><span id="__span-12-51"><a href="#__codelineno-12-51" id="__codelineno-12-51" name="__codelineno-12-51"></a>*<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="nv">$CFGS</span>/v/Velvet/Velvet-1.2.10-foss-2018b-mt-kmer_191.eb<span class="w"> </span>
+</span><span id="__span-12-52"><a href="#__codelineno-12-52" id="__codelineno-12-52" name="__codelineno-12-52"></a>
+</span><span id="__span-12-53"><a href="#__codelineno-12-53" id="__codelineno-12-53" name="__codelineno-12-53"></a><span class="c1"># Before you proceed to build, make sure appropriate folder permissions will be set</span>
+</span><span id="__span-12-54"><a href="#__codelineno-12-54" id="__codelineno-12-54" name="__codelineno-12-54"></a><span class="nb">umask</span><span class="w"> </span><span class="m">0002</span>
+</span><span id="__span-12-55"><a href="#__codelineno-12-55" id="__codelineno-12-55" name="__codelineno-12-55"></a>
+</span><span id="__span-12-56"><a href="#__codelineno-12-56" id="__codelineno-12-56" name="__codelineno-12-56"></a><span class="c1"># To build this we would</span>
+</span><span id="__span-12-57"><a href="#__codelineno-12-57" id="__codelineno-12-57" name="__codelineno-12-57"></a>eb<span class="w"> </span>-r<span class="w"> </span>--parallel<span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span><span class="w"> </span>Velvet-1.2.10-foss-2018b-mt-kmer_191.eb
+</span><span id="__span-12-58"><a href="#__codelineno-12-58" id="__codelineno-12-58" name="__codelineno-12-58"></a>
+</span><span id="__span-12-59"><a href="#__codelineno-12-59" id="__codelineno-12-59" name="__codelineno-12-59"></a><span class="c1"># Afterwards, reset the default permissions for anything else you go on to do</span>
+</span><span id="__span-12-60"><a href="#__codelineno-12-60" id="__codelineno-12-60" name="__codelineno-12-60"></a><span class="nb">umask</span><span class="w"> </span><span class="m">0022</span>
+</span></code></pre></div>
+Remember to close the interactive session when done to stop it consuming resources.</p>
+<h3 id="building-a-new-toolchain">Building a new toolchain<a class="headerlink" href="#building-a-new-toolchain" title="Permanent link">¶</a></h3>
+<p>Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>srun<span class="w"> </span>-c<span class="w"> </span><span class="m">10</span><span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>--time<span class="o">=</span><span class="m">6</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="c1"># now on the node</span>
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>module<span class="w"> </span>purge<span class="w"> </span><span class="c1"># just in case</span>
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a>module<span class="w"> </span>load<span class="w"> </span>EasyBuild
+</span><span id="__span-13-6"><a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="c1"># Search for the package </span>
+</span><span id="__span-13-8"><a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a>eb<span class="w"> </span>-S<span class="w"> </span>foss-2022a
+</span><span id="__span-13-9"><a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="c1"># There is a long output as that toochain gets used in many packages, but we can see:</span>
+</span><span id="__span-13-11"><a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="nv">$CFGS1</span>/f/foss/foss-2022a.eb
+</span><span id="__span-13-12"><a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="c1"># Check what will be built</span>
+</span><span id="__span-13-14"><a href="#__codelineno-13-14" id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="c1"># BE CAUTIOUS OF OPENMPI builds - the .eb file needs to be changed to use pmi2 rather than pmix each time!</span>
+</span><span id="__span-13-15"><a href="#__codelineno-13-15" id="__codelineno-13-15" name="__codelineno-13-15"></a>eb<span class="w"> </span>-Dr<span class="w"> </span>foss-2022a.eb
+</span><span id="__span-13-16"><a href="#__codelineno-13-16" id="__codelineno-13-16" name="__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a href="#__codelineno-13-17" id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="c1"># Trigger the build - this might take a long time, you could add more cpus or time if needed</span>
+</span><span id="__span-13-18"><a href="#__codelineno-13-18" id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="c1"># (making sure permissions will be set appropriately, as described above)</span>
+</span><span id="__span-13-19"><a href="#__codelineno-13-19" id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="nb">umask</span><span class="w"> </span><span class="m">0002</span>
+</span><span id="__span-13-20"><a href="#__codelineno-13-20" id="__codelineno-13-20" name="__codelineno-13-20"></a>eb<span class="w"> </span>-r<span class="w"> </span>--parallel<span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span><span class="w"> </span>foss-2022a.eb
+</span><span id="__span-13-21"><a href="#__codelineno-13-21" id="__codelineno-13-21" name="__codelineno-13-21"></a><span class="nb">umask</span><span class="w"> </span><span class="m">0022</span>
+</span></code></pre></div>
+<h3 id="rebuilding-an-existing-package">Rebuilding an existing package<a class="headerlink" href="#rebuilding-an-existing-package" title="Permanent link">¶</a></h3>
+<p>This might be needed for some old packages after the move to Rocky 8</p>
+<p>Below we ask for 10cpus, 10G memory and 6 hours.  Really long rebuilds might need more time and or cpu/memory.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>srun<span class="w"> </span>-c<span class="w"> </span><span class="m">10</span><span class="w"> </span>--mem<span class="o">=</span>10G<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>--time<span class="o">=</span><span class="m">6</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="c1"># now on the node</span>
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>module<span class="w"> </span>purge<span class="w"> </span><span class="c1"># just in case</span>
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>module<span class="w"> </span>load<span class="w"> </span>EasyBuild
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="c1"># Example of finding the problem</span>
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a>ldd<span class="w"> </span>/home/software/apps/samtools/1.10/bin/samtools<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>found
+</span><span id="__span-14-9"><a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">        </span>libncursesw.so.5<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>not<span class="w"> </span>found
+</span><span id="__span-14-10"><a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">        </span>libtinfo.so.5<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>not<span class="w"> </span>found
+</span><span id="__span-14-11"><a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="c1"># See the what got build for samtools</span>
+</span><span id="__span-14-13"><a href="#__codelineno-14-13" id="__codelineno-14-13" name="__codelineno-14-13"></a>eb<span class="w"> </span>-Dr<span class="w"> </span>/home/software/EasyBuild/ebfiles_repo/SAMtools/SAMtools-1.10-GCC-8.3.0.eb
+</span><span id="__span-14-14"><a href="#__codelineno-14-14" id="__codelineno-14-14" name="__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a href="#__codelineno-14-15" id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="c1"># There are a few options</span>
+</span><span id="__span-14-16"><a href="#__codelineno-14-16" id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="c1"># ncurses-6.0.eb</span>
+</span><span id="__span-14-17"><a href="#__codelineno-14-17" id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="c1"># ncurses-6.1-GCCcore-8.3.0.eb</span>
+</span><span id="__span-14-18"><a href="#__codelineno-14-18" id="__codelineno-14-18" name="__codelineno-14-18"></a>
+</span><span id="__span-14-19"><a href="#__codelineno-14-19" id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="c1"># let's try one (making sure permissions will be set appropriately, as described above)</span>
+</span><span id="__span-14-20"><a href="#__codelineno-14-20" id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="nb">umask</span><span class="w"> </span><span class="m">0002</span>
+</span><span id="__span-14-21"><a href="#__codelineno-14-21" id="__codelineno-14-21" name="__codelineno-14-21"></a>eb<span class="w"> </span>-r<span class="w"> </span>--parallel<span class="o">=</span><span class="m">10</span><span class="w"> </span>--rebuild<span class="w"> </span>ncurses-6.0.eb
+</span><span id="__span-14-22"><a href="#__codelineno-14-22" id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="nb">umask</span><span class="w"> </span><span class="m">0022</span>
+</span><span id="__span-14-23"><a href="#__codelineno-14-23" id="__codelineno-14-23" name="__codelineno-14-23"></a>
+</span><span id="__span-14-24"><a href="#__codelineno-14-24" id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="c1"># test once done</span>
+</span></code></pre></div>
+<h3 id="upgrading-easybuild-with-easybuild">Upgrading easybuild with Easybuild<a class="headerlink" href="#upgrading-easybuild-with-easybuild" title="Permanent link">¶</a></h3>
+<p>Get an interactice session on a node, then</p>
+<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>module<span class="w"> </span>load<span class="w"> </span>EasyBuild<span class="w"> </span><span class="c1"># will load latest version by default</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>eb<span class="w"> </span>--version<span class="w"> </span><span class="c1"># see version</span>
+</span><span id="__span-15-4"><a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a>eb<span class="w"> </span>--install-latest-eb-release<span class="w">  </span><span class="c1"># upgrade - will create new module file for new version</span>
+</span></code></pre></div>
+<hr/>
+<h2 id="building-new-version-of-schrodinger-suite">Building New Version of Schrodinger Suite<a class="headerlink" href="#building-new-version-of-schrodinger-suite" title="Permanent link">¶</a></h2>
+<p>Schrödinger Suite releases new versions quarterly, it's good practice to keep up to date with the latest version of the software. To build the new version, first download the tar file from the Schrödinger website (www.schrodinger.com), then move the installation tar file to the directory <code>/home/software/src/Schrodinger</code> on Rāpoi.</p>
+<h3 id="quick-installation">Quick Installation<a class="headerlink" href="#quick-installation" title="Permanent link">¶</a></h3>
+<p>First, extract the tar file
+<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>tar<span class="w"> </span>-xvf<span class="w"> </span>Schrodinger_Download.tar
+</span></code></pre></div></p>
+<p>Change to the top-level directory of the download
+<div class="highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>Schrodinger_Download
+</span></code></pre></div></p>
+<p>Then, run the instalaation script
+<div class="highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>sh<span class="w"> </span>./INSTALL
+</span></code></pre></div></p>
+<p>Answer y/n to prompts from the INSTALL script, then all packages should be installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During installation, you will be asked to confirm the <code>installation directory</code>, this is <code>/home/software/apps/Schrodinger/2023-3</code>, '2023-3' should be replaced with the current version being installed. The <code>scratch directory</code> should be <code>/nfs/scratch/projects/tmp</code>.
+Select <code>no</code> where it prompts for creating application launchers. </p>
+</div>
+<p>The installation file will check for dependencies in the last stage, missing dependencies will be reported, and will need to be installed for Schrödinger Suite to run properly. Contact Rāpoi admin to install the missing dependencies.</p>
+<h3 id="modify-the-hosts-file">Modify the hosts file<a class="headerlink" href="#modify-the-hosts-file" title="Permanent link">¶</a></h3>
+<p>Change directory to the installation folder</p>
+<div class="highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>/home/software/apps/Schrodinger/2023-3
+</span></code></pre></div>
+<p>open the <code>schrodinger.hosts</code>file with <code>vi</code>, modify the contents to add hostnames. The hosts and settings can be found in the <code>schrodinger.hosts</code> file from the installation directory of older versions, such as <code>/home/software/apps/Schrodinger/2023-1</code>. Add all the remote hosts to the new host file. For example,</p>
+<div class="highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>Name:<span class="w"> </span>parallel
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>Host:<span class="w"> </span>raapoi-login
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>Queue:<span class="w"> </span>SLURM2.1
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a>Qargs:<span class="w"> </span><span class="s2">"-p parallel --mem-per-cpu=2G --time=5-00:00 --constraint=AMD"</span>
+</span><span id="__span-20-5"><a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a>processors:<span class="w"> </span><span class="m">1608</span>
+</span><span id="__span-20-6"><a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a>tmpdir:<span class="w"> </span>/nfs/scratch/projects/tmp
+</span></code></pre></div>
+<h3 id="add-new-module-file">Add new module file<a class="headerlink" href="#add-new-module-file" title="Permanent link">¶</a></h3>
+<p>Once installation is complete, add a new module file so that the new version can be loaded. Module files for existing Schrodinger versions can be found in <code>/home/software/tools/eb_modulefiles/all/Core/Schrodinger</code>. The module files are named with <code>.lua</code> extensions. Make a new module file by copying one of the older module files, for example,</p>
+<div class="highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>cp<span class="w"> </span><span class="m">2023</span>-1.lua<span class="w"> </span><span class="m">2023</span>-3.lua
+</span></code></pre></div>
+<p>Then edit the new module file (in this case, <code>2023-3.lua</code>) to match the new version installed. Fields that will need to be updated include the <code>Whatis</code> section, and the <code>root</code>. For example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nb">local</span><span class="w"> </span><span class="nv">root</span><span class="o">=</span><span class="s2">"/home/software/apps/Schrodinger/2023-3"</span>
+</span></code></pre></div>
+<p>You can check if the module has been properly installed by
+<div class="highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>module<span class="w"> </span>--ignore_cache<span class="w"> </span>avail
+</span></code></pre></div></p>
+<hr/>
+<h2 id="installing-non-easybuild-software-for-other-users">Installing non-easybuild software for other users<a class="headerlink" href="#installing-non-easybuild-software-for-other-users" title="Permanent link">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Caution:</p>
+<p>Before you proceed, ask yourself: how likely is it another user will want to use this software, even if they do will they potentially want different/newer version, etc.</p>
+</div>
+<p>For software which is unlikely to be used by many users, and/or different users may want to install different versions, then it is probably not worth the hassle to install centrally (i.e. users can install local copies as needed).
+This is something you should only attempt if you are confident in using/modifying build scripts and associated tools.</p>
+<p>If you decide it is worth the hassle to proceed, you should first carefully examine the <strong>entire</strong> installation documentation of the desired software.
+For any required dependencies, check if modules for these already exist and pre-load them to minimise the amount of stuff you need to compile (otherwise you will need to install any remaining dependencies first, following these same broad steps).
+Depending on what's available, this may help inform which compiler toolchain you will use during the installation (e.g. typically one of the <code>foss/YEAR&lt;a/b&gt;</code> toolchains). 
+You'll also need to modify the installation steps so that the sofware is ultimately installed into <code>/home/software/apps/&lt;software name&gt;/&lt;version number&gt;/</code> taking care that no existing software is overwritten.
+However, before installing software in this directory, it is recommended you install a copy into your home/local directory and test that it works properly first.
+Lastly, to allow others to load the software you'll need to write a <code>.lua</code> file to be copied into <code>/home/software/tools/modulefiles/&lt;software name&gt;/&lt;version number&gt;/</code>.
+The <code>.lua</code> file contains some basic module information, help information, and instructions on what modules need to be loaded and environment variables which need to be set/modified when the software is loaded.
+You should have a good idea of what is required based on the installation steps, but you may also want to examine (and possibly copy+modify) the <code>.lua</code> file for a similar piece of software.</p>
+<h2 id="pruning-unattended-vscode-server-processes">Pruning unattended vscode-server processes<a class="headerlink" href="#pruning-unattended-vscode-server-processes" title="Permanent link">¶</a></h2>
+<p>If the login node is behaving erratically or unresponse it may be running out of memory due to left over vscode-server processes which don't exit when the user has finished with them.</p>
+<div class="admonition warning">
+<p class="admonition-title">Caution:</p>
+<p>Killing processes may result in lost work, you may need an Admin to perform the tasks as root user.</p>
+</div>
+<p>Use these commands to identify that this is happening:</p>
+<p>This will output a sorted list of processes by memory usage.
+Commands named "node" or "pvserver-real" belonging to users may show large memory usage.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>top -o VIRT
+</span></code></pre></div>
+<p>You may also see mysql, slurmctld, and other slum things as well as polkitd and httpd are system related and are expected to use lots of memory to run the cluster.</p>
+<p>This command will list all the processes by username once you have identified the top memory users</p>
+<div class="highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>ps -ef | grep username
+</span></code></pre></div>
+<p>To proceed to kill the resource hungry processes, you need to identify the numeric uid (user id) of the user to whom the process belongs.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>id username
+</span></code></pre></div>
+<p>This will output something like this:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>uid=1001(username) gid=100(users) groups=100(users)
+</span></code></pre></div>
+<p>Make a note of the uid - in this case 1001</p>
+<p>To kill all the processes related to that uid run this</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the use of sudo so this needs to be done with a moderator or admin account</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Caution:</p>
+<p>Don't kill processes belonging to slurm, apache or polkitd - they are needed to run the cluster</p>
+</div>
+<div class="highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a>sudo pkill --uid 1001
+</span></code></pre></div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../support/" title="Support"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../support/" style="color: #fcfcfc">« Previous</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
