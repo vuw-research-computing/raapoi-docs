@@ -1,12 +1,24 @@
 # Moderating a Slurm Cluster
 
+## Expectations of moderators
+
+If you are responding to a user query in the raapoi-help or software-request channels, please leave a message indicating you are looking into the problem, and subsequently post a message when it has been completed. 
+This ensures that other moderators/admins are aware that a request is currently being handled so that they need not double handle it.
+If you get stuck on a problem, let other moderators/admins know in the mod-chat channel so they can jump in and help.
+ 
+If you are taking action with respect to something not directly related to a request in the raapoi-help or software-request channels, please make sure you make a note/record of this in the mod-chat channel on slack.
+This might include making unsolicited software updates or limiting a user's access to resources to address a fair use issue in the queue.
+Posting a clear message indicating what you have done and why helps to ensure transparency with regards to response to various issues on the cluster and, once more, reduce instances of double handling.
+
+## Dealing with jobs in the queue
+
 This a list of common cluster moderator actions, provided as reference. Users without moderator privileges might find some of this of interest, but you won't be able to perform the actions that affect other users.
 
-These commands will require you to be logged in with your moderator-specific account
+These commands will require you to be logged in with your moderator-specific account.
 
-## Dealing with normal jobs
+### Dealing with normal jobs
 
-### Extending jobs
+#### Extending jobs
 
 Jobs are normally given a limit of 10 days to run. If a little longer is needed and there is no reason such as upcoming maintenance then jobs can be given a bit longer to complete:
 
@@ -20,9 +32,9 @@ scontrol update jobid=<jobid> TimeLimit=+3-23:59:59
 
 ---
 
-## Dealing with badly behaved jobs
+### Dealing with badly behaved jobs
 
-### Holding jobs
+#### Holding jobs
 
 Users will occasionally run jobs which consume an unfair amount of resources, if a single user is causes problems, you can hold their jobs.  This won't stop their current jobs, but will prevent more from starting
 
@@ -32,7 +44,7 @@ scontrol hold jobid1,jobid2,etc
 
 # Allow the jobs back onto the queue
 scontrol requeue jobid1,jobid2,etc    ## previous step sets priority to zero \
-## so they won'ßt actually start now
+## so they won't actually start now
 
 # Release the jobs to run again
 scontrol release jobid1,jobid2,etc
@@ -45,7 +57,7 @@ squeue -p gpu -u <username> -t pending --format \
 "scontrol update jobid=%i nice=1000000" | sh
 ```
 
-### Cancelling jobs
+#### Cancelling jobs
 
 If a users jobs are causing too many problems, you can cancel their jobs.
 Note this is drastic and can throw away many days of compute, it's best to try get hold of a user first. Get them to cancel their own jobs. 
@@ -61,6 +73,9 @@ squeue -p parallel -u <username> -t running --format "scancel %i" | sh
 ---
 
 ## Limiting user's resource allowance on Raapoi
+
+Limiting a user's access to resources should generally be a last resort, i.e. after an educative approach has been unsuccessful.
+Note that placing a limit on resources will not affect jobs which are already running on the cluster (i.e. even if they exceed any newly imposed limits), it will only affect any pending or newly submitted jobs to the queue.
 
 ### Set maxjobs
 ```bash
@@ -86,7 +101,7 @@ sacctmgr show assoc where user=write_username_here
 ### Limiting CPU resources
 
 ```bash
-sacctmgr modify user <user> set GrpTRES=cpu=1026
+sacctmgr modify user <user> set MaxTRES=cpu=1026
 ```
 
 ### Limiting Memory (RAM) resources
@@ -94,13 +109,13 @@ sacctmgr modify user <user> set GrpTRES=cpu=1026
 This is a reference, but note that this may have unintended consequences. Please consult other moderators on Slack before proceeding with this.
 
 ```bash
-sacctmgr modify user <user> set GrpTRES=mem=1000G # This is 1TB of Ram
+sacctmgr modify user <user> set MaxTRES=mem=1000G # This is 1TB of Ram
 ```
 
 ### Limiting GPU resources
 
 ```bash
-sacctmgr modify user bob set GrpTRES=cpu=-1,mem=-1,gres/gpu=4  # -1 means no restriction.
+sacctmgr modify user bob set MaxTRES=cpu=-1,mem=-1,gres/gpu=4  # -1 means no restriction.
 
 # check result
 sacctmgr list assoc User=bob
@@ -128,7 +143,7 @@ Users will use the reservation with
 ## Building software with EasyBuild
 
 !!! warning "Caution:"
-    EasyBuild v5.0 and above includes a number of backwards-incompatible changes, see [easybuild-v5/#breaking-changes](https://docs.easybuild.io/easybuild-v5/#breaking-changes). If you attempt to install software using EasyBuild v5.0 or above it will quite likely get installed into your local directory by default. We don't yet have a robust workaround for ensuring both software and module files are installed into the correct location. Please refrain from using these versions of EasyBuild and/or consult with other moderators/admin before proceeding! (Load a prior easybuild version with `module load EasyBuild/4.9.4`.)
+    EasyBuild v5.0 and above includes a number of backwards-incompatible changes, see [easybuild-v5/#breaking-changes](https://docs.easybuild.io/easybuild-v5/#breaking-changes). One issue is related to where easybuild looks for config files. As a workaround, first check whether easybuild can find our config files using `eb --show-default-configfiles`. If the output indicates that no config files are found, you may need to add the argument `--configfiles=/etc/easybuild.d/config.cfg` when building with easybuild to ensure software is correctly built into the correct directories on the cluster. If in doubt, check with an experienced moderator/admin. (You could also try loading and using a prior easybuild version, such as `module load EasyBuild/4.9.4`.)
 
 Use a terminal multiplexer like screen, tmux or byobu to keep your ssh session alive and get a interactive session on a node. 
 
