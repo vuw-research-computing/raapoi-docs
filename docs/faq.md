@@ -83,10 +83,27 @@
 ---
 
 
-## VS Code tips
-* **_How do I clean up my VS Code Server processes on Rāpoi?_**
+## Visual Studio Code tips
+* **_How do I connect a VS Code Server to Rāpoi?_**
+    * Unfortunately, VS Code plugins associated with working on remote servers appear to have somewhat poor process and virtual memory management. The Rāpoi admin and moderation team do not want users to connect VS code servers directly to the login node as it has a tendency to interrupt the work of other users. At this time, our preference is that users follow [this VS Code guide](https://vuw-research-computing.github.io/raapoi-docs/usersub/#vscode) when connecting to Rāpoi. (We may periodically kill any processes associated with VS Code which are found to be running on the login node, which will likely interrupt your work! If you have followed the guide, this should not impact you.)
+    
+* **_[Old advice:] How do I clean up my VS Code Server processes on Rāpoi?_**
     * Unfortunately, VS Code seems to have somewhat poor process management when used to connect to Rāpoi for remote code development. In particular, it tends to leave a large number of processes sitting on the cluster occupying resources (even after you leave/close the session on your local machine). [This link from the vscode docs](https://code.visualstudio.com/docs/remote/troubleshooting#_cleaning-up-the-vs-code-server-on-the-remote) tells you how to cleanup your VS Code Server. In particular, they recommend running `kill -9 $(ps aux | grep vscode-server | grep $USER | grep -v grep | awk '{print $2}')` to kill server processes. If you are a user of VS Code, please do this whenever we you finish a session.
 
+
+
+---
+
+
+## PyTorch Tips
+* **_Why are the versions of PyTorch so old, how do I use a newer version?_**
+    * Our standard software installation method (using EasyBuild) has struggled to keep up to date with the rapidly evolving PyTorch software. There are long running issues with this, particularly surrounding burdensome testing routines. If one of the versions available (e.g. found via `module spider PyTorch`) is too old to suit your needs, you may want to install a more recent version locally (i.e. within your Rāpoi home directory) via pip. Such builds won't be optimised for our specific system, but are probably good enough for most purposes. Here is one example of how you can do this:
+    ```
+    module purge
+    module load GCCcore/13.3.0 Python/3.12.3 CUDA/12.8.0
+    pip3 install --user torch torchvision --index-url https://download.pytorch.org/whl/cu128
+    ```
+Rather than install PyTorch into your `.local/` directory, you may prefer to set up a virtual environment first. As of March 2026 the above will result in a local installation of PyTorch version 2.11.0. In future, you'll possibly want to check which versions of CUDA are suitable for the latest stable PyTorch version via [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/). 
 
 ---
 
