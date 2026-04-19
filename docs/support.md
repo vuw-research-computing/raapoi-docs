@@ -10,9 +10,9 @@ or Contact the Rāpoi Admins:
 
 ---
 
-## Research Compute Specialist
+## Research Computing Specialist
 
-Our research compute specialist is usually ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster.
+Our research computing specialist is usually ready to assist you in getting started with your work on Rāpoi and effectively handling your research data within the cluster.
 
 The Research Computing Specialist role—previously held by Rohit Duggal in ECS—is currently vacant. While a replacement is being sought, please direct any support queries to the #raapoi-help channel in
 [UWRC Slack](https://uwrc.slack.com). This space is actively used by experienced cluster users who are likely to have the knowledge and expertise to assist you.
