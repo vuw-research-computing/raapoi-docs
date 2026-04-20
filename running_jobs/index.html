@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/running_jobs/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Running Jobs - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Running Jobs";
+        var mkdocs_page_input_path = "running_jobs.md";
+        var mkdocs_page_url = "/raapoi-docs/running_jobs/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../new_mod/">New module system</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Running Jobs</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#job-basics">Job Basics</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#job-resources">Job resources</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#currently-defined-constraints">Currently defined constraints</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-jobs">Interactive jobs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-jobs">Batch jobs</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cluster-default-resources">Cluster Default Resources</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Running Jobs</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="running-jobs">Running Jobs<a class="headerlink" href="#running-jobs" title="Permanent link">¶</a></h1>
+<h2 id="job-basics">Job Basics<a class="headerlink" href="#job-basics" title="Permanent link">¶</a></h2>
+<p><em>Rāpoi</em> uses a scheduler and resource manager called Slurm that requires researchers to submit jobs for processing.  There are 2 main types of jobs: <em>batch</em> and <em>interactive</em>.  More details about submitting these types of jobs are below, but in general interactive jobs allow a user to interact with the application, for example a researcher can start a MATLAB session and can type MATLAB commands at a prompt or within a GUI.  Batch jobs can work in the background and require no user interaction, they will start when resources are available and can be configured to email once a job completes.</p>
+<h3 id="job-resources">Job resources<a class="headerlink" href="#job-resources" title="Permanent link">¶</a></h3>
+<p>Jobs require resources.  Basic resources are CPU, memory (aka RAM) and time.  If the researcher does not specify the number of CPUs, RAM and time, the defaults will be given (currently 2CPU, 2 GB RAM and 1 hour of runtime.)  Details on requesting the basic resources are included in the Batch and Interactive sections below.</p>
+<p>Along with basic resources there can be other resources defined, such as GPU, license tokens, or even specific types of CPUs and CPU instruction sets.  Special resources can be requested using the parameters <code>--gres</code> or <code>--constraint</code>  For example, to request an Intel processor one can use the parameter: <code>--constraint="Intel"</code></p>
+<h3 id="currently-defined-constraints">Currently defined constraints<a class="headerlink" href="#currently-defined-constraints" title="Permanent link">¶</a></h3>
+<p>Below is a list of constraints that have need defined and a brief description:</p>
+<ul>
+<li>AMD - AMD processor</li>
+<li>IB - Infiniband network for tightly coupled and MPI processing</li>
+<li>Intel - Intel processor</li>
+<li>10GE - 10 Gigabit Ethernet</li>
+<li>SSE41 - Streaming SIMD Extensions version 4.1</li>
+<li>AVX - Advanced Vector Extensions</li>
+</ul>
+<p>For example, if you want to request a compute node with AMD processors you can add <code>--constraint="AMD"</code> in your submit script or srun request.</p>
+<hr/>
+<h2 id="interactive-jobs">Interactive jobs<a class="headerlink" href="#interactive-jobs" title="Permanent link">¶</a></h2>
+<p>One of the basic job submittal tools is the command <em><strong>srun</strong></em>. It is a useful command that let's us <em><strong>a)</strong></em> work on a compute node (<em>a.k.a</em> request an <em>interactive</em> <em>session</em>) and <em><strong>b)</strong></em> run your program written in <em>python</em>, <em>R</em>, etc.</p>
+<p>Interactive sessions will take me to one of the compute nodes where I can perform tasks such as writing my program, debugging, and even data transfer.</p>
+<p><em><strong>a) To request an interactive session:</strong></em>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>username@raapoi-login:~$ srun --pty bash
+</span></code></pre></div>
+Depending on the node assigned by the scheduler (in this case - <em>amd01n01</em>), the prompt (<em>raapoi-login</em>) will change to:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>username@amd01n01:~$<span class="w"> </span><span class="c1">#start_your_applications_here</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You could playaround with <em>flags</em> for the <em>srun</em> command, e.g., <code>srun -J&lt;Job_Name&gt; --cpus-per-task=2 --mem=4G --time=0-00:10:00 --pty bash</code>. </p>
+</div>
+<p><em><strong>b) To run a small quick program</strong></em></p>
+<p>I can use <code>hello.py</code> program available on <em>Rāpoi</em> to test a quick example on my own. I can then use the method to run my other programs that finish under 5 hours. </p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a> username@raapoi-login:~$ srun --mem=100M --time=00:10:00 --partition=quicktest python3 
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a> /home/software/tools/examples/python_venv/hello.py
+</span></code></pre></div>
+<p>To run my own python program, I can do: </p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w"> </span>username@raapoi-login:~$<span class="w"> </span>srun<span class="w"> </span>--mem<span class="o">=</span>100M<span class="w"> </span>--time<span class="o">=</span><span class="m">00</span>:10:00<span class="w"> </span>--partition<span class="o">=</span>quicktest<span class="w"> </span>python3<span class="w"> </span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w"> </span>&lt;your_program_name&gt;
+</span></code></pre></div>
+<p>In case I use a programming language other than python, the method is slightly different. For example, say I want to start a job to run an interactive R session. Once logged into the cluster I can:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>module<span class="w"> </span>purge<span class="w">                         </span><span class="c1"># clean/reset your environment</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>module<span class="w"> </span>load<span class="w"> </span>config<span class="w">                   </span><span class="c1"># reload utilities such as vuw-job-report</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>module<span class="w"> </span>load<span class="w"> </span>GCC/11.2.0<span class="w"> </span>OpenMPI/4.1.1<span class="w"> </span><span class="c1"># pre-requisites for the new R module</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>module<span class="w"> </span>load<span class="w"> </span>R/4.2.0
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>srun<span class="w"> </span>--pty<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>2G<span class="w">  </span>--time<span class="o">=</span><span class="m">05</span>:00:00<span class="w"> </span>--partition<span class="o">=</span>quicktest<span class="w"> </span>R
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>It may take a few seconds until the prompt appears when the cluster is busy. Please wait for at least 2 mins before interreputing this step to avoid any unexpected behaviour.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MATLAB on X server should use <code>matlab -softwareopengl</code> to run the application.</p>
+</div>
+<hr/>
+<h2 id="batch-jobs">Batch jobs<a class="headerlink" href="#batch-jobs" title="Permanent link">¶</a></h2>
+<p>To run a batch job (aka a job that runs unattended) you use the <em>sbatch</em> command.  A simple example would look something like this:</p>
+<p><code>sbatch myjob.sl</code></p>
+<p>In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>#!/bin/bash
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>#SBATCH --cpus-per-task=2
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>#SBATCH --mem=2G
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>#SBATCH --partition=parallel
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>#SBATCH --constraint=AVX
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>#SBATCH --output=slurm-%j.out
+</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>#SBATCH --error=slurm-%j.err
+</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>#SBATCH --mail-type=BEGIN,END,FAIL
+</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>#SBATCH --mail-user=me@email.com
+</span><span id="__span-5-10"><a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>module load python/3.6.8
+</span><span id="__span-5-12"><a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>python3 project1.py
+</span></code></pre></div>
+<p>This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
+12 hours.  We are requesting that this job be run on the parallel  partition, it
+will then load the environment module for python version 3.6.3 and run a python
+script called project1.py.  Any output from the script will be placed in your
+home directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran <em>sbatch</em>.</p>
+<p>NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:</p>
+<p><code>cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sl</code></p>
+<p>The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.</p>
+<p>For more information on the sbatch command, please use the manpages, eg: <em>man sbatch</em></p>
+<p>So what does this all mean?</p>
+<p>The <em>module load</em> commands will introduce the environment necessary to run a particular program, in this case R version 4.2.0
+The <em>srun</em> command will submit the job to the cluster.  The <em>srun</em> command has many parameter available, some of the most common are in this example and explained below</p>
+<ul>
+<li>--pty - Required to run interactively</li>
+<li>--cpus-per-task=2 - requests 2 CPUs, can also use the -c flag, eg. -c 2</li>
+<li>--mem=2G - requests 2 GigaBytes (GB) of RAM.</li>
+<li>--time=08:00:00 - requests a runtime of up to 8 hours (format is DAYS-HOURS:MINUTES:SECONDS), this is important in case the cluster or partition has a limited run-time, for example if an outage window is approaching.  Keep in mind time is a resource along with CPU and Memory.  </li>
+<li>--partition=quicktest - requests a certain partition, in this case it requests the quicktest partition, see the <a href="../partitions/">section on cluster partitions</a> for more information.</li>
+<li>R - the command you wish to run, this could also be matlab, python, etc. (just remember to load the module first)</li>
+</ul>
+<p>For more information on the srun command, please use the manpages, eg: <em>man srun</em></p>
+<hr/>
+<h2 id="cluster-default-resources">Cluster Default Resources<a class="headerlink" href="#cluster-default-resources" title="Permanent link">¶</a></h2>
+<p>Please note that if you do not specify the Partition, CPU, Memory or Time in your job request 
+(via <code>srun</code> or <code>sbatch</code>)
+you will be assigned the corresponding cluster defaults.
+The defaults are:</p>
+<ul>
+<li>Default Partition: quicktest</li>
+<li>Default CPUs: 2</li>
+<li>Default Memory: 2 GB</li>
+<li>Default Time: 1 hour</li>
+</ul>
+<p>You can change these with the --partition , -c, --mem and --time parameters, respectively, to the srun and sbatch commands. 
+Please see <a href="../partitions/">this section</a> of the documentation for more information on partitions.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../new_mod/" title="New module system"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../managing_jobs/" title="Managing Jobs">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../new_mod/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../managing_jobs/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
