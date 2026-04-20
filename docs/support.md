@@ -25,7 +25,7 @@ Our research computing specialist is usually ready to assist you in getting star
     <div class="container">
       <h4><b>Muhammad Hashmi</b></h4>
       <p>Research Computing Specialist - Rāpoi</p>
-      <p>Position Vacant</p>
+      <p><a href="mailto:Muhammad.Hashmi@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 
 
