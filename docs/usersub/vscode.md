@@ -1,9 +1,11 @@
 ## VSCode 
 
 !!! Tip
-    Windows users are recommended to use [`Git Bash`](https://git-scm.com/downloads) for the following instructions to work. 
+    Windows users are recommended to use [`Git Bash`](https://git-scm.com/downloads) or Windows Terminal (Powershell) for the following instructions to work. 
 
-The instructions below should let users run their VSCode session on a compute node.
+Running VSCode on the login node is not allowed. It should always be run on a compute node using the instructions below.
+
+The instructions below should let users run their VSCode session on a compute node. 
 
 Pre-requisite installations: 
 
