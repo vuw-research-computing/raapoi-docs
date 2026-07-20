@@ -5,19 +5,26 @@ By accessing Rāpoi, you agree to comply with this policy, as well as all applic
 ## 2. Acceptable Use
 ### 2.1 Purpose of Use
 Rāpoi resources are provided for academic research and teaching purposes only.
+
 The following are not permitted:
+
 - Commercial or for-profit work without explicit approval
 - Proxy work, including submitting jobs on behalf of others without authorisation
 - Sharing accounts or credentials
+
 ### 2.2 Fair and Responsible Use
 Rāpoi is a shared system, and improper usage can negatively impact other users. A fair-share scheme is enforced to facilitate equitable access across all users and research groups.
+
 **Users must:**
+
 - Use computational resources efficiently
 - Request only the resources required for their workloads
 - Follow Slurm scheduling policies and limits
 - Be familiar with and regularly review the Rāpoi documentation: https://vuw-research-computing.github.io/raapoi-docs/
 - Respond to queries from administrators, moderators, and other support staff in a timely manner
+
 **Users must not:**
+
 - Attempt to subvert fair-share or other equitable access systems
 ## 3. Login Node Usage Policy
 ### 3.1 Purpose of Login Node
