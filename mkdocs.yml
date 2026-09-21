@@ -25,7 +25,9 @@ nav:
     - 'Notes for Moderators' : 'mods_admins.md'
 
 
-theme: readthedocs
+theme:
+  name: readthedocs
+  custom_dir: docs/overrides
 
 #theme: material
 
