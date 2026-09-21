@@ -49,6 +49,7 @@ partition, the most common states are defined as:
 for work
 * __mix__ - nodes in a mixed state have some jobs running, but still have some
 resources available for work
+* __mixed+planned__ - nodes have some jobs running and additional jobs planned by Slurm
 * __alloc__ - nodes in an alloc state are completely full, all resources are in use.
 * __drain__ - nodes in a drain state have some running jobs, but no new jobs can be
 run.  This is typically done before the node goes into maintenance
