@@ -7,12 +7,7 @@ Currently users have 3 main storage areas share across every node.  Each node ha
 
 * __/nfs/scratch/USERNAME__ - This is your scratch space, each user has a *5 TB* quota limit. This data is *not backed up!*  [Scratch directory tips](storage/scratch.md)
 
-<!--
-* __/beegfs-volatile/USERNAME__ - This is fast parallel filesystem.  There is no quota enforcement here.  There is 100TB of total space. This data is *not backed up!* **All data on this storage is periodically deleted** 
-[BeeGFS tips](storage/beegfs.md)
--->
-
-* __/nfs/scratch/noquota-volatile__ - This is a shared quota-free scratch area with approximately 80 TB of storage, intended for large temporary datasets and workflows that exceed standard user quotas. There is no quota enforcement here. Data stored here is *not backed up!* and should be considered temporary. **Files in this filesystem may be deleted periodically without notice, so important data should not be stored here**.
+* __/nfs/scratch/noquota-volatile__ - This is a shared, quota-free scratch area with approximately 80 TB of storage, intended for large temporary datasets and workflows that exceed standard user quotas. There is no quota enforcement here. Data stored here is *not backed up!* and should be considered temporary. **Files in this filesystem may be deleted periodically without notice, so important data should not be stored here**.
 
 Note: Home directory quotas cannot be increased, however if you need more space in your scratch folder let us know.
 
@@ -38,7 +33,7 @@ Each compute node has local storage you can use at ```/tmp```.
 This storage is **not shared** so a program running on ```amd01n02``` will not be able to see data stored on node ```amd01n04```'s ```/tmp``` storage.
 Additionally, you can only access ```/tmp``` on any given node via a job running on that node.
 
-On the quicktest, parallel, and GPU nodes the ```/tmp``` storage is very fast nvme storage with 1.7TB total space. On bigmem nodes this storage is 1.5TB.
+On the quicktest, parallel, and GPU nodes the ```/tmp``` storage is very fast nvme storage with 1.7TB total space. On bigmem nodes this storage is 1.5TB. The longrun partition has two nodes, ```bigtmp01``` and ```bigtmp02```, each with 25TB of local ```/tmp``` storage.
 
 !!! tip "_Temp Disk Tips_"
     If you use the ```/tmp``` storage it is your responsibility to copy data to the ```/tmp``` and **clean it up** when your job is done.  
@@ -52,7 +47,7 @@ For more info see [Temp Disk Tips](storage/tmp.md).
 graph TD
    A(Home and Research Storage) --> B
    B[Scratch] --> D
-   D[local tmp on AMD nodes]
+   D[local /tmp on compute nodes]
 ```
 <figcaption>Figure 1: Storage speed hierarchy. The slowest storage is your user home directory as well as any mounted research storage. The trade off for this is that this data is replicated off site as well as backed up by Digital Solutions. The fastest is the local /tmp space on the nodes - it is usually deleted shortly after you logout and only visible to the node it's on, but it is extremely fast with excellent IO performance.
 </figcaption>
@@ -81,6 +76,3 @@ include-markdown "storage/tmp.md"
 
 ---
 
-{%
-include-markdown "storage/beegfs.md"
-%}
