@@ -17,6 +17,7 @@ The commands available as of this update are:
 | `vuw-job-eff`    | Shows job efficiency (use `vuw-job-eff --help` for details)              |
 | `vuw-info`       | Shows node resource usage and availability (use `vuw-info --help` for details) |
 | `vuw-alloc`      | Shows current usage against user accounts (use `vuw-alloc --help` for details) |
+| `vuw-sub`       | General-purpose Slurm submission script (use `vuw-sub --help` for details) |
 
 !!! tip
     If you are unable to use these commands (e.g. with an error message "command not found") then double check you have the "config" module loaded (i.e. enter the command `module load config`).
