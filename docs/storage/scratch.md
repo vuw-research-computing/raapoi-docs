@@ -1,21 +1,17 @@
 ### Scratch Tips
 
-The scratch storage is on a large storage node with 2 raid arrays with 50TB of storage each.  Your scratch will always be available at ```/nfs/scratch/<username>```.
+The scratch storage is provided by a dedicated ZFS storage system and is available to all Raapoi users at ```/nfs/scratch/<username>```.
 
-Your scratch storage could be on scratch or scratch2, to find out run ```vuw-quota```.
+Scratch storage is intended for actively used research data and temporary working files. It is not backed up, so important data should not be stored exclusively on scratch storage. While the storage system includes RAIDZ2 disk redundancy and redundant power supplies, it remains a single storage system and cannot protect against all hardware failures.
 
-Each user has a quota of 5TB on scratch - you can ask [the support team](../support.md) to increase it if needed.  While each user has a quota of 5TB, we don't actually have enough storage for each user to fill 5TB of storage!  This is a shared resource and we will occasionally ask on the [slack channel](https://uwrc.slack.com/) for users to clean up their storage to make space for others. Individuals using a large amount of scratch space may recieve an email.
+Each user is allocated a default quota of 5TB of scratch space. You can check your quota and current usage by running vuw-quota. If your research requires additional storage, please contact [the support team](../support.md).
+
+Scratch storage is a shared resource. Although users are allocated generous quotas, the total storage available is shared across all users. Researchers are encouraged to regularly remove data that is no longer required and archive completed work elsewhere. When storage usage becomes high, the Research Computing team may contact users with large allocations and ask them to review or clean up their data.
 
 To check how much space is free on the scratch storage for all users, on Rāpoi: 
 ```
 df -h | grep scratch  #df -h is disk free with human units, | pipes the output to grep, which shows lines which contain the word scratch
 ```
-On the [slack channel](https://uwrc.slack.com/) in any DM or channel type
-```
-/df-scratch 
-```
-The output should only be visible to you
-
 
 This storage is **not backed up** at all.  It is on a raid array so if a hard drive fails your data is safe.  However in the event of a more dramatic hardware failure, earthquakes or fire - your data is gone forever.  If you accidentally delete something, it's gone forever. If an Admin misconfigures something, your data is gone (we try not to do this!).
 
