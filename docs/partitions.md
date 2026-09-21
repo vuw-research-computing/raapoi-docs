@@ -12,32 +12,30 @@ may come a time when certain research groups purchase their own nodes and they a
 given exclusive access.
 
 To view the partitions available to use you can type the vuw-partitions
-command, eg
+command, e.g.
 
 ```
 <user>@raapoi-login:~$ vuw-partitions 
 
 VUW CLUSTER PARTITIONS
 PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
-quicktest*    up    5:00:00      1  down* amd01n01
-quicktest*    up    5:00:00      4    mix amd01n[02-03]
-quicktest*    up    5:00:00      1   idle amd01n04
+quicktest*    up    5:00:00      1    mix amd01n04
+quicktest*    up    5:00:00      3   idle amd01n[01-03]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+parallel     up 10-00:00:0      1  drain amd02n01
 parallel     up 10-00:00:0      1   resv spj01
-parallel     up 10-00:00:0     24    mix amd02n[01-04],amd03n[01-04],amd04n[01-04],amd05n[01-04],amd06n[01-04]
-parallel     up 10-00:00:0      2  alloc amd07n[03-04]
+parallel     up 10-00:00:0     23    mix amd02n[02-04],amd03n[01-04],amd04n[01-04],amd05n[01-04],amd06n[01-04],amd07n[01-04]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-gpu          up 1-00:00:00      1    mix gpu02
-gpu          up 1-00:00:00      2   idle gpu[01,03]
+gpu          up 1-00:00:00      3    mix gpu[01-03]
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-bigmem       up 10-00:00:0      3    mix high[01-02,04]
-bigmem       up 10-00:00:0      1  alloc high03
+bigmem       up 10-00:00:0      3    mix high[02-04]
+bigmem       up 10-00:00:0      1   idle high01
 
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-longrun      up 30-00:00:0      2   idle bigtmp[01-02]
+longrun      up 30-00:00:0      2    mix bigtmp[01-02]
 
 NOTE: This utility is a wrapper for the Slurm command:
       sinfo -p PARTITION
@@ -60,8 +58,8 @@ or for special purposes such as temporary dedicated access
 * __down__ - node is down, either for maitnenance or due to failure
 
 Also notice the _TIMELIMIT_ field, this describes the maximum runtime of a
-partition.  For example, the quicktest partition has a maximum runtime of 1
-hour and the parallel partition has a max runtime of 10 days.
+partition.  For example, the quicktest partition has a maximum runtime of 5
+hours and the parallel partition has a max runtime of 10 days.
 
 ---
 
@@ -72,38 +70,40 @@ hour and the parallel partition has a max runtime of 10 days.
 This partition is for quick tests of code, environment, software builds or
 similar short-run jobs.  Since the max time limit is 5 hours it should not take
 long for your job to run.  This can also be used for near-on-demand interactive
-jobs.  Note that unlike the other partitions, these nodes have intel cpus.
+jobs.
 
-* Quicktest nodes available: 6
-* Maximum CPU available per task: 64
-* Maximum memory available per task: 128G
+* Quicktest nodes available: 4
+* Maximum CPU available per task: 256
+* Maximum memory available per task: 502G
 * Optimal cpu/mem ratio: 1 cpu/2G ram
 * Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs
 * Maximum Runtime: 5 hours
+* These nodes are connected to the InfiniBand network. 
 
 ### Partition: parallel
 
 This partition is useful for parallel workflows, either loosely coupled or jobs
-requiring MPI or other message passing protocols for tightly bound jobs. The total number of CPU's in this partition is 6816 with 2GB ram per CPU.
+requiring MPI or other message passing protocols for tightly bound jobs. It has 28 AMD nodes (`amdXXnXX`) with 256 CPUs and 502GB RAM each, plus `spj01` with 128 CPUs and 250GB RAM.
 
 *AMD nodes - amdXXnXX*
 
 * AMD nodes available: 28
 * Maximum CPU available per task: 256
-* Maximum memory available per task: 512G
-* Optimal cpu/mem ratio: 1 cpu/2G ram
+* Maximum memory available per task: 502G
+* Optimal cpu/mem ratio: 1 CPU/2G RAM
 * Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs
 * Maximum Runtime: 10 days
+* These nodes are connected to the InfiniBand network.
 
 ### Partition: gpu
 
 This partition is for those jobs that require GPUs or those software that work with the CUDA platform and API (tensorflow, pytorch, MATLAB, etc)
 
 * GPU nodes available: 3
-* GPUs available per node: 2 (A100's)
+* GPUs available per node: 2 (NVIDIA A100-PCIE-40GB)
 * Maximum CPU available per task: 256
-* Maximum memory available per task: 512G
-* Optimal cpu/mem ratio: 1 cpu/2G ram
+* Maximum memory available per task: 502G
+* Optimal cpu/mem ratio: 1 CPU/2G RAM
 * Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs
 * Maximum Runtime: 24 hours
 
@@ -116,29 +116,28 @@ memory (greater than 125 GB).  These are known as memory-bound jobs.
 
 __NOTE:__ Please do not schedule jobs of less than 125GB of memory on the bigmem partition.
 
-* Bigmem nodes available: 4 (4x1024G ram)
+* Bigmem nodes available: 4 (4 x 1024G RAM)
 * Maximum CPU available per task: 128
 * Maximum memory available per task: 1 TB
-* Optimal cpu/mem ratio: 1 cpu/8G ram - note jobs here often use much more ram than this.
+* Optimal cpu/mem ratio: 1 CPU/8G RAM - note jobs here often use much more ram than this.
 * Minimum allocated cpus: 1 - These cpus are not currently SMT enabled.
 * Maximum Runtime: 10 days
 
-_Note_: The bigmem nodes also each have one NVIDIA Tesla T4 GPU. These are not as powerful as the A100's in the gpu nodes, but may still be of use at times when (a) the gpu partition is particularly busy or a gpu node is down, **and** (b) the bigmem node is being under-utilised. (I.e. please try to avoid using these gpus when there is a high demand for jobs requiring lots of memory in the bigmem partition, at other time, please go ahead.)
+_Note_: The bigmem nodes also each have one NVIDIA Tesla T4 GPU. These are not as powerful as the A100's in the gpu nodes, but may still be of use at times when (a) the gpu partition is particularly busy or a gpu node is down, **and** (b) the bigmem node is being under-utilised. (i.e. please try to avoid using these gpus when there is a high demand for jobs requiring lots of memory in the bigmem partition, at other time, please go ahead.)
 
 ### Partition: longrun
 
 This partition is useful for long running jobs (with modest resource requirements).
-The total number of CPU's in this partition is 512 with 2GB ram per CPU.
+The total number of CPU's in this partition is 512 with ~2GB RAM per CPU. This partition has two nodes, ```bigtmp01``` and ```bigtmp02```, each with 25TB of local ```/tmp``` storage.
 
-*AMD nodes - bigtmp##*
+*AMD nodes - bigtmpXX*
 
 * AMD nodes available: 2
 * Maximum CPU available per task: 256
-* Maximum memory available per task: 512G
-* Optimal cpu/mem ratio: 1 cpu/2G ram
+* Maximum memory available per task: 502G
+* Optimal cpu/mem ratio: 1 CPU/2G RAM
 * Minimum allocated cpus: 2 - Slurm won't split an SMT core between users/jobs
 * Maximum Runtime: 30 days
-
 
 ---
 
