@@ -1,7 +1,7 @@
 # Basic Commands
 ### The _vuw_ Commands
 
-In an effort to make using Rāpoi just a bit easier, CAD staff have created commands to help you view useful information.  We call these the _vuw_ commands.  This is because all the commands begin with the string _vuw_.  This makes it easier to see the commands available to you.  If, at a command prompt you type _vuw_ followed immediately by two _TAB_ keys you will see a list of available commands beginning with _vuw_.  Go ahead and type vuw-TAB-TAB to see for yourself.
+In an effort to make using Rāpoi just a bit easier, we have created commands to help you view useful information.  We call these the _vuw_ commands.  This is because all the commands begin with the string _vuw_.  This makes it easier to see the commands available to you.  If, at a command prompt you type _vuw_ followed immediately by two _TAB_ keys you will see a list of available commands beginning with _vuw_.  Go ahead and type vuw-TAB-TAB to see for yourself.
 
 The commands available as of this update are:
 
@@ -17,7 +17,7 @@ The commands available as of this update are:
 | `vuw-job-eff`    | Shows job efficiency (use `vuw-job-eff --help` for details)              |
 | `vuw-info`       | Shows node resource usage and availability (use `vuw-info --help` for details) |
 | `vuw-alloc`      | Shows current usage against user accounts (use `vuw-alloc --help` for details) |
-| `vuw-sub`       | General-purpose Slurm submission script (use `vuw-sub --help` for details) |
+| `vuw-sub`       | General-purpose Slurm submission script (use `vuw-sub` for details) |
 
 !!! tip
     If you are unable to use these commands (e.g. with an error message "command not found") then double check you have the "config" module loaded (i.e. enter the command `module load config`).
