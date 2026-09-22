@@ -1,11 +1,85 @@
-# Enviroment Setup
-
+# Environment Setup
 Rāpoi has an extensive library of applications and software available. There are numerous programming languages and libraries (R, Julia, Python, lua, OpenMPI, blas, etc) as well as dozens of applications (Matlab, Gaussian, etc).  We also keep older versions of software to ensure compatibility.
 
 Because of this, Rāpoi developers use a tool called *lmod* to allow a user to load a specific version of an application, language or library and start using it for their work. The _module_ command will show you what software is available to load, and will add the software to your environment for immediate use. 
 
-Entering `module help` into the command prompt will give you some basic information about all of the `module` sub-commands. 
+Entering `module help` into the command prompt will give you some basic information about all of the `module` sub-commands.
 Here we briefly describe the most important ones.
+
+## The current module system
+
+Since 2020, Rāpoi software has been built and organised into modules using toolchains. Toolchains group software built with compatible compiler and MPI versions, keeping software in separate and reproducible environments.
+
+Before software in a toolchain can be loaded, its compiler and MPI modules, or the corresponding toolchain module, must be loaded. For example, to load `BioPython/1.7.9`:
+
+```bash
+module load foss/2021a
+module load BioPython/1.7.9
+```
+
+To save you needing to load both a Compiler and MPI version, the compiler and MPI versions are bundled into half yearly packs.  For example `GCC/10.3.0 and OpenMPI/4.1.1` are bundled in the meta module `foss/2021a`
+
+```mermaid
+graph TD;
+    LMOD["Module System"] --toolchain --- foss2020b["foss2020b <br> GCC/10.2.0 OpenMPI/4.0.5"]
+    LMOD --toolchain --- foss2021a["foss2021a <br> GCC/10.3.0 OpenMPI/4.1.1"]
+    foss2020b --- id3["ORCA/4.2.1"]
+    foss2020b --- id4["Singularity/3.7.3"]
+    foss2021a --- id5["Biopython/1.79"]
+    foss2021a --- id6["Haploflow/1.0"]
+```
+
+<br/>
+
+The toolchain can also be loaded as individual prerequisites. For example, `netCDF/4.7.1` requires `GCC/8.3.0` and `OpenMPI/3.1.4`:
+
+```bash
+module load GCC/8.3.0
+module load OpenMPI/3.1.4
+module load netCDF/4.7.1
+```
+
+Use `module spider <name>` to find available software and its prerequisites. Searches are case-sensitive.
+
+### Toolchains
+
+Common CPU toolchains include:
+
+Toolchain  | Compiler   | MPI
+:---------:|:----------:|:-------------:
+foss/2020b | GCC/10.2.0 | OpenMPI/4.0.5
+foss/2021a | GCC/10.3.0 | OpenMPI/4.1.1
+foss/2021b | GCC/11.2.0 | OpenMPI/4.1.1
+foss/2022a | GCC/11.3.0 | OpenMPI/4.1.4
+foss/2022b | GCC/12.2.0 | OpenMPI/4.1.4
+foss/2023a | GCC/12.3.0 | OpenMPI/4.1.5
+foss/2023b | GCC/13.2.0 | OpenMPI/4.1.6
+foss/2024a | GCC/13.3.0 | OpenMPI/5.0.3
+foss/2025b | GCC/14.3.0 | OpenMPI/5.0.3
+
+GPU CUDA toolchains available:
+
+CUDA module | GCC version | NVCC version
+:----------:|:-----------:|:------------:
+CUDA/10.1.243 | GCC 8.5.0 | Not available
+CUDA/11.1.1   | GCC 8.5.0 | Not available
+CUDA/11.3.1   | GCC 8.5.0 | 11.3.109
+CUDA/11.4.1   | GCC 8.5.0 | 11.4.100
+CUDA/11.7.0   | GCC 8.5.0 | 11.7.64
+CUDA/11.8.0   | GCC 8.5.0 | 11.8.89
+CUDA/12.0.0   | GCC 8.5.0 | 12.0.76
+CUDA/12.1.0   | GCC 8.5.0 | 12.1.66
+CUDA/12.1.1   | GCC 8.5.0 | 12.1.105
+CUDA/12.8.0   | GCC 8.5.0 | 12.8.61
+CUDA/12.9.1   | GCC 8.5.0 | 12.9.86
+CUDA/13.1.0   | GCC 8.5.0 | 13.1.80
+
+Intel toolchains are available for software requiring Intel compilers or MKL.
+
+Toolchain    | Compiler   | Intel Compiler | MPI           | MKL
+:-----------:|:----------:|:--------------:|:------------:|:-------------:
+intel/2021b  | GCC/11.2.0 | 2021.4.0       | impi/2021.4.0 | imkl/2021.4.0
+intel/2022a  | GCC/11.3.0 | 2022.1.0       | impi/2021.6.0 | imkl/2021.6.0
 
 ---
 
@@ -20,22 +94,16 @@ To show all software available to load type the following:
   `module avail`
 
 This is a long list of software packages which can each be loaded immediately (i.e. without first loading pre-requisites).
-Generally each software package is listed as a path of the form *<software name>/<version number>*, eg. _lua/5.3.5_.
+Generally each software package is listed as a path of the form *<software name>/<version number>*, e.g. _lua/5.3.5_.
 The list is separated into a few sections (via lines of dashes).
-The section of most interest has the heading 
+The section of most interest has the heading
 ```bash
 -------------------- /home/software/tools/eb_modulefiles/all/Core --------------------
 ```
-The modules under this heading (or similar) are from the new module system (see [New Module System](new_mod.md) for more extensive details).
+The modules under this heading (or similar) are from the current module system.
 
-In contrast, the modules listed under the heading
-```bash
--------------------------- /home/software/tools/modulefiles --------------------------
-```
-are from the old module system. 
-Beware that many of these older software packages in this section may no longer work.
+There may be other sections, depending on what modules you already have loaded. For old module system before 2020, see [Old Modules](old_mod.md).
 
-There may be other sections, depending on what modules you already have loaded.
 For example, if `GCC/10.3.0` is loaded then you will see the additional sections
 ```bash
 ------------ /home/software/tools/eb_modulefiles/all/Compiler/GCC/10.3.0 -------------
@@ -74,12 +142,11 @@ username@raapoi-login:~$ module spider Python
         Python/2.7.15
         Python/2.7.16
         Python/2.7.18
+        Python/3.9.6
 <additional output not included here>
 ```
 Note that the capital **P** in `Python` is important here, the `module spider` command is case-sensitive. 
-Capital **P** `Python` modules/packages are generally from the new module system, whereas lower case `python` modules/packages are older (and may no longer work).
-The same goes for many several other software packages such as `R` 
-(versus `r`) and `OpenMPI` (versus `openmpi`).
+Use the capitalisation shown by `module spider` when loading software.
 
 Among the list of Python versions is `Python/3.9.6`.
 To find out how to load it we call `module spider` again with the specific Python version included, e.g.
@@ -118,8 +185,7 @@ If we wanted to ensure we had a clean/minimal software environment, we could sta
 username@raapoi-login:~$ module purge
 username@raapoi-login:~$ module load config GCCcore/11.2.0
 username@raapoi-login:~$ module load Python/3.9.6
-```
-In either case, you will now be able to run Python version 3.9.6 by entering `python` at the command prompt.
+```In either case, you will now be able to run Python version 3.9.6 by entering `python` at the command prompt.
 If you are intending to do some computation, you should call `srun --pty python` to start an interactive job on the quicktest node running Python.
 
 
@@ -158,20 +224,21 @@ The output of _module whatis_ will be more details for some modules than others.
 Here is one example:
 
 ```bash
-username@raapoi-login:~$ module whatis foss/2020b
-foss/2020b          : Description: GNU Compiler Collection (GCC) based compiler toolchain, including
+username@raapoi-login:~$ module whatis foss/2025b
+foss/2025b          : Description: GNU Compiler Collection (GCC) based compiler toolchain, including
  OpenMPI for MPI support, OpenBLAS (BLAS and LAPACK support), FFTW and ScaLAPACK.
-foss/2020b          : Homepage: https://easybuild.readthedocs.io/en/master/Common-toolchains.html#foss-toolchain
-foss/2020b          : URL: https://easybuild.readthedocs.io/en/master/Common-toolchains.html#foss-toolchain
+foss/2025b          : Homepage: https://docs.easybuild.io/common-toolchains/#common_toolchains_foss
+foss/2025b          : URL: https://docs.easybuild.io/common-toolchains/#common_toolchains_foss
 ```
 
 The output of _module show_ shows the help information associated with the module/package as well as various steps which are executed when the module is loaded.
 
 ```bash
-username@raapoi-login:~$ module show GCC/10.3.0
------------------------------------------------------------------------------------------
-   /home/software/tools/eb_modulefiles/all/Core/GCC/10.3.0.lua:
------------------------------------------------------------------------------------------
+username@raapoi-login:~$ module show GCC/14.3.0
+------------------------------------------------------------------------------------------------------------------------
+   /home/software/tools/eb_modulefiles/all/Core/GCC/14.3.0.lua:
+------------------------------------------------------------------------------------------------------------------------
+-- This help content will be processed as markdown in terminal display
 help([[
 Description
 ===========
@@ -188,12 +255,12 @@ whatis("Description: The GNU Compiler Collection includes front ends for C, C++,
 whatis("Homepage: https://gcc.gnu.org/")
 whatis("URL: https://gcc.gnu.org/")
 conflict("GCC")
-load("GCCcore/10.3.0")
-load("binutils/2.36.1")
-prepend_path("MODULEPATH","/home/software/tools/eb_modulefiles/all/Compiler/GCC/10.3.0")
-setenv("EBROOTGCC","/home/software/EasyBuild/software/GCCcore/10.3.0")
-setenv("EBVERSIONGCC","10.3.0")
-setenv("EBDEVELGCC","/home/software/EasyBuild/software/GCC/10.3.0/easybuild/Core-GCC-10.3.0-easybuild-devel")
+depends_on("GCCcore/14.3.0")
+depends_on("binutils/2.44")
+prepend_path("MODULEPATH","/home/software/tools/eb_modulefiles/all/Compiler/GCC/14.3.0")
+setenv("EBROOTGCC","/home/software/EasyBuild/software/GCCcore/14.3.0")
+setenv("EBVERSIONGCC","14.3.0")
+setenv("EBDEVELGCC","/home/software/EasyBuild/software/GCC/14.3.0/easybuild/Core-GCC-14.3.0-easybuild-devel")
 ```
 
 Note that both the _whatis_ and _show_ commands will only work if you have loaded the pre-requisites of the module/package you are looking up.
@@ -224,5 +291,5 @@ Individual modules/packages can also be unloaded via `module unload <package nam
 There are occasions where your local lmod cache may become corrupted, resulting in error messages such as `/usr/bin/lua: <...> bad argument #1 to 'next' <...>` or similar when you try to use `module` commands.
 The first thing you can try to resolve this issue is to delete your local lmod cache files `rm ~/.cache/lmod/*.lua`.
 When you next run a module command the cache files will be re-generated.
-In most cases this resolves module/lmod issues. 
+In most cases this resolves module/lmod issues.
 If you continue to have issues after deleting the local cache, get in touch with support people via the Rāpoi Slack channel.

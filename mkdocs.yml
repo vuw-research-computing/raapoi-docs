@@ -7,7 +7,7 @@ nav:
     - 'Storage and Quotas': 'storage.md'
     - 'Using Partitions': 'partitions.md'
     - 'Preparing your Environment (modules)': 'environment.md'
-    - 'New module system' : 'new_mod.md'
+    - 'Old module system' : 'old_mod.md'
     - 'Running Jobs': 'running_jobs.md'
     - 'Managing Jobs': 'managing_jobs.md'
     - 'Examples and User Guides': 'examples.md'
