@@ -10,14 +10,14 @@ Here we briefly describe the most important ones.
 
 Since 2020, Rāpoi software has been built and organised into modules using toolchains. Toolchains group software built with compatible compiler and MPI versions, keeping software in separate and reproducible environments.
 
-Before software in a toolchain can be loaded, its compiler and MPI modules, or the corresponding toolchain module, must be loaded. For example, to load `BioPython/1.7.9`:
+Before software in a toolchain can be loaded, its compiler and MPI modules, or the corresponding toolchain module, must be loaded. For example, to load `PyTorch/2.9.1-CUDA-12.9.1`:
 
 ```bash
-module load foss/2021a
-module load BioPython/1.7.9
+module load foss/2025b
+module load PyTorch/2.9.1-CUDA-12.9.1
 ```
 
-To save you needing to load both a Compiler and MPI version, the compiler and MPI versions are bundled into half yearly packs.  For example `GCC/10.3.0 and OpenMPI/4.1.1` are bundled in the meta module `foss/2021a`
+To save you needing to load both a Compiler and MPI version, the compiler and MPI versions are bundled into half yearly packs.  For example `GCC/14.3.0 and OpenMPI/5.0.8` are bundled in the meta module `foss/2025b`
 
 ```mermaid
 graph TD;
