@@ -7,20 +7,19 @@ _Rāpoi_ uses a scheduler and resource manager called Slurm that requires resear
 
 Jobs require resources.  Basic resources are CPU, memory (aka RAM) and time.  If the researcher does not specify the number of CPUs, RAM and time, the defaults will be given (currently 2CPU, 2 GB RAM and 1 hour of runtime.)  Details on requesting the basic resources are included in the Batch and Interactive sections below.
 
-Along with basic resources there can be other resources defined, such as GPU, license tokens, or even specific types of CPUs and CPU instruction sets.  Special resources can be requested using the parameters `--gres` or `--constraint`  For example, to request an Intel processor one can use the parameter: `--constraint="Intel"`
+Along with basic resources there can be other resources defined, such as GPU, license tokens, or specific CPU instruction sets. Special resources can be requested using the parameters `--gres` or `--constraint`.
 
 ### Currently defined constraints
 
 Below is a list of constraints that have need defined and a brief description:
 
-* AMD - AMD processor
+* AMD - AMD processor (All the processors are AMD currently)
 * IB - Infiniband network for tightly coupled and MPI processing
-* Intel - Intel processor
 * 10GE - 10 Gigabit Ethernet
 * SSE41 - Streaming SIMD Extensions version 4.1
 * AVX - Advanced Vector Extensions
 
-For example, if you want to request a compute node with AMD processors you can add `--constraint="AMD"` in your submit script or srun request.
+For example, if you want to request a compute node with Infiniband network, you can add `--constraint="IB"` in your submit script or srun request.
 
 ---
 
