@@ -144,7 +144,7 @@ RAAPOI_USERNAME@amd01n01:~$
 
 - Now is the time to connect VSCode to the interactive session we just got on Rāpoi. Follow the instructions below:
 
-    - Open VSCode window, and click on the bottom left corner that says `Open a Remote Window`, and 
+    - Open VSCode window, and click on the bottom left corner that says `Open a Remote Window`. 
 
     ![VS Code Remote Host](img/VSCode_003.png)
 
@@ -156,10 +156,24 @@ RAAPOI_USERNAME@amd01n01:~$
 
     ![VS Code Remote Host](img/VSCode_005.png)
 
-Once a connection is established, your VSCode session should be running on a compute node now. 
+    - For the first time, it will ask you for the OS of the host. Select `Linux`.
+
+    ![VS Code Remote Host](img/VSCode_006.png)
+
+    - Then it will ask you to verify the fingerprint of the host (amd01n01). Click Continue.
+
+    ![VS Code Remote Host](img/VSCode_007.png)
 
 
+    - Once a connection is established, your VSCode session should be running on a compute node now. You can see the red circle in the picture below:
 
+    ![VS Code Remote Host](img/VSCode_008.png)
+
+**Step 8**. To close VSCode session. 
+
+Go to `File` > `Close Remote Connection`. DO NOT simply close the VSCode window as it leaves VSCode processes behind.
+
+   
 !!! Tip
 
     To speed up VSCode, there are steps mentioned in [the official VSCode docs](https://code.visualstudio.com/docs/configure/settings). Below is just a part of it: 
@@ -182,13 +196,7 @@ Once a connection is established, your VSCode session should be running on a com
     }
     ```
 
-    
-
-
-Step 7. To close VSCode session. 
-
-Go to `File` > `Close Remote Connection`
 
 !!! Tip
-    The instructions above assume that the node amd01n01 is up and has sufficient resources available. There may be times when this is not the case and you need to adapt these steps to access cpus on a different node. As a workaround you'll need to modify steps 4 and 5 to point towards a different node. If you do, you should make a note to revert these changes to utilise amd01n01 once it is available again.
+    The instructions above assume that the node amd01n01 is up and has sufficient resources available. There may be times when this is not the case and you need to adapt these steps to access cpus on a different node. As a workaround you'll need to modify steps 5 and 6 to point towards a different node.
 
