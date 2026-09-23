@@ -13,11 +13,11 @@ The instructions below should let users run their VSCode session on a compute no
 
 - Open VSCode, click "View" and then "Extensions" as shown in the image below.
 
-![VS Code Extensions view](img/VSCode_001.png)
+    ![VS Code Extensions view](img/VSCode_001.png)
 
 - Then on the left side in search bar, type "Remote - SSH" and select the first result as shown in image. Then click Install on right side as shown by a red circle on the image.
 
-![VS Code Extensions view](img/VSCode_002.png)
+    ![VS Code Extensions view](img/VSCode_002.png)
 
 **Step 3**. Now you need to create ssh keys on your local machine, _(existing ssh keys can also be used - no need to create new ones)_ and upload them on Rāpoi. The detailed instructions for creating the ssh keys are given below:
 
@@ -142,9 +142,9 @@ RAAPOI_USERNAME@amd01n01:~$
 
 **Step 7**. Connect VSCode session.
 
-Now is the time to connect VSCode to the interactive session we just got on Rāpoi. Follow the instructions below:
+- Now is the time to connect VSCode to the interactive session we just got on Rāpoi. Follow the instructions below:
 
-   - Open VSCode window, and click on the bottom left corner that says `Open a Remote Window`, and 
+    - Open VSCode window, and click on the bottom left corner that says `Open a Remote Window`, and 
 
     ![VS Code Remote Host](img/VSCode_003.png)
 
