@@ -1,7 +1,7 @@
 ## VSCode (Page Under Construction)
 
 !!! Tip
-    Windows users are recommended to use [`Git Bash`](https://git-scm.com/downloads) or Windows Terminal (Powershell) in Windows 11 for the following instructions to work. 
+    Windows users are recommended to use Windows Terminal (Powershell) in Windows 11 or [`Git Bash`](https://git-scm.com/downloads) for the following instructions to work. 
 
 **Running VSCode on the login node is not allowed. It should always be run on a compute node using the instructions below. Before connecting, check whether you really need to use VSCode on Rāpoi or whether it would be better to run it locally on your own machine.**
 
@@ -19,9 +19,22 @@ The instructions below should let users run their VSCode session on a compute no
 
 ![VS Code Extensions view](img/VSCode_002.png)
 
-- Extension `Remote - SSH` from [https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
+**Step 3**. Now you need to create ssh keys on your local machine, _(existing ssh keys can also be used - no need to create new ones)_. The detailed instructions for creating the ssh keys are given below:
 
-Step 3. On your local machine, create ssh keys _(existing ssh keys can also be used - no need to create new ones)_
+- If you are a Windows user, click on start and search for "Terminal" or "PowerShell" and open it. Mac users can open mac terminal.
+- Type `cd` and press Enter key to go to the user's home directory
+
+```bash
+user@local:~$ cd
+```
+
+- Then enter into `.ssh` directory by typing
+
+```bash
+user@local:~$ cd .ssh
+```
+
+- Now type ssh-keygen and press Enter
 
 ```bash
 user@local:~$ ssh-keygen
