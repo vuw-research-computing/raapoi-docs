@@ -84,11 +84,11 @@ jobs.
 ### Partition: parallel
 
 This partition is useful for parallel workflows, either loosely coupled or jobs
-requiring MPI or other message passing protocols for tightly bound jobs. It has 28 AMD nodes (`amdXXnXX`) with 256 CPUs and 502GB RAM each, plus `spj01` with 128 CPUs and 250GB RAM.
+requiring MPI or other message passing protocols for tightly bound jobs. It has 24 AMD nodes (`amdXXnXX`) with 256 CPUs and 502GB RAM each, plus `spj01` with 128 CPUs and 250GB RAM.
 
 *AMD nodes - amdXXnXX*
 
-* AMD nodes available: 28
+* AMD nodes available: 24
 * Maximum CPU available per task: 256
 * Maximum memory available per task: 502G
 * Optimal cpu/mem ratio: 1 CPU/2G RAM

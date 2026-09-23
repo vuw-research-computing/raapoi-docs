@@ -116,7 +116,7 @@ Host *
     ForwardAgent yes
     ForwardX11 yes
     ForwardX11Trusted yes
-    IdentityFile C:\Users\hashmimu\.ssh\id_ed25519 # Add your own private key path here 
+    IdentityFile C:\Users\ali\.ssh\id_ed25519 # Add your own private key path here 
     AddKeysToAgent yes
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
@@ -134,14 +134,31 @@ C:\Users\ali\. ssh raapoi_login
 Once logged in, allocate resources for the VSCode session using the same terminal.
 ```bash 
 RAAPOI_USERNAME@raapoi-login:~$ srun -t0-05:00:00 -wamd01n01 --cpus-per-task=2 --mem=4G --pty bash
+srun: job 3435343 queued and waiting for resources
+srun: job 3435343 has been allocated resources
+RAAPOI_USERNAME@amd01n01:~$
 ```
 
 
-Step 6. Connect VSCode session 
+**Step 7**. Connect VSCode session.
 
-Open VSCode window, and click on the bottom left corner that says `Open a Remote Window`, and then choose `Connect to Host` and then selecting `VSCode_Compute` as a host. 
+Now is the time to connect VSCode to the interactive session we just got on Rāpoi. Follow the instructions below:
+
+   - Open VSCode window, and click on the bottom left corner that says `Open a Remote Window`, and 
+
+    ![VS Code Remote Host](img/VSCode_003.png)
+
+    - Then choose `Connect to Host`.
+
+    ![VS Code Remote Host](img/VSCode_004.png)
+
+    - Then select `VSCode_Compute` as a host.
+
+    ![VS Code Remote Host](img/VSCode_005.png)
 
 Once a connection is established, your VSCode session should be running on a compute node now. 
+
+
 
 !!! Tip
 
