@@ -19,44 +19,69 @@ The instructions below should let users run their VSCode session on a compute no
 
 ![VS Code Extensions view](img/VSCode_002.png)
 
-**Step 3**. Now you need to create ssh keys on your local machine, _(existing ssh keys can also be used - no need to create new ones)_. The detailed instructions for creating the ssh keys are given below:
+**Step 3**. Now you need to create ssh keys on your local machine, _(existing ssh keys can also be used - no need to create new ones)_ and upload them on Rāpoi. The detailed instructions for creating the ssh keys are given below:
 
 - If you are a Windows user, click on start and search for "Terminal" or "PowerShell" and open it. Mac users can open mac terminal.
-- Type `cd` and press Enter key to go to the user's home directory
+- Type `cd` and press Enter key to go to the user's home directory. My username is `ali` in the exxample below:
 
 ```bash
-user@local:~$ cd
+C:\Windows\System32> cd
 ```
 
 - Then enter into `.ssh` directory by typing
 
 ```bash
-user@local:~$ cd .ssh
+C:\Users\ali> cd .ssh
 ```
 
-- Now type ssh-keygen and press Enter
+- Now type ssh-keygen and press Enter.
 
 ```bash
-user@local:~$ ssh-keygen
+C:\Users\ali\.ssh> ssh-keygen
 ```
 
-Follow the prompts on the terminal to generate ssh-key pair, and note the directory where keys are being saved. 
-
-Step 2. Send the _public_ key to _Rāpoi_
+- Follow the prompts on the terminal to generate ssh-key pair. When it asks for the file to save the key, you can give a different name, otherwise you can keep the default one i.e., `id_ed25519`. 
 
 ```bash
-user@local:~$ ssh-copy-id -i ~/path/to/public/key RAAPOI_USERNAME@raapoi.vuw.ac.nz
+C:\Users\ali\.ssh> ssh-keygen
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\ali/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\ali/.ssh/id_ed25519
+Your public key has been saved in C:\Users\ali/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8 ali@mypc
 ```
 
-The path `~/path/to/public/key` should be the same as displayed when generating the ssh-key `~/.ssh/id_rsa.pub` in some cases. 
+- If you type `ls`, you 'll see two files, id_ed25519 and id_ed25519.pub in the current directory. We need to upload the public key `id_ed25519.pub` to Rāpoi.
 
-Step 3. Test the new keys 
+- Send the _public_ key to _Rāpoi_
 
+For mac and Linux users or Windows users using GitBash (considering you are already in .ssh directory). Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+```bash
+user@local:~$ ssh-copy-id -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
+```
+
+For Windows Users (using Windows Terminal or Powershell). Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+```bash
+C:\Users\ali\.ssh> type .\id_ed25519.pub | ssh RAAPOI_USERNAME@raapoi.vuw.ac.nz "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+**Step 4**. Now its the time to test the new ssh keys. Try logging in as shown below and it should not ask you for your Rāpoi password.
+
+For mac and Linux users or Windows users using GitBash
 ```bash
 user@local:~$ ssh -i ~/path/to/public/key RAAPOI_USERNAME@raapoi.vuw.ac.nz
 ```
+For Windows Users (using Windows Terminal or Powershell).
+```bash
+C:\Users\ali\.ssh> ssh -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
+```
 
-Step 4. On your local machine, update `ssh config` file
+If it logs in successfully, it means that the ssh keys are working correctly.
+
+**Step 5**. Now you need to update `ssh config` file on your local machine.
 
 Create `~/.ssh/config` file if it does not exist. Add hostname details to it:
 
