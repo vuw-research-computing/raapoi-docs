@@ -54,19 +54,21 @@ The key fingerprint is:
 SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8 ali@mypc
 ```
 
-- If you type `ls`, you 'll see two files, id_ed25519 and id_ed25519.pub in the current directory. We need to upload the public key `id_ed25519.pub` to Rāpoi.
+- If you type `ls`, you 'll see two files, `id_ed25519` and `id_ed25519.pub` in the current directory. We need to upload the public key `id_ed25519.pub` to Rāpoi.
+
 
 - Send the _public_ key to _Rāpoi_
+    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory, replace `RAAPOI_USERNAME` with your actual Rāpoi username:
 
-For mac and Linux users or Windows users using GitBash (considering you are already in .ssh directory). Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
-```bash
-user@local:~$ ssh-copy-id -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
-```
+        ```bash
+        user@local:~$ ssh-copy-id -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
+        ```
 
-For Windows Users (using Windows Terminal or Powershell). Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
-```bash
-C:\Users\ali\.ssh> type .\id_ed25519.pub | ssh RAAPOI_USERNAME@raapoi.vuw.ac.nz "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
-```
+    - For Windows users using Windows Terminal or PowerShell, replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+
+        ```bash
+        C:\Users\ali\.ssh> type .\id_ed25519.pub | ssh RAAPOI_USERNAME@raapoi.vuw.ac.nz "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+        ```
 
 **Step 4**. Now its the time to test the new ssh keys. Try logging in as shown below and it should not ask you for your Rāpoi password.
 
