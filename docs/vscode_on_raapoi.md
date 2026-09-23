@@ -1,4 +1,4 @@
-## VSCode (Page Under Construction)
+## VSCode Usage on Rāpoi
 
 !!! Tip
     Windows users are recommended to use Windows Terminal (Powershell) in Windows 11 or [`Git Bash`](https://git-scm.com/downloads) for the following instructions to work. 
@@ -72,33 +72,33 @@ SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8 ali@mypc
 
 **Step 4**. Now its the time to test the new ssh keys. Try logging in as shown below and it should not ask you for your Rāpoi password.
 
-    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+- For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
 
-        ```bash
-        user@local:~$ ssh -i ~/path/to/public/key RAAPOI_USERNAME@raapoi.vuw.ac.nz
-        ```
+  ```bash
+  user@local:~$ ssh -i ~/path/to/public/key RAAPOI_USERNAME@raapoi.vuw.ac.nz
+  ```
 
-    - For Windows users using Windows Terminal or PowerShell. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+- For Windows users using Windows Terminal or PowerShell. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
 
-        ```bash
-        C:\Users\ali\.ssh> ssh -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
-        ```
+  ```bash
+  C:\Users\ali\.ssh> ssh -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
+  ```
 
 If it logs in successfully, it means that the ssh keys are working correctly.
 
 **Step 5**. Now you need to update `ssh config` file on your local machine.
 
-    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. You can use nano as a text editor.
+- For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. You can use nano as a text editor:
 
-        ```bash
-        user@local:~$ nano ~/.ssh/config
-        ```
+  ```bash
+  user@local:~$ nano ~/.ssh/config
+  ```
 
-    - For Windows users using Windows Terminal or PowerShell when already inside the `.ssh` directory. You can use notepad to edit this file. If it says file does not exist, do you want to create it, select Yes. 
+- For Windows users using Windows Terminal or PowerShell when already inside the `.ssh` directory. You can use notepad to edit this file. If it says file does not exist, do you want to create it, select Yes:
 
-        ```bash
-        C:\Users\ali\.ssh> notepad config
-        ```
+  ```bash
+  C:\Users\ali\.ssh> notepad config
+  ```
 
 - When the config file is open, add the following details to it. Replace `RAAPOI_USERNAME` with your actual Rāpoi username below. For `IdentityFile`, use the full path to the key. I'll write windows path here, Linux and mac users can write their full path (e.g. ~/.ssh/id_rsa). Furthermore, If `amd01n01 ` is not available, you can use any other node as well like `amd01n02`.
 
@@ -131,14 +131,13 @@ Save this file and close it.
 C:\Users\ali\. ssh raapoi_login
 ```
 
-Once logged in, allocate resources for the VSCode session using the same terminal.
+Once logged in, allocate resources for the VSCode session using the same terminal. You 'll see the USERNAME@raapoi-login changing to USERNAME@amd01n01.
 ```bash 
 RAAPOI_USERNAME@raapoi-login:~$ srun -t0-05:00:00 -wamd01n01 --cpus-per-task=2 --mem=4G --pty bash
 srun: job 3435343 queued and waiting for resources
 srun: job 3435343 has been allocated resources
 RAAPOI_USERNAME@amd01n01:~$
 ```
-
 
 **Step 7**. Connect VSCode session.
 
