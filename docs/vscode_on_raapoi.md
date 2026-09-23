@@ -58,13 +58,13 @@ SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8 ali@mypc
 
 
 - Send the _public_ key to _Rāpoi_
-    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory, replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
 
         ```bash
         user@local:~$ ssh-copy-id -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
         ```
 
-    - For Windows users using Windows Terminal or PowerShell, replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+    - For Windows users using Windows Terminal or PowerShell. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
 
         ```bash
         C:\Users\ali\.ssh> type .\id_ed25519.pub | ssh RAAPOI_USERNAME@raapoi.vuw.ac.nz "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
@@ -72,54 +72,70 @@ SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8 ali@mypc
 
 **Step 4**. Now its the time to test the new ssh keys. Try logging in as shown below and it should not ask you for your Rāpoi password.
 
-For mac and Linux users or Windows users using GitBash
-```bash
-user@local:~$ ssh -i ~/path/to/public/key RAAPOI_USERNAME@raapoi.vuw.ac.nz
-```
-For Windows Users (using Windows Terminal or Powershell).
-```bash
-C:\Users\ali\.ssh> ssh -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
-```
+    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+
+        ```bash
+        user@local:~$ ssh -i ~/path/to/public/key RAAPOI_USERNAME@raapoi.vuw.ac.nz
+        ```
+
+    - For Windows users using Windows Terminal or PowerShell. Replace `RAAPOI_USERNAME` with your actual Rāpoi username:
+
+        ```bash
+        C:\Users\ali\.ssh> ssh -i id_ed25519 RAAPOI_USERNAME@raapoi.vuw.ac.nz
+        ```
 
 If it logs in successfully, it means that the ssh keys are working correctly.
 
 **Step 5**. Now you need to update `ssh config` file on your local machine.
 
-Create `~/.ssh/config` file if it does not exist. Add hostname details to it:
+    - For macOS and Linux users, or Windows users using Git Bash when already inside the `.ssh` directory. You can use nano as a text editor.
+
+        ```bash
+        user@local:~$ nano ~/.ssh/config
+        ```
+
+    - For Windows users using Windows Terminal or PowerShell when already inside the `.ssh` directory. You can use notepad to edit this file. If it says file does not exist, do you want to create it, select Yes. 
+
+        ```bash
+        C:\Users\ali\.ssh> notepad config
+        ```
+
+- When the config file is open, add the following details to it. Replace `RAAPOI_USERNAME` with your actual Rāpoi username below. For `IdentityFile`, use the full path to the key. I'll write windows path here, Linux and mac users can write their full path (e.g. ~/.ssh/id_rsa). Furthermore, If `amd01n01 ` is not available, you can use any other node as well like `amd01n02`.
 
 ```bash
 Host VSCode_Compute
-    User <YOUR_RAAPOI_USERNAME>
+    User RAAPOI_USERNAME
     HostName amd01n01
     ProxyJump raapoi_login
 
 Host raapoi_login
     HostName raapoi.vuw.ac.nz
-    User <YOUR_RAAPOI_USERNAME>
+    User RAAPOI_USERNAME
 
 Host *
     ForwardAgent yes
     ForwardX11 yes
     ForwardX11Trusted yes
-    IdentityFile ~/.ssh/id_rsa # Add your own private key path here
+    IdentityFile C:\Users\hashmimu\.ssh\id_ed25519 # Add your own private key path here 
     AddKeysToAgent yes
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
 ```
 
-Step 5. On your local machine, open a terminal window and login to _Rāpoi_ normally 
+Save this file and close it.
+
+
+**Step 6**. On your local machine, open a terminal window (Windows Terminal, Windows Powershell, GitBash, etc.) and login to _Rāpoi_ as below: 
 
 ```bash 
-user@local:~$ ssh raapoi_login
+C:\Users\ali\. ssh raapoi_login
 ```
 
-Once logged in alloc resources for the VSCode session
+Once logged in, allocate resources for the VSCode session using the same terminal.
 ```bash 
-RAAPOI_USERNAME@raapoi-login:~$ srun -t0-01:00:00 -wamd01n01 --mem=4G --pty bash
+RAAPOI_USERNAME@raapoi-login:~$ srun -t0-05:00:00 -wamd01n01 --cpus-per-task=2 --mem=4G --pty bash
 ```
 
-!!! Tip
-    Extend the time to maximum 5 hours with `-t0-04:59:59`
 
 Step 6. Connect VSCode session 
 
