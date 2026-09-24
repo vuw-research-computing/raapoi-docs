@@ -81,47 +81,6 @@ srun --pty --cpus-per-task=2 --mem=2G  --time=05:00:00 --partition=quicktest R
 !!! note 
     MATLAB on X server should use `matlab -softwareopengl` to run the application.
     
-
----
-
-## Batch jobs
-
-To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
-
-`sbatch myjob.sl`
-
-In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:
-
-```text
-#!/bin/bash
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=2G
-#SBATCH --partition=parallel
-#SBATCH --constraint=AVX
-#SBATCH --output=slurm-%j.out
-#SBATCH --error=slurm-%j.err
-#SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --mail-user=me@email.com
-
-module load python/3.6.8
-python3 project1.py
-```
-
-This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
-12 hours.  We are requesting that this job be run on the parallel  partition, it
-will then load the environment module for python version 3.6.3 and run a python
-script called project1.py.  Any output from the script will be placed in your
-home directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran _sbatch_.
-
-NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
-
-`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sl`
-
-The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
-
-For more information on the sbatch command, please use the manpages, eg: _man sbatch_
-
-
 So what does this all mean?
 
 The _module load_ commands will introduce the environment necessary to run a particular program, in this case R version 4.2.0
@@ -137,6 +96,46 @@ The _srun_ command will submit the job to the cluster.  The _srun_ command has m
 
 For more information on the srun command, please use the manpages, eg: _man srun_
 
+
+---
+
+## Batch jobs
+
+To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
+
+`sbatch myjob.sl`
+
+In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:
+
+```text
+#!/bin/bash
+#SBATCH --job-name=test-job
+#SBATCH --partition=parallel
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=2G
+#SBATCH --time=3-12:00:00
+#SBATCH --output=slurm-%j.out
+#SBATCH --error=slurm-%j.err
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user=me@email.com
+
+module load python/3.6.8
+python3 project1.py
+```
+
+This will request 2 CPUs and 4GB of memory (2GB per CPU) and a runtime of 3 days
+12 hours.  We are requesting that this job be run on the parallel  partition, it
+will then load the environment module for python version 3.6.3 and run a python
+script called project1.py.  Any output from the script will be placed in your
+current working directory in a file named project1.out and any error information in a file called project1.err.  If you do not specify an output or error file, the default files will have the form of Slurm-jobID.o and Slurm-jobID.e and will be located in the directory from which you ran _sbatch_.
+
+NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
+
+`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sl`
+
+The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
+
+For more information on the sbatch command, please use the manpages, eg: _man sbatch_
 
 
 ---
