@@ -103,7 +103,7 @@ For more information on the srun command, please use the manpages, eg: _man srun
 
 To run a batch job (aka a job that runs unattended) you use the _sbatch_ command.  A simple example would look something like this:
 
-`sbatch myjob.sl`
+`sbatch myjob.sh`
 
 In this example the sbatch command runs the file myjob.sh, the contents of this file, also known as a "batch submit script" could look something like this:
 
@@ -131,7 +131,7 @@ current working directory in a file named project1.out and any error information
 
 NOTE:  We have this example script available to copy on the cluster, you can type the following to copy it to your home directory:
 
-`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sl`
+`cp /home/software/tools/examples/batch/myjob.sh ~/myjob.sh`
 
 The ~/ in front of the file is a short-cut to your home directory path.  You will want to edit this file accordingly.
 
