@@ -9,7 +9,7 @@ To cancel all of your jobs you can use the -u flag followed by your username:
 
    `scancel -u <username>`
 
-**Note:** Before cancelling your jobs, please make sure it runs for at least 2 mins, including the jobs submitted in error. 
+**Note:** For interactive jobs, allow up to two minutes for the scheduler to allocate resources when the cluster is busy. If a job was submitted by mistake, or is consuming resources unexpectedly, cancel it immediately.
 
 
 ---
