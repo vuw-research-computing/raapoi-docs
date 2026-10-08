@@ -39,23 +39,43 @@ MY JOBS WITHIN LAST 5 days
 To view a report of your past jobs you can run _vuw-job-report_:
 
 ```
-$ vuw-job-report 162711
+$ vuw-job-report 3265617
 
-JOB REPORT FOR JOB 162711
-     JobName  Nodes    ReqMem   UsedMem(GB)  ReqCPUs CPUTime    State    Completed
-test-schro        1       64Gn                   24  00:02.513  COMPLETED 2019-05-28T16:17:10
-     batch        1       64Gn      0.15G        24  00:00.210  COMPLETED 2019-05-28T16:17:10
-    extern        1       64Gn      0.15G        24  00:00.002  COMPLETED 2019-05-28T16:17:10
+CPU SUMMARY
+-----------
+Core Hours:         29:05.248
+Total Walltime:     02:32:48
+CPU Efficiency:     19.04%
+CPU Step:           3265617 (1602cc8c-fd85-449a-ba1a-ab6c3710100a)
+
+MEMORY SUMMARY
+--------------
+Requested Memory:           125.00 GB
+Memory Used:                1.23 GB (MaxRSS)
+Memory Efficiency:          0.99%
+Peak Virtual Memory:        10.81 GB (MaxVMSize)
+Virtual Memory Efficiency:  8.65%
+MaxRSS Step:                3265617.0 (python)
+MaxVMSize Step:             3265617.0 (python)
+
+ACCOUNTING STEPS
+----------------
+JobID            JobName            State            ReqMem     ReqTotal       MaxRSS       AveRSS    MaxVMSize AllocCPU      Elapsed       TotalCPU
+----------------------------------------------------------------------------------------------------------------------------------------------------
+3265617          1602cc8c-fd85-449a COMPLETED    131072000K    125.00 GB            -            -            -       48     00:03:11      29:05.248
+3265617.batch    batch              COMPLETED                          -      0.13 GB      0.13 GB      2.23 GB       48     00:03:11      00:07.685
+3265617.extern   extern             COMPLETED                          -      0.00 GB      0.00 GB      0.13 GB       48     00:03:11      00:00.001
+3265617.0        python             COMPLETED                          -      1.23 GB      1.23 GB     10.81 GB       48     00:03:08      28:57.561
 ```
 
-__NOTE:__ In this example you see that I requested 64 GigaBytes of memory but only used 0.15 GB.  This means that 63 GB of memory went unused, which was a waste of resources.
+__NOTE:__ In this example you see that 125 GigaBytes of memory has been requested but only 1.23 GB used.  This means that 123 GB of memory went unused, which was a waste of resources.
 
 You can also get a report of your completed jobs using the _sacct_ command.  For example if I wanted to get a report on how much memory my job used I could do the following:
 
-   `sacct --units=G --format="MaxVMSize" -j 2156`
+   `sacct --units=G --format="MaxVMSize" -j 3265617`
 
 * MaxVMSize will report the maximum virtual memory (RAM plus swap space) used by my job in GigBytes ( --units=G )
-* -j 2156 shows the information for job ID 2156
+* -j 2156 shows the information for job ID 3265617
 * type _man sacct_ at a prompt in engaging to see the documentation on the _sacct_ command
 
 
@@ -84,7 +104,7 @@ The `vuw-myjobs` command will show you all your jobs - _running_ and _pending_, 
 You can see all the jobs in the queues by running the _vuw-alljobs_ command.  This will produce a very long list of jobs if the cluster is busy.
 
 !!! note
-      By default, each user is allowed _1,024 CPU cores_, _2,048 GB of memory_ and _3 GPUs_ at any one time. Once you reach these limits, your jobs will be queued until resources are available.  These limits are set to ensure that all users have fair access to the cluster.  If you need more resources, please contact the [Rāpoi support team](support.md).
+      By default, each user is allowed _1,024 CPU cores_, _2,048 GB of memory_ and _3 GPUs_ at any one time. Once you reach these limits, your jobs will be queued until resources are available.  These limits are set to ensure that all users have fair access to the cluster.  On the _bigmem_ and _longrun_ partitions, any one user cannot use more than _60%_ of the total partition resources at any one time. This is because these partitions have fewer specialized resources and keeping a fair share is necessary. If you need more resources, please contact the [Rāpoi support team](support.md).
 
 
 ---
