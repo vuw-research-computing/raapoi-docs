@@ -39,7 +39,7 @@ Login nodes are shared access points used to interact with the cluster. They are
 ### 3.2 Correct Usage
 - All computational workloads must be submitted to compute nodes via the Slurm scheduler.
 - If interactive work with significant resources is required, users must request an interactive job, for example using `srun` or `salloc`.
-### 3.3 Prohibited Activities on Login Node
+### 3.3 Login Node Restrictions
 Login nodes are not designed for computation or intensive I/O. The following activities are strictly prohibited on login node:
 
 - Running resource-intensive tasks such as CPU-, memory-, or I/O-heavy workloads
@@ -84,7 +84,7 @@ The following are considered misuse of the system:
 - Attempting to bypass the scheduler
 - Causing system instability, for example by filling storage or crashing services
 - Downloading or hosting non-research-related content
-- Using GUI tools on the login node, such as VSCode or MATLAB
+- Using GUI tools on the login node, such as VSCode or MATLAB, etc.
 - Any activity that violates University policies or applicable laws
 ## 8. Enforcement and Access Control
 At the discretion of the Rāpoi administrators, a first minor breach due to inexperience or genuine misunderstanding may be addressed through guidance rather than immediate loss of access, provided it does not cause significant disruption or risk.
