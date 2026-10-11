@@ -10,7 +10,7 @@
 
 ## Requesting Resources
 *  **_I don't want to interfere with other people work, what does it mean "Other users are prevented from using resources you request, even if you don't use them"?_**  
-    * The system is shared, you will very rarely have full use of a node.  You need to be careful to request resources, leaving the extra space available to others.  For example, say you submitted a job to bigmem which asked for 800GB of ram and 10 CPUs.  Your job would end up on the node with 1000GB ram as only that one would fit it - if your job actually only used 300GB of ram - the extra 500GB of ram you requested would be "wasted" no one else could use it.  So, another user with a job requesting 600GB of ram would have to wait for your job to end even if there was space for it to run alongside yours.
+    * The system is shared, you will very rarely have full use of a node.  You need to be careful to request resources, leaving the extra space available to others.  For example, say you submitted a job to bigmem which asked for 800GB of RAM and 10 CPUs.  Your job would end up on the node with 1000GB RAM as only that one would fit it - if your job actually only used 300GB of RAM - the extra 500GB of RAM you requested would be "wasted" no one else could use it.  So, another user with a job requesting 600GB of RAM would have to wait for your job to end even if there was space for it to run alongside yours.
 
     * The same issue occurs with CPU requests.   It can be very hard to accurately estimate memory and cpu needs before running your job.  If your job has a short run time (less than ~10 hours), you can just request more than you need and check the memory usage afterward to guide further jobs.  If your job has a long run time (several days), you should run a test job with a  short runtime (a few hours) to estimate your needs first. 
 
@@ -19,7 +19,10 @@
 
 ## Job Requirements    
 * **_How do I know resource requirement for my job?_**
-    * The best and most reliable method of determining resource requirement is from testing. #Note: It is possible to find out a ballpark figure for a particular software in terms of memory, cpus, or time, for example: MATLAB (~16 GB memory to initialize), see documentation or consult in slack help channel.
+    * The best and most reliable method of determining resource requirement is from testing. 
+    !!! note
+        It is possible to find out a ballpark figure for a particular software in terms of memory, CPUs, or time, for example: MATLAB (~16 GB memory to initialize), see documentation or consult in slack help channel. 
+        
     * Select a test job carefully. As a rule of thumb, a test job should not run for more than 15 mins. Perhaps you could use smaller input, coarse parameters or use a subset of the calculations. 
     * Make sure your test job is quick to run and quick to start. The later can be ensured by keeping resource requirement to be small (mem or cpu).
     * Often a good first test to run, is to execute your job serially e.g., using only 1 CPU. These jobs should be easier to debug, and quicker to run.
@@ -30,7 +33,7 @@
 
 ## Visualisation
 * **_How do I plot/visualise my results/data on Rāpoi?_**
-    * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself is computationally intensive, the dataset is large and difficult to move, and/or requires specialised hardware (like a gpu).
+    * Generally speaking, the best practice is to use Rāpoi for your heavy computing workloads, then transfer your results/data to a local machine to do any plotting/visualisation. An exception to this might be if the visualisation process itself is computationally intensive, the dataset is large and difficult to move, and/or requires specialised hardware (like a GPU).
     * The Rāpoi operating system is primarily designed for command line use, and thus doesn't include most of the software libraries that support graphical interfaces. This typically makes the installation of visualisation software a time consuming process.
     * Should you really need to plot/visualise on Rāpoi, there are several things you probably need to do. The first will be to have a suitable ssh client (see the section on the [Accessing the Cluster](accessing_the_cluster.md) page) and enable X11 forwarding by adding the `-X` option when you `ssh` into Rāpoi. Other steps can vary greatly depending on your local operating system and exactly what you want to do. If you need assistance, reach out on the [raapoi-help slack channel](https://uwrc.slack.com).
 
