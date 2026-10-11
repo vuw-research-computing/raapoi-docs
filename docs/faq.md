@@ -22,7 +22,7 @@
     * The best and most reliable method of determining resource requirement is from testing. 
     !!! note
         It is possible to find out a ballpark figure for a particular software in terms of memory, CPUs, or time, for example: MATLAB (~16 GB memory to initialize), see documentation or consult in slack help channel. 
-        
+
     * Select a test job carefully. As a rule of thumb, a test job should not run for more than 15 mins. Perhaps you could use smaller input, coarse parameters or use a subset of the calculations. 
     * Make sure your test job is quick to run and quick to start. The later can be ensured by keeping resource requirement to be small (mem or cpu).
     * Often a good first test to run, is to execute your job serially e.g., using only 1 CPU. These jobs should be easier to debug, and quicker to run.
@@ -88,25 +88,20 @@
 
 ## Visual Studio Code tips
 * **_How do I connect a VS Code Server to Rāpoi?_**
-    * Unfortunately, VS Code plugins associated with working on remote servers appear to have somewhat poor process and virtual memory management. The Rāpoi admin and moderation team do not want users to connect VS code servers directly to the login node as it has a tendency to interrupt the work of other users. At this time, our preference is that users follow [this VS Code guide](https://vuw-research-computing.github.io/raapoi-docs/usersub/#vscode) when connecting to Rāpoi. (We may periodically kill any processes associated with VS Code which are found to be running on the login node, which will likely interrupt your work! If you have followed the guide, this should not impact you.)
-    
-* **_[Old advice:] How do I clean up my VS Code Server processes on Rāpoi?_**
-    * Unfortunately, VS Code seems to have somewhat poor process management when used to connect to Rāpoi for remote code development. In particular, it tends to leave a large number of processes sitting on the cluster occupying resources (even after you leave/close the session on your local machine). [This link from the vscode docs](https://code.visualstudio.com/docs/remote/troubleshooting#_cleaning-up-the-vs-code-server-on-the-remote) tells you how to cleanup your VS Code Server. In particular, they recommend running `kill -9 $(ps aux | grep vscode-server | grep $USER | grep -v grep | awk '{print $2}')` to kill server processes. If you are a user of VS Code, please do this whenever we you finish a session.
-
+    * Running VS Code on a login node is not allowed, as it can consume shared resources and disrupt other users. To use VS Code with Rāpoi, follow the [VSCode Usage on Rāpoi guide](vscode_on_raapoi.md), which explains how to run it on a compute node. VS Code processes found running on a login node will be terminated without any notice.
 
 
 ---
 
 
 ## PyTorch Tips
-* **_Why are the versions of PyTorch so old, how do I use a newer version?_**
-    * Our standard software installation method (using EasyBuild) has struggled to keep up to date with the rapidly evolving PyTorch software. There are long running issues with this, particularly surrounding burdensome testing routines. If one of the versions available (e.g. found via `module spider PyTorch`) is too old to suit your needs, you may want to install a more recent version locally (i.e. within your Rāpoi home directory) via pip. Such builds won't be optimised for our specific system, but are probably good enough for most purposes. Here is one example of how you can do this:
+* **_How do I load the latest version of PyTorch?_**
+    * Load the PyTorch 2.9.1 module and its dependencies:
     ```
-    module purge
-    module load GCCcore/13.3.0 Python/3.12.3 CUDA/12.8.0
-    pip3 install --user torch torchvision --index-url https://download.pytorch.org/whl/cu128
+    module load GCC/14.3.0
+    module load OpenMPI/5.0.8
+    module load PyTorch/2.9.1-CUDA-12.9.1
     ```
-Rather than install PyTorch into your `.local/` directory, you may prefer to set up a virtual environment first. As of March 2026 the above will result in a local installation of PyTorch version 2.11.0. In future, you'll possibly want to check which versions of CUDA are suitable for the latest stable PyTorch version via [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/). 
 
 ---
 
@@ -264,7 +259,5 @@ Rather than install PyTorch into your `.local/` directory, you may prefer to set
 
     
  
-
-
 
 
