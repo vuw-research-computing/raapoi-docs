@@ -27,12 +27,6 @@ This is user submitted documentation.  This will eventually contain tip and tric
 --- 
 
 {%
-   include-markdown "usersub/vscode.md"
-%}
-
---- 
-
-{%
    include-markdown "usersub/rstudio-server.md"
 %}
 
