@@ -15,6 +15,6 @@ df -h | grep scratch  #df -h is disk free with human units, | pipes the output t
 
 This storage is **not backed up** at all.  It is on a raid array so if a hard drive fails your data is safe.  However in the event of a more dramatic hardware failure, earthquakes or fire - your data is gone forever.  If you accidentally delete something, it's gone forever. If an Admin misconfigures something, your data is gone (we try not to do this!).
 
-It is **your responsiblilty to backup your data** here - a good place is to use Digital Solutions Research Storage (see [Connecting to SoLAR](external/solar_vuw.md)).
+It is **your responsiblilty to backup your data** here - a good place is to use Digital Solutions Research Storage (see [Connecting to SoLAR](../external/solar_vuw.md)).
 
 Scratch is also not a place for your old data to live forever, please clean up datasets you're no longer using!

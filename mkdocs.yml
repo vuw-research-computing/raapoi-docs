@@ -2,7 +2,10 @@ site_name: Rāpoi Cluster Documentation
 nav: 
   - Overview: 'index.md'
   - Documentation:
-    - 'Accessing the Cluster': 'accessing_the_cluster.md'
+    - 'Accessing the Cluster':
+      - 'Accessing the Cluster': 'accessing_the_cluster.md'
+      - 'File Transfer with SFTP, SCP, or rsync':
+        - 'FileZilla': 'file_transfer/filezilla.md'
     - 'Basic Commands': 'basic_commands.md'
     - 'Storage and Quotas': 'storage.md'
     - 'Using Partitions': 'partitions.md'
@@ -11,7 +14,6 @@ nav:
     - 'Running Jobs': 'running_jobs.md'
     - 'Managing Jobs': 'managing_jobs.md'
     - 'Using VSCode on Rāpoi': 'vscode_on_raapoi.md'
-    - 'FileZilla file transfer': 'file_transfer/filezilla.md'
     - 'Examples and User Guides': 'examples.md'
     - 'Parallel Processing': 'parallel_processing.md'
     - 'Advanced Examples': 'advanced_examples.md'
