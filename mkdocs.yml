@@ -4,8 +4,7 @@ nav:
   - Documentation:
     - 'Accessing the Cluster':
       - 'Accessing the Cluster': 'accessing_the_cluster.md'
-      - 'File Transfer with SFTP, SCP, or rsync':
-        - 'FileZilla': 'file_transfer/filezilla.md'
+      - 'File Transfer with SFTP, SCP, or rsync': 'file_transfer/filezilla.md'
     - 'Basic Commands': 'basic_commands.md'
     - 'Storage and Quotas': 'storage.md'
     - 'Using Partitions': 'partitions.md'
