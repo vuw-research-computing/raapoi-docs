@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/file_transfer/filezilla/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Filezilla - Rāpoi Cluster Documentation</title>
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../../extra.css" rel="stylesheet"/>
+<link href="../../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Filezilla";
+        var mkdocs_page_input_path = "file_transfer/filezilla.md";
+        var mkdocs_page_url = "/raapoi-docs/file_transfer/filezilla/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../old_mod/">Old module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode_on_raapoi/">Using VSCode on Rāpoi</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../acceptable_use_policy/">Acceptable Use Policy</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href="../.."></a></li>
+<li class="breadcrumb-item active">Filezilla</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="bigger-data-transfer-using-a-compute-node">Bigger Data Transfer Using a Compute Node<a class="headerlink" href="#bigger-data-transfer-using-a-compute-node" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Windows users are recommended to use Windows Terminal (PowerShell) in Windows 11 or <a href="https://git-scm.com/downloads"><code>Git Bash</code></a> for the following instructions to work.</p>
+</div>
+<p><strong>Step 1</strong>. Download and install FileZilla Client from the <a href="https://filezilla-project.org/">official webpage</a>.</p>
+<p><strong>Step 2</strong>. Now you need to create SSH keys on your local machine, <em>(existing SSH keys can also be used — no need to create new ones. If you already have SSH keys set up, go to Step 3)</em> and upload them to Rāpoi. The detailed instructions for creating the SSH keys are given below:</p>
+<ul>
+<li>If you are a Windows user, click Start and search for "Terminal" or "PowerShell" and open it. Mac users can open the Terminal app.</li>
+<li>Type <code>cd</code> and press Enter to go to the user's home directory. My username is <code>ali</code> in the example below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32&gt;<span class="w"> </span><span class="nb">cd</span>
+</span></code></pre></div>
+<ul>
+<li>Then enter the <code>.ssh</code> directory by typing:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>.ssh
+</span></code></pre></div>
+<ul>
+<li>Now type <code>ssh-keygen</code> and press Enter:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>ssh-keygen
+</span></code></pre></div>
+<ul>
+<li>Follow the prompts in the terminal to generate the SSH key pair. When it asks for the file to save the key, you can give a different name, otherwise you can keep the default one, i.e. <code>id_ed25519</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>ssh-keygen
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>Generating<span class="w"> </span>public/private<span class="w"> </span>ed25519<span class="w"> </span>key<span class="w"> </span>pair.
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\a</span>li/.ssh/id_ed25519<span class="o">)</span>:
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\a</span>li/.ssh/id_ed25519
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\a</span>li/.ssh/id_ed25519.pub
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>The<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is:
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8<span class="w"> </span>ali@mypc
+</span></code></pre></div>
+<ul>
+<li>
+<p>If you type <code>ls</code>, you'll see two files, <code>id_ed25519</code> and <code>id_ed25519.pub</code>, in the current directory. We need to upload the public key <code>id_ed25519.pub</code> to Rāpoi.</p>
+</li>
+<li>
+<p>Send the <em>public</em> key to <em>Rāpoi</em></p>
+<ul>
+<li>
+<p>For macOS and Linux users, or Windows users using Git Bash when already inside the <code>.ssh</code> directory. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>user@local:~$<span class="w"> </span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>id_ed25519<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+</li>
+<li>
+<p>For Windows users using Windows Terminal or PowerShell. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span><span class="nb">type</span><span class="w"> </span>.<span class="se">\i</span>d_ed25519.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz<span class="w"> </span><span class="s2">"mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys"</span>
+</span></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<p>Now it's time to test the new SSH keys. Try logging in as shown below and it should not ask you for your Rāpoi password.</p>
+<ul>
+<li>For macOS and Linux users, or Windows users using Git Bash when already inside the <code>.ssh</code> directory. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>user@local:~$<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_ed25519<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<ul>
+<li>For Windows users using Windows Terminal or PowerShell. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>id_ed25519<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>If it logs in successfully, it means that the SSH keys are working correctly.</p>
+<p><strong>Step 3</strong>. Add your SSH key inside the FileZilla client. Go to Edit &gt; Settings &gt; select SFTP under Connection. Click on Add key file… and select your private key from the file browser window.</p>
+<p><img alt="FileZilla SSH Key" src="../../img/filezilla_01.png"/></p>
+<p><strong>Step 4</strong>. On your local machine, open a terminal window (Windows Terminal, Windows PowerShell, Git Bash, etc.), then start an <em>SSH tunnel</em> using local forwarding by typing the following command:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">3111</span>:amd01n04:22<span class="w"> </span>&lt;your_raapoi_username&gt;@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>Once logged in, allocate resources using the same terminal. You'll see the <code>USERNAME@raapoi-login</code> change to <code>USERNAME@amd01n04</code>.</p>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>RAAPOI_USERNAME@raapoi-login:~$<span class="w"> </span>srun<span class="w"> </span>--partition<span class="o">=</span>quicktest<span class="w"> </span>--nodelist<span class="o">=</span>amd01n04<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--time<span class="o">=</span><span class="m">05</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>srun:<span class="w"> </span>job<span class="w"> </span><span class="m">3497952</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>srun:<span class="w"> </span>job<span class="w"> </span><span class="m">3497952</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>RAAPOI_USERNAME@amd01n04:~$
+</span></code></pre></div>
+<p><strong>Step 5</strong>. Connect the FileZilla session.</p>
+<ul>
+<li>
+<p>Now is the time to connect FileZilla to the interactive session we just got on Rāpoi. Follow the instructions below:</p>
+<ul>
+<li>Enter these details in the QuickConnect bar inside the FileZilla client window:</li>
+</ul>
+<p>Host: <code>sftp://127.0.0.1</code>
+Username: <code>&lt;your_raapoi_username&gt;</code>
+Password: <code>&lt;leave_empty&gt;</code>
+Port: <code>3111</code></p>
+<p><img alt="FileZilla Connect" src="../../img/filezilla_02.png"/></p>
+<ul>
+<li>
+<p>Then choose <code>QuickConnect</code>.</p>
+</li>
+<li>
+<p>Once a connection is established, you'll see the local and remote files and folders. You can drag and drop files to and from Rāpoi.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The instructions above assume that the node <code>amd01n04</code> is up and has sufficient resources available. There may be times when this is not the case and you need to adapt these steps to access CPUs on a different node. As a workaround, you'll need to modify Step 4 to point towards a different node.</p>
+</div>
+</div>
+</div><footer>
+<hr/>
+<div role="contentinfo">
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+</span>
+</div>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "../..";</script>
+<script src="../../js/theme_extra.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
