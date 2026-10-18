@@ -11,6 +11,7 @@ nav:
     - 'Running Jobs': 'running_jobs.md'
     - 'Managing Jobs': 'managing_jobs.md'
     - 'Using VSCode on Rāpoi': 'vscode_on_raapoi.md'
+    - 'FileZilla file transfer': 'file_transfer/filezilla.md'
     - 'Examples and User Guides': 'examples.md'
     - 'Parallel Processing': 'parallel_processing.md'
     - 'Advanced Examples': 'advanced_examples.md'
