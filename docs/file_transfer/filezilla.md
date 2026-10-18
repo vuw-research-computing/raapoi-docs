@@ -3,9 +3,8 @@
 !!! Tip
     Windows users are recommended to use Windows Terminal (PowerShell) in Windows 11 or [`Git Bash`](https://git-scm.com/downloads) for the following instructions to work.
 
-Users should install the FileZilla Client from the official webpage.
 
-**Step 1**. Download and install Microsoft Visual Studio Code from https://code.visualstudio.com/download.
+**Step 1**. Download and install FileZilla Client from the [official webpage](https://filezilla-project.org/).
 
 **Step 2**. Now you need to create SSH keys on your local machine, _(existing SSH keys can also be used — no need to create new ones. If you already have SSH keys set up, go to Step 3)_ and upload them to Rāpoi. The detailed instructions for creating the SSH keys are given below:
 
@@ -75,7 +74,7 @@ If it logs in successfully, it means that the SSH keys are working correctly.
 
 **Step 3**. Add your SSH key inside the FileZilla client. Go to Edit > Settings > select SFTP under Connection. Click on Add key file… and select your private key from the file browser window.
 
-    ![FileZilla SSH Key](../img/filezilla_01.png)
+![FileZilla SSH Key](../img/filezilla_01.png)
 
 **Step 4**. On your local machine, open a terminal window (Windows Terminal, Windows PowerShell, Git Bash, etc.), then start an _SSH tunnel_ using local forwarding by typing the following command:
 
@@ -111,4 +110,3 @@ RAAPOI_USERNAME@amd01n04:~$
 
 !!! Tip
     The instructions above assume that the node `amd01n04` is up and has sufficient resources available. There may be times when this is not the case and you need to adapt these steps to access CPUs on a different node. As a workaround, you'll need to modify Step 4 to point towards a different node.
-
