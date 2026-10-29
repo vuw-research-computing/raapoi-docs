@@ -65,10 +65,10 @@ You will want to sign up to the Uictoria University VPN to gain access to SoLAR.
 </ol>
 
 
+
 ### Moving/Copying files and folders between SoLAR and Rāpoi
 
 There are several way to move/copy files and folder between SoLAR and Rāpoi
-
 
 
 ---
@@ -79,24 +79,18 @@ Ask Digital Solutions for a service account to be created against your Research 
 
 ---
 
-#### Second Way: ``RClone``
 
-**To do once I get it fixed**
-
-
----
-
-#### Third Way: ``smbclient``
+#### Second Way: ``smbclient``
 
 ``smbclient`` is specifically designed to transfer files and folders to and from smb clients. It is a bit cumbersome to use, but it is an alternative way for copying files between Rāpoi and SoLAR
 
-To use ``smbclient``, first ``cd`` into the directory that contains the folder you would like to copy from Rāpoi to SoLAR. Then in the terminal give the following input:
+##### Copying from Rāpoi to SoLAR
+To use ``smbclient``, first ``cd`` into the directory that contains the folder you would like to copy the directory `/nfs/scratch/USERNAME/test` from Rāpoi to SoLAR. Then in the terminal give the following input:
 
-```console
+```bash
 smbclient //vuwstocoissrin1.vuw.ac.nz/SoLAR_folder_name \
---user username --workgroup STAFF --command "prompt OFF;\
-recurse ON; cd remote/target/directory; mput \
-folder_on_Raapoi_you_want_to_copy_to_SoLAR "
+  -U "username@staff.vuw.ac.nz" \
+  --command "lcd /nfs/scratch/USERNAME; cd Folder_on_SOLAR/; prompt OFF; recurse ON; mput test"
 ```
 
 You will then be asked to give your VUW password to copy data to SoLAR.
@@ -107,13 +101,13 @@ You will then be asked to give your VUW password to copy data to SoLAR.
 !!! tip 
     You may see it not doing anything for a while, and then all of a sudden it will show you that it is doing things. This is normal. 
 
+##### Copying from SoLAR to Rāpoi 
 If you want to copy files from SoLAR to Rāpoi, first ``cd`` into the directory on Rāpoi that you want to copy the SoLAR folder/file to. Then in the terminal give the following input:
 
 ```bash
 smbclient //vuwstocoissrin1.vuw.ac.nz/SoLAR_folder_name \
---user username --workgroup STAFF --command "prompt OFF; \
-recurse ON; cd remote/source/directory; mget \
-folder_on_SoLAR_you_want_to_copy_to_Raapoi "
+-U "username@staff.vuw.ac.nz" --command "prompt OFF;\
+recurse ON; cd Folder_on_SOLAR; mget subfolder_on_SoLAR_you_want_to_copy_to_Raapoi"
 ```
 
 !!! warning  
