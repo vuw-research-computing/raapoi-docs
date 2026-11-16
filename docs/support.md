@@ -79,37 +79,6 @@ Moderators are members of the research community who have kindly volunteered the
 <div class="card-container">
 
   <div class="card">
-    <img src=" ../img/Wanting.jpeg" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Wanting Jiao</b></h4>
-      <p>Senior Scientist</p>
-      <p>Ferrier Research Institute, Schrödinger Suite</p>
-      <p><a href="mailto:wanting.jiao@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
-    </div>
-  </div> 
-
-  <div class="card">
-    <img src=" ../img/WealGeoffrey.jpeg" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Geoffrey Weal</b></h4>
-      <p>Postdoctorial Fellowship</p>
-      <p>MacDiarmid Institute and iCeMS (Kyoto University, Japan) </p>
-      <p><a href="mailto:geoffrey.weal@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
-    </div>
-  </div> 
-  
-  <div class="card">
-    <img src=" ../img/KellyStyles.jpeg" alt="Avatar" style="width:100%">
-    <div class="container">
-      <h4><b>Kelly Styles</b></h4>
-      <p>PhD Student</p>
-      <p>School of Biological Sciences</p>
-      <p>Microbial genomics and pipeline creation</p>
-      <p><a href="mailto:kelly.styles@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
-    </div>
-  </div> 
-  
-  <div class="card">
     <img src=" ../img/BrendanH.jpg" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>Brendan Harding</b></h4>
