@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://vuw-research-computing.github.io/raapoi-docs/vscode_on_raapoi/" rel="canonical"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Using VSCode on Rāpoi - Rāpoi Cluster Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../extra.css" rel="stylesheet"/>
+<link href="../css/neoteroi-mkdocs.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Using VSCode on R\u0101poi";
+        var mkdocs_page_input_path = "vscode_on_raapoi.md";
+        var mkdocs_page_url = "/raapoi-docs/vscode_on_raapoi/";
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Rāpoi Cluster Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../accessing_the_cluster/">Accessing the Cluster</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_commands/">Basic Commands</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage/">Storage and Quotas</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../partitions/">Using Partitions</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/">Preparing your Environment (modules)</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../old_mod/">Old module system</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../running_jobs/">Running Jobs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../managing_jobs/">Managing Jobs</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Using VSCode on Rāpoi</a>
+<ul class="current">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/">Examples and User Guides</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_processing/">Parallel Processing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_examples/">Advanced Examples</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../external_providers/">Connecting to Cloud/Storage Providers</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../acceptable_use_policy/">Acceptable Use Policy</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usersub/">User Submitted Docs</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../elements/LinkingElements/">Linking Rāpoi outputs to Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hpclayout/">HPC Hardware Layout</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/">Support</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Moderators Section</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mods_admins/">Notes for Moderators</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Rāpoi Cluster Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Documentation</li>
+<li class="breadcrumb-item active">Using VSCode on Rāpoi</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h2 id="vscode-usage-on-rapoi">VSCode Usage on Rāpoi<a class="headerlink" href="#vscode-usage-on-rapoi" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Windows users are recommended to use Windows Terminal (Powershell) in Windows 11 or <a href="https://git-scm.com/downloads"><code>Git Bash</code></a> for the following instructions to work. </p>
+</div>
+<p><strong>Running VSCode on the login node is not allowed. It should always be run on a compute node using the instructions below. Before connecting, check whether you really need to use VSCode on Rāpoi or whether it would be better to run it locally on your own machine.</strong></p>
+<p>The instructions below should let users run their VSCode session on a compute node. </p>
+<p><strong>Step 1</strong>. Download and install Microsoft Visual Studio Code from https://code.visualstudio.com/download.</p>
+<p><strong>Step 2</strong>. Install  <code>Remote - SSH</code> extension.</p>
+<ul>
+<li>
+<p>Open VSCode, click "View" and then "Extensions" as shown in the image below.</p>
+<p><img alt="VS Code Extensions view" src="../img/VSCode_001.png"/></p>
+</li>
+<li>
+<p>Then on the left side in search bar, type "Remote - SSH" and select the first result as shown in image. Then click Install on right side as shown by a red circle on the image.</p>
+<p><img alt="VS Code Extensions view" src="../img/VSCode_002.png"/></p>
+</li>
+</ul>
+<p><strong>Step 3</strong>. Now you need to create ssh keys on your local machine, <em>(existing ssh keys can also be used - no need to create new ones)</em> and upload them on Rāpoi. The detailed instructions for creating the ssh keys are given below:</p>
+<ul>
+<li>If you are a Windows user, click on start and search for "Terminal" or "PowerShell" and open it. Mac users can open mac terminal.</li>
+<li>Type <code>cd</code> and press Enter key to go to the user's home directory. My username is <code>ali</code> in the exxample below:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32&gt;<span class="w"> </span><span class="nb">cd</span>
+</span></code></pre></div>
+<ul>
+<li>Then enter into <code>.ssh</code> directory by typing</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>.ssh
+</span></code></pre></div>
+<ul>
+<li>Now type ssh-keygen and press Enter.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>ssh-keygen
+</span></code></pre></div>
+<ul>
+<li>Follow the prompts on the terminal to generate ssh-key pair. When it asks for the file to save the key, you can give a different name, otherwise you can keep the default one i.e., <code>id_ed25519</code>. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>ssh-keygen
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>Generating<span class="w"> </span>public/private<span class="w"> </span>ed25519<span class="w"> </span>key<span class="w"> </span>pair.
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\a</span>li/.ssh/id_ed25519<span class="o">)</span>:
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\a</span>li/.ssh/id_ed25519
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\a</span>li/.ssh/id_ed25519.pub
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>The<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is:
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>SHA256:Dc7PcRDKmdKDETrX0+FK7B1IizHxxMP1C2jdOEr3HH8<span class="w"> </span>ali@mypc
+</span></code></pre></div>
+<ul>
+<li>
+<p>If you type <code>ls</code>, you 'll see two files, <code>id_ed25519</code> and <code>id_ed25519.pub</code> in the current directory. We need to upload the public key <code>id_ed25519.pub</code> to Rāpoi.</p>
+</li>
+<li>
+<p>Send the <em>public</em> key to <em>Rāpoi</em></p>
+<ul>
+<li>
+<p>For macOS and Linux users, or Windows users using Git Bash when already inside the <code>.ssh</code> directory. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>user@local:~$<span class="w"> </span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>id_ed25519<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+</li>
+<li>
+<p>For Windows users using Windows Terminal or PowerShell. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span><span class="nb">type</span><span class="w"> </span>.<span class="se">\i</span>d_ed25519.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz<span class="w"> </span><span class="s2">"mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys"</span>
+</span></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 4</strong>. Now its the time to test the new ssh keys. Try logging in as shown below and it should not ask you for your Rāpoi password.</p>
+<ul>
+<li>For macOS and Linux users, or Windows users using Git Bash when already inside the <code>.ssh</code> directory. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>user@local:~$<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>~/path/to/public/key<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<ul>
+<li>For Windows users using Windows Terminal or PowerShell. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>id_ed25519<span class="w"> </span>RAAPOI_USERNAME@raapoi.vuw.ac.nz
+</span></code></pre></div>
+<p>If it logs in successfully, it means that the ssh keys are working correctly.</p>
+<p><strong>Step 5</strong>. Now you need to update <code>ssh config</code> file on your local machine.</p>
+<ul>
+<li>For macOS and Linux users, or Windows users using Git Bash when already inside the <code>.ssh</code> directory. You can use nano as a text editor:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>user@local:~$<span class="w"> </span>nano<span class="w"> </span>~/.ssh/config
+</span></code></pre></div>
+<ul>
+<li>For Windows users using Windows Terminal or PowerShell when already inside the <code>.ssh</code> directory. You can use notepad to edit this file. If it says file does not exist, do you want to create it, select Yes:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh&gt;<span class="w"> </span>notepad<span class="w"> </span>config
+</span></code></pre></div>
+<ul>
+<li>When the config file is open, add the following details to it. Replace <code>RAAPOI_USERNAME</code> with your actual Rāpoi username below. For <code>IdentityFile</code>, use the full path to the key. I'll write windows path here, Linux and mac users can write their full path (e.g. ~/.ssh/id_rsa). Furthermore, If <code>amd01n01</code> is not available, you can use any other node as well like <code>amd01n02</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>Host<span class="w"> </span>VSCode_Compute
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span>User<span class="w"> </span>RAAPOI_USERNAME
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span>HostName<span class="w"> </span>amd01n01
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span>ProxyJump<span class="w"> </span>raapoi_login
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>Host<span class="w"> </span>raapoi_login
+</span><span id="__span-10-7"><a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">    </span>HostName<span class="w"> </span>raapoi.vuw.ac.nz
+</span><span id="__span-10-8"><a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">    </span>User<span class="w"> </span>RAAPOI_USERNAME
+</span><span id="__span-10-9"><a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a>Host<span class="w"> </span>*
+</span><span id="__span-10-11"><a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">    </span>ForwardAgent<span class="w"> </span>yes
+</span><span id="__span-10-12"><a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span>ForwardX11<span class="w"> </span>yes
+</span><span id="__span-10-13"><a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">    </span>ForwardX11Trusted<span class="w"> </span>yes
+</span><span id="__span-10-14"><a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">    </span>IdentityFile<span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span>ssh<span class="se">\i</span>d_ed25519<span class="w"> </span><span class="c1"># Add your own private key path here </span>
+</span><span id="__span-10-15"><a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="w">    </span>AddKeysToAgent<span class="w"> </span>yes
+</span><span id="__span-10-16"><a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="w">    </span>StrictHostKeyChecking<span class="w"> </span>no
+</span><span id="__span-10-17"><a href="#__codelineno-10-17" id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="w">    </span>UserKnownHostsFile<span class="w"> </span>/dev/null
+</span></code></pre></div>
+<p>Save this file and close it.</p>
+<p><strong>Step 6</strong>. On your local machine, open a terminal window (Windows Terminal, Windows Powershell, GitBash, etc.) and login to <em>Rāpoi</em> as below: </p>
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>C:<span class="se">\U</span>sers<span class="se">\a</span>li<span class="se">\.</span><span class="w"> </span>ssh<span class="w"> </span>raapoi_login
+</span></code></pre></div>
+<p>Once logged in, allocate resources for the VSCode session using the same terminal. You 'll see the USERNAME@raapoi-login changing to USERNAME@amd01n01.
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>RAAPOI_USERNAME@raapoi-login:~$<span class="w"> </span>srun<span class="w"> </span>-t0-05:00:00<span class="w"> </span>-wamd01n01<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--pty<span class="w"> </span>bash
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>srun:<span class="w"> </span>job<span class="w"> </span><span class="m">3435343</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a>srun:<span class="w"> </span>job<span class="w"> </span><span class="m">3435343</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>RAAPOI_USERNAME@amd01n01:~$
+</span></code></pre></div></p>
+<p><strong>Step 7</strong>. Connect VSCode session.</p>
+<ul>
+<li>
+<p>Now is the time to connect VSCode to the interactive session we just got on Rāpoi. Follow the instructions below:</p>
+<ul>
+<li>Open VSCode window, and click on the bottom left corner that says <code>Open a Remote Window</code>. </li>
+</ul>
+<p><img alt="VS Code Remote Host" src="../img/VSCode_003.png"/></p>
+<ul>
+<li>Then choose <code>Connect to Host</code>.</li>
+</ul>
+<p><img alt="VS Code Remote Host" src="../img/VSCode_004.png"/></p>
+<ul>
+<li>Then select <code>VSCode_Compute</code> as a host.</li>
+</ul>
+<p><img alt="VS Code Remote Host" src="../img/VSCode_005.png"/></p>
+<ul>
+<li>For the first time, it will ask you for the OS of the host. Select <code>Linux</code>.</li>
+</ul>
+<p><img alt="VS Code Remote Host" src="../img/VSCode_006.png"/></p>
+<ul>
+<li>Then it will ask you to verify the fingerprint of the host (amd01n01). Click Continue.</li>
+</ul>
+<p><img alt="VS Code Remote Host" src="../img/VSCode_007.png"/></p>
+<ul>
+<li>Once a connection is established, your VSCode session should be running on a compute node now. You can see the red circle in the picture below:</li>
+</ul>
+<p><img alt="VS Code Remote Host" src="../img/VSCode_008.png"/></p>
+</li>
+</ul>
+<p><strong>Step 8</strong>. To close VSCode session. </p>
+<p>Go to <code>File</code> &gt; <code>Close Remote Connection</code>. DO NOT simply close the VSCode window as it leaves VSCode processes behind.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To speed up VSCode, there are steps mentioned in <a href="https://code.visualstudio.com/docs/configure/settings">the official VSCode docs</a>. Below is just a part of it: </p>
+<p>Once connected, update VSCode's <code>/nfs/home/$USER/.vscode-server/data/Machine/settings.json</code>, and add the following lines to it:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="o">{</span>
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span><span class="s2">"files.watcherExclude"</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">        </span><span class="s2">"**"</span>:true,
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="s2">"files.exclude"</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-13-6"><a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">        </span><span class="s2">"**/.*"</span>:<span class="w"> </span>true,
+</span><span id="__span-13-7"><a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-13-8"><a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">    </span><span class="s2">"search.followSymlinks"</span>:false,
+</span><span id="__span-13-9"><a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">    </span><span class="s2">"search.exclude"</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-13-10"><a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">        </span><span class="s2">"**"</span>:true,
+</span><span id="__span-13-11"><a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-13-12"><a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">    </span><span class="s2">"terminal.integrated.inheritEnv"</span>:<span class="w"> </span>false,
+</span><span id="__span-13-13"><a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="o">}</span>
+</span></code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The instructions above assume that the node amd01n01 is up and has sufficient resources available. There may be times when this is not the case and you need to adapt these steps to access cpus on a different node. As a workaround you'll need to modify steps 5 and 6 to point towards a different node.</p>
+</div>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../managing_jobs/" title="Managing Jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../examples/" title="Examples and User Guides">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+</div>
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../managing_jobs/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../examples/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js"></script>
+<script src="https://vuw-research-computing.statuspage.io/embed/script.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+</body>
+</html>
