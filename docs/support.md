@@ -47,7 +47,7 @@ Our admins from Digital Solutions build the cluster nodes and keep an eye on the
     <img src="../img/DavidA.jpg" alt="Avatar" style="width:100%">
     <div class="container">
       <h4><b>David Alderman</b></h4>
-      <p>Systems Administrator in Digital Solutions.</p>
+      <p>Technical Specialist in Digital Solutions.</p>
       <p><a href="mailto:david.alderman@vuw.ac.nz?subject=Rāpoi support">Email Me</a>  </p>
     </div>
   </div> 

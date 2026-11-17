@@ -4,11 +4,11 @@
 
 There are a number of versions of Python on Rāpoi, although many of these are old installations (prior to an OS update and changes to the module system) and *may* no longer work.
 Generally speaking, your best bet is to try a version which appears when you search via `module spider Python` (noting that the capital 'P' in `Python` is important here).
-A few examples of relatively recent version of Python which are available (as of April 2024) are `Python/3.9.5`, `Python/3.10.8` and `Python/3.11.5`.
+A few examples of relatively recent version of Python which are available (as of November 2026) are `Python/3.11.5`, `Python/3.12.3` and `Python/3.13.5`.
 
 Each of these Python modules has one or more of pre-requisite modules that need to be loaded first (generally a specific version of GCC compilers).
 To find out what you need to load first for a specific version of Python you just need to check the output of `module spider Python/x.y.z` (with the appropriate values for x,y,z).
-One of the examples below shows how to use `Python/3.9.5`.
+One of the examples below shows how to use `Python/3.13.5`.
 In cases where your Python code needs to interact with software from another module which also requires a specific GCC module, that will dictate which version of Python to load (i.e. whichever one depends on the same GCC version).
 Otherwise, you are free to use any desired Python module. 
 
@@ -27,8 +27,8 @@ cd python_test
 ```
 Next we load the python 3 module and use python 3 to create a python virtualenv.  This way we can install pip packages which are not installed on the cluster
 ```bash
-module load GCCcore/10.3.0
-module load Python/3.9.5
+module load GCCcore/14.3.0
+module load Python/3.13.5
 python3 -m venv mytest
 ```
 
@@ -73,8 +73,8 @@ Using nano create the submissions script called python_submit.sh with the follow
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=me@email.com
 
-module load GCCcore/10.3.0
-module load Python/3.9.5
+module load GCCcore/14.3.0
+module load Python/3.13.5
 
 source mytest/bin/activate
 python test.py
