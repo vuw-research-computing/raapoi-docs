@@ -96,7 +96,7 @@ If this is the first time you are attempting to install local packages for this 
 ```R
 > library(fortunes) # confirm that fortunes is not already available
 > install.packages("fortunes")
-Installing package into ‘/nfs/scratch/admhashmi/R_libs’
+Installing package into ‘/nfs/scratch/${USER}/R_libs’
 (as ‘lib’ is unspecified)
 --- Please select a CRAN mirror for use in this session ---
 Secure CRAN mirrors
