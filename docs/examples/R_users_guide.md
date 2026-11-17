@@ -15,6 +15,7 @@ First login to Rāpoi and load the R module:
 module purge               # clean/reset your environment
 module load config         # reload utilities such as vuw-job-report
 module load GCC/14.3.0     # pre-requisites for the new R module
+module load OpenMPI/5.0.8
 module load R/4.6.1   
 ```
 
@@ -55,6 +56,7 @@ Next create a bash submission script called ```r_submit.sh``` (or another name o
 
 module purge
 module load GCC/14.3.0
+module load OpenMPI/5.0.8
 module load R/4.6.1   
 
 Rscript mytest.R
@@ -82,6 +84,7 @@ Start by launching an R session
 ```bash
 module purge
 module load GCC/14.3.0
+module load OpenMPI/5.0.8
 module load R/4.6.1
 mkdir -p "/nfs/scratch/${USER}/R_libs"          # Create this directory for the first time
 export R_LIBS_USER=/nfs/scratch/${USER}/R_libs  # Export this directory path where R will install libraries for your user
